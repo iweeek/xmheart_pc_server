@@ -9,10 +9,11 @@ apply plugin: "eclipse-wtp"
 apply plugin: "eclipse"
 
 sourceCompatibility = "1.8"   // 设置 JDK 版本
+webAppDirName = "WebContent"
 
 // 设置 Java 源码所在目录
-sourceSets.main.java.srcDirs "src/java"
-sourceSets.main.resources.srcDirs "src/resources"
+sourceSets.main.java.srcDirs "src/main/java"
+sourceSets.main.resources.srcDirs "src/main/resources"
 
 //定义jar包仓库
 repositories {  
@@ -48,8 +49,10 @@ dependencies {
         //mybatis
         "org.mybatis:mybatis-spring:$mybatisSpringVersion",
         "org.mybatis:mybatis:$mybatisVersion"
-        
     )
+    compile group: 'org.apache.velocity', name: 'velocity', version: '1.6.2'
+    compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
+    compile group: 'org.springframework', name: 'spring-context-support', version: '3.2.2.RELEASE'
     
     //定义编译测试时必须有的依赖
     testCompile (
