@@ -1,0 +1,86 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+
+//定义要使用的插件
+apply plugin: "base"
+apply plugin: "java"
+apply plugin: "war"
+apply plugin: "jetty"
+apply plugin: "eclipse-wtp"
+apply plugin: "eclipse"
+
+sourceCompatibility = "1.8"   // 设置 JDK 版本
+
+// 设置 Java 源码所在目录
+sourceSets.main.java.srcDirs "src/java"
+sourceSets.main.resources.srcDirs "src/resources"
+
+//定义jar包仓库
+repositories {  
+     
+     //使用maven2仓库
+    mavenCentral()
+    
+    //定义从本地的lib文件夹中寻找依赖的jar包
+    flatDir {
+        dirs "lib"
+    }
+    
+}
+
+//定义依赖
+dependencies {
+    //定义版本
+    def mybatisSpringVersion = "1.2.3"
+    def springVersion        = "4.2.2.RELEASE"
+    def junitVersion         = "4.12"
+    def mybatisVersion       = "3.3.0"  
+    
+    //依赖定义的格式解释：“依赖分组名称：依赖名称：依赖版本“
+    //定义编译时必须有的依赖
+    compile (
+    
+        //spring
+        "org.springframework:spring-context:$springVersion",
+        "org.springframework:spring-webmvc:$springVersion",
+        "org.springframework:spring-jdbc:$springVersion",
+        "org.springframework:spring-tx:$springVersion",
+    
+        //mybatis
+        "org.mybatis:mybatis-spring:$mybatisSpringVersion",
+        "org.mybatis:mybatis:$mybatisVersion"
+        
+    )
+    
+    //定义编译测试时必须有的依赖
+    testCompile (
+    
+        //junit
+        "junit:junit:$junitVersion"
+        
+    )
+    
+    //定义运行时必须有的依赖
+    //runTime (
+        
+    //)
+    
+    //定义测试运行时必须有的依赖
+    //testRunTime (
+    
+    //)
+    
+  }
+  
+   // 设置 Project Facets
+eclipse {
+    wtp {
+        facet {
+            facet name: 'jst.web', type: Facet.FacetType.fixed
+            facet name: 'wst.jsdt.web', type: Facet.FacetType.fixed
+            facet name: 'jst.java', type: Facet.FacetType.fixed
+            facet name: 'jst.web', version: '2.5'
+            facet name: 'jst.java', version: '1.8'
+            facet name: 'wst.jsdt.web', version: '1.0'
+        }
+    }
+}
