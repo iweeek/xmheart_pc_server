@@ -18,6 +18,7 @@ public class ApplicationContextConfig {
         FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
         System.out.println("Create Bean viewResolver");
  
+        viewResolver.setContentType("text/html");
         viewResolver.setCache(true);
         viewResolver.setPrefix("");
         viewResolver.setSuffix(".ftl");
@@ -30,6 +31,8 @@ public class ApplicationContextConfig {
  
         // Folder containing FreeMarker templates.
         config.setTemplateLoaderPath("/WEB-INF/views/");
+        
+        config.setDefaultEncoding("UTF-8");
         return config;
     }
  
