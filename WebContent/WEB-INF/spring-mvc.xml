@@ -22,43 +22,17 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"  
     	default-lazy-init="false">
 
-	<!-- 配置拦截器 -->
-<!-- 	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-        <mvc:exclude-mapping path="/tokens/**"/>
-        <mvc:exclude-mapping path="/graphql/**"/>
-        <mvc:exclude-mapping path="/swagger/**"/>
-        <mvc:exclude-mapping path="/v2/**"/>
-        <mvc:exclude-mapping path="/users/**"/>
-        <mvc:exclude-mapping path="/runningActivityData/**"/>
-        <mvc:exclude-mapping path="/runningActivities/**"/>
-	        定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的  
-	        <bean class="com.wzsport.interceptor.TokenInterceptor"></bean> 
-    	</mvc:interceptor> 
-	</mvc:interceptors> -->
-
-	<!-- 启用注解配置 -->
-	<mvc:annotation-driven>
-		<!-- 解决@ReponseBody中文乱码问题 -->
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<constructor-arg value="UTF-8" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-
 	<!-- 配置使用注解的包 -->
 	<context:component-scan base-package="com.xmheart.*" />
 
 	<mvc:resources mapping="/*" location="/" />
 	
-	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+<!-- 	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 	    <property name="resourceLoaderPath">
 	        <value>/</value>
 	    </property>
 	    <property name="velocityProperties">
-            <!-- 下面配置了一些常用的属性，其他的可以自行添加  -->
+            下面配置了一些常用的属性，其他的可以自行添加 
             <props>
                    <prop key="input.encoding">UTF-8</prop>
                    <prop key="output.encoding">UTF-8</prop>
@@ -68,12 +42,26 @@
     </bean>
     
   	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-  		<property name="contentType" value="text/html; charset=UTF-8" />
 	    <property name="cache" value="true" />
 	    <property name="prefix" value="/WEB-INF/views/" />
 	    <property name="layoutUrl" value="/WEB-INF/layouts/layout.vm" />
 	    <property name="suffix" value=".vm" />
-  	</bean>
+  	</bean> -->
+  	
+  	<!-- freemarker config -->
+<!-- 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+	    <property name="templateLoaderPath" value="/WEB-INF/views/"/>
+	</bean>
+	
+	
+	View resolvers can also be configured with ResourceBundles or XML files. If you need
+	different view resolving based on Locale, you have to use the resource bundle resolver.
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	    <property name="cache" value="true"/>
+	    <property name="prefix" value="/WEB-INF/views/"/>
+	    <property name="suffix" value=".ftl"/>
+	</bean> -->
 	
 	<!-- 跨域配置 -->
 	<mvc:cors>

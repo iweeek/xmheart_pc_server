@@ -23,7 +23,7 @@
   
     <!-- View abc.vm is inserted here -->
     <!-- Noi dung View abc.vm se duoc tren tai day -->   
-
+    $screen_content
  
   </div>
   

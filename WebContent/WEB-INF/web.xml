@@ -17,6 +17,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<!-- 会和上面冲突 -->
 	<!-- <listener>
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  	</listener> -->
