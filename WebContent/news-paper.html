@@ -1,50 +1,55 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">  
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="renderer" content="webkit">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>厦门心脏医院</title>
-		<link rel="stylesheet" href="./css/reset.css">
-		<link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
-		<link rel="stylesheet" href="./css/layout.css">
-		<link rel="stylesheet" href="./css/index.css">
-		<link rel="stylesheet" href="./css/list.css">
-		<link rel="stylesheet" href="./css/common.css">
-	</head>
-    <body>
-	    <div class="xm-header">
-			<div class="xm-container">
-				<div class="header-icon">
-					<span class="header-icon-lang">English</span>
-					<a href="#" class="header-icon-wechat"></a>
-					<a href="#" class="header-icon-weibo"></a>
-				</div>
-				<a href="#" class="header-logo"><img src="img/layout/logo.png" alt=""></a>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/list.css">
+	<link rel="stylesheet" href="css/common.css">
+	<!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="list-body">
+	<!-- header -->
+	<div class="xm-header">
+		<div class="xm-container">
+			<a href="#" class="header-logo"><img src="img/layout/logo.png" alt=""></a>
+			<div class="xm-header-main">
 				<div class="header-search">
 					<input type="text" class="header-search-text">
 					<input type="button" class="header-search-button">
 				</div>
+				<div class="header-icon">
+					<span class="header-icon-lang">Engliash</span>
+					<a href="#" class="header-icon-wechat"></a>
+					<a href="#" class="header-icon-weibo"></a>
+				</div>
 			</div>
 		</div>
-		
-		<div style="height: 44px;">
-			<div class="xm-nav">
-				<div class="xm-nav-container">
-					<#-- <a href="#" class="xm-nav-brand">首页</a> -->
+	</div>
+	<!-- nav -->
+	<div style="height: 60px;">
+		<div class="xm-nav">
+			<div class="xm-nav-container">
+				<a href="#" class="xm-nav-brand">首页</a>
 				<ul class="xm-navbar-nav">
-					<#list columns as key, value>
-					<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
+					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>
 					<li class="xm-navbar-item">
-						<a class="xm-navbar-item-info" href="#"><span>${key}</span><i></i></a>
+						<a class="xm-navbar-item-info" href="./list-news.html"><span>新闻公告</span><i></i></a>
 						<div class="navboxBase">
 							<div class="navboxBg">
 								<div class="navbox BaseMark">
 									<div class="navMenus">
-										<#list value as key, value>
 										<ul>
-											<#--<li class="first">
-												<a href="${value}" title="媒体看厦心">${key}<span>进入</span></a>
+											<li class="first">
+												<a href="media.html" title="媒体看厦心">媒体看厦心<span>进入</span></a>
 											</li>
 											<li>
 												<a href="list-news.html" title="医院新闻">医院新闻<span>进入</span></a>
@@ -52,14 +57,9 @@
 											<li>
 												<a href="video.html" title="影像厦心">影像厦心<span>进入</span></a>
 											</li>
-											<li>
-												<a href="news-paper.html" title="电子院报">电子院报<span>进入</span></a>
-											</li>-->
-											<li>
-												<a href="${value}" title="${key}">${key}<span>进入</span></a>
+											<li><a href="news-paper.html" title="电子院报">电子院报<span>进入</span></a>
 											</li>
 										</ul>
-										</#list>
 									</div>
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
@@ -160,14 +160,118 @@
 							</div>
 						</div>
 					</li>
-					<#-- <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
+					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>就医服务</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>党群工作</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>科研教学</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>护理天地</span><i></i></a></li>
-					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>招贤纳士</span><i></i></a></li>-->
-					</#list>
-					</ul>
+					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>招贤纳士</span><i></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- list container -->
+	<div class="breadcrumb">
+		<div class="xm-container">
+			<a href="#">新闻中心</a><i>/</i><span>媒体聚焦</span>
+		</div>
+	</div>
+	<div class="list-container">
+		<div class="list-main">
+			<div class="list-mian-nav">
+				<h4 class="list-nav-title">新闻中心</h4>
+				<ul class="list-nav-list">
+					<li><a href="./media.html">媒体看厦心</a></li>
+					<li><a href="./list-news.html">医院新闻</a></li>
+					<li><a href="./video.html">影像厦心</a></li>
+					<li class="active"><a href="./news-paper.html">电子院报</a></li>
+				</ul>
+			</div>
+			<div class="baseRight news-paper">
+				<div class="title01">院报</div>
+				<div class="title07">2017年第14期第1版
+					<form>
+						<select id="ddlYears2">
+							<option value="0">选择年份</option>
+							<option value="2017">2017年</option>
+							<option value="2016">2016年</option>
+							<option value="2015">2015年</option>
+							<option value="2014">2014年</option>
+						</select>
+						<select id="ddlTimes2">
+							<option value="0">选择期数</option>
+						</select>
+						<input type="button" id="GoToNewspaper2" value="阅览">
+					</form>
+					<div class="clear"></div>
+				</div>
+				<div class="inst">
+					<div class="instRleft">
+						<ul>
+							<li class="first">
+								<a class="active" href="#">01
+									<em class="animated">
+										<span class="title">2017年第14期</span>
+										<span class="num">第1版</span>
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="#">02
+									<em class="animated">
+										<span class="title">2017年第14期</span>
+										<span class="num">第2版</span>
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="#">03
+									<em class="animated">
+										<span class="title">2017年第14期</span>
+										<span class="num">第3版</span>
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="#">04
+									<em class="animated">
+										<span class="title">2017年第14期</span>
+										<span class="num">第4版</span>
+									</em>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="instRright">
+						<a href="http://120.77.72.16:82/uploadfiles/2017072508342536.jpg" id="NewsPaperImg" class="fancybox fancybox.iframe">
+							<img src="http://120.77.72.16:82/uploadfiles/2017072508342536.jpg" title="2017年第14期第1版" alt="2017年第14期第1版">
+						</a>
+					</div>
+					<div class="clear"></div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- footer -->
+	<div class="xm-footer">
+		<div class="xm-footer-link">
+			<a href="#">网站地图</a>
+			<span>|</span>
+			<a href="#">法律声明</a>
+			<span>|</span>
+			<a href="#">版权声明</a>
+			<span>|</span>
+			<a href="#">隐私安全</a>
+			<span>|</span>
+			<a href="#">帮助信息</a>
+		</div>
+		<p class="xm-footer-info">版权所有：厦门大学心血管病医院（本网站所有内容未经许可，不得以任何形式进行装载）</p>
+		<p class="xm-footer-info">闽ICP备09051364号-1</p>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/respond.min.js"></script>
+	<script src="js/swiper-3.4.2.jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+</body>
+</html>

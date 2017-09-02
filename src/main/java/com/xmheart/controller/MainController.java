@@ -1,21 +1,40 @@
 package com.xmheart.controller;
  
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.xmheart.config.ApplicationContextConfig;
 import com.xmheart.form.PersonForm;
 import com.xmheart.model.Person;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
  
 @Controller
 public class MainController {
+	
+	@Autowired
+	private FreeMarkerConfigurer freeMarkerConfigurer;
  
     private static List<Person> persons = new ArrayList<Person>();
  
@@ -27,7 +46,7 @@ public class MainController {
     private static Map<String, String> secColumns = new HashMap<String, String>();
     
     static {
-    	secColumns.put("媒体看厦心", "media.html");
+    	secColumns.put("媒体看厦心", "media");
     	secColumns.put("医院新闻", "list-news.htm");
     	secColumns.put("影像厦心", "video.html");
     	secColumns.put("电子院报", "news-paper.html");
@@ -52,6 +71,40 @@ public class MainController {
         model.addAttribute("columns", columns);
  
         return "index";
+    }
+    
+    @RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
+    public ResponseEntity<?> edit(
+			@RequestParam String page,
+			HttpServletRequest request,
+			Model model) {
+        model.addAttribute("columns", columns);
+        
+        try {
+            Template template = freeMarkerConfigurer.getConfiguration().getTemplate(page + ".ftl");
+            File file = new File(request.getServletContext().getRealPath(page + ".html"));
+            file.createNewFile();
+	        FileOutputStream outStream = new FileOutputStream(new File(file.getAbsolutePath()));
+	        OutputStreamWriter writer =  new OutputStreamWriter(outStream, "UTF-8");
+	        BufferedWriter bw = new BufferedWriter(writer);
+	        //模板引擎解释模板
+	        template.process(model, bw);
+	        bw.flush();
+	        bw.close();
+	        outStream.close();
+       } catch (Exception e) {
+        e.printStackTrace();
+       }
+ 
+        return null;
+    }
+    
+//    @RequestMapping(value = { "/media" }, method = RequestMethod.GET)
+    public String media(Model model) {
+ 
+        model.addAttribute("columns", columns);
+ 
+        return "media";
     }
  
     @RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
