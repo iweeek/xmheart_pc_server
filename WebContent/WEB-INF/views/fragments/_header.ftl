@@ -18,18 +18,18 @@
 		<div class="xm-nav-container">
 			<#-- <a href="#" class="xm-nav-brand">首页</a> -->
 			<ul class="xm-navbar-nav">
-				<#list columns as column>
+				<#list columns as key, value>
 				<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
 				<li class="xm-navbar-item">
-					<a class="xm-navbar-item-info" href="#"><span>${column}</span><i></i></a>
+					<a class="xm-navbar-item-info" href="#"><span>${key}</span><i></i></a>
 					<div class="navboxBase">
 						<div class="navboxBg">
 							<div class="navbox BaseMark">
 								<div class="navMenus">
+									<#list value as key, value>
 									<ul>
-										
-										<li class="first">
-											<a href="media.html" title="媒体看厦心">媒体看厦心<span>进入</span></a>
+										<#--<li class="first">
+											<a href="${value}" title="媒体看厦心">${key}<span>进入</span></a>
 										</li>
 										<li>
 											<a href="list-news.html" title="医院新闻">医院新闻<span>进入</span></a>
@@ -37,9 +37,14 @@
 										<li>
 											<a href="video.html" title="影像厦心">影像厦心<span>进入</span></a>
 										</li>
-										<li><a href="news-paper.html" title="电子院报">电子院报<span>进入</span></a>
+										<li>
+											<a href="news-paper.html" title="电子院报">电子院报<span>进入</span></a>
+										</li>-->
+										<li>
+											<a href="${value}" title="${key}">${key}<span>进入</span></a>
 										</li>
 									</ul>
+									</#list>
 								</div>
 								<div class="navSub2 nav_Menu02 noPic NewsSub">
 									<dl class="Img02">

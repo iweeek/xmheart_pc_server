@@ -1,8 +1,11 @@
 package com.xmheart.controller;
  
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
- 
+import java.util.Map;
+
 import com.xmheart.form.PersonForm;
 import com.xmheart.model.Person;
 import org.springframework.stereotype.Controller;
@@ -21,19 +24,28 @@ public class MainController {
         persons.add(new Person("Steve", "Jobs"));
     }
     
-    private static List<String> columns = new ArrayList<String>();
+    private static Map<String, String> secColumns = new HashMap<String, String>();
     
     static {
-    	columns.add("走进夏心");
-    	columns.add("新闻公告");
-    	columns.add("名医名科");
-    	columns.add("就医服务");
-    	columns.add("党群工作");
-    	columns.add("科研教学");
-    	columns.add("护理天地");
-    	columns.add("招贤纳士");
+    	secColumns.put("媒体看厦心", "media.html");
+    	secColumns.put("医院新闻", "list-news.htm");
+    	secColumns.put("影像厦心", "video.html");
+    	secColumns.put("电子院报", "news-paper.html");
     }
- 
+    
+    private static Map<String, Map<String, String>> columns = new LinkedHashMap<String, Map<String, String>>();
+    
+    static {
+    	columns.put("走进夏心", secColumns);
+    	columns.put("新闻公告", secColumns);
+    	columns.put("名医名科", secColumns);
+    	columns.put("就医服务", secColumns);
+    	columns.put("党群工作", secColumns);
+    	columns.put("科研教学", secColumns);
+    	columns.put("护理天地", secColumns);
+    	columns.put("招贤纳士", secColumns);
+    }
+    
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
  
