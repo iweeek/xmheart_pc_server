@@ -20,11 +20,24 @@ public class MainController {
         persons.add(new Person("Bill", "Gates"));
         persons.add(new Person("Steve", "Jobs"));
     }
+    
+    private static List<String> columns = new ArrayList<String>();
+    
+    static {
+    	columns.add("走进夏心");
+    	columns.add("新闻公告");
+    	columns.add("名医名科");
+    	columns.add("就医服务");
+    	columns.add("党群工作");
+    	columns.add("科研教学");
+    	columns.add("护理天地");
+    	columns.add("招贤纳士");
+    }
  
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
  
-        model.addAttribute("persons", persons);
+        model.addAttribute("columns", columns);
  
         return "index";
     }

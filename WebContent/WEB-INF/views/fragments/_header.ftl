@@ -16,16 +16,18 @@
 <div style="height: 44px;">
 	<div class="xm-nav">
 		<div class="xm-nav-container">
-			<a href="#" class="xm-nav-brand">首页</a>
+			<#-- <a href="#" class="xm-nav-brand">首页</a> -->
 			<ul class="xm-navbar-nav">
-				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>
+				<#list columns as column>
+				<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
 				<li class="xm-navbar-item">
-					<a class="xm-navbar-item-info" href="./list-news.html"><span>新闻公告</span><i></i></a>
+					<a class="xm-navbar-item-info" href="#"><span>${column}</span><i></i></a>
 					<div class="navboxBase">
 						<div class="navboxBg">
 							<div class="navbox BaseMark">
 								<div class="navMenus">
 									<ul>
+										
 										<li class="first">
 											<a href="media.html" title="媒体看厦心">媒体看厦心<span>进入</span></a>
 										</li>
@@ -138,12 +140,13 @@
 						</div>
 					</div>
 				</li>
-				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
+				<#-- <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
 				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>就医服务</span><i></i></a></li>
 				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>党群工作</span><i></i></a></li>
 				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>科研教学</span><i></i></a></li>
 				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>护理天地</span><i></i></a></li>
-				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>招贤纳士</span><i></i></a></li>
+				<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>招贤纳士</span><i></i></a></li>-->
+				</#list>
 			</ul>
 		</div>
 	</div>
