@@ -37,6 +37,7 @@
 					<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
 					<li class="xm-navbar-item">
 						<a class="xm-navbar-item-info" href="#"><span>${key}</span><i></i></a>
+						<#if key?index == 0>
 						<div class="navboxBase">
 							<div class="navboxBg">
 								<div class="navbox BaseMark">
@@ -61,6 +62,7 @@
 										</ul>
 										</#list>
 									</div>
+									
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
 											<dt class="title01">媒体看夏心</dt>
@@ -159,6 +161,7 @@
 								</div>
 							</div>
 						</div>
+						</#if>
 					</li>
 					<#-- <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>就医服务</span><i></i></a></li>

@@ -99,7 +99,7 @@ public class MainController {
         return null;
     }
     
-//    @RequestMapping(value = { "/media" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/media" }, method = RequestMethod.GET)
     public String media(Model model) {
  
         model.addAttribute("columns", columns);
