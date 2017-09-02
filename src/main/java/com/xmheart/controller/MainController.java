@@ -46,7 +46,7 @@ public class MainController {
     private static Map<String, String> secColumns = new HashMap<String, String>();
     
     static {
-    	secColumns.put("媒体看厦心", "media");
+    	secColumns.put("媒体看厦心", "media.htm");
     	secColumns.put("医院新闻", "list-news.htm");
     	secColumns.put("影像厦心", "video.html");
     	secColumns.put("电子院报", "news-paper.html");

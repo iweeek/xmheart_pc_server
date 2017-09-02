@@ -63,17 +63,17 @@
 									</div>
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
-											<dt class="title01">最新公告</dt>
+											<dt class="title01">媒体看夏心</dt>
 											<dd class="pic">
-												<img alt="最新公告" src="./img/pic/pic_002.jpg" width="126" height="77">
+												<img alt="媒体看夏心" src="./img/pic/pic_002.jpg" width="126" height="77">
 											</dd>
 											<dd class="Lurl">
-												<em>2017-03-09</em>
-												<a href="NewsDetail-8623.html" title="河南省人民医院实验技术人员招聘公告">河南省人民医院实验技术人员招聘公告</a>
+												<em>2016-10-11</em>
+												<a href="NewsDetail-8623.html" title="厦门日报：建设一流医院 提供优质“心服务”">厦门日报：建设一流医院 提供优质“心服务”</a>
 											</dd>
 											<dd class="url">
 												<span>2016-10-21</span>
-												<a href="NewsDetail-8249.html" title="河南省立眼科医院（河南省眼科研究所）基础研究部门正、副科级干部竞聘实施方案（面向国内外）">河南省立眼科医院（河南省眼科研究所）基础研究部门正、副科级干部竞聘实施方案（面向国内外）</a>
+												<a href="NewsDetail-8249.html" title="尤颢：患者的信任让我全力以赴">尤颢：患者的信任让我全力以赴</a>
 											</dd>
 											<dd class="url">
 												<span>2016-10-21</span>
