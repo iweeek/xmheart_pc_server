@@ -58,7 +58,11 @@ public class MainController {
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
     	List<XPWColumn> list = ColumnService.getFirstColumn();
-        model.addAttribute("columns", list);
+    	Map<String, String> map = new LinkedHashMap<String, String>();
+    	for (XPWColumn column : list) {
+    		map.put(column.getColumnName(), column.getUrl());
+    	}
+        model.addAttribute("columns", map);
  
         return "index";
     }

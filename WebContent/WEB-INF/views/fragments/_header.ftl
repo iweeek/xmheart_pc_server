@@ -46,7 +46,7 @@
 							<div class="navboxBg">
 								<div class="navbox BaseMark">
 									<div class="navMenus">
-										<#list value as key, value>
+										<#--<#list value as key, value>-->
 										<ul>
 											<#--<li class="first">
 												<a href="${value}" title="媒体看厦心">${key}<span>进入</span></a>
@@ -64,7 +64,7 @@
 												<a href="${value}" title="${key}">${key}<span>进入</span></a>
 											</li>
 										</ul>
-										</#list>
+										<#--</#list>-->
 									</div>
 									
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
