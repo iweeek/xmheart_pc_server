@@ -3,7 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>Archetype Created Web Application</display-name>
-
 	<!-- spring servlet 用于接管请求 -->
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
@@ -11,7 +10,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring-mvc.xml
+				/WEB-INF/spring-mvc.xml,
+				/WEB-INF/spring-mybatis.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,37 +11,28 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.xmheart.config.ApplicationContextConfig;
-import com.xmheart.form.PersonForm;
-import com.xmheart.model.Person;
-
-import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateExceptionHandler;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import com.xmheart.model.XPWColumn;
+import com.xmheart.service.ColumnService;
  
 @Controller
 public class MainController {
 	
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
+	
+	@Autowired
+	private ColumnService ColumnService;
  
-    private static List<Person> persons = new ArrayList<Person>();
- 
-    static {
-        persons.add(new Person("Bill", "Gates"));
-        persons.add(new Person("Steve", "Jobs"));
-    }
-    
     private static Map<String, String> secColumns = new HashMap<String, String>();
     
     static {
@@ -67,8 +57,8 @@ public class MainController {
     
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
- 
-        model.addAttribute("columns", columns);
+    	List<XPWColumn> list = ColumnService.getFirstColumn();
+        model.addAttribute("columns", list);
  
         return "index";
     }
@@ -99,40 +89,20 @@ public class MainController {
         return null;
     }
     
-    @RequestMapping(value = { "/media" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/media", "/media.html" }, method = RequestMethod.GET)
     public String media(Model model) {
  
         model.addAttribute("columns", columns);
  
         return "media";
     }
+    
+    @RequestMapping(value = { "/index/media-detail", "/index/media-detail.html" }, method = RequestMethod.GET)
+    public String mediaDetail(Model model) {
  
-    @RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
-    public String addPersonForm(Model model) {
+        model.addAttribute("columns", columns);
  
-        PersonForm personForm = new PersonForm();
-        model.addAttribute("personForm", personForm);
- 
-        return "addPerson";
-    }
- 
-    @RequestMapping(value = { "/addPerson" }, method = RequestMethod.POST)
-    public String addPersonSave(Model model, //
-            @ModelAttribute("personForm") PersonForm personForm) {
- 
-        String firstName = personForm.getFirstName();
-        String lastName = personForm.getLastName();
- 
-        if (firstName != null && firstName.length() > 0 //
-                && lastName != null && lastName.length() > 0) {
-            Person newPerson = new Person(firstName, lastName);
-            persons.add(newPerson);
- 
-            return "redirect:/index";
-        }
-        String error = "First Name & Last Name is required!";
-        model.addAttribute("errorMessage", error);
-        return "addPerson";
+        return "media-detail";
     }
  
 }

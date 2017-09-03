@@ -1,4 +1,4 @@
- <#include "./fragments/_header.ftl"> 
+<#include "./fragments/_header.ftl"> 
 <!-- list container -->
 <div class="breadcrumb">
 	<div class="xm-container">
@@ -20,10 +20,10 @@
 			<div class="title01">媒体看厦心</div>
 			<div class="media-wrapper">
 				<div class="media-item">
-					<a href="./media-detail.html">
+					<a href="./media-detail">
 						<div class="media-img"><img src="./img/index_MT1.jpg" alt=""></div>
 						<div class="media-info">
-							<h4 class="media-info-title">厦门日报：建设一流医院 提供优质“心服务”[置顶]</h4>
+							<h4 class="media-info-title">厦门日报：建设一流医院 提供优质“心服务”</h4>
 							<p class="media-info-desc">屡屡刷新厦门“心速度”之后，厦门市心血管病医院（厦门市心脏中心）在成...</p>
 							<div class="media-bottom">
 								<span class="date">2017/08/10</span>
@@ -85,7 +85,7 @@
 								<p>阅览次数<span>117</span></p>
 							</div>
 							<div class="listBtn">
-								<a href="./media-detail.html" title="综合简讯" target="_blank">查看详情</a>
+								<a href="./media-detail" title="综合简讯" target="_blank">查看详情</a>
 							</div>
 							<div class="clear"></div>
 						</li>
