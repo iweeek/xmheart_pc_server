@@ -62,6 +62,8 @@ public class MainController {
     	List<XPWColumn> columnList = ColumnService.getFirstColumns();
     	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
     	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
+    	Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
+    	
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
     		model.addAttribute("firstColumns", firstColumns);
@@ -69,12 +71,16 @@ public class MainController {
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
     		}
+    		
+    		List<XPWNav> navList = ColumnService.getChildNavs(column.getColumnName());
+    		if (navList.size() > 0) {
+    			navMap.put(column.getColumnName(), navList);
+    		}
     	}
     	
     	model.addAttribute("columnMap", columnMap);
+    	model.addAttribute("navMap", navMap);
         
-    	List<XPWNav> navs = ColumnService.getNavs();
- 
         return "index";
     }
     
@@ -106,9 +112,20 @@ public class MainController {
     
     @RequestMapping(value = { "/media", "/media.html" }, method = RequestMethod.GET)
     public String media(Model model) {
- 
-        model.addAttribute("columns", columns);
- 
+    	List<XPWColumn> columnList = ColumnService.getFirstColumns();
+    	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
+    	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
+    	for (XPWColumn column : columnList) {
+    		firstColumns.put(column.getColumnName(), column.getUrl());
+    		model.addAttribute("firstColumns", firstColumns);
+    		List<XPWColumn> secColList = ColumnService.getChildColumns(column.getColumnName());
+    		if (secColList.size() > 0) {
+    			columnMap.put(column.getColumnName(), secColList);
+    		}
+    	}
+    	
+    	model.addAttribute("columnMap", columnMap);
+        
         return "media";
     }
     

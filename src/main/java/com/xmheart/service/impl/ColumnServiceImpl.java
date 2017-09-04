@@ -39,8 +39,10 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public List<XPWNav> getNavs() {
-		List<XPWNav> list = xpwNavMapper.selectByExample(null);
+	public List<XPWNav> getChildNavs(String parent) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andParentColumnEqualTo(parent);
+		List<XPWNav> list = xpwNavMapper.selectByExample(example);
 		return list;
 	}
 

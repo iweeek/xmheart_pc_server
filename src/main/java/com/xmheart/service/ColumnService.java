@@ -11,6 +11,6 @@ public interface ColumnService {
 
 	List<XPWColumn> getChildColumns(String parent);
 
-	List<XPWNav> getNavs();
+	List<XPWNav> getChildNavs(String parent);
 
 }
