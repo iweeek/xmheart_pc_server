@@ -37,28 +37,7 @@ public class MainController {
  
     private static Map<String, String> secColumns = new HashMap<String, String>();
     
-    static {
-    	secColumns.put("媒体看厦心", "media.htm");
-    	secColumns.put("医院新闻", "list-news.htm");
-    	secColumns.put("影像厦心", "video.html");
-    	secColumns.put("电子院报", "news-paper.html");
-    }
-    
-    private static Map<String, Map<String, String>> columns = new LinkedHashMap<String, Map<String, String>>();
-    
-    static {
-    	columns.put("走进夏心", secColumns);
-    	columns.put("新闻公告", secColumns);
-    	columns.put("名医名科", secColumns);
-    	columns.put("就医服务", secColumns);
-    	columns.put("党群工作", secColumns);
-    	columns.put("科研教学", secColumns);
-    	columns.put("护理天地", secColumns);
-    	columns.put("招贤纳士", secColumns);
-    }
-    
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-    public String index(Model model) {
+    private Model addHeader(Model model) {
     	List<XPWColumn> columnList = ColumnService.getFirstColumns();
     	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
     	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
@@ -80,6 +59,13 @@ public class MainController {
     	
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
+    	
+    	return model;
+    }
+    
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+    	model = addHeader(model);
         
         return "index";
     }
@@ -89,7 +75,7 @@ public class MainController {
 			@RequestParam String page,
 			HttpServletRequest request,
 			Model model) {
-        model.addAttribute("columns", columns);
+//        model.addAttribute("columns", columns);
         
         try {
             Template template = freeMarkerConfigurer.getConfiguration().getTemplate(page + ".ftl");
@@ -112,28 +98,17 @@ public class MainController {
     
     @RequestMapping(value = { "/media", "/media.html" }, method = RequestMethod.GET)
     public String media(Model model) {
-    	List<XPWColumn> columnList = ColumnService.getFirstColumns();
-    	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
-    	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
-    	for (XPWColumn column : columnList) {
-    		firstColumns.put(column.getColumnName(), column.getUrl());
-    		model.addAttribute("firstColumns", firstColumns);
-    		List<XPWColumn> secColList = ColumnService.getChildColumns(column.getColumnName());
-    		if (secColList.size() > 0) {
-    			columnMap.put(column.getColumnName(), secColList);
-    		}
-    	}
-    	
-    	model.addAttribute("columnMap", columnMap);
-        
+    	model = addHeader(model);
+    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
+    	model.addAttribute("pageName", new String("媒体看厦心"));
+    	model.addAttribute("listMainNav", list);
         return "media";
     }
     
     @RequestMapping(value = { "/index/media-detail", "/index/media-detail.html" }, method = RequestMethod.GET)
     public String mediaDetail(Model model) {
  
-        model.addAttribute("columns", columns);
- 
+//        model.addAttribute("columns", columns);
         return "media-detail";
     }
  

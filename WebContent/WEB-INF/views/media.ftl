@@ -7,13 +7,16 @@
 </div>
 <div class="list-container">
 	<div class="list-main">
-		<div class="list-mian-nav">
+		<div class="list-main-nav">
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
-				<li class="active"><a href="./media.html">媒体看厦心</a></li>
-				<li><a href="./list-news.html">医院新闻</a></li>
-				<li><a href="./video.html">影像厦心</a></li>
-				<li><a href="./news-paper.html">电子院报</a></li>
+			<#list listMainNav as k>
+				<#if k.columnName == pageName>
+					<li class="active"><a href="${k.url}">${k.columnName}</a>
+				<#else>
+					<li><a href="${k.url}">${k.columnName}</a></li>
+				</#if>
+			</#list>
 			</ul>
 		</div>
 		<div class="baseRight list-media">
