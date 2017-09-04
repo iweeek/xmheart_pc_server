@@ -11,7 +11,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWNav;
 import com.xmheart.service.ColumnService;
+
+import freemarker.template.Template;
  
 @Controller
 public class MainController {
@@ -57,12 +59,21 @@ public class MainController {
     
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
-    	List<XPWColumn> list = ColumnService.getFirstColumn();
-    	Map<String, String> map = new LinkedHashMap<String, String>();
-    	for (XPWColumn column : list) {
-    		map.put(column.getColumnName(), column.getUrl());
+    	List<XPWColumn> columnList = ColumnService.getFirstColumns();
+    	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
+    	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
+    	for (XPWColumn column : columnList) {
+    		firstColumns.put(column.getColumnName(), column.getUrl());
+    		model.addAttribute("firstColumns", firstColumns);
+    		List<XPWColumn> secColList = ColumnService.getChildColumns(column.getColumnName());
+    		if (secColList.size() > 0) {
+    			columnMap.put(column.getColumnName(), secColList);
+    		}
     	}
-        model.addAttribute("columns", map);
+    	
+    	model.addAttribute("columnMap", columnMap);
+        
+    	List<XPWNav> navs = ColumnService.getNavs();
  
         return "index";
     }

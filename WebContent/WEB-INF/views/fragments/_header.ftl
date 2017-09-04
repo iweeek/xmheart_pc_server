@@ -37,45 +37,45 @@
 				<div class="xm-nav-container">
 					<#-- <a href="#" class="xm-nav-brand">首页</a> -->
 				<ul class="xm-navbar-nav">
-					<#list columns as key, value>
+					<#list firstColumns as key, value>
 					<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
 					<li class="xm-navbar-item">
-						<a class="xm-navbar-item-info" href="#"><span>${key}</span><i></i></a>
-						<#if key?index == 0>
+						<a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+						<#list columnMap as k, v>
+						<#if k == key>
 						<div class="navboxBase">
 							<div class="navboxBg">
 								<div class="navbox BaseMark">
 									<div class="navMenus">
-										<#--<#list value as key, value>-->
 										<ul>
-											<#--<li class="first">
-												<a href="${value}" title="媒体看厦心">${key}<span>进入</span></a>
-											</li>
+										
+										<#list v as col>
+											<!--<li class="first">
+												<a href="" title="${k}">${k}<span>进入</span></a>
+											</li>-->
 											<li>
-												<a href="list-news.html" title="医院新闻">医院新闻<span>进入</span></a>
+												<a href="list-news.html" title="${col.columnName}">${col.columnName}<span>进入</span></a>
 											</li>
-											<li>
+											<!--<li>
 												<a href="video.html" title="影像厦心">影像厦心<span>进入</span></a>
 											</li>
 											<li>
 												<a href="news-paper.html" title="电子院报">电子院报<span>进入</span></a>
 											</li>-->
-											<li>
-												<a href="${value}" title="${key}">${key}<span>进入</span></a>
-											</li>
+										</#list>
+										
 										</ul>
-										<#--</#list>-->
 									</div>
 									
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
-											<dt class="title01">媒体看夏心</dt>
+											<dt class="title01">"媒体看夏心"</dt>
 											<dd class="pic">
 												<img alt="媒体看夏心" src="./img/pic/pic_002.jpg" width="126" height="77">
 											</dd>
 											<dd class="Lurl">
 												<em>2016-10-11</em>
-												<a href="NewsDetail-8623.html" title="厦门日报：建设一流医院 提供优质“心服务”">厦门日报：建设一流医院 提供优质“心服务”</a>
+												<a href="NewsDetail-8623.html" title=""></a>
 											</dd>
 											<dd class="url">
 												<span>2017-05-08</span>
@@ -166,6 +166,7 @@
 							</div>
 						</div>
 						</#if>
+						</#list>
 					</li>
 					<#-- <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="./expert.html"><span>名医名科</span><i></i></a></li>
 					<li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>就医服务</span><i></i></a></li>

@@ -33,5 +33,11 @@
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
+    
+    <table schema="xmeart_pc_web" tableName="xpw_nav" domainObjectName ="XPWNav" >
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <ignoreColumn column="created_at"/>
+      <ignoreColumn column="updated_at"/>
+    </table>   
   </context>
 </generatorConfiguration>
