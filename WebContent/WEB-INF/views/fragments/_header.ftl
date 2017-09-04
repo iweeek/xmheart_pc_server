@@ -51,45 +51,107 @@
 										<#list vc as col>
 											<#if vc?index == 0>
 											<li class="first">
-												<a href="" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+												<a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
 											</li>
 											<#else>
 											<li>
-												<a href="list-news.html" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+												<a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
 											</li>
 											</#if>
 										</#list>
 										</ul>
 									</div>
 									
-									<div class="navSub2 nav_Menu02 noPic NewsSub">
 									<#list navMap as k, v>
 									<#if k == key>
+									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
-											<dt class="title01">"${v[0].columnName}"</dt>
+											<dt class="title01">${v[0].columnName}</dt>
 											<dd class="pic">
 												<img alt="媒体看夏心" src="./img/pic/pic_002.jpg" width="126" height="77">
 											</dd>
 											<dd class="Lurl">
 												<em>2016-10-11</em>
-												<a href="NewsDetail-8623.html" title="${v[0].articleTitle}">${v[0].articleTitle}</a>
+												<a href="${v[0].url}" title="${v[0].articleTitle}">${v[0].articleTitle}</a>
 											</dd>
 											<dd class="url">
 												<span>2017-05-08</span>
-												<a href="NewsDetail-8249.html" title="${v[1].articleTitle}">${v[1].articleTitle}</a>
+												<a href="${v[1].url}" title="${v[1].articleTitle}">${v[1].articleTitle}</a>
 											</dd>
 											<dd class="url">
 												<span>2017-05-08</span>
-												<a href="NewsDetail-8249.html" title="${v[2].articleTitle}">${v[2].articleTitle}</a>
+												<a href="${v[2].url}" title="${v[2].articleTitle}">${v[2].articleTitle}</a>
 											</dd>
 											<dd class="url">
 												<span>2017-05-08</span>
-												<a href="NewsDetail-8249.html" title="${v[3].articleTitle}">${v[3].articleTitle}</a>
+												<a href="${v[3].url}" title="${v[3].articleTitle}">${v[3].articleTitle}</a>
 											</dd>
 										</dl>
+										<div class="BottomHidden"></div>
+										<dl>
+											<dt class="title01">${v[4].columnName}</dt>
+											<dd class="url">
+												<span>2017-07-25</span>
+												<a href="${v[4].url}" title="${v[4].articleTitle}">${v[4].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2017-07-25</span>
+												<a href="${v[5].url}" title="${v[5].articleTitle}">${v[5].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2017-07-25</span>
+												<a href="${v[6].url}" title="${v[6].articleTitle}">${v[6].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2017-07-25</span>
+												<a href="${v[7].url}" title="${v[7].articleTitle}">${v[7].articleTitle}</a>
+											</dd>
+										</dl>
+									</div>
+									<div class="navSub4 nav_Menu02 noPic">
+										<dl>
+											<dt class="title02">${v[8].columnName}</dt>
+											<dd class="url">
+												<span>2017-02-07</span>
+												<a href="${v[8].url}" title="${v[8].articleTitle}">${v[8].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-12-13</span>
+												<a href="${v[9].url}" title="${v[9].articleTitle}">${v[9].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-12-13</span>
+												<a href="${v[10].url}" title="${v[10].articleTitle}">${v[10].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-12-13</span>
+												<a href="${v[11].url}" title="${v[11].articleTitle}">${v[11].articleTitle}</a>
+											</dd>
+										</dl>
+										<div class="BottomHidden"></div>
+										<dl>
+											<dt class="title02">${v[12].columnName}</dt>
+											<dd class="url">
+												<span>2016-09-07</span>
+												<a href="${v[12].url}" title="${v[12].articleTitle}">${v[12].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-09-06</span>
+												<a href="${v[13].url}" title="${v[13].articleTitle}">${v[13].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-09-06</span>
+												<a href="${v[14].url}" title="${v[14].articleTitle}">${v[14].articleTitle}</a>
+											</dd>
+											<dd class="url">
+												<span>2016-09-06</span>
+												<a href="${v[15].url}" title="${v[15].articleTitle}">${v[15].articleTitle}</a>
+											</dd>
+										</dl>
+										<div class="BottomHidden"></div>
+									</div>
 									</#if>
 									</#list>
-									</div>
 									<div class="clear"></div>
 								</div>
 							</div>
