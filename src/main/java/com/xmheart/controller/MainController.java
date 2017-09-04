@@ -22,7 +22,9 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWNav;
+import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.service.ColumnService;
+import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
  
@@ -34,6 +36,9 @@ public class MainController {
 	
 	@Autowired
 	private ColumnService ColumnService;
+	
+	@Autowired
+	private NewsService newsService;
  
     private static Map<String, String> secColumns = new HashMap<String, String>();
     
@@ -102,6 +107,14 @@ public class MainController {
     	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
     	model.addAttribute("pageName", new String("媒体看厦心"));
     	model.addAttribute("listMainNav", list);
+    	
+    	//获取置顶的新闻
+    	List<XPWNewsMediaArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
+    	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
+    	
+    	List<XPWNewsMediaArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
+    	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
+    	
         return "media";
     }
     
