@@ -81,11 +81,14 @@
 				<#if pageInfo.pageNum != 1>
 					<li><a href="?page=${pageInfo.prePage}"><<</a></li>
 				</#if>
+				<#if pageInfo.pageNum+4 lt pageInfo.pages>
 				<#list pageInfo.pageNum..pageInfo.pageNum+4 as i>
-				<#if pageInfo.pageNum+4 != pageInfo.pages>
-					<li><a href="?page=${pageInfo.nextPage}">>></a></li>
+					<li><a href="?page=${i}">${i}</a></li>
+				</#list>
+					<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
+				<#else>
+					<li><a href="?page=${i}">${i}</a></li>
 				</#if>	
-						<li><a href="?page=${i}">${i}</a></li>
 					
 					<!--  <li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
@@ -93,7 +96,6 @@
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
 					<li><a href="#">6</a></li>-->
-				</#list>
 				</ul>
 			</div>
 		</div>
