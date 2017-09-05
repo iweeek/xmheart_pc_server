@@ -3,12 +3,13 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWNewsMediaArticle;
+import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 
 public interface NewsService {
 
-	List<XPWNewsMediaArticle> getPinnedMediaNews();
+	List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews();
 
-	List<XPWNewsMediaArticle> getNoPinnedMediaNews();
+	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews();
 
 	XPWNewsMediaArticle getNewsByTitle(String title);
 

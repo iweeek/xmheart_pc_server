@@ -24,6 +24,7 @@ import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
+import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.NewsService;
 
@@ -123,11 +124,11 @@ public class MainController {
     	model = addNewsHeader(model);
     	
     	//获取置顶的新闻
-    	List<XPWNewsMediaArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
+    	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
     	
 		PageHelper.startPage(page, PAGE_SIZE );
-    	List<XPWNewsMediaArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
+    	List<XPWNewsMediaArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
     	
     	PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);

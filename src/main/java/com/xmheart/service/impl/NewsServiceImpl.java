@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.xmheart.mapper.XPWNewsMediaArticleMapper;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleExample;
+import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.NewsService;
 
 @Service
@@ -20,20 +21,20 @@ public class NewsServiceImpl implements NewsService {
 	XPWNewsMediaArticleMapper xpwNewsMediaArticleMapper;
 
 	@Override
-	public List<XPWNewsMediaArticle> getPinnedMediaNews() {
+	public List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
 		
-		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example);
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 
 	@Override
-	public List<XPWNewsMediaArticle> getNoPinnedMediaNews() {
+	public List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
 		
-		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example);
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		
 		return list;
 	}

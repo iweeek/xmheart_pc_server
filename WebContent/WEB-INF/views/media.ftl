@@ -61,7 +61,7 @@
 								<span class="labelTitle">${k.columnName}</span>
 								<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.title}</a>
 								<!--<p>●7月6日，检验科举办了第二次“翻转课堂”，围绕影响生化结果的常见因素、降钙素原等话题进行了交流学习。 (检验科 朱亚）●7月6日，我院与太康县人民医院互联智慧分级诊疗远程云心电项目正式...</p>-->
-								<p>${k.title}</p>
+								<p>${k.brief}</p>
 							</div>
 							<div class="date">
 								<h3>发布时间</h3>
@@ -78,24 +78,17 @@
 			<div class="clear"></div>
 			<div class="list-pagination">
 				<ul class="paginations">
-				<#if pageInfo.pageNum != 1>
-					<li><a href="?page=${pageInfo.prePage}"><<</a></li>
-				</#if>
-				<#if pageInfo.pageNum+4 lt pageInfo.pages>
-				<#list pageInfo.pageNum..pageInfo.pageNum+4 as i>
-					<li><a href="?page=${i}">${i}</a></li>
-				</#list>
-					<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
-				<#else>
-					<li><a href="?page=${i}">${i}</a></li>
-				</#if>	
-					
-					<!--  <li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>-->
+					<#if pageInfo.pageNum != 1>
+						<li><a href="?page=${pageInfo.prePage}"><<</a></li>
+					</#if>
+					<#if pageInfo.pageNum+4 lt pageInfo.pages>
+					<#list pageInfo.pageNum..pageInfo.pageNum+4 as i>
+						<li><a href="?page=${i}">${i}</a></li>
+					</#list>
+						<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
+					<#else>
+						<li><a href="?page=${i}">${i}</a></li>
+					</#if>	
 				</ul>
 			</div>
 		</div>
