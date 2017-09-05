@@ -49,20 +49,20 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<XPWNewsMediaArticle> getPinnedHospitalNews() {
+	public List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
 		
-		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example);
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 
 	@Override
-	public List<XPWNewsMediaArticle> getNoPinnedHospitalNews() {
+	public List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
 		
-		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example);
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 	

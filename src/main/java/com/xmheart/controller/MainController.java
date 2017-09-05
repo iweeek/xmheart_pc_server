@@ -43,9 +43,9 @@ public class MainController {
 	private NewsService newsService;
 
 	private final int PAGE_SIZE = 10;
-	
 
-	
+	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
+	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
  
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
     
@@ -76,8 +76,7 @@ public class MainController {
     }
     
     private Model addNewsHeader(Model model) {
-    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
-    	model.addAttribute("pageColumn", new String("媒体看厦心"));
+    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");	
     	model.addAttribute("listMainNav", list);
     	
     	return model;
@@ -123,6 +122,8 @@ public class MainController {
     	
     	model = addNewsHeader(model);
     	
+    	model.addAttribute("pageColumn", MEDIA_NEWS_COLUMN_NAME);
+    	
     	//获取置顶的新闻
     	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
@@ -144,12 +145,14 @@ public class MainController {
     	
     	model = addNewsHeader(model);
     	
+    	model.addAttribute("pageColumn", HOSPITAL_NEWS_COLUMN_NAME);
+    	
     	//获取置顶的新闻
-    	List<XPWNewsMediaArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
+    	List<XPWNewsMediaArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
     	
 		PageHelper.startPage(page, PAGE_SIZE);
-    	List<XPWNewsMediaArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+    	List<XPWNewsMediaArticleWithBLOBs> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
     	
     	PageInfo pageInfo = new PageInfo(noPinnedNewsList);
