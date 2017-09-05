@@ -10,4 +10,6 @@ public interface NewsService {
 
 	List<XPWNewsMediaArticle> getNoPinnedMediaNews();
 
+	XPWNewsMediaArticle getNewsByTitle(String title);
+
 }

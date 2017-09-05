@@ -104,8 +104,9 @@ public class MainController {
     @RequestMapping(value = { "/media", "/media.html" }, method = RequestMethod.GET)
     public String media(Model model) {
     	model = addHeader(model);
+    	
     	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
-    	model.addAttribute("pageName", new String("媒体看厦心"));
+    	model.addAttribute("pageColumn", new String("媒体看厦心"));
     	model.addAttribute("listMainNav", list);
     	
     	//获取置顶的新闻
@@ -118,10 +119,17 @@ public class MainController {
         return "media";
     }
     
-    @RequestMapping(value = { "/index/media-detail", "/index/media-detail.html" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/media-detail", "/media-detail.html" }, method = RequestMethod.GET)
     public String mediaDetail(Model model) {
+    	model = addHeader(model);
+    	
+    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
+    	model.addAttribute("pageColumn", new String("媒体看厦心"));
+    	model.addAttribute("listMainNav", list);
+    	
+    	XPWNewsMediaArticle article = newsService.getNewsByTitle("厦门日报：警惕！小感冒可能引发大心病");
+    	model.addAttribute("article", article);
  
-//        model.addAttribute("columns", columns);
         return "media-detail";
     }
  

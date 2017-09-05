@@ -33,6 +33,14 @@ public class NewsServiceImpl implements NewsService {
 		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example).subList(0, 6);
 		return list;
 	}
+
+	@Override
+	public XPWNewsMediaArticle getNewsByTitle(String title) {
+		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
+		example.createCriteria().andIdEqualTo((long) 781);
+		XPWNewsMediaArticle article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
+		return article;
+	}
 	
 
 }
