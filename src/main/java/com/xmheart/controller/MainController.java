@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,10 +40,15 @@ public class MainController {
 	
 	@Autowired
 	private NewsService newsService;
+
+	private final int PAGE_SIZE = 10;
+	
+
+	
  
-    private static Map<String, String> secColumns = new HashMap<String, String>();
+//    private static Map<String, String> secColumns = new HashMap<String, String>();
     
-    private Model addHeader(Model model) {
+    private Model addCommonHeader(Model model) {
     	List<XPWColumn> columnList = ColumnService.getFirstColumns();
     	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
     	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
@@ -70,9 +74,17 @@ public class MainController {
     	return model;
     }
     
+    private Model addNewsHeader(Model model) {
+    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
+    	model.addAttribute("pageColumn", new String("媒体看厦心"));
+    	model.addAttribute("listMainNav", list);
+    	
+    	return model;
+    }
+    
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
-    	model = addHeader(model);
+    	model = addCommonHeader(model);
         
         return "index";
     }
@@ -104,23 +116,17 @@ public class MainController {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = { "/media", "/#media" }, method = RequestMethod.GET)
-    public String media(@RequestParam(required=false) Integer page, Model model) {
-    	if (page == null) {
-    		page = new Integer(1);
-    	}
+	@RequestMapping(value = { "/mediaNews" }, method = RequestMethod.GET)
+    public String mediaNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {    	
+    	model = addCommonHeader(model);
     	
-    	model = addHeader(model);
-    	
-    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
-    	model.addAttribute("pageColumn", new String("媒体看厦心"));
-    	model.addAttribute("listMainNav", list);
+    	model = addNewsHeader(model);
     	
     	//获取置顶的新闻
     	List<XPWNewsMediaArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
     	
-		PageHelper.startPage(page, 10);
+		PageHelper.startPage(page, PAGE_SIZE );
     	List<XPWNewsMediaArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
     	
@@ -130,9 +136,30 @@ public class MainController {
         return "media";
     }
     
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
+    public String hospitalNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {    	
+    	model = addCommonHeader(model);
+    	
+    	model = addNewsHeader(model);
+    	
+    	//获取置顶的新闻
+    	List<XPWNewsMediaArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
+    	model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
+    	
+		PageHelper.startPage(page, PAGE_SIZE);
+    	List<XPWNewsMediaArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+    	model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
+    	
+    	PageInfo pageInfo = new PageInfo(noPinnedNewsList);
+    	model.addAttribute("pageInfo", pageInfo);
+    	
+        return "media";
+    }
+    
     @RequestMapping(value = { "/media-detail", "/media-detail.html" }, method = RequestMethod.GET)
     public String mediaDetail(Model model) {
-    	model = addHeader(model);
+    	model = addCommonHeader(model);
     	
     	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
     	model.addAttribute("pageColumn", new String("媒体看厦心"));

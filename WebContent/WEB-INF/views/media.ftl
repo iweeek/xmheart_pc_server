@@ -37,11 +37,11 @@
 				</div>
 				</#list>
 			</div>
-			<div class="title02">
-				<!--  <a href="#" id="DateAscOrDesc" class="current">发布时间排序</a>
-				<a href="#" id="HitAscOrDesc">阅览次数排序</a>-->
+			<!--  <div class="title02">
+				<a href="#" id="DateAscOrDesc" class="current">发布时间排序</a>
+				<a href="#" id="HitAscOrDesc">阅览次数排序</a>
 				<div class="itemBase">
-					<!--<div class="divType" data-state="0">全部年份</div>
+					<div class="divType" data-state="0">全部年份</div>
 						<ul>
 							<li><a href="NewsList-20.html?year=2017">2017年</a></li>
 							<li><a href="NewsList-20.html?year=2016">2016年</a></li>
@@ -51,15 +51,15 @@
 							<li><a href="NewsList-20.html?year=2012">2012年</a></li>
 						</ul>
 					</div>
-					<span class="count">共发布文章<em id="EMCount">1844</em>篇</span>-->
-				</div>
-				<div class="clear"></div>
+					<span class="count">共发布文章<em id="EMCount">1844</em>篇</span>
+				<div class="clear"></div>-->
 				<div class="newList">
 					<ul>
 						<#list noPinnedMediaNewsList as k>
 						<li>
 							<div class="headLines">
-								<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.columnName}</a>
+								<span class="labelTitle">${k.columnName}</span>
+								<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.title}</a>
 								<!--<p>●7月6日，检验科举办了第二次“翻转课堂”，围绕影响生化结果的常见因素、降钙素原等话题进行了交流学习。 (检验科 朱亚）●7月6日，我院与太康县人民医院互联智慧分级诊疗远程云心电项目正式...</p>-->
 								<p>${k.title}</p>
 							</div>
@@ -82,11 +82,10 @@
 					<li><a href="?page=${pageInfo.prePage}"><<</a></li>
 				</#if>
 				<#list pageInfo.pageNum..pageInfo.pageNum+4 as i>
-						<li><a href="?page=${i}">${i}</a></li>
-				</#list>
 				<#if pageInfo.pageNum+4 != pageInfo.pages>
 					<li><a href="?page=${pageInfo.nextPage}">>></a></li>
 				</#if>	
+						<li><a href="?page=${i}">${i}</a></li>
 					
 					<!--  <li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
@@ -94,7 +93,7 @@
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
 					<li><a href="#">6</a></li>-->
-				
+				</#list>
 				</ul>
 			</div>
 		</div>

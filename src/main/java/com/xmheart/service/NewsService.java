@@ -12,4 +12,8 @@ public interface NewsService {
 
 	XPWNewsMediaArticle getNewsByTitle(String title);
 
+	List<XPWNewsMediaArticle> getPinnedHospitalNews();
+
+	List<XPWNewsMediaArticle> getNoPinnedHospitalNews();
+
 }
