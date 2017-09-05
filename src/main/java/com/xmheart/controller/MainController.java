@@ -127,7 +127,7 @@ public class MainController {
     	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
     	
-		PageHelper.startPage(page, PAGE_SIZE );
+		PageHelper.startPage(page, PAGE_SIZE);
     	List<XPWNewsMediaArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
     	
