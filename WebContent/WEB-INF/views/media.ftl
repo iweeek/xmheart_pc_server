@@ -78,12 +78,23 @@
 			<div class="clear"></div>
 			<div class="list-pagination">
 				<ul class="paginations">
-					<li><a href="#">1</a></li>
+				<#if pageInfo.pageNum != 1>
+					<li><a href="?page=${pageInfo.prePage}"><<</a></li>
+				</#if>
+				<#list pageInfo.pageNum..pageInfo.pageNum+4 as i>
+						<li><a href="?page=${i}">${i}</a></li>
+				</#list>
+				<#if pageInfo.pageNum+4 != pageInfo.pages>
+					<li><a href="?page=${pageInfo.nextPage}">>></a></li>
+				</#if>	
+					
+					<!--  <li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
 					<li><a href="#">3</a></li>
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>
+					<li><a href="#">6</a></li>-->
+				
 				</ul>
 			</div>
 		</div>

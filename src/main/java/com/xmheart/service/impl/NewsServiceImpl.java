@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xmheart.mapper.XPWNewsMediaArticleMapper;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleExample;
@@ -30,7 +32,8 @@ public class NewsServiceImpl implements NewsService {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andIsPinnedEqualTo(false).andColumnNameEqualTo("媒体看厦心");
 		
-		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example).subList(0, 6);
+		List<XPWNewsMediaArticle> list = xpwNewsMediaArticleMapper.selectByExample(example);
+		
 		return list;
 	}
 
@@ -39,6 +42,7 @@ public class NewsServiceImpl implements NewsService {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andIdEqualTo((long) 781);
 		XPWNewsMediaArticle article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
+		
 		return article;
 	}
 	

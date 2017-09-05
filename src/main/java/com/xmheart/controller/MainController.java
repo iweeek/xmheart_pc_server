@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
@@ -101,8 +103,13 @@ public class MainController {
         return null;
     }
     
-    @RequestMapping(value = { "/media", "/media.html" }, method = RequestMethod.GET)
-    public String media(Model model) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = { "/media", "/#media" }, method = RequestMethod.GET)
+    public String media(@RequestParam(required=false) Integer page, Model model) {
+    	if (page == null) {
+    		page = new Integer(1);
+    	}
+    	
     	model = addHeader(model);
     	
     	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
@@ -113,8 +120,12 @@ public class MainController {
     	List<XPWNewsMediaArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
     	
+		PageHelper.startPage(page, 10);
     	List<XPWNewsMediaArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
+    	
+    	PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
+    	model.addAttribute("pageInfo", pageInfo);
     	
         return "media";
     }
