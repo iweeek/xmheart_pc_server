@@ -1,5 +1,5 @@
 package com.xmheart.controller;
- 
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,8 +8,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.modelmbean.ModelMBeanOperationInfo;
+import javax.print.attribute.standard.MediaSize.NA;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.ObjectUtils.Null;
+import org.apache.commons.lang3.text.WordUtils;
+import org.omg.PortableServer.POAPackage.WrongAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,16 +34,16 @@ import com.xmheart.service.ColumnService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
- 
+
 @Controller
 public class MainController {
-	
+
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
-	
+
 	@Autowired
 	private ColumnService ColumnService;
-	
+
 	@Autowired
 	private NewsService newsService;
 
@@ -46,17 +51,18 @@ public class MainController {
 
 	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
-	
+
 	static final long NEWS_COLUMN_ID = 5;
- 
+
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
-    
+
     private Model addCommonHeader(Model model) {
+
     	List<XPWColumn> columnList = ColumnService.getFirstColumns();
     	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
     	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
     	Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
-    	
+
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
     		model.addAttribute("firstColumns", firstColumns);
@@ -64,40 +70,41 @@ public class MainController {
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
     		}
-    		
+
     		List<XPWNav> navList = ColumnService.getChildNavsById(column.getId());
+
     		if (navList.size() > 0) {
     			navMap.put(column.getColumnName(), navList);
     		}
     	}
-    	
+
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
-    	
+
     	return model;
     }
-    
+
     private Model addNewsHeader(Model model) {
-    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);	
+    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
     	model.addAttribute("listMainNav", list);
-    	
+
     	return model;
     }
-    
+
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
     	model = addCommonHeader(model);
-        
+
         return "index";
     }
-    
+
     @RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
     public ResponseEntity<?> edit(
 			@RequestParam String page,
 			HttpServletRequest request,
 			Model model) {
 //        model.addAttribute("columns", columns);
-        
+
         try {
             Template template = freeMarkerConfigurer.getConfiguration().getTemplate(page + ".ftl");
             File file = new File(request.getServletContext().getRealPath(page + ".html"));
@@ -113,68 +120,87 @@ public class MainController {
        } catch (Exception e) {
         e.printStackTrace();
        }
- 
+
         return null;
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = { "/mediaNews" }, method = RequestMethod.GET)
-    public String mediaNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {    	
+    public String mediaNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
-    	
+
     	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
-    	
+
     	//获取置顶的新闻
     	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
-    	
+
 		PageHelper.startPage(page, PAGE_SIZE);
     	List<XPWNewsMediaArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
-    	
+
     	PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
     	model.addAttribute("pageInfo", pageInfo);
-    	
+
         return "media";
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
-    public String hospitalNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {    	
+    public String hospitalNews(@RequestParam(required=false, defaultValue="1") Integer page, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
-    	
+
     	model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
-    	
+
     	//获取置顶的新闻
     	List<XPWNewsMediaArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
-    	
+
 		PageHelper.startPage(page, PAGE_SIZE);
     	List<XPWNewsMediaArticleWithBLOBs> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
-    	
+
     	PageInfo pageInfo = new PageInfo(noPinnedNewsList);
     	model.addAttribute("pageInfo", pageInfo);
-    	
+
         return "media";
     }
-    
+
     @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
     public String newsDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
 //    	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
     	model.addAttribute("listMainNav", list);
-    	
+
     	XPWNewsMediaArticle article = newsService.getNewsById(id);
     	model.addAttribute("article", article);
- 
+
         return "news_detail";
+
+ }
+
+    @RequestMapping(value = { "/news_paper", "/news_paper.html" }, method = RequestMethod.GET)
+    public String newsPaper(Model model,@RequestParam Integer page) {
+	    	model = addCommonHeader(model);
+	    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
+	    	model.addAttribute("pageName", new String("电子院报"));
+	    	model.addAttribute("listMainNav", list);
+
+	    List<XPWNewsMediaArticleWithBLOBs> newsPaperList = newsService.getNewsPaper();
+	    if (page > newsPaperList.size()) {
+	    		page = newsPaperList.size();
+		}
+	    model.addAttribute("newsPaperList", newsPaperList);
+	    model.addAttribute("newsPaper", newsPaperList.get(page - 1));
+	    model.addAttribute("page", page);
+
+        return "news_paper";
     }
- 
+
 }
