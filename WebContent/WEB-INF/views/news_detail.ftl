@@ -11,7 +11,7 @@
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
 			<#list listMainNav as k>
-				<#if k.columnName == pageColumn>
+				<#if k.columnName == article.columnName>
 					<li class="active"><a href="${k.url}">${k.columnName}</a>
 				<#else>
 					<li><a href="${k.url}">${k.columnName}</a></li>
@@ -20,9 +20,9 @@
 			</ul>
 		</div>
 			<div class="baseRight list-news">
-				<div class="title01">媒体看厦心</div>
+				<div class="title01">${article.columnName}</div>
 				<div class="article detail">
-					<h2 id="H2Title">厦门日报：建设一流医院 提供优质“心服务”</h2>
+					<h2 id="H2Title">${article.title}</h2>
 					<div id="DIVTool" class="title04">
 						<span id="SPANDate">发布日期：2016-11-09</span>
 						<span>字号调整
@@ -53,9 +53,14 @@
 						${article.content}
 					</div>
           <div class="PrevNext">
-          	<p><span class="btn-prev-next">上一篇</span><a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a></p>
-          	<p><span class="btn-prev-next">下一篇</span><a href="NewsDetail-8173.html" title="海西晨报：尤颢：患者的信任让我全力以赴">海西晨报：尤颢：患者的信任让我全力以赴</a>
+          	<!--<p>
+          		<span class="btn-prev-next">上一篇</span>
+          		<a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a>
           	</p>
+          	<p>
+          		<span class="btn-prev-next">下一篇</span>
+          		<a href="NewsDetail-8173.html" title="海西晨报：尤颢：患者的信任让我全力以赴">海西晨报：尤颢：患者的信任让我全力以赴</a>
+          	</p>-->
           </div>
 				</div>
 			</div>

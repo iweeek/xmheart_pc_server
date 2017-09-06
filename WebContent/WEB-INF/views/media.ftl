@@ -11,7 +11,7 @@
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
 			<#list listMainNav as k>
-				<#if k.columnName == pageColumn>
+				<#if k.columnName == columnName>
 					<li class="active"><a href="${k.url}">${k.columnName}</a>
 				<#else>
 					<li><a href="${k.url}">${k.columnName}</a></li>
@@ -20,7 +20,7 @@
 			</ul>
 		</div>
 		<div class="baseRight list-media">
-			<div class="title01">${pageColumn}</div>
+			<div class="title01">${columnName}</div>
 			<div class="media-wrapper">
 				<#list pinnedMediaNewsList as key>
 				<div class="media-item">
@@ -77,7 +77,7 @@
 								<h4>2017/7/25</h4>
 							</div>
 							<div class="listBtn">
-								<a href="./media-detail" title="综合简讯" target="_blank">查看详情</a>
+								<a href="${k.url}" title="综合简讯" target="_blank">查看详情</a>
 							</div>
 							<div class="clear"></div>
 						</li>

@@ -124,7 +124,7 @@ public class MainController {
     	
     	model = addNewsHeader(model);
     	
-    	model.addAttribute("pageColumn", MEDIA_NEWS_COLUMN_NAME);
+    	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
     	
     	//获取置顶的新闻
     	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
@@ -147,7 +147,7 @@ public class MainController {
     	
     	model = addNewsHeader(model);
     	
-    	model.addAttribute("pageColumn", HOSPITAL_NEWS_COLUMN_NAME);
+    	model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
     	
     	//获取置顶的新闻
     	List<XPWNewsMediaArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
@@ -168,7 +168,7 @@ public class MainController {
     	model = addCommonHeader(model);
     	
     	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
-    	model.addAttribute("pageColumn", MEDIA_NEWS_COLUMN_NAME);
+//    	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
     	model.addAttribute("listMainNav", list);
     	
     	XPWNewsMediaArticle article = newsService.getNewsById(id);
