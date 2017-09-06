@@ -46,6 +46,8 @@ public class MainController {
 
 	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
+	
+	static final long NEWS_COLUMN_ID = 5;
  
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
     
@@ -58,12 +60,12 @@ public class MainController {
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
     		model.addAttribute("firstColumns", firstColumns);
-    		List<XPWColumn> secColList = ColumnService.getChildColumns(column.getColumnName());
+    		List<XPWColumn> secColList = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
     		}
     		
-    		List<XPWNav> navList = ColumnService.getChildNavs(column.getColumnName());
+    		List<XPWNav> navList = ColumnService.getChildNavsById(NEWS_COLUMN_ID);
     		if (navList.size() > 0) {
     			navMap.put(column.getColumnName(), navList);
     		}
@@ -76,7 +78,7 @@ public class MainController {
     }
     
     private Model addNewsHeader(Model model) {
-    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");	
+    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);	
     	model.addAttribute("listMainNav", list);
     	
     	return model;
@@ -161,18 +163,18 @@ public class MainController {
         return "media";
     }
     
-    @RequestMapping(value = { "/media-detail", "/media-detail.html" }, method = RequestMethod.GET)
-    public String mediaDetail(Model model) {
+    @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
+    public String newsDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	List<XPWColumn> list = ColumnService.getChildColumns("新闻公告");
-    	model.addAttribute("pageColumn", new String("媒体看厦心"));
+    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
+    	model.addAttribute("pageColumn", MEDIA_NEWS_COLUMN_NAME);
     	model.addAttribute("listMainNav", list);
     	
-    	XPWNewsMediaArticle article = newsService.getNewsByTitle("厦门日报：警惕！小感冒可能引发大心病");
+    	XPWNewsMediaArticle article = newsService.getNewsById(id);
     	model.addAttribute("article", article);
  
-        return "media-detail";
+        return "news_detail";
     }
  
 }

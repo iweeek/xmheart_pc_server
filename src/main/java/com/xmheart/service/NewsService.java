@@ -11,10 +11,12 @@ public interface NewsService {
 
 	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews();
 
-	XPWNewsMediaArticle getNewsByTitle(String title);
-
 	List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews();
 
 	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews();
+	
+	XPWNewsMediaArticle getNewsByTitle(String title);
+
+	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
 
 }

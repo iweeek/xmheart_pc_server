@@ -31,17 +31,17 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public List<XPWColumn> getChildColumns(String parent) {
+	public List<XPWColumn> getChildColumnsById(long id) {
 		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andParentColumnNameEqualTo(parent);
+		example.createCriteria().andIdEqualTo(id);
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}
 
 	@Override
-	public List<XPWNav> getChildNavs(String parent) {
+	public List<XPWNav> getChildNavsById(long id) {
 		XPWNavExample example = new XPWNavExample();
-		example.createCriteria().andParentColumnEqualTo(parent);
+		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
 		return list;
 	}

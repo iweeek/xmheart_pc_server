@@ -40,15 +40,6 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public XPWNewsMediaArticle getNewsByTitle(String title) {
-		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
-		example.createCriteria().andIdEqualTo((long) 781);
-		XPWNewsMediaArticle article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
-		
-		return article;
-	}
-
-	@Override
 	public List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
@@ -64,6 +55,24 @@ public class NewsServiceImpl implements NewsService {
 		
 		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
+	}
+	
+	@Override
+	public XPWNewsMediaArticle getNewsByTitle(String title) {
+		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
+		example.createCriteria().andTitleEqualTo(title);
+		XPWNewsMediaArticle article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
+		
+		return article;
+	}
+
+	@Override
+	public XPWNewsMediaArticleWithBLOBs getNewsById(Long id) {
+		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
+		example.createCriteria().andIdEqualTo(id);
+		XPWNewsMediaArticleWithBLOBs article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
+		
+		return article;		
 	}
 	
 

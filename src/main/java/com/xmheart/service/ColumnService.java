@@ -9,8 +9,8 @@ public interface ColumnService {
 
 	List<XPWColumn> getFirstColumns();
 
-	List<XPWColumn> getChildColumns(String parent);
+	List<XPWColumn> getChildColumnsById(long id);
 
-	List<XPWNav> getChildNavs(String parent);
+	List<XPWNav> getChildNavsById(long id);
 
 }
