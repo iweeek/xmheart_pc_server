@@ -60,12 +60,12 @@ public class MainController {
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
     		model.addAttribute("firstColumns", firstColumns);
-    		List<XPWColumn> secColList = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
+    		List<XPWColumn> secColList = ColumnService.getChildColumnsById(column.getId());
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
     		}
     		
-    		List<XPWNav> navList = ColumnService.getChildNavsById(NEWS_COLUMN_ID);
+    		List<XPWNav> navList = ColumnService.getChildNavsById(column.getId());
     		if (navList.size() > 0) {
     			navMap.put(column.getColumnName(), navList);
     		}

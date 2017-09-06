@@ -25,7 +25,7 @@ public class ColumnServiceImpl implements ColumnService {
 	@Override
 	public List<XPWColumn> getFirstColumns() {
 		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andParentColumnNameEqualTo("");
+		example.createCriteria().andParentColumnIdEqualTo(0l);
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}
@@ -33,7 +33,7 @@ public class ColumnServiceImpl implements ColumnService {
 	@Override
 	public List<XPWColumn> getChildColumnsById(long id) {
 		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andIdEqualTo(id);
+		example.createCriteria().andParentColumnIdEqualTo(id);
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}
