@@ -114,15 +114,20 @@
 	        </div>
 	        <div class="contents swiper-container" id="officeSwiper">
 	          <ul data-num="0" class="swiper-wrapper">
-	          	<#list 0..9 as i>
+	          	<#list depts as dept>
 		            <li class="swiper-slide">
 		              <i class="ico01"></i>
 		              <div class="img animated">
 		                <img alt="心内科" src="pic/pic_007.png" width="80" height="80">
 		              </div>
-		              <a href="Office-11.html" title="心内科" class="office">心内科</a>
-		              <p>厦门大学附属心血管病医院心内科是国家临床重点专科，……</p>
-		              <a href="Office-11.html" title="心内科" class="btn more">查看详细</a>
+		              <a href="${dept.url}" title="${dept.name}" class="office">${dept.name}</a>
+		              <#--  <#if dept.intro?length gt 20>
+						<p>${dept.intro[0..20]}</p>
+					  <#else>
+						<p>${dept.intro}</p>
+					  </#if>-->
+					  <p>厦门大学附属心血管病医院心内科是国家临床重点专科，卫生部国家级心血管疾病介入培训基地，……</p>
+		              <a href="${dept.url}" title="${dept.name}" class="btn more">查看详细</a>
 		              <a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>
 		            </li>
 	            </#list>
