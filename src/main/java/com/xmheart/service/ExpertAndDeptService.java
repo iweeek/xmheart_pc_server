@@ -3,14 +3,14 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWDept;
-import com.xmheart.model.XPWExpert;
-import com.xmheart.model.XPWNewsMediaArticle;
-import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
+import com.xmheart.model.XPWDoctor;
 
 public interface ExpertAndDeptService {
 
-	List<XPWExpert> getExperts();
+	List<XPWDoctor> getDoctors();
 
 	List<XPWDept> getDepts();
+
+	XPWDoctor getDoctorById(Long id);
 
 }

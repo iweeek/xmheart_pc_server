@@ -23,7 +23,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
-import com.xmheart.model.XPWExpert;
+import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
@@ -184,17 +184,26 @@ public class MainController {
         return "news_detail";
     }
     
-    @RequestMapping(value = { "/expert" }, method = RequestMethod.GET)
-    public String expert(Model model) {
+    @RequestMapping(value = { "/doctor" }, method = RequestMethod.GET)
+    public String doctor(Model model) {
     	model = addCommonHeader(model);
     	
-    	List<XPWExpert> experts = expertAndDeptService.getExperts();
+    	List<XPWDoctor> experts = expertAndDeptService.getDoctors();
     	model.addAttribute("experts", experts);
     	
     	List<XPWDept> depts = expertAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
     	
-        return "expert";
+        return "doctor";
+    }
+    
+    @RequestMapping(value = { "/doctorInfo" }, method = RequestMethod.GET)
+    public String doctorInfo(@RequestParam Long id, Model model) {
+    	model = addCommonHeader(model);
+    	
+    	XPWDoctor doctor = expertAndDeptService.getDoctorById(id);
+    	model.addAttribute("doctor", doctor);
+        return "doctor_info";
     }
  
 }
