@@ -22,10 +22,13 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWDept;
+import com.xmheart.model.XPWExpert;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.ColumnService;
+import com.xmheart.service.ExpertAndDeptService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
@@ -41,6 +44,9 @@ public class MainController {
 	
 	@Autowired
 	private NewsService newsService;
+	
+	@Autowired
+	private ExpertAndDeptService expertAndDeptService;
 
 	private final int PAGE_SIZE = 10;
 
@@ -48,6 +54,7 @@ public class MainController {
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
 	
 	static final long NEWS_COLUMN_ID = 5;
+	static final long EXPERT_COLUMN_ID = 3;
  
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
     
@@ -175,6 +182,19 @@ public class MainController {
     	model.addAttribute("article", article);
  
         return "news_detail";
+    }
+    
+    @RequestMapping(value = { "/expert" }, method = RequestMethod.GET)
+    public String expert(Model model) {
+    	model = addCommonHeader(model);
+    	
+    	List<XPWExpert> experts = expertAndDeptService.getExperts();
+    	model.addAttribute("experts", experts);
+    	
+    	List<XPWDept> depts = expertAndDeptService.getDepts();
+    	model.addAttribute("depts", depts);
+    	
+        return "expert";
     }
  
 }
