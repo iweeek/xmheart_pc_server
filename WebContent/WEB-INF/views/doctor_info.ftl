@@ -4,7 +4,7 @@
       <div class="doctorLeft">
         <img src="${doctor.imageUrl}" id="DThumb" class="DThumb" width="112" height="150" alt="${doctor.name}">
         <h3 id="H3Name">${doctor.name}</h3>
-        <h4 id="H4Position">主任医师</h4>
+        <h4 id="H4Position">${doctor.professionalTitle}</h4>
         <a href="order-detail.html" target="_blank"><img src="images/yy_ico.png" width="22" height="22">预约</a>
       </div>
       <div class="doctorRight">
