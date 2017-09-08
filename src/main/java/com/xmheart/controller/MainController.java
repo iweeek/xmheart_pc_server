@@ -57,6 +57,7 @@ public class MainController {
 
 	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
+	private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
 
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
@@ -193,11 +194,14 @@ public class MainController {
 
  }
 
-    @RequestMapping(value = { "/news_paper", "/news_paper.html" }, method = RequestMethod.GET)
-    public String newsPaper(Model model,@RequestParam Integer page) {
+    @RequestMapping(value = { "/newsPaper", "/news_paper.html" }, method = RequestMethod.GET)
+    public String newsPaper(Model model,@RequestParam(required = false) Integer page) {
 	    	model = addCommonHeader(model);
+	    	if (page == null) {
+	    		page = new Integer(1);
+	    	}
 	    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
-	    	model.addAttribute("pageName", new String("电子院报"));
+	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 	    	model.addAttribute("listMainNav", list);
 
 	    List<XPWNewsMediaArticleWithBLOBs> newsPaperList = newsService.getNewsPaper();
@@ -241,6 +245,16 @@ public class MainController {
     	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
         return "dept_doctor";
+    }
+    
+    @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
+    public String deptDetail(@RequestParam Long id, Model model) {
+    	model = addCommonHeader(model);
+    	
+    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	model.addAttribute("dept", dept);
+//    	model.addAttribute("dept", doctor.getDept());
+        return "dept_detail";
     }
  
 }

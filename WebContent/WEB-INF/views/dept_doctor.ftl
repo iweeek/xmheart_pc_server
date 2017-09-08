@@ -92,7 +92,7 @@
           <#else>
           	<p id="PDescription">${dept.intro}</p>
           </#if>
-          <div class="rightbottom"><a href="office-info.html" class="more">MORE</a></div>
+          <div class="rightbottom"><a href="${dept.url}" class="more">MORE</a></div>
         </div>
       </div>
       <div class="clear"></div>
