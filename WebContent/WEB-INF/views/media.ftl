@@ -1,4 +1,4 @@
-<#include "./fragments/_header.ftl"> 
+<#include "./fragments/_header.ftl">
 <!-- list container -->
 <div class="breadcrumb">
 	<div class="xm-container">
@@ -97,7 +97,7 @@
 						<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
 					<#else>
 						<li><a href="?page=${i}">${i}</a></li>
-					</#if>	
+					</#if>
 				</ul>
 			</div>
 		</div>
