@@ -67,7 +67,7 @@
 									<#if k == key>
 									<div class="navSub2 nav_Menu02 noPic NewsSub">
 										<dl class="Img02">
-											<dt class="title01">${v[0].columnName}</dt>
+											<dt class="title01">${v[0].childColumnName}</dt>
 											<dd class="pic">
 												<img alt="媒体看夏心" src="./img/pic/pic_002.jpg" width="126" height="77">
 											</dd>
@@ -90,7 +90,7 @@
 										</dl>
 										<div class="BottomHidden"></div>
 										<dl>
-											<dt class="title01">${v[4].columnName}</dt>
+											<dt class="title01">${v[4].childColumnName}</dt>
 											<dd class="url">
 												<span>2017-07-25</span>
 												<a href="${v[4].url}" title="${v[4].articleTitle}">${v[4].articleTitle}</a>
@@ -111,7 +111,7 @@
 									</div>
 									<div class="navSub4 nav_Menu02 noPic">
 										<dl>
-											<dt class="title02">${v[8].columnName}</dt>
+											<dt class="title02">${v[8].childColumnName}</dt>
 											<dd class="url">
 												<span>2017-02-07</span>
 												<a href="${v[8].url}" title="${v[8].articleTitle}">${v[8].articleTitle}</a>
@@ -131,7 +131,7 @@
 										</dl>
 										<div class="BottomHidden"></div>
 										<dl>
-											<dt class="title02">${v[12].columnName}</dt>
+											<dt class="title02">${v[12].childColumnName}</dt>
 											<dd class="url">
 												<span>2016-09-07</span>
 												<a href="${v[12].url}" title="${v[12].articleTitle}">${v[12].articleTitle}</a>
