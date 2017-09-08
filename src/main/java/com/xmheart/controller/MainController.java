@@ -184,7 +184,7 @@ public class MainController {
         return "news_detail";
     }
     
-    @RequestMapping(value = { "/doctor" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
     public String doctor(Model model) {
     	model = addCommonHeader(model);
     	
@@ -194,26 +194,26 @@ public class MainController {
     	List<XPWDept> depts = expertAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
     	
-        return "doctor";
+        return "doctor_dept";
     }
     
-    @RequestMapping(value = { "/doctorInfo" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
     	XPWDoctor doctor = expertAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
 //    	model.addAttribute("dept", doctor.getDept());
-        return "doctor_info";
+        return "doctor_detail";
     }
     
-    @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
-    public String deptDetail(@RequestParam Long id, Model model) {
+    @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
+    public String deptDoctor(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
     	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
-        return "dept_detail";
+        return "dept_doctor";
     }
  
 }
