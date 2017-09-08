@@ -66,7 +66,7 @@ public class MainController {
     	
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
-    		model.addAttribute("firstColumns", firstColumns);
+    		
     		List<XPWColumn> secColList = ColumnService.getChildColumnsById(column.getId());
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
@@ -78,6 +78,7 @@ public class MainController {
     		}
     	}
     	
+    	model.addAttribute("firstColumns", firstColumns);
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
     	

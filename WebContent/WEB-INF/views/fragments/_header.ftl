@@ -41,6 +41,7 @@
 					<#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
 					<li class="xm-navbar-item">
 						<a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+						
 						<#list columnMap as kc, vc>
 						<#if kc == key>
 						<div class="navboxBase">
