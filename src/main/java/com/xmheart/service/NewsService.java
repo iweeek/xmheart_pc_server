@@ -1,7 +1,6 @@
 package com.xmheart.service;
 
 import java.util.List;
-
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 
@@ -19,4 +18,5 @@ public interface NewsService {
 
 	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
 
+	List<XPWNewsMediaArticleWithBLOBs> getNewsPaper();
 }

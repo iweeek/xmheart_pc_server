@@ -13,10 +13,10 @@ import com.xmheart.service.NewsService;
 
 @Service
 public class NewsServiceImpl implements NewsService {
-	
+
 	static final long MEDIA_NEWS_COLUMN_ID = 20;
 	static final long HOSPITAL_NEWS_COLUMN_ID = 21;
-	
+
 	@Autowired
 	XPWNewsMediaArticleMapper xpwNewsMediaArticleMapper;
 
@@ -24,7 +24,7 @@ public class NewsServiceImpl implements NewsService {
 	public List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
-		
+
 		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
@@ -33,9 +33,9 @@ public class NewsServiceImpl implements NewsService {
 	public List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
-		
+
 		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
-		
+
 		return list;
 	}
 
@@ -43,7 +43,7 @@ public class NewsServiceImpl implements NewsService {
 	public List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
-		
+
 		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
@@ -52,17 +52,17 @@ public class NewsServiceImpl implements NewsService {
 	public List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews() {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
-		
+
 		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
-	
+
 	@Override
 	public XPWNewsMediaArticle getNewsByTitle(String title) {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andTitleEqualTo(title);
 		XPWNewsMediaArticle article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
-		
+
 		return article;
 	}
 
@@ -71,9 +71,17 @@ public class NewsServiceImpl implements NewsService {
 		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
 		example.createCriteria().andIdEqualTo(id);
 		XPWNewsMediaArticleWithBLOBs article = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example).get(0);
-		
-		return article;		
+
+		return article;
 	}
-	
+
+	@Override
+	public List<XPWNewsMediaArticleWithBLOBs> getNewsPaper() {
+		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
+		example.createCriteria().andColumnNameEqualTo("电子院报");
+
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
+		return list;
+	}
 
 }
