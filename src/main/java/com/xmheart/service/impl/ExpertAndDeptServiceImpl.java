@@ -16,14 +16,14 @@ import com.xmheart.service.ExpertAndDeptService;
 public class ExpertAndDeptServiceImpl implements ExpertAndDeptService {
 	
 	@Autowired
-	private XPWDoctorMapper XPWDoctorMapper;
+	private XPWDoctorMapper xpwDoctorMapper;
 	
 	@Autowired
 	private XPWDeptMapper xpwDeptMapper;
 
 	@Override
 	public List<XPWDoctor> getDoctors() {
-		List<XPWDoctor> list = XPWDoctorMapper.selectByExample(null);
+		List<XPWDoctor> list = xpwDoctorMapper.selectByExample(null);
 		return list;
 	}
 
@@ -35,8 +35,14 @@ public class ExpertAndDeptServiceImpl implements ExpertAndDeptService {
 
 	@Override
 	public XPWDoctor getDoctorAndDeptById(Long id) {
-		XPWDoctor doctor = XPWDoctorMapper.selectDoctorWithDeptByPrimaryKey(id);
+		XPWDoctor doctor = xpwDoctorMapper.selectDoctorWithDeptByPrimaryKey(id);
 		return doctor;
+	}
+
+	@Override
+	public XPWDept getDeptAndDoctorsById(Long id) {
+		XPWDept dept = xpwDeptMapper.selectDeptWithDoctorsByPrimaryKey(id);
+		return dept;
 	}
 
 }

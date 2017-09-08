@@ -211,6 +211,8 @@ public class MainController {
     public String deptDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
+    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	model.addAttribute("dept", dept);
         return "dept_detail";
     }
  
