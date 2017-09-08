@@ -11,8 +11,8 @@
         <div class="import import1"></div>
         <div class="title01">
           <h3>所在科室：</h3>
-          <h1>${doctor.dept}</h1>
-          <span><a href="office.html" title="${doctor.dept}">进入科室</a></span>
+          <h1>${doctor.dept.name}</h1>
+          <span><a href="${doctor.dept.url}" title="${doctor.dept.name}">进入科室</a></span>
         </div>
         <div class="clear"></div>
         <div id="DIVContent" class="article intro">

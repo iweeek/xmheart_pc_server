@@ -34,8 +34,8 @@ public class ExpertAndDeptServiceImpl implements ExpertAndDeptService {
 	}
 
 	@Override
-	public XPWDoctor getDoctorById(Long id) {
-		XPWDoctor doctor = XPWDoctorMapper.selectByPrimaryKey(id);
+	public XPWDoctor getDoctorAndDeptById(Long id) {
+		XPWDoctor doctor = XPWDoctorMapper.selectDoctorWithDeptByPrimaryKey(id);
 		return doctor;
 	}
 

@@ -11,6 +11,6 @@ public interface ExpertAndDeptService {
 
 	List<XPWDept> getDepts();
 
-	XPWDoctor getDoctorById(Long id);
+	XPWDoctor getDoctorAndDeptById(Long id);
 
 }

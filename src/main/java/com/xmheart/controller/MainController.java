@@ -201,9 +201,17 @@ public class MainController {
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDoctor doctor = expertAndDeptService.getDoctorById(id);
+    	XPWDoctor doctor = expertAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
+//    	model.addAttribute("dept", doctor.getDept());
         return "doctor_info";
+    }
+    
+    @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
+    public String deptDetail(@RequestParam Long id, Model model) {
+    	model = addCommonHeader(model);
+    	
+        return "dept_detail";
     }
  
 }
