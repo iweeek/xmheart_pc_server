@@ -29,6 +29,7 @@ import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
@@ -37,6 +38,7 @@ import com.xmheart.service.ExpertAndDeptService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
+import io.swagger.annotations.ApiOperation;
 
 @Controller
 public class MainController {
@@ -179,40 +181,48 @@ public class MainController {
         return "media";
     }
 
-    @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
-    public String newsDetail(@RequestParam Long id, Model model) {
-    	model = addCommonHeader(model);
+ 
 
-    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
-//    	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
-    	model.addAttribute("listMainNav", list);
+	/**
+	* 电子院报列表页
+	*/
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@ApiOperation(value = "电子院报列表页", notes = "电子院报列表页")
+    @RequestMapping(value = { "/elecNewsPaper" }, method = RequestMethod.GET)
+    public String elecNewsPaper(Model model,@RequestParam(required = false) Integer page) {
+		
+		if (page == null) {
+			page = new Integer(1);
+		}
+		
+    	model = addCommonHeader(model);
+    	
+    	model = addNewsHeader(model);
+    	
+    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
+
+    	PageHelper.startPage(page, PAGE_SIZE);
+    	
+	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
+	    model.addAttribute("newsPaperList", list);
+	    
+		PageInfo pageInfo = new PageInfo(list);
+    	model.addAttribute("pageInfo", pageInfo);
+
+        return "news_paper";
+    }
+	
+   @RequestMapping(value = { "/elecNewsPaperDetail" }, method = RequestMethod.GET)
+    public String elecNewsPaperDetail(@RequestParam Long id, Model model) {
+    	model = addCommonHeader(model);
+    	
+    	model = addNewsHeader(model);
 
     	XPWNewsMediaArticle article = newsService.getNewsById(id);
     	model.addAttribute("article", article);
 
         return "news_detail";
 
- }
-
-    @RequestMapping(value = { "/newsPaper", "/news_paper.html" }, method = RequestMethod.GET)
-    public String newsPaper(Model model,@RequestParam(required = false) Integer page) {
-	    	model = addCommonHeader(model);
-	    	if (page == null) {
-	    		page = new Integer(1);
-	    	}
-	    	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
-	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-	    	model.addAttribute("listMainNav", list);
-
-	    List<XPWNewsMediaArticleWithBLOBs> newsPaperList = newsService.getNewsPaper();
-	    if (page > newsPaperList.size()) {
-	    		page = newsPaperList.size();
-		}
-	    model.addAttribute("newsPaperList", newsPaperList);
-	    model.addAttribute("newsPaper", newsPaperList.get(page - 1));
-	    model.addAttribute("page", page);
-
-        return "news_paper";
     }
     
     @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)

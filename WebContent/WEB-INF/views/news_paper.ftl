@@ -41,9 +41,9 @@
 					<div class="instRleft">
 						<ul>
 							<#list newsPaperList as key>
-							<#if (key_index == 0)>
+							<#if key_index == 0>
 								<li class="first">
-								<#if (key_index == page-1)>
+								<#if key_index == pageInfo.pageNum>
 									<a class="active" href="?page=${key_index + 1}">${key_index + 1}
 								<#else>
 									<a href="?page=${key_index + 1}">${key_index + 1}
@@ -55,7 +55,7 @@
 								</li>
 							<#else>
 								<li >
-								<#if (key_index == page-1)>
+								<#if key_index == pageInfo.pageNum - 1>
 									<a class="active" href="?page=${key_index + 1}">${key_index + 1}
 								<#else>
 									<a href="?page=${key_index + 1}">${key_index + 1}
@@ -70,7 +70,7 @@
 						</ul>
 					</div>
 					<div class="instRright">
-						${newsPaper.content}
+						${newsPaperList[0].content}
 					</div>
 					<div class="clear"></div>
 				</div>

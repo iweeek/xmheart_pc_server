@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xmheart.mapper.XPWElecNewspaperMapper;
 import com.xmheart.mapper.XPWNewsMediaArticleMapper;
+import com.xmheart.model.XPWElecNewspager;
+import com.xmheart.model.XPWElecNewspagerExample;
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleExample;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
@@ -16,9 +20,12 @@ public class NewsServiceImpl implements NewsService {
 
 	static final long MEDIA_NEWS_COLUMN_ID = 20;
 	static final long HOSPITAL_NEWS_COLUMN_ID = 21;
+	static final long ELEC_NEWS_COLUMN_ID = 23;
 
 	@Autowired
 	XPWNewsMediaArticleMapper xpwNewsMediaArticleMapper;
+	@Autowired
+	XPWElecNewspaperMapper xpwElecNewspaperMapper;
 
 	@Override
 	public List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews() {
@@ -76,11 +83,8 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<XPWNewsMediaArticleWithBLOBs> getNewsPaper() {
-		XPWNewsMediaArticleExample example = new XPWNewsMediaArticleExample();
-		example.createCriteria().andColumnNameEqualTo("电子院报");
-
-		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(example);
+	public List<XPWElecNewspaper> getElecNewsPaper() {
+		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(null);
 		return list;
 	}
 

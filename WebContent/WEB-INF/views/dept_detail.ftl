@@ -11,7 +11,7 @@
 				<h4 class="list-nav-title"></h4>
 				<ul class="list-nav-list">
 					<li class="active"><a href="">科室简介</a></li>
-					<li><a href="doctorDept">专家介绍</a></li>
+					<li><a href="">专家介绍</a></li>
 					<li><a href=""></a></li>
 					<li><a href=""></a></li>
 				</ul>
