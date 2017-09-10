@@ -60,6 +60,7 @@ public class MainController {
 	private final String NEWS_COLUMN_NAME = "新闻公告";
 	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
+	private final String VIDEO_NEWS_COLUMN_NAME = "影像厦心";
 	private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
 
 	static final long NEWS_COLUMN_ID = 5;
@@ -189,8 +190,8 @@ public class MainController {
 	*/
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
-    @RequestMapping(value = { "/video" }, method = RequestMethod.GET)
-    public String video(Model model,@RequestParam(required = false) Integer page) {
+    @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
+    public String videoNews(Model model,@RequestParam(required = false) Integer page) {
 		
 		if (page == null) {
 			page = new Integer(1);
@@ -199,6 +200,8 @@ public class MainController {
     	model = addCommonHeader(model);
     	
     	model = addNewsHeader(model);
+    	
+    	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
     	
 //    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 //
@@ -218,8 +221,8 @@ public class MainController {
 		*/
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		@ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
-	    @RequestMapping(value = { "/videoImgDetail" }, method = RequestMethod.GET)
-	    public String videoImgDetail(Model model,@RequestParam(required = false) Integer page) {
+	    @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
+	    public String videoNewsDetail(Model model,@RequestParam(required = false) Integer page) {
 			
 			if (page == null) {
 				page = new Integer(1);
@@ -228,6 +231,8 @@ public class MainController {
 	    	model = addCommonHeader(model);
 	    	
 	    	model = addNewsHeader(model);
+	    	
+	    	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
 	    	
 //	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 	//
