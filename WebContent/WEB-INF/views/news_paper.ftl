@@ -70,7 +70,7 @@
 						</ul>
 					</div>
 					<div class="instRright">
-						${newsPaperList[0].content}
+						<#--  ${newsPaperList[].content}-->
 					</div>
 					<div class="clear"></div>
 				</div>

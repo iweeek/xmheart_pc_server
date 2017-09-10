@@ -180,8 +180,64 @@ public class MainController {
 
         return "media";
     }
+    
+    /**
+	* 影像厦心列表页
+	*/
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
+    @RequestMapping(value = { "/video" }, method = RequestMethod.GET)
+    public String video(Model model,@RequestParam(required = false) Integer page) {
+		
+		if (page == null) {
+			page = new Integer(1);
+		}
+		
+    	model = addCommonHeader(model);
+    	
+    	model = addNewsHeader(model);
+    	
+//    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
+//
+//    	PageHelper.startPage(page, PAGE_SIZE);
+//    	
+//	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
+//	    model.addAttribute("newsPaperList", list);
+//	    
+//		PageInfo pageInfo = new PageInfo(list);
+//    	model.addAttribute("pageInfo", pageInfo);
 
- 
+        return "video";
+    }
+
+	 /**
+		* 影像厦心详情页
+		*/
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		@ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
+	    @RequestMapping(value = { "/videoImgDetail" }, method = RequestMethod.GET)
+	    public String videoImgDetail(Model model,@RequestParam(required = false) Integer page) {
+			
+			if (page == null) {
+				page = new Integer(1);
+			}
+			
+	    	model = addCommonHeader(model);
+	    	
+	    	model = addNewsHeader(model);
+	    	
+//	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
+	//
+//	    	PageHelper.startPage(page, PAGE_SIZE);
+//	    	
+//		    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
+//		    model.addAttribute("newsPaperList", list);
+//		    
+//			PageInfo pageInfo = new PageInfo(list);
+//	    	model.addAttribute("pageInfo", pageInfo);
+
+	        return "video_img_detail";
+	    }
 
 	/**
 	* 电子院报列表页
@@ -212,8 +268,8 @@ public class MainController {
         return "news_paper";
     }
 	
-   @RequestMapping(value = { "/elecNewsPaperDetail" }, method = RequestMethod.GET)
-    public String elecNewsPaperDetail(@RequestParam Long id, Model model) {
+   @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
+    public String newsDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
     	model = addNewsHeader(model);
