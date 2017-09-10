@@ -15,10 +15,14 @@ public interface NewsService {
 	List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews();
 
 	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews();
-	
+
 	XPWNewsMediaArticle getNewsByTitle(String title);
 
 	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
 
-	List<XPWElecNewspaper> getElecNewsPaper();
+	List<XPWElecNewspaper> getElecNewsPaper(String year, String time);
+
+	List<String> getNewPaperYears();
+
+	List<String> getNewsPaperTimes();
 }

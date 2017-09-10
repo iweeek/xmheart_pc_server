@@ -51,7 +51,7 @@ public class MainController {
 
 	@Autowired
 	private NewsService newsService;
-	
+
 	@Autowired
 	private ExpertAndDeptService expertAndDeptService;
 
@@ -63,7 +63,7 @@ public class MainController {
 
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
- 
+
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
 
     private Model addCommonHeader(Model model) {
@@ -75,7 +75,7 @@ public class MainController {
 
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
-    		
+
     		List<XPWColumn> secColList = ColumnService.getChildColumnsById(column.getId());
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
@@ -87,7 +87,7 @@ public class MainController {
     			navMap.put(column.getColumnName(), navList);
     		}
     	}
-    	
+
     	model.addAttribute("firstColumns", firstColumns);
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
@@ -181,7 +181,7 @@ public class MainController {
         return "media";
     }
 
- 
+
 
 	/**
 	* 电子院报列表页
@@ -189,33 +189,49 @@ public class MainController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ApiOperation(value = "电子院报列表页", notes = "电子院报列表页")
     @RequestMapping(value = { "/elecNewsPaper" }, method = RequestMethod.GET)
-    public String elecNewsPaper(Model model,@RequestParam(required = false) Integer page) {
-		
+    public String elecNewsPaper(Model model,
+    								@RequestParam(required = false) Integer page,
+    								@RequestParam(required = false) Integer itemIndex,
+    								@RequestParam(required = false) String year,
+    								@RequestParam(required = false) String time) {
+
 		if (page == null) {
 			page = new Integer(1);
 		}
-		
+
+		if (itemIndex == null) {
+			itemIndex = new Integer(0);
+		}
+
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
-    	
+
     	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 
     	PageHelper.startPage(page, PAGE_SIZE);
-    	
-	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
+
+	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, time);
 	    model.addAttribute("newsPaperList", list);
-	    
+
 		PageInfo pageInfo = new PageInfo(list);
     	model.addAttribute("pageInfo", pageInfo);
 
+    	List<String> years = newsService.getNewPaperYears();
+    	model.addAttribute("years", years);
+
+    	List<String> times = newsService.getNewsPaperTimes();
+    	model.addAttribute("times", times);
+
+    	model.addAttribute("itemIndex", itemIndex);
+
         return "news_paper";
     }
-	
+
    @RequestMapping(value = { "/elecNewsPaperDetail" }, method = RequestMethod.GET)
     public String elecNewsPaperDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
 
     	XPWNewsMediaArticle article = newsService.getNewsById(id);
@@ -224,47 +240,47 @@ public class MainController {
         return "news_detail";
 
     }
-    
+
     @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
     public String doctor(Model model) {
     	model = addCommonHeader(model);
-    	
+
     	List<XPWDoctor> experts = expertAndDeptService.getDoctors();
     	model.addAttribute("experts", experts);
-    	
+
     	List<XPWDept> depts = expertAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
-    	
+
         return "doctor_dept";
     }
-    
+
     @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDoctor doctor = expertAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
 //    	model.addAttribute("dept", doctor.getDept());
         return "doctor_detail";
     }
-    
+
     @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
     public String deptDoctor(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
         return "dept_doctor";
     }
-    
+
     @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
     public String deptDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
 //    	model.addAttribute("dept", doctor.getDept());
         return "dept_detail";
     }
- 
+
 }
