@@ -57,6 +57,7 @@ public class MainController {
 
 	private final int PAGE_SIZE = 10;
 
+	private final String NEWS_COLUMN_NAME = "新闻公告";
 	private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
 	private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
 	private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
@@ -98,6 +99,8 @@ public class MainController {
     private Model addNewsHeader(Model model) {
     	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
     	model.addAttribute("listMainNav", list);
+    	
+    	model.addAttribute("parentColumnName", NEWS_COLUMN_NAME);
 
     	return model;
     }
@@ -155,7 +158,7 @@ public class MainController {
     	PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
     	model.addAttribute("pageInfo", pageInfo);
 
-        return "media";
+        return "news";
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -178,7 +181,7 @@ public class MainController {
     	PageInfo pageInfo = new PageInfo(noPinnedNewsList);
     	model.addAttribute("pageInfo", pageInfo);
 
-        return "media";
+        return "news";
     }
     
     /**
