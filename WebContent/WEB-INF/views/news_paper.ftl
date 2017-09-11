@@ -21,16 +21,18 @@
 		</div>
 			<div class="baseRight news-paper">
 				<div class="title01">${pageName}</div>
+				<#if (newsPaperList?size>0)>
 				<div class="title07">${newsPaperList[itemIndex].title}
+				</#if>
 					<form>
 						<select id="ddlYears2">
-							<option value="0" selected="selected">选择年份</option>
+							<option value="" selected="selected">选择年份</option>
 							<#list years as year>
 								<option value=${year}>${year}年</option>
-							</#list>>
+							</#list>
 						</select>
 						<select id="ddlTimes2">
-							<option value="0" selected="selected">选择期数</option>
+							<option value="" selected="selected">选择期数</option>
 							<#list times as time>
 								<option value=${time}>${time}</option>
 							</#list>>

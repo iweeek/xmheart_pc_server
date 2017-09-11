@@ -24,9 +24,10 @@ public interface NewsService {
 
 	List<String> getNewPaperYears();
 
-	List<String> getNewsPaperTimes();
+	List<String> getNewsPaperTimes(String year);
 
 	List<XPWNewsMediaArticleWithBLOBs> getNews();
 
 	int updateNews(XPWNewsMediaArticleWithBLOBs news);
+
 }

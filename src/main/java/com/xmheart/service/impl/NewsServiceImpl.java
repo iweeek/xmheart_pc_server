@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.xmheart.mapper.XPWElecNewspaperMapper;
 import com.xmheart.mapper.XPWNewsMediaArticleMapper;
-import com.xmheart.model.XPWElecNewspager;
-import com.xmheart.model.XPWElecNewspagerExample;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWElecNewspaperExample;
+import com.xmheart.model.XPWElecNewspaperExample.Criteria;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleExample;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
@@ -90,13 +89,14 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public List<XPWElecNewspaper> getElecNewsPaper(String year, String time) {
 		XPWElecNewspaperExample example = new XPWElecNewspaperExample();
-		if (year == null) {
-			
+		Criteria criteria = example.createCriteria();
+		if (year != "") {
+			criteria.andYearsEqualTo(year);
 		}
-		if (time == null) {
-			
+		if (time != "") {
+			criteria.andTimesEqualTo(time);
 		}
-		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(null);
+		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(example);
 		return list;
 	}
 
@@ -113,8 +113,8 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<String> getNewsPaperTimes() {
-		List<String> list = xpwElecNewspaperMapper.getNewsPaperTimes();
+	public List<String> getNewsPaperTimes(String year) {
+		List<String> list = xpwElecNewspaperMapper.getNewsPaperTimes(year);
 		return list;
 	}
 		@Override

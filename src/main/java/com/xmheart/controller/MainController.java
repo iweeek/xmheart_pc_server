@@ -15,12 +15,12 @@ import javax.print.attribute.standard.MediaSize.NA;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.ObjectUtils.Null;
-import org.apache.commons.lang3.text.WordUtils;
 import org.omg.PortableServer.POAPackage.WrongAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +41,7 @@ import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @Controller
 public class MainController {
@@ -102,7 +103,7 @@ public class MainController {
     private Model addNewsHeader(Model model) {
     	List<XPWColumn> list = ColumnService.getChildColumnsById(NEWS_COLUMN_ID);
     	model.addAttribute("listMainNav", list);
-    	
+
     	model.addAttribute("parentColumnName", NEWS_COLUMN_NAME);
 
     	return model;
@@ -186,7 +187,7 @@ public class MainController {
 
         return "news";
     }
-    
+
     /**
 	* 影像厦心列表页
 	*/
@@ -194,24 +195,24 @@ public class MainController {
 	@ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
     @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
     public String videoNews(Model model,@RequestParam(required = false) Integer page) {
-		
+
 		if (page == null) {
 			page = new Integer(1);
 		}
-		
+
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
-    	
+
     	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-    	
+
 //    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 //
 //    	PageHelper.startPage(page, PAGE_SIZE);
-//    	
+//
 //	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
 //	    model.addAttribute("newsPaperList", list);
-//	    
+//
 //		PageInfo pageInfo = new PageInfo(list);
 //    	model.addAttribute("pageInfo", pageInfo);
 
@@ -225,24 +226,24 @@ public class MainController {
 		@ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
 	    @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
 	    public String videoNewsDetail(Model model,@RequestParam(required = false) Integer page) {
-			
+
 			if (page == null) {
 				page = new Integer(1);
 			}
-			
+
 	    	model = addCommonHeader(model);
-	    	
+
 	    	model = addNewsHeader(model);
-	    	
+
 	    	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-	    	
+
 //	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 	//
 //	    	PageHelper.startPage(page, PAGE_SIZE);
-//	    	
+//
 //		    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
 //		    model.addAttribute("newsPaperList", list);
-//		    
+//
 //			PageInfo pageInfo = new PageInfo(list);
 //	    	model.addAttribute("pageInfo", pageInfo);
 
@@ -264,11 +265,15 @@ public class MainController {
 		if (page == null) {
 			page = new Integer(1);
 		}
-
 		if (itemIndex == null) {
 			itemIndex = new Integer(0);
 		}
-
+		if (year == null) {
+			year = "";
+		}
+		if (time == null) {
+			time = "";
+		}
     	model = addCommonHeader(model);
 
     	model = addNewsHeader(model);
@@ -286,16 +291,27 @@ public class MainController {
     	List<String> years = newsService.getNewPaperYears();
     	model.addAttribute("years", years);
 
-    	List<String> times = newsService.getNewsPaperTimes();
+    	List<String> times = newsService.getNewsPaperTimes(years.get(0));
     	model.addAttribute("times", times);
 
     	model.addAttribute("itemIndex", itemIndex);
 
         return "news_paper";
     }
-	
-   @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
-    public String newsDetail(@RequestParam Long id, Model model) {
+
+	@ApiOperation(value = "获取期数", notes = "根据年份获取期数")
+	@RequestMapping(value = { "/getTimes" }, method = RequestMethod.GET)
+	public ResponseEntity<?> getTimes(
+								@ApiParam("年份")
+								@RequestParam String	 year
+								) {
+    		List<String> times = newsService.getNewsPaperTimes(year);
+
+		return ResponseEntity.status(200).body(times);
+	}
+
+	@RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
+	public String newsDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
 
     	model = addNewsHeader(model);
@@ -310,10 +326,10 @@ public class MainController {
     @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
     public String doctor(Model model) {
     	model = addCommonHeader(model);
-    	
+
     	List<XPWDoctor> experts = doctorAndDeptService.getDoctors();
     	model.addAttribute("experts", experts);
-    	
+
     	List<XPWDept> depts = doctorAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
 
@@ -323,7 +339,7 @@ public class MainController {
     @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
 //    	model.addAttribute("dept", doctor.getDept());
@@ -333,7 +349,7 @@ public class MainController {
     @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
     public String deptDoctor(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
         return "dept_doctor";
@@ -342,22 +358,22 @@ public class MainController {
     @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
     public String deptDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
 //    	model.addAttribute("dept", doctor.getDept());
         return "dept_detail";
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = { "/replaceCSS" }, method = RequestMethod.GET)
     public ResponseEntity<?> replaceCSS() {
-    	
+
     	int pageNo = 1;
     	PageHelper.startPage(pageNo, PAGE_SIZE);
     	List<XPWNewsMediaArticleWithBLOBs> list = newsService.getNews();
     	PageInfo pageInfo = new PageInfo(list);
-	    	
+
 	    do {
 	    	for (XPWNewsMediaArticleWithBLOBs news : list) {
 	    		String content = news.getContent();
@@ -365,36 +381,36 @@ public class MainController {
 	    		news.setContent(content);
 	    		newsService.updateNews(news);
 	    	}
-	    	
+
 	    	pageNo++;
 	    	PageHelper.startPage(pageNo, PAGE_SIZE);
 	    	list = newsService.getNews();
     	} while (pageNo <= pageInfo.getPages());
-    	
+
 		return null;
-    	
+
     }
-    
-    
-    public String delHTMLTag(String htmlStr) {   
-        String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定义style的正则表达式   
-        String regEx_html="<[^>]+>"; //定义HTML标签的正则表达式   
-           
-        Pattern p_style=Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE);   
-        Matcher m_style=p_style.matcher(htmlStr);   
-        htmlStr = m_style.replaceAll(""); //过滤style标签   
-           
-        Pattern p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE);   
-        Matcher m_html = p_html.matcher(htmlStr);   
-        htmlStr = m_html.replaceAll(""); //过滤html标签   
-          
-        htmlStr = htmlStr.replace(" ","");  
-        htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n","");  
-        htmlStr = htmlStr.replace("“","");  
-        htmlStr = htmlStr.replace("”","");  
-        htmlStr = htmlStr.replaceAll("　","");  
-        htmlStr = htmlStr.replaceAll("&nbsp;"," ");  
-            
-        return htmlStr.trim(); //返回文本字符串  
+
+
+    public String delHTMLTag(String htmlStr) {
+        String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定义style的正则表达式
+        String regEx_html="<[^>]+>"; //定义HTML标签的正则表达式
+
+        Pattern p_style=Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE);
+        Matcher m_style=p_style.matcher(htmlStr);
+        htmlStr = m_style.replaceAll(""); //过滤style标签
+
+        Pattern p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE);
+        Matcher m_html = p_html.matcher(htmlStr);
+        htmlStr = m_html.replaceAll(""); //过滤html标签
+
+        htmlStr = htmlStr.replace(" ","");
+        htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n","");
+        htmlStr = htmlStr.replace("“","");
+        htmlStr = htmlStr.replace("”","");
+        htmlStr = htmlStr.replaceAll("　","");
+        htmlStr = htmlStr.replaceAll("&nbsp;"," ");
+
+        return htmlStr.trim(); //返回文本字符串
     }
 }
