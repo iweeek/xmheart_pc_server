@@ -236,7 +236,7 @@
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.fot12{left:-7px;}
 #EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:6px;}
+#EMChange a.fot16{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
@@ -274,7 +274,7 @@
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.fot12{left:-7px;}
 #EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:6px;}
+#EMChange a.fot16{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
@@ -596,7 +596,7 @@ a.blue{ background:#79a9b8;}
 
 #AreaDuty .visitList .title{width:100%; color:#666; height:103px; border-bottom:none;background:#FFF; margin:0; padding:0;font-size:14px;}
 #AreaDuty .visitList .title div{width:170px;height:103px;border-right:1px #e9e9e9 solid; padding-top:9px; line-height:22px; display:inline-block; float: left;}
-#AreaDuty .visitList .title .wide{ width:171px;}
+#AreaDuty .visitList .title .wide{ width:174px;}
 #AreaDuty .visitList .title em{ display:block; width:100%; padding-bottom:5px;}
 #AreaDuty .visitList .title span{height:43px;width:50%; display:inline-block; color:#fff; line-height:43px;}
 #AreaDuty .visitList .title span.green{ background:#6bcbca;}
@@ -825,4 +825,14 @@ a.blue{ background:#79a9b8;}
 	.media-wrapper .media-item .media-info-title { font-size: 20px; }
 	.media-wrapper .media-item .media-info-desc { font-size: 17px; }
 	.media-item .media-info .media-bottom { font-size: 17px; }
+	.doctorsBase .contents, .officesBase .contents { width: 1500px; }
+	.doctorsBase .contents ul li, .officesBase .contents ul li { width: 250px; }
+	.officesBase .contents .more { left: 20px; }
+	.officesBase .contents .doctor { right: 20px; }
+
+	.doctorRight {width: 1235px;}
+	.office { width: }
+	.PartBanner .bannerLeft { width: 1180px;}
+	.PartIntro .introRight { width: 1180px;}
+	.PartIntro .introRight .right { width: 950px; }
 }
