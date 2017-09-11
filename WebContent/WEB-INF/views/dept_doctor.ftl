@@ -94,8 +94,7 @@
           </#if>
           <div class="rightbottom"><a href="${dept.url}" class="more">MORE</a></div>
         </div>
-      </div>
-      <div class="clear"></div>
+     	<div class="clear"></div>
     </div>
     <!-- doctor -->
     <div id="AreaDoctors" class="BaseMark doctorsBase partDoctor">
