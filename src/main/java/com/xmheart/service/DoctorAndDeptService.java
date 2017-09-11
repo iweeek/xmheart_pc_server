@@ -5,7 +5,7 @@ import java.util.List;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
 
-public interface ExpertAndDeptService {
+public interface DoctorAndDeptService {
 
 	List<XPWDoctor> getDoctors();
 

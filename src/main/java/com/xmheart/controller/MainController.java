@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.management.modelmbean.ModelMBeanOperationInfo;
 import javax.print.attribute.standard.MediaSize.NA;
@@ -34,7 +36,7 @@ import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.ColumnService;
-import com.xmheart.service.ExpertAndDeptService;
+import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
@@ -51,9 +53,9 @@ public class MainController {
 
 	@Autowired
 	private NewsService newsService;
-	
+
 	@Autowired
-	private ExpertAndDeptService expertAndDeptService;
+	private DoctorAndDeptService doctorAndDeptService;
 
 	private final int PAGE_SIZE = 10;
 
@@ -65,7 +67,7 @@ public class MainController {
 
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
- 
+
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
 
     private Model addCommonHeader(Model model) {
@@ -77,7 +79,7 @@ public class MainController {
 
     	for (XPWColumn column : columnList) {
     		firstColumns.put(column.getColumnName(), column.getUrl());
-    		
+
     		List<XPWColumn> secColList = ColumnService.getChildColumnsById(column.getId());
     		if (secColList.size() > 0) {
     			columnMap.put(column.getColumnName(), secColList);
@@ -89,7 +91,7 @@ public class MainController {
     			navMap.put(column.getColumnName(), navList);
     		}
     	}
-    	
+
     	model.addAttribute("firstColumns", firstColumns);
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
@@ -253,25 +255,41 @@ public class MainController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ApiOperation(value = "电子院报列表页", notes = "电子院报列表页")
     @RequestMapping(value = { "/elecNewsPaper" }, method = RequestMethod.GET)
-    public String elecNewsPaper(Model model,@RequestParam(required = false) Integer page) {
-		
+    public String elecNewsPaper(Model model,
+    								@RequestParam(required = false) Integer page,
+    								@RequestParam(required = false) Integer itemIndex,
+    								@RequestParam(required = false) String year,
+    								@RequestParam(required = false) String time) {
+
 		if (page == null) {
 			page = new Integer(1);
 		}
-		
+
+		if (itemIndex == null) {
+			itemIndex = new Integer(0);
+		}
+
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
-    	
+
     	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 
     	PageHelper.startPage(page, PAGE_SIZE);
-    	
-	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
+
+	    List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, time);
 	    model.addAttribute("newsPaperList", list);
-	    
+
 		PageInfo pageInfo = new PageInfo(list);
     	model.addAttribute("pageInfo", pageInfo);
+
+    	List<String> years = newsService.getNewPaperYears();
+    	model.addAttribute("years", years);
+
+    	List<String> times = newsService.getNewsPaperTimes();
+    	model.addAttribute("times", times);
+
+    	model.addAttribute("itemIndex", itemIndex);
 
         return "news_paper";
     }
@@ -279,7 +297,7 @@ public class MainController {
    @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
     public String newsDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
-    	
+
     	model = addNewsHeader(model);
 
     	XPWNewsMediaArticle article = newsService.getNewsById(id);
@@ -288,47 +306,95 @@ public class MainController {
         return "news_detail";
 
     }
-    
+
     @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
     public String doctor(Model model) {
     	model = addCommonHeader(model);
     	
-    	List<XPWDoctor> experts = expertAndDeptService.getDoctors();
+    	List<XPWDoctor> experts = doctorAndDeptService.getDoctors();
     	model.addAttribute("experts", experts);
     	
-    	List<XPWDept> depts = expertAndDeptService.getDepts();
+    	List<XPWDept> depts = doctorAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
-    	
+
         return "doctor_dept";
     }
-    
+
     @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDoctor doctor = expertAndDeptService.getDoctorAndDeptById(id);
+    	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
 //    	model.addAttribute("dept", doctor.getDept());
         return "doctor_detail";
     }
-    
+
     @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
     public String deptDoctor(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
         return "dept_doctor";
     }
-    
+
     @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
     public String deptDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
 //    	model.addAttribute("dept", doctor.getDept());
         return "dept_detail";
     }
- 
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = { "/replaceCSS" }, method = RequestMethod.GET)
+    public ResponseEntity<?> replaceCSS() {
+    	
+    	int pageNo = 1;
+    	PageHelper.startPage(pageNo, PAGE_SIZE);
+    	List<XPWNewsMediaArticleWithBLOBs> list = newsService.getNews();
+    	PageInfo pageInfo = new PageInfo(list);
+	    	
+	    do {
+	    	for (XPWNewsMediaArticleWithBLOBs news : list) {
+	    		String content = news.getContent();
+	    		content = delHTMLTag(content);
+	    		news.setContent(content);
+	    		newsService.updateNews(news);
+	    	}
+	    	
+	    	pageNo++;
+	    	PageHelper.startPage(pageNo, PAGE_SIZE);
+	    	list = newsService.getNews();
+    	} while (pageNo <= pageInfo.getPages());
+    	
+		return null;
+    	
+    }
+    
+    
+    public String delHTMLTag(String htmlStr) {   
+        String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定义style的正则表达式   
+        String regEx_html="<[^>]+>"; //定义HTML标签的正则表达式   
+           
+        Pattern p_style=Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE);   
+        Matcher m_style=p_style.matcher(htmlStr);   
+        htmlStr = m_style.replaceAll(""); //过滤style标签   
+           
+        Pattern p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE);   
+        Matcher m_html = p_html.matcher(htmlStr);   
+        htmlStr = m_html.replaceAll(""); //过滤html标签   
+          
+        htmlStr = htmlStr.replace(" ","");  
+        htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n","");  
+        htmlStr = htmlStr.replace("“","");  
+        htmlStr = htmlStr.replace("”","");  
+        htmlStr = htmlStr.replaceAll("　","");  
+        htmlStr = htmlStr.replaceAll("&nbsp;"," ");  
+            
+        return htmlStr.trim(); //返回文本字符串  
+    }
 }

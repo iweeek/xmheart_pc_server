@@ -1,29 +1,8 @@
-<#include "./fragments/_header.ftl"> 
+<#include "./fragments/_header.ftl">
 	<!-- list container -->
 	<div class="list-container">
     <!-- banner -->
     <div class="BaseMark PartBanner">
-      <div class="introLeft">
-        <div class="lefttitle">科室栏目<span>Column sections</span></div>
-        <ul>
-          <li>
-            <a href="OfficeArticle-11.html">科室简介</a>
-          </li>
-          <li id="LIExpertInfo1">
-            <a href="expert-info.html">专家介绍</a>
-          </li>
-          <li>
-            <a href="OfficeNewsList-11-1.html" title="工作动态">工作动态</a>
-          </li>
-          <li>
-            <a href="OfficeNewsList-11-4.html" title="医疗设备">医疗设备</a>
-          </li>
-          <li>
-            <a href="OfficeNewsList-11-2.html" title="健康教育">健康教育</a>
-          </li>
-        </ul>
-        <div class="clear"></div>
-      </div>
       <div class="bannerLeft">
         <img src="${dept.imageUrl}" alt="${dept.name}">
         <span class="import1"></span>
@@ -60,21 +39,21 @@
         <div class="lefttitle">科室栏目<span>Column sections</span></div>
         <ul>
           <li>
-            <a href="office-info.html">科室简介</a>
+            <a href="office-info.html">缺乏栏目</a>
           </li>
           <li id="LIExpertInfo2">
-            <a href="expert-info.html">专家介绍</a>
+            <a href="expert-info.html">缺乏栏目</a>
           </li>
           <li>
-            <a href="OfficeNewsList-11-1.html" title="工作动态">工作动态</a>
+            <a href="OfficeNewsList-11-1.html" title="工作动态">缺乏栏目</a>
           </li>
           <li>
-            <a href="OfficeNewsList-11-4.html" title="医疗设备">医疗设备</a>
+            <a href="OfficeNewsList-11-4.html" title="医疗设备">缺乏栏目</a>
           </li>
         </ul>
         <ul class="margRt">
           <li>
-            <a href="OfficeNewsList-11-2.html" title="健康教育">健康教育</a>
+            <a href="OfficeNewsList-11-2.html" title="健康教育">缺乏栏目</a>
           </li>
         </ul>
         <div class="clear"></div>
@@ -185,114 +164,6 @@
           <div>星期一 <em>2017/7/31</em><span class="green">上午</span><span class="blue">下午</span></div>
           <div>星期二 <em>2017/8/1</em><span class="green">上午</span><span class="blue">下午</span></div>
         </div>
-        <!--<div class="namelist">
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-134.html">吴纪珍</a>
-            <a target="_blank" href="Doctor-111.html">陈卓昌</a>
-            <a target="_blank" href="Doctor-131.html">王凯</a>
-            <a target="_blank" href="Doctor-112.html">时军</a>
-            <a target="_blank" href="Doctor-893.html">况红艳</a>
-            <a target="_blank" href="Doctor-1128.html">汪铮</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-134.html">吴纪珍</a>
-            <a target="_blank" href="Doctor-131.html">王凯</a>
-            <a target="_blank" href="Doctor-112.html">时军</a>
-            <a target="_blank" href="Doctor-118.html">李英</a>
-            <a target="_blank" href="Doctor-1128.html">汪铮</a>
-            <a target="_blank" href="Doctor-893.html">况红艳</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-712.html">马利军</a>
-            <a target="_blank" href="Doctor-113.html">冯可青</a>
-            <a target="_blank" href="Doctor-119.html">张晓菊</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-            <a target="_blank" href="Doctor-716.html">刘红梅</a>
-            <a target="_blank" href="Doctor-126.html">潘金兵</a>
-            <a target="_blank" href="Doctor-122.html">丁娟娟</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-712.html">马利军</a>
-            <a target="_blank" href="Doctor-137.html">李玉光</a>
-            <a target="_blank" href="Doctor-143.html">齐咏</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-            <a target="_blank" href="Doctor-716.html">刘红梅</a>
-            <a target="_blank" href="Doctor-126.html">潘金兵</a>
-            <a target="_blank" href="Doctor-122.html">丁娟娟</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-134.html">吴纪珍</a>
-            <a target="_blank" href="Doctor-130.html">张罗献</a>
-            <a target="_blank" href="Doctor-117.html">钱皓瑜</a>
-            <a target="_blank" href="Doctor-143.html">齐咏</a>
-            <a target="_blank" href="Doctor-118.html">李英</a>
-            <a target="_blank" href="Doctor-116.html">郑素歌</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-134.html">吴纪珍</a>
-            <a target="_blank" href="Doctor-130.html">张罗献</a>
-            <a target="_blank" href="Doctor-117.html">钱皓瑜</a>
-            <a target="_blank" href="Doctor-143.html">齐咏</a>
-            <a target="_blank" href="Doctor-118.html">李英</a>
-            <a target="_blank" href="Doctor-126.html">潘金兵</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-131.html">王凯</a>
-            <a target="_blank" href="Doctor-138.html">马芸</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-131.html">王凯</a>
-            <a target="_blank" href="Doctor-138.html">马芸</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-712.html">马利军</a>
-            <a target="_blank" href="Doctor-113.html">冯可青</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-712.html">马利军</a>
-            <a target="_blank" href="Doctor-113.html">冯可青</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-141.html">赵丽敏</a>
-            <a target="_blank" href="Doctor-130.html">张罗献</a>
-            <a target="_blank" href="Doctor-137.html">李玉光</a>
-            <a target="_blank" href="Doctor-140.html">陈献亮</a>
-            <a target="_blank" href="Doctor-117.html">钱皓瑜</a>
-            <a target="_blank" href="Doctor-119.html">张晓菊</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-            <a target="_blank" href="Doctor-1114.html">李晓亮</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-141.html">赵丽敏</a>
-            <a target="_blank" href="Doctor-130.html">张罗献</a>
-            <a target="_blank" href="Doctor-137.html">李玉光</a>
-            <a target="_blank" href="Doctor-140.html">陈献亮</a>
-            <a target="_blank" href="Doctor-112.html">时军</a>
-            <a target="_blank" href="Doctor-119.html">张晓菊</a>
-            <a target="_blank" href="Doctor-115.html">唐学义</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-714.html">马厚志</a>
-            <a target="_blank" href="Doctor-111.html">陈卓昌</a>
-            <a target="_blank" href="Doctor-113.html">冯可青</a>
-            <a target="_blank" href="Doctor-143.html">齐咏</a>
-            <a target="_blank" href="Doctor-138.html">马芸</a>
-            <a target="_blank" href="Doctor-717.html">张晓宇</a>
-            <a target="_blank" href="Doctor-121.html">程东军</a>
-          </div>
-          <div class="list01" style="height: 344px;">
-            <a target="_blank" href="Doctor-714.html">马厚志</a>
-            <a target="_blank" href="Doctor-111.html">陈卓昌</a>
-            <a target="_blank" href="Doctor-113.html">冯可青</a>
-            <a target="_blank" href="Doctor-143.html">齐咏</a>
-            <a target="_blank" href="Doctor-138.html">马芸</a>
-            <a target="_blank" href="Doctor-717.html">张晓宇</a>
-            <a target="_blank" href="Doctor-121.html">程东军</a>
-          </div>
-          <div class="clear"></div>
-        </div>-->
       </div>
     </div>
 	</div>

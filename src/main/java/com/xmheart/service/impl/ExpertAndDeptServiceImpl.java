@@ -10,10 +10,10 @@ import com.xmheart.mapper.XPWDoctorMapper;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWDoctorExample;
-import com.xmheart.service.ExpertAndDeptService;
+import com.xmheart.service.DoctorAndDeptService;
 
 @Service
-public class ExpertAndDeptServiceImpl implements ExpertAndDeptService {
+public class ExpertAndDeptServiceImpl implements DoctorAndDeptService {
 	
 	@Autowired
 	private XPWDoctorMapper xpwDoctorMapper;

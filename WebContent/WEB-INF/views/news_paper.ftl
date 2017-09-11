@@ -21,17 +21,19 @@
 		</div>
 			<div class="baseRight news-paper">
 				<div class="title01">${pageName}</div>
-				<div class="title07">2017年第14期第1版
+				<div class="title07">${newsPaperList[itemIndex].title}
 					<form>
 						<select id="ddlYears2">
-							<option value="0">选择年份</option>
-							<option value="2017">2017年</option>
-							<option value="2016">2016年</option>
-							<option value="2015">2015年</option>
-							<option value="2014">2014年</option>
+							<option value="0" selected="selected">选择年份</option>
+							<#list years as year>
+								<option value=${year}>${year}年</option>
+							</#list>>
 						</select>
 						<select id="ddlTimes2">
-							<option value="0">选择期数</option>
+							<option value="0" selected="selected">选择期数</option>
+							<#list times as time>
+								<option value=${time}>${time}</option>
+							</#list>>
 						</select>
 						<input type="button" id="GoToNewspaper2" value="阅览">
 					</form>
@@ -43,10 +45,10 @@
 							<#list newsPaperList as key>
 							<#if key_index == 0>
 								<li class="first">
-								<#if key_index == pageInfo.pageNum>
-									<a class="active" href="?page=${key_index + 1}">${key_index + 1}
+								<#if key_index == itemIndex>
+									<a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								<#else>
-									<a href="?page=${key_index + 1}">${key_index + 1}
+									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								</#if>
 										<em class="animated">
 											<span class="title">${key.title}</span>
@@ -55,10 +57,10 @@
 								</li>
 							<#else>
 								<li >
-								<#if key_index == pageInfo.pageNum - 1>
-									<a class="active" href="?page=${key_index + 1}">${key_index + 1}
+								<#if key_index == itemIndex>
+									<a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								<#else>
-									<a href="?page=${key_index + 1}">${key_index + 1}
+									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								</#if>
 										<em class="animated">
 											<span class="title">${key.title}</span>
@@ -70,7 +72,7 @@
 						</ul>
 					</div>
 					<div class="instRright">
-						<#--  ${newsPaperList[].content}-->
+						${newsPaperList[itemIndex].content}
 					</div>
 					<div class="clear"></div>
 				</div>

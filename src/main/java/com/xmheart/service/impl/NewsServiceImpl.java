@@ -1,5 +1,6 @@
 package com.xmheart.service.impl;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,14 @@ import com.xmheart.mapper.XPWNewsMediaArticleMapper;
 import com.xmheart.model.XPWElecNewspager;
 import com.xmheart.model.XPWElecNewspagerExample;
 import com.xmheart.model.XPWElecNewspaper;
+import com.xmheart.model.XPWElecNewspaperExample;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleExample;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.NewsService;
+
+import io.swagger.annotations.Example;
+import io.swagger.annotations.ExampleProperty;
 
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -83,9 +88,39 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<XPWElecNewspaper> getElecNewsPaper() {
+	public List<XPWElecNewspaper> getElecNewsPaper(String year, String time) {
+		XPWElecNewspaperExample example = new XPWElecNewspaperExample();
+		if (year == null) {
+			
+		}
+		if (time == null) {
+			
+		}
 		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(null);
 		return list;
+	}
+
+	@Override
+	public List<String> getNewPaperYears() {
+		List<String> list = xpwElecNewspaperMapper.getNewsPaperYears();
+		return list;
+	}
+	
+	@Override
+	public List<XPWNewsMediaArticleWithBLOBs> getNews() {
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(null);
+		return list;
+	}
+
+	@Override
+	public List<String> getNewsPaperTimes() {
+		List<String> list = xpwElecNewspaperMapper.getNewsPaperTimes();
+		return list;
+	}
+		@Override
+	public int updateNews(XPWNewsMediaArticleWithBLOBs news) {
+		int ret = xpwNewsMediaArticleMapper.updateByPrimaryKeyWithBLOBs(news);
+		return ret;
 	}
 
 }
