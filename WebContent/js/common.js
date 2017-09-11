@@ -78,8 +78,8 @@ $(function(){
     paginationClickable :true,
     pagination: '.swiper-pagination'
   })
-  
-  //  详情页字体控制 
+
+  //  详情页字体控制
   $("#EMChange a").click(function(){
 	console.log(123)
 	$t=$(this);
@@ -97,4 +97,19 @@ $(function(){
 		$("#DIVContent").css({"font-size":"16px","line-height":"32px"});
 	}
   });
+
+  // 电子院报
+  var year = "";
+  var time = "";
+  $("#ddlYears2").change(function(){
+	  year = $(this).val();
+  });
+  $("#ddlTimes2").change(function(){
+	  time = $(this).val();
+  });
+  $("#GoToNewspaper2").on("click",function(){
+	  var str = "?page=1&itemIndex=0	&year=" + year + "&time=" + time ;
+	  location.href = str;
+  });
+
 })
