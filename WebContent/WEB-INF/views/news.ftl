@@ -2,13 +2,13 @@
 <!-- list container -->
 <div class="breadcrumb">
 	<div class="xm-container">
-		<a href="#">新闻中心</a><i>/</i><span>媒体聚焦</span>
+		<a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>
 	</div>
 </div>
 <div class="list-container">
 	<div class="list-main">
 		<div class="list-main-nav">
-			<h4 class="list-nav-title">新闻中心</h4>
+			<h4 class="list-nav-title">${parentColumnName}</h4>
 			<ul class="list-nav-list">
 			<#list listMainNav as k>
 				<#if k.columnName == columnName>
@@ -28,7 +28,7 @@
 						<div class="media-img"><img src="${key.imgUrl}" alt=""></div>
 						<div class="media-info">
 							<h4 class="media-info-title">${key.title}</h4>
-							<p class="media-info-desc">屡屡刷新厦门“心速度”之后，厦门市心血管病医院（厦门市心脏中心）在成...</p>
+							<p class="media-info-desc">内容摘要，暂时缺乏该字段</p>
 							<!-- <#if key.brief?length gt 20>
 								<p class="media-info-desc">${key.brief[0..20]}</p>
 							<#else>
@@ -67,6 +67,7 @@
 								<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.title}</a>
 								<!--<p>●7月6日，检验科举办了第二次“翻转课堂”，围绕影响生化结果的常见因素、降钙素原等话题进行了交流学习。 (检验科 朱亚）●7月6日，我院与太康县人民医院互联智慧分级诊疗远程云心电项目正式...</p>-->
 								<#if k.brief?length gt 100>
+									样式存在问题。
 									<p>${k.brief[0..100]}</p>
 								<#else>
 									<p>${k.brief}</p>

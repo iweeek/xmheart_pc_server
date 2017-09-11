@@ -105,11 +105,22 @@ public class NewsServiceImpl implements NewsService {
 		List<String> list = xpwElecNewspaperMapper.getNewsPaperYears();
 		return list;
 	}
+	
+	@Override
+	public List<XPWNewsMediaArticleWithBLOBs> getNews() {
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(null);
+		return list;
+	}
 
 	@Override
 	public List<String> getNewsPaperTimes() {
 		List<String> list = xpwElecNewspaperMapper.getNewsPaperTimes();
 		return list;
+	}
+		@Override
+	public int updateNews(XPWNewsMediaArticleWithBLOBs news) {
+		int ret = xpwNewsMediaArticleMapper.updateByPrimaryKeyWithBLOBs(news);
+		return ret;
 	}
 
 }
