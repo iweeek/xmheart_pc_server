@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.management.modelmbean.ModelMBeanOperationInfo;
 import javax.print.attribute.standard.MediaSize.NA;
@@ -34,7 +36,7 @@ import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNewsMediaArticle;
 import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 import com.xmheart.service.ColumnService;
-import com.xmheart.service.ExpertAndDeptService;
+import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
@@ -53,7 +55,7 @@ public class MainController {
 	private NewsService newsService;
 	
 	@Autowired
-	private ExpertAndDeptService expertAndDeptService;
+	private DoctorAndDeptService doctorAndDeptService;
 
 	private final int PAGE_SIZE = 10;
 
@@ -293,10 +295,10 @@ public class MainController {
     public String doctor(Model model) {
     	model = addCommonHeader(model);
     	
-    	List<XPWDoctor> experts = expertAndDeptService.getDoctors();
+    	List<XPWDoctor> experts = doctorAndDeptService.getDoctors();
     	model.addAttribute("experts", experts);
     	
-    	List<XPWDept> depts = expertAndDeptService.getDepts();
+    	List<XPWDept> depts = doctorAndDeptService.getDepts();
     	model.addAttribute("depts", depts);
     	
         return "doctor_dept";
@@ -306,7 +308,7 @@ public class MainController {
     public String doctorInfo(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDoctor doctor = expertAndDeptService.getDoctorAndDeptById(id);
+    	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
     	model.addAttribute("doctor", doctor);
 //    	model.addAttribute("dept", doctor.getDept());
         return "doctor_detail";
@@ -316,7 +318,7 @@ public class MainController {
     public String deptDoctor(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
         return "dept_doctor";
     }
@@ -325,10 +327,59 @@ public class MainController {
     public String deptDetail(@RequestParam Long id, Model model) {
     	model = addCommonHeader(model);
     	
-    	XPWDept dept = expertAndDeptService.getDeptAndDoctorsById(id);
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
     	model.addAttribute("dept", dept);
 //    	model.addAttribute("dept", doctor.getDept());
         return "dept_detail";
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = { "/replaceCSS" }, method = RequestMethod.GET)
+    public ResponseEntity<?> replaceCSS() {
+    	
+    	int pageNo = 1;
+    	PageHelper.startPage(pageNo, PAGE_SIZE);
+    	List<XPWNewsMediaArticleWithBLOBs> list = newsService.getNews();
+    	PageInfo pageInfo = new PageInfo(list);
+	    	
+	    do {
+	    	for (XPWNewsMediaArticleWithBLOBs news : list) {
+	    		String content = news.getContent();
+	    		content = delHTMLTag(content);
+	    		news.setContent(content);
+	    		newsService.updateNews(news);
+	    	}
+	    	
+	    	pageNo++;
+	    	PageHelper.startPage(pageNo, PAGE_SIZE);
+	    	list = newsService.getNews();
+    	} while (pageNo <= pageInfo.getPages());
+    	
+		return null;
+    	
+    }
+    
+    
+    public String delHTMLTag(String htmlStr){   
+        String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定义style的正则表达式   
+        String regEx_html="<[^>]+>"; //定义HTML标签的正则表达式   
+           
+        Pattern p_style=Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE);   
+        Matcher m_style=p_style.matcher(htmlStr);   
+        htmlStr = m_style.replaceAll(""); //过滤style标签   
+           
+        Pattern p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE);   
+        Matcher m_html = p_html.matcher(htmlStr);   
+        htmlStr = m_html.replaceAll(""); //过滤html标签   
+          
+        htmlStr = htmlStr.replace(" ","");  
+        htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n","");  
+        htmlStr = htmlStr.replace("“","");  
+        htmlStr = htmlStr.replace("”","");  
+        htmlStr = htmlStr.replaceAll("　","");  
+        htmlStr = htmlStr.replaceAll("&nbsp;"," ");  
+            
+        return htmlStr.trim(); //返回文本字符串  
     }
  
 }

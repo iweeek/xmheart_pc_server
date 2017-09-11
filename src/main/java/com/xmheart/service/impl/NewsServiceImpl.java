@@ -88,4 +88,16 @@ public class NewsServiceImpl implements NewsService {
 		return list;
 	}
 
+	@Override
+	public List<XPWNewsMediaArticleWithBLOBs> getNews() {
+		List<XPWNewsMediaArticleWithBLOBs> list = xpwNewsMediaArticleMapper.selectByExampleWithBLOBs(null);
+		return list;
+	}
+
+	@Override
+	public int updateNews(XPWNewsMediaArticleWithBLOBs news) {
+		int ret = xpwNewsMediaArticleMapper.updateByPrimaryKeyWithBLOBs(news);
+		return ret;
+	}
+
 }

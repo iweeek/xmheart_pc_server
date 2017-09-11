@@ -21,4 +21,8 @@ public interface NewsService {
 	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
 
 	List<XPWElecNewspaper> getElecNewsPaper();
+
+	List<XPWNewsMediaArticleWithBLOBs> getNews();
+
+	int updateNews(XPWNewsMediaArticleWithBLOBs news);
 }
