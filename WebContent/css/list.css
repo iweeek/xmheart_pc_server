@@ -236,7 +236,7 @@
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.fot12{left:-7px;}
 #EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:6px;}
+#EMChange a.fot16{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
@@ -274,7 +274,7 @@
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.fot12{left:-7px;}
 #EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:6px;}
+#EMChange a.fot16{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
