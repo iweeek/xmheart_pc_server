@@ -150,9 +150,9 @@
 /*banner end*/
 @media all and (min-width:1px) and (max-width:1441px){
 	.xm-banner-slide {
-		width: 800px;
+		width: 945px;
 		overflow: hidden;
-		height: 400px;
+		height: 450px;
 	}
 	.xm-banner-slide .swiper-container {
 		width: 800px;
