@@ -789,7 +789,7 @@ a.blue{ background:#79a9b8;}
 	margin-right: 9px;
 }
 @media all and (min-width:1px) and (max-width:1441px){
-	.list-mian-nav {
+	.list-main-nav {
 		width: 230px;
 	}
 	.list-nav-list li.active a, .list2-nav-list li a:hover {
@@ -807,7 +807,7 @@ a.blue{ background:#79a9b8;}
 
 }
 @media all and (min-width:1441px) and (max-width:1920px){
-	.list-mian-nav {
+	.list-main-nav {
 		width: 305px;
 	}
 	.list-nav-list li.active a, .list2-nav-list li a:hover {

@@ -111,5 +111,34 @@ $(function(){
 	  var str = "?page=1&itemIndex=0	&year=" + year + "&time=" + time ;
 	  location.href = str;
   });
+  
+  $('#ddlYears2').change(function(){
+    var selectVal = $(this).val();
+    if (selectVal !== 0) {
+      ajaxTimes(selectVal);
+    }else {
+      $('#ddlTimes2').html('');
+      var html = '<option value="0">选择期数</option>';
+      $('#ddlTimes2').html(html);
+    }
+  })
 
+  function ajaxTimes(val) {
+    $.ajax({
+      url: 'getTimes',
+      type: 'GET',
+      dataType: 'json',
+      data: {year: val},
+    })
+    .done(function(data) {
+      $('#ddlTimes2').html('');
+      var html = '<option value="0">选择期数</option>';
+      for (var i = 0; i< data.length; i++) {
+        html += '<option value = "' + data[i] + '">' + data[i] + '期</option>'
+      }
+      $('#ddlTimes2').html(html);
+    })
+  }
+
+  
 })
