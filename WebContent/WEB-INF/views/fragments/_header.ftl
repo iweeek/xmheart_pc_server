@@ -31,8 +31,7 @@
 				</div>
 			</div>
 		</div>
-		
-		<div style="height: 44px;">
+		<div style="height:60px;">
 			<div class="xm-nav">
 				<div class="xm-nav-container">
 					<#-- <a href="#" class="xm-nav-brand">首页</a> -->
