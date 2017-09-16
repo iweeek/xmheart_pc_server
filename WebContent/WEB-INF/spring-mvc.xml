@@ -34,7 +34,11 @@
 	<!-- 配置使用注解的包 -->
 	<context:component-scan base-package="com.xmheart.*" />
 
-	<mvc:resources mapping="/*" location="/" />
+	<!-- 配置静态资源 -->
+	<mvc:resources mapping="/**" location="/" />
+	<!-- <mvc:resources mapping="/css/**" location="/css" />
+	<mvc:resources mapping="/**" location="/js" />
+	<mvc:resources mapping="/**" location="/images" /> -->
 	
 <!-- 	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 	    <property name="resourceLoaderPath">
