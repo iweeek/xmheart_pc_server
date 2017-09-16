@@ -13,4 +13,9 @@ public interface ColumnService {
 
 	List<XPWNav> getChildNavsById(long id);
 
+	List<XPWNav> getChildNavsByTitle(String title);
+
+	int createNav(XPWNav nav);
+
+	int updateNav(XPWNav nav);
 }

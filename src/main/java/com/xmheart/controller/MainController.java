@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.sql.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -413,4 +414,88 @@ public class MainController {
 
         return htmlStr.trim(); //返回文本字符串
     }
+
+    @ApiOperation(value = "获取一级栏目", notes = "")
+	@RequestMapping(value = { "/column/first" }, method = RequestMethod.GET)
+	public ResponseEntity<?> getFirstColumns() {
+    		List<XPWColumn> columnList = ColumnService.getFirstColumns();
+
+		return ResponseEntity.ok().body(columnList);
+	}
+
+    @ApiOperation(value = "获取二级栏目", notes = "")
+	@RequestMapping(value = { "/column/second" }, method = RequestMethod.GET)
+	public ResponseEntity<?> getColumnOneLevel(@ApiParam("父级id")
+											   @RequestParam long id) {
+    		List<XPWColumn> columnList = ColumnService.getChildColumnsById(id);
+
+		return ResponseEntity.ok(columnList);
+	}
+
+    @ApiOperation(value = "获取Nav", notes = "根据title获取Nav")
+   	@RequestMapping(value = { "/column" }, method = RequestMethod.GET)
+   	public ResponseEntity<?> getChildNavsByTitle(@ApiParam("title")
+   											     @RequestParam String title) {
+       	List<XPWNav> columnList = ColumnService.getChildNavsByTitle(title);
+
+   		return ResponseEntity.ok(columnList);
+   	}
+
+    @ApiOperation(value = "添加nav", notes = "")
+   	@RequestMapping(value = { "/navs" }, method = RequestMethod.POST)
+   	public ResponseEntity<?> createNav(@ApiParam("一级栏目id")
+									   @RequestParam Long columnId,
+									   @ApiParam("一级栏目名称")
+									   @RequestParam String columnName,
+									   @ApiParam("二级栏目名称")
+									   @RequestParam String childColumnName,
+									   @ApiParam("文章标题")
+									   @RequestParam String articleTitle,
+									   @ApiParam("url")
+									   @RequestParam String url,
+									   @ApiParam("图片url")
+									   @RequestParam String imgUrl) {
+    		XPWNav nav = new XPWNav();
+    		nav.setColumnId(columnId);
+    		nav.setColumnName(childColumnName);
+    		nav.setChildColumnName(childColumnName);
+    		nav.setArticleTitle(articleTitle);
+    		nav.setUrl(url);
+    		nav.setImgUrl(imgUrl);
+    		nav.setPublishTime(new java.util.Date());
+
+       	int result = ColumnService.createNav(nav);
+   		return ResponseEntity.status(result).body(null);
+   	}
+
+    @ApiOperation(value = "修改nav", notes = "根据指定id修改nav")
+   	@RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
+   	public ResponseEntity<?> updateNav(@ApiParam("唯一主键id")
+	   								   @RequestParam Long id,
+	   								   @ApiParam("一级栏目id")
+									   @RequestParam Long columnId,
+									   @ApiParam("一级栏目名称")
+									   @RequestParam String columnName,
+									   @ApiParam("二级栏目名称")
+									   @RequestParam String childColumnName,
+									   @ApiParam("文章标题")
+									   @RequestParam String articleTitle,
+									   @ApiParam("url")
+									   @RequestParam String url,
+									   @ApiParam("图片url")
+									   @RequestParam String imgUrl) {
+    		XPWNav nav = new XPWNav();
+    		nav.setId(id);
+    		nav.setColumnId(columnId);
+    		nav.setColumnName(childColumnName);
+    		nav.setChildColumnName(childColumnName);
+    		nav.setArticleTitle(articleTitle);
+    		nav.setUrl(url);
+    		nav.setImgUrl(imgUrl);
+    		nav.setPublishTime(new java.util.Date());
+
+       	int result = ColumnService.updateNav(nav);
+   		return ResponseEntity.status(result).body(null);
+   	}
+
 }

@@ -2,6 +2,8 @@ package com.xmheart.service.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,11 @@ import com.xmheart.service.ColumnService;
 
 @Service
 public class ColumnServiceImpl implements ColumnService {
-	
-	@Autowired 
+
+	@Autowired
 	private XPWColumnMapper xpwColumnMapper;
-	
-	@Autowired 
+
+	@Autowired
 	private XPWNavMapper xpwNavMapper;
 
 	@Override
@@ -44,6 +46,45 @@ public class ColumnServiceImpl implements ColumnService {
 		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
 		return list;
+	}
+
+	@Override
+	public List<XPWNav> getChildNavsByTitle(String title) {
+		List<XPWNav> list = xpwNavMapper.getColumnByTitle(title);
+		return list;
+	}
+
+	@Override
+	public int createNav(XPWNav nav) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria()
+			   .andChildColumnNameEqualTo(nav.getChildColumnName())
+			   .andArticleTitleEqualTo(nav.getArticleTitle());
+		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		if (list.size() > 0) {
+			// 已经存在
+			return HttpServletResponse.SC_CONFLICT;
+		} else {
+			int result = xpwNavMapper.insertSelective(nav);
+			if (result > 0) {
+				return HttpServletResponse.SC_OK;
+			} else {
+				return HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+			}
+		}
+	}
+
+	@Override
+	public int updateNav(XPWNav nav) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andIdEqualTo(nav.getId());
+		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		if (list.size() > 0) {
+			xpwNavMapper.updateByPrimaryKeySelective(nav);
+			return HttpServletResponse.SC_OK;
+		} else {
+			return HttpServletResponse.SC_NOT_FOUND;
+		}
 	}
 
 }

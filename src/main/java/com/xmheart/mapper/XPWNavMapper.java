@@ -95,4 +95,7 @@ public interface XPWNavMapper {
 			"created_time = #{createdTime,jdbcType=TIMESTAMP},", "updated_time = #{updatedTime,jdbcType=TIMESTAMP}",
 			"where id = #{id,jdbcType=BIGINT}" })
 	int updateByPrimaryKey(XPWNav record);
+
+	@Select("SELECT * FROM xpw_nav WHERE article_title LIKE '%${title}%'")
+	List<XPWNav> getColumnByTitle(@Param("title") String title);
 }
