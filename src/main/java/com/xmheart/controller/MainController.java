@@ -3,6 +3,7 @@ package com.xmheart.controller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
 import javax.management.modelmbean.ModelMBeanOperationInfo;
 import javax.print.attribute.standard.MediaSize.NA;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.ObjectUtils.Null;
 import org.omg.PortableServer.POAPackage.WrongAdapter;
@@ -24,10 +26,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xmheart.util.FileUtil;
+import com.xmheart.util.PathUtil;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
@@ -390,6 +395,36 @@ public class MainController {
 		return null;
 
     }
+    
+	@RequestMapping(value = { "/uploadImage" }, method = RequestMethod.GET)
+    public ResponseEntity<?> uploadImage(@ApiParam("图片") @RequestParam MultipartFile image) {
+    	String imagePath = "";
+    	String imageUrl = "";
+    	try {
+			imagePath = FileUtil.uploadImage(PathUtil.IMG_STORAGE_PATH, image);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+    	
+    	imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
+		return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
+    }   
+	
+//	@RequestMapping(value = { "/uploadImage" }, method = RequestMethod.GET)
+//    public ResponseEntity<?> uploadImage(@ApiParam("图片") @RequestParam MultipartFile image) {
+//    	String imagePath = "";
+//    	String imageUrl = "";
+//    	try {
+//			imagePath = FileUtil.uploadImage(PathUtil.IMG_STORAGE_PATH, image);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//    	
+//    	imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
+//		return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
+//    }  
 
 
     public String delHTMLTag(String htmlStr) {
