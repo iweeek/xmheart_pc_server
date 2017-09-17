@@ -11,18 +11,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.management.modelmbean.ModelMBeanOperationInfo;
-import javax.print.attribute.standard.MediaSize.NA;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.ObjectUtils.Null;
-import org.omg.PortableServer.POAPackage.WrongAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,13 +28,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.util.FileUtil;
 import com.xmheart.util.PathUtil;
+import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNav;
-import com.xmheart.model.XPWNewsMediaArticle;
-import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
+import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.NewsService;
@@ -157,11 +152,11 @@ public class MainController {
     	model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
 
     	//获取置顶的新闻
-    	List<XPWNewsMediaArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
+    	List<XPWArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
 
 		PageHelper.startPage(page, PAGE_SIZE);
-    	List<XPWNewsMediaArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
+    	List<XPWArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
 
     	PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
@@ -180,11 +175,11 @@ public class MainController {
     	model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
 
     	//获取置顶的新闻
-    	List<XPWNewsMediaArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
+    	List<XPWArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
     	model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
 
 		PageHelper.startPage(page, PAGE_SIZE);
-    	List<XPWNewsMediaArticleWithBLOBs> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+    	List<XPWArticleWithBLOBs> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
     	model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
 
     	PageInfo pageInfo = new PageInfo(noPinnedNewsList);
@@ -192,11 +187,10 @@ public class MainController {
 
         return "news";
     }
-
+    
     /**
 	* 影像厦心列表页
 	*/
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
     @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
     public String videoNews(Model model,@RequestParam(required = false) Integer page) {
@@ -227,23 +221,22 @@ public class MainController {
 	 /**
 		* 影像厦心详情页
 		*/
-		@SuppressWarnings({ "rawtypes", "unchecked" })
-		@ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
-	    @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
-	    public String videoNewsDetail(Model model,@RequestParam(required = false) Integer page) {
+	@ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
+    @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
+    public String videoNewsDetail(Model model,@RequestParam(required = false) Integer page) {
 
-			if (page == null) {
-				page = new Integer(1);
-			}
+		if (page == null) {
+			page = new Integer(1);
+		}
 
-	    	model = addCommonHeader(model);
+    	model = addCommonHeader(model);
 
-	    	model = addNewsHeader(model);
+    	model = addNewsHeader(model);
 
-	    	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
+    	model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
 
 //	    	model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-	//
+//
 //	    	PageHelper.startPage(page, PAGE_SIZE);
 //
 //		    List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
@@ -252,8 +245,8 @@ public class MainController {
 //			PageInfo pageInfo = new PageInfo(list);
 //	    	model.addAttribute("pageInfo", pageInfo);
 
-	        return "video_img_detail";
-	    }
+        return "video_img_detail";
+    }
 
 	/**
 	* 电子院报列表页
@@ -321,7 +314,7 @@ public class MainController {
 
     	model = addNewsHeader(model);
 
-    	XPWNewsMediaArticle article = newsService.getNewsById(id);
+    	XPWArticle article = newsService.getNewsById(id);
     	model.addAttribute("article", article);
 
         return "news_detail";
@@ -376,11 +369,11 @@ public class MainController {
 
     	int pageNo = 1;
     	PageHelper.startPage(pageNo, PAGE_SIZE);
-    	List<XPWNewsMediaArticleWithBLOBs> list = newsService.getNews();
+    	List<XPWArticleWithBLOBs> list = newsService.getNews();
     	PageInfo pageInfo = new PageInfo(list);
 
 	    do {
-	    	for (XPWNewsMediaArticleWithBLOBs news : list) {
+	    	for (XPWArticleWithBLOBs news : list) {
 	    		String content = news.getContent();
 	    		content = delHTMLTag(content);
 	    		news.setContent(content);

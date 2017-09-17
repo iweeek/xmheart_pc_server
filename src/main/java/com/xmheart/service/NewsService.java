@@ -2,23 +2,23 @@ package com.xmheart.service;
 
 import java.util.List;
 
+import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.model.XPWElecNewspaper;
-import com.xmheart.model.XPWNewsMediaArticle;
-import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 
 public interface NewsService {
 
-	List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews();
+	List<XPWArticleWithBLOBs> getPinnedMediaNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews();
+	List<XPWArticleWithBLOBs> getNoPinnedMediaNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews();
+	List<XPWArticleWithBLOBs> getPinnedHospitalNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews();
+	List<XPWArticleWithBLOBs> getNoPinnedHospitalNews();
 
-	XPWNewsMediaArticle getNewsByTitle(String title);
+	XPWArticle getNewsByTitle(String title);
 
-	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
+	XPWArticleWithBLOBs getNewsById(Long id);
 
 	List<XPWElecNewspaper> getElecNewsPaper(String year, String time);
 
@@ -26,8 +26,8 @@ public interface NewsService {
 
 	List<String> getNewsPaperTimes(String year);
 
-	List<XPWNewsMediaArticleWithBLOBs> getNews();
+	List<XPWArticleWithBLOBs> getNews();
 
-	int updateNews(XPWNewsMediaArticleWithBLOBs news);
+	int updateNews(XPWArticleWithBLOBs news);
 
 }
