@@ -9,6 +9,8 @@
 	
 	String rootPath = application.getRealPath( "/" );
 	
+	System.out.println("rootPath:" + rootPath);
+	
 	out.write( new ActionEnter( request, rootPath ).exec() );
 	
 %>
