@@ -4,7 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="renderer" content="webkit">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>厦门心脏医院</title>
+		<title>厦门大学附属心血管病医院（厦门市心脏中心）</title>
 		<link rel="stylesheet" href="./css/reset.css">
 		<link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
 		<link rel="stylesheet" href="./css/layout.css">
