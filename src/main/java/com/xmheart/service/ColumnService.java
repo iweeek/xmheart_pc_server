@@ -13,6 +13,8 @@ public interface ColumnService {
 
 	List<XPWNav> getChildNavsById(long id);
 
+	List<XPWNav> getNavListBySecondColumnName(String name);
+
 	List<XPWNav> getChildNavsByTitle(String title);
 
 	int createNav(XPWNav nav);

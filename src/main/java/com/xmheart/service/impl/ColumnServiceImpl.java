@@ -49,6 +49,14 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
+	public List<XPWNav> getNavListBySecondColumnName(String name) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andChildColumnNameEqualTo(name);
+		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		return list;
+	}
+
+	@Override
 	public List<XPWNav> getChildNavsByTitle(String title) {
 		List<XPWNav> list = xpwNavMapper.getColumnByTitle(title);
 		return list;
@@ -86,5 +94,4 @@ public class ColumnServiceImpl implements ColumnService {
 			return HttpServletResponse.SC_NOT_FOUND;
 		}
 	}
-
 }
