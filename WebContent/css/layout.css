@@ -92,7 +92,7 @@
 	position: fixed;
 	left: 0;
 	top: 0;
-	z-index: 100;
+	z-index: 1000;
 	background: rgba(15,118,195,0.8);
 }
 .xm-nav-container {
@@ -237,10 +237,17 @@ div.BottomHidden{width:100%; height:38px;}
 /* 悬浮框 */
 /* breadcrumb start */
 .breadcrumb {
-	height: 70px;
-	line-height: 70px;
-	font-size: 20px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
 	color: #999999;
+}
+.breadcrumb .icon {
+	display: block;
+	width: 20px;
+	height: 40px;
+	float: left;
+	background: url('../img/layout/bread_ico.png') no-repeat left center;
 }
 .breadcrumb span {
 	color: #656565;
