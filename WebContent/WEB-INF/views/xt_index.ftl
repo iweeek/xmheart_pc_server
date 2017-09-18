@@ -30,12 +30,12 @@
             </div>
           </li>
           <li class="first">
-            <a href="NewsDetail-449.html" target="_blank" class="firstA"><em>示范中心</em><i class="style02"></i><span></span></a>
+            <a href="" target="_blank" class="firstA"><em>示范中心</em><i class="style02"></i><span></span></a>
             <div class="QMSub QMSubMenus" style="top: -73px; display: none;">
               <ul>
-                <li><a href="NewsDetail-449.html">申请流程<span>进入</span></a></li>
-                <li><a href="NewsDetail-449.html">注意事项<span>进入</span></a></li>
-                <li><a href="NewsDetail-449.html">申请表下载<span>进入</span></a></li>
+                <li><a href="">申请流程<span>进入</span></a></li>
+                <li><a href="">注意事项<span>进入</span></a></li>
+                <li><a href="">申请表下载<span>进入</span></a></li>
               </ul>
               <div class="clear"></div>
             </div>
@@ -66,75 +66,57 @@
       </div>
     </div>
     <div class="NewsBase BaseMark">
-      <div class="tools">
-        <a href="http://www.o2omed.com.cn/" target="_blank">
-          <img src="images/ico_001.gif" class="load" width="52" height="52" original="images/ico_001.gif">
-          <em>互联智慧分诊平台</em>
-        </a>
-        <a href="96195.html">
-          <img src="images/ico_002.gif" class="load" width="52" height="52" original="images/ico_002.gif">
-          <em><span>96195</span>综合平台</em>
-        </a>
-        <a href="Hospital.html">
-          <img alt="" src="images/ico_003.gif" class="load" width="52" height="52" original="images/ico_003.gif" style="display: block;">
-          <em>名医馆</em>
-        </a>
-        <a href="DrugsInfo.html" class="last">
-          <img src="images/ico_004.gif" class="load" width="52" height="52" original="images/ico_004.gif" style="display: block;">
-          <em>信息查询</em>
-        </a>
-      </div>
       <div class="noticeBase">
         <div class="notice notice01">
           <a href="XTindex-list.html" class="more">更多</a>
           <div class="title"><em>最新公告</em><span>Latest Announcement</span></div>
           <div class="first">
-            <a href="NewsDetail-8958.html" id="ANoticeFirst" target="_blank" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表">
+            <a href="" id="ANoticeFirst" target="_blank" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表">
               <img src="images/pic_005.jpg" class="load" width="126" height="76" original="images/pic_005.jpg" style="display: block;"></a>
               <div>
                 <span>2017-07-21</span>
-                <a href="NewsDetail-8958.html" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表" target="_blank">2017年7月29日（周六）、7月30日（周日）出诊医师排班表</a>
+                <a href="" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表" target="_blank">2017年7月29日（周六）、7月30日（周日）出诊医师排班表</a>
               </div>
               <div class="clear"></div>
           </div>
           <ul>
             <li>
               <span>2017-07-14</span>
-              <a target="_blank" href="NewsDetail-8952.html" title="2017年7月22日（周六）、7月23日（周日）出诊医师排班表">2017年7月22日（周六）、7月23日（周日）出诊医师排班表</a>
+              <a target="_blank" href="" title="2017年7月22日（周六）、7月23日（周日）出诊医师排班表">2017年7月22日（周六）、7月23日（周日）出诊医师排班表</a>
             </li>
             <li>
               <span>2017-07-07</span>
-              <a target="_blank" href="NewsDetail-8933.html" title="2017年7月15日（周六）、7月16日（周日）出诊医师排班表">2017年7月15日（周六）、7月16日（周日）出诊医师排班表</a>
+              <a target="_blank" href="" title="2017年7月15日（周六）、7月16日（周日）出诊医师排班表">2017年7月15日（周六）、7月16日（周日）出诊医师排班表</a>
             </li>
             <li>
               <span>2017-07-01</span>
-              <a target="_blank" href="NewsDetail-8900.html" title="2017年7月8日（周六）、7月9日（周日）出诊医师排班表">2017年7月8日（周六）、7月9日（周日）出诊医师排班表</a>
+              <a target="_blank" href="" title="2017年7月8日（周六）、7月9日（周日）出诊医师排班表">2017年7月8日（周六）、7月9日（周日）出诊医师排班表</a>
             </li>
           </ul>
         </div>
         <div class="notice notice02">
           <a href="XTindex-list.html" class="more">更多</a>
-          <div class="title"><em>省医快讯</em><span>Hospital News</span></div>
+          <div class="title"><em>快讯</em><span>Hospital News</span></div>
           <div class="first">
-            <a href="NewsDetail-8972.html" id="ANewsFirst" target="_blank" title="综合简讯"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
+            <a href="" id="ANewsFirst" target="_blank" title="综合简讯"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
             <div>
               <span>2017-07-25</span>
-              <a href="NewsDetail-8972.html" title="综合简讯" target="_blank">综合简讯</a>
+              <a href="" title="综合简讯" target="_blank">综合简讯</a>
             </div>
             <div class="clear"></div>
           </div>
           <ul>
             <li>
               <span>2017-07-25</span>
-              <a target="_blank" href="NewsDetail-8971.html" title="学界动态">学界动态</a>
+              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
             </li>
             <li>
               <span>2017-07-25</span>
-              <a target="_blank" href="NewsDetail-8970.html" title="王思勤荣获全国对口支援新疆先进个人称号">王思勤荣获全国对口支援新疆先进个人称号</a>
+              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
             </li>
             <li>
               <span>2017-07-25</span>
-              <a target="_blank" href="NewsDetail-8969.html" title="争当先锋模范 筑牢战斗堡垒 我院一批基层党组织和共产党员获上级表彰">争当先锋模范 筑牢战斗堡垒 我院一批基层党组织和共产党员获上级表彰</a>
+              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
             </li>
           </ul>
         </div>
