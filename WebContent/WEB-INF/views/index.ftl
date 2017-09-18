@@ -45,7 +45,7 @@
 		<div class="xm-container">
 			<div class="xm-banner-list xm-list1">
 				<div class="list-info">
-					<h3 class="list-info-title">胸痛中心</h3>
+					<h3 class="list-info-title"><a href="xtIndex" target="_blank">胸痛中心</a></h3>
 					<p class="list-info-desc">迅速定位您的问题</p>
 				</div>
 			</div>

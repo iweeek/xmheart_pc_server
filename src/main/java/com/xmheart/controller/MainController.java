@@ -352,6 +352,13 @@ public class MainController {
     	model.addAttribute("dept", dept);
         return "dept_doctor";
     }
+    
+    @RequestMapping(value = { "/xtIndex" }, method = RequestMethod.GET)
+    public String xtIndex(Model model) {
+    	model = addCommonHeader(model);
+    	
+        return "xt_index";
+    }
 
     @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
     public String deptDetail(@RequestParam Long id, Model model) {
