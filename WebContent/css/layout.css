@@ -148,6 +148,13 @@
 .xm-navbar-nav .xm-navbar-item .xm-navbar-item-info:hover i {
 	display: block;
 }
+.xm-navbar-nav .active .xm-navbar-item-info {
+	color: #fff;
+	background: #0690f7;
+}
+.xm-navbar-nav .active .xm-navbar-item-info i {
+	display: block;
+}
 /*nav end*/
 /* 悬浮框 */
 .BaseMark{ margin:0px auto; position:relative;}
