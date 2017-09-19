@@ -40,15 +40,6 @@ $(function(){
 
   // 专家轮播
   var swiper = new Swiper('#expertSwiper', {
-    slidesPerView: 5,
-    paginationClickable: true,
-    spaceBetween: 0,
-    freeMode: true,
-    prevButton:'.doctorsBase .Aprev',
-    nextButton:'.doctorsBase .Anext',
-  });
-  // 科室轮播
-  var swiper = new Swiper('#officeSwiper', {
     slidesPerView: 4,
     paginationClickable: true,
     spaceBetween: 0,
@@ -56,6 +47,21 @@ $(function(){
     prevButton:'.officesBase .Aprev',
     nextButton:'.officesBase .Anext',
   });
+
+  $('#expertSwiper li').hover(function(){
+    $(this).find('.doctorDialog').show()
+  },function(){
+    $(this).find('.doctorDialog').hide()
+  });
+  // 科室轮播
+  // var swiper = new Swiper('#officeSwiper', {
+  //   slidesPerView: 4,
+  //   paginationClickable: true,
+  //   spaceBetween: 0,
+  //   freeMode: true,
+  //   prevButton:'.officesBase .Aprev',
+  //   nextButton:'.officesBase .Anext',
+  // });
 
   // 胸痛中心
   $(".quickMenus li.first").hover(function(){
@@ -111,7 +117,7 @@ $(function(){
 	  var str = "?page=1&itemIndex=0	&year=" + year + "&time=" + time ;
 	  location.href = str;
   });
-  
+
   $('#ddlYears2').change(function(){
     var selectVal = $(this).val();
     if (selectVal !== 0) {
@@ -140,5 +146,5 @@ $(function(){
     })
   }
 
-  
+
 })
