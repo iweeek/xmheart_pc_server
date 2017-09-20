@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	<div class="list-container">
-		<div class="list-main">
+		<div class="list-doctor-main">
 			<!-- office-doctor start-->
 			<div class="officesBase BaseMark">
         <div class="toolsBase">
