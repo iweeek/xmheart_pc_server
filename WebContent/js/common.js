@@ -87,21 +87,20 @@ $(function(){
 
   //  详情页字体控制
   $("#EMChange a").click(function(){
-	console.log(123)
-	$t=$(this);
-	if($t.data("type")=="0"){
-		$("#EMChange img").stop().animate({"left":"-5px"},288);
-		$("#FontState").text("12px");
-		$("#DIVContent").css({"font-size":"12px","line-height":"24px"});
-	}else if($t.data("type")=="1"){
-	$("#EMChange img").stop().animate({"left":"40px"},288);
-	$("#FontState").text("14px");
-	$("#DIVContent").css({"font-size":"14px","line-height":"28px"});
-	}else{
-		$("#EMChange img").stop().animate({"left":"86px"},288);
-		$("#FontState").text("16px");
-		$("#DIVContent").css({"font-size":"16px","line-height":"32px"});
-	}
+  	$t=$(this);
+  	if($t.data("type")=="0"){
+  		$("#EMChange img").stop().animate({"left":"-5px"},288);
+  		$("#FontState").text("12px");
+  		$("#DIVContent").css({"font-size":"12px","line-height":"24px"});
+  	}else if($t.data("type")=="1"){
+    	$("#EMChange img").stop().animate({"left":"40px"},288);
+    	$("#FontState").text("14px");
+    	$("#DIVContent").css({"font-size":"14px","line-height":"28px"});
+  	}else{
+  		$("#EMChange img").stop().animate({"left":"86px"},288);
+  		$("#FontState").text("16px");
+  		$("#DIVContent").css({"font-size":"16px","line-height":"32px"});
+  	}
   });
 
   // 电子院报
@@ -145,6 +144,4 @@ $(function(){
       $('#ddlTimes2').html(html);
     })
   }
-
-
 })
