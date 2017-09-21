@@ -39,14 +39,17 @@ $(function(){
   });
 
   // 专家轮播
-  var swiper = new Swiper('#expertSwiper', {
-    slidesPerView: 4,
-    paginationClickable: true,
-    spaceBetween: 0,
-    freeMode: true,
-    prevButton:'.officesBase .Aprev',
-    nextButton:'.officesBase .Anext',
-  });
+  $('.officesBase').each(function(idx, e){
+    var swiper = new Swiper($(this).find('.contentsDoctor'), {
+      slidesPerView: 4,
+      paginationClickable: true,
+      spaceBetween: 0,
+      freeMode: true,
+      prevButton:$(this).find('.Aprev'),
+      nextButton:$(this).find('.Anext'),
+    });
+  })
+
 
   $('#expertSwiper li').hover(function(){
     $(this).find('.doctorDialog').show()

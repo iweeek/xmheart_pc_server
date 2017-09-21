@@ -1,4 +1,4 @@
-<#include "./fragments/_header.ftl"> 
+<#include "./fragments/_header.ftl">
 <!-- list container -->
 <div class="breadcrumb">
     <div class="xm-container">
@@ -6,10 +6,10 @@
     </div>
 </div>
 <div class="list-container">
-    <#list depts as dept>
-    <div class="list-main">
+		<div class="list-main">
+		<#list depts as dept>
         <!-- office-doctor start-->
-        <div class="officesBase BaseMark">
+        <div class="officesBase BaseMark" id="officesBaseSwiper0">
             <div class="toolsBase">
                 <div class="title">
                     <em>${dept.name}</em> <span>Key Specialty</span>
@@ -42,14 +42,14 @@
                                 <img alt="${doctor.name}" title="${doctor.name}"
                                     src="${doctor.imageUrl}"
                                     width="120" height="162"/>
-                            </a> 
+                            </a>
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="name">${doctor.name}</a>
                             <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
                             <br/>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle}</a> 
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a> 
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.grade}</a> 
-                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a> 
+                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle}</a>
+                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a>
+                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.grade}</a>
+                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
                             <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
                             <div class="doctorDialog">${doctor.intro}</div>
                         </li>
@@ -60,8 +60,8 @@
             </div>
         </div>
         <!-- office-doctor end-->
-    </div>
     </#list>
+		</div>
 </div>
 
 <#include "./fragments/_footer.ftl">
