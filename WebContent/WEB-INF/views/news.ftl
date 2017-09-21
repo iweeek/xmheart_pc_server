@@ -2,7 +2,8 @@
 <!-- list container -->
 <div class="breadcrumb">
 	<div class="xm-container">
-		<a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>
+        <span class="icon"></span><a href="#">您当前所在位置 首页 &gt ${parentColumnName} &gt ${columnName}</a>
+		<#--  <a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>-->
 	</div>
 </div>
 <div class="list-container">
