@@ -19,6 +19,12 @@ public class ArticleServiceImpl implements ArticleService {
 		return ret;
 	}
 
+    @Override
+    public int update(XPWArticleWithBLOBs article) {
+        int ret = articleMapper.updateByPrimaryKeyWithBLOBs(article);
+        return ret;
+    }
+
 
 
 }

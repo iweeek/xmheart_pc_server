@@ -15,9 +15,10 @@ public interface ColumnService {
 
 	List<XPWNav> getNavListBySecondColumnName(String name);
 
-	List<XPWNav> getChildNavsByTitle(String title);
-
 	int createNav(XPWNav nav);
 
 	int updateNav(XPWNav nav);
+	
+    List<XPWColumn> getColumns();
+
 }

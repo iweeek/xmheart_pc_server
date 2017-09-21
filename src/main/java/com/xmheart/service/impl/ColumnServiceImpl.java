@@ -57,12 +57,6 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public List<XPWNav> getChildNavsByTitle(String title) {
-		List<XPWNav> list = xpwNavMapper.getColumnByTitle(title);
-		return list;
-	}
-
-	@Override
 	public int createNav(XPWNav nav) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria()
@@ -94,4 +88,11 @@ public class ColumnServiceImpl implements ColumnService {
 			return HttpServletResponse.SC_NOT_FOUND;
 		}
 	}
+	
+    @Override
+    public List<XPWColumn> getColumns() {
+        List<XPWColumn> list = xpwColumnMapper.selectByExample(null);
+        return list;
+    }
+
 }

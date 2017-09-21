@@ -11,5 +11,7 @@ public interface ArticleService {
 
 	int create(XPWArticleWithBLOBs article);
 
+    int update(XPWArticleWithBLOBs article);
+
 
 }
