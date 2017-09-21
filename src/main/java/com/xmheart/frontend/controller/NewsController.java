@@ -41,7 +41,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @Controller
-@RequestMapping(value = "/",produces = "application/json;charset=UTF-8")
 public class NewsController {
 
     @Autowired
@@ -103,13 +102,6 @@ public class NewsController {
         model.addAttribute("parentColumnName", NEWS_COLUMN_NAME);
 
         return model;
-    }
-
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-    public String index(Model model) {
-        model = addCommonHeader(model);
-
-        return "index";
     }
 
     @RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
