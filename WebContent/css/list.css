@@ -357,7 +357,7 @@
 .officesBase .tools .Amore:hover{color:#ff7544; background:#FFF; text-decoration:underline;}
 .officesBase .title em{ font-size:18px; color:#333; line-height:32px;}
 .officesBase .title span{ padding-left:3px; color:#6bcbca; font-size: 12px;}
-.officesBase .contents{width:1260px;position:absolute;height:360px; top:80px;left:-30px;overflow:hidden;padding-top: 10px; padding-left: 30px;}
+.officesBase .contents{width:1260px;position:absolute;height:360px; top:80px;left:-30px;padding-top: 10px; padding-left: 30px;}
 .officesBase .contents ul{ position:absolute; width:8888px; height:320px; top:0px; left:30px;}
 .officesBase .contents ul li{width:240px;height:362px;position:relative; float:left;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
 .officesBase .contents ul li:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
@@ -395,21 +395,21 @@
 .officesBase .contents .contentsOffice .img{ background:#bda179;}
 .officesBase .contents .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
 .officesBase .contents .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
-.officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
+.officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
 .officesBase .contents .contentsOffice .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
 .officesBase .contents .contentsOffice .btn:hover{background-position:79px center;}
-.officesBase .contents .contentsDoctor { width: 910px; height: 360px; margin: 0;}
+.officesBase .contents .contentsDoctor { width: 910px; height: 360px; margin: 0; float: left;}
 .officesBase .contents .contentsDoctor .img{ display:block;width:100%; height:162px; text-align:center;}
 .officesBase .contents .contentsDoctor .name{display:block;width:100%; height:16px;  text-align:center; margin-top:18px; font-size:16px; line-height:16px; color:#978571;}
 .officesBase .contents .contentsDoctor .office{display:block;width:100%; text-align:center; line-height:33px; color:#333; font-size: 12px;}
-.officesBase .contents .contentsDoctor .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px;}
+.officesBase .contents .contentsDoctor .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px; margin-bottom: 15px;}
 .officesBase .contents .contentsDoctor .btn{display:block;position:absolute; bottom:35px; width:68px; height:30px; text-align:center; line-height:30px;color:#fff;font-size: 12px;}
 .officesBase .contents .contentsDoctor .more{left:32px;background:#bda179;}
 .officesBase .contents .contentsDoctor .date{right:32px;background:#6bcbca;}
 .officesBase .contents .contentsDoctor .btn:hover{ background:#ff7544;}
 .officesBase .contents .contentsDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
-.officesBase .contents .contentsDoctor .doctorDialog { width: 200px; height: 100px; padding: 20px; position: absolute; top: 30px; left: 180px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100;}
-
+.officesBase .contents .contentsDoctor .doctorDialog { width: 300px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
+.officesBase .contents .contentsDoctor .doctorDialog p { line-height: 20px;}
 /* 科室导航 */
 .baseLeft .title08{ background:#6bcbca url(http://www.hnsrmyy.net/images/treat_ico01.png) left 13px center no-repeat;}
 .partNav{ position:relative; top:0px; background:url(http://www.hnsrmyy.net/images/part_ico01.gif) left top no-repeat, url(http://www.hnsrmyy.net/images/part_ico01.gif) left bottom no-repeat, url(http://www.hnsrmyy.net/images/part_ico04.gif) left repeat-y; margin-left:15px; margin-top:55px; overflow:visible; padding:15px 0px;}
