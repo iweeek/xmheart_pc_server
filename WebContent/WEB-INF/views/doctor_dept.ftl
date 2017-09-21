@@ -29,10 +29,10 @@
                     <div class="img animated">
                         <img alt="${dept.name}" src="pic/pic_007.png" width="80" height="80">
                     </div>
-                    <a href="deptDetail?id=79" title="${dept.name}" class="office">${dept.name}</a>
+                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
                     <p>厦门大学附属心血管病医院心内科是国家临床重点专科，卫生部国家级心血管疾病介入培训基地，……</p>
-                    <a href="deptDetail?id=79" title="${dept.name}" class="btn more">查看详细</a>
-                    <a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>
+                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
+                    <!--<a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>-->
                 </div>
                 <div class="contentsDoctor swiper-container" id="expertSwiper">
                     <ul data-num="0" class="swiper-wrapper">
@@ -46,9 +46,10 @@
                             </a> 
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="name">${doctor.name}</a>
                             <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
+                            <br/>
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle}</a> 
-                            <a href="#" title="#" target="_blank" class="btn more">详细</a> 
-                            <a href="./order-detail.html" target="_blank" class="btn date">预约</a>
+                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a> 
+                            <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
                             <div class="doctorDialog">${doctor.intro}</div>
                         </li>
                         </#if>
