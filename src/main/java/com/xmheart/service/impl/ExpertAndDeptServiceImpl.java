@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.xmheart.mapper.XPWDeptMapper;
 import com.xmheart.mapper.XPWDoctorMapper;
 import com.xmheart.model.XPWDept;
+import com.xmheart.model.XPWDeptExample;
 import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWDoctorExample;
 import com.xmheart.service.DoctorAndDeptService;
@@ -28,8 +29,10 @@ public class ExpertAndDeptServiceImpl implements DoctorAndDeptService {
 	}
 
 	@Override
-	public List<XPWDept> getDepts() {
-		List<XPWDept> list = xpwDeptMapper.selectByExampleWithBLOBs(null);
+	public List<XPWDept> getOutServiceDepts() {
+	    XPWDeptExample example = new XPWDeptExample();
+	    example.createCriteria().andOutServiceEqualTo(true);
+		List<XPWDept> list = xpwDeptMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 

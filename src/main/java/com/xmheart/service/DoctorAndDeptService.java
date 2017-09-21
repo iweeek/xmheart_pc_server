@@ -9,7 +9,7 @@ public interface DoctorAndDeptService {
 
 	List<XPWDoctor> getDoctors();
 
-	List<XPWDept> getDepts();
+	List<XPWDept> getOutServiceDepts();
 
 	XPWDoctor getDoctorAndDeptById(Long id);
 

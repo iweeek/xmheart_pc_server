@@ -322,13 +322,13 @@ public class MainController {
     }
 
     @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
-    public String doctor(Model model) {
+    public String doctorDept(Model model) {
     	model = addCommonHeader(model);
 
-    	List<XPWDoctor> experts = doctorAndDeptService.getDoctors();
-    	model.addAttribute("experts", experts);
+    	List<XPWDoctor> doctors = doctorAndDeptService.getDoctors();
+    	model.addAttribute("doctors", doctors);
 
-    	List<XPWDept> depts = doctorAndDeptService.getDepts();
+    	List<XPWDept> depts = doctorAndDeptService.getOutServiceDepts();
     	model.addAttribute("depts", depts);
 
         return "doctor_dept";
