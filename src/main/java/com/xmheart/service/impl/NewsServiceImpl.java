@@ -102,11 +102,11 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<String> getNewPaperYears() {
+	public List<String> getNewsPaperYears() {
 		List<String> list = xpwElecNewspaperMapper.getNewsPaperYears();
 		return list;
 	}
-	
+
 	@Override
 	public List<XPWArticleWithBLOBs> getNews() {
 		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(null);

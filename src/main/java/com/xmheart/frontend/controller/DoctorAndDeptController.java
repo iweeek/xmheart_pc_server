@@ -1,4 +1,4 @@
-package com.xmheart.controller;
+package com.xmheart.frontend.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -44,7 +44,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @Controller
-public class MainController {
+public class DoctorAndDeptController {
 
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
@@ -286,7 +286,7 @@ public class MainController {
 		PageInfo pageInfo = new PageInfo(list);
     	model.addAttribute("pageInfo", pageInfo);
 
-    	List<String> years = newsService.getNewsPaperYears();
+    	List<String> years = newsService.getNewPaperYears();
     	model.addAttribute("years", years);
 
     	List<String> times = newsService.getNewsPaperTimes(years.get(0));
@@ -448,99 +448,4 @@ public class MainController {
 
         return htmlStr.trim(); //返回文本字符串
     }
-
-    @ApiOperation(value = "获取一级栏目", notes = "")
-	@RequestMapping(value = { "/column/first" }, method = RequestMethod.GET)
-	public ResponseEntity<?> getFirstColumns() {
-    		List<XPWColumn> columnList = ColumnService.getFirstColumns();
-
-		return ResponseEntity.ok().body(columnList);
-	}
-
-    @ApiOperation(value = "获取二级栏目", notes = "")
-	@RequestMapping(value = { "/column/second" }, method = RequestMethod.GET)
-	public ResponseEntity<?> getSecondColumns(
-										@ApiParam("父级id")
-										@RequestParam long id) {
-    		List<XPWColumn> columnList = ColumnService.getChildColumnsById(id);
-
-		return ResponseEntity.ok(columnList);
-	}
-
-    @ApiOperation(value = "获取nav", notes = "根据二级栏目名称获取nav")
-   	@RequestMapping(value = { "/navs" }, method = RequestMethod.GET)
-   	public ResponseEntity<?> getNavBySecondColumnName(
-   												@ApiParam("二级栏目名称")
-   												@RequestParam String columnName) {
-       	List<XPWNav> columnList = ColumnService.getNavListBySecondColumnName(columnName);
-
-   		return ResponseEntity.ok(columnList);
-   	}
-
-//    @ApiOperation(value = "获取Nav", notes = "根据title获取Nav")
-//   	@RequestMapping(value = { "/column" }, method = RequestMethod.GET)
-//   	public ResponseEntity<?> getChildNavsByTitle(@ApiParam("title")
-//   											     @RequestParam String title) {
-//       	List<XPWNav> columnList = ColumnService.getChildNavsByTitle(title);
-//
-//   		return ResponseEntity.ok(columnList);
-//   	}
-
-//    @ApiOperation(value = "添加nav", notes = "")
-//   	@RequestMapping(value = { "/navs" }, method = RequestMethod.POST)
-//   	public ResponseEntity<?> createNav(@ApiParam("一级栏目id")
-//									   @RequestParam Long columnId,
-//									   @ApiParam("一级栏目名称")
-//									   @RequestParam String columnName,
-//									   @ApiParam("二级栏目名称")
-//									   @RequestParam String childColumnName,
-//									   @ApiParam("文章标题")
-//									   @RequestParam String articleTitle,
-//									   @ApiParam("url")
-//									   @RequestParam String url,
-//									   @ApiParam("图片url")
-//									   @RequestParam String imgUrl) {
-//    		XPWNav nav = new XPWNav();
-//    		nav.setColumnId(columnId);
-//    		nav.setColumnName(childColumnName);
-//    		nav.setChildColumnName(childColumnName);
-//    		nav.setArticleTitle(articleTitle);
-//    		nav.setUrl(url);
-//    		nav.setImgUrl(imgUrl);
-//    		nav.setPublishTime(new java.util.Date());
-//
-//       	int result = ColumnService.createNav(nav);
-//   		return ResponseEntity.status(result).body(null);
-//   	}
-//
-//    @ApiOperation(value = "修改nav", notes = "根据指定id修改nav")
-//   	@RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
-//   	public ResponseEntity<?> updateNav(@ApiParam("唯一主键id")
-//	   								   @RequestParam Long id,
-//	   								   @ApiParam("一级栏目id")
-//									   @RequestParam Long columnId,
-//									   @ApiParam("一级栏目名称")
-//									   @RequestParam String columnName,
-//									   @ApiParam("二级栏目名称")
-//									   @RequestParam String childColumnName,
-//									   @ApiParam("文章标题")
-//									   @RequestParam String articleTitle,
-//									   @ApiParam("url")
-//									   @RequestParam String url,
-//									   @ApiParam("图片url")
-//									   @RequestParam String imgUrl) {
-//    		XPWNav nav = new XPWNav();
-//    		nav.setId(id);
-//    		nav.setColumnId(columnId);
-//    		nav.setColumnName(childColumnName);
-//    		nav.setChildColumnName(childColumnName);
-//    		nav.setArticleTitle(articleTitle);
-//    		nav.setUrl(url);
-//    		nav.setImgUrl(imgUrl);
-//    		nav.setPublishTime(new java.util.Date());
-//
-//       	int result = ColumnService.updateNav(nav);
-//   		return ResponseEntity.status(result).body(null);
-//   	}
-
 }

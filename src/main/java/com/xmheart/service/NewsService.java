@@ -71,7 +71,7 @@ public interface NewsService {
 	 *
 	 * @return the new paper years
 	 */
-	List<String> getNewPaperYears();
+	List<String> getNewsPaperYears();
 
 	/**
 	 * Gets the news paper times.
