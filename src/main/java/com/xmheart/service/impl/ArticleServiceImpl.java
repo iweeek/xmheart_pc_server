@@ -1,9 +1,13 @@
 package com.xmheart.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xmheart.mapper.XPWArticleMapper;
+import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWArticleExample;
 import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.service.ArticleService;
 
@@ -23,6 +27,14 @@ public class ArticleServiceImpl implements ArticleService {
     public int update(XPWArticleWithBLOBs article) {
         int ret = articleMapper.updateByPrimaryKeyWithBLOBs(article);
         return ret;
+    }
+
+    @Override
+    public List<XPWArticle> show(String keyword) {
+        XPWArticleExample example = new XPWArticleExample();
+        example.createCriteria().andTitleLike(keyword);
+        List<XPWArticle> list = articleMapper.selectByExample(example);
+        return list;
     }
 
 

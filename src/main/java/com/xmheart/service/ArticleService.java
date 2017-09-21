@@ -1,5 +1,8 @@
 package com.xmheart.service;
 
+import java.util.List;
+
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWArticleWithBLOBs;
 
 
@@ -12,6 +15,8 @@ public interface ArticleService {
 	int create(XPWArticleWithBLOBs article);
 
     int update(XPWArticleWithBLOBs article);
+
+    List<XPWArticle> show(String keyword);
 
 
 }
