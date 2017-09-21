@@ -91,6 +91,7 @@ public class NewsController {
         model.addAttribute("firstColumns", firstColumns);
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
+        model.addAttribute("firstColumnName", NEWS_COLUMN_NAME);
 
         return model;
     }

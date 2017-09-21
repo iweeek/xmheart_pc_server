@@ -20,6 +20,8 @@ public class IndexController {
     @Autowired
     private ColumnService columnService;
     
+    private final String INDEX_COLUMN_NAME = "首页";
+    
     private Model addCommonHeader(Model model) {
 
         List<XPWColumn> columnList = columnService.getFirstColumns();
@@ -45,6 +47,7 @@ public class IndexController {
         model.addAttribute("firstColumns", firstColumns);
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
+        model.addAttribute("firstColumnName", INDEX_COLUMN_NAME);
 
         return model;
     }

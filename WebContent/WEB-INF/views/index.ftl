@@ -1,5 +1,4 @@
  <#include "./fragments/_header.ftl"> 
-
 	<div class="xm-main">
 		<div class="xm-container">
 			<div class="xm-banner-slide">

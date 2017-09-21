@@ -27,6 +27,8 @@ public class DoctorAndDeptController {
 
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
+	
+	private final String DOCTOR_DEPT_COLUMN_NAME = "名医名科";
 
 //    private static Map<String, String> secColumns = new HashMap<String, String>();
 
@@ -55,6 +57,7 @@ public class DoctorAndDeptController {
     	model.addAttribute("firstColumns", firstColumns);
     	model.addAttribute("columnMap", columnMap);
     	model.addAttribute("navMap", navMap);
+    	model.addAttribute("firstColumnName", DOCTOR_DEPT_COLUMN_NAME);
 
     	return model;
     }
