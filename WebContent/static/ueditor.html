@@ -31,9 +31,9 @@
                     <option value="一级类目3">一级类目3</option>
                 </select> <select class="select-title select-title-second" name="">
                     <option value="0">请选择</option>
-                    <option value="二级类目1">二级类目1</option>
-                    <option value="二级类目2">二级类目2</option>
-                    <option value="二级类目3">二级类目3</option>
+                    <option value="1">二级类目1</option>
+                    <option value="2">二级类目2</option>
+                    <option value="3">二级类目3</option>
                 </select> <input type="text" class="article-title" value="">
             </div>
             <p class="subtit">文章内容</p>
@@ -69,6 +69,9 @@
 	});
 
 	$(function() {
+		$.get('/xmheart_pc_server/columns', function(result){
+			console.log('columns:', result);
+		});
 		// 标题二级选项的出现
 		$('.select-title-first').change(function() {
 			if ($(this).val() !== 0) {
@@ -93,19 +96,20 @@
 
 		var category1 = $('.select-title-first'), category2 = $('.select-title-second'), title = $('.article-title'), tags = $('.tag-input'), contentHtml, contentText;
 		// 需要发布的内容
-		$('#publish').on(
-				'click',
-				function() {
-					console.log('类目：', category1.find('option:selected').val(),
-							category2.find('option:selected').val());
-					console.log('标题：', title.val());
-					console.log('标签：', tags.val());
-					console.log('摘要：', digest.val());
-
-					// 编辑器内容
-					contentHtml = ue.getContent();
-					console.log('获取html内容:', contentHtml);
-				});
+		$('#publish').on('click', function() {
+			// 编辑器内容
+			contentHtml = ue.getContent();
+			var params = {
+				columnId: category2.find('option:selected').val(),
+				title: title.val(),
+				content: contentHtml,
+				tags: tags.val(),
+				brief: digest.val()
+			}
+			$.post('/xmheart_pc_server/articles', params, function(result){
+				console.log(result);
+			});
+		});
 
 		// 舍弃
 		$('#reset').on('click', function() {
