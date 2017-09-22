@@ -33,39 +33,39 @@ public class NewsServiceImpl implements NewsService {
 	XPWElecNewspaperMapper xpwElecNewspaperMapper;
 
 	@Override
-	public List<XPWArticleWithBLOBs> getPinnedMediaNews() {
+	public List<XPWArticle> getPinnedMediaNews() {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
 
-		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 
 	@Override
-	public List<XPWArticleWithBLOBs> getNoPinnedMediaNews() {
+	public List<XPWArticle> getNoPinnedMediaNews() {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
 
-		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
 
 		return list;
 	}
 
 	@Override
-	public List<XPWArticleWithBLOBs> getPinnedHospitalNews() {
+	public List<XPWArticle> getPinnedHospitalNews() {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(true);
 
-		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 
 	@Override
-	public List<XPWArticleWithBLOBs> getNoPinnedHospitalNews() {
+	public List<XPWArticle> getNoPinnedHospitalNews() {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andColumnIdEqualTo(HOSPITAL_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
 
-		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
 		return list;
 	}
 
@@ -79,10 +79,10 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public XPWArticleWithBLOBs getNewsById(Long id) {
+	public XPWArticle getNewsById(Long id) {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andIdEqualTo(id);
-		XPWArticleWithBLOBs article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
+		XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
 
 		return article;
 	}
@@ -108,8 +108,8 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<XPWArticleWithBLOBs> getNews() {
-		List<XPWArticleWithBLOBs> list = xpwArticleMapper.selectByExampleWithBLOBs(null);
+	public List<XPWArticle> getNews() {
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(null);
 		return list;
 	}
 

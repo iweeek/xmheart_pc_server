@@ -130,7 +130,7 @@ public class NewsController {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/mediaNews" }, method = RequestMethod.GET)
-    public String mediaNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
+    public String mediaNews(@RequestParam(required = false, defaultValue = "1") Integer pageNo, Model model) {
         model = addCommonHeader(model);
 
         model = addNewsHeader(model);
@@ -141,7 +141,7 @@ public class NewsController {
         List<XPWArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
         model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
 
-        PageHelper.startPage(page, PAGE_SIZE);
+        PageHelper.startPage(pageNo, PAGE_SIZE);
         List<XPWArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
         model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
 

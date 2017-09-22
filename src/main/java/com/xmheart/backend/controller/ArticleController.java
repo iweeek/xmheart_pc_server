@@ -1,5 +1,7 @@
 package com.xmheart.backend.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageHelper;
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.service.ArticleService;
 import io.swagger.annotations.Api;
@@ -22,10 +26,23 @@ public class ArticleController {
 	@Autowired 
 	ArticleService articleService;
 	
+   @ApiOperation(value = "获取文章", notes = "获取文章")
+    @RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
+    public ResponseEntity<?> index(@ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer pageNo,
+            @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        List<XPWArticle> list;
+       
+        PageHelper.startPage(pageNo, pageSize);
+        list = articleService.index();
+        
+        return ResponseEntity.ok(list);
+        
+    }
+	
     //TODO 这个接口要移到后台系统中去
 	@ApiOperation(value = "创建一篇文章", notes = "创建一篇文章")
 	@RequestMapping(value = { "/articles" }, method = RequestMethod.POST)
-    public ResponseEntity<?> articles(@ApiParam("栏目Id，仅限于子栏目") @RequestParam Long columnId, 
+    public ResponseEntity<?> create(@ApiParam("栏目Id，仅限于子栏目") @RequestParam Long columnId, 
             @ApiParam("文章标题") @RequestParam String title, @ApiParam("文章内容") @RequestParam String content, 
             @ApiParam("文章关键字") @RequestParam String tags, @ApiParam("文章摘要") @RequestParam String brief) {
 		XPWArticleWithBLOBs article = new XPWArticleWithBLOBs();

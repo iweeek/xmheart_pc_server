@@ -37,6 +37,12 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+    @Override
+    public List<XPWArticle> index() {
+        List<XPWArticle> list = articleMapper.selectByExample(null);
+        return list;
+    }
+
 
 
 }

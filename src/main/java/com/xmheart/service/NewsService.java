@@ -18,28 +18,28 @@ public interface NewsService {
 	 *
 	 * @return the pinned media news
 	 */
-	List<XPWArticleWithBLOBs> getPinnedMediaNews();
+	List<XPWArticle> getPinnedMediaNews();
 
 	/**
 	 * Gets the no pinned media news.
 	 *
 	 * @return the no pinned media news
 	 */
-	List<XPWArticleWithBLOBs> getNoPinnedMediaNews();
+	List<XPWArticle> getNoPinnedMediaNews();
 
 	/**
 	 * Gets the pinned hospital news.
 	 *
 	 * @return the pinned hospital news
 	 */
-	List<XPWArticleWithBLOBs> getPinnedHospitalNews();
+	List<XPWArticle> getPinnedHospitalNews();
 
 	/**
 	 * Gets the no pinned hospital news.
 	 *
 	 * @return the no pinned hospital news
 	 */
-	List<XPWArticleWithBLOBs> getNoPinnedHospitalNews();
+	List<XPWArticle> getNoPinnedHospitalNews();
 
 	/**
 	 * Gets the news by title.
@@ -55,7 +55,7 @@ public interface NewsService {
 	 * @param id the id
 	 * @return the news by id
 	 */
-	XPWArticleWithBLOBs getNewsById(Long id);
+	XPWArticle getNewsById(Long id);
 
 	/**
 	 * Gets the elec news paper.
@@ -86,7 +86,7 @@ public interface NewsService {
 	 *
 	 * @return the news
 	 */
-	List<XPWArticleWithBLOBs> getNews();
+	List<XPWArticle> getNews();
 
 	/**
 	 * Update news.

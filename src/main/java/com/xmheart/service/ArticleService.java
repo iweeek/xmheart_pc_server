@@ -18,5 +18,7 @@ public interface ArticleService {
 
     List<XPWArticle> show(String keyword);
 
+    List<XPWArticle> index();
+
 
 }
