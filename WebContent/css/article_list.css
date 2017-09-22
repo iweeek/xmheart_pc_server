@@ -1,0 +1,12 @@
+.page-article-list .btn {
+    outline: none !important;
+}
+.page-article-list .select-title-second {
+    display: none;
+}
+.page-article-list table {
+    margin-top: 10px;
+}
+.page-article-list .pager a{
+    cursor: pointer;
+}
