@@ -8,8 +8,6 @@
 <link rel="stylesheet" type="text/css" href="./css/business.min.css">
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
-<link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" type="text/css" href="./css/angular-growl.min.css">
 </head>
 <body>
     <!--   主题部分  -->
@@ -36,23 +34,35 @@
                             <th style="text-align: center; width: 80px;">操作</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr data-ng-repeat="topic in topicsList track by $index">
-                            <td data-ng-bind="topic.cateName" style="vertical-align: middle;"></td>
-                            <td data-ng-bind="topic.title" style="vertical-align: middle;"></td>
-                            <td style="vertical-align: middle; width: 100px;"></td>
-                            <td style="vertical-align: middle; width: 100px;"></td>
-                            <td style="vertical-align: middle;">
-                                <button class="btn btn-info" style="margin-bottom: 5px;">编辑</button>
-                            </td>
-                        </tr>
+                    <tbody id="secondTable">
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script id="firstColumnTemplate" type="x-tmpl-mustache">
+      {{#data}}
+        <option value="{{id}}">{{columnName}}</option>
+      {{/data}}
+    </script>
+    <script id="secondColumnTd" type="x-tmpl-mustache">
+      {{#data}}
+        <tr>
+        	  <td style="vertical-align: middle;">{{childColumnName}}</td>
+          <td style="vertical-align: middle;">{{articleTitle}}</td>
+          <td style="vertical-align: middle; width: 100px;"><img src="{{imgUrl}}"/></td>
+          <td style="vertical-align: middle; width: 100px;">{{publishTime}}</td>
+          <td style="vertical-align: middle;">
+            <button class="btn btn-info" style="margin-bottom: 5px;">编辑</button>
+          </td>
+        </tr>
+      {{/data}}
+    </script>
     <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/third_party/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="./js/third_party/mustache.min.js"></script>
     <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="./js/edit-nav.js"></script>
+    <script type="text/javascript">XPW.NavEdit()</script>
 </body>
 </html>
