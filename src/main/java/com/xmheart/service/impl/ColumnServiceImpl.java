@@ -95,4 +95,12 @@ public class ColumnServiceImpl implements ColumnService {
         return list;
     }
 
+    @Override
+    public List<XPWColumn> getColumnsByParentId(Long parentColumnId) {
+        XPWColumnExample example = new XPWColumnExample();
+        example.createCriteria().andParentColumnIdEqualTo(parentColumnId);
+        List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+        return list;
+    }
+
 }

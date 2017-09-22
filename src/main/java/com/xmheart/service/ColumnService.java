@@ -21,4 +21,7 @@ public interface ColumnService {
 	
     List<XPWColumn> getColumns();
 
+    List<XPWColumn> getColumnsByParentId(Long parentColumnId);
+
+
 }
