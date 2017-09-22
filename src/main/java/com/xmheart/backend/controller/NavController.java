@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,17 @@ public class NavController {
         
         List<XPWNav> list;
         list = ColumnService.getNavsByColumnId(columnId);
+        
+        return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+    }
+    
+    @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
+    @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
+    public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
+            @ApiParam("导航关联文章的名称") @PathVariable String articleTitle) {
+        
+        List<XPWNav> list = null;
+//        list = ColumnService.getNavsByColumnId(columnId);
         
         return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
     }

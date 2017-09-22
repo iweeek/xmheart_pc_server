@@ -29,11 +29,17 @@ public class ArticleController {
    @ApiOperation(value = "获取文章", notes = "获取文章")
     @RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
     public ResponseEntity<?> index(@ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer pageNo,
-            @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+            @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize, 
+            @ApiParam("栏目Id") @RequestParam(required = false) Long columnId) {
         List<XPWArticle> list;
        
         PageHelper.startPage(pageNo, pageSize);
-        list = articleService.index();
+        
+        if (columnId == null) {
+            list = articleService.index();
+        } else {
+            list = articleService.index(columnId);
+        }
         
         return ResponseEntity.ok(list);
         

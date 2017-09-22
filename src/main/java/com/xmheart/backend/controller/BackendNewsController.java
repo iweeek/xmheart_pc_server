@@ -67,29 +67,29 @@ public class BackendNewsController {
         return htmlStr.trim(); // 返回文本字符串
     }
 
-    @ApiOperation(value = "获取一级栏目", notes = "")
-    @RequestMapping(value = { "/column/first" }, method = RequestMethod.GET)
-    public ResponseEntity<?> getFirstColumns() {
-        List<XPWColumn> columnList = columnService.getFirstColumns();
-
-        return ResponseEntity.ok().body(columnList);
-    }
-
-    @ApiOperation(value = "获取二级栏目", notes = "")
-    @RequestMapping(value = { "/column/second" }, method = RequestMethod.GET)
-    public ResponseEntity<?> getSecondColumns(@ApiParam("父级id") @RequestParam long id) {
-        List<XPWColumn> columnList = columnService.getChildColumnsById(id);
-
-        return ResponseEntity.ok(columnList);
-    }
-
-    @ApiOperation(value = "获取导航信息", notes = "获取导航信息")
-    @RequestMapping(value = { "/news/navs" }, method = RequestMethod.GET)
-    public ResponseEntity<?> navs() {
-        List<XPWNav> columnList = columnService.getNavListBySecondColumnName(NEWS_COLUMN_NAME);
-
-        return ResponseEntity.ok(columnList);
-    }
+//    @ApiOperation(value = "获取一级栏目", notes = "")
+//    @RequestMapping(value = { "/column/first" }, method = RequestMethod.GET)
+//    public ResponseEntity<?> getFirstColumns() {
+//        List<XPWColumn> columnList = columnService.getFirstColumns();
+//
+//        return ResponseEntity.ok().body(columnList);
+//    }
+//
+//    @ApiOperation(value = "获取二级栏目", notes = "")
+//    @RequestMapping(value = { "/column/second" }, method = RequestMethod.GET)
+//    public ResponseEntity<?> getSecondColumns(@ApiParam("父级id") @RequestParam long id) {
+//        List<XPWColumn> columnList = columnService.getChildColumnsById(id);
+//
+//        return ResponseEntity.ok(columnList);
+//    }
+//
+//    @ApiOperation(value = "获取导航信息", notes = "获取导航信息")
+//    @RequestMapping(value = { "/news/navs" }, method = RequestMethod.GET)
+//    public ResponseEntity<?> navs() {
+//        List<XPWNav> columnList = columnService.getNavListBySecondColumnName(NEWS_COLUMN_NAME);
+//
+//        return ResponseEntity.ok(columnList);
+//    }
     
     @ApiOperation(value = "媒体看厦心、医院新闻搜索文章", notes = "媒体看厦心、医院新闻搜索文章")
     @RequestMapping(value = { "/news/articles/show" }, method = RequestMethod.GET)

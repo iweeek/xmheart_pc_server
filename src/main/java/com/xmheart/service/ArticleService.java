@@ -20,5 +20,7 @@ public interface ArticleService {
 
     List<XPWArticle> index();
 
+    List<XPWArticle> index(Long columnId);
+
 
 }
