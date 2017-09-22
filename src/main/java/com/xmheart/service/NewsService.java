@@ -94,6 +94,6 @@ public interface NewsService {
 	 * @param news the news
 	 * @return the int
 	 */
-	int updateNews(XPWArticleWithBLOBs news);
+	int updateNews(XPWArticle news);
 
 }

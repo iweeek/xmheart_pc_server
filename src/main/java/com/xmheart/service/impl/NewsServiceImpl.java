@@ -119,8 +119,8 @@ public class NewsServiceImpl implements NewsService {
 		return list;
 	}
 		@Override
-	public int updateNews(XPWArticleWithBLOBs news) {
-		int ret = xpwArticleMapper.updateByPrimaryKeyWithBLOBs(news);
+	public int updateNews(XPWArticle news) {
+		int ret = xpwArticleMapper.updateByPrimaryKey(news);
 		return ret;
 	}
 

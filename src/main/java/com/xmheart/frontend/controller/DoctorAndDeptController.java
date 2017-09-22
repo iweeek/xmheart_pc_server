@@ -47,7 +47,7 @@ public class DoctorAndDeptController {
     			columnMap.put(column.getColumnName(), secColList);
     		}
 
-    		List<XPWNav> navList = ColumnService.getChildNavsById(column.getId());
+    		List<XPWNav> navList = ColumnService.getNavsByColumnId(column.getId());
 
     		if (navList.size() > 0) {
     			navMap.put(column.getColumnName(), navList);

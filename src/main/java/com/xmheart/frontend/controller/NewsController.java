@@ -81,7 +81,7 @@ public class NewsController {
                 columnMap.put(column.getColumnName(), secColList);
             }
 
-            List<XPWNav> navList = columnService.getChildNavsById(column.getId());
+            List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
 
             if (navList.size() > 0) {
                 navMap.put(column.getColumnName(), navList);
@@ -138,11 +138,11 @@ public class NewsController {
         model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
 
         // 获取置顶的新闻
-        List<XPWArticleWithBLOBs> pinnedMediaNewsList = newsService.getPinnedMediaNews();
+        List<XPWArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
         model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
 
         PageHelper.startPage(pageNo, PAGE_SIZE);
-        List<XPWArticleWithBLOBs> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
+        List<XPWArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
         model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
 
         PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
@@ -161,11 +161,11 @@ public class NewsController {
         model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
 
         // 获取置顶的新闻
-        List<XPWArticleWithBLOBs> pinnedNewsList = newsService.getPinnedHospitalNews();
+        List<XPWArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
         model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
 
         PageHelper.startPage(page, PAGE_SIZE);
-        List<XPWArticleWithBLOBs> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+        List<XPWArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
         model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
 
         PageInfo pageInfo = new PageInfo(noPinnedNewsList);
@@ -308,11 +308,11 @@ public class NewsController {
 
         int pageNo = 1;
         PageHelper.startPage(pageNo, PAGE_SIZE);
-        List<XPWArticleWithBLOBs> list = newsService.getNews();
+        List<XPWArticle> list = newsService.getNews();
         PageInfo pageInfo = new PageInfo(list);
 
         do {
-            for (XPWArticleWithBLOBs news : list) {
+            for (XPWArticle news : list) {
                 String content = news.getContent();
                 content = delHTMLTag(content);
                 news.setContent(content);

@@ -41,7 +41,7 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public List<XPWNav> getChildNavsById(long id) {
+	public List<XPWNav> getNavsByColumnId(long id) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);

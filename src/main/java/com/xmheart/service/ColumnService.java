@@ -11,7 +11,7 @@ public interface ColumnService {
 
 	List<XPWColumn> getChildColumnsById(long id);
 
-	List<XPWNav> getChildNavsById(long id);
+	List<XPWNav> getNavsByColumnId(long id);
 
 	List<XPWNav> getNavListBySecondColumnName(String name);
 

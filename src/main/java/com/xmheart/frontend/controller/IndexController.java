@@ -37,7 +37,7 @@ public class IndexController {
                 columnMap.put(column.getColumnName(), secColList);
             }
 
-            List<XPWNav> navList = columnService.getChildNavsById(column.getId());
+            List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
 
             if (navList.size() > 0) {
                 navMap.put(column.getColumnName(), navList);
