@@ -408,7 +408,7 @@
 .officesBase .contents .contentsDoctor .date{right:32px;background:#6bcbca;}
 .officesBase .contents .contentsDoctor .btn:hover{ background:#ff7544;}
 .officesBase .contents .contentsDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
-.officesBase .contents .contentsDoctor .doctorDialog { width: 300px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
+.officesBase .contents .contentsDoctor .doctorDialog { width: 230px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
 .officesBase .contents .contentsDoctor .doctorDialog p { line-height: 20px;}
 /* 科室导航 */
 .baseLeft .title08{ background:#6bcbca url(http://www.hnsrmyy.net/images/treat_ico01.png) left 13px center no-repeat;}

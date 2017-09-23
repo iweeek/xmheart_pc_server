@@ -55,6 +55,18 @@
                         </li>
                         </#if>
                         </#list>
+                        <li class="swiper-slide">
+                            <a href="doctorDetail?id=" title="" target="_blank" class="img">
+                            </a>
+                            <a href="" title="" target="_blank" class="name"></a>
+                            <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
+                            <br/>
+                            <a href="" title="" target="_blank" class="post"></a>
+                            <a href="" title="" target="_blank" class="post"></a>
+                            <a href="" title="" target="_blank" class="post"></a>
+                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
+                            <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
+                        </li>
                     </ul>
                 </div>
             </div>
