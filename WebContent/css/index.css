@@ -52,14 +52,14 @@
 .online-service-list li {
 	display: block;
 	float: left;
-	width:100%;
+	width:50%;
 	margin-bottom: 35px;
 }
 .online-service-list li a {
 	display: block;
 	width: 100%;
 	position: relative;
-	font-size: 18px;
+	font-size: 14px;
 }
 .list-odd {
 	padding-right: 40px;
@@ -67,40 +67,44 @@
 .list-even {
 	padding-left: 40px;
 }
+.online-service-list li a img{
+	width: 30px;
+	height: 30px;
+}
 .online-service-list li a span {
 	position: absolute;
-	left: 60px;
+	left: 35px;
 	top: 50%;
 	margin-top: -9px;
 }
 .xm-notice {
-	background: #6bc6f5;
+	background: #f6f6f6;
 	width: 100%;
-	height: 148px;
-	display: none;
+	height: 199px;
+	margin-top: 10px;
 }
 .xm-notice .swiper-container {
 	width: 100%;
-	height: 148px;
+	height: 199px;
 }
 .xm-notice .swiper-container .swiper-slide {
 	padding: 35px 20px 0;
 }
 .xm-notice-title {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: normal;
-	color: #fff;
+	color: #505050;
 	margin-bottom: 20px;
 }
 .xm-notice-tag {
 	background: #fff;
-	color: #0F76C3;
+	color: #505050;
 	padding: 3px 5px;
 	border-radius: 5px;
 }
 .xm-notice-info {
-	font-size: 16px;
-	color: #fff;
+	font-size: 14px;
+	color: #505050;
 	line-height: 20px;
 	height: 60px;
 }
@@ -154,7 +158,7 @@
 /*banner end*/
 @media all and (min-width:1px) and (max-width:1441px){
 	.xm-banner-slide {
-		width: 945px;
+		width: 900px;
 		overflow: hidden;
 		height: 450px;
 	}
@@ -175,11 +179,11 @@
 		margin-bottom: 20px;
 	}
 	.online-service-list li a img{
-		width: 40px;
-		height: 40px;
+		width: 30px;
+		height: 30px;
 	}
 	.xm-info {
-		width: 270px;
+		width: 310px;
 	}
 	.xm-notice-title {
 		line-height: 26px;

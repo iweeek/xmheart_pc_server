@@ -5,6 +5,7 @@ exports.XPW.NavEdit = (function() {
     // 初始化页面处理。
     NavEdit.firstNavLoad();
     NavEdit.firstSelectHandle();
+    NavEdit.postDialogHandle();
   }
   NavEdit.firstNavLoad = function () {
 	$.ajax({
@@ -19,7 +20,7 @@ exports.XPW.NavEdit = (function() {
      $('#typeSelectInput').html(rendered);
    })
   }
-  
+
   NavEdit.firstSelectHandle = function () {
     $('#typeSelectInput').change(function(){
     	  var val = $(this).val();
@@ -28,7 +29,7 @@ exports.XPW.NavEdit = (function() {
       }
     })
   }
-  
+
   NavEdit.firstColumnData = function (val) {
     $.ajax({
       url: '/xmheart_pc_server/navs',
@@ -46,41 +47,59 @@ exports.XPW.NavEdit = (function() {
     	    $('#secondTable').html(rendered);
     })
   }
-  
+
   NavEdit._dateFilter = function (date, formatString) {
-	  if (!date) return ''
-	  var date = new Date(date)
+  	if (!date) return '';
+  	var date = new Date(date);
 
-	  formatString = formatString || 'yyyy-MM-dd'
+  	formatString = formatString || 'yyyy-MM-dd';
 
-	  var dateMap = {
-	    year: date.getFullYear(),
-	    month: date.getMonth() + 1,
-	    day: date.getDate(),
-	    hour: date.getHours(),
-	    minutes: date.getMinutes(),
-	    seconds: date.getSeconds()
-	  }
+  	var dateMap = {
+  		year: date.getFullYear(),
+  		month: date.getMonth() + 1,
+  		day: date.getDate(),
+  		hour: date.getHours(),
+  		minutes: date.getMinutes(),
+  		seconds: date.getSeconds()
+  	};
 
-	  for (var key in dateMap) {
-	    let value = dateMap[key]
-	    value = value < 10 ? ('0' + value) : value
-	    dateMap[key] = value.toString()
-	  }
+  	for (var key in dateMap) {
+  		var value = dateMap[key];
+  		value = value < 10 ? '0' + value : value;
+  		dateMap[key] = value.toString();
+  	}
 
-	  const { year, month, day, hour, minutes, seconds } = dateMap
+  	var year = dateMap.year,
+  	    month = dateMap.month,
+  	    day = dateMap.day,
+  	    hour = dateMap.hour,
+  	    minutes = dateMap.minutes,
+  	    seconds = dateMap.seconds;
 
-	  const formatDate = formatString
-	    .replace(/y+/, ($0) => (year.substring(year.length, -$0.length)))
-	    .replace(/M+/, () => month)
-	    .replace(/d+/, () => day)
-	    .replace(/H+/, () => hour)
-	    .replace(/h+/, () => hour % 12 === 0 ? 12 : hour % 12)
-	    .replace(/m+/, () => minutes)
-	    .replace(/s+/, () => seconds)
-	  return formatDate
-	}
- 
+  	var formatDate = formatString.replace(/y+/, function ($0) {
+  		return year.substring(year.length, -$0.length);
+  	}).replace(/M+/, function () {
+  		return month;
+  	}).replace(/d+/, function () {
+  		return day;
+  	}).replace(/H+/, function () {
+  		return hour;
+  	}).replace(/h+/, function () {
+  		return hour % 12 === 0 ? 12 : hour % 12;
+  	}).replace(/m+/, function () {
+  		return minutes;
+  	}).replace(/s+/, function () {
+  		return seconds;
+  	});
+  	return formatDate;
+  };
+
+  NavEdit.postDialogHandle = function () {
+	$('postSelect').select2();
+    $('#secondTable').on('click', '.post-btn-edit', function() {
+      $('#postModal').modal('show');
+    })
+  }
 
   return NavEdit;
 })();

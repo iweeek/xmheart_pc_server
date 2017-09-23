@@ -15,12 +15,12 @@
 				<div class="xm-online-service">
 					<h5 class="online-service-title">在线预约</h5>
 					<ul class="online-service-list">
-						<li><a href="#"><img src="img/index/online-service-1.png" alt=""><span>预约挂号</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-2.png" alt=""><span>体检中心</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-4.png" alt=""><span>门诊排班</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-4.png" alt=""><span>报告查询</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-5.png" alt=""><span>报告查询</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-6.png" alt=""><span>暂时待定</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list2.png" alt=""><span>体检中心</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list4.png" alt=""><span>报告查询</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list5.png" alt=""><span>院内办公</span></a></li>
+						<li><a href="#"><img src="img/index/online-service-list4.png" alt=""><span>暂时待定</span></a></li>
 					</ul>
 				</div>
 				<div class="xm-notice">
