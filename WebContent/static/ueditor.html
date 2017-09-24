@@ -26,17 +26,15 @@
 		<form id="myform" action="" method="post" runat="server">
 			<p class="subtit">文章标题</p>
 			<div class="input-wrapper">
-				<select class="select-title select-title-first" name="">
-                    <option value="0">请选择</option>
-                    <option value="一级类目1">一级类目1</option>
-                    <option value="一级类目2">一级类目2</option>
-                    <option value="一级类目3">一级类目3</option>
-                </select> <select class="select-title select-title-second" name="">
-                    <option value="0">请选择</option>
-                    <option value="1">二级类目1</option>
-                    <option value="2">二级类目2</option>
-                    <option value="3">二级类目3</option>
-                </select> <input type="text" class="article-title" value="">
+				<div class="col-md-1 select-title select-title-first">一级栏目</div>
+				<div class="col-md-1">
+					<select class="select-title select-title-first" id="J_select_first"></select>
+				</div>
+				<div class="col-md-1 select-title select-title-second">二级栏目</div>
+				<div class="col-md-1">
+					<select class="select-title select-title-second" id="J_select_second"></select>
+				</div>
+				<input type="text" class="article-title" value="">
 			</div>
 			<p class="subtit">文章内容</p>
 			<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
