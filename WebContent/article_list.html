@@ -29,13 +29,13 @@
                 <button class="btn btn-success" id="J_filter_btn">筛选</button>
             </div>
             <div class="col-md-1">
-                <button class="btn btn-success">新建文章</button>
+                <button class="btn btn-success" id="J_create_btn">新建文章</button>
             </div>
         </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th style="text-align: center;">一级栏目</th>
+                    <!-- <th style="text-align: center;">一级栏目</th> -->
                     <th style="text-align: center;">二级栏目</th>
                     <th style="text-align: center;">文章标题</th>
                     <th style="text-align: center;">操作</th>
@@ -63,7 +63,7 @@
     <script id="J_articles_tmpl" type="x-tmpl-mustache">
         {{#result}}
         <tr>
-            <td>{{columnName}}</td>
+            <!-- <td>{{columnName}}</td> -->
             <td>{{columnName}}</td>
             <td>{{title}}</td>
             <td><button class='btn btn-danger edit-btn' data={{id}}>编辑</button></td>

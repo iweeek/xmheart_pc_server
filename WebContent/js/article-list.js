@@ -70,4 +70,9 @@ $(function () {
         var articleId = this.getAttribute('data');
         location.href = '/xmheart_pc_server/static/ueditor.html?articleId=' + articleId;
     });
+
+    // 新建
+    $('#J_create_btn').on('click', function () {
+        location.href = '/xmheart_pc_server/static/ueditor.html';
+    })
 })

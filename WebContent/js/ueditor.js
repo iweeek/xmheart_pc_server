@@ -6,7 +6,7 @@ $(function () {
     var tags = $('.tag-input');
     var category1 = $('.select-title-first');
     var category2 = $('.select-title-second');
-    
+
     var ctrl = {
         //获取url中的参数
         getUrlParam: function (name) {
@@ -27,11 +27,13 @@ $(function () {
         getArticle: function (articleId) {
             var url = '/xmheart_pc_server/articles/' + articleId;
             $.get(url, function (res) {
-                console.log('article:', res);
                 title.val(res.title);
                 tags.val(res.tags);
                 digest.val(res.brief);
                 ctrl.statInputNum(digest, word);
+                $('.category').show();
+                $('.category-edit').text(res.columnName);
+                $('.category-create').hide();
                 //对编辑器的操作最好在编辑器ready之后再做
                 ue.ready(function () {
                     //设置编辑器的内容
@@ -47,12 +49,79 @@ $(function () {
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
-                brief: digest.val()
+                brief: digest.val(),
+                isPublished: true
             };
-            console.log('publish:', params)
-            $.post('/xmheart_pc_server/articles', params, function (result) {
-                console.log(result);
+            // 编辑模式
+            var articleId = ctrl.getUrlParam('articleId');
+            if (articleId) {
+                var url = '/xmheart_pc_server/articles/' + articleId;
+                $.post(url, params, function (res) {
+                    swal({
+                        title: "发表成功",
+                        text: "返回上一页？",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: "#8cd4f5",
+                        confirmButtonText: "返回上一页",
+                        cancelButtonText: "留在本页",
+                        closeOnConfirm: false
+                    }, function () {
+                        window.history.go(-1);
+                    });
+                });
+
+                return;
+            }
+
+            $.post('/xmheart_pc_server/articles', params, function (res) {
+                swal("新建文章成功!", "您可以发表文章，或返回上一页", "success");
+                // window.history.go(-1);
             });
+        },
+        save: function () {
+            // 保存(提交请求但isPublished为false)
+            var params = {
+                columnId: category2.find('option:selected').val(),
+                title: title.val(),
+                content: ue.getContent(),
+                tags: tags.val(),
+                brief: digest.val(),
+                isPublished: false
+            };
+            // 编辑模式
+            var articleId = ctrl.getUrlParam('articleId');
+            if (articleId) {
+                var url = '/xmheart_pc_server/articles/' + articleId;
+                $.post(url, params, function (res) {
+                    swal({
+                        title: "保存成功",
+                        text: "您可以发表文章",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: "#8cd4f5",
+                        confirmButtonText: "发表文章",
+                        cancelButtonText: "取消",
+                        closeOnConfirm: false
+                    }, function () {
+                        ctrl.publish();
+                    });
+                });
+
+                return;
+            }
+
+            $.post('/xmheart_pc_server/articles', params, function (res) {
+                swal("新建文章成功!", "您可以发表文章，或返回上一页", "success");
+                // window.history.go(-1);
+            });
+        },
+        preview: function () {
+            $('#preview-panel').html(ue.getContent());
+        },
+        cancel: function () {
+            // 取消(直接返回上一级，不做接口交互)
+            window.history.go(-1);
         },
         reset: function () {
             ue.setContent('');
@@ -72,9 +141,9 @@ $(function () {
             });
         },
         init: function () {
-
+            var articleId = ctrl.getUrlParam('articleId');
             ctrl.statInputNum(digest, word);
-            var articleId = ctrl.getUrlParam('articleId')
+            // 编辑模式
             if (articleId) {
                 ctrl.getArticle(articleId);
             }
@@ -92,10 +161,9 @@ $(function () {
         }
     });
 
-    // 需要发布的内容
     $('#publish').on('click', ctrl.publish);
-
-    // 舍弃
     $('#reset').on('click', ctrl.reset);
+    $('#save').on('click', ctrl.save)
+    $('#preview').on('click', ctrl.preview);
 
 })

@@ -6,8 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	<link rel="stylesheet" href="../css/reset.css">
-	<link rel="stylesheet" href="../css/editor.css">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/editor.css">
+	<link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 	<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../ueditor/editor_api.js">
 
@@ -24,15 +25,19 @@
 <body>
 	<div class="editor-container">
 		<form id="myform" action="" method="post" runat="server">
+			<p class="subtit category">所属栏目</p>
+			<div class="wrapper category category-edit"></div>
 			<p class="subtit">文章标题</p>
 			<div class="input-wrapper">
-				<div class="col-md-1 select-title select-title-first">一级栏目</div>
-				<div class="col-md-1">
-					<select class="select-title select-title-first" id="J_select_first"></select>
-				</div>
-				<div class="col-md-1 select-title select-title-second">二级栏目</div>
-				<div class="col-md-1">
-					<select class="select-title select-title-second" id="J_select_second"></select>
+				<div class="category-create">
+					<div class="col-md-1 select-title select-title-first">一级栏目</div>
+					<div class="col-md-1">
+						<select class="select-title select-title-first" id="J_select_first"></select>
+					</div>
+					<div class="col-md-1 select-title select-title-second">二级栏目</div>
+					<div class="col-md-1">
+						<select class="select-title select-title-second" id="J_select_second"></select>
+					</div>
 				</div>
 				<input type="text" class="article-title" value="">
 			</div>
@@ -48,11 +53,20 @@
 				<span class="wordwrap"><var class="word">200</var>/200</span>
 			</div>
 			<div class="btn-group">
-				<input id="publish" type="button" name="" value="发表文章"> <input id="reset" type="reset" name="" value="舍弃">
+				<input id="publish" type="button" name="" value="发表文章">
+				<input id="save" type="button" name="" value="保存">
+				<input id="preview" type="button" name="" value="预览">
+				<input id="cancel" type="button" name="" value="取消">
+				<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
 			</div>
 		</form>
+		<div id="preview-panel">
+
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="../ueditor/jquery.min.js"></script>
 <script type="text/javascript" src="../js/ueditor.js"></script>
+<script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
+
 </html>
