@@ -61,6 +61,13 @@ $(function () {
 
     // 上一页
     $('.previous').on('click', ctrl.previous);
+
     // 下一页
     $('.next').on('click', ctrl.next);
+
+    // 编辑
+    $('#J_articles').on('click', '.edit-btn', function () {
+        var articleId = this.getAttribute('data');
+        location.href = '/xmheart_pc_server/static/ueditor.html?articleId=' + articleId;
+    });
 })
