@@ -28,6 +28,16 @@ $(function () {
                 $("#J_articles").html(views);
             });
         },
+        publish: function (articleId) {
+            var params = {
+                isPublished: true
+            };
+            // 编辑模式
+            var url = '/xmheart_pc_server/articles/' + articleId;
+            $.post(url, params, function (res) {
+                swal("发布成功！")
+            });
+        },
         previous: function () {
             console.log('上一页')
         },
@@ -69,6 +79,12 @@ $(function () {
     $('#J_articles').on('click', '.edit-btn', function () {
         var articleId = this.getAttribute('data');
         location.href = '/xmheart_pc_server/static/ueditor.html?articleId=' + articleId;
+    });
+
+    // 发布
+    $('#J_articles').on('click', '.publish-btn', function () {
+        var articleId = this.getAttribute('data');
+        ctrl.publish(articleId);
     });
 
     // 新建
