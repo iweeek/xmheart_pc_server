@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.xmheart.mapper.XPWArticleMapper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWArticleExample;
-import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.service.ArticleService;
 
 @Service
@@ -18,14 +17,14 @@ public class ArticleServiceImpl implements ArticleService {
 	XPWArticleMapper articleMapper;
 
 	@Override
-	public int create(XPWArticleWithBLOBs article) {
+	public int create(XPWArticle article) {
 		int ret = articleMapper.insert(article);
 		return ret;
 	}
 
     @Override
-    public int update(XPWArticleWithBLOBs article) {
-        int ret = articleMapper.updateByPrimaryKeyWithBLOBs(article);
+    public int update(XPWArticle article) {
+        int ret = articleMapper.updateByPrimaryKeySelective(article);
         return ret;
     }
 
@@ -49,6 +48,18 @@ public class ArticleServiceImpl implements ArticleService {
         example.createCriteria().andColumnIdEqualTo(columnId);
         List<XPWArticle> list = articleMapper.selectByExample(null);
         return list;
+    }
+
+    @Override
+    public XPWArticle read(XPWArticle article) {
+        XPWArticleExample example = new XPWArticleExample();
+        example.createCriteria().andIdEqualTo(article.getId());
+        List<XPWArticle> list = articleMapper.selectByExampleWithBLOBs(example);
+        if (list.size() == 0) {
+            return null;
+        } else {
+            return list.get(0);
+        }
     }
 
 

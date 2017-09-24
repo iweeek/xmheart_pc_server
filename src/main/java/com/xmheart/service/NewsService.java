@@ -3,7 +3,6 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWArticle;
-import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.model.XPWElecNewspaper;
 
 

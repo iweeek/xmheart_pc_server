@@ -28,7 +28,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.util.FileUtil;
 import com.xmheart.util.PathUtil;
-import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNav;

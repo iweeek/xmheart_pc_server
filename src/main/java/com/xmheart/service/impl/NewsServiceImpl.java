@@ -1,6 +1,5 @@
 package com.xmheart.service.impl;
 
-import java.lang.annotation.Annotation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +9,10 @@ import com.xmheart.mapper.XPWArticleMapper;
 import com.xmheart.mapper.XPWElecNewspaperMapper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWArticleExample;
-import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWElecNewspaperExample;
 import com.xmheart.model.XPWElecNewspaperExample.Criteria;
-import com.xmheart.model.XPWArticleWithBLOBs;
 import com.xmheart.service.NewsService;
-
-import io.swagger.annotations.Example;
-import io.swagger.annotations.ExampleProperty;
 
 @Service
 public class NewsServiceImpl implements NewsService {

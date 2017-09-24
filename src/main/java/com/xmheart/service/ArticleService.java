@@ -3,7 +3,6 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWArticle;
-import com.xmheart.model.XPWArticleWithBLOBs;
 
 
 /**
@@ -12,15 +11,17 @@ import com.xmheart.model.XPWArticleWithBLOBs;
  */
 public interface ArticleService {
 
-	int create(XPWArticleWithBLOBs article);
+	int create(XPWArticle article);
 
-    int update(XPWArticleWithBLOBs article);
+    int update(XPWArticle article);
 
     List<XPWArticle> show(String keyword);
 
     List<XPWArticle> index();
 
     List<XPWArticle> index(Long columnId);
+
+    XPWArticle read(XPWArticle article);
 
 
 }
