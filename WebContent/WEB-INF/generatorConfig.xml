@@ -43,6 +43,7 @@
     <table schema="xmeart_pc_web" tableName="xpw_article" domainObjectName ="XPWArticle" >
       <generatedKey column="id" sqlStatement="MySql" identity="true" />
       <columnOverride column="is_pinned" property="isPinned" javaType="java.lang.Boolean"/>
+      <columnOverride column="is_published" property="isPublished" javaType="java.lang.Boolean"/>
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
@@ -65,5 +66,6 @@
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
+    
   </context>
 </generatorConfiguration>

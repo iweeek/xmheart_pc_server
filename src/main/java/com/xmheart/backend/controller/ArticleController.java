@@ -1,5 +1,6 @@
 package com.xmheart.backend.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.PageHelper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
+import com.xmheart.service.ColumnService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -25,6 +28,9 @@ public class ArticleController {
 	
 	@Autowired 
 	ArticleService articleService;
+	
+    @Autowired
+    private ColumnService columnService;
 	
    @ApiOperation(value = "获取文章", notes = "获取文章")
     @RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
@@ -48,20 +54,51 @@ public class ArticleController {
     //TODO 这个接口要移到后台系统中去
 	@ApiOperation(value = "创建一篇文章", notes = "创建一篇文章")
 	@RequestMapping(value = { "/articles" }, method = RequestMethod.POST)
-    public ResponseEntity<?> create(@ApiParam("栏目Id，仅限于子栏目") @RequestParam Long columnId, 
-            @ApiParam("文章标题") @RequestParam String title, @ApiParam("文章内容") @RequestParam String content, 
-            @ApiParam("文章关键字") @RequestParam String tags, @ApiParam("文章摘要") @RequestParam String brief) {
+    public ResponseEntity<?> create(@ApiParam("子栏目Id，必填") @RequestParam Long columnId, 
+            @ApiParam("文章标题，必填") @RequestParam String title, 
+            @ApiParam("文章配图，可选") @RequestParam(required = false) String imgUrl, 
+            @ApiParam("文章关键字，可选") @RequestParam(required = false) String tags, 
+            @ApiParam("文章摘要，可选") @RequestParam(required = false) String brief, 
+            @ApiParam("文章内容，可选") @RequestParam(required = false) String content) {
 		XPWArticle article = new XPWArticle();
 		
 		article.setColumnId(columnId);
-		article.setImgUrl("");
-		article.setIsPinned(false);
-		article.setTags(tags);
+		String columnName = columnService.getColumnById(columnId).getColumnName();
+		article.setColumnName(columnName);
 		article.setTitle(title);
-		article.setContent(content);
+		
+		if (imgUrl != null) {
+		    article.setImgUrl(imgUrl);
+		} else {
+		    article.setImgUrl("");
+		}
+		
+		//创建的时候不设置这几项
+		article.setIsPinned(false);
+		article.setIsPublished(false);
+		article.setUrl("");
+		
+		if (tags != null) {
+		    article.setTags(tags);
+		} else {
+		   article.setTags("");
+		}
+		
+		if (brief != null) {
+		    article.setBrief(brief);
+		} else {
+		    article.setBrief("");
+		}
+		
+		if (content != null) {
+		    article.setContent(content);
+		} else {
+		    article.setContent("");
+		}
 		
 		int ret = articleService.create(article);
 		if (ret > 0) {
+		    
 			return ResponseEntity.ok(null);
 		} else {
 			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
@@ -74,6 +111,7 @@ public class ArticleController {
             @ApiParam("栏目Id，仅限于子栏目，可选") @RequestParam(required = false) Long columnId, 
             @ApiParam("文章配图，可选") @RequestParam(required = false) String imgUrl, 
             @ApiParam("文章是否置顶，可选") @RequestParam(required = false) Boolean isPinned, 
+            @ApiParam("文章是否发表，可选") @RequestParam(required = false) Boolean isPublished, 
             @ApiParam("文章关键字，可选") @RequestParam(required = false) String tags, 
             @ApiParam("文章标题，可选") @RequestParam(required = false) String title, 
             @ApiParam("文章摘要，可选") @RequestParam(required = false) String brief,
@@ -91,6 +129,13 @@ public class ArticleController {
         
         if (isPinned != null) {
             article.setIsPinned(isPinned);
+        }
+        
+        if (isPublished != null) {
+            article.setIsPublished(isPublished);
+            if (isPublished) {
+                article.setPublishTime(new Date());
+            }
         }
         
         if (tags != null) {

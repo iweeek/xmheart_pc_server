@@ -103,4 +103,9 @@ public class ColumnServiceImpl implements ColumnService {
         return list;
     }
 
+    @Override
+    public XPWColumn getColumnById(Long columnId) {
+        return xpwColumnMapper.selectByPrimaryKey(columnId);
+    }
+
 }
