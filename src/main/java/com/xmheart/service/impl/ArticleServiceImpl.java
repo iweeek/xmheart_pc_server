@@ -31,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<XPWArticle> show(String keyword) {
         XPWArticleExample example = new XPWArticleExample();
-        example.createCriteria().andTitleLike(keyword);
+        example.createCriteria().andTitleLike("%" + keyword + "%");
         List<XPWArticle> list = articleMapper.selectByExample(example);
         return list;
     }
