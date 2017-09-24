@@ -45,7 +45,7 @@ public class NavController {
     @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
     @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
-            @ApiParam("导航关联文章的Id") @PathVariable Long articleId) {
+            @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
         
         XPWNav nav = new XPWNav();
         nav.setId(id);
