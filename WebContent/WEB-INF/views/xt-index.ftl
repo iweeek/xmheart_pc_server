@@ -23,8 +23,15 @@
                 <li>
                   <a href="XTindex-list.html" title="胸痛认证标准">胸痛认证标准<span>进入</span></a>
                 </li>
-                <li><a href="DutyTime.html" title="申报胸痛中心">申报胸痛中心<span>进入</span></a></li>
-                <li><a href="ArticleList-56.html" title="下载学习资料">下载学习资料<span>进入</span></a></li>
+                <li>
+                    <a href="DutyTime.html" title="申报胸痛中心">申报胸痛中心<span>进入</span></a>
+                </li>
+                <li>
+                    <a href="ArticleList-56.html" title="在线视频学习">在线视频学习<span>进入</span></a>
+                </li>
+                <li>
+                    <a href="ArticleList-56.html" title="规范化建设参考资料">规范化建设参考资料<span>进入</span></a>
+                </li>
               </ul>
               <div class="clear"></div>
             </div>
@@ -45,9 +52,9 @@
             <div class="QMSub QMSubMenus" style="top: -134px; display: none;">
               <ul>
                 <li>
-                  <a href="DutyTime-1.html" title="媒体资料">媒体资料<span>进入</span></a>
+                  <a href="DutyTime-1.html" title="新闻快讯">新闻快讯<span>进入</span></a>
                 </li>
-                <li><a href="DutyTime-2.html" title="会议报道">会议报道<span>进入</span></a></li>
+                <li><a href="DutyTime-2.html" title="会议邀请">会议邀请<span>进入</span></a></li>
               </ul>
               <div class="clear"></div>
             </div>
