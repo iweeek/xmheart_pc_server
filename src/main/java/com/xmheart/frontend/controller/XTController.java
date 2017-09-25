@@ -56,6 +56,6 @@ public class XTController {
     public String index(Model model) {
         model = addCommonHeader(model);
 
-        return "xt_index";
+        return "xt-index";
     }
 }

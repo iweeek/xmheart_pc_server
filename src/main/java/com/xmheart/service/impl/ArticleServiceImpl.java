@@ -46,7 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<XPWArticle> index(Long columnId) {
         XPWArticleExample example = new XPWArticleExample();
         example.createCriteria().andColumnIdEqualTo(columnId);
-        List<XPWArticle> list = articleMapper.selectByExample(null);
+        List<XPWArticle> list = articleMapper.selectByExample(example);
         return list;
     }
 
