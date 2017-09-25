@@ -647,36 +647,18 @@ a.blue{ background:#79a9b8;}
 .bannerBase .quickMenus{ width:251px; height:450px;  float: left; z-index:100; background:#FFF;}
 .bannerBase .quickMenus .firstUl{ padding:11px 0px;border:1px solid #dedede;}
 .bannerBase .quickMenus li.first{ position:relative; width:100%; height:61px;}
-.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 9; height:449px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
-.bannerBase li.first .QMSubMenus{width:495px;}
-.bannerBase li.first .QMSubMenus ul{ float:left; margin-left:19px; width:222px; height:449px;}
-.bannerBase li.first .QMSubMenus li{width:222px; height:74px;background:url(../images/ico_004.png) 18px center no-repeat; font-size:14px;}
+.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 9; height:380px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
+.bannerBase li.first .QMSubMenus{width:280px;}
+.bannerBase li.first .QMSubMenus ul{ float:left; margin-left:19px; width:222px; height:380px;}
+.bannerBase li.first .QMSubMenus li{width:250px; height:74px;background:url(../images/ico_004.png) 18px center no-repeat; font-size:14px;}
 .bannerBase li.first .QMSubMenus li a{padding-left:38px; line-height:74px; color:#494949; display:block; position:relative;}
 .bannerBase li.first .QMSubMenus li a span{background:#ff7544;font-size:12px;color:#fff;-moz-opacity:0;opacity:0;filter:alpha(opacity=0);-webkit-opacity:0;border-radius:2px;padding:0px 15px; line-height:24px; text-align:center; top:25px; right:20px;  position:absolute;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear;}
 .bannerBase li.first .QMSubMenus li a:hover{color:#ff7544; padding-left:45px;box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);}
 .bannerBase li.first .QMSubMenus li a:hover span{-moz-opacity:1;opacity:1;filter:alpha(opacity=100);-webkit-opacity:1;}
-
-.bannerBase li.first .QMSubList{ width:948px;overflow-x:hidden;-ms-overflow-x:hidden;overflow-y:scroll\9;-ms-overflow-y:scroll\9;}
-.bannerBase li.first .QMSubList .item{ border-bottom:1px solid #dedede; width:95%;color:#666; margin:0px auto; padding:10px 0px 13px 0px; line-height:24px;}
-.bannerBase li.first .QMSubList .item h5{background:url(../images/ico_004.png) 0px center no-repeat;font-size:14px; line-height:38px;color:#ff7544; text-indent:20px;}
-.bannerBase li.first .QMSubList .item a{ font-size:12px; color:#666; padding:0px 6px; float:left; background:url(../images/ico_vline.jpg) left center no-repeat;}
-.bannerBase li.first .QMSubList .item a.first{ background:none; padding:0px 6px 0px 0px;}
-.bannerBase li.first .QMSubList .item a:hover{ text-decoration:underline; color:#ff7544;}
-.bannerBase li.first .QMSubList .IndexWords{position:relative; padding:16px 40px;}
-.bannerBase li.first .QMSubList .IndexWords h5{ line-height:40px; font-size:14px; color:#505050;}
-.bannerBase li.first .QMSubList .IndexWords li{ width:37px; height:37px; float:left;color:#505050;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear; margin-right:5px; margin-top:5px;border:1px solid #dedede; cursor:pointer; line-height:38px; text-align:center; font-size:16px;}
-.bannerBase li.first .QMSubList .IndexWords li:hover{box-shadow:0px 5px 15px rgba(0 ,0 ,0 ,0.25);}
-.bannerBase li.first .QMSubList .IndexWords li.current{color:#fff; background:#ff7544;}
-.bannerBase li.first .QMSubList .DList{ padding:16px 28px;}
-.bannerBase li.first .QMSubList .DList li{width:158px; color:#666; line-height:21px; margin-top:20px; padding:10px 0px; position:relative; float:left; padding-left:12px; }
-.bannerBase li.first .QMSubList .DList li:hover{box-shadow:0px 5px 15px rgba(0 ,0 ,0 ,0.25);}
-.bannerBase li.first .QMSubList .DList .DName{ width:72px; position:relative; height:21px;}
-.bannerBase li.first .QMSubList .DList .DName .name{ font-size:16px;text-indent:19px; color:#978571;background:url(../images/ico_004.png) left center no-repeat; display:block;}
-.bannerBase li.first .QMSubList .DList li p{ width:96%; overflow:hidden; height:21px; font-size:12px;}
-.bannerBase li.first .QMSubList .DList li p a:hover{color:#ff7544; text-decoration:underline;}
-.bannerBase li.first .QMSubList .DList .DName:hover .name{  color:#ff7544; }
-.bannerBase li.first .QMSubList .DList .DNull{ line-height:28px; font-size:14px; padding-top:18px; padding-left:13px;color:#505050;}
-.bannerBase li.first .QMSubList .DList .DNull span{ font-size:28px; color:#6bcbca; }
+.bannerBase li.second { position: relative;}
+.bannerBase li.second .third-menus {display: none; position:absolute; top:-70px; left:250px; z-index: 100; height:223px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
+.bannerBase li.second .third-menus ul{ width: 200px;}
+.bannerBase li.second .third-menus li{ width: 180px;}
 
 .bannerBase .quickMenus .firstA{ display:block; position:relative; line-height:60px; text-indent:58px; font-size:14px; color:#333; background:url(../images/ico_016a.png) right center no-repeat;}
 .bannerBase .quickMenus .firstA em{border-bottom:1px solid #ebebeb; display:block; margin:0px 18px; transition:border-bottom .28s linear;-moz-transition:border-bottom .28s linear;-webkit-transition:border-bottom .28s linear;-o-transition:border-bottom .28s linear;}

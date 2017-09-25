@@ -29,8 +29,15 @@
                 <li>
                     <a href="ArticleList-56.html" title="在线视频学习">在线视频学习<span>进入</span></a>
                 </li>
-                <li>
+                <li class="second">
                     <a href="ArticleList-56.html" title="规范化建设参考资料">规范化建设参考资料<span>进入</span></a>
+                    <div class="third-menus">
+                    		<ul>
+                    			<li><a href="ArticleList-56.html" title="在线视频学习">文件<span>进入</span></a></li>
+                    			<li><a href="ArticleList-56.html" title="在线视频学习">流程图<span>进入</span></a></li>
+                    			<li><a href="ArticleList-56.html" title="在线视频学习">培训教育<span>进入</span></a></li>
+                    		</ul>
+                    </div>
                 </li>
               </ul>
               <div class="clear"></div>

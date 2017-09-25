@@ -81,7 +81,21 @@ $(function(){
 			$obj.hide();
 		}
 	});
-
+  
+  $(".QMSubMenus li.second").hover(function(){
+		$t=$(this);
+		$obj=$t.find(".third-menus");
+		if($obj.length>0){
+			$obj.show();
+		}
+	},function(){
+		$t=$(this);
+		$obj=$t.find(".third-menus");
+		if($obj.length>0){
+			$obj.hide();
+		}
+	});
+  
   var mySwiper = new Swiper ('#xtSwiper', {
     loop: true,
     paginationClickable :true,
