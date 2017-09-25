@@ -2,6 +2,9 @@ $(function () {
     var ctrl = {
         columnId: '',
         articles: [],
+        pageNo: 1,
+        pageTotal: 0,
+        noNextPage: false,
         getColumn: function (parentColumnId, htmlId) {
             $.get('/xmheart_pc_server/columns', {
                 parentColumnId: parentColumnId
@@ -23,6 +26,9 @@ $(function () {
                 columnId: columnId
             }, function (data) {
                 ctrl.articles = data;
+                if (data.length < ctrl.pageSize) {
+                    ctrl.noNextPage = true;
+                }
                 var users = { result: data };
                 var template = $('#J_articles_tmpl').html();
                 Mustache.parse(template);   // optional, speeds up future uses
@@ -42,14 +48,20 @@ $(function () {
             });
         },
         previous: function () {
-            console.log('上一页')
+            if (ctrl.pageNo > 1) {
+                ctrl.pageNo--;
+                ctrl.getArticles(ctrl.pageNo, 10, 0);
+            }
         },
         next: function () {
-            console.log('下一页')
+            if (!ctrl.noNextPage) {
+                ctrl.pageNo++;
+                ctrl.getArticles(ctrl.pageNo, 10, 0);
+            }
         },
         init: function () {
             this.getColumn(0, '#J_select_first');
-            ctrl.getArticles(1, 10, 0);
+            ctrl.getArticles(ctrl.pageNo, 10, 0);
         }
     }
     ctrl.init();
@@ -57,7 +69,11 @@ $(function () {
     // 二级分类的出现
     $('.select-title-first').change(function () {
         var firstId = $(this).val();
-        if (firstId !== 0) {
+        if (firstId === '请选择') {
+            $('.select-title-second').hide();
+        }
+
+        if (firstId !== 0 && firstId !== '请选择') {
             $('.select-title-second').show();
             ctrl.getColumn(firstId, '#J_select_second');
         }
