@@ -1,5 +1,6 @@
 .page-article-list .btn {
     outline: none !important;
+    margin-left: 10px;
 }
 .page-article-list .select-title-second {
     display: none;
@@ -9,4 +10,12 @@
 }
 .page-article-list .pager a{
     cursor: pointer;
+}
+.page-article-list .operate-panel {
+    margin-left: 40px;
+    display: inline-block;
+}
+.ui-loading {
+    width: 100%;
+    text-align: center;
 }

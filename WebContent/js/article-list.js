@@ -15,6 +15,8 @@ $(function () {
             });
         },
         getArticles: function (pageNo, pageSize, columnId) {
+            $('.ui-loading').show();
+            var loading = true;
             $.get('/xmheart_pc_server/articles', {
                 pageNo: pageNo,
                 pageSize: pageSize,
@@ -26,6 +28,7 @@ $(function () {
                 Mustache.parse(template);   // optional, speeds up future uses
                 var views = Mustache.render(template, users);
                 $("#J_articles").html(views);
+                $('.ui-loading').hide();
             });
         },
         publish: function (articleId) {
@@ -46,6 +49,7 @@ $(function () {
         },
         init: function () {
             this.getColumn(0, '#J_select_first');
+            ctrl.getArticles(1, 10, 0);
         }
     }
     ctrl.init();

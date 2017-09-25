@@ -25,10 +25,8 @@
             <div class="col-md-1">
                 <select class="select-title select-title-second" id="J_select_second"></select>
             </div>
-            <div class="col-md-1">
+            <div class="operate-panel">
                 <button class="btn btn-success" id="J_filter_btn">筛选</button>
-            </div>
-            <div class="col-md-1">
                 <button class="btn btn-success" id="J_create_btn">新建文章</button>
             </div>
         </div>
@@ -43,6 +41,9 @@
             </thead>
             <tbody id="J_articles"></tbody>
         </table>
+        <div class="ui-loading">
+            <img src="./img/progress_circle.gif" alt="loading">
+        </div>
         <!--  翻页的按钮  -->
         <nav>
             <ul class="pager">
@@ -58,7 +59,6 @@
                 </li>
             </ul>
         </nav>
-    </div>
     </div>
     <script id="J_articles_tmpl" type="x-tmpl-mustache">
         {{#result}}
