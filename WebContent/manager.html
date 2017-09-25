@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
-<title>厦门大学附属心血管病医院（厦门市心脏中心）</title>
-<link rel="stylesheet" type="text/css" href="./css/manager.min.css">
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./css/angular-growl.min.css">
-<link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
-<link rel="stylesheet" href="./css/layout.css">
-<link rel="stylesheet" href="./css/index.css">
-<link rel="stylesheet" href="./css/list.css">
-<link rel="stylesheet" href="./css/common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>厦门大学附属心血管病医院（厦门市心脏中心）</title>
+    <link rel="stylesheet" type="text/css" href="./css/manager.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/angular-growl.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/list.css">
+    <link rel="stylesheet" href="./css/common.css">
 </head>
+
 <body>
     <!-- 头部 -->
     <div class="xm-header">
@@ -66,20 +68,27 @@
                         </a>
                     </li>
                 </ul>
-           </li>
+            </li>
         </ul>
         <div class="manager_index_left_tip">
             <h4>公告</h4>
         </div>
     </div>
     <!-- 右边  -->
-    <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10"
-        style="padding-left: 40px; padding-right: 40px;">
-        <iframe id="rightContentFrame" frameborder="no" width="100%" border="0" marginwidth="0" height="600"
-            marginheight=" 0" scrolling="yes" allowtransparency="yes" width="100%"> </iframe>
+    <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-left: 40px; padding-right: 40px;">
+        <iframe id="rightContentFrame" frameborder="no" width="100%" border="0" marginwidth="0" marginheight=" 0" scrolling="yes"
+            allowtransparency="yes" width="100%" style="min-height: 600px;"> </iframe>
     </div>
     <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
     <script type="text/javascript" src="./js/third_party/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
 </body>
+
 </html>
+<script>
+    $("#rightContentFrame").load(function () {
+        var mainheight = $(this).contents().find("body").height() + 30;
+        $(this).height(mainheight);
+    });
+
+</script>
