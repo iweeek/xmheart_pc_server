@@ -68,11 +68,24 @@
             <td>
                 <button class='btn btn-danger edit-btn' data={{id}}>编辑</button>
                 <button class='btn btn-success publish-btn' data={{id}}>发布</button>
+            </td>
+        </tr>
+        {{/result}}
+    </script>
+
+    <script id="J_articles_tmpl_offline" type="x-tmpl-mustache">
+        {{#result}}
+        <tr>
+            <td>{{columnName}}</td>
+            <td>{{title}}</td>
+            <td>
+                <button class='btn btn-danger edit-btn' data={{id}}>编辑</button>
                 <button class='btn btn-danger offline-btn' data={{id}}>下线</button>
             </td>
         </tr>
         {{/result}}
     </script>
+        
     <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
     <script type="text/javascript" src="./js/third_party/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
