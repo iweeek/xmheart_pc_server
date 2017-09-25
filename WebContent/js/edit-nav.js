@@ -6,6 +6,8 @@ exports.XPW.NavEdit = (function() {
     NavEdit.firstNavLoad();
     NavEdit.firstSelectHandle();
     NavEdit.postDialogHandle();
+    NavEdit.select2Handle()
+    NavEdit.bindNavNews()
   }
   NavEdit.firstNavLoad = function () {
 	$.ajax({
@@ -22,11 +24,9 @@ exports.XPW.NavEdit = (function() {
   }
 
   NavEdit.firstSelectHandle = function () {
-    $('#typeSelectInput').change(function(){
-    	  var val = $(this).val();
-      if (val!== '1') {
-    	  	NavEdit.firstColumnData(val);
-      }
+    $('#columnSearch').click(function() {
+    		var val = $('#typeSelectInput').val();
+    		NavEdit.firstColumnData(val);
     })
   }
 
@@ -95,10 +95,69 @@ exports.XPW.NavEdit = (function() {
   };
 
   NavEdit.postDialogHandle = function () {
-	$('postSelect').select2();
     $('#secondTable').on('click', '.post-btn-edit', function() {
+    	  $('#secondColumnId').val($(this).data('column-name'));
+    	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
       $('#postModal').modal('show');
     })
+  }
+  
+  NavEdit.select2Handle = function () {
+	  $('#postModal').on('shown.bs.modal', function(e) {
+		  $('#postSelect').select2({
+		      placeholder: '请输入要查询的文章标题...',
+		      allowClear: true,
+		      minimumResultsForSearch: Infinity,
+		      ajax: {
+		        url: '/xmheart_pc_server/news/articles/show',
+		        dataType: 'json',
+		        data: function (params) {
+		        		console.log(params.term)
+		            var query = {
+		        		  keyword: params.term
+		            }
+		            return query;
+		        },
+		        processResults: function (data, params) {
+		          var de;
+		          return {
+		            results: (function () {
+		              var i, len, results;
+		              results = [];
+		              for (i = 0, len = data.length; i < len; i++) {
+		                de = data[i];
+		                results.push({
+		                  id: de.id,
+		                  text: de.title
+		                });
+		              }
+		              return results;
+		            })()
+		          };
+		        },
+		        cache: true
+		      },
+		      language: 'zh-CN',
+		    });
+	  })
+	  //	 解决 select2 在 bootstarp 弹窗中无法输入问题
+	  $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+  }
+  
+  NavEdit.bindNavNews = function () {
+	  $('#postModal').on('click', '#bindNavTitle', function() {
+		  var id = $('#secondColumnId').data('column-id')
+		  var postId = $('#postSelect').val();
+		  $.ajax({
+		      url: '/xmheart_pc_server/navs/' + id,
+		      type: 'POST',
+		      data: {id: id, articleId: postId}
+		   })
+		   .done(function() {
+			   $('#postModal').modal('hide');
+			   window.location.reload()
+		    })
+	  })
   }
 
   return NavEdit;
