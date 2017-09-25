@@ -47,6 +47,16 @@ $(function () {
                 swal("发布成功！")
             });
         },
+        offline: function (articleId) {
+            var params = {
+                isPublished: false
+            };
+            // 编辑模式
+            var url = '/xmheart_pc_server/articles/' + articleId;
+            $.post(url, params, function (res) {
+                swal("下线成功！")
+            });
+        },
         previous: function () {
             if (ctrl.pageNo > 1) {
                 ctrl.pageNo--;
@@ -106,6 +116,12 @@ $(function () {
         var articleId = this.getAttribute('data');
         ctrl.publish(articleId);
     });
+
+    // 下线
+    $('#J_articles').on('click', '.offline-btn', function () {
+        var articleId = this.getAttribute('data');
+        ctrl.offline(articleId);
+    })
 
     // 新建
     $('#J_create_btn').on('click', function () {

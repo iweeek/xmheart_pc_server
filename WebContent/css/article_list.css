@@ -12,7 +12,6 @@
     cursor: pointer;
 }
 .page-article-list .operate-panel {
-    margin-left: 40px;
     display: inline-block;
 }
 .ui-loading {
