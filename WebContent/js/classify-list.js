@@ -1,6 +1,7 @@
 $(function () {
     var ctrl = {
         columnId: 0,
+        firstId: 0,
         getColumns: function (parentColumnId, htmlId) {
             $.get('/xmheart_pc_server/columns', {
                 parentColumnId: parentColumnId
@@ -44,8 +45,14 @@ $(function () {
                     swal.showInputError('你需要输入新的栏目名称！');
                     return false
                 }
-                // TODO: 提交修改请求
-                swal('修改成功！', '你已将二级栏目：' + name + '的名称修改为' + inputValue, 'success');
+                
+                var url = '/xmheart_pc_server/columns/' + id;
+                $.post(url, {
+                    columnName: inputValue
+                }, function (res) {
+                    swal('修改成功！', '你已将二级栏目：' + name + '的名称修改为' + inputValue, 'success');
+                    ctrl.getColumns(ctrl.firstId);
+                });
             });
         },
         init: function () {
@@ -59,13 +66,13 @@ $(function () {
 
     // 二级分类的出现
     $('#J_select_first').change(function () {
-        var firstId = $(this).val();
+        ctrl.firstId = $(this).val();
 
-        if (firstId !== 0 && firstId !== '请选择') {
+        if (ctrl.firstId !== 0 && ctrl.firstId !== '请选择') {
             $('.ui-loading').show();
             $('.ui-nodata').hide();
             
-            ctrl.getColumns(firstId);
+            ctrl.getColumns(ctrl.firstId);
         }
     });
 
