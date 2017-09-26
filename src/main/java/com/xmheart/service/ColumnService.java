@@ -81,5 +81,7 @@ public interface ColumnService {
      */
     XPWColumn getColumnById(Long columnId);
 
+    int updateColumn(XPWColumn column);
+
 
 }

@@ -1,5 +1,16 @@
 import org.gradle.plugins.ide.eclipse.model.Facet
 
+buildscript {
+  repositories {
+    maven {
+      url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+  }
+  dependencies {
+    classpath "org.hidetake:gradle-ssh-plugin:2.9.0"
+  }
+}
+
 //定义要使用的插件
 apply plugin: "base"
 apply plugin: "java"
@@ -7,6 +18,7 @@ apply plugin: "war"
 apply plugin: "jetty"
 apply plugin: "eclipse-wtp"
 apply plugin: "eclipse"
+apply plugin: "org.hidetake.ssh"
 
 sourceCompatibility = "1.8"   // 设置 JDK 版本
 webAppDirName = "WebContent"
@@ -105,3 +117,30 @@ eclipse {
         }
     }
 }
+
+remotes {
+  testServer {
+    host = '120.77.72.16'
+    user = 'root'
+    identity = file(System.getProperty('user.home') + '/.ssh/id_rsa_16')
+  }
+}
+
+task deploy(dependsOn: [war]) {
+    doLast {
+        ssh.run {
+          session(remotes.testServer) {
+            remove '/usr/local/webserver/tomcat/webapps/xmheart_pc_server.war'
+            put from: buildDir.toString() + '/libs/xmheart_pc_server.war', into: '/usr/local/webserver/tomcat/webapps/'
+          }
+        }
+    }
+}
+
+task gitTag(type: Exec) {
+    description 'git tag.'
+    println 'perform git tag'
+    commandLine "git", "branch", "-v"
+}
+
+
