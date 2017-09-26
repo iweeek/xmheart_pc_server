@@ -137,4 +137,10 @@ task deploy(dependsOn: [war]) {
     }
 }
 
+task gitTag(type: Exec) {
+    description 'git tag.'
+    println 'perform git tag'
+    commandLine "git", "branch", "-v"
+}
+
 
