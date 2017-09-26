@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +28,7 @@ public class ColumnController {
     
     @ApiOperation(value = "获取所有栏目", notes = "获取所有栏目")
     @RequestMapping(value = { "/columns" }, method = RequestMethod.GET)
-    public ResponseEntity<?> columns(@ApiParam("父栏目的Id，父栏目Id为0的表示没有父栏目") @RequestParam(required = false) Long parentColumnId) {
+    public ResponseEntity<?> index(@ApiParam("父栏目的Id，父栏目Id为0的表示没有父栏目") @RequestParam(required = false) Long parentColumnId) {
         
         List<XPWColumn> list;
         if (parentColumnId == null) {
@@ -37,6 +38,23 @@ public class ColumnController {
         }
         
         return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+    }
+    
+    @ApiOperation(value = "根据Id更新栏目名称", notes = "根据Id更新栏目名称")
+    @RequestMapping(value = { "/columns/{id}" }, method = RequestMethod.POST)
+    public ResponseEntity<?> update(@ApiParam("栏目的Id") @PathVariable Long id, @ApiParam("栏目的名称") @RequestParam String columnName) {
+        
+        XPWColumn column = new XPWColumn();
+        column.setId(id);
+        column.setColumnName(columnName);
+        
+        int ret = ColumnService.updateColumn(column);
+        if (ret == 0) {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(null);
+        }
+        
     }
 
 }

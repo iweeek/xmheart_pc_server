@@ -108,4 +108,10 @@ public class ColumnServiceImpl implements ColumnService {
         return xpwColumnMapper.selectByPrimaryKey(columnId);
     }
 
+    @Override
+    public int updateColumn(XPWColumn column) {
+        int ret = xpwColumnMapper.updateByPrimaryKeySelective(column);
+        return ret;
+    }
+
 }
