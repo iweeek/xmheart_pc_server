@@ -1,7 +1,6 @@
 $(function () {
     var ctrl = {
         columnId: 0,
-        articles: [],
         pageNo: 1,
         pageTotal: 0,
         noNextPage: false,
@@ -25,7 +24,6 @@ $(function () {
                 pageSize: pageSize,
                 columnId: columnId
             }, function (data) {
-                ctrl.articles = data;
                 if (data.length < ctrl.pageSize) {
                     ctrl.noNextPage = true;
                 }
