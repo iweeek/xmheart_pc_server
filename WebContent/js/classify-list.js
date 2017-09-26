@@ -12,6 +12,7 @@ $(function () {
                         optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                         $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
                     }
+                    
                     $('.ui-nodata').show();
                     $('.ui-loading').hide();
                     return;
@@ -19,8 +20,13 @@ $(function () {
                 var template = $('#J_classify_tmpl').html();
                 var views = '';
                 var classify = { result: data };
-                views = Mustache.render(template, classify)
-                $('#J_classify').html(views);
+                if (data.length === 0) {
+                    $('.ui-nodata').show();
+                    $('#J_classify').html('');
+                } else {
+                    views = Mustache.render(template, classify)
+                    $('#J_classify').html(views);
+                }
                 $('.ui-loading').hide();
             });
         },
@@ -43,17 +49,22 @@ $(function () {
             });
         },
         init: function () {
+            $('.ui-loading').show();
+            $('.ui-nodata').hide();
+            
             this.getColumns(0, '#J_select_first');
         }
     }
     ctrl.init();
 
     // 二级分类的出现
-    $('.select-title-first').change(function () {
-        console.log($(this));
+    $('#J_select_first').change(function () {
         var firstId = $(this).val();
 
         if (firstId !== 0 && firstId !== '请选择') {
+            $('.ui-loading').show();
+            $('.ui-nodata').hide();
+            
             ctrl.getColumns(firstId);
         }
     });

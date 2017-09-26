@@ -84,8 +84,9 @@ $(function () {
     ctrl.init();
 
     // 二级分类的出现
-    $('.select-title-first').change(function () {
+    $('#J_select_first').change(function () {
         var firstId = $(this).val();
+        console.log(firstId)
         if (firstId === '请选择') {
             $('.select-title-second').hide();
         }
@@ -97,7 +98,7 @@ $(function () {
     });
 
     // 获取二级分类的id
-    $('.select-title-second').change(function () {
+    $('#J_select_second').change(function () {
         ctrl.columnId = $(this).val();
     });
 
