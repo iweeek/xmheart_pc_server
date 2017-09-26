@@ -1,15 +1,15 @@
 exports = this;
 exports.XPW = exports.EDIT || {};
-exports.XPW.NavEdit = (function() {
-  function NavEdit() {
+exports.XPW.DoctorEdit = (function() {
+  function DoctorEdit() {
     // 初始化页面处理。
-    NavEdit.firstNavLoad();
-    NavEdit.firstSelectHandle();
-    NavEdit.postDialogHandle();
-    NavEdit.select2Handle()
-    NavEdit.bindNavNews()
+//	DoctorEdit.firstOfficeLoad();
+//	DoctorEdit.firstSelectHandle();
+	DoctorEdit.postDialogHandle();
+//	DoctorEdit.select2Handle()
+//    DoctorEdit.conformDoctorInfo()
   }
-  NavEdit.firstNavLoad = function () {
+  DoctorEdit.firstOfficeLoad = function () {
 	$.ajax({
 	  url: '/xmheart_pc_server/columns',
       type: 'GET',
@@ -23,14 +23,14 @@ exports.XPW.NavEdit = (function() {
    })
   }
 
-  NavEdit.firstSelectHandle = function () {
+  DoctorEdit.firstSelectHandle = function () {
     $('#columnSearch').click(function() {
     		var val = $('#typeSelectInput').val();
     		NavEdit.firstColumnData(val);
     })
   }
 
-  NavEdit.firstColumnData = function (val) {
+  DoctorEdit.firstColumnData = function (val) {
     $.ajax({
       url: '/xmheart_pc_server/navs',
       type: 'GET',
@@ -56,7 +56,7 @@ exports.XPW.NavEdit = (function() {
     })
   }
 
-  NavEdit._dateFilter = function (date, formatString) {
+  DoctorEdit._dateFilter = function (date, formatString) {
   	if (!date) return '';
   	var date = new Date(date);
 
@@ -102,15 +102,15 @@ exports.XPW.NavEdit = (function() {
   	return formatDate;
   };
 
-  NavEdit.postDialogHandle = function () {
+  DoctorEdit.postDialogHandle = function () {
     $('#secondTable').on('click', '.post-btn-edit', function() {
-    	  $('#secondColumnId').val($(this).data('column-name'));
-    	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
+//    	  $('#secondColumnId').val($(this).data('column-name'));
+//    	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
       $('#postModal').modal('show');
     })
   }
   
-  NavEdit.select2Handle = function () {
+  DoctorEdit.select2Handle = function () {
 	  $('#postModal').on('shown.bs.modal', function(e) {
 		  $('#postSelect').select2({
 		      placeholder: '请输入要查询的文章标题...',
@@ -152,7 +152,7 @@ exports.XPW.NavEdit = (function() {
 	  $.fn.modal.Constructor.prototype.enforceFocus = function () { };
   }
   
-  NavEdit.bindNavNews = function () {
+  DoctorEdit.conformDoctorInfo = function () {
 	  $('#postModal').on('click', '#bindNavTitle', function() {
 		  var id = $('#secondColumnId').data('column-id')
 		  var postId = $('#postSelect').val();
@@ -168,5 +168,5 @@ exports.XPW.NavEdit = (function() {
 	  })
   }
 
-  return NavEdit;
+  return DoctorEdit;
 })();
