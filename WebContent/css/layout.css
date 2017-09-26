@@ -359,5 +359,6 @@ div.BottomHidden{width:100%; height:38px;}
 	.xm-footer-main {
 		width: 1500px;
 		margin: 0 auto;
+		position: relative;
 	}
 }

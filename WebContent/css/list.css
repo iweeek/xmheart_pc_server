@@ -687,7 +687,7 @@ a.blue{ background:#79a9b8;}
 .NewsBase .tools a em{ display:block; width:100%; text-align:center; position:absolute; bottom:17px; left:0px;}
 .NewsBase .tools a:hover img{animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;;-moz-animation-name:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation-fill-mode:both;animation-fill-mode:both;}
 
-.NewsBase .noticeBase{ width:963px; float:right; margin-top:3px; }
+.NewsBase .noticeBase{ width:963px; float:left; margin-top:3px; margin-left: 257px; }
 .NewsBase .noticeBase .notice{padding:18px 28px; background:#f1f1f1; height:247px; width:469px; position:relative;}
 .NewsBase .noticeBase .notice01{float:left;}
 .NewsBase .noticeBase .notice02{ float:right;}
@@ -776,6 +776,7 @@ a.blue{ background:#79a9b8;}
 	.baseRight {
 		width: 1195px;
 	}
+	.bannerBase .xt-swiper{ left: 300px;}
 	.media-wrapper { width: 1150px; }
 	.media-wrapper .media-item { width: 362px; }
 	.media-wrapper .media-item .media-img { height: 211px; }
@@ -786,10 +787,11 @@ a.blue{ background:#79a9b8;}
 	.doctorsBase .contents ul li, .officesBase .contents ul li { width: 250px; }
 	.officesBase .contents .more { left: 20px; }
 	.officesBase .contents .doctor { right: 20px; }
-
+	.NewsBase .noticeBase { margin-left: 300px;}
 	.doctorRight {width: 1235px;}
 	.office { width: }
 	.PartBanner .bannerLeft { width: 1180px;}
 	.PartIntro .introRight { width: 1180px;}
 	.PartIntro .introRight .right { width: 950px; }
+	.NewsBase .noticeBase { width: 980px;}
 }

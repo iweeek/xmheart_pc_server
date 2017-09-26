@@ -5,7 +5,7 @@ $(function () {
         pageNo: 1,
         pageTotal: 0,
         noNextPage: false,
-        getColumn: function (parentColumnId, htmlId) {
+        getColumns: function (parentColumnId, htmlId) {
             $.get('/xmheart_pc_server/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
@@ -79,7 +79,7 @@ $(function () {
             }
         },
         init: function () {
-            this.getColumn(0, '#J_select_first');
+            this.getColumns(0, '#J_select_first');
             ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
         }
     }
@@ -94,7 +94,7 @@ $(function () {
 
         if (firstId !== 0 && firstId !== '请选择') {
             $('.select-title-second').show();
-            ctrl.getColumn(firstId, '#J_select_second');
+            ctrl.getColumns(firstId, '#J_select_second');
         }
     });
 

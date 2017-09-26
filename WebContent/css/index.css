@@ -60,7 +60,12 @@
 	width: 100%;
 	position: relative;
 	font-size: 14px;
+	padding: 5px 10px;
 }
+.online-service-list li a:hover {
+	box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
+}
+
 .list-odd {
 	padding-right: 40px;
 }
@@ -73,7 +78,7 @@
 }
 .online-service-list li a span {
 	position: absolute;
-	left: 35px;
+	left: 45px;
 	top: 50%;
 	margin-top: -9px;
 }
@@ -113,12 +118,8 @@
 .xm-banner {
 	margin-top: 64px;
 }
-.xm-banner-list {
-	width: 375px;
-	height: 100px;
-	float: left;
-	overflow: hidden;
-	border-right: #eee solid 1px;
+.xm-banner .xm-container {
+	height: 115px;
 }
 .xm-banner-list {
 	width: 375px;
@@ -127,6 +128,10 @@
 	overflow: hidden;
 	border-right: #eee solid 1px;
 	padding-left: 180px;
+	display:block;
+}
+.xm-banner-list:hover {
+	box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
 }
 .xm-list1 {
 	background: url('../img/index/nav1.png') no-repeat 50px center;
@@ -176,7 +181,7 @@
 		padding-left: 22px;
 	}
 	.online-service-list li {
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	.online-service-list li a img{
 		width: 30px;
@@ -196,12 +201,13 @@
 		padding: 20px 10px 0;
 	}
 	.xm-banner {
-		margin-top: 20px;
+		margin-top: 35px;
 	}
 	.xm-banner-list {
 		width: 305px;
 		padding-left: 150px;
 		background-size: 50px 50px;
+		display: block;
 	}
 	.list-info .list-info-title {
 		font-size: 24px;

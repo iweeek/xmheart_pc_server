@@ -42,30 +42,30 @@
 	<!-- banner -->
 	<div class="xm-banner">
 		<div class="xm-container">
-			<div class="xm-banner-list xm-list1">
+			<a href="xtIndex" target="_blank" class="xm-banner-list xm-list1">
 				<div class="list-info">
-					<h3 class="list-info-title"><a href="xtIndex" target="_blank">胸痛中心</a></h3>
+					<h3 class="list-info-title">胸痛中心</h3>
 					<p class="list-info-desc">迅速定位您的问题</p>
 				</div>
-			</div>
-			<div class="xm-banner-list xm-list2">
+			</a>
+			<a href="#" class="xm-banner-list xm-list2">
 				<div class="list-info">
 					<h3 class="list-info-title">院务公开</h3>
 					<p class="list-info-desc">了解最新医院公告</p>
 				</div>
-			</div>
-			<div class="xm-banner-list xm-list3">
+			</a>
+			<a href="#" class="xm-banner-list xm-list3">
 				<div class="list-info">
 					<h3 class="list-info-title">医院导航</h3>
 					<p class="list-info-desc">快速找到我们</p>
 				</div>
-			</div>
-			<div class="xm-banner-list mr-0 xm-list4">
+			</a>
+			<a href="#" class="xm-banner-list mr-0 xm-list4">
 				<div class="list-info">
 					<h3 class="list-info-title">待定</h3>
 					<p class="list-info-desc">为您特殊定制</p>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 
