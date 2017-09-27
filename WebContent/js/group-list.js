@@ -26,10 +26,10 @@ $(function () {
                 title: '修改一级栏目',
                 text: name,
                 type: 'input',
-                showCancelButton: true, 
-                closeOnConfirm: false, 
-                animation: "slide-from-top", 
-                inputPlaceholder: "输入新栏目名称" 
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "输入新栏目名称"
             }, function (inputValue) {
                 console.log(inputValue);
                 if (inputValue === '') {

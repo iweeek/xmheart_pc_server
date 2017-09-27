@@ -13,7 +13,7 @@ $(function () {
                         optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                         $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
                     }
-                    
+
                     $('.ui-nodata').show();
                     $('.ui-loading').hide();
                     return;
@@ -45,7 +45,7 @@ $(function () {
                     swal.showInputError('你需要输入新的栏目名称！');
                     return false
                 }
-                
+
                 var url = '/xmheart_pc_server/columns/' + id;
                 $.post(url, {
                     columnName: inputValue
@@ -58,7 +58,7 @@ $(function () {
         init: function () {
             $('.ui-loading').show();
             $('.ui-nodata').hide();
-            
+
             this.getColumns(0, '#J_select_first');
         }
     }
@@ -71,7 +71,7 @@ $(function () {
         if (ctrl.firstId !== 0 && ctrl.firstId !== '请选择') {
             $('.ui-loading').show();
             $('.ui-nodata').hide();
-            
+
             ctrl.getColumns(ctrl.firstId);
         }
     });
