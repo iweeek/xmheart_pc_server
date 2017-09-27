@@ -9,7 +9,7 @@
 		<div class="list-main">
 		<#list depts as dept>
         <!-- office-doctor start-->
-        <div class="officesBase BaseMark" id="officesBaseSwiper0">
+        <div class="officesBase BaseMark">
             <div class="toolsBase">
                 <div class="title">
                     <em>${dept.name}</em> <span>Key Specialty</span>
@@ -33,7 +33,7 @@
                     <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
                     <!--<a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>-->
                 </div>
-                <div class="contentsDoctor swiper-container" id="expertSwiper">
+                <div class="contentsDoctor swiper-container">
                     <ul data-num="0" class="swiper-wrapper">
                         <#list doctors as doctor>
                         <#if doctor.deptId == dept.id>
