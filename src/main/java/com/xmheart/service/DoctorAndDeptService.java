@@ -15,4 +15,12 @@ public interface DoctorAndDeptService {
 
 	XPWDept getDeptAndDoctorsById(Long id);
 
+    List<XPWDoctor> getDoctorsByDeptId(Long deptId);
+
+    XPWDoctor getDoctorById(Long id);
+
+    int update(XPWDoctor doctor);
+
+    int create(XPWDoctor doctor);
+
 }

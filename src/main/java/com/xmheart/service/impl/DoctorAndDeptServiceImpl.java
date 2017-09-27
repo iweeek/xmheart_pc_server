@@ -14,7 +14,7 @@ import com.xmheart.model.XPWDoctorExample;
 import com.xmheart.service.DoctorAndDeptService;
 
 @Service
-public class ExpertAndDeptServiceImpl implements DoctorAndDeptService {
+public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 	
 	@Autowired
 	private XPWDoctorMapper xpwDoctorMapper;
@@ -47,5 +47,32 @@ public class ExpertAndDeptServiceImpl implements DoctorAndDeptService {
 		XPWDept dept = xpwDeptMapper.selectDeptWithDoctorsByPrimaryKey(id);
 		return dept;
 	}
+
+    @Override
+    public List<XPWDoctor> getDoctorsByDeptId(Long deptId) {
+        XPWDoctorExample example = new XPWDoctorExample();
+        example.createCriteria().andDeptIdEqualTo(deptId);
+        
+        List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public XPWDoctor getDoctorById(Long id) {
+        XPWDoctor doctor = xpwDoctorMapper.selectByPrimaryKey(id);
+        return doctor;
+    }
+
+    @Override
+    public int update(XPWDoctor doctor) {
+        int ret = xpwDoctorMapper.updateByPrimaryKeySelective(doctor);
+        return ret;
+    }
+
+    @Override
+    public int create(XPWDoctor doctor) {
+        int ret = xpwDoctorMapper.insertSelective(doctor);
+        return ret;
+    }
 
 }
