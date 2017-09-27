@@ -31,7 +31,7 @@ $(function () {
                 animation: "slide-from-top",
                 inputPlaceholder: "输入新栏目名称"
             }, function (inputValue) {
-                console.log(inputValue);
+                if (inputValue === false) return false;
                 if (inputValue === '') {
                     swal.showInputError('你需要输入新的栏目名称！');
                     return false
