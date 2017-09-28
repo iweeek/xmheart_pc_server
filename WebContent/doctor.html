@@ -17,15 +17,17 @@
             <div>
                 <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
                 </div>
-                <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
+                <div class="row" style="margin-top: 10px; margin-bottom: 20px;" id="tools">
                     <div class="col-md-1" style="line-height: 34px;">科室名称</div>
                     <div class="col-md-2">
                         <select class="form-control col-md-10" id="typeSelectInput">
-                            <option>心血管</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                     		<button class="btn btn-primary" id="columnSearch">搜索</button>
+                    </div>
+                    <div class="col-md-1">
+                    		<button class="btn btn-primary" id="columnNew">新建医生</button>
                     </div>
                 </div>
                 <table class="table table-bordered">
@@ -34,7 +36,7 @@
                             <th style="text-align: center; width: 170px;">医生姓名</th>
                             <th style="text-align: center; width: 170px;">职称</th>
                             <th style="text-align: center; width: 170px;">头像</th>
-                            <th style="text-align: center; width: 150px;">头衔</th>
+                            <th style="text-align: center; width: 150px;">职位</th>
                             <th style="text-align: center; width: 80px;">操作</th>
                         </tr>
                     </thead>
@@ -46,16 +48,16 @@
     </div>
     <script id="firstColumnTemplate" type="x-tmpl-mustache">
       {{#data}}
-        <option value="{{id}}">{{columnName}}</option>
+        <option value="{{id}}">{{name}}</option>
       {{/data}}
     </script>
     <script id="doctorTd" type="x-tmpl-mustache">
       {{#data}}
         <tr>
         	 <td style="vertical-align: middle;">{{name}}</td>
-          <td style="vertical-align: middle;">{{duty}}</td>
+          <td style="vertical-align: middle;">{{professionalTitle}}</td>
           <td style="vertical-align: middle; width: 100px;"><img width="100" height="100" src={{imageUrl}} /></td>
-          <td style="vertical-align: middle; width: 100px;">{{professionalTitle}}</td>
+          <td style="vertical-align: middle; width: 100px;">{{duty}}</td>
           <td style="vertical-align: middle;">
             <button class="btn btn-primary post-btn-edit" data-doctor-id={{id}} style="margin-bottom: 5px;">编辑</button>
           </td>

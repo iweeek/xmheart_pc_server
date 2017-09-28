@@ -52,11 +52,14 @@ $(function(){
 
 
   $('.contentsDoctor li').hover(function(){
-    $(this).find('.doctorDialog').show();
-    var nextIndex = $(this).siblings('.swiper-slide-next').index();
-    var currentIndex = $(this).index();
+	var $this = $(this);
+	$this.find('.doctorDialog').show();
+    var nextIndex = $this.siblings('.swiper-slide-next').index();
+    var currentIndex = $this.index();
     if (nextIndex !== -1 && currentIndex === (nextIndex + 2)) {
-    		$(this).parents('.contents').siblings('.toolsBase').find('.Anext').trigger('click');
+    		setTimeout(function(){
+    			$this.parents('.contents').siblings('.toolsBase').find('.Anext').trigger('click');
+    		}, 800)
     }
   },function(){
     $(this).find('.doctorDialog').hide();

@@ -120,11 +120,13 @@ exports.XPW.NavEdit = (function() {
 		        url: '/xmheart_pc_server/news/articles/show',
 		        dataType: 'json',
 		        data: function (params) {
-		        		console.log(params.term)
-		            var query = {
-		        		  keyword: params.term
-		            }
-		            return query;
+		        		setTimeout(function(){
+		        			var query = {
+		  		        		  keyword: params.term
+		  		            }
+		  		        return query;
+		        		}, 800)
+		            
 		        },
 		        processResults: function (data, params) {
 		          var de;

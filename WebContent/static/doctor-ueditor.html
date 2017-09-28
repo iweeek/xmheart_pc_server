@@ -29,37 +29,42 @@
 			<div class="wrapper category-edit">医生信息</div>
 			<p class="subtit">医生姓名</p>
 			<div class="input-wrapper">
-				<input type="text" class="article-title" value="">
+				<input type="text" class="article-title" id="doctorName" value="">
 			</div>
 			<p class="subtit">医生职称</p>
 			<div class="input-wrapper">
-				<input type="text" class="article-title" value="">
+				<input type="text" class="article-title" id="doctorProfessiona" value="">
 			</div>
-			<p class="subtit">医生头衔</p>
+			<p class="subtit">医生职位</p>
 			<div class="input-wrapper">
-				<input type="text" class="article-title" value="">
+				<input type="text" class="article-title" id="doctorDuty" value="">
 			</div>
-			<p class="subtit">医生简介(头像在此上传)</p>
+			<p class="subtit">所属科室</p>
+			<div class="input-wrapper">
+				<select class="form-control col-md-10" id="typeSelectInput">
+                 </select>
+			</div>
+			<p class="subtit">医生简介</p>
 			<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
-			<p class="subtit">医生简要描述</p>
-			<div class="digest-wrapper" id='wordCount'>
-				<textarea name="name" rows="8" cols="80"></textarea>
-				<span class="wordwrap"><var class="word">200</var>/200</span>
-			</div>
 			<div class="btn-group">
 				<input id="save" type="button" name="" value="保存">
-				<input id="preview" type="button" name="" value="预览">
 				<input id="cancel" type="button" name="" value="取消">
 				<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
 			</div>
 		</form>
-		<div id="preview-panel">
-
-		</div>
 	</div>
-</body>
-<script type="text/javascript" src="../ueditor/jquery.min.js"></script>
-<script type="text/javascript" src="../js/ueditor.js"></script>
-<!-- <script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script> -->
 
+	<script id="firstColumnTemplate" type="x-tmpl-mustache">
+		{{#data}}
+        		<option value="{{id}}">{{name}}</option>
+    		{{/data}}
+	</script>
+	<script type="text/javascript" src="../ueditor/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/third_party/mustache.min.js"></script>
+	<script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
+	<script type="text/javascript" src="../js/doctor-ueditor.js"></script>
+	<script type="text/javascript">
+		XPW.DoctorUeditor()
+	</script>
+</body>
 </html>
