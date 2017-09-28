@@ -44,9 +44,9 @@ public class DeptController {
         }
     }
     
-    @ApiOperation(value = "根据Id获取医生信息", notes = "根据Id获取医生信息")
+    @ApiOperation(value = "根据Id获取科室信息", notes = "根据Id获取科室信息")
     @RequestMapping(value = { "/dept/{id}" }, method = RequestMethod.GET)
-    public ResponseEntity<?> read(@ApiParam("医生的Id") @PathVariable Long id) {
+    public ResponseEntity<?> read(@ApiParam("科室的Id") @PathVariable Long id) {
         
         XPWDept dept;
         dept = doctorAndDeptService.getDeptById(id);
@@ -62,6 +62,7 @@ public class DeptController {
     public ResponseEntity<?> update(@ApiParam("科室的Id") @PathVariable Long id,
             @ApiParam("名称，可选") @RequestParam(required = false) String name,
             @ApiParam("介绍") @RequestParam(required = false) String intro,
+            @ApiParam("是否是门诊科室") @RequestParam(required = false) Boolean outService,
             @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDept dept;
@@ -73,6 +74,10 @@ public class DeptController {
         
         if (intro != null) {
             dept.setIntro(intro);
+        }
+        
+        if (outService != null) {
+            dept.setOutService(outService);
         }
         
         if (isDisplayed != null) {
@@ -91,6 +96,7 @@ public class DeptController {
     @RequestMapping(value = { "/depts" }, method = RequestMethod.POST)
     public ResponseEntity<?> create(@ApiParam("科室的名称，可选") @RequestParam(required = false) String name,
             @ApiParam("介绍") @RequestParam(required = false) String intro,
+            @ApiParam("是否是门诊科室") @RequestParam(required = false) Boolean outService,
             @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDept dept = new XPWDept();
@@ -101,6 +107,10 @@ public class DeptController {
         
         if (intro != null) {
             dept.setIntro(intro);
+        }
+        
+        if (outService != null) {
+            dept.setOutService(outService);
         }
         
         if (isDisplayed != null) {
