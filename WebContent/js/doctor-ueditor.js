@@ -63,10 +63,10 @@ exports.XPW.DoctorUeditor = (function() {
 		  var deptId = parseInt($('#typeSelectInput').val());
 		  var duty = $('#doctorDuty').val();
 		  var professionalTitle = $('#doctorProfessiona').val();
-		  var info = DoctorUeditor.ue.getContent();
+		  var intro = DoctorUeditor.ue.getContent();
 		  var isDisplayed = DoctorUeditor.isDisplayed;
-		  var upateParms = {id: id, name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, info: info, isDisplayed: isDisplayed};
-		  var newParms = {name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, info: info, isDisplayed: isDisplayed};
+		  var upateParms = {id: id, name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
+		  var newParms = {name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
 		  $.ajax({
 		  	  	url: url,
