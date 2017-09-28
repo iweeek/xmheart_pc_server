@@ -64,14 +64,38 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
     }
 
     @Override
-    public int update(XPWDoctor doctor) {
+    public int updateDoctor(XPWDoctor doctor) {
         int ret = xpwDoctorMapper.updateByPrimaryKeySelective(doctor);
         return ret;
     }
 
     @Override
-    public int create(XPWDoctor doctor) {
+    public int createDoctor(XPWDoctor doctor) {
         int ret = xpwDoctorMapper.insertSelective(doctor);
+        return ret;
+    }
+
+    @Override
+    public List<XPWDept> getDepts() {
+        List<XPWDept> list = xpwDeptMapper.selectByExample(null);
+        return list;
+    }
+
+    @Override
+    public XPWDept getDeptById(Long id) {
+        XPWDept dept = xpwDeptMapper.selectByPrimaryKey(id);
+        return dept;
+    }
+
+    @Override
+    public int updateDept(XPWDept dept) {
+        int ret = xpwDeptMapper.updateByPrimaryKeySelective(dept);
+        return ret;
+    }
+
+    @Override
+    public int createDept(XPWDept dept) {
+        int ret = xpwDeptMapper.insertSelective(dept);
         return ret;
     }
 

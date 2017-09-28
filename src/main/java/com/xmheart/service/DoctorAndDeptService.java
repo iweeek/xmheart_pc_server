@@ -19,8 +19,16 @@ public interface DoctorAndDeptService {
 
     XPWDoctor getDoctorById(Long id);
 
-    int update(XPWDoctor doctor);
+    int updateDoctor(XPWDoctor doctor);
 
-    int create(XPWDoctor doctor);
+    int createDoctor(XPWDoctor doctor);
+
+    List<XPWDept> getDepts();
+
+    XPWDept getDeptById(Long id);
+
+    int updateDept(XPWDept dept);
+
+    int createDept(XPWDept dept);
 
 }

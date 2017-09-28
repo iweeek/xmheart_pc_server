@@ -92,7 +92,7 @@ public class DoctorController {
             doctor.setIsDisplayed(isDisplayed);
         }
         
-        int ret = doctorAndDeptService.update(doctor);
+        int ret = doctorAndDeptService.updateDoctor(doctor);
         if (ret == 0) {
             return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
         } else {
@@ -135,7 +135,7 @@ public class DoctorController {
             doctor.setIsDisplayed(isDisplayed);
         }
         
-        int ret = doctorAndDeptService.create(doctor);
+        int ret = doctorAndDeptService.createDoctor(doctor);
         if (ret == 0) {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         } else {
