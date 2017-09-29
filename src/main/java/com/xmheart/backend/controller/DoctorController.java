@@ -64,8 +64,8 @@ public class DoctorController {
             @ApiParam("科室的Id，可选") @RequestParam(required = false) Long deptId,
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
-            @ApiParam("介绍") @RequestParam(required = false) String intro,
-            @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
+            @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDoctor doctor;
         doctor = doctorAndDeptService.getDoctorById(id);
@@ -108,33 +108,45 @@ public class DoctorController {
             @ApiParam("科室的Id，可选") @RequestParam(required = false) Long deptId,
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
-            @ApiParam("介绍") @RequestParam(required = false) String intro,
-            @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
+            @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDoctor doctor = new XPWDoctor();
         
         if (name != null) {
             doctor.setName(name);
+        } else {
+            doctor.setName("");
         }
         
         if (deptId != null) {
             doctor.setDeptId(deptId);
+        } else {
+            doctor.setDeptId(0l);
         }
         
         if (duty != null) {
             doctor.setDuty(duty);
+        } else {
+            doctor.setDuty("");
         }
         
         if (professionalTitle != null) {
             doctor.setProfessionalTitle(professionalTitle);
+        } else {
+            doctor.setProfessionalTitle("");
         }
         
         if (intro != null) {
             doctor.setIntro(intro);
+        } else {
+            doctor.setIntro("");
         }
         
         if (isDisplayed != null) {
             doctor.setIsDisplayed(isDisplayed);
+        } else {
+            doctor.setIsDisplayed(false);
         }
         
         int ret = doctorAndDeptService.createDoctor(doctor);
