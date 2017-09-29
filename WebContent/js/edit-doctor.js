@@ -7,6 +7,7 @@ exports.XPW.DoctorEdit = (function() {
 	DoctorEdit.firstSelectHandle();
 	DoctorEdit.jumpDoctorDep()
 	DoctorEdit.NewDoctor()
+	DoctorEdit.online()
   }
   DoctorEdit.firstOfficeLoad = function () {
 	$.ajax({
@@ -55,8 +56,27 @@ exports.XPW.DoctorEdit = (function() {
     $('#doctorTable').on ('click', '.post-btn-edit', function() {
       var doctorId = $(this).data('doctor-id');
       location.href = '/xmheart_pc_server/static/doctor-ueditor.html?doctorId=' + doctorId;
-    })
-    
+    }) 
+  }
+  
+  DoctorEdit.online = function () {
+	  $('#doctorTable').on ('click', '.post-btn-online', function() {
+		  var $this = $(this);
+		  var id = $this.data('id');
+		  var isDisplayed = !$this.data('is-displayed');
+		  $.ajax({
+		  	  	url: '/xmheart_pc_server/doctors/' + id,
+		        type: 'POST',
+		        dataType: 'json',
+		        data: {id:id, isDisplayed: isDisplayed}
+		      })
+		  .done(function(data) {
+			  var doctorTemplate = $('#doctorTd').html();
+		    	  Mustache.parse(doctorTemplate);   // optional, speeds up future uses
+		    	  var rendered = Mustache.render(doctorTemplate, {data});
+		    	  $('#'+id).replaceWith(rendered);
+		  });
+	  })
   }
   
   DoctorEdit.NewDoctor = function () {
