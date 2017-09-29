@@ -66,7 +66,7 @@ public class DoctorAndDeptController {
     public String doctorDept(Model model) {
     	model = addCommonHeader(model);
 
-    	List<XPWDoctor> doctors = doctorAndDeptService.getDoctors();
+    	List<XPWDoctor> doctors = doctorAndDeptService.getDisplayDoctors();
     	model.addAttribute("doctors", doctors);
 
     	List<XPWDept> depts = doctorAndDeptService.getOutServiceDepts();

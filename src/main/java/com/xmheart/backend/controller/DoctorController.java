@@ -31,7 +31,7 @@ public class DoctorController {
         
         List<XPWDoctor> list;
         if (deptId == null) {
-            list = doctorAndDeptService.getDoctors();
+            list = doctorAndDeptService.getDisplayDoctors();
         } else {
             list = doctorAndDeptService.getDoctorsByDeptId(deptId);
         }

@@ -7,7 +7,7 @@ import com.xmheart.model.XPWDoctor;
 
 public interface DoctorAndDeptService {
 
-	List<XPWDoctor> getDoctors();
+	List<XPWDoctor> getDisplayDoctors();
 
 	List<XPWDept> getOutServiceDepts();
 
