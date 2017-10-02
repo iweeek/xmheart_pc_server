@@ -18,6 +18,7 @@ exports.XPW.OfficeEdit = (function() {
       Mustache.parse(firstColumnTemplate);   
       var rendered = Mustache.render(firstColumnTemplate, {data});
       $('#officeTable').html(rendered);
+      $('.ui-loading').hide();
    })
   }
 

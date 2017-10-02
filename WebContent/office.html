@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="./css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="./css/article-list.css">
 </head>
 <body>
     <!--   主题部分  -->
@@ -25,8 +26,8 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                        	   <th style="text-align: center; width: 170px;">编号</th>
                             <th style="text-align: center; width: 170px;">科室名称</th>
-                            <th style="text-align: center; width: 170px;">医生数量</th>
                             <th style="text-align: center; width: 170px;">科室图片</th>
                             <th style="text-align: center; width: 150px;">是否出诊</th>
                             <th style="text-align: center; width: 80px;">操作</th>
@@ -35,14 +36,17 @@
                     <tbody id="officeTable">
                     </tbody>
                 </table>
+                <div class="ui-loading">
+		            <img src="./img/progress_circle.gif" alt="loading">
+		        </div>
             </div>
         </div>
     </div>
     <script id="officeTd" type="x-tmpl-mustache">
       {{#data}}
         <tr id="{{id}}">
+		 <td style="vertical-align: middle;">{{id}}</td>
         	 <td style="vertical-align: middle;">{{name}}</td>
-          <td style="vertical-align: middle;">{{doctors}}</td>
           <td style="vertical-align: middle; width: 100px;"><img width="100" height="100" src={{imageUrl}} /></td>
           <td style="vertical-align: middle; width: 100px;">
 			{{#outService}}是{{/outService}}

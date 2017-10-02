@@ -17,8 +17,8 @@ exports.XPW.OfficeUeditor = (function() {
   
   OfficeUeditor.fillData = function (data) {
 	  $('#officeName').val(data.name);
-      $('#officeNum').val(data.doctors);
-      $('#officeOutService').val(data.outService);
+//      $('#officeOutService').val(data.outService);
+      $('.outservice[value="'+ data.outService +'"]').attr('checked','true');
       $('#typeSelectInput').val(data.deptId);
       OfficeUeditor.isDisplayed = data.isDisplayed;
       OfficeUeditor.ue.ready(function () {
@@ -47,7 +47,7 @@ exports.XPW.OfficeUeditor = (function() {
 	  var url = id ? '/xmheart_pc_server/dept/' + id : '/xmheart_pc_server/dept'
 	  $('.btn-group').on('click', '#save', function() {
 		  var name = $('#officeName').val();
-	      var outService = $('#officeOutService').val();
+	      var outService = $('.outservice:checked').val();
 		  var isDisplayed = OfficeUeditor.isDisplayed;
 		  var intro = OfficeUeditor.ue.getContent();
 		  var upateParms = {id: id, name: name, outService: outService, intro: intro, isDisplayed: isDisplayed};
