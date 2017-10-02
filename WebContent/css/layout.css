@@ -362,3 +362,73 @@ div.BottomHidden{width:100%; height:38px;}
 		position: relative;
 	}
 }
+
+.xm-float-right {
+	position: fixed;
+    right: 50px;
+    bottom: 100px;
+    z-index: 5;
+}
+.xm-float-right a {
+    text-decoration: none;
+    color: #707070;
+}
+.xm-float-right a:first-child {
+    padding: 8px 0 15px;
+    height: auto;
+    background: #fff url(../images/img19.png) center 88% no-repeat;
+}
+.xm-float-right a.hide {
+    background-image: url(../images/img20.png);
+}
+.xm-float-right a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 2px;
+    -webkit-box-shadow: 0 0 10px #ddd;
+    -moz-box-shadow: 0 0 10px #ddd;
+    box-shadow: 0 0 10px #ddd;
+}
+.xm-float-right img {
+    border: none;
+    vertical-align: middle;
+}
+.xm-float-right a:first-child p {
+	padding-top: 5px;
+	font-size: 12px;
+    margin: 0;
+}
+.xm-float-right a i {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.xm-float-right a .up {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    background: #7e3559;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 7px;
+    display: none;
+}
+.xm-float-right a .code {
+    position: absolute;
+    right: 68px;
+    top: 0;
+    width: 107px;
+    height: 107px;
+    padding: 16px 24px 16px 16px;
+    background: url(../images/bg8.png) no-repeat;
+    display: none;
+}
