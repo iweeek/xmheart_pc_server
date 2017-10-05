@@ -32,7 +32,7 @@ public class ArticleController {
     @Autowired
     private ColumnService columnService;
 	
-   @ApiOperation(value = "获取文章", notes = "获取文章")
+    @ApiOperation(value = "获取文章", notes = "获取文章")
     @RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
     public ResponseEntity<?> index(@ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer pageNo,
             @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize, 
@@ -46,10 +46,11 @@ public class ArticleController {
         } else {
             list = articleService.index(columnId);
         }
-        
+
         return ResponseEntity.ok(list);
         
     }
+    
 	
     //TODO 这个接口要移到后台系统中去
 	@ApiOperation(value = "创建一篇文章", notes = "创建一篇文章")
@@ -77,6 +78,7 @@ public class ArticleController {
 		article.setIsPinned(false);
 		article.setIsPublished(false);
 		article.setUrl("");
+		article.setPinOrder((byte) 0);
 		
 		if (tags != null) {
 		    article.setTags(tags);
@@ -111,6 +113,7 @@ public class ArticleController {
             @ApiParam("栏目Id，仅限于子栏目，可选") @RequestParam(required = false) Long columnId, 
             @ApiParam("文章配图，可选") @RequestParam(required = false) String imgUrl, 
             @ApiParam("文章是否置顶，可选") @RequestParam(required = false) Boolean isPinned, 
+            @ApiParam("文章置顶的顺序，可选") @RequestParam(required = false) Byte pinOrder, 
             @ApiParam("文章是否发表，可选") @RequestParam(required = false) Boolean isPublished, 
             @ApiParam("文章关键字，可选") @RequestParam(required = false) String tags, 
             @ApiParam("文章标题，可选") @RequestParam(required = false) String title, 
@@ -127,9 +130,19 @@ public class ArticleController {
             article.setImgUrl(imgUrl);
         }
         
+        //pinOrder和isPinned具有联动性
         if (isPinned != null) {
-            article.setIsPinned(isPinned);
+            if (isPinned) {
+                article.setIsPinned(isPinned);
+                if (pinOrder != null) {
+                    article.setPinOrder(pinOrder);
+                }
+            } else {
+                article.setPinOrder((byte) 0);
+            }
         }
+        
+
         
         if (isPublished != null) {
             article.setIsPublished(isPublished);
