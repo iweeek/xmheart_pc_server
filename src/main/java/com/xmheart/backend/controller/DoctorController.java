@@ -61,6 +61,7 @@ public class DoctorController {
     @RequestMapping(value = { "/doctors/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("医生的Id") @PathVariable Long id,
             @ApiParam("医生的姓名，可选") @RequestParam(required = false) String name,
+            @ApiParam("医生的头像，可选") @RequestParam(required = false) String imageUrl,
             @ApiParam("科室的Id，可选") @RequestParam(required = false) Long deptId,
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
@@ -72,6 +73,10 @@ public class DoctorController {
         
         if (name != null) {
             doctor.setName(name);
+        }
+        
+        if (imageUrl != null) {
+            doctor.setImageUrl(imageUrl);
         }
         
         if (deptId != null) {
@@ -109,6 +114,7 @@ public class DoctorController {
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
+            @ApiParam("医生头像，可选") @RequestParam(required = false) String imageUrl,
             @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDoctor doctor = new XPWDoctor();
@@ -117,6 +123,10 @@ public class DoctorController {
             doctor.setName(name);
         } else {
             doctor.setName("");
+        }
+        
+        if (imageUrl != null) {
+            doctor.setImageUrl(imageUrl);
         }
         
         if (deptId != null) {
