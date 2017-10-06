@@ -58,7 +58,7 @@ exports.XPW.DoctorEdit = (function() {
   DoctorEdit.jumpDoctorDep = function () {
     $('#doctorTable').on ('click', '.post-btn-edit', function() {
       var doctorId = $(this).data('doctor-id');
-      location.href = '/xmheart_pc_server/static/doctor-ueditor.html?doctorId=' + doctorId;
+      location.href = '/xmheart_pc_server/static/doctor_ueditor.html?doctorId=' + doctorId;
     }) 
   }
   
@@ -84,7 +84,7 @@ exports.XPW.DoctorEdit = (function() {
   
   DoctorEdit.NewDoctor = function () {
 	  $('#tools').on ('click', '#columnNew', function() {
-	      location.href = '/xmheart_pc_server/static/doctor-ueditor.html';
+	      location.href = '/xmheart_pc_server/static/doctor_ueditor.html';
 	  })
   }
   

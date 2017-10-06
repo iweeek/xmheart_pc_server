@@ -25,14 +25,14 @@ exports.XPW.OfficeEdit = (function() {
   OfficeEdit.jumpDoctorDep = function () {
     $('#officeTable').on ('click', '.post-btn-edit', function() {
       var officeId = $(this).data('office-id');
-      location.href = '/xmheart_pc_server/static/office-ueditor.html?deptId=' + officeId;
+      location.href = '/xmheart_pc_server/static/office_ueditor.html?deptId=' + officeId;
     }) 
   }
   
   
   OfficeEdit.NewDoctor = function () {
 	  $('#tools').on ('click', '#columnNew', function() {
-	      location.href = '/xmheart_pc_server/static/office-ueditor.html';
+	      location.href = '/xmheart_pc_server/static/office_ueditor.html';
 	  })
   }
   
