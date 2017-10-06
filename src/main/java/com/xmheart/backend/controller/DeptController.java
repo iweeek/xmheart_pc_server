@@ -1,25 +1,17 @@
 package com.xmheart.backend.controller;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
-import com.xmheart.model.XPWDoctor;
-import com.xmheart.model.XPWNav;
-import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
 
 import io.swagger.annotations.Api;
@@ -63,6 +55,7 @@ public class DeptController {
     @RequestMapping(value = { "/dept/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("科室的Id") @PathVariable Long id,
             @ApiParam("名称，可选") @RequestParam(required = false) String name,
+            @ApiParam("科室的图片，可选") @RequestParam(required = false) String imageUrl,
             @ApiParam("介绍") @RequestParam(required = false) String intro,
             @ApiParam("是否是门诊科室") @RequestParam(required = false) Boolean outService,
             @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
@@ -72,6 +65,10 @@ public class DeptController {
         
         if (name != null) {
             dept.setName(name);
+        }
+        
+        if (imageUrl != null) {
+            dept.setImageUrl(imageUrl);
         }
         
         if (intro != null) {
@@ -98,6 +95,7 @@ public class DeptController {
     @RequestMapping(value = { "/depts" }, method = RequestMethod.POST)
     public ResponseEntity<?> create(@ApiParam("科室的名称，可选") @RequestParam(required = false) String name,
             @ApiParam("介绍") @RequestParam(required = false) String intro,
+            @ApiParam("科室的图片") @RequestParam(required = false) String imageUrl,
             @ApiParam("是否是门诊科室") @RequestParam(required = false) Boolean outService,
             @ApiParam("是否可以展示") @RequestParam(required = false) Boolean isDisplayed) {
         
@@ -105,6 +103,10 @@ public class DeptController {
         
         if (name != null) {
             dept.setName(name);
+        }
+        
+        if (imageUrl != null) {
+            dept.setImageUrl(imageUrl);
         }
         
         if (intro != null) {
