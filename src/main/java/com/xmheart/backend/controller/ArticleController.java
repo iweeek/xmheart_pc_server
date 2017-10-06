@@ -1,5 +1,7 @@
 package com.xmheart.backend.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
+import com.xmheart.util.FileUtil;
+import com.xmheart.util.PathUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -191,6 +196,20 @@ public class ArticleController {
         }
     }
 	
+    @RequestMapping(value = { "/uploadImage" }, method = RequestMethod.POST)
+    public ResponseEntity<?> uploadImage(@ApiParam("图片") @RequestParam MultipartFile image) {
+        String imagePath = "";
+        String imageUrl = "";
+        try {
+            imagePath = FileUtil.uploadImage(PathUtil.IMG_STORAGE_PATH, image);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
+        return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
+    }
 
 
 }

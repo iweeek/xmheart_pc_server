@@ -327,21 +327,6 @@ public class NewsController {
 
     }
 
-    @RequestMapping(value = { "/uploadImage" }, method = RequestMethod.GET)
-    public ResponseEntity<?> uploadImage(@ApiParam("图片") @RequestParam MultipartFile image) {
-        String imagePath = "";
-        String imageUrl = "";
-        try {
-            imagePath = FileUtil.uploadImage(PathUtil.IMG_STORAGE_PATH, image);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
-        return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
-    }
-
     // @RequestMapping(value = { "/uploadImage" }, method = RequestMethod.GET)
     // public ResponseEntity<?> uploadImage(@ApiParam("图片") @RequestParam
     // MultipartFile image) {
