@@ -5,6 +5,7 @@ exports.XPW.OfficeUeditor = (function() {
     // 初始化页面处理。
 	OfficeUeditor.getOfficeInfo()
   	OfficeUeditor.postOfficeInfo()
+  	OfficeUeditor.uploadImg()
   	OfficeUeditor.ue = UE.getEditor('container');
 	OfficeUeditor.isDisplayed = false;
   }
@@ -25,6 +26,11 @@ exports.XPW.OfficeUeditor = (function() {
         //设置编辑器的内容
     	  	OfficeUeditor.ue.setContent(data.intro);
       });
+      if (data.imageUrl) {
+	  	  $('#uploadImg').attr('src', data.imageUrl);
+	  	  $('#uploadForm').hide();
+	  	  $('#uploadImgWrapper').show();
+      }
   }
   
   OfficeUeditor.getOfficeInfo = function () {
@@ -50,8 +56,9 @@ exports.XPW.OfficeUeditor = (function() {
 	      var outService = $('.outservice:checked').val();
 		  var isDisplayed = OfficeUeditor.isDisplayed;
 		  var intro = OfficeUeditor.ue.getContent();
-		  var upateParms = {id: id, name: name, outService: outService, intro: intro, isDisplayed: isDisplayed};
-		  var newParms = {name: name, outService: outService,  intro: intro, isDisplayed: isDisplayed};
+		  var imageUrl = $('#uploadImg').attr('src');
+		  var upateParms = {id: id, name: name, outService: outService, imageUrl: imageUrl, intro: intro, isDisplayed: isDisplayed};
+		  var newParms = {name: name, outService: outService, imageUrl: imageUrl,  intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
 		  $.ajax({
 		  	  	url: url,
@@ -63,6 +70,24 @@ exports.XPW.OfficeUeditor = (function() {
 			  OfficeUeditor.fillData(data);
 			  swal("保存成功!");
 		  });
+	  })
+  }
+  
+  OfficeUeditor.uploadImg = function () {
+	  $('#uploadForm').submit(function(){
+		  $(this).ajaxSubmit({
+			  success: function (responseText) {
+				  var img = responseText;
+				  $('#uploadImg').attr('src',img);
+				  $('#uploadForm').hide();
+				  $('#uploadImgWrapper').show();
+			  }
+		  });
+		  return false;
+	  })
+	  $('#uploadWrapper').on('click', '#uploadImgBtn', function() {
+		  $('#uploadForm').show();
+		  $('#uploadImgWrapper').hide();
 	  })
   }
   
