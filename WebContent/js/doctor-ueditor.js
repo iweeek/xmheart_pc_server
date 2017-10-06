@@ -6,6 +6,7 @@ exports.XPW.DoctorUeditor = (function() {
 	DoctorUeditor.firstOfficeLoad()
   	DoctorUeditor.getDoctorInfo()
   	DoctorUeditor.postDoctorInfo()
+  	DoctorUeditor.uploadImg()
   	DoctorUeditor.ue = UE.getEditor('container');
 	DoctorUeditor.isDisplayed = false;
   }
@@ -26,6 +27,12 @@ exports.XPW.DoctorUeditor = (function() {
           //设置编辑器的内容
    	   	   DoctorUeditor.ue.setContent(data.intro);
       });
+      if (data.imageUrl) {
+    	  	  $('#uploadImg').attr('src', data.imageUrl);
+    	  	  $('#uploadForm').hide();
+		  $('#uploadImgWrapper').show();
+		  
+      }
   }
   DoctorUeditor.firstOfficeLoad = function () {
 	  $.ajax({
@@ -64,9 +71,10 @@ exports.XPW.DoctorUeditor = (function() {
 		  var duty = $('#doctorDuty').val();
 		  var professionalTitle = $('#doctorProfessiona').val();
 		  var intro = DoctorUeditor.ue.getContent();
-		  var isDisplayed = DoctorUeditor.isDisplayed;
-		  var upateParms = {id: id, name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
-		  var newParms = {name: name, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
+		  var isDisplayed = DoctorUeditor.isDisplayed; 
+		  var imageUrl = $('#uploadImg').attr('src');
+		  var upateParms = {id: id, name: name, imageUrl:imageUrl, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
+		  var newParms = {name: name, deptId: deptId, imageUrl:imageUrl, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
 		  $.ajax({
 		  	  	url: url,
@@ -78,6 +86,24 @@ exports.XPW.DoctorUeditor = (function() {
 			  DoctorUeditor.fillData(data);
 			  swal("保存成功!");
 		  });
+	  })
+  }
+  
+  DoctorUeditor.uploadImg = function () {
+	  $('#uploadForm').submit(function(){
+		  $(this).ajaxSubmit({
+			  success: function (responseText) {
+				  var img = responseText;
+				  $('#uploadImg').attr('src',img);
+				  $('#uploadForm').hide();
+				  $('#uploadImgWrapper').show();
+			  }
+		  });
+		  return false;
+	  })
+	  $('#uploadWrapper').on('click', '#uploadImgBtn', function() {
+		  $('#uploadForm').show();
+		  $('#uploadImgWrapper').hide();
 	  })
   }
   

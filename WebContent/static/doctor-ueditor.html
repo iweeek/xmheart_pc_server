@@ -24,34 +24,44 @@
 
 <body>
 	<div class="editor-container">
-		<form id="myform" action="" method="post" runat="server">
-			<p class="subtit">栏目名称</p>
-			<div class="wrapper category-edit">医生信息</div>
-			<p class="subtit">医生姓名</p>
-			<div class="input-wrapper">
-				<input type="text" class="article-title" id="doctorName" value="">
+		<p class="subtit">栏目名称</p>
+		<div class="wrapper category-edit">医生信息</div>
+		<p class="subtit">医生姓名</p>
+		<div class="input-wrapper">
+			<input type="text" class="article-title" id="doctorName" value="">
+		</div>
+		<p class="subtit">上传图片</p>
+		<div class="upload-wrapper" id="uploadWrapper">
+			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="http://localhost:8080/xmheart_pc_server/uploadImage" >
+			    <input type="file" name="image" id="doctorAvatar" class="article-title" style="float:left"/>
+			    <!-- <iframe name="theIframe" id="uploadIframe"></iframe>  -->
+			    <input type="submit" id="doctorAvatarBtn" value="上传" style="float:left"/>
+			</form>
+			<div class="upload-img" id="uploadImgWrapper">
+				<img src="#" id="uploadImg" />
+				<input type="button" value="修改图片" id="uploadImgBtn">
 			</div>
-			<p class="subtit">医生职称</p>
-			<div class="input-wrapper">
-				<input type="text" class="article-title" id="doctorProfessiona" value="">
-			</div>
-			<p class="subtit">医生职位</p>
-			<div class="input-wrapper">
-				<input type="text" class="article-title" id="doctorDuty" value="">
-			</div>
-			<p class="subtit">所属科室</p>
-			<div class="input-wrapper">
-				<select class="form-control col-md-10" id="typeSelectInput">
-                 </select>
-			</div>
-			<p class="subtit">医生简介</p>
-			<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
-			<div class="btn-group">
-				<input id="save" type="button" name="" value="保存">
-				<input id="cancel" type="button" name="" value="取消">
-				<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
-			</div>
-		</form>
+		</div>
+		<p class="subtit">医生职称</p>
+		<div class="input-wrapper">
+			<input type="text" class="article-title" id="doctorProfessiona" value="">
+		</div>
+		<p class="subtit">医生职位</p>
+		<div class="input-wrapper">
+			<input type="text" class="article-title" id="doctorDuty" value="">
+		</div>
+		<p class="subtit">所属科室</p>
+		<div class="input-wrapper">
+			<select class="form-control col-md-10" id="typeSelectInput">
+                </select>
+		</div>
+		<p class="subtit">医生简介</p>
+		<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
+		<div class="btn-group">
+			<input id="save" type="button" name="" value="保存">
+			<input id="cancel" type="button" name="" value="取消">
+			<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
+		</div>
 	</div>
 
 	<script id="firstColumnTemplate" type="x-tmpl-mustache">
@@ -61,6 +71,7 @@
 	</script>
 	<script type="text/javascript" src="../ueditor/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/third_party/mustache.min.js"></script>
+	<script type="text/javascript" src="../js/third_party/jquery.form.min.js"></script>
 	<script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
 	<script type="text/javascript" src="../js/doctor-ueditor.js"></script>
 	<script type="text/javascript">
