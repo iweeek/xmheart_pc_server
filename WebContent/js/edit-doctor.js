@@ -10,6 +10,7 @@ exports.XPW.DoctorEdit = (function() {
 	DoctorEdit.online()
   }
   DoctorEdit.firstOfficeLoad = function () {
+	$('.ui-loading').hide();
 	$.ajax({
 	  url: '/xmheart_pc_server/depts',
       type: 'GET'
@@ -25,6 +26,7 @@ exports.XPW.DoctorEdit = (function() {
   DoctorEdit.firstSelectHandle = function () {
     $('#columnSearch').click(function() {
     		var val = $('#typeSelectInput').val();
+    		$('.ui-loading').show();
     		DoctorEdit.doctorData(val);
     })
   }
@@ -42,6 +44,7 @@ exports.XPW.DoctorEdit = (function() {
     	    	    Mustache.parse(doctorTemplate);   // optional, speeds up future uses
     	    	    var rendered = Mustache.render(doctorTemplate, {data});
     	    	    $('#doctorTable').html(rendered);
+    	    	    $('.ui-loading').hide();
     		} else {
     			swal({
     				  title: "当前一级栏目下没有二级栏目",

@@ -28,17 +28,9 @@ $(function () {
                     ctrl.noNextPage = true;
                 }
                 var template = $('#J_articles_tmpl').html();
-                var templateOffline = $('#J_articles_tmpl_offline').html();
-                var views = '';
-                data.forEach(function (tr) {
-                    var article = { result: tr };
-                    if (tr.isPublished) {
-                        views += Mustache.render(templateOffline, article)
-                    } else {
-                        views += Mustache.render(template, article)
-                    }
-                });
-                $("#J_articles").html(views);
+                Mustache.parse(template);  
+                var rendered = Mustache.render(template, {result: data});
+                $("#J_articles").html(rendered);
                 $('.ui-loading').hide();
             });
         },
@@ -86,7 +78,6 @@ $(function () {
     // 二级分类的出现
     $('#J_select_first').change(function () {
         var firstId = $(this).val();
-        console.log(firstId)
         if (firstId === '请选择') {
             $('.select-title-second').hide();
         }
