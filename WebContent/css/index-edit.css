@@ -1,0 +1,48 @@
+.index-edit-container {
+	padding-left: 40px;
+}
+.slide-title {
+	margin-bottom: 30px;
+	border-bottom: #d9d9de solid 1px;
+	line-height: 40px;
+}
+.add-list-main {
+	overflow: hidden;
+}
+.add-img-list {
+	width: 150px;
+	float: left;
+}
+.add-img-list .add-image-button {
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	line-height: 150px;
+	border: 1px solid #808080;
+	cursor: pointer;
+}
+.add-img-list .add-image-url {
+	width: 150px;
+	height: 150px;
+	display:none;
+}
+.add-img-list .add-image-url img{
+	width: 150px;
+	height: 150px;
+}
+.add-img-list .add-img-file {
+	display: none;
+}
+.add-img-list .add-img-submit {
+	display: none;
+}
+.add-img-link p {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.add-img-link input {
+	width: 100%;
+}
+.add-img-btn {
+	margin-top: 10px;
+}
