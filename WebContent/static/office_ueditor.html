@@ -32,15 +32,21 @@
 		</div>
 		<p class="subtit">科室头像</p>
 		<div class="upload-wrapper" id="uploadWrapper">
-			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/xmheart_pc_server/uploadImage" >
-			    <input type="file" name="image" id="doctorAvatar" class="article-title" style="float:left"/>
-			    <!-- <iframe name="theIframe" id="uploadIframe"></iframe>  -->
-			    <input type="submit" id="doctorAvatarBtn" value="上传" style="float:left"/>
-			</form>
-			<div class="upload-img" id="uploadImgWrapper">
-				<img src="#" id="uploadImg" />
-				<input type="button" value="修改图片" id="uploadImgBtn">
-			</div>
+			<div class="add-img-list">
+				<div class="add-image-button" id="addImgBtn">
+	   				 添加图片
+	  			</div>
+	  			<div class="add-image-url">
+	  				<img src="#" class="upload-img">
+	  			</div>
+	  			<div class="add-image-edit">
+	  				<img src="../img/manager/edit.png">
+	  			</div>
+	  			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/xmheart_pc_server/uploadImage" >
+	        			<input type="file" name="image" class="add-img-file" />
+	        			<input type="submit" class="add-img-submit" />
+	        		</form>
+        		</div>
 		</div>
 		<p class="subtit">是否出诊</p>
 		<div class="input-wrapper">

@@ -27,9 +27,9 @@ exports.XPW.OfficeUeditor = (function() {
     	  	OfficeUeditor.ue.setContent(data.intro);
       });
       if (data.imageUrl) {
-	  	  $('#uploadImg').attr('src', data.imageUrl);
-	  	  $('#uploadForm').hide();
-	  	  $('#uploadImgWrapper').show();
+    	  	  $('.upload-img').attr('src', data.imageUrl);
+	  	  $('#addImgBtn').hide();
+	  	  $('.add-image-url').show();
       }
   }
   
@@ -56,7 +56,7 @@ exports.XPW.OfficeUeditor = (function() {
 	      var outService = $('.outservice:checked').val();
 		  var isDisplayed = OfficeUeditor.isDisplayed;
 		  var intro = OfficeUeditor.ue.getContent();
-		  var imageUrl = $('#uploadImg').attr('src');
+		  var imageUrl = $('.upload-img').attr('src');
 		  var upateParms = {id: id, name: name, outService: outService, imageUrl: imageUrl, intro: intro, isDisplayed: isDisplayed};
 		  var newParms = {name: name, outService: outService, imageUrl: imageUrl,  intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
@@ -74,20 +74,32 @@ exports.XPW.OfficeUeditor = (function() {
   }
   
   OfficeUeditor.uploadImg = function () {
+	  $('.add-img-list').on('click', '#addImgBtn', function (){
+		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+	  })
+	  $('.add-img-list').on('change', '.add-img-file', function (){
+		  $(this).siblings('.add-img-submit').trigger('click');
+	  })
 	  $('#uploadForm').submit(function(){
-		  $(this).ajaxSubmit({
+		  $this = $(this);
+		  $this.ajaxSubmit({
 			  success: function (responseText) {
 				  var img = responseText;
-				  $('#uploadImg').attr('src',img);
-				  $('#uploadForm').hide();
-				  $('#uploadImgWrapper').show();
+				  $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+				  $this.siblings('.add-image-button').hide();
+				  $this.siblings('.add-image-url').show();
 			  }
 		  });
 		  return false;
 	  })
-	  $('#uploadWrapper').on('click', '#uploadImgBtn', function() {
-		  $('#uploadForm').show();
-		  $('#uploadImgWrapper').hide();
+	  $('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
+		  $('.add-image-edit').show();
+	  })
+	  $('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
+		  $('.add-image-edit').hide();
+	  })
+	  $('.add-img-list').on('click', '.add-image-edit', function (){
+		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
   }
   
