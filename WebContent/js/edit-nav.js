@@ -106,7 +106,7 @@ exports.XPW.NavEdit = (function() {
     $('#secondTable').on('click', '.post-btn-edit', function() {
     	  $('#secondColumnId').val($(this).data('column-name'));
     	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
-      $('#postModal').modal('show');
+    	  $('#postModal').modal('show');
     })
   }
   
@@ -115,18 +115,16 @@ exports.XPW.NavEdit = (function() {
 		  $('#postSelect').select2({
 		      placeholder: '请输入要查询的文章标题...',
 		      allowClear: true,
+		      minimumInputLength: 1,
 		      minimumResultsForSearch: Infinity,
 		      ajax: {
 		        url: '/xmheart_pc_server/news/articles/show',
 		        dataType: 'json',
 		        data: function (params) {
-		        		setTimeout(function(){
-		        			var query = {
-		  		        		  keyword: params.term
-		  		            }
-		  		        return query;
-		        		}, 800)
-		            
+		        		var query = {
+	  		        		  keyword: params.term
+	  		            }
+	  		        return query;
 		        },
 		        processResults: function (data, params) {
 		          var de;
