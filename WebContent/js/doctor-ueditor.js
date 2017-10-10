@@ -28,10 +28,9 @@ exports.XPW.DoctorUeditor = (function() {
    	   	   DoctorUeditor.ue.setContent(data.intro);
       });
       if (data.imageUrl) {
-    	  	  $('#uploadImg').attr('src', data.imageUrl);
-    	  	  $('#uploadForm').hide();
-		  $('#uploadImgWrapper').show();
-		  
+    	  	  $('.upload-img').attr('src', data.imageUrl);
+    	  	  $('#addImgBtn').hide();
+		  $('.add-image-url').show();
       }
   }
   DoctorUeditor.firstOfficeLoad = function () {
@@ -72,7 +71,7 @@ exports.XPW.DoctorUeditor = (function() {
 		  var professionalTitle = $('#doctorProfessiona').val();
 		  var intro = DoctorUeditor.ue.getContent();
 		  var isDisplayed = DoctorUeditor.isDisplayed; 
-		  var imageUrl = $('#uploadImg').attr('src');
+		  var imageUrl = $('.upload-img').attr('src');
 		  var upateParms = {id: id, name: name, imageUrl:imageUrl, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
 		  var newParms = {name: name, deptId: deptId, imageUrl:imageUrl, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
@@ -90,20 +89,32 @@ exports.XPW.DoctorUeditor = (function() {
   }
   
   DoctorUeditor.uploadImg = function () {
+	  $('.add-img-list').on('click', '#addImgBtn', function (){
+		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+	  })
+	  $('.add-img-list').on('change', '.add-img-file', function (){
+		  $(this).siblings('.add-img-submit').trigger('click');
+	  })
 	  $('#uploadForm').submit(function(){
-		  $(this).ajaxSubmit({
+		  $this = $(this);
+		  $this.ajaxSubmit({
 			  success: function (responseText) {
 				  var img = responseText;
-				  $('#uploadImg').attr('src',img);
-				  $('#uploadForm').hide();
-				  $('#uploadImgWrapper').show();
+				  $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+				  $this.siblings('.add-image-button').hide();
+				  $this.siblings('.add-image-url').show();
 			  }
 		  });
 		  return false;
 	  })
-	  $('#uploadWrapper').on('click', '#uploadImgBtn', function() {
-		  $('#uploadForm').show();
-		  $('#uploadImgWrapper').hide();
+	  $('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
+		  $('.add-image-edit').show();
+	  })
+	  $('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
+		  $('.add-image-edit').hide();
+	  })
+	  $('.add-img-list').on('click', '.add-image-edit', function (){
+		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
   }
   
