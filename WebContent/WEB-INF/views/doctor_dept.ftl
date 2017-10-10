@@ -26,7 +26,7 @@
                 <div class="contentsOffice">
                     <i class="ico01"></i>
                     <div class="img animated">
-                        <img alt="${dept.name}" src="pic/pic_007.png" width="80" height="80">
+                        <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
                     <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
                     <p>厦门大学附属心血管病医院心内科是国家临床重点专科，卫生部国家级心血管疾病介入培训基地，……</p>
