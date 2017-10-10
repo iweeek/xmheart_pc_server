@@ -12,42 +12,35 @@
 <link rel="stylesheet" type="text/css" href="./css/article-list.css">
 </head>
 <body>
-    <!--   主题部分  -->
-    <div>
-        <div>
-            <div>
-                <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
-                </div>
-                <div class="row" style="margin-top: 10px; margin-bottom: 20px;" id="tools">
-                    <div class="col-md-1" style="line-height: 34px;">科室名称</div>
-                    <div class="col-md-2">
-                        <select class="form-control col-md-10" id="typeSelectInput">
-                        </select>
-                    </div>
-                    <div class="col-md-1">
-                    		<button class="btn btn-primary" id="columnSearch">搜索</button>
-                    </div>
-                    <div class="col-md-1">
-                    		<button class="btn btn-primary" id="columnNew">新建医生</button>
-                    </div>
-                </div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center; width: 170px;">医生姓名</th>
-                            <th style="text-align: center; width: 170px;">职称</th>
-                            <th style="text-align: center; width: 170px;">头像</th>
-                            <th style="text-align: center; width: 150px;">职位</th>
-                            <th style="text-align: center; width: 80px;">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="doctorTable">
-                    </tbody>
-                </table>
-                <div class="ui-loading">
-		            <img src="./img/progress_circle.gif" alt="loading">
-		        </div>
+    <div class="page-article-list">
+        <div class="row" id="tools">
+            <div class="col-md-1" style="line-height: 34px;">科室名称</div>
+            <div class="col-md-2">
+                <select class="form-control col-md-10" id="typeSelectInput">
+                </select>
             </div>
+            <div class="col-md-1">
+                    <button class="btn btn-primary" id="columnSearch">搜索</button>
+            </div>
+            <div class="col-md-1">
+                    <button class="btn btn-primary" id="columnNew">新建医生</button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align: center; width: 170px;">医生姓名</th>
+                    <th style="text-align: center; width: 170px;">职称</th>
+                    <th style="text-align: center; width: 170px;">头像</th>
+                    <th style="text-align: center; width: 150px;">职位</th>
+                    <th style="text-align: center; width: 80px;">操作</th>
+                </tr>
+            </thead>
+            <tbody id="doctorTable">
+            </tbody>
+        </table>
+        <div class="ui-loading">
+            <img src="./img/progress_circle.gif" alt="loading">
         </div>
     </div>
     <script id="firstColumnTemplate" type="x-tmpl-mustache">

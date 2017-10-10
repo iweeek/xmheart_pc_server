@@ -9,39 +9,33 @@
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="./css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="./css/article-list.css">
 </head>
 <body>
-    <!--   主题部分  -->
-    <div>
-        <div>
-            <div>
-                <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
-                </div>
-                <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
-                    <div class="col-md-1" style="line-height: 34px;">一级栏目</div>
-                    <div class="col-md-2">
-                        <select class="form-control col-md-10" id="typeSelectInput">
-                            <option></option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                    		<button class="btn btn-primary" id="columnSearch">搜索</button>
-                    </div>
-                </div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center; width: 170px;">二级栏目</th>
-                            <th style="text-align: center; width: 170px;">文章标题</th>
-                            <th style="text-align: center; width: 170px;">配图</th>
-                            <th style="text-align: center; width: 150px;">发表时间</th>
-                            <th style="text-align: center; width: 80px;">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="secondTable"></tbody>
-                </table>
-            </div>
-        </div>
+    <div class="page-article-list">
+      <div class="row">
+          <div class="col-md-1" style="line-height: 34px;">一级栏目</div>
+          <div class="col-md-2">
+              <select class="form-control col-md-10" id="typeSelectInput">
+                  <option></option>
+              </select>
+          </div>
+          <div class="col-md-2">
+              <button class="btn btn-primary" id="columnSearch">搜索</button>
+          </div>
+      </div>
+      <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th style="text-align: center; width: 170px;">二级栏目</th>
+                  <th style="text-align: center; width: 170px;">文章标题</th>
+                  <th style="text-align: center; width: 170px;">配图</th>
+                  <th style="text-align: center; width: 150px;">发表时间</th>
+                  <th style="text-align: center; width: 80px;">操作</th>
+              </tr>
+          </thead>
+          <tbody id="secondTable"></tbody>
+      </table>
     </div>
     <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModal">
       <div class="modal-dialog">
