@@ -75,7 +75,17 @@ $(function () {
             }
 
             $.post('/xmheart_pc_server/articles', params, function (res) {
-                swal("新建文章成功!", "您可以发表文章，或返回上一页", "success");
+                swal({
+                    title: "新建文章成功",
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#8cd4f5",
+                    confirmButtonText: "返回上一页",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false
+                }, function () {
+                    ctrl.cancel();
+                });
                 // window.history.go(-1);
             });
         },
@@ -96,7 +106,6 @@ $(function () {
                 $.post(url, params, function (res) {
                     swal({
                         title: "保存成功",
-                        text: "您可以发表文章",
                         type: "success",
                         showCancelButton: true,
                         confirmButtonColor: "#8cd4f5",
@@ -112,8 +121,17 @@ $(function () {
             }
 
             $.post('/xmheart_pc_server/articles', params, function (res) {
-                swal("新建文章成功!", "您可以发表文章，或返回上一页", "success");
-                // window.history.go(-1);
+                swal({
+                    title: "新建文章成功",
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#8cd4f5",
+                    confirmButtonText: "返回上一页",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false
+                }, function () {
+                    ctrl.cancel();
+                });
             });
         },
         preview: function () {
