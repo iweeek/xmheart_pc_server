@@ -6,7 +6,7 @@ $(function () {
     var tags = $('.tag-input');
     var category1 = $('.select-title-first');
     var category2 = $('.select-title-second');
-
+    var article = {};
     var ctrl = {
         //获取url中的参数
         getUrlParam: function (name) {
@@ -27,13 +27,14 @@ $(function () {
         getArticle: function (articleId) {
             var url = '/xmheart_pc_server/articles/' + articleId;
             $.get(url, function (res) {
+                article = res;
                 title.val(res.title);
                 tags.val(res.tags);
                 digest.val(res.brief);
                 ctrl.statInputNum(digest, word);
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
-                $('.category-create').hide();
+                // $('.category-create').hide();
                 //对编辑器的操作最好在编辑器ready之后再做
                 ue.ready(function () {
                     //设置编辑器的内容
@@ -52,9 +53,18 @@ $(function () {
                 brief: digest.val(),
                 isPublished: true
             };
+
+            if (!ctrl.valid(params)) {
+                return;
+            }
+
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
+                if (category2.find('option:selected').val()) {
+                    params.columnId = category2.find('option:selected').val();
+                }
+
                 var url = '/xmheart_pc_server/articles/' + articleId;
                 $.post(url, params, function (res) {
                     swal({
@@ -69,7 +79,7 @@ $(function () {
                     }, function () {
                         window.history.go(-1);
                     });
-                });
+                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });;
 
                 return;
             }
@@ -87,7 +97,7 @@ $(function () {
                     ctrl.cancel();
                 });
                 // window.history.go(-1);
-            });
+            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
         },
         save: function () {
             // 保存(提交请求但isPublished为false)
@@ -99,9 +109,17 @@ $(function () {
                 brief: digest.val(),
                 isPublished: false
             };
+
+            if (!ctrl.valid(params)) {
+                return;
+            }
+            
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
+                if (category2.find('option:selected').val()) {
+                    params.columnId = category2.find('option:selected').val();
+                }
                 var url = '/xmheart_pc_server/articles/' + articleId;
                 $.post(url, params, function (res) {
                     swal({
@@ -115,7 +133,7 @@ $(function () {
                     }, function () {
                         ctrl.publish();
                     });
-                });
+                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
 
                 return;
             }
@@ -132,7 +150,20 @@ $(function () {
                 }, function () {
                     ctrl.cancel();
                 });
-            });
+            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
+        },
+        valid: function (params) {
+            var articleId = ctrl.getUrlParam('articleId');
+            
+            if (!params.columnId && !articleId) {
+                sweetAlert("信息不完整", "请填写分类", "error");
+                return false;
+            }
+            if(!params.title) {
+                sweetAlert("信息不完整", "请填写标题", "error");
+                return false;
+            }
+            return true;
         },
         preview: function () {
             $('#preview-panel').html(ue.getContent());
