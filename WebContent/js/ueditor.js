@@ -52,6 +52,11 @@ $(function () {
                 brief: digest.val(),
                 isPublished: true
             };
+
+            if (!ctrl.valid(params)) {
+                return;
+            }
+
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
@@ -69,7 +74,7 @@ $(function () {
                     }, function () {
                         window.history.go(-1);
                     });
-                });
+                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });;
 
                 return;
             }
@@ -87,7 +92,7 @@ $(function () {
                     ctrl.cancel();
                 });
                 // window.history.go(-1);
-            });
+            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
         },
         save: function () {
             // 保存(提交请求但isPublished为false)
@@ -99,6 +104,11 @@ $(function () {
                 brief: digest.val(),
                 isPublished: false
             };
+
+            if (!ctrl.valid(params)) {
+                return;
+            }
+            
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
@@ -115,7 +125,7 @@ $(function () {
                     }, function () {
                         ctrl.publish();
                     });
-                });
+                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
 
                 return;
             }
@@ -132,7 +142,18 @@ $(function () {
                 }, function () {
                     ctrl.cancel();
                 });
-            });
+            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
+        },
+        valid: function (params) {
+            if (!params.columnId) {
+                sweetAlert("信息不完整", "请填写分类", "error");
+                return false;
+            }
+            if(!params.title) {
+                sweetAlert("信息不完整", "请填写标题", "error");
+                return false;
+            }
+            return true;
         },
         preview: function () {
             $('#preview-panel').html(ue.getContent());
