@@ -30,7 +30,13 @@ $(function () {
                 var template = $('#J_articles_tmpl').html();
                 Mustache.parse(template);  
                 var rendered = Mustache.render(template, {result: data});
-                $("#J_articles").html(rendered);
+                if (data.length === 0) {
+                    $('.ui-nodata').show();
+                    $("#J_articles").html('');
+                } else {
+                    $('.ui-nodata').hide();
+                    $("#J_articles").html(rendered);
+                }
                 $('.ui-loading').hide();
             });
         },
@@ -71,6 +77,7 @@ $(function () {
         init: function () {
             this.getColumns(0, '#J_select_first');
             ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+            $('.ui-nodata').hide();
         }
     }
     ctrl.init();
@@ -83,6 +90,7 @@ $(function () {
         }
 
         if (firstId !== 0 && firstId !== '请选择') {
+            ctrl.columnId = firstId;
             $('.select-title-second').show();
             ctrl.getColumns(firstId, '#J_select_second');
         }
