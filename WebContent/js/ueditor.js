@@ -30,7 +30,7 @@ $(function () {
                 article = res;
                 title.val(res.title);
                 tags.val(res.tags);
-                digest.val(res.brief);
+                digest.val(res.brief.slice(0,200));
                 ctrl.statInputNum(digest, word);
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
@@ -45,12 +45,13 @@ $(function () {
         },
         publish: function () {
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
-            var params = {
+        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
+        		var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
-                brief: digest.val(),
+                brief: brief,
                 isPublished: true
             };
 
@@ -101,12 +102,13 @@ $(function () {
         },
         save: function () {
             // 保存(提交请求但isPublished为false)
+        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
-                brief: digest.val(),
+                brief: brief,
                 isPublished: false
             };
 
