@@ -16,6 +16,51 @@ $(function () {
                 }
             });
         },
+        dateFilter: function (date, formatString) {
+        		if (!date) return '';
+          	var date = new Date(date);
+
+          	formatString = formatString || 'yyyy-MM-dd';
+
+          	var dateMap = {
+          		year: date.getFullYear(),
+          		month: date.getMonth() + 1,
+          		day: date.getDate(),
+          		hour: date.getHours(),
+          		minutes: date.getMinutes(),
+          		seconds: date.getSeconds()
+          	};
+
+          	for (var key in dateMap) {
+          		var value = dateMap[key];
+          		value = value < 10 ? '0' + value : value;
+          		dateMap[key] = value.toString();
+          	}
+
+          	var year = dateMap.year,
+          	    month = dateMap.month,
+          	    day = dateMap.day,
+          	    hour = dateMap.hour,
+          	    minutes = dateMap.minutes,
+          	    seconds = dateMap.seconds;
+
+          	var formatDate = formatString.replace(/y+/, function ($0) {
+          		return year.substring(year.length, -$0.length);
+          	}).replace(/M+/, function () {
+          		return month;
+          	}).replace(/d+/, function () {
+          		return day;
+          	}).replace(/H+/, function () {
+          		return hour;
+          	}).replace(/h+/, function () {
+          		return hour % 12 === 0 ? 12 : hour % 12;
+          	}).replace(/m+/, function () {
+          		return minutes;
+          	}).replace(/s+/, function () {
+          		return seconds;
+          	});
+          	return formatDate;
+        },
         getArticles: function (pageNo, pageSize, columnId) {
             $('.ui-loading').show();
             var loading = true;
@@ -27,6 +72,9 @@ $(function () {
                 if (data.length < ctrl.pageSize) {
                     ctrl.noNextPage = true;
                 }
+                $.each(data, function(name, val){
+	  	    	   	  val.publishTime = ctrl.dateFilter(val.publishTime)
+	  	    	    })
                 var template = $('#J_articles_tmpl').html();
                 Mustache.parse(template);  
                 var rendered = Mustache.render(template, {result: data});
