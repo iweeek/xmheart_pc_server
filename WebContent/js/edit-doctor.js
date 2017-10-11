@@ -20,6 +20,7 @@ exports.XPW.DoctorEdit = (function() {
       Mustache.parse(firstColumnTemplate);   
       var rendered = Mustache.render(firstColumnTemplate, {data});
       $('#typeSelectInput').html(rendered);
+      $('#columnSearch').trigger('click');
    })
   }
 

@@ -83,7 +83,31 @@ exports.XPW.DoctorUeditor = (function() {
 		      })
 		  .done(function(data) {
 			  DoctorUeditor.fillData(data);
-			  swal("保存成功!");
+			  if (id) {
+				  swal({
+                      title: "编辑成功",
+                      text: "返回上一页？",
+                      type: "success",
+                      showCancelButton: true,
+                      confirmButtonColor: "#8cd4f5",
+                      confirmButtonText: "返回上一页",
+                      cancelButtonText: "留在本页",
+                      closeOnConfirm: false
+                  }, function () {
+                      window.history.go(-1);
+                  });
+			  } else {
+				  swal({
+                      title: "创建成功",
+                      type: "success",
+                      showCancelButton: false,
+                      confirmButtonColor: "#8cd4f5",
+                      confirmButtonText: "确定",
+                      closeOnConfirm: false
+                  }, function () {
+                      location.href="/xmheart_pc_server/doctor.html"
+                  });
+			  }
 		  });
 	  })
   }
