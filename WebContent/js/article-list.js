@@ -110,6 +110,28 @@ $(function () {
                 ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
             });
         },
+        pinned: function (articleId) {
+            var params = {
+                isPinned: true
+            };
+            // 编辑模式
+            var url = '/xmheart_pc_server/articles/' + articleId;
+            $.post(url, params, function (res) {
+                swal("置顶成功！");
+                ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+            });
+        },
+        unPinned: function (articleId) {
+            var params = {
+                isPinned: false
+            };
+            // 编辑模式
+            var url = '/xmheart_pc_server/articles/' + articleId;
+            $.post(url, params, function (res) {
+                swal("取消置顶成功！");
+                ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+            });
+        },
         previous: function () {
             if (ctrl.pageNo > 1) {
                 ctrl.pageNo--;
@@ -176,6 +198,18 @@ $(function () {
     $('#J_articles').on('click', '.offline-btn', function () {
         var articleId = this.getAttribute('data');
         ctrl.offline(articleId);
+    })
+
+    // 置顶
+    $('#J_articles').on('click', '.pinned-btn', function () {
+        var articleId = this.getAttribute('data');
+        ctrl.pinned(articleId);
+    });
+
+    // 取消置顶
+    $('#J_articles').on('click', '.un-pinned-btn', function () {
+        var articleId = this.getAttribute('data');
+        ctrl.unPinned(articleId);
     })
 
     // 新建

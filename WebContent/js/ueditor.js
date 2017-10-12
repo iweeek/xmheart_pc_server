@@ -216,5 +216,6 @@ $(function () {
     $('#reset').on('click', ctrl.reset);
     $('#save').on('click', ctrl.save)
     $('#preview').on('click', ctrl.preview);
+    $('#cancel').on('click', ctrl.cancel);
 
 })

@@ -82,7 +82,13 @@
 				{{/isPublished}}
 				{{^isPublished}}
                 		<button class='btn btn-danger publish-btn' data={{id}}>发布</button>
-				{{/isPublished}}
+                {{/isPublished}}
+                {{#isPinned}}
+                		<button class='btn btn-danger un-pinned-btn' data={{id}}>取消置顶</button>
+				{{/isPinned}}
+				{{^isPinned}}
+                		<button class='btn btn-danger pinned-btn' data={{id}}>置顶</button>
+                {{/isPinned}}
             </td>
         </tr>
         {{/result}}
