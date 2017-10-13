@@ -13,7 +13,8 @@ exports.XPW.NavEdit = (function() {
 	$.ajax({
 	  url: '/xmheart_pc_server/columns',
       type: 'GET',
-      dataType: 'json'
+      dataType: 'json',
+      data: {parentColumnId: 0}
     })
    .done(function(data) {
      var firstColumnTemplate = $('#firstColumnTemplate').html();

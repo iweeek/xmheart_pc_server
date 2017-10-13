@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/reset.css">
 	<link rel="stylesheet" type="text/css" href="../css/editor.css">
 	<link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="../css/datepicker.min.css">
 	<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../ueditor/editor_api.js">
 
@@ -41,6 +42,10 @@
 				</div>
 				<input type="text" class="article-title" value="">
 			</div>
+			<p class="subtit">文章编辑时间</p>
+			<div class="tag-wrapper">
+				<input type="text" class="tag-input" id="articleDate" value="" data-toggle="datepicker"> 
+			</div>
 			<p class="subtit">文章内容</p>
 			<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
 			<p class="subtit">文章标签</p>
@@ -67,7 +72,9 @@
 	</div>
 </body>
 <script type="text/javascript" src="../ueditor/jquery.min.js"></script>
-<script type="text/javascript" src="../js/ueditor.js"></script>
 <script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
+<script type="text/javascript" src="../js/third_party/datepicker.min.js"></script>
+<script type="text/javascript" src="../js/i18n/datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../js/ueditor.js"></script>
 
 </html>

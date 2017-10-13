@@ -46,13 +46,15 @@ $(function () {
         publish: function () {
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
         		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
+        		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
         		var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
-                isPublished: true
+                isPublished: true,
+                publishTime: publishTime
             };
 
             if (!ctrl.valid(params)) {
@@ -103,13 +105,15 @@ $(function () {
         save: function () {
             // 保存(提交请求但isPublished为false)
         		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
+        		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
             var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
-                isPublished: false
+                isPublished: false,
+                publishTime: publishTime
             };
 
             if (!ctrl.valid(params)) {
@@ -199,10 +203,16 @@ $(function () {
                 ctrl.getArticle(articleId);
             }
             ctrl.getColumn(0, '#J_select_first');
+        },
+        initDate: function() {
+        		$('[data-toggle="datepicker"]').datepicker({
+        		    language: 'zh-CN',
+        		    format: 'yyyy-mm-dd'
+        		 });
         }
     }
     ctrl.init();
-
+    ctrl.initDate();
     // 二级分类的出现
     $('.select-title-first').change(function () {
         var firstId = $(this).val();
@@ -211,7 +221,7 @@ $(function () {
             ctrl.getColumn(firstId, '#J_select_second');
         }
     });
-
+   
     $('#publish').on('click', ctrl.publish);
     $('#reset').on('click', ctrl.reset);
     $('#save').on('click', ctrl.save)
