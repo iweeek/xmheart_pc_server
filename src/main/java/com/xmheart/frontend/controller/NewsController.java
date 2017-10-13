@@ -70,6 +70,13 @@ public class NewsController {
     // private static Map<String, String> secColumns = new HashMap<String,
     // String>();
 
+    /**
+     * Adds the top nav.
+     *
+     * @param columnId the column id
+     * @param model the model
+     * @return the model
+     */
     private Model addTopNav(long columnId, Model model) {
 
         List<XPWColumn> columnList = columnService.getFirstColumns();
@@ -299,12 +306,12 @@ public class NewsController {
 
     @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
     public String newsDetail(@RequestParam Long id, Model model) {
-//        model = addTopNav(model);
-
-//        model = addHeader(model);
-
         XPWArticle article = newsService.getNewsById(id);
         model.addAttribute("article", article);
+        
+        model = addTopNav(article.getColumnId(), model);
+
+        model = addLeftNav(article.getColumnId(), model);
 
         return "news_detail";
 
