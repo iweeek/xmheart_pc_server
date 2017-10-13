@@ -66,7 +66,7 @@ public class NewsController {
     // private static Map<String, String> secColumns = new HashMap<String,
     // String>();
 
-    private Model addCommonHeader(Model model) {
+    private Model addTopNav(long columnId, Model model) {
 
         List<XPWColumn> columnList = columnService.getFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
@@ -90,12 +90,14 @@ public class NewsController {
         model.addAttribute("firstColumns", firstColumns);
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
-        model.addAttribute("firstColumnName", NEWS_COLUMN_NAME);
+        
+        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+        model.addAttribute("firstColumnName", parentColumn);
 
         return model;
     }
 
-    private Model addHeader(long columnId, Model model) {
+    private Model addLeftNav(long columnId, Model model) {
         List<XPWColumn> childColumns = columnService.getChildColumnsById(columnService.getParentColumnById(columnId).getId());
         model.addAttribute("leftNav", childColumns);
 
@@ -129,14 +131,15 @@ public class NewsController {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @RequestMapping(value = { "/col/{id}" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/col/{columnId}" }, method = RequestMethod.GET)
     public String columnArticleList(@RequestParam(required = false, defaultValue = "1") Integer pageNo, 
-            @PathVariable Long id, Model model) {
-        model = addCommonHeader(model);
+            @PathVariable Long columnId, Model model) {
+        model = addTopNav(columnId, model);
 
-        model = addHeader(id, model);
+        model = addLeftNav(columnId, model);
 
-        model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
+        String columnName = columnService.getColumnById(columnId).getColumnName();
+        model.addAttribute("columnName", columnName);
 
         // 获取置顶的新闻
         List<XPWArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
@@ -155,7 +158,7 @@ public class NewsController {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
     public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
-        model = addCommonHeader(model);
+//        model = addTopNav(model);
 
 //        model = addHeader(model);
 
@@ -186,7 +189,7 @@ public class NewsController {
             page = new Integer(1);
         }
 
-        model = addCommonHeader(model);
+//        model = addTopNav(model);
 
 //        model = addHeader(model);
 
@@ -216,7 +219,7 @@ public class NewsController {
             page = new Integer(1);
         }
 
-        model = addCommonHeader(model);
+//        model = addTopNav(model);
 
 //        model = addHeader(model);
 
@@ -257,7 +260,7 @@ public class NewsController {
         if (time == null) {
             time = "";
         }
-        model = addCommonHeader(model);
+//        model = addTopNav(model);
 
 //        model = addHeader(model);
 
@@ -292,7 +295,7 @@ public class NewsController {
 
     @RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
     public String newsDetail(@RequestParam Long id, Model model) {
-        model = addCommonHeader(model);
+//        model = addTopNav(model);
 
 //        model = addHeader(model);
 
