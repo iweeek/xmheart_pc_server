@@ -11,7 +11,7 @@
 		<div class="list-main-nav">
 			<h4 class="list-nav-title">${parentColumnName}</h4>
 			<ul class="list-nav-list">
-			<#list listMainNav as k>
+			<#list leftNav as k>
 				<#if k.columnName == columnName>
 					<li class="active"><a href="${k.url}">${k.columnName}</a>
 				<#else>

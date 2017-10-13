@@ -11,7 +11,9 @@ import com.xmheart.model.XPWNav;
  */
 public interface ColumnService {
 
-	/**
+	XPWColumn getParentColumnById(long id);
+
+    /**
 	 * Gets the first columns.
 	 *
 	 * @return the first columns

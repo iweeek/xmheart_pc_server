@@ -39,6 +39,7 @@ public class NewsServiceImpl implements NewsService {
 	public List<XPWArticle> getNoPinnedMediaNews() {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andColumnIdEqualTo(MEDIA_NEWS_COLUMN_ID).andIsPinnedEqualTo(false);
+		example.setOrderByClause("publish_time desc");
 
 		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
 

@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,7 +82,6 @@ public class NewsController {
             }
 
             List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
-
             if (navList.size() > 0) {
                 navMap.put(column.getColumnName(), navList);
             }
@@ -95,11 +95,12 @@ public class NewsController {
         return model;
     }
 
-    private Model addNewsHeader(Model model) {
-        List<XPWColumn> list = columnService.getChildColumnsById(NEWS_COLUMN_ID);
-        model.addAttribute("listMainNav", list);
+    private Model addHeader(long columnId, Model model) {
+        List<XPWColumn> childColumns = columnService.getChildColumnsById(columnService.getParentColumnById(columnId).getId());
+        model.addAttribute("leftNav", childColumns);
 
-        model.addAttribute("parentColumnName", NEWS_COLUMN_NAME);
+        String parentColumnName = columnService.getParentColumnById(columnId).getColumnName();
+        model.addAttribute("parentColumnName", parentColumnName);
 
         return model;
     }
@@ -128,11 +129,12 @@ public class NewsController {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @RequestMapping(value = { "/mediaNews" }, method = RequestMethod.GET)
-    public String mediaNews(@RequestParam(required = false, defaultValue = "1") Integer pageNo, Model model) {
+    @RequestMapping(value = { "/col/{id}" }, method = RequestMethod.GET)
+    public String columnArticleList(@RequestParam(required = false, defaultValue = "1") Integer pageNo, 
+            @PathVariable Long id, Model model) {
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+        model = addHeader(id, model);
 
         model.addAttribute("columnName", MEDIA_NEWS_COLUMN_NAME);
 
@@ -155,7 +157,7 @@ public class NewsController {
     public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+//        model = addHeader(model);
 
         model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
 
@@ -186,7 +188,7 @@ public class NewsController {
 
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+//        model = addHeader(model);
 
         model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
 
@@ -216,7 +218,7 @@ public class NewsController {
 
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+//        model = addHeader(model);
 
         model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
 
@@ -257,7 +259,7 @@ public class NewsController {
         }
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+//        model = addHeader(model);
 
         model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
 
@@ -292,7 +294,7 @@ public class NewsController {
     public String newsDetail(@RequestParam Long id, Model model) {
         model = addCommonHeader(model);
 
-        model = addNewsHeader(model);
+//        model = addHeader(model);
 
         XPWArticle article = newsService.getNewsById(id);
         model.addAttribute("article", article);

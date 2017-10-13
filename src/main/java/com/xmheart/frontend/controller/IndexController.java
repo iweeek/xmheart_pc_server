@@ -20,6 +20,7 @@ public class IndexController {
     @Autowired
     private ColumnService columnService;
     
+    //TODO
     private final String INDEX_COLUMN_NAME = "首页";
     
     private Model addCommonHeader(Model model) {
