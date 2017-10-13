@@ -22,6 +22,17 @@
     width: 100%;
     text-align: center;
 }
-.table-bordered>thead>tr>th {
+.table-bordered {
+    border: 1px solid #eee;
+}
+
+.table-bordered>tbody>tr>td, 
+.table-bordered>tbody>tr>th, 
+.table-bordered>tfoot>tr>td, 
+.table-bordered>tfoot>tr>th, 
+.table-bordered>thead>tr>td, 
+.table-bordered>thead>tr>th{
+    vertical-align: middle;
+	border: 1px solid #eee;
     border-bottom-width: 1px;
 }
