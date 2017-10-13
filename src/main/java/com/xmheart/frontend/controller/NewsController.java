@@ -33,6 +33,7 @@ import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWArticle;
+import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.NewsService;
 
@@ -51,6 +52,9 @@ public class NewsController {
 
     @Autowired
     private NewsService newsService;
+    
+    @Autowired
+    private ArticleService articleService;
 
     private final int PAGE_SIZE = 10;
 
@@ -142,14 +146,14 @@ public class NewsController {
         model.addAttribute("columnName", columnName);
 
         // 获取置顶的新闻
-        List<XPWArticle> pinnedMediaNewsList = newsService.getPinnedMediaNews();
-        model.addAttribute("pinnedMediaNewsList", pinnedMediaNewsList);
+        List<XPWArticle> articleList = articleService.index(columnId);
+        model.addAttribute("pinnedArticleList", articleList.subList(0, 3));
+        
+        List<XPWArticle> noPinnedArticleList = articleList.subList(3, articleList.size());
+        model.addAttribute("noPinnedArticleList", noPinnedArticleList);
 
         PageHelper.startPage(pageNo, PAGE_SIZE);
-        List<XPWArticle> noPinnedMediaNewsList = newsService.getNoPinnedMediaNews();
-        model.addAttribute("noPinnedMediaNewsList", noPinnedMediaNewsList);
-
-        PageInfo pageInfo = new PageInfo(noPinnedMediaNewsList);
+        PageInfo pageInfo = new PageInfo(noPinnedArticleList);
         model.addAttribute("pageInfo", pageInfo);
 
         return "news";
