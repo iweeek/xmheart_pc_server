@@ -69,15 +69,17 @@ td {
 .manager_index_left {
     background-color: #fff;
     border-right: 1px solid #eee;
-    padding-top: 100px;
+    padding-top: 10px;
     height: 1000px;
 }
-
+.manager_index_left .title{
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+    display: block;
+}
 .main-nav {
     margin-left: 1px;
-}
-
-.main-nav.nav-tabs.nav-stacked > li {
 }
 
 .main-nav.nav-tabs.nav-stacked > li > a {
