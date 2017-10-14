@@ -60,10 +60,10 @@ public class NewsController {
 
     private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
     private final String VIDEO_NEWS_COLUMN_NAME = "影像厦心";
-    private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
 
     static final long NEWS_COLUMN_ID = 5;
     static final long EXPERT_COLUMN_ID = 3;
+    static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
 
     // private static Map<String, String> secColumns = new HashMap<String,
     // String>();
@@ -291,11 +291,14 @@ public class NewsController {
         if (time == null) {
             time = "";
         }
-//        model = addTopNav(model);
+        
+        //23是栏目Id，暂时写死
+        model = addTopNav(23, model);
 
-//        model = addHeader(model);
+        model = addLeftNav(23, model);
 
-        model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
+        String columnName = columnService.getColumnById(ELEC_NEWS_PAPER_COLUMN_ID).getColumnName();
+        model.addAttribute("pageName", columnName);
 
         PageHelper.startPage(page, PAGE_SIZE);
 

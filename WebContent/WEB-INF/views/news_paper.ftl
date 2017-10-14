@@ -10,7 +10,7 @@
 			<div class="list-main-nav">
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
-			<#list listMainNav as k>
+			<#list leftNav as k>
 				<#if k.columnName == pageName>
 					<li class="active"><a href="${k.url}">${k.columnName}</a>
 				<#else>
