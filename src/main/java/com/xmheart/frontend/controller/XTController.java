@@ -52,10 +52,10 @@ public class XTController {
         return model;
     }
     
-    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
-    public String index(Model model) {
-        model = addCommonHeader(model);
-
-        return "xt-index";
-    }
+//    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
+//    public String index(Model model) {
+//        model = addCommonHeader(model);
+//
+//        return "xt-index";
+//    }
 }

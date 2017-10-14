@@ -409,5 +409,12 @@ public class NewsController {
 
         return "index";
     }
+    
+    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
+    public String xtIndex(Model model) {
+        model = addTopNav(1, model);
+
+        return "xt_index";
+    }
 
 }
