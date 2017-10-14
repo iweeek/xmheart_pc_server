@@ -158,8 +158,10 @@ public class NewsController {
         
         //顶部三个置顶文章
         List<XPWArticle> pinnedArticleList = articleService.index(columnId, isPublished, isPinned);
-        pinnedArticleList = pinnedArticleList.subList(0, 3);
-        model.addAttribute("pinnedArticleList", pinnedArticleList);
+        if (pinnedArticleList.size() >= 3) {
+            pinnedArticleList = pinnedArticleList.subList(0, 3);
+            model.addAttribute("pinnedArticleList", pinnedArticleList);
+        }
         
         //底下的文章
         PageHelper.startPage(page, PAGE_SIZE);
