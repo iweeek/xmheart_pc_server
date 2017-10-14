@@ -138,8 +138,8 @@ public class ArticleController {
         
         //pinOrder和isPinned具有联动性
         if (isPinned != null) {
+            article.setIsPinned(isPinned);
             if (isPinned) {
-                article.setIsPinned(isPinned);
                 if (pinOrder != null) {
                     article.setPinOrder(pinOrder);
                 }
