@@ -45,9 +45,9 @@ $(function () {
         },
         publish: function () {
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
-        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
-        		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
-        		var params = {
+            var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
+            var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
+            var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
                 content: ue.getContent(),
@@ -56,8 +56,8 @@ $(function () {
                 isPublished: true,
                 publishTime: publishTime
             };
-
-            if (!ctrl.valid(params)) {
+            
+            if (!ctrl.valid(params, 'publish')) {
                 return;
             }
 
@@ -158,7 +158,7 @@ $(function () {
                 });
             }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
         },
-        valid: function (params) {
+        valid: function (params, type) {
             var articleId = ctrl.getUrlParam('articleId');
             
             if (!params.columnId && !articleId) {
@@ -169,6 +169,18 @@ $(function () {
                 sweetAlert("信息不完整", "请填写标题", "error");
                 return false;
             }
+
+            if (type === 'publish') {
+                if (!params.content) {
+                    sweetAlert("信息不完整", "请填写内容", "error");
+                    return false;
+                }
+                if (!params.tags) {
+                    sweetAlert("信息不完整", "请填写标签", "error");
+                    return false;
+                }
+            }
+            
             return true;
         },
         preview: function () {
