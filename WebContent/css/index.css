@@ -3,14 +3,15 @@
 	margin-top: 10px;
 }
 .xm-banner-slide {
-	width: 970px;
-	height: 545px;
+	width: 900px;
+	overflow: hidden;
+	height: 450px;
 	float: left;
 	background: #ccc;
 }
 .xm-banner-slide .swiper-container {
-	width: 970px;
-	height: 545px;
+	width: 945px;
+	height: 450px;
 }
 .xm-banner-slide .swiper-container .swiper-slide img {
 	width: 100%;
@@ -22,9 +23,9 @@
 	bottom: 18px;
 }
 .xm-banner-slide .swiper-pagination .swiper-pagination-bullet {
-	width: 80px;
-	height: 10px;
-	border-radius: 5px;
+	width: 40px;
+	height: 6px;
+	border-radius: 3px;
 }
 .xm-banner-slide .swiper-pagination .swiper-pagination-bullet-active {
 	background: #1782D5;
@@ -41,19 +42,19 @@
 	font-size: 24px;
 	color: #0F76C3;
 	padding-top: 34px;
-	padding-left: 42px;
 	font-weight: normal;
-	margin-bottom: 35px;
+	margin-bottom: 21px;
+	padding-left: 22px;
 }
 .xm-online-service .online-service-list {
 	overflow: hidden;
-	padding: 0 42px 10px;
+	padding: 0 25px 10px;
 }
 .online-service-list li {
 	display: block;
 	float: left;
 	width:50%;
-	margin-bottom: 35px;
+	margin-bottom: 10px;
 }
 .online-service-list li a {
 	display: block;
@@ -93,13 +94,14 @@
 	height: 199px;
 }
 .xm-notice .swiper-container .swiper-slide {
-	padding: 35px 20px 0;
+	padding: 20px 10px 0;
 }
 .xm-notice-title {
 	font-size: 16px;
 	font-weight: normal;
 	color: #505050;
-	margin-bottom: 20px;
+	line-height: 26px;
+	margin-bottom: 5px;
 }
 .xm-notice-tag {
 	background: #fff;
@@ -116,19 +118,20 @@
 /*main end*/
 /*banner start*/
 .xm-banner {
-	margin-top: 64px;
+	margin-top: 35px;
 }
 .xm-banner .xm-container {
 	height: 115px;
 }
 .xm-banner-list {
-	width: 375px;
+	width: 305px;
 	height: 100px;
 	float: left;
 	overflow: hidden;
 	border-right: #eee solid 1px;
-	padding-left: 180px;
+	padding-left: 150px;
 	display:block;
+	background-size: 50px 50px;
 }
 .xm-banner-list:hover {
 	box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
@@ -148,79 +151,23 @@
 }
 .list-info {
 	padding-top: 25px;
+	width: 310px;
 }
 .list-info .list-info-title {
 	color: #2495ea;
-	font-size: 28px;
-	line-height: 28px;
+	font-size: 24px;
+	line-height: 24px;
 	margin-bottom: 9px;
 }
 .list-info .list-info-desc {
 	color: #2495ea;
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 14px;
+	line-height: 14px;
+}
+.xm-footer {
+	margin-top: 30px;
 }
 /*banner end*/
-@media all and (min-width:1px) and (max-width:1441px){
-	.xm-banner-slide {
-		width: 900px;
-		overflow: hidden;
-		height: 450px;
-	}
-	.xm-banner-slide .swiper-container {
-		width: 945px;
-		height: 450px;
-	}
-	.xm-banner-slide .swiper-pagination .swiper-pagination-bullet {
-		width: 40px;
-		height: 6px;
-		border-radius: 3px;
-	}
-	.xm-online-service .online-service-title {
-		margin-bottom: 21px;
-		padding-left: 22px;
-	}
-	.online-service-list li {
-		margin-bottom: 10px;
-	}
-	.online-service-list li a img{
-		width: 30px;
-		height: 30px;
-	}
-	.xm-info {
-		width: 310px;
-	}
-	.xm-notice-title {
-		line-height: 26px;
-		margin-bottom: 5px;
-	}
-	.xm-online-service .online-service-list {
-		padding: 0 25px 10px;
-	}
-	.xm-notice .swiper-container .swiper-slide {
-		padding: 20px 10px 0;
-	}
-	.xm-banner {
-		margin-top: 35px;
-	}
-	.xm-banner-list {
-		width: 305px;
-		padding-left: 150px;
-		background-size: 50px 50px;
-		display: block;
-	}
-	.list-info .list-info-title {
-		font-size: 24px;
-		line-height: 24px;
-	}
-	.list-info .list-info-desc {
-		font-size: 14px;
-		line-height: 14px;
-	}
-	.xm-footer {
-		margin-top: 30px;
-	}
-}
 @media all and (min-width:1441px) and (max-width:1920px){
 
 }

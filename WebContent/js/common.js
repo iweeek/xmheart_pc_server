@@ -6,7 +6,7 @@ var mySwiper = new Swiper ('#bannerSwiper', {
 })
 
 var mySwiper2 = new Swiper ('#noticeSwiper', {
-	direction: 'vertical',
+  direction: 'vertical',
   loop: true,
   paginationClickable :true,
   pagination: '.swiper-pagination'
