@@ -6,7 +6,7 @@ $(function () {
         getColumns: function (parentColumnId) {
             $('.ui-loading').show();
             var loading = true;
-            $.get('/xmheart_pc_server/columns', {
+            $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
                 ctrl.groups = data;
@@ -36,7 +36,7 @@ $(function () {
                     swal.showInputError('你需要输入新的栏目名称！');
                     return false
                 }
-                var url = '/xmheart_pc_server/columns/' + id;
+                var url = '/columns/' + id;
                 $.post(url, {
                     columnName: inputValue
                 }, function (res) {

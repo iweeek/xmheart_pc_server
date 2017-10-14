@@ -3,7 +3,7 @@ $(function () {
         columnId: 0,
         firstId: 0,
         getColumns: function (parentColumnId, htmlId) {
-            $.get('/xmheart_pc_server/columns', {
+            $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
                 if (parentColumnId === 0) {
@@ -47,7 +47,7 @@ $(function () {
                     return false
                 }
 
-                var url = '/xmheart_pc_server/columns/' + id;
+                var url = '/columns/' + id;
                 $.post(url, {
                     columnName: inputValue
                 }, function (res) {

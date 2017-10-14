@@ -35,7 +35,7 @@ exports.XPW.DoctorUeditor = (function() {
   }
   DoctorUeditor.firstOfficeLoad = function () {
 	  $.ajax({
-		  url: '/xmheart_pc_server/depts',
+		  url: '/depts',
 	      type: 'GET'
 	    })
 	   .done(function(data) {
@@ -50,7 +50,7 @@ exports.XPW.DoctorUeditor = (function() {
     var id = DoctorUeditor.getUrlParam('doctorId')
     if (id) {
 	    $.ajax({
-	  	  url: '/xmheart_pc_server/doctors/' + id,
+	  	  url: '/doctors/' + id,
 	        type: 'GET',
 	        dataType: 'json',
 	        data: {id: id}
@@ -63,7 +63,7 @@ exports.XPW.DoctorUeditor = (function() {
  
   DoctorUeditor.postDoctorInfo = function () {
 	  var id = DoctorUeditor.getUrlParam('doctorId');
-	  var url = id ? '/xmheart_pc_server/doctors/' + id : '/xmheart_pc_server/doctors'
+	  var url = id ? '/doctors/' + id : '/doctors'
 	  $('.btn-group').on('click', '#save', function() {
 		  var name = $('#doctorName').val();
 		  var deptId = parseInt($('#typeSelectInput').val());
@@ -105,7 +105,7 @@ exports.XPW.DoctorUeditor = (function() {
                       confirmButtonText: "确定",
                       closeOnConfirm: false
                   }, function () {
-                      location.href="/xmheart_pc_server/doctor.html"
+                      location.href="/doctor.html"
                   });
 			  }
 		  });

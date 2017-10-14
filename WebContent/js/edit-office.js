@@ -10,7 +10,7 @@ exports.XPW.OfficeEdit = (function() {
   }
   OfficeEdit.firstOfficeLoad = function () {
 	$.ajax({
-	  url: '/xmheart_pc_server/depts',
+	  url: '/depts',
       type: 'GET'
     })
    .done(function(data) {
@@ -25,14 +25,14 @@ exports.XPW.OfficeEdit = (function() {
   OfficeEdit.jumpDoctorDep = function () {
     $('#officeTable').on ('click', '.post-btn-edit', function() {
       var officeId = $(this).data('office-id');
-      location.href = '/xmheart_pc_server/static/office_ueditor.html?deptId=' + officeId;
+      location.href = '/static/office_ueditor.html?deptId=' + officeId;
     }) 
   }
   
   
   OfficeEdit.NewDoctor = function () {
 	  $('#tools').on ('click', '#columnNew', function() {
-	      location.href = '/xmheart_pc_server/static/office_ueditor.html';
+	      location.href = '/static/office_ueditor.html';
 	  })
   }
   
