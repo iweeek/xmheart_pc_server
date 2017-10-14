@@ -199,6 +199,7 @@ $(function () {
             $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
+                $('.ui-loading').hide();
                 var optionString = '';
                 for (var i in data) {
                     var jsonObj = data[i];
@@ -208,6 +209,7 @@ $(function () {
             });
         },
         init: function () {
+            $('.ui-loading').show();
             var articleId = ctrl.getUrlParam('articleId');
             ctrl.statInputNum(digest, word);
             // 编辑模式
