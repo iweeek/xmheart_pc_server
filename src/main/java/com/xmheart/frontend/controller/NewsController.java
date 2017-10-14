@@ -169,10 +169,16 @@ public class NewsController {
         PageInfo pageInfo = new PageInfo(articleList);
         model.addAttribute("pageInfo", pageInfo);
         
-        if (page == 1) {
-            articleList = articleList.subList(3, articleList.size());
+        if (articleList.size() > 0) {
+            if (page == 1) {
+                if (articleList.size() > 3) {
+                    articleList = articleList.subList(3, articleList.size());
+                    model.addAttribute("noPinnedArticleList", articleList);
+                }
+            } else {
+                model.addAttribute("noPinnedArticleList", articleList);
+            }
         }
-        model.addAttribute("noPinnedArticleList", articleList);
 
         return "news";
     }

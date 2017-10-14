@@ -77,7 +77,7 @@
 			<div class="clear"></div>
 			<div class="list-pagination">
 				<ul class="paginations">
-                    <#if pageInfo??>
+                    <#if pageInfo?? && (pageInfo.pages > 0)>
     					<#if pageInfo.pageNum != 1>
     						<li><a href="?page=${pageInfo.prePage}"><<</a></li>
     					</#if>
