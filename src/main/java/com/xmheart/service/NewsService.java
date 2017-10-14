@@ -22,7 +22,7 @@ public interface NewsService {
 
 	List<XPWElecNewspaper> getElecNewsPaper(String year, String time);
 
-	List<String> getNewPaperYears();
+	List<String> getNewsPaperYears();
 
 	List<String> getNewsPaperTimes(String year);
 
