@@ -10,7 +10,7 @@
 			<div class="list-main-nav">
 				<h4 class="list-nav-title">${parentColumnName}</h4>
 				<ul class="list-nav-list">
-				<#list listMainNav as k>
+				<#list leftNav as k>
 					<#if k.columnName == columnName>
 						<li class="active"><a href="${k.url}">${k.columnName}</a>
 					<#else>
@@ -25,7 +25,7 @@
 					<div class="video-tab-item active">视频</div>
 					<div class="video-tab-item">图片</div>
 				</div>
-				<div class="title02">
+				<!--<div class="title02">
 					<a href="#" id="DateAscOrDesc" class="current">发布时间排序</a>
 					<a href="#" id="HitAscOrDesc">阅览次数排序</a>
 					<div class="itemBase">
@@ -40,7 +40,7 @@
 						</ul>
 					</div>
 					<span class="count">共发布文章<em id="EMCount">1844</em>篇</span>
-				</div>
+				</div>-->
 				<div class="clear"></div>
 				<div class="media-wrapper video-wrapper">
 					<div class="media-item">

@@ -59,10 +59,10 @@ public class NewsController {
     private final int PAGE_SIZE = 10;
 
     private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
-    private final String VIDEO_NEWS_COLUMN_NAME = "影像厦心";
 
     static final long NEWS_COLUMN_ID = 5;
     static final long EXPERT_COLUMN_ID = 3;
+    static final long VIDEO_NEWS_COLUMN_ID = 22;
     static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
 
     // private static Map<String, String> secColumns = new HashMap<String,
@@ -214,27 +214,14 @@ public class NewsController {
      */
     @ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
     @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
-    public String videoNews(Model model, @RequestParam(required = false) Integer page) {
+    public String videoNews(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
 
-        if (page == null) {
-            page = new Integer(1);
-        }
+        model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
-//        model = addTopNav(model);
-
-//        model = addHeader(model);
-
-        model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-
-        // model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-        //
-        // PageHelper.startPage(page, PAGE_SIZE);
-        //
-        // List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
-        // model.addAttribute("newsPaperList", list);
-        //
-        // PageInfo pageInfo = new PageInfo(list);
-        // model.addAttribute("pageInfo", pageInfo);
+        model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
+        
+        String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
 
         return "video";
     }
@@ -244,27 +231,14 @@ public class NewsController {
      */
     @ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
     @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
-    public String videoNewsDetail(Model model, @RequestParam(required = false) Integer page) {
+    public String videoNewsDetail(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
 
-        if (page == null) {
-            page = new Integer(1);
-        }
+        model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
-//        model = addTopNav(model);
-
-//        model = addHeader(model);
-
-        model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-
-        // model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-        //
-        // PageHelper.startPage(page, PAGE_SIZE);
-        //
-        // List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
-        // model.addAttribute("newsPaperList", list);
-        //
-        // PageInfo pageInfo = new PageInfo(list);
-        // model.addAttribute("pageInfo", pageInfo);
+        model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
+        
+        String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
 
         return "video_img_detail";
     }
