@@ -68,7 +68,6 @@
                                     
                                     <#list navMap as k, v>
                                     <#if k == key>
-                                    ${k} 
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                         <dl class="Img02">
                                             <dt class="title01">${v[0].childColumnName}</dt>

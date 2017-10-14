@@ -58,8 +58,6 @@ public class NewsController {
 
     private final int PAGE_SIZE = 10;
 
-    private final String NEWS_COLUMN_NAME = "新闻公告";
-    private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
     private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
     private final String VIDEO_NEWS_COLUMN_NAME = "影像厦心";
     private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
@@ -79,7 +77,7 @@ public class NewsController {
      */
     private Model addTopNav(long columnId, Model model) {
 
-        List<XPWColumn> columnList = columnService.getFirstColumns();
+        List<XPWColumn> columnList = columnService.getTopFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
         Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
@@ -102,8 +100,13 @@ public class NewsController {
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
         
-        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
-        model.addAttribute("firstColumnName", parentColumn);
+        if (columnId != 1) {
+            XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+            model.addAttribute("firstColumnName", parentColumn);
+        } else {
+            XPWColumn column = columnService.getColumnById(columnId);
+            model.addAttribute("firstColumnName", column.getColumnName());
+        }
 
         return model;
     }
@@ -398,6 +401,13 @@ public class NewsController {
         htmlStr = htmlStr.replaceAll("&nbsp;", " ");
 
         return htmlStr.trim(); // 返回文本字符串
+    }
+    
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+        model = addTopNav(1, model);
+
+        return "index";
     }
 
 }
