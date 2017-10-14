@@ -87,7 +87,7 @@
                             </#list>
         					<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
         				<#else>
-                            <#list 2..pageInfo.pages as i>
+                            <#list 1..pageInfo.pages as i>
     						  <li><a href="?page=${i}">${i}</a></li>
                             </#list>
     					</#if>

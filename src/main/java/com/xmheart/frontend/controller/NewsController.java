@@ -143,7 +143,7 @@ public class NewsController {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/col/{columnId}" }, method = RequestMethod.GET)
-    public String columnArticleList(@RequestParam(required = false, defaultValue = "1") Integer pageNo, 
+    public String columnArticleList(@RequestParam(required = false, defaultValue = "1") Integer page, 
             @PathVariable Long columnId, Model model) {
         model = addTopNav(columnId, model);
 
@@ -154,24 +154,23 @@ public class NewsController {
 
         // 获取置顶的新闻
         boolean isPublished = true;
+        boolean isPinned = true;
+        
+        //顶部三个置顶文章
+        List<XPWArticle> pinnedArticleList = articleService.index(columnId, isPublished, isPinned);
+        pinnedArticleList = pinnedArticleList.subList(0, 3);
+        model.addAttribute("pinnedArticleList", pinnedArticleList);
+        
+        //底下的文章
+        PageHelper.startPage(page, PAGE_SIZE);
         List<XPWArticle> articleList = articleService.index(columnId, isPublished);
-        if (articleList.size() == 0) {
-            
-        } else if (articleList.size() > 3) {
-            model.addAttribute("pinnedArticleList", articleList.subList(0, 3));
-            
-            List<XPWArticle> noPinnedArticleList = articleList.subList(3, articleList.size());
-            model.addAttribute("noPinnedArticleList", noPinnedArticleList);
-    
-            PageHelper.startPage(pageNo, PAGE_SIZE);
-            PageInfo pageInfo = new PageInfo(noPinnedArticleList);
-            model.addAttribute("pageInfo", pageInfo);
-        } else {
-            model.addAttribute("noPinnedArticleList", articleList);
-            PageHelper.startPage(pageNo, PAGE_SIZE);
-            PageInfo pageInfo = new PageInfo(articleList);
-            model.addAttribute("pageInfo", pageInfo);
+        PageInfo pageInfo = new PageInfo(articleList);
+        model.addAttribute("pageInfo", pageInfo);
+        
+        if (page == 1) {
+            articleList = articleList.subList(3, articleList.size());
         }
+        model.addAttribute("noPinnedArticleList", articleList);
 
         return "news";
     }

@@ -74,6 +74,15 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+    @Override
+    public List<XPWArticle> index(Long columnId, boolean isPublished, boolean isPinned) {
+        XPWArticleExample example = new XPWArticleExample();
+        example.createCriteria().andIsPublishedEqualTo(isPublished).andColumnIdEqualTo(columnId).andIsPinnedEqualTo(isPinned);
+        example.setOrderByClause("pin_order asc");
+        List<XPWArticle> list = articleMapper.selectByExample(example);
+        return list;
+    }
+
 
 
 }
