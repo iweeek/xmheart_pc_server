@@ -186,7 +186,7 @@
   background: #ccc;
 }
 .btn-group {
-  width: 300px;
+  width: 340px;
   margin: 20px auto;
 }
 .btn-group input {
@@ -194,7 +194,7 @@
   color: #fff;
   border: none;
   display: inline-block;
-  width: 60px;
+  width: 70px;
   text-align: center;
   margin-right: 10px;
 }
