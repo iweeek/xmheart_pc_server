@@ -23,5 +23,7 @@ public interface ArticleService {
 
     XPWArticle read(XPWArticle article);
 
+    List<XPWArticle> index(Long columnId, boolean isPublished);
+
 
 }

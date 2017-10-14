@@ -25,7 +25,7 @@ $(function () {
             });
         },
         getArticle: function (articleId) {
-            var url = '/xmheart_pc_server/articles/' + articleId;
+            var url = '/articles/' + articleId;
             $.get(url, function (res) {
                 article = res;
                 title.val(res.title);
@@ -66,7 +66,7 @@ $(function () {
                     params.columnId = category2.find('option:selected').val();
                 }
 
-                var url = '/xmheart_pc_server/articles/' + articleId;
+                var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
                     swal({
                         title: "发表成功",
@@ -85,7 +85,7 @@ $(function () {
                 return;
             }
 
-            $.post('/xmheart_pc_server/articles', params, function (res) {
+            $.post('/articles', params, function (res) {
                 swal({
                     title: "新建文章成功",
                     type: "success",
@@ -122,7 +122,7 @@ $(function () {
                 if (category2.find('option:selected').val()) {
                     params.columnId = category2.find('option:selected').val();
                 }
-                var url = '/xmheart_pc_server/articles/' + articleId;
+                var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
                     swal({
                         title: "保存成功",
@@ -140,7 +140,7 @@ $(function () {
                 return;
             }
 
-            $.post('/xmheart_pc_server/articles', params, function (res) {
+            $.post('/articles', params, function (res) {
                 swal({
                     title: "新建文章成功",
                     type: "success",
@@ -180,7 +180,7 @@ $(function () {
             $("#wordCount").find(".word").html('200');
         },
         getColumn: function (parentColumnId, htmlId) {
-            $.get('/xmheart_pc_server/columns', {
+            $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
                 var optionString = '';

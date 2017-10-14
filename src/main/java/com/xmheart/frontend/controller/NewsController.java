@@ -153,15 +153,25 @@ public class NewsController {
         model.addAttribute("columnName", columnName);
 
         // 获取置顶的新闻
-        List<XPWArticle> articleList = articleService.index(columnId);
-        model.addAttribute("pinnedArticleList", articleList.subList(0, 3));
-        
-        List<XPWArticle> noPinnedArticleList = articleList.subList(3, articleList.size());
-        model.addAttribute("noPinnedArticleList", noPinnedArticleList);
-
-        PageHelper.startPage(pageNo, PAGE_SIZE);
-        PageInfo pageInfo = new PageInfo(noPinnedArticleList);
-        model.addAttribute("pageInfo", pageInfo);
+        boolean isPublished = true;
+        List<XPWArticle> articleList = articleService.index(columnId, isPublished);
+        if (articleList.size() == 0) {
+            
+        } else if (articleList.size() > 3) {
+            model.addAttribute("pinnedArticleList", articleList.subList(0, 3));
+            
+            List<XPWArticle> noPinnedArticleList = articleList.subList(3, articleList.size());
+            model.addAttribute("noPinnedArticleList", noPinnedArticleList);
+    
+            PageHelper.startPage(pageNo, PAGE_SIZE);
+            PageInfo pageInfo = new PageInfo(noPinnedArticleList);
+            model.addAttribute("pageInfo", pageInfo);
+        } else {
+            model.addAttribute("noPinnedArticleList", articleList);
+            PageHelper.startPage(pageNo, PAGE_SIZE);
+            PageInfo pageInfo = new PageInfo(articleList);
+            model.addAttribute("pageInfo", pageInfo);
+        }
 
         return "news";
     }

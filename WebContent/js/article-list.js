@@ -5,7 +5,7 @@ $(function () {
         pageTotal: 0,
         noNextPage: false,
         getColumns: function (parentColumnId, htmlId) {
-            $.get('/xmheart_pc_server/columns', {
+            $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
                 var optionString = '';
@@ -64,7 +64,7 @@ $(function () {
         getArticles: function (pageNo, pageSize, columnId) {
             $('.ui-loading').show();
             var loading = true;
-            $.get('/xmheart_pc_server/articles', {
+            $.get('/articles', {
                 pageNo: pageNo,
                 pageSize: pageSize,
                 columnId: columnId
@@ -93,7 +93,7 @@ $(function () {
                 isPublished: true
             };
             // 编辑模式
-            var url = '/xmheart_pc_server/articles/' + articleId;
+            var url = '/articles/' + articleId;
             $.post(url, params, function (res) {
                 swal("发布成功！");
                 ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
@@ -104,7 +104,7 @@ $(function () {
                 isPublished: false
             };
             // 编辑模式
-            var url = '/xmheart_pc_server/articles/' + articleId;
+            var url = '/articles/' + articleId;
             $.post(url, params, function (res) {
                 swal("下线成功！");
                 ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
@@ -163,7 +163,7 @@ $(function () {
     // 编辑
     $('#J_articles').on('click', '.edit-btn', function () {
         var articleId = this.getAttribute('data');
-        location.href = '/xmheart_pc_server/static/ueditor.html?articleId=' + articleId;
+        location.href = '/static/ueditor.html?articleId=' + articleId;
     });
 
     // 发布
@@ -180,6 +180,6 @@ $(function () {
 
     // 新建
     $('#J_create_btn').on('click', function () {
-        location.href = '/xmheart_pc_server/static/ueditor.html';
+        location.href = '/static/ueditor.html';
     })
 })

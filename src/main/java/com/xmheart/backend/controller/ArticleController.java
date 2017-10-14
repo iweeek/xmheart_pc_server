@@ -105,7 +105,8 @@ public class ArticleController {
 		
 		int ret = articleService.create(article);
 		if (ret > 0) {
-		    
+		    article.setUrl("/newsDetail?id=" + String.valueOf(article.getId()));
+		    articleService.update(article);
 			return ResponseEntity.ok(null);
 		} else {
 			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
