@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/editor.css">
 	<link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="../css/datepicker.min.css">
@@ -25,17 +26,22 @@
 
 <body>
 	<div class="editor-container">
+		<ol class="breadcrumb">
+			<li><a href="#"></a>栏目管理</li>
+			<li><a onclick="document.getElementById('rightContentFrame').src = 'article-list.html'">文章列表</a></li>
+			<li class="active">编辑文章</li>
+		</ol>
 		<form id="myform" action="" method="post" runat="server">
 			<p class="subtit category">当前所属栏目</p>
 			<div class="wrapper category category-edit"></div>
 			<p class="subtit">文章标题</p>
 			<div class="input-wrapper">
 				<div class="category-create">
-					<div class="col-md-1 select-title select-title-first">一级栏目</div>
+					<div class="select-title select-title-first">一级栏目</div>
 					<div class="col-md-1">
 						<select class="select-title select-title-first" id="J_select_first"></select>
 					</div>
-					<div class="col-md-1 select-title select-title-second">二级栏目</div>
+					<div class="select-title select-title-second">二级栏目</div>
 					<div class="col-md-1">
 						<select class="select-title select-title-second" id="J_select_second"></select>
 					</div>
