@@ -83,6 +83,26 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+    @Override
+    public int swapPinOrder(Long articleId1, Long articleId2) {
+        XPWArticle article1 = articleMapper.selectByPrimaryKey(articleId1);
+        XPWArticle article2 = articleMapper.selectByPrimaryKey(articleId2);
+        
+        //只有置顶的文章才可以交换pinOrder
+        if (!article1.getIsPinned() || !article2.getIsPinned()) {
+            return -1;
+        }
+        
+        Byte order1 = article1.getPinOrder();
+        article1.setPinOrder(article2.getPinOrder());
+        articleMapper.updateByPrimaryKey(article1);
+        
+        article2.setPinOrder(order1);
+        articleMapper.updateByPrimaryKey(article2);
+        
+        return 0;
+    }
+
 
 
 }

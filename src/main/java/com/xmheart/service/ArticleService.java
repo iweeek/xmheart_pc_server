@@ -27,5 +27,7 @@ public interface ArticleService {
 
     List<XPWArticle> index(Long columnId, boolean isPublished, boolean isPinned);
 
+    int swapPinOrder(Long articleId1, Long articleId2);
+
 
 }

@@ -113,6 +113,14 @@ public class ArticleController {
 		}
     }
 	
+	@ApiOperation(value = "交换文章置顶顺序", notes = "交换文章置顶顺序")
+    @RequestMapping(value = { "/articles/swapPinOrder" }, method = RequestMethod.POST)
+	public ResponseEntity<?> swapPinOrder(@ApiParam("文章1的Id") Long articleId1, 
+	        @ApiParam("文章2的Id") Long articleId2) {
+	    articleService.swapPinOrder(articleId1, articleId2);
+	    return ResponseEntity.ok(null);
+	}
+	
     @ApiOperation(value = "更新一篇文章", notes = "更新一篇文章")
     @RequestMapping(value = { "/articles/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("文章Id，必填") @PathVariable Long id,  
