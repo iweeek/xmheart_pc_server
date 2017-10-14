@@ -12,7 +12,7 @@ exports.XPW.DoctorEdit = (function() {
   DoctorEdit.firstOfficeLoad = function () {
 	$('.ui-loading').hide();
 	$.ajax({
-	  url: '/xmheart_pc_server/depts',
+	  url: '/depts',
       type: 'GET'
     })
    .done(function(data) {
@@ -34,7 +34,7 @@ exports.XPW.DoctorEdit = (function() {
 
   DoctorEdit.doctorData = function (val) {
     $.ajax({
-      url: '/xmheart_pc_server/doctors',
+      url: '/doctors',
       type: 'GET',
       dataType: 'json',
       data: {deptId: val}
@@ -59,7 +59,7 @@ exports.XPW.DoctorEdit = (function() {
   DoctorEdit.jumpDoctorDep = function () {
     $('#doctorTable').on ('click', '.post-btn-edit', function() {
       var doctorId = $(this).data('doctor-id');
-      location.href = '/xmheart_pc_server/static/doctor_ueditor.html?doctorId=' + doctorId;
+      location.href = '/static/doctor_ueditor.html?doctorId=' + doctorId;
     }) 
   }
   
@@ -69,7 +69,7 @@ exports.XPW.DoctorEdit = (function() {
 		  var id = $this.data('id');
 		  var isDisplayed = !$this.data('is-displayed');
 		  $.ajax({
-		  	  	url: '/xmheart_pc_server/doctors/' + id,
+		  	  	url: '/doctors/' + id,
 		        type: 'POST',
 		        dataType: 'json',
 		        data: {id:id, isDisplayed: isDisplayed}
@@ -85,7 +85,7 @@ exports.XPW.DoctorEdit = (function() {
   
   DoctorEdit.NewDoctor = function () {
 	  $('#tools').on ('click', '#columnNew', function() {
-	      location.href = '/xmheart_pc_server/static/doctor_ueditor.html';
+	      location.href = '/static/doctor_ueditor.html';
 	  })
   }
   

@@ -37,7 +37,7 @@ exports.XPW.OfficeUeditor = (function() {
     var id = OfficeUeditor.getUrlParam('deptId')
     if (id) {
 	    $.ajax({
-	  	  url: '/xmheart_pc_server/dept/' + id,
+	  	  url: '/dept/' + id,
 	        type: 'GET',
 	        dataType: 'json',
 	        data: {id: id}
@@ -50,7 +50,7 @@ exports.XPW.OfficeUeditor = (function() {
  
   OfficeUeditor.postOfficeInfo = function () {
 	  var id = OfficeUeditor.getUrlParam('deptId');
-	  var url = id ? '/xmheart_pc_server/dept/' + id : '/xmheart_pc_server/dept'
+	  var url = id ? '/dept/' + id : '/dept'
 	  $('.btn-group').on('click', '#save', function() {
 		  var name = $('#officeName').val();
 	      var outService = $('.outservice:checked').val();
