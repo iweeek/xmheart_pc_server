@@ -10,7 +10,7 @@
 	background: #ccc;
 }
 .xm-banner-slide .swiper-container {
-	width: 945px;
+	width: 900px;
 	height: 450px;
 }
 .xm-banner-slide .swiper-container .swiper-slide img {
@@ -32,7 +32,7 @@
 }
 
 .xm-info {
-	width: 470px;
+	width: 310px;
 	float: right;
 }
 .xm-online-service {
@@ -169,5 +169,17 @@
 }
 /*banner end*/
 @media all and (min-width:1441px) and (max-width:1920px){
-
+	.xm-banner-slide {
+		width: 1080px;
+	}
+	.xm-banner-slide .swiper-container {
+		width: 1080px;
+	}
+	.xm-info {
+		width: 400px;	
+	}
+	.xm-banner-list {
+		width: 350px;
+		margin-right: 30px;
+	}
 }

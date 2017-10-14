@@ -11,7 +11,7 @@ exports.XPW.NavEdit = (function() {
   }
   NavEdit.firstNavLoad = function () {
 	$.ajax({
-	  url: '/xmheart_pc_server/columns',
+	  url: '/columns',
       type: 'GET',
       dataType: 'json',
       data: {parentColumnId: 0}
@@ -33,7 +33,7 @@ exports.XPW.NavEdit = (function() {
 
   NavEdit.firstColumnData = function (val) {
     $.ajax({
-      url: '/xmheart_pc_server/navs',
+      url: '/navs',
       type: 'GET',
       dataType: 'json',
       data: {columnId: val}
@@ -119,7 +119,7 @@ exports.XPW.NavEdit = (function() {
 		      minimumInputLength: 1,
 		      minimumResultsForSearch: Infinity,
 		      ajax: {
-		        url: '/xmheart_pc_server/news/articles/show',
+		        url: '/news/articles/show',
 		        dataType: 'json',
 		        data: function (params) {
 		        		var query = {
@@ -158,7 +158,7 @@ exports.XPW.NavEdit = (function() {
 		  var id = $('#secondColumnId').data('column-id')
 		  var postId = $('#postSelect').val();
 		  $.ajax({
-		      url: '/xmheart_pc_server/navs/' + id,
+		      url: '/navs/' + id,
 		      type: 'POST',
 		      data: {id: id, articleId: postId}
 		   })

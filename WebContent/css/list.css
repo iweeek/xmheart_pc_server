@@ -209,6 +209,7 @@
 .baseRight .newList li:hover{ box-shadow:0px 5px 15px 5px rgba(128 ,128 ,128 ,0.25); position:relative; transition:box-shadow .28s linear; -moz-transition:-moz-box-shadow .28s linear; -webkit-transition:-webkit-box-shadow .28s linear;}
 .baseRight .newList li .headLines{ width:59%; float:left; line-height:24px; }
 .baseRight .newList li .headLines p {color:#999;}
+.baseRight .newList li .headLines .labelTitle {background: #0f76c3;color: #fff;font-size: 14px;padding: 3px 8px;border-radius: 4px;margin-right: 10px; float:left; margin-top: 4px;}
 .baseRight .newList li .title{ font-size:18px; color:#666666; line-height:36px;}
 .baseRight .newList li .title:hover{color:#666666; text-decoration:underline;}
 .baseRight .newList li .date{ width:18%; float:left; margin-left:10.5%;}
@@ -777,4 +778,5 @@ a.blue{ background:#79a9b8;}
 	.PartIntro .introRight { width: 1180px;}
 	.PartIntro .introRight .right { width: 950px; }
 	.NewsBase .noticeBase { width: 980px;}
+	.officesBase .contents .contentsDoctor { width: 1170px; }
 }

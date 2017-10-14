@@ -76,24 +76,25 @@
 			</td>
 			<td>{{publishTime}}</td>
             <td>
-                <button class='btn btn-danger edit-btn' data-id={{id}}>编辑</button>
+                <button class='btn btn-default edit-btn' data-id={{id}}>编辑</button>
                 {{#isPublished}}
                 		<button class='btn btn-danger offline-btn' data-id={{id}}>下线</button>
 				{{/isPublished}}
 				{{^isPublished}}
-                		<button class='btn btn-danger publish-btn' data-id={{id}}>发布</button>
+                		<button class='btn btn-default publish-btn' data-id={{id}}>发布</button>
 				{{/isPublished}}
 				{{#isPinned}}
-					<button class='btn btn-danger cancel-pinned-btn' data-id={{id}}>取消置顶</button>
-					<button class='btn btn-danger up-btn' data-id={{id}} data-order={{pinOrder}}>上移</button>
-					<button class='btn btn-danger down-btn' data-id={{id}} data-order={{pinOrder}}>下移</button>
+					<button class='btn btn-default cancel-pinned-btn' data-id={{id}}>取消置顶</button>
+					<button class='btn btn-default up-btn' data-id={{id}} data-order={{pinOrder}}>上移</button>
+					<button class='btn btn-default down-btn' data-id={{id}} data-order={{pinOrder}}>下移</button>
 				{{/isPinned}}
 				{{^isPinned}}
-					<button class='btn btn-danger pinned-btn' data-id={{id}}>置顶</button>
+					<button class='btn btn-default pinned-btn' data-id={{id}}>置顶</button>
 				{{/isPinned}}
             </td>
         </tr>
         {{/result}}
+
     </script>     
     <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
     <script type="text/javascript" src="./js/third_party/bootstrap-datetimepicker.min.js"></script>
