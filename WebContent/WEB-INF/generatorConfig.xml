@@ -40,21 +40,25 @@
       <ignoreColumn column="updated_at"/>
     </table>
 
-    <table schema="xmeart_pc_web" tableName="xpw_news_media_article" domainObjectName ="XPWNewsMediaArticle" >
+    <table schema="xmeart_pc_web" tableName="xpw_article" domainObjectName ="XPWArticle" >
       <generatedKey column="id" sqlStatement="MySql" identity="true" />
       <columnOverride column="is_pinned" property="isPinned" javaType="java.lang.Boolean"/>
+      <columnOverride column="is_published" property="isPublished" javaType="java.lang.Boolean"/>
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
 
     <table schema="xmeart_pc_web" tableName="xpw_doctor" domainObjectName ="XPWDoctor" >
       <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <columnOverride column="is_displayed" javaType="java.lang.Boolean"/>
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
 
     <table schema="xmeart_pc_web" tableName="xpw_dept" domainObjectName ="XPWDept" >
       <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <columnOverride column="out_service" javaType="java.lang.Boolean"/>
+      <columnOverride column="is_displayed" javaType="java.lang.Boolean"/>
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
@@ -64,5 +68,6 @@
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
+    
   </context>
 </generatorConfiguration>

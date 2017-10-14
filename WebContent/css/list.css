@@ -5,15 +5,19 @@
 	margin-bottom: 10px;
 }
 .list-container {
-	margin: 30px auto 0;
+	margin: 0 auto;
 	background: #fff;
+	width: 1220px;
 }
 .list-main {
 	overflow: hidden;
 	width: 100%;
 }
+.list-doctor-main {
+	width: 100%;
+}
 .list-main-nav {
-	width: 305px;
+	width: 230px;
 	min-height: 300px;
 	float: left;
 	margin-top: 34px;
@@ -40,13 +44,13 @@
 	background: #EAFAFE;
 	color: #6EB9FF;
 	border-right: #6EB9FF solid 2px;
-	width: 204px;
+	width: 229px;
 }
 /* list1-news-wrapper */
 .list1-news-wrapper {
 	float: right;
 	margin-top: 22px;
-	width: 1195px;
+	width: 990px;
 }
 .list1-news-list {
 	margin-bottom: 70px;
@@ -205,6 +209,7 @@
 .baseRight .newList li:hover{ box-shadow:0px 5px 15px 5px rgba(128 ,128 ,128 ,0.25); position:relative; transition:box-shadow .28s linear; -moz-transition:-moz-box-shadow .28s linear; -webkit-transition:-webkit-box-shadow .28s linear;}
 .baseRight .newList li .headLines{ width:59%; float:left; line-height:24px; }
 .baseRight .newList li .headLines p {color:#999;}
+.baseRight .newList li .headLines .labelTitle {background: #0f76c3;color: #fff;font-size: 14px;padding: 3px 8px;border-radius: 4px;margin-right: 10px; float:left; margin-top: 4px;}
 .baseRight .newList li .title{ font-size:18px; color:#666666; line-height:36px;}
 .baseRight .newList li .title:hover{color:#666666; text-decoration:underline;}
 .baseRight .newList li .date{ width:18%; float:left; margin-left:10.5%;}
@@ -339,89 +344,38 @@
 
 /*名医名科*/
 .BaseMark{ font-size: 12px;}
-.doctorsBase{height:486px; margin-top:45px; position:relative; }
-.lt-ie9 .doctorsBase{margin-top:45px;}
-.doctorsBase .toolsBase,.officesBase .toolsBase{ width:100%; height:47px;position:relative; border-bottom:1px solid #ddd;}
-.doctorsBase .title,.officesBase .title{ float:left; height:45px; width:251px;padding-top:3px; padding-left:52px; border-bottom:5px solid #6bcbca; background:url(../img/list/ico_028.jpg) 7px top no-repeat;
+.officesBase .toolsBase{ width:100%; height:47px;position:relative; border-bottom:1px solid #ddd;}
+.officesBase .title{ float:left; height:45px; width:251px;padding-top:3px; padding-left:52px; border-bottom:5px solid #6bcbca; background:url(../img/list/ico_029.jpg) 7px top no-repeat;
 }
-.doctorsBase .tools,.officesBase .tools{width:455px; height:35px; position:absolute; top:0px; right:6px;}
-.doctorsBase .tools a,.officesBase .tools a{display:block; position:absolute; top:0px;}
-.doctorsBase .tools a.ASwitch,.officesBase .tools a.ASwitch{width:114px;height:33px;line-height:33px;text-align:center;border:1px solid #ddd; left:0px; }
-.doctorsBase .tools .search{ width:161px; height:35px; position:absolute; top:0px; left:130px;}
-.doctorsBase .tools .search .animated{ width:165px; border:1px solid #ddd; height:33px; line-height:35px; padding-left:8px;}
-.doctorsBase .tools .search .animated:focus{outline:none;border:1px solid #6bcbca;}
-.doctorsBase .tools .search .btn{ background:url(../img/list/ico_030.jpg) center center no-repeat; height:33px; width:20px; border:none; position:absolute; top:0; right:5px;}
-.doctorsBase .tools  a:hover,.officesBase .tools  a:hover{ color:#fff; background:#ff7544;}
-.doctorsBase .tools .Aprev,.officesBase .tools .Aprev{position:absolute;top:0px; right:39px; width:26px; height:26px;display:block; border:2px solid #ddd; background:#FFF url(../img/list/ico_031b.png) center center no-repeat;}
-.doctorsBase .tools .Aprev:hover,.officesBase .tools .Aprev:hover{background:#ff7544 url(../img/list/ico_031a.png) center center no-repeat;}
-.doctorsBase .tools .Anext,.officesBase .tools .Anext{position:absolute;top:0px; right:0px; width:26px; height:26px;display:block;border:2px solid #ddd;background:#FFF url(../img/list/ico_032b.png) center center no-repeat;}
-.doctorsBase .tools .Anext:hover,.officesBase .tools .Anext:hover{background:#ff7544 url(../images/ico_032a.png) center center no-repeat;}
-.doctorsBase .tools .Amore,.officesBase .tools .Amore{ font-size:14px; color:#6bcbca; width:50px; height:100%; text-align:center; position:absolute; top:0px; line-height:33px; right:88px;}
-.doctorsBase .tools .Amore:hover,.officesBase .tools .Amore:hover{color:#ff7544; background:#FFF; text-decoration:underline;}
-.doctorsBase .title em,.officesBase .title em{ font-size:18px; color:#333; line-height:32px;}
-.doctorsBase .title span,.officesBase .title span{ padding-left:3px; color:#6bcbca; font-size: 12px;}
-
-.doctorsBase .contents,.officesBase .contents{width:1220px;position:absolute;height:392px; top:80px;left:-30px;overflow:hidden;}
-.doctorsBase .contents ul,.officesBase .contents ul{ position:absolute; width:8888px; height:362px; top:0px; left:30px;}
-.doctorsBase .contents ul li,.officesBase .contents ul li{width:240px;height:362px;position:relative; float:left;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
-.doctorsBase .contents .img{ display:block;width:100%; height:162px; text-align:center; margin-top:36px;}
-.doctorsBase .contents .name{display:block;width:100%; height:16px;  text-align:center; margin-top:18px; font-size:16px; line-height:16px; color:#978571;}
-.doctorsBase .contents .office{display:block;width:100%; text-align:center; line-height:33px; color:#333; font-size: 12px;}
-.doctorsBase .contents .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px;}
-.doctorsBase .contents .btn{display:block;position:absolute; bottom:35px; width:68px; height:30px; text-align:center; line-height:30px;color:#fff;font-size: 12px;}
-.doctorsBase .contents .more{left:32px;background:#bda179;}
-.doctorsBase .contents .date{right:32px;background:#6bcbca;}
-.doctorsBase .contents .btn:hover{ background:#ff7544;}
-.doctorsBase .contents ul li:hover,.officesBase .contents ul li:hover{box-shadow:0 15px 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
-.doctorsBase .contents ul li:hover .office,.officesBase .contents ul li:hover .office{ color:#ff7544;}
-.doctorsBase .contents div,.officesBase .contents .hackR,.officesBase .contents .hackL{ position:absolute; top:0px;  height:362px;width:30px;}
-.doctorsBase .contents .hackR,.officesBase .contents .hackR{ right:0px;}
-.doctorsBase .contents .hackL,.officesBase .contents .hackL{ left:0px;}
-.doctorsBase .DFastSearch,.officesBase .OFastSearch{ width:100%; position:absolute; top:0px; height:486px; background:#FFF; left:0px; display:none;}
-.doctorsBase .DFastSearch .DFTitle,.officesBase .OFastSearch .OFTitle{ width:100%; height:47px;position:relative; border-bottom:1px solid #ddd;}
-.doctorsBase .DFastSearch label,.officesBase .OFastSearch label{ position:absolute; top:7px; left:0px; font-size:18px;}
-.doctorsBase .DFastSearch button,.officesBase .OFastSearch button{ position:absolute;width:114px;height:33px; cursor:pointer;color:#fff;  line-height:34px;background:#ff7544;  text-align:center;border:1px solid #ddd; top:0px; right:0px;}
-.doctorsBase .DFastSearch button:hover,.officesBase .OFastSearch button:hover{background:#6bcbca; }
-.doctorsBase .DFastSearch .DFContent{width:100%; height:416px; position:relative; border-bottom:1px solid #ddd;}
-.doctorsBase .DFastSearch .IndexWords{ width:65px; height:416px; position:absolute; top:0px; left:0px; }
-.doctorsBase .DFastSearch .IndexWords ul{width:32px; height:416px; float:left;}
-.doctorsBase .DFastSearch .IndexWords li{ width:32px; height:32px; font-size:14px; cursor:pointer; color:#676767; line-height:32px; text-align:center; background:#f5f5f5;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear;}
-.doctorsBase .DFastSearch .IndexWords li.other{ background:#f1f1f1;}
-.doctorsBase .DFastSearch .IndexWords li:hover,.doctorsBase .DFastSearch .IndexWords li.current{ background:#ff7544; color:#fff;}
-.doctorsBase .DFastSearch .DListBase{ width:1131px;height:416px;position:absolute; top:0px; right:0px; overflow-x:hidden;-ms-overflow-x:hidden;overflow-y:scroll\9;-ms-overflow-y:scroll\9;}
-.doctorsBase .DFastSearch .DList{ width:1096px;  margin:0px auto;border-bottom:1px solid #e7e7e7; padding-bottom:33px; }
-.doctorsBase .DFastSearch .DList h6{ font-size:28px; line-height:67px; color:#ff7544;}
-.doctorsBase .DFastSearch .DList ul{border-top:1px solid #e7e7e7; padding:6px 0px;}
-.doctorsBase .DFastSearch .DList li{ color:#666; line-height:21px; margin-top:20px; padding-top:6px; position:relative; float:left; padding-left:5px; width:132px;}
-.doctorsBase .DFastSearch .DList .DName{ width:72px; position:relative; height:21px;}
-.doctorsBase .DFastSearch .DList .DName .name{ font-size:16px; color:#978571;background:url(../img/list/ico_013.png) 1px center no-repeat; display:block;}
-.doctorsBase .DFastSearch .DList li p{ width:96%; overflow:hidden; height:21px;}
-.doctorsBase .DFastSearch .DList .DName:hover .name{ text-indent:19px; color:#ff7544; background:url(../img/list/ico_004.png) 1px center no-repeat;}
-.doctorsBase .DFastSearch .DList .DName div{ width:265px; height:133px; position:absolute; z-index:108;display:none; background:#FFF; padding:16px;box-shadow:0 15px 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
-.doctorsBase .DFastSearch .DList li img{ width:99px; height:133px; position:absolute; top:16px; left:16px;}
-.doctorsBase .DFastSearch .DList li label{position:absolute;display:block; left:132px; top:27px; width:150px; color:#978571;}
-.doctorsBase .DFastSearch .DList li em{position:absolute; display:block;left:132px; top:50px;width:150px;}
-.doctorsBase .DFastSearch .DList li span{position:absolute; display:block;left:132px; top:71px;width:150px; color:#8e8e8e;}
-.doctorsBase .DFastSearch .DList li .date{position:absolute;bottom:16px;left:132px; width:68px; height:30px;color:#fff; line-height:32px; text-align:center; background:#bda179;}
-.doctorsBase .DFastSearch .DList li .more{position:absolute; bottom:16px; right:16px;width:68px; height:30px;color:#fff;line-height:32px;text-align:center; background:#6bcbca;}
-.doctorsBase .DFastSearch .DList .DName div a:hover{background:#ff7544; }
-
-.officesBase{height:450px; margin-top:25px; position:relative;}
+.officesBase .tools{width:280px; height:35px; position:absolute; top:0px; right:6px;}
+.officesBase .tools a{display:block; position:absolute; top:0px;}
+.officesBase .tools a.ASwitch{ display: none; width:114px;height:33px;line-height:33px;text-align:center;border:1px solid #ddd; left:0px; }
+.officesBase .tools  a:hover{ color:#fff; background:#ff7544;}
+.officesBase .tools .Aprev{position:absolute;top:0px; right:39px; width:26px; height:26px;display:block; border:2px solid #ddd; background:#FFF url(../img/list/ico_031b.png) center center no-repeat;}
+.officesBase .tools .Aprev:hover{background:#ff7544 url(../img/list/ico_031a.png) center center no-repeat;}
+.officesBase .tools .Anext{position:absolute;top:0px; right:0px; width:26px; height:26px;display:block;border:2px solid #ddd;background:#FFF url(../img/list/ico_032b.png) center center no-repeat;}
+.officesBase .tools .Anext:hover{background:#ff7544 url(../images/ico_032a.png) center center no-repeat;}
+.officesBase .tools .Amore{ display: none; font-size:14px; color:#6bcbca; width:50px; height:100%; text-align:center; position:absolute; top:0px; line-height:33px; right:88px;}
+.officesBase .tools .Amore:hover{color:#ff7544; background:#FFF; text-decoration:underline;}
+.officesBase .title em{ font-size:18px; color:#333; line-height:32px;}
+.officesBase .title span{ padding-left:3px; color:#6bcbca; font-size: 12px;}
+.officesBase .contents{width:1260px;position:absolute;height:360px; top:80px;left:-30px;padding-top: 10px; padding-left: 30px;}
+.officesBase .contents ul{ position:absolute; width:8888px; height:320px; top:0px; left:30px;}
+.officesBase .contents ul li{width:240px;height:362px;position:relative; float:left;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
+.officesBase .contents ul li:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
+.officesBase .contents ul li:hover .office{ color:#ff7544;}
+.officesBase .contents .hackR,.officesBase .contents .hackL{ position:absolute; top:0px;  height:362px;width:30px;}
+.officesBase .contents .hackR{ right:0px;}
+.officesBase .contents .hackL{ left:0px;}
+.officesBase .OFastSearch{ width:100%; position:absolute; top:0px; height:486px; background:#FFF; left:0px; display:none;}
+.officesBase .OFastSearch .OFTitle{ width:100%; height:47px;position:relative; border-bottom:1px solid #ddd;}
+.officesBase .OFastSearch label{ position:absolute; top:7px; left:0px; font-size:18px;}
+.officesBase .OFastSearch button{ position:absolute;width:114px;height:33px; cursor:pointer;color:#fff;  line-height:34px;background:#ff7544;  text-align:center;border:1px solid #ddd; top:0px; right:0px;}
+.officesBase .OFastSearch button:hover{background:#6bcbca; }
+.officesBase{height:450px;position:relative;}
 .lt-ie9 .officesBase{margin-top:45px;}
-.officesBase .title{ background:url(../img/list/ico_029.jpg) 7px top no-repeat;}
-.officesBase .tools{width:280px; }
-.officesBase .contents{ top:93px;}
-.officesBase .contents ul{height:320px;}
-.officesBase .contents ul li{width:299px;height:320px;border-right:1px solid #f5f5f5;}
-.officesBase .contents i{display:block; width:26px; height:44px; position:absolute; top:0px; right:29px;}
-.officesBase .contents i.ico01{ background:url(../img/list/ico_033.jpg) no-repeat;}
-.officesBase .contents .img{ width:80px; height:80px; border-radius:50%; margin:40px auto 20px auto; background:#6bcbca;}
-.officesBase .contents .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
-.officesBase .contents p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
-.officesBase .contents .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
-.officesBase .contents .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
-.officesBase .contents .btn:hover{background-position:79px center;}
-.officesBase .contents ul li:hover .img{ background:#bda179;}
+
+
 .officesBase .hiddenLineR,.officesBase .hiddenLineL{ background:#FFF; position:absolute; width:1px; top:93px;  height:320px;}
 .officesBase .hiddenLineR{right:0px;}
 .officesBase .hiddenLineL{left:-1px;}
@@ -435,7 +389,29 @@
 .officesBase .OList a{ color:#978571;}
 .officesBase .OList a:hover{color:#ff7544; text-decoration:underline;}
 .officesBase .OList .itemHidden{ height:15px; width:100%;}
-
+.officesBase .contents .contentsOffice{ width: 300px; position: relative; height: 320px; float: left; transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
+.officesBase .contents .contentsOffice:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
+.officesBase .contents .contentsOffice i{display:block; width:26px; height:44px; position:absolute; top:0px; right:29px;}
+.officesBase .contents .contentsOffice i.ico01{ background:url(../img/list/ico_033.jpg) no-repeat;}
+.officesBase .contents .contentsOffice .img{ width:80px; height:80px; border-radius:50%; margin:40px auto 20px auto; background:#6bcbca;}
+.officesBase .contents .contentsOffice .img{ background:#bda179;}
+.officesBase .contents .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
+.officesBase .contents .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
+.officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
+.officesBase .contents .contentsOffice .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
+.officesBase .contents .contentsOffice .btn:hover{background-position:79px center;}
+.officesBase .contents .contentsDoctor { width: 910px; height: 360px; margin: 0; float: left;}
+.officesBase .contents .contentsDoctor .img{ display:block;width:100%; height:162px; text-align:center;}
+.officesBase .contents .contentsDoctor .name{display:block;width:100%; height:16px;  text-align:center; margin-top:18px; font-size:16px; line-height:16px; color:#978571;}
+.officesBase .contents .contentsDoctor .office{display:block;width:100%; text-align:center; line-height:33px; color:#333; font-size: 12px;}
+.officesBase .contents .contentsDoctor .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px; margin-bottom: 15px;}
+.officesBase .contents .contentsDoctor .btn{display:block;position:absolute; bottom:35px; width:68px; height:30px; text-align:center; line-height:30px;color:#fff;font-size: 12px;}
+.officesBase .contents .contentsDoctor .more{left:32px;background:#bda179;}
+.officesBase .contents .contentsDoctor .date{right:32px;background:#6bcbca;}
+.officesBase .contents .contentsDoctor .btn:hover{ background:#ff7544;}
+.officesBase .contents .contentsDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
+.officesBase .contents .contentsDoctor .doctorDialog { width: 230px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
+.officesBase .contents .contentsDoctor .doctorDialog p { line-height: 20px;}
 /* 科室导航 */
 .baseLeft .title08{ background:#6bcbca url(http://www.hnsrmyy.net/images/treat_ico01.png) left 13px center no-repeat;}
 .partNav{ position:relative; top:0px; background:url(http://www.hnsrmyy.net/images/part_ico01.gif) left top no-repeat, url(http://www.hnsrmyy.net/images/part_ico01.gif) left bottom no-repeat, url(http://www.hnsrmyy.net/images/part_ico04.gif) left repeat-y; margin-left:15px; margin-top:55px; overflow:visible; padding:15px 0px;}
@@ -665,43 +641,26 @@ a.blue{ background:#79a9b8;}
 
 
 /* 胸痛中心 */
-.bannerBase{height:450px; margin-top:16px; position:relative;overflow:hidden; }
+.bannerBase{height:450px;position:relative;overflow:hidden; }
 .lt-ie9 .bannerBase{margin-top:16px;}
 .bannerBase .xt-swiper{ position:absolute; top:0px; left:257px; height:100%; width:980px;}
+.bannerBase .xt-swiper .swiper-slide img { width: 100%; height: 100%;}
 
 .bannerBase .quickMenus{ width:251px; height:450px;  float: left; z-index:100; background:#FFF;}
 .bannerBase .quickMenus .firstUl{ padding:11px 0px;border:1px solid #dedede;}
 .bannerBase .quickMenus li.first{ position:relative; width:100%; height:61px;}
-.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 9; height:449px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
-.bannerBase li.first .QMSubMenus{width:495px;}
-.bannerBase li.first .QMSubMenus ul{ float:left; margin-left:19px; width:222px; height:449px;}
-.bannerBase li.first .QMSubMenus li{width:222px; height:74px;background:url(../images/ico_004.png) 18px center no-repeat; font-size:14px;}
+.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 9; height:380px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
+.bannerBase li.first .QMSubMenus{width:280px;}
+.bannerBase li.first .QMSubMenus ul{ float:left; margin-left:19px; width:222px; height:380px;}
+.bannerBase li.first .QMSubMenus li{width:250px; height:74px;background:url(../images/ico_004.png) 18px center no-repeat; font-size:14px;}
 .bannerBase li.first .QMSubMenus li a{padding-left:38px; line-height:74px; color:#494949; display:block; position:relative;}
 .bannerBase li.first .QMSubMenus li a span{background:#ff7544;font-size:12px;color:#fff;-moz-opacity:0;opacity:0;filter:alpha(opacity=0);-webkit-opacity:0;border-radius:2px;padding:0px 15px; line-height:24px; text-align:center; top:25px; right:20px;  position:absolute;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear;}
 .bannerBase li.first .QMSubMenus li a:hover{color:#ff7544; padding-left:45px;box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);}
 .bannerBase li.first .QMSubMenus li a:hover span{-moz-opacity:1;opacity:1;filter:alpha(opacity=100);-webkit-opacity:1;}
-
-.bannerBase li.first .QMSubList{ width:948px;overflow-x:hidden;-ms-overflow-x:hidden;overflow-y:scroll\9;-ms-overflow-y:scroll\9;}
-.bannerBase li.first .QMSubList .item{ border-bottom:1px solid #dedede; width:95%;color:#666; margin:0px auto; padding:10px 0px 13px 0px; line-height:24px;}
-.bannerBase li.first .QMSubList .item h5{background:url(../images/ico_004.png) 0px center no-repeat;font-size:14px; line-height:38px;color:#ff7544; text-indent:20px;}
-.bannerBase li.first .QMSubList .item a{ font-size:12px; color:#666; padding:0px 6px; float:left; background:url(../images/ico_vline.jpg) left center no-repeat;}
-.bannerBase li.first .QMSubList .item a.first{ background:none; padding:0px 6px 0px 0px;}
-.bannerBase li.first .QMSubList .item a:hover{ text-decoration:underline; color:#ff7544;}
-.bannerBase li.first .QMSubList .IndexWords{position:relative; padding:16px 40px;}
-.bannerBase li.first .QMSubList .IndexWords h5{ line-height:40px; font-size:14px; color:#505050;}
-.bannerBase li.first .QMSubList .IndexWords li{ width:37px; height:37px; float:left;color:#505050;transition:all .28s linear;-moz-transition:all .28s linear;-webkit-transition:all .28s linear;-o-transition:all .28s linear; margin-right:5px; margin-top:5px;border:1px solid #dedede; cursor:pointer; line-height:38px; text-align:center; font-size:16px;}
-.bannerBase li.first .QMSubList .IndexWords li:hover{box-shadow:0px 5px 15px rgba(0 ,0 ,0 ,0.25);}
-.bannerBase li.first .QMSubList .IndexWords li.current{color:#fff; background:#ff7544;}
-.bannerBase li.first .QMSubList .DList{ padding:16px 28px;}
-.bannerBase li.first .QMSubList .DList li{width:158px; color:#666; line-height:21px; margin-top:20px; padding:10px 0px; position:relative; float:left; padding-left:12px; }
-.bannerBase li.first .QMSubList .DList li:hover{box-shadow:0px 5px 15px rgba(0 ,0 ,0 ,0.25);}
-.bannerBase li.first .QMSubList .DList .DName{ width:72px; position:relative; height:21px;}
-.bannerBase li.first .QMSubList .DList .DName .name{ font-size:16px;text-indent:19px; color:#978571;background:url(../images/ico_004.png) left center no-repeat; display:block;}
-.bannerBase li.first .QMSubList .DList li p{ width:96%; overflow:hidden; height:21px; font-size:12px;}
-.bannerBase li.first .QMSubList .DList li p a:hover{color:#ff7544; text-decoration:underline;}
-.bannerBase li.first .QMSubList .DList .DName:hover .name{  color:#ff7544; }
-.bannerBase li.first .QMSubList .DList .DNull{ line-height:28px; font-size:14px; padding-top:18px; padding-left:13px;color:#505050;}
-.bannerBase li.first .QMSubList .DList .DNull span{ font-size:28px; color:#6bcbca; }
+.bannerBase li.second { position: relative;}
+.bannerBase li.second .third-menus {display: none; position:absolute; top:-70px; left:250px; z-index: 100; height:223px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
+.bannerBase li.second .third-menus ul{ width: 200px;}
+.bannerBase li.second .third-menus li{ width: 180px;}
 
 .bannerBase .quickMenus .firstA{ display:block; position:relative; line-height:60px; text-indent:58px; font-size:14px; color:#333; background:url(../images/ico_016a.png) right center no-repeat;}
 .bannerBase .quickMenus .firstA em{border-bottom:1px solid #ebebeb; display:block; margin:0px 18px; transition:border-bottom .28s linear;-moz-transition:border-bottom .28s linear;-webkit-transition:border-bottom .28s linear;-o-transition:border-bottom .28s linear;}
@@ -730,7 +689,7 @@ a.blue{ background:#79a9b8;}
 .NewsBase .tools a em{ display:block; width:100%; text-align:center; position:absolute; bottom:17px; left:0px;}
 .NewsBase .tools a:hover img{animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;;-moz-animation-name:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation-fill-mode:both;animation-fill-mode:both;}
 
-.NewsBase .noticeBase{ width:943px; float:right; margin-top:3px; }
+.NewsBase .noticeBase{ width:963px; float:left; margin-top:3px; margin-left: 257px; }
 .NewsBase .noticeBase .notice{padding:18px 28px; background:#f1f1f1; height:247px; width:469px; position:relative;}
 .NewsBase .noticeBase .notice01{float:left;}
 .NewsBase .noticeBase .notice02{ float:right;}
@@ -788,24 +747,6 @@ a.blue{ background:#79a9b8;}
 	border: #666 solid 1px;
 	margin-right: 9px;
 }
-@media all and (min-width:1px) and (max-width:1441px){
-	.list-main-nav {
-		width: 230px;
-	}
-	.list-nav-list li.active a, .list2-nav-list li a:hover {
-		width: 229px;
-	}
-	.list1-news-wrapper {
-		width: 990px;
-	}
-	.list-container {
-		width: 1220px;
-	}
-	.baseRight {
-		width: 990px;
-	}
-
-}
 @media all and (min-width:1441px) and (max-width:1920px){
 	.list-main-nav {
 		width: 305px;
@@ -819,6 +760,7 @@ a.blue{ background:#79a9b8;}
 	.baseRight {
 		width: 1195px;
 	}
+	.bannerBase .xt-swiper{ left: 300px;}
 	.media-wrapper { width: 1150px; }
 	.media-wrapper .media-item { width: 362px; }
 	.media-wrapper .media-item .media-img { height: 211px; }
@@ -829,10 +771,12 @@ a.blue{ background:#79a9b8;}
 	.doctorsBase .contents ul li, .officesBase .contents ul li { width: 250px; }
 	.officesBase .contents .more { left: 20px; }
 	.officesBase .contents .doctor { right: 20px; }
-
+	.NewsBase .noticeBase { margin-left: 300px;}
 	.doctorRight {width: 1235px;}
 	.office { width: }
 	.PartBanner .bannerLeft { width: 1180px;}
 	.PartIntro .introRight { width: 1180px;}
 	.PartIntro .introRight .right { width: 950px; }
+	.NewsBase .noticeBase { width: 980px;}
+	.officesBase .contents .contentsDoctor { width: 1170px; }
 }
