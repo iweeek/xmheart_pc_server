@@ -18,24 +18,24 @@
             <div class="QMSub QMSubMenus" style="top: -12px; display: none;">
               <ul>
                 <li>
-                  <a href="XTindex-detail.html" title="胸痛中心简介">胸痛中心简介<span>进入</span></a>
+                  <a href="/newsDetail?id=79" title="胸痛中心简介">胸痛中心简介<span>进入</span></a>
                 </li>
                 <li>
-                  <a href="XTindex-list.html" title="胸痛认证标准">胸痛认证标准<span>进入</span></a>
+                  <a href="/newsDetail?id=79" title="胸痛认证标准">胸痛认证标准<span>进入</span></a>
                 </li>
                 <li>
-                    <a href="DutyTime.html" title="申报胸痛中心">申报胸痛中心<span>进入</span></a>
+                    <a href="/newsDetail?id=79" title="申报胸痛中心">申报胸痛中心<span>进入</span></a>
                 </li>
                 <li>
-                    <a href="ArticleList-56.html" title="在线视频学习">在线视频学习<span>进入</span></a>
+                    <a href="/col/82" title="在线视频学习">在线视频学习<span>进入</span></a>
                 </li>
                 <li class="second">
-                    <a href="ArticleList-56.html" title="规范化建设参考资料">规范化建设参考资料<span>进入</span></a>
+                    <a href="/newsDetail?id=256" title="规范化建设参考资料">规范化建设参考资料<span>进入</span></a>
                     <div class="third-menus">
                     		<ul>
-                    			<li><a href="ArticleList-56.html" title="在线视频学习">文件<span>进入</span></a></li>
-                    			<li><a href="ArticleList-56.html" title="在线视频学习">流程图<span>进入</span></a></li>
-                    			<li><a href="ArticleList-56.html" title="在线视频学习">培训教育<span>进入</span></a></li>
+                    			<li><a href="/newsDetail?id=256" title="在线视频学习">文件<span>进入</span></a></li>
+                    			<li><a href="/newsDetail?id=256" title="在线视频学习">流程图<span>进入</span></a></li>
+                    			<li><a href="/newsDetail?id=256" title="在线视频学习">培训教育<span>进入</span></a></li>
                     		</ul>
                     </div>
                 </li>
@@ -59,9 +59,9 @@
             <div class="QMSub QMSubMenus" style="top: -134px; display: none;">
               <ul>
                 <li>
-                  <a href="DutyTime-1.html" title="新闻快讯">新闻快讯<span>进入</span></a>
+                  <a href="/newsDetail?id=256" title="新闻快讯">新闻快讯<span>进入</span></a>
                 </li>
-                <li><a href="DutyTime-2.html" title="会议邀请">会议邀请<span>进入</span></a></li>
+                <li><a href="/newsDetail?id=256" title="会议邀请">会议邀请<span>进入</span></a></li>
               </ul>
               <div class="clear"></div>
             </div>
