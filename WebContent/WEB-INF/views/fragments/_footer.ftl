@@ -23,38 +23,38 @@
 		
 		<div class="xm-float-right">
             <a>
-                <img src="/images/img21.png">
+                <img src="/image/img21.png">
                 <p>收起</p>
             </a>
             <a style="display: block;">
-                <img src="/images/img11.png"><i></i>
+                <img src="/image/img11.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">掌上厦心</div>
-                <div class="code"><img src="/images/barcode_app.gif" alt=""></div>
+                <div class="code"><img src="/image/barcode_app.gif" alt=""></div>
             </a>
             <a style="display: block;">
-                <img src="/images/img12.png"><i></i>
+                <img src="/image/img12.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">官方微信</div>
-                <div class="code"><img src="/images/barcode_wx.gif" alt=""></div>
+                <div class="code"><img src="/image/barcode_wx.gif" alt=""></div>
             </a>
             <a style="display: block;">
-                <img src="/images/img13.png"><i></i>
+                <img src="/image/img13.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">官方微博</div>
-                <div class="code"><img src="/images/barcode_wx.gif" alt=""></div>
+                <div class="code"><img src="/image/barcode_wx.gif" alt=""></div>
             </a>
             <a href="/News/Columns/List/17" style="display: block;">
-                <img src="/images/img14.png"><i></i>
+                <img src="/image/img14.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">我要挂号</div>
             </a>
             <a href="/Interactions/HospitalMails" style="display: block;">
-                <img src="/images/img15.png"><i></i>
+                <img src="/image/img15.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">意见信箱</div>
             </a>
             <a href="http://www.fuwaihospital.org/rsc/List.aspx" style="display: block;">
-                <img src="/images/img16.png"><i></i>
+                <img src="/image/img16.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">我要求职</div>
             </a>
             <a class="gotop" href="#">
-                <img src="/images/img18.png"><i></i>
+                <img src="/image/img18.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">返回顶部</div>
             </a>
         </div>

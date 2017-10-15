@@ -86,7 +86,7 @@
           <div class="title"><em>最新公告</em><span>Latest Announcement</span></div>
           <div class="first">
             <a href="" id="ANoticeFirst" target="_blank" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表">
-              <img src="images/pic_005.jpg" class="load" width="126" height="76" original="images/pic_005.jpg" style="display: block;"></a>
+              <img src="image/pic_005.jpg" class="load" width="126" height="76" original="image/pic_005.jpg" style="display: block;"></a>
               <div>
                 <span>2017-07-21</span>
                 <a href="" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表" target="_blank">2017年7月29日（周六）、7月30日（周日）出诊医师排班表</a>

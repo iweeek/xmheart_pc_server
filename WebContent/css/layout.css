@@ -346,10 +346,10 @@ div.BottomHidden{width:100%; height:38px;}
 .xm-float-right a:first-child {
     padding: 8px 0 15px;
     height: auto;
-    background: #fff url(../images/img19.png) center 88% no-repeat;
+    background: #fff url(..//image/img19.png) center 88% no-repeat;
 }
 .xm-float-right a.hide {
-    background-image: url(../images/img20.png);
+    background-image: url(..//image/img20.png);
 }
 .xm-float-right a {
     display: block;
@@ -398,6 +398,6 @@ div.BottomHidden{width:100%; height:38px;}
     top: 0;
     width: 146px;
     height: 146px;
-    background: url(../images/bg8.png) no-repeat;
+    background: url(..//image/bg8.png) no-repeat;
     display: none;
 }
