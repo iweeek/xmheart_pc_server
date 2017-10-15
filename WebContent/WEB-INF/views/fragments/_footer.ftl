@@ -26,33 +26,33 @@
                 <img src="/image/img21.png">
                 <p>收起</p>
             </a>
-            <a style="display: block;">
+            <!--<a style="display: block;">
                 <img src="/image/img11.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">掌上厦心</div>
                 <div class="code"><img src="/image/barcode_app.gif" alt=""></div>
-            </a>
+            </a>-->
             <a style="display: block;">
                 <img src="/image/img12.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">官方微信</div>
-                <div class="code"><img src="/image/barcode_wx.gif" alt=""></div>
+                <!--<div class="code"><img src="/image/barcode_wx.gif" alt=""></div>-->
             </a>
             <a style="display: block;">
                 <img src="/image/img13.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">官方微博</div>
-                <div class="code"><img src="/image/barcode_wx.gif" alt=""></div>
+                <!--<div class="code"><img src="/image/barcode_wx.gif" alt=""></div>-->
             </a>
-            <a href="/News/Columns/List/17" style="display: block;">
+            <a href="" style="display: block;">
                 <img src="/image/img14.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">我要挂号</div>
             </a>
-            <a href="/Interactions/HospitalMails" style="display: block;">
+            <!--<a href="/Interactions/HospitalMails" style="display: block;">
                 <img src="/image/img15.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">意见信箱</div>
             </a>
             <a href="http://www.fuwaihospital.org/rsc/List.aspx" style="display: block;">
                 <img src="/image/img16.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">我要求职</div>
-            </a>
+            </a>--> 
             <a class="gotop" href="#">
                 <img src="/image/img18.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">返回顶部</div>
