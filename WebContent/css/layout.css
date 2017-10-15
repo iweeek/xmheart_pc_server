@@ -3,7 +3,6 @@
 	margin: 0 auto;
 	overflow: hidden;
 	min-width:1220px;
-	margin-left: 40px;
 }
 /*header start*/
 .xm-header {
@@ -123,7 +122,7 @@
 .xm-navbar-nav .xm-navbar-item {
 	float: left;
 	position: relative;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .xm-navbar-nav .xm-navbar-item .xm-navbar-item-info {
 	color: #fff;
@@ -154,6 +153,9 @@
 .xm-navbar-nav .xm-navbar-item .xm-navbar-item-info:hover i {
 	display: block;
 }
+.xm-navbar-nav .xm-navbar-item .no-bg:hover i {
+	display: none;
+}
 .xm-navbar-nav .active .xm-navbar-item-info {
 	color: #fff;
 	background: #0690f7;
@@ -174,16 +176,20 @@ div.topHidden{width:100%; height:40px;}
 .navbox .Amore:hover{ background:#ff7544;}
 .navSub2,.navSub5,.navSub6{height:386px; padding:0px 34px; border-left:1px solid #ececec;float:left; margin-top:18px; display:inline; color:#666;}
 .navSub3,.navSub4,.navSub7{height:386px;padding-left:34px;position:relative;border-left:1px solid #ececec;float:left; margin-top:18px; color:#666; display:inline;  line-height:24px;}
-.navSub5{width:299px; position:relative;}
-.navSub6{width:208px;padding:0px 28px; position:relative;}
-.navSub7{padding-left:28px; width:258px;}
+.navSub5 h3, .navSub6 h3, .navSub7 h3{font-size:18px; padding-bottom:8px; color:#29596f;}
+.navSub5 .more, .navSub6 .more, .navSub7 .more {float: right; background: #ff7544; padding: 2px 6px; color: #fff; border-radius: 3px; margin-top: 10px;}
+.navSub5{width:368px; position:relative;}
+.navSub5 .hospital-desc { height: 170px; overflow: hidden;}
 .navSub5 p{ line-height:22px;}
 .navSub5 .first{ padding-top:16px;}
-.navSub6 ul{ margin-top:22px;}
+
+.navSub6{width:264px;padding:0px 28px; position:relative;}
+.navSub6 ul li{background:url(../img/layout/honor.png) left 5px no-repeat; padding-left:19px;}
 .navSub6 ul li{background:url(../img/layout/ico_044.jpg) left center no-repeat; padding-left:19px;}
 .navSub6 ul li span{ color:#ff7544; font-size:18px; vertical-align:middle; padding-right:11px;}
 .navSub6 ul li em{ vertical-align:middle;}
 
+.navSub7{padding-left:28px; width:258px;}
 .navSub7 h3{ font-size:18px; padding-bottom:8px; color:#29596f;}
 .navSub7 ul{ padding-bottom:16px;}
 .navSub7 ul li{background:url(../img/layout//ico_038.jpg) left center no-repeat; padding-left:18px; height:24px; overflow:hidden;}
