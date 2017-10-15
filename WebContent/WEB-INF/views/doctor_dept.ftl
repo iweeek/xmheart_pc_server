@@ -2,7 +2,7 @@
 <!-- list container -->
 <div class="breadcrumb">
     <div class="xm-container">
-       <span class="icon"></span><a href="#">您当前所在位置 首页 &gt 名医名科</a>
+       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">名医名科</a> 
     </div>
 </div>
 <div class="list-container">

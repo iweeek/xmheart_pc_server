@@ -1,5 +1,10 @@
 <#include "./fragments/_header.ftl"> 
-	<div class="list-container">
+<div class="breadcrumb">
+    <div class="xm-container">
+       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">名医名科</a> &gt <a href="#">医生详情</a>
+    </div>
+</div>
+<div class="list-container">
     <div class="list-main">
       <div class="doctorLeft">
         <img src="${doctor.imageUrl}" id="DThumb" class="DThumb" width="112" height="150" alt="${doctor.name}">

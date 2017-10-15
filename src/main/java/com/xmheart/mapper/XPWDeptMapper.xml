@@ -359,7 +359,7 @@
 		<result column="doctor_name" property="name" />
 		<result column="doctor_url" property="url" />
 		<result column="doctor_image_url" property="imageUrl" />
-		<result column="doctor_dept_name" property="deptName" />
+		<!-- <result column="doctor_dept_name" property="deptName" /> -->
 		<result column="doctor_duty" property="duty" />
 		<result column="doctor_professional_title" property="professionalTitle" />
 	</collection>

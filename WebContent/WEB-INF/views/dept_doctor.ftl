@@ -94,7 +94,7 @@
 	            <a href="${k.url}" class="img">
 	              <img src="${k.imageUrl}" alt="${k.name}" title="${k.name}" width="120" height="162"></a>
 	              <a href="Doctor-712.html" class="name">${k.name}</a>
-	              <a href="Doctor-712.html" class="office">${k.deptName}</a>
+	              <a href="Doctor-712.html" class="office">${dept.name}</a>
 	              <a href="Doctor-712.html" class="post">${k.professionalTitle}</a>
 	              <a href="Doctor-712.html" class="btn more">详细</a>
 	              <a href="NewsDetail-449.html" target="_blank" class="btn date">预约</a>
