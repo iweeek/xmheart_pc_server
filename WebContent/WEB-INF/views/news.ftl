@@ -55,7 +55,6 @@
     							<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.title}</a>
     							<!--<p>●7月6日，检验科举办了第二次“翻转课堂”，围绕影响生化结果的常见因素、降钙素原等话题进行了交流学习。 (检验科 朱亚）●7月6日，我院与太康县人民医院互联智慧分级诊疗远程云心电项目正式...</p>-->
     							<#if k.brief?length gt 100>
-    								样式存在问题。
     								<p>${k.brief[0..100]}</p>
     							<#else>
     								<p>${k.brief}</p>
@@ -77,7 +76,7 @@
 			<div class="clear"></div>
 			<div class="list-pagination">
 				<ul class="paginations">
-                    <#if pageInfo??>
+                    <#if pageInfo?? && (pageInfo.pages > 0)>
     					<#if pageInfo.pageNum != 1>
     						<li><a href="?page=${pageInfo.prePage}"><<</a></li>
     					</#if>

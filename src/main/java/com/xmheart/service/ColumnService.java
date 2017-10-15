@@ -18,7 +18,7 @@ public interface ColumnService {
 	 *
 	 * @return the first columns
 	 */
-	List<XPWColumn> getFirstColumns();
+	List<XPWColumn> getTopFirstColumns();
 
 	/**
 	 * Gets the child columns by id.

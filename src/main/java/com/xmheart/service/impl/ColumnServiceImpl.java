@@ -25,9 +25,9 @@ public class ColumnServiceImpl implements ColumnService {
 	private XPWNavMapper xpwNavMapper;
 
 	@Override
-	public List<XPWColumn> getFirstColumns() {
+	public List<XPWColumn> getTopFirstColumns() {
 		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andParentColumnIdEqualTo(0l);
+		example.createCriteria().andParentColumnIdEqualTo(0l).andPositionEqualTo(false);
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}

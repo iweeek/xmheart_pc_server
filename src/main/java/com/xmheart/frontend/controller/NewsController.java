@@ -58,14 +58,12 @@ public class NewsController {
 
     private final int PAGE_SIZE = 10;
 
-    private final String NEWS_COLUMN_NAME = "新闻公告";
-    private final String MEDIA_NEWS_COLUMN_NAME = "媒体看厦心";
     private final String HOSPITAL_NEWS_COLUMN_NAME = "医院新闻";
-    private final String VIDEO_NEWS_COLUMN_NAME = "影像厦心";
-    private final String ELECPAPER_NEWS_COLUMN_NAME = "电子院报";
 
     static final long NEWS_COLUMN_ID = 5;
     static final long EXPERT_COLUMN_ID = 3;
+    static final long VIDEO_NEWS_COLUMN_ID = 22;
+    static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
 
     // private static Map<String, String> secColumns = new HashMap<String,
     // String>();
@@ -79,7 +77,7 @@ public class NewsController {
      */
     private Model addTopNav(long columnId, Model model) {
 
-        List<XPWColumn> columnList = columnService.getFirstColumns();
+        List<XPWColumn> columnList = columnService.getTopFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
         Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
@@ -102,8 +100,13 @@ public class NewsController {
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
         
-        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
-        model.addAttribute("firstColumnName", parentColumn);
+        if (columnId != 1) {
+            XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+            model.addAttribute("firstColumnName", parentColumn);
+        } else {
+            XPWColumn column = columnService.getColumnById(columnId);
+            model.addAttribute("firstColumnName", column.getColumnName());
+        }
 
         return model;
     }
@@ -169,10 +172,16 @@ public class NewsController {
         PageInfo pageInfo = new PageInfo(articleList);
         model.addAttribute("pageInfo", pageInfo);
         
-        if (page == 1) {
-            articleList = articleList.subList(3, articleList.size());
+        if (articleList.size() > 0) {
+            if (page == 1) {
+                if (articleList.size() > 3) {
+                    articleList = articleList.subList(3, articleList.size());
+                    model.addAttribute("noPinnedArticleList", articleList);
+                }
+            } else {
+                model.addAttribute("noPinnedArticleList", articleList);
+            }
         }
-        model.addAttribute("noPinnedArticleList", articleList);
 
         return "news";
     }
@@ -205,27 +214,14 @@ public class NewsController {
      */
     @ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
     @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
-    public String videoNews(Model model, @RequestParam(required = false) Integer page) {
+    public String videoNews(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
 
-        if (page == null) {
-            page = new Integer(1);
-        }
+        model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
-//        model = addTopNav(model);
-
-//        model = addHeader(model);
-
-        model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-
-        // model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-        //
-        // PageHelper.startPage(page, PAGE_SIZE);
-        //
-        // List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
-        // model.addAttribute("newsPaperList", list);
-        //
-        // PageInfo pageInfo = new PageInfo(list);
-        // model.addAttribute("pageInfo", pageInfo);
+        model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
+        
+        String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
 
         return "video";
     }
@@ -235,27 +231,14 @@ public class NewsController {
      */
     @ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
     @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
-    public String videoNewsDetail(Model model, @RequestParam(required = false) Integer page) {
+    public String videoNewsDetail(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
 
-        if (page == null) {
-            page = new Integer(1);
-        }
+        model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
-//        model = addTopNav(model);
-
-//        model = addHeader(model);
-
-        model.addAttribute("columnName", VIDEO_NEWS_COLUMN_NAME);
-
-        // model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
-        //
-        // PageHelper.startPage(page, PAGE_SIZE);
-        //
-        // List<XPWElecNewspaper> list = newsService.getElecNewsPaper();
-        // model.addAttribute("newsPaperList", list);
-        //
-        // PageInfo pageInfo = new PageInfo(list);
-        // model.addAttribute("pageInfo", pageInfo);
+        model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
+        
+        String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
 
         return "video_img_detail";
     }
@@ -282,11 +265,14 @@ public class NewsController {
         if (time == null) {
             time = "";
         }
-//        model = addTopNav(model);
+        
+        //23是栏目Id，暂时写死
+        model = addTopNav(23, model);
 
-//        model = addHeader(model);
+        model = addLeftNav(23, model);
 
-        model.addAttribute("pageName", ELECPAPER_NEWS_COLUMN_NAME);
+        String columnName = columnService.getColumnById(ELEC_NEWS_PAPER_COLUMN_ID).getColumnName();
+        model.addAttribute("pageName", columnName);
 
         PageHelper.startPage(page, PAGE_SIZE);
 
@@ -392,6 +378,20 @@ public class NewsController {
         htmlStr = htmlStr.replaceAll("&nbsp;", " ");
 
         return htmlStr.trim(); // 返回文本字符串
+    }
+    
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+        model = addTopNav(1, model);
+
+        return "index";
+    }
+    
+    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
+    public String xtIndex(Model model) {
+        model = addTopNav(1, model);
+
+        return "xt_index";
     }
 
 }

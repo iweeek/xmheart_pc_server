@@ -34,7 +34,7 @@ public class DoctorAndDeptController {
 
     private Model addCommonHeader(Model model) {
 
-    	List<XPWColumn> columnList = ColumnService.getFirstColumns();
+    	List<XPWColumn> columnList = ColumnService.getTopFirstColumns();
     	Map<String, String> firstColumns = new LinkedHashMap<String, String>();
     	Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
     	Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();

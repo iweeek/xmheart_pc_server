@@ -24,7 +24,7 @@ public class XTController {
     
     private Model addCommonHeader(Model model) {
 
-        List<XPWColumn> columnList = columnService.getFirstColumns();
+        List<XPWColumn> columnList = columnService.getTopFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
         Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
@@ -52,10 +52,10 @@ public class XTController {
         return model;
     }
     
-    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
-    public String index(Model model) {
-        model = addCommonHeader(model);
-
-        return "xt-index";
-    }
+//    @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
+//    public String index(Model model) {
+//        model = addCommonHeader(model);
+//
+//        return "xt-index";
+//    }
 }
