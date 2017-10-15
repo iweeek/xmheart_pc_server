@@ -43,12 +43,12 @@
 	   				 添加图片
 	  			</div>
 	  			<div class="add-image-url">
-	  				<img src="#" class="upload-img">
+	  				<img src="" class="upload-img">
 	  			</div>
 	  			<div class="add-image-edit">
 	  				<img src="../img/manager/edit.png">
 	  			</div>
-	  			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/xmheart_pc_server/uploadImage" >
+	  			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/uploadImage" >
 	        			<input type="file" name="image" class="add-img-file" />
 	        			<input type="submit" class="add-img-submit" />
 	        		</form>
@@ -58,9 +58,13 @@
 		<div class="input-wrapper">
 			<input type="text" class="article-title" id="doctorProfessiona" value="">
 		</div>
-		<p class="subtit">医生职位</p>
+		<p class="subtit">医生职务</p>
 		<div class="input-wrapper">
 			<input type="text" class="article-title" id="doctorDuty" value="">
+		</div>
+		<p class="subtit">医生学历</p>
+		<div class="input-wrapper">
+			<input type="text" class="article-title" id="grade" value="">
 		</div>
 		<p class="subtit">所属科室</p>
 		<div class="input-wrapper">

@@ -11,7 +11,7 @@ exports.XPW.DoctorUeditor = (function() {
 	DoctorUeditor.isDisplayed = false;
   }
 
-  DoctorUeditor.getUrlParam = function (name) {
+  DoctorUeditor._getUrlParam = function (name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
       var r = window.location.search.substr(1).match(reg);  //匹配目标参数
       if (r != null) return unescape(r[2]); return null; //返回参数值
@@ -22,6 +22,7 @@ exports.XPW.DoctorUeditor = (function() {
       $('#doctorProfessiona').val(data.professionalTitle);
       $('#doctorDuty').val(data.duty);
       $('#typeSelectInput').val(data.deptId);
+      $('#grade').val(data.grade);
       DoctorUeditor.isDisplayed = data.isDisplayed;
       DoctorUeditor.ue.ready(function () {
           //设置编辑器的内容
@@ -47,7 +48,7 @@ exports.XPW.DoctorUeditor = (function() {
   }
   
   DoctorUeditor.getDoctorInfo = function () {
-    var id = DoctorUeditor.getUrlParam('doctorId')
+    var id = DoctorUeditor._getUrlParam('doctorId')
     if (id) {
 	    $.ajax({
 	  	  url: '/doctors/' + id,
@@ -62,18 +63,41 @@ exports.XPW.DoctorUeditor = (function() {
   }
  
   DoctorUeditor.postDoctorInfo = function () {
-	  var id = DoctorUeditor.getUrlParam('doctorId');
+	  var id = DoctorUeditor._getUrlParam('doctorId');
 	  var url = id ? '/doctors/' + id : '/doctors'
 	  $('.btn-group').on('click', '#save', function() {
+		  var $this = $(this);
+		  $this.attr('disabled','disabled');
 		  var name = $('#doctorName').val();
 		  var deptId = parseInt($('#typeSelectInput').val());
 		  var duty = $('#doctorDuty').val();
 		  var professionalTitle = $('#doctorProfessiona').val();
+		  var grade = $('#grade').val()
 		  var intro = DoctorUeditor.ue.getContent();
 		  var isDisplayed = DoctorUeditor.isDisplayed; 
 		  var imageUrl = $('.upload-img').attr('src');
-		  var upateParms = {id: id, name: name, imageUrl:imageUrl, deptId: deptId, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
-		  var newParms = {name: name, deptId: deptId, imageUrl:imageUrl, duty: duty, professionalTitle: professionalTitle, intro: intro, isDisplayed: isDisplayed};
+		  if (!name) {
+			  swal("姓名不能为空");
+			  $this.removeAttr('disabled');
+			  return false;
+		  }
+		  if (!imageUrl) {
+			  swal("头像不能为空");
+			  $this.removeAttr('disabled');
+			  return false;
+		  }
+		  if (!professionalTitle) {
+			  swal("职称不能为空");
+			  $this.removeAttr('disabled');
+			  return false;
+		  }
+		  if (!intro) {
+			  swal("简介不能为空");
+			  $this.removeAttr('disabled');
+			  return false;
+		  }
+		  var upateParms = {id: id, name: name, imageUrl:imageUrl, deptId: deptId, duty: duty, professionalTitle: professionalTitle, grade: grade, intro: intro, isDisplayed: isDisplayed};
+		  var newParms = {name: name, deptId: deptId, imageUrl:imageUrl, duty: duty, professionalTitle: professionalTitle, grade: grade, intro: intro, isDisplayed: isDisplayed};
 		  var parms = id ? upateParms : newParms;
 		  $.ajax({
 		  	  	url: url,
@@ -82,6 +106,7 @@ exports.XPW.DoctorUeditor = (function() {
 		        data: parms
 		      })
 		  .done(function(data) {
+			  $this.removeAttr('disabled');
 			  DoctorUeditor.fillData(data);
 			  if (id) {
 				  swal({
@@ -97,16 +122,19 @@ exports.XPW.DoctorUeditor = (function() {
                       window.history.go(-1);
                   });
 			  } else {
-				  swal({
-                      title: "创建成功",
-                      type: "success",
-                      showCancelButton: false,
-                      confirmButtonColor: "#8cd4f5",
-                      confirmButtonText: "确定",
-                      closeOnConfirm: false
-                  }, function () {
-                      location.href="/doctor.html"
-                  });
+				  $.get('/doctors',{deptId: deptId}, function(data){
+					  swal({
+	                      title: "创建成功",
+	                      type: "success",
+	                      showCancelButton: false,
+	                      confirmButtonColor: "#8cd4f5",
+	                      confirmButtonText: "确定",
+	                      closeOnConfirm: false
+	                  }, function () {
+	                	  	  var url = '/doctor.html?pageNo=' + data.pages;
+	                      location.href = url;
+	                  });
+				  })
 			  }
 		  });
 	  })

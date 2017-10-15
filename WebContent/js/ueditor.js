@@ -44,6 +44,8 @@ $(function () {
             });
         },
         publish: function () {
+        		var $this = $(this);
+        		$this.attr('disabled','disabled');
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
@@ -60,7 +62,6 @@ $(function () {
             if (!ctrl.valid(params, 'publish')) {
                 return;
             }
-
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
@@ -70,6 +71,7 @@ $(function () {
 
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
+                		$this.removeAttr('disabled');
                     swal({
                         title: "发表成功",
                         text: "返回上一页？",
@@ -103,6 +105,8 @@ $(function () {
             }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
         },
         save: function () {
+        		var $this = $(this);
+        		$this.attr('disabled','disabled');
             // 保存(提交请求但isPublished为false)
         		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
         		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
@@ -128,6 +132,7 @@ $(function () {
                 }
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
+                		$this.removeAttr('disabled');
                     swal({
                         title: "保存成功",
                         type: "success",

@@ -52,6 +52,8 @@ exports.XPW.OfficeUeditor = (function() {
 	  var id = OfficeUeditor.getUrlParam('deptId');
 	  var url = id ? '/dept/' + id : '/dept'
 	  $('.btn-group').on('click', '#save', function() {
+		  var $this = $(this);
+		  $this.attr('disabled','disabled');
 		  var name = $('#officeName').val();
 	      var outService = $('.outservice:checked').val();
 		  var isDisplayed = OfficeUeditor.isDisplayed;
@@ -67,6 +69,7 @@ exports.XPW.OfficeUeditor = (function() {
 		        data: parms
 		      })
 		  .done(function(data) {
+			  $this.removeAttr('disabled');
 			  OfficeUeditor.fillData(data);
 			  swal("保存成功!");
 		  });
