@@ -16,7 +16,7 @@
     <div class="index-edit-container">
         <div class="slide-edit-container">
         		<div class="row">
-             	<h4 class="slide-title">轮播编辑</h4>
+             	<h4 class="slide-title">图片轮播编辑</h4>
              </div>
              <div class="row add-list-main">
                 	<div class="add-img-list">
@@ -37,16 +37,105 @@
                 			<p>请输入链接地址</p>
                 			<input type="text">
                 		</div>
-                		<div class="add-img-btn">
-                			<input type="submit" value="确定" class="btn btn-default">
+                	</div>
+                	<div class="add-img-list">
+              		<div class="add-image-button" id="addImgBtn">
+         				 添加图片
+        				</div>
+        				<div class="add-image-url">
+        					<img src="#" class="upload-img">
+        				</div>
+        				<div class="add-image-edit">
+        					<img src="./img/manager/edit.png">
+        				</div>
+        				<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/xmheart_pc_server/uploadImage" >
+              			<input type="file" name="image" class="add-img-file" />
+              			<input type="submit" class="add-img-submit" />
+              		</form>
+                		<div class="add-img-link">
+                			<p>请输入链接地址</p>
+                			<input type="text">
+                		</div>
+                	</div>
+                	<div class="add-img-list">
+              		<div class="add-image-button" id="addImgBtn">
+         				 添加图片
+        				</div>
+        				<div class="add-image-url">
+        					<img src="#" class="upload-img">
+        				</div>
+        				<div class="add-image-edit">
+        					<img src="./img/manager/edit.png">
+        				</div>
+        				<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/xmheart_pc_server/uploadImage" >
+              			<input type="file" name="image" class="add-img-file" />
+              			<input type="submit" class="add-img-submit" />
+              		</form>
+                		<div class="add-img-link">
+                			<p>请输入链接地址</p>
+                			<input type="text">
                 		</div>
                 	</div>
              </div>
+             <div class="row">
+             	<h4 class="slide-title">文字轮播编辑</h4>
+             </div>
+             <div class="row">
+             	<div class="add-font-list">
+             		<div class="add-font-link">
+                			<p>请输入标题</p>
+                			<input type="text">
+                		</div>
+                		<div class="add-font-link">
+                			<p>请输入内容</p>
+                			<textarea>
+
+                			</textarea>
+                		</div>
+             		<div class="add-font-link">
+                			<p>请输入链接地址</p>
+                			<input type="text">
+                		</div>
+             	</div>
+             	<div class="add-font-list">
+             		<div class="add-font-link">
+                			<p>请输入标题</p>
+                			<input type="text">
+                		</div>
+                		<div class="add-font-link">
+                			<p>请输入内容</p>
+                			<textarea>
+
+                			</textarea>
+                		</div>
+             		<div class="add-font-link">
+                			<p>请输入链接地址</p>
+                			<input type="text">
+                		</div>
+             	</div>
+             	<div class="add-font-list">
+             		<div class="add-font-link">
+                			<p>请输入标题</p>
+                			<input type="text">
+                		</div>
+                		<div class="add-font-link">
+                			<p>请输入内容</p>
+                			<textarea>
+
+                			</textarea>
+                		</div>
+             		<div class="add-font-link">
+                			<p>请输入链接地址</p>
+                			<input type="text">
+                		</div>
+             	</div>
+             </div>
+        		 <div class="row btn-group">
+        		 	<input type="button" class="search-button"  value="确定">
+            		<input type="button" class="search-button" value="取消">
+        		 </div>
         </div>
     </div>
-    <script id="firstColumnTemplate" type="x-tmpl-mustache">
-     
-    </script>
     <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
     <script type="text/javascript" src="./js/third_party/mustache.min.js"></script>
     <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
