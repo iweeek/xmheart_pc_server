@@ -51,7 +51,15 @@
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.grade}</a>
                             <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
                             <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
-                            <div class="doctorDialog">${doctor.intro}</div>
+                            <#if doctor.intro?length lt 150>
+                                <div class="doctorDialog">${doctor.intro}</div>
+                            <#else>
+                                <div class="doctorDialog">
+                                    <div>${doctor.intro[0..150]}......
+                                        <a href="doctorDetail?id=${doctor.id}" title="${dept.name}">查看详细</a>
+                                    </div>
+                                </div>
+                            </#if>
                         </li>
                         </#if>
                         </#list>
