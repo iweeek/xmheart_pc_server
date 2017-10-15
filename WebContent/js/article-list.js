@@ -105,7 +105,7 @@ $(function() {
 				isPublished : false
 			};
 			// 编辑模式
-			var url = '/xmheart_pc_server/articles/' + articleId;
+			var url = '/articles/' + articleId;
 			$.post(url, params, function(res) {
 				swal("下线成功！");
 				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
