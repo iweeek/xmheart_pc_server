@@ -9,36 +9,40 @@
 		<div class="bannerBase BaseMark">
       <div class="quickMenus">
         <ul class="firstUl">
+        
           <li class="first">
             <a href="ArticleList-54.html" class="firstA">
               <em>认证中心</em>
               <i class="style01"></i>
               <span></span>
             </a>
-            <div class="QMSub QMSubMenus" style="top: -12px; display: none;">
-              <ul>
-                <li>
-                  <a href="/newsDetail?id=79" title="胸痛中心简介">胸痛中心简介<span>进入</span></a>
-                </li>
-                <li>
-                  <a href="/newsDetail?id=79" title="胸痛认证标准">胸痛认证标准<span>进入</span></a>
-                </li>
-                <li>
-                    <a href="/newsDetail?id=79" title="申报胸痛中心">申报胸痛中心<span>进入</span></a>
-                </li>
-                <li>
-                    <a href="/col/82" title="在线视频学习">在线视频学习<span>进入</span></a>
-                </li>
-                <li class="second">
-                    <a href="/newsDetail?id=256" title="规范化建设参考资料">规范化建设参考资料<span>进入</span></a>
-                    <div class="third-menus">
-                    		<ul>
-                    			<li><a href="/newsDetail?id=256" title="在线视频学习">文件<span>进入</span></a></li>
-                    			<li><a href="/newsDetail?id=256" title="在线视频学习">流程图<span>进入</span></a></li>
-                    			<li><a href="/newsDetail?id=256" title="在线视频学习">培训教育<span>进入</span></a></li>
-                    		</ul>
-                    </div>
-                </li>
+            
+            <div class="QMSub QMSubMenus" style="top: -12px; display: none;">           
+               <ul>
+              <#list secondColList as key, value>
+            	<#if key == "认证中心">
+            		<#list value as secCol >
+            			<#list thirdColList as key1, value1>     		
+                			<#if key1 == secCol.columnName>
+                			<li class="second">
+                				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>             			
+                				<div class="third-menus">
+                					<ul>
+                						<#list value1 as thirdCol>
+                						<li><a href="${thirdCol.url}" title="${thirdCol.columnName}">${thirdCol.columnName}<span>进入</span></a></li>
+                						</#list>
+                					<ul>
+                				</div>
+                			</li>          		
+                			<#else>
+                			<li>
+               					<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>
+                			</li>
+                			</#if>
+                		</#list>
+                	</#list>
+                </#if>
+              </#list>
               </ul>
               <div class="clear"></div>
             </div>
@@ -47,9 +51,15 @@
             <a href="" target="_blank" class="firstA"><em>示范中心</em><i class="style02"></i><span></span></a>
             <div class="QMSub QMSubMenus" style="top: -73px; display: none;">
               <ul>
-                <li><a href="">申请流程<span>进入</span></a></li>
-                <li><a href="">注意事项<span>进入</span></a></li>
-                <li><a href="">申请表下载<span>进入</span></a></li>
+              <#list secondColList as key, value>
+            	 <#if key== "示范中心" >
+             		 <#list value as secCol >
+               		 <li>
+                	  <a href="${secCol.url}">${secCol.columnName}<span>进入</span></a>
+              		 </li>
+              		 </#list>
+              	 </#if>
+              </#list>
               </ul>
               <div class="clear"></div>
             </div>
@@ -58,11 +68,16 @@
             <a href="DutyTime.html" class="firstA"><em>胸痛中心动态</em><i class="style03"></i><span></span></a>
             <div class="QMSub QMSubMenus" style="top: -134px; display: none;">
               <ul>
-                <li>
-                  <a href="/newsDetail?id=256" title="新闻快讯">新闻快讯<span>进入</span></a>
-                </li>
-                <li><a href="/newsDetail?id=256" title="会议邀请">会议邀请<span>进入</span></a></li>
-              </ul>
+              <#list secondColList as key, value>
+              	<#if key == "胸痛中心动态" >
+             	 <#list value as secCol >
+                	<li>
+                 	 <a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>
+               	 	</li>
+                 </#list>
+                </#if>
+         	  </#list>
+              </ul>            
               <div class="clear"></div>
             </div>
           </li>
