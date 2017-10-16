@@ -54,15 +54,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public XPWArticle read(XPWArticle article) {
-        XPWArticleExample example = new XPWArticleExample();
-        example.createCriteria().andIdEqualTo(article.getId());
-        List<XPWArticle> list = articleMapper.selectByExampleWithBLOBs(example);
-        if (list.size() == 0) {
-            return null;
-        } else {
-            return list.get(0);
-        }
+    public XPWArticle read(Long id) {
+        XPWArticle article = articleMapper.selectWithFirstColumnByPrimaryKey(id);
+        return article;
     }
 
     @Override

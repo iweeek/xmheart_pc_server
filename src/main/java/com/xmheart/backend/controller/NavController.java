@@ -50,9 +50,7 @@ public class NavController {
         XPWNav nav = new XPWNav();
         nav.setId(id);
         
-        XPWArticle article = new XPWArticle();
-        article.setId(articleId);
-        article = articleService.read(article);
+        XPWArticle article  = articleService.read(articleId);
         
         nav.setArticleTitle(article.getTitle());
         
