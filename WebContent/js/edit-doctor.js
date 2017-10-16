@@ -32,7 +32,7 @@ exports.XPW.DoctorEdit = (function() {
    .done(function(data) {
       var firstColumnTemplate = $('#firstColumnTemplate').html();
       Mustache.parse(firstColumnTemplate);   
-      var rendered = Mustache.render(firstColumnTemplate, {data});
+      var rendered = Mustache.render(firstColumnTemplate, {data:data});
       $('#typeSelectInput').html(rendered);
       $('#columnSearch').trigger('click');
    })
@@ -111,7 +111,7 @@ exports.XPW.DoctorEdit = (function() {
 			  $this.removeAttr('disabled');
 			  var doctorTemplate = $('#doctorTd').html();
 		    	  Mustache.parse(doctorTemplate);   // optional, speeds up future uses
-		    	  var rendered = Mustache.render(doctorTemplate, {data});
+		    	  var rendered = Mustache.render(doctorTemplate, {data:data});
 		    	  $('#'+id).replaceWith(rendered);
 		  });
 	  })

@@ -31,6 +31,9 @@ $(function () {
                 title.val(res.title);
                 tags.val(res.tags);
                 digest.val(res.brief.slice(0,200));
+                $('#J_select_first option[value='+ res.firstColumnId +']').attr('selected','selected')
+                $('#J_select_first').trigger('change');
+                ctrl.getColumn('2', '#J_select_second', res.columnId);
                 ctrl.statInputNum(digest, word);
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
@@ -49,6 +52,7 @@ $(function () {
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
+            var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
@@ -56,6 +60,7 @@ $(function () {
                 tags: tags.val(),
                 brief: brief,
                 isPublished: true,
+                imgUrl: imgUrl,
                 publishTime: publishTime
             };
             
@@ -108,8 +113,9 @@ $(function () {
         		var $this = $(this);
         		$this.attr('disabled','disabled');
             // 保存(提交请求但isPublished为false)
-        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
-        		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
+        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
+        		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate');
+        		var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: category2.find('option:selected').val(),
                 title: title.val(),
@@ -117,6 +123,7 @@ $(function () {
                 tags: tags.val(),
                 brief: brief,
                 isPublished: false,
+                imgUrl: imgUrl,
                 publishTime: publishTime
             };
 
@@ -200,7 +207,7 @@ $(function () {
             $('.select-title-second').hide();
             $("#wordCount").find(".word").html('200');
         },
-        getColumn: function (parentColumnId, htmlId) {
+        getColumn: function (parentColumnId, htmlId, setSelectId) {
             $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
@@ -210,18 +217,53 @@ $(function () {
                     var jsonObj = data[i];
                     optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
+                    if (setSelectId) {
+                    	 $(htmlId + ' option[value='+ setSelectId +']').attr('selected','selected');
+                    }
                 }
             });
+        },
+        uploadImg: function () {
+        		$('.add-img-list').on('click', '#addImgBtn', function (){
+        			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+        			console.log(123);
+        		})
+        		$('.add-img-list').on('change', '.add-img-file', function (){
+        			$(this).siblings('.add-img-submit').trigger('click');
+        		})
+        		$('#uploadForm').submit(function(){
+        			$this = $(this);
+        			$this.ajaxSubmit({
+        				success: function (responseText) {
+        					var img = responseText;
+        					$this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+        					$this.siblings('.add-image-button').hide();
+        					$this.siblings('.add-image-url').show();
+        				}
+        			});
+        			return false;
+        		})
+        		$('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
+        			$('.add-image-edit').show();
+        		})
+        		$('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
+        			$('.add-image-edit').hide();
+        		})
+        		$('.add-img-list').on('click', '.add-image-edit', function (){
+        			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+        		})
         },
         init: function () {
             $('.ui-loading').show();
             var articleId = ctrl.getUrlParam('articleId');
             ctrl.statInputNum(digest, word);
             // 编辑模式
+            ctrl.getColumn(0, '#J_select_first');
             if (articleId) {
                 ctrl.getArticle(articleId);
             }
-            ctrl.getColumn(0, '#J_select_first');
+            
+            
         },
         initDate: function() {
         		$('[data-toggle="datepicker"]').datepicker({
@@ -232,8 +274,9 @@ $(function () {
     }
     ctrl.init();
     ctrl.initDate();
+    ctrl.uploadImg();
     // 二级分类的出现
-    $('.select-title-first').change(function () {
+    $('#J_select_first').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
             $('.select-title-second').show();
