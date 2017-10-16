@@ -121,4 +121,14 @@ public class ColumnServiceImpl implements ColumnService {
         return column;
     }
 
+	@Override
+	public List<XPWNav> getNavsByChildColumnName(String childColumnName) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andChildColumnNameEqualTo(childColumnName);
+		
+		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		
+		return list;
+	}
+
 }
