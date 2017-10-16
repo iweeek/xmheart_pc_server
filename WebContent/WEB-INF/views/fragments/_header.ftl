@@ -39,7 +39,6 @@
                     <#-- 顶部栏目导航 -->
                     <#list firstColumns as key, value>
                     <#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
-                    ${firstColumnName}
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
