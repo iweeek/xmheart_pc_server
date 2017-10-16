@@ -36,16 +36,23 @@
                 <div class="xm-nav-container">
                     <#-- <a href="#" class="xm-nav-brand">首页</a> -->
                 <ul class="xm-navbar-nav">
+                    <#-- 顶部栏目导航 -->
                     <#list firstColumns as key, value>
                     <#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
+                    ${firstColumnName}
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
                         <li class="xm-navbar-item">
                     </#if>
                     
-                    <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+                    <#if key == "首页" || key == "走进厦心" || key == "名医名科" || key == "就医服务" || key == "党群工作" || key == "护理天地" 
+                        || key == "科研教学" || key == "招贤纳士">
+                        <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
+                    <#else>
+                        <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
                     
+                    <#-- 悬浮导航 -->
                     <#list columnMap as kc, vc>
                     <#if kc == key>
                     <div class="navboxBase">
@@ -67,7 +74,7 @@
                                     </ul>
                                 </div>
                                 
-                                <#--  list navMap as k, v>
+                                <#list navMap as k, v>
                                 <#if k == key>
                                 <div class="navSub2 nav_Menu02 noPic NewsSub">
                                     <dl class="Img02">
@@ -156,13 +163,14 @@
                                     <div class="BottomHidden"></div>
                                 </div>
                                 </#if>
-                                </#list-->
+                                </#list>
                                 <div class="clear"></div>
                             </div>
                         </div>
                     </div>
                     </#if>
                     </#list>
+                    </#if>
                     </li>
                     </#list>
                     </ul>

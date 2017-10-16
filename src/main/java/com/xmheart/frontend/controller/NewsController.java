@@ -100,9 +100,11 @@ public class NewsController {
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
         
-        if (columnId != 1) {
-            XPWColumn parentColumn = columnService.getParentColumnById(columnId);
-            model.addAttribute("firstColumnName", parentColumn);
+        //这个地方只能体现两级栏目关系
+        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+        //有父栏目，父栏目是一级栏目
+        if (parentColumn != null) {
+            model.addAttribute("firstColumnName", parentColumn.getColumnName());
         } else {
             XPWColumn column = columnService.getColumnById(columnId);
             model.addAttribute("firstColumnName", column.getColumnName());
