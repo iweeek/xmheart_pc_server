@@ -5,6 +5,8 @@ exports.XPW.IndexEdit = (function() {
 	  // 初始化页面处理。
 	  IndexEdit.addSlideImg();
 	  IndexEdit.getData();
+	  IndexEdit.pageId = 0;
+	  IndexEdit.postData();
   }
   
   IndexEdit.addSlideImg = function () {
@@ -44,9 +46,55 @@ exports.XPW.IndexEdit = (function() {
   }
   
   IndexEdit.getData = function () {
-	  console.log(123)
 	  $.get('/indexPage',function(data){
 		  console.log(data);
+		  IndexEdit.pageId = data.id;
+		  if(data.bannerImage1Url) {
+			  $('.add-img-list').eq(0).find('.add-image-url img').attr('src', data.bannerImage1Url);
+			  $('.add-img-list').eq(0).find('.add-image-button').hide();
+			  $('.add-img-list').eq(0).find('.add-image-url').show();
+		  }
+		  if (data.bannerImage1ActionUrl) {
+			  $('.add-img-list').eq(0).find('.add-img-link input').val(data.bannerImage1ActionUrl);
+		  }
+		  if(data.bannerImage2Url) {
+			  $('.add-img-list').eq(1).find('.add-image-url img').attr('src', data.bannerImage1Url);
+			  $('.add-img-list').eq(1).find('.add-image-button').hide();
+			  $('.add-img-list').eq(1).find('.add-image-url').show();
+		  }
+		  if (data.bannerImage2ActionUrl) {
+			  $('.add-img-list').eq(1).find('.add-img-link input').val(data.bannerImage1ActionUrl);
+		  }
+		  if(data.bannerImage3Url) {
+			  $('.add-img-list').eq(2).find('.add-image-url img').attr('src', data.bannerImage1Url);
+			  $('.add-img-list').eq(2).find('.add-image-button').hide();
+			  $('.add-img-list').eq(2).find('.add-image-url').show();
+		  }
+		  if (data.bannerImage3ActionUrl) {
+			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage1ActionUrl);
+		  }
+	  });
+  }
+  IndexEdit.postData = function () {
+	  $('.search-button').on('click', function(){
+		  var parms = {
+		    bannerImage1Url: $('.add-img-list').eq(0).find('.add-image-url img').attr('src'),
+			bannerImage1ActionUrl: $('.add-img-list').eq(0).find('.add-img-link input').val(),
+			bannerImage2Url: $('.add-img-list').eq(1).find('.add-image-url img').attr('src'),
+			bannerImage2ActionUrl: $('.add-img-list').eq(1).find('.add-img-link input').val(),
+			bannerImage3Url: $('.add-img-list').eq(2).find('.add-image-url img').attr('src'),
+			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val()
+		  };
+		  var url = 'indexPage/'+ IndexEdit.pageId;
+		  $.ajax({
+			  url: url,
+		      type: 'put',
+		      dataType: 'json',
+		      data: parms
+		    })
+		   .done(function(data) {
+			   swal('更新成功')
+		   })
 	  });
   }
   
