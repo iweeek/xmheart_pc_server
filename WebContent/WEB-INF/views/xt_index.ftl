@@ -81,59 +81,63 @@
     </div>
     <div class="NewsBase BaseMark">
       <div class="noticeBase">
+        
+        <#list navMap as key, news>
+        <#if key == "胸痛中心简介">
         <div class="notice notice01">
           <a href="XTindex-list.html" class="more">更多</a>
-          <div class="title"><em>最新公告</em><span>Latest Announcement</span></div>
-          <div class="first">
-            <a href="" id="ANoticeFirst" target="_blank" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表">
-              <img src="images/pic_005.jpg" class="load" width="126" height="76" original="images/pic_005.jpg" style="display: block;"></a>
+          <div class="title"><em>${key}</em><span>Latest Announcement</span></div>
+        <#list news as new>
+        	<#if new?index == 0>
+        <div class="first">
+            <a href="${new.url}" id="ANoticeFirst" target="_blank" title="${new.articleTitle}">
+              <img src="image/pic_005.jpg" class="load" width="126" height="76" original="image/pic_005.jpg" style="display: block;"></a>
               <div>
-                <span>2017-07-21</span>
-                <a href="" title="2017年7月29日（周六）、7月30日（周日）出诊医师排班表" target="_blank">2017年7月29日（周六）、7月30日（周日）出诊医师排班表</a>
+                <span>${new.publishTime?date}</span>
+                <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
               </div>
               <div class="clear"></div>
           </div>
           <ul>
+          <#else>
             <li>
-              <span>2017-07-14</span>
-              <a target="_blank" href="" title="2017年7月22日（周六）、7月23日（周日）出诊医师排班表">2017年7月22日（周六）、7月23日（周日）出诊医师排班表</a>
+              <span>${new.publishTime?date}</span>
+              <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
             </li>
-            <li>
-              <span>2017-07-07</span>
-              <a target="_blank" href="" title="2017年7月15日（周六）、7月16日（周日）出诊医师排班表">2017年7月15日（周六）、7月16日（周日）出诊医师排班表</a>
-            </li>
-            <li>
-              <span>2017-07-01</span>
-              <a target="_blank" href="" title="2017年7月8日（周六）、7月9日（周日）出诊医师排班表">2017年7月8日（周六）、7月9日（周日）出诊医师排班表</a>
-            </li>
+            </#if>
+           </#list>
           </ul>
         </div>
+        </#if>
+        </#list>
+        
+        <#list navMap as key, news>
+        <#if key == "胸痛认证标准">
         <div class="notice notice02">
           <a href="XTindex-list.html" class="more">更多</a>
-          <div class="title"><em>快讯</em><span>Hospital News</span></div>
+          <div class="title"><em>${key}</em><span>Hospital News</span></div>
+          <#list news as new>
+        	<#if new?index == 0>
           <div class="first">
-            <a href="" id="ANewsFirst" target="_blank" title="综合简讯"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
+            <a href="${new.url}" id="ANewsFirst" target="_blank" title="${new.articleTitle}"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
             <div>
-              <span>2017-07-25</span>
-              <a href="" title="综合简讯" target="_blank">综合简讯</a>
+              <span>${new.publishTime?date}</span>
+              <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
             </div>
             <div class="clear"></div>
           </div>
           <ul>
+          <#else>
             <li>
-              <span>2017-07-25</span>
-              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
+              <span>${new.publishTime?date}</span>
+              <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
             </li>
-            <li>
-              <span>2017-07-25</span>
-              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
-            </li>
-            <li>
-              <span>2017-07-25</span>
-              <a target="_blank" href="" title="厦门市约有30多万市民患高血压">厦门市约有30多万市民患高血压</a>
-            </li>
+            </#if>
+           </#list>        
           </ul>
         </div>
+        </#if>
+        </#list>
       </div>
       <div class="clear"></div>
     </div>

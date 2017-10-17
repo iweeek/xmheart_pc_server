@@ -197,7 +197,7 @@ public class ArticleController {
         
         article.setId(id);
         
-        article = articleService.read(article);
+        article = articleService.read(id);
         if (article != null) {
             return ResponseEntity.ok(article);
         } else {

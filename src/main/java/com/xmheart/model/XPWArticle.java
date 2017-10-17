@@ -303,4 +303,23 @@ public class XPWArticle {
     public void setContent(String content) {
         this.content = content;
     }
+    
+    public Long getFirstColumnId() {
+        return firstColumnId;
+    }
+
+    public void setFirstColumnId(Long firstColumnId) {
+        this.firstColumnId = firstColumnId;
+    }
+
+    public String getFirstColumnName() {
+        return firstColumnName;
+    }
+
+    public void setFirstColumnName(String firstColumnName) {
+        this.firstColumnName = firstColumnName;
+    }
+
+    private Long firstColumnId;
+    private String firstColumnName;
 }

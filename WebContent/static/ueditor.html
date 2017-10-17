@@ -31,47 +31,63 @@
 			<li><a href="../article-list.html">文章列表</a></li>
 			<li class="active">编辑文章</li>
 		</ol>
-		<form id="myform" action="" method="post" runat="server">
-			<p class="subtit category">当前所属栏目</p>
-			<div class="wrapper category category-edit"></div>
-			<p class="subtit">文章标题</p>
-			<div class="input-wrapper">
-				<div class="category-create">
-					<div class="select-title select-title-first">一级栏目</div>
-					<div class="col-sm-2 select-title select-title-first">
-						<select class="form-control" id="J_select_first"></select>
-					</div>
-					<div class="select-title select-title-second">二级栏目</div>
-					<div class="col-sm-2 select-title select-title-second">
-						<select class="form-control" id="J_select_second"></select>
-					</div>
+		<p class="subtit category">当前所属栏目</p>
+		<div class="wrapper category category-edit"></div>
+		<p class="subtit">文章标题</p>
+		<div class="input-wrapper">
+			<div class="category-create">
+				<div class="select-title select-title-first">一级栏目</div>
+				<div class="col-sm-2 select-title select-title-first">
+					<select class="form-control" id="J_select_first"></select>
 				</div>
-				<input type="text" class="article-title" value="">
+				<div class="select-title select-title-second">二级栏目</div>
+				<div class="col-sm-2 select-title select-title-second">
+					<select class="form-control" id="J_select_second"></select>
+				</div>
 			</div>
-			<p class="subtit">文章编辑时间</p>
-			<div class="tag-wrapper">
-				<input type="text" class="tag-input" id="articleDate" value="" data-toggle="datepicker"> 
-			</div>
-			<p class="subtit">文章内容</p>
-			<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
-			<p class="subtit">文章标签</p>
-			<div class="tag-wrapper">
-				<input type="text" class="tag-input" value=""> <span>（最多添加5个标签，多个标签之间用“,”分隔）</span>
-			</div>
-			<p class="subtit">文章摘要<span class="article-digest">(默认提取您文章的前200字作为文章摘要，您也可以在这里自行编辑)</span></p>
-			<p></p>
-			<div class="digest-wrapper" id='wordCount'>
-				<textarea name="name" rows="8" cols="80"></textarea>
-				<span class="wordwrap"><var class="word">200</var>/200</span>
-			</div>
-			<div class="btn-group">
-				<input id="publish" type="button" name="" value="发表文章">
-				<input id="save" type="button" name="" value="保存">
-				<input id="preview" type="button" name="" value="预览">
-				<input id="cancel" type="button" name="cancel" value="取消">
-				<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
-			</div>
-		</form>
+			<input type="text" class="article-title" value="">
+		</div>
+		<p class="subtit">文章编辑时间</p>
+		<div class="tag-wrapper">
+			<input type="text" class="tag-input" id="articleDate" value="" data-toggle="datepicker"> 
+		</div>
+		<p class="subtit">文章导航显示图片</p>
+		<div class="upload-wrapper" id="uploadWrapper">
+			<div class="add-img-list">
+				<div class="add-image-button" id="addImgBtn">
+	   				 添加图片
+	  			</div>
+	  			<div class="add-image-url">
+	  				<img src="#" class="upload-img">
+	  			</div>
+	  			<div class="add-image-edit">
+	  				<img src="../img/manager/edit.png">
+	  			</div>
+	  			<form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/uploadImage" >
+	        			<input type="file" name="image" class="add-img-file" />
+	        			<input type="submit" class="add-img-submit" />
+	        		</form>
+        		</div>
+		</div>
+		<p class="subtit">文章内容</p>
+		<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
+		<p class="subtit">文章标签</p>
+		<div class="tag-wrapper">
+			<input type="text" class="tag-input" value=""> <span>（最多添加5个标签，多个标签之间用“,”分隔）</span>
+		</div>
+		<p class="subtit">文章摘要<span class="article-digest">(默认提取您文章的前200字作为文章摘要，您也可以在这里自行编辑)</span></p>
+		<p></p>
+		<div class="digest-wrapper" id='wordCount'>
+			<textarea name="name" rows="8" cols="80"></textarea>
+			<span class="wordwrap"><var class="word">200</var>/200</span>
+		</div>
+		<div class="btn-group">
+			<input id="publish" type="button" name="" value="发表文章">
+			<input id="save" type="button" name="" value="保存">
+			<input id="preview" type="button" name="" value="预览">
+			<input id="cancel" type="button" name="cancel" value="取消">
+			<!-- <input id="reset" type="reset" name="" value="舍弃"> -->
+		</div>
 		<div id="preview-panel">
 
 		</div>
@@ -81,6 +97,7 @@
 	</div>
 </body>
 <script type="text/javascript" src="../ueditor/jquery.min.js"></script>
+<script type="text/javascript" src="../js/third_party/jquery.form.min.js"></script>
 <script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
 <script type="text/javascript" src="../js/third_party/datepicker.min.js"></script>
 <script type="text/javascript" src="../js/i18n/datepicker.zh-CN.js"></script>

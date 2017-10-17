@@ -1,6 +1,6 @@
 .editor-container {
   width: 1024px;
-  margin: 0 auto;
+  margin-left: 20px;
 }
 .editor-container .ui-loading {
   position: absolute;

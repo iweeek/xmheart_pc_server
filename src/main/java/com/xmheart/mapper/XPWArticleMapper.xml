@@ -20,6 +20,12 @@
     <result column="is_published" jdbcType="TINYINT" property="isPublished" />
     <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
   </resultMap>
+  
+  <resultMap extends="ResultMapWithBLOBs" id="ResultMapWithBLOBsAndFirstColumn" type="com.xmheart.model.XPWArticle">
+    <result column="first_column_id" jdbcType="BIGINT" property="firstColumnId" />
+    <result column="first_column_name" jdbcType="VARCHAR" property="firstColumnName" />
+  </resultMap>
+  
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.xmheart.model.XPWArticle">
     <!--
       WARNING - @mbg.generated

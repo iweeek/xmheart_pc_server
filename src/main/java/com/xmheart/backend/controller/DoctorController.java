@@ -25,6 +25,24 @@ import io.swagger.annotations.ApiParam;
 @RestController
 public class DoctorController {
     
+    class ResponseBody<T> {
+        @SuppressWarnings("rawtypes")
+        private PageInfo pageInfo;
+        private T obj;
+        public PageInfo getPageInfo() {
+            return pageInfo;
+        }
+        public void setPageInfo(PageInfo pageInfo) {
+            this.pageInfo = pageInfo;
+        }
+        public T getObj() {
+            return obj;
+        }
+        public void setObj(T obj) {
+            this.obj = obj;
+        }
+    }
+    
     @Autowired
     private DoctorAndDeptService doctorAndDeptService;
     
@@ -46,14 +64,14 @@ public class DoctorController {
         
         PageInfo pageInfo = new PageInfo(list);
         
-        JSONObject object = new JSONObject();
-        object.append("list", list);
-        object.append("pageInfo", pageInfo);
+        ResponseBody object = new ResponseBody();
+        object.obj = list;
+        object.pageInfo = pageInfo;
         
         if (list.size() == 0) {
             return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
         } else {
-            return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(pageInfo);
         }
     }
     

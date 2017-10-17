@@ -19,7 +19,7 @@ exports.XPW.NavEdit = (function() {
    .done(function(data) {
      var firstColumnTemplate = $('#firstColumnTemplate').html();
      Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
-     var rendered = Mustache.render(firstColumnTemplate, {data});
+     var rendered = Mustache.render(firstColumnTemplate, {data:data});
      $('#typeSelectInput').html(rendered);
    })
   }
@@ -45,7 +45,7 @@ exports.XPW.NavEdit = (function() {
     	    	    })
     	    		var secondColumnTemplate = $('#secondColumnTd').html();
     	    	    Mustache.parse(secondColumnTemplate);   // optional, speeds up future uses
-    	    	    var rendered = Mustache.render(secondColumnTemplate, {data});
+    	    	    var rendered = Mustache.render(secondColumnTemplate, {data:data});
     	    	    $('#secondTable').html(rendered);
     		} else {
     			swal({ 

@@ -2,7 +2,7 @@
 <!-- list container -->
 <div class="breadcrumb">
     <div class="xm-container">
-       <span class="icon"></span><a href="#">您当前所在位置 首页 &gt 名医名科</a>
+       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">名医名科</a> 
     </div>
 </div>
 <div class="list-container">
@@ -51,7 +51,15 @@
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.grade}</a>
                             <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
                             <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
-                            <div class="doctorDialog">${doctor.intro}</div>
+                            <#if doctor.intro?length lt 150>
+                                <div class="doctorDialog">${doctor.intro}</div>
+                            <#else>
+                                <div class="doctorDialog">
+                                    <div>${doctor.intro[0..150]}......
+                                        <a href="doctorDetail?id=${doctor.id}" title="${dept.name}">查看详细</a>
+                                    </div>
+                                </div>
+                            </#if>
                         </li>
                         </#if>
                         </#list>

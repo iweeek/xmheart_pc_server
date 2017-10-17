@@ -118,7 +118,7 @@ public interface XPWDeptMapper {
 
     @Select("SELECT d.id as id, d.name as name, d.image_url as image_url, d.intro as intro, d.dept_doctor_url as dept_doctor_url, "
 			+ "d.url as url, " +
-		    "t.name as doctor_name, t.url as doctor_url, t.image_url as doctor_image_url, t.dept_name as doctor_dept_name,"
+		    "t.name as doctor_name, t.url as doctor_url, t.image_url as doctor_image_url, "
 		    + "t.duty as doctor_duty, t.professional_title as doctor_professional_title " +
 		    "FROM xpw_dept as d " +
 		    "LEFT JOIN xpw_doctor AS t " +

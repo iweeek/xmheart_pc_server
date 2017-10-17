@@ -1,8 +1,7 @@
 <#include "./fragments/_header.ftl"> <!-- list container -->
 <div class="breadcrumb">
     <div class="xm-container">
-        <a href="#">名医名科</a>
-        <i>/</i><span>科室介绍</span>
+       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">名医名科</a> &gt <a href="#">科室介绍</a>
     </div>
 </div>
 <div class="list-container">

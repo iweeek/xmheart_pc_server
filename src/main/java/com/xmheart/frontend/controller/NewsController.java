@@ -100,9 +100,11 @@ public class NewsController {
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
         
-        if (columnId != 1) {
-            XPWColumn parentColumn = columnService.getParentColumnById(columnId);
-            model.addAttribute("firstColumnName", parentColumn);
+        //这个地方只能体现两级栏目关系
+        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+        //有父栏目，父栏目是一级栏目
+        if (parentColumn != null) {
+            model.addAttribute("firstColumnName", parentColumn.getColumnName());
         } else {
             XPWColumn column = columnService.getColumnById(columnId);
             model.addAttribute("firstColumnName", column.getColumnName());
@@ -390,7 +392,21 @@ public class NewsController {
     @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
     public String xtIndex(Model model) {
         model = addTopNav(1, model);
-
+        List<XPWColumn> columnList = columnService.getChildColumnsById(77);
+        Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
+        
+        for (XPWColumn column : columnList) {
+        	List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
+        	for (XPWColumn secCol : secColList) {
+        		List<XPWNav> navs = columnService.getNavListBySecondColumnName(secCol.getColumnName());
+        		if (navs.size() != 0) {
+        			navMap.put(secCol.getColumnName(), navs);
+        		}		
+        	}
+        }
+        
+        model.addAttribute("navMap", navMap);
+        
         return "xt_index";
     }
 
