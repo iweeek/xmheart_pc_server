@@ -1,11 +1,12 @@
 $(function () {
     var ue = UE.getEditor('container');
-    var title = $('.article-title');
+    var title = $('#searchPost');
     var digest = $("#wordCount").find("textArea");
     var word = $("#wordCount").find(".word");
     var tags = $('.tag-input');
     var category1 = $('.select-title-first');
     var category2 = $('.select-title-second');
+    var columnId = ''
     var article = {};
     var ctrl = {
         //获取url中的参数
@@ -28,15 +29,15 @@ $(function () {
             var url = '/articles/' + articleId;
             $.get(url, function (res) {
                 article = res;
-                title.val(res.title);
                 tags.val(res.tags);
                 digest.val(res.brief.slice(0,200));
-                $('#J_select_first option[value='+ res.firstColumnId +']').attr('selected','selected')
-                $('#J_select_first').trigger('change');
-                ctrl.getColumn('2', '#J_select_second', res.columnId);
                 ctrl.statInputNum(digest, word);
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
+                $('.article-create').hide();
+                $('.article-edit').show();
+                $('.article-label').val(res.columnName);
+                $('.article-edit .article-title').val(res.title);
                 // $('.category-create').hide();
                 //对编辑器的操作最好在编辑器ready之后再做
                 ue.ready(function () {
@@ -54,7 +55,7 @@ $(function () {
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
             var imgUrl = $('.upload-img').attr('src');
             var params = {
-                columnId: category2.find('option:selected').val(),
+                columnId: columnId,
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
@@ -70,10 +71,6 @@ $(function () {
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
-                if (category2.find('option:selected').val()) {
-                    params.columnId = category2.find('option:selected').val();
-                }
-
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
                 		$this.removeAttr('disabled');
@@ -117,7 +114,7 @@ $(function () {
         		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate');
         		var imgUrl = $('.upload-img').attr('src');
             var params = {
-                columnId: category2.find('option:selected').val(),
+                columnId: columnId,
                 title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
@@ -134,9 +131,6 @@ $(function () {
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
-                if (category2.find('option:selected').val()) {
-                    params.columnId = category2.find('option:selected').val();
-                }
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
                 		$this.removeAttr('disabled');
@@ -207,26 +201,59 @@ $(function () {
             $('.select-title-second').hide();
             $("#wordCount").find(".word").html('200');
         },
-        getColumn: function (parentColumnId, htmlId, setSelectId) {
-            $.get('/columns', {
-                parentColumnId: parentColumnId
-            }, function (data) {
+        getColumn: function (columnId, htmlId, selectTitle) {
+        		var url ="/columns/" + columnId
+            $.get(url, function (data) {
                 $('.ui-loading').hide();
                 var optionString = '';
                 for (var i in data) {
                     var jsonObj = data[i];
                     optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
-                    if (setSelectId) {
-                    	 $(htmlId + ' option[value='+ setSelectId +']').attr('selected','selected');
-                    }
                 }
+                $(selectTitle).show();
             });
+        },
+        initSearchPost: function () {
+        		$('#searchPost').select2({
+  		      placeholder: '请输入要查询的文章标题...',
+  		      allowClear: true,
+  		      minimumInputLength: 1,
+  		      minimumResultsForSearch: Infinity,
+  		      ajax: {
+  		        url: '/articles/show',
+  		        dataType: 'json',
+  		        data: function (params) {
+  		        		var query = {
+  	  		        		  keyword: params.term
+  	  		            }
+  	  		        return query;
+  		        },
+  		        processResults: function (data, params) {
+  		          var de;
+  		          return {
+  		            results: (function () {
+  		              var i, len, results;
+  		              results = [];
+  		              for (i = 0, len = data.length; i < len; i++) {
+  		                de = data[i];
+  		                results.push({
+  		                  id: de.id,
+  		                  text: de.title
+  		                });
+  		              }
+  		              return results;
+  		            })()
+  		          };
+  		        },
+  		        cache: true
+  		      },
+  		      language: 'zh-CN',
+  		    });
         },
         uploadImg: function () {
         		$('.add-img-list').on('click', '#addImgBtn', function (){
         			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
-        			console.log(123);
         		})
         		$('.add-img-list').on('change', '.add-img-file', function (){
         			$(this).siblings('.add-img-submit').trigger('click');
@@ -262,8 +289,6 @@ $(function () {
             if (articleId) {
                 ctrl.getArticle(articleId);
             }
-            
-            
         },
         initDate: function() {
         		$('[data-toggle="datepicker"]').datepicker({
@@ -275,12 +300,29 @@ $(function () {
     ctrl.init();
     ctrl.initDate();
     ctrl.uploadImg();
+    ctrl.initSearchPost();
     // 二级分类的出现
     $('#J_select_first').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
-            $('.select-title-second').show();
-            ctrl.getColumn(firstId, '#J_select_second');
+        		columnId = firstId;
+            ctrl.getColumn(firstId, '#J_select_second', '.select-title-second');
+        }
+    });
+    // 三级分类的出现
+    $('#J_select_second').change(function () {
+        var firstId = $(this).val();
+        if (firstId !== 0) {
+        		columnId = firstId;
+            ctrl.getColumn(firstId, '#J_select_third', '.select-title-third');
+        }
+    });
+    // 四级分类的出现
+    $('#J_select_third').change(function () {
+        var firstId = $(this).val();
+        if (firstId !== 0) {
+        		columnId = firstId;
+            ctrl.getColumn(firstId, '#J_select_fourth', '.select-title-fourth');
         }
     });
    
@@ -289,5 +331,9 @@ $(function () {
     $('#save').on('click', ctrl.save)
     $('#preview').on('click', ctrl.preview);
     $('#cancel').on('click', ctrl.cancel);
-
+    
+    $('.article-btn').on('click', function(){
+    		$('.article-create').show();
+    		$('.article-edit').hide();
+    })
 })

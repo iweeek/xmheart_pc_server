@@ -210,7 +210,10 @@ $(function() {
 
 	// 获取二级分类的id
 	$('#J_select_second').change(function() {
-		ctrl.columnId = $(this).val();
+		var firstId = $(this).val();
+		if (firstId !== 0 && firstId !== '请选择') {
+			ctrl.columnId = $(this).val()
+		};
 	});
 
 	// 筛选

@@ -4,6 +4,7 @@ exports.XPW.IndexEdit = (function() {
   function IndexEdit() {
 	  // 初始化页面处理。
 	  IndexEdit.addSlideImg();
+	  IndexEdit.getData();
   }
   
   IndexEdit.addSlideImg = function () {
@@ -40,6 +41,13 @@ exports.XPW.IndexEdit = (function() {
 	  $('.add-list-main').on('click', '.add-image-edit', function (){
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
+  }
+  
+  IndexEdit.getData = function () {
+	  console.log(123)
+	  $.get('/indexPage',function(data){
+		  console.log(data);
+	  });
   }
   
   

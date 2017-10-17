@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/editor.css">
 	<link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="../css/datepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/select2.min.css">
 	<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../ueditor/editor_api.js">
 
@@ -34,18 +35,37 @@
 		<p class="subtit category">当前所属栏目</p>
 		<div class="wrapper category category-edit"></div>
 		<p class="subtit">文章标题</p>
-		<div class="input-wrapper">
-			<div class="category-create">
-				<div class="select-title select-title-first">一级栏目</div>
-				<div class="col-sm-2 select-title select-title-first">
-					<select class="form-control" id="J_select_first"></select>
+		<div class="title-input-wrapper" id="titleWrapper">
+			<div class="article-create">
+				<div class="row">
+					<div class="select-title select-title-first">一级栏目</div>
+					<div class="col-sm-2 select-title select-title-first">
+						<select class="form-control" id="J_select_first"></select>
+					</div>
+					<div class="select-title select-title-second">二级栏目</div>
+					<div class="col-sm-2 select-title select-title-second">
+						<select class="form-control" id="J_select_second"></select>
+					</div>
+					<div class="select-title select-title-third">三级栏目</div>
+					<div class="col-sm-2 select-title select-title-third">
+						<select class="form-control" id="J_select_third"></select>
+					</div>
+					<div class="select-title select-title-fourth">四级栏目</div>
+					<div class="col-sm-2 select-title select-title-fourth">
+						<select class="form-control" id="J_select_fourth"></select>
+					</div>
 				</div>
-				<div class="select-title select-title-second">二级栏目</div>
-				<div class="col-sm-2 select-title select-title-second">
-					<select class="form-control" id="J_select_second"></select>
+				<div class="row">
+					<span class="select2-label">文章标题</span>
+					<select class="article-title" id="searchPost"></select>
 				</div>
 			</div>
-			<input type="text" class="article-title" value="">
+			<div class="article-edit">
+				<div class="select-title">所属栏目</div>
+				<input type="text" class="article-label" disabled="disabled">
+				<input type="text" class="article-title" disabled="disabled" value="">
+				<input type="button" class="article-btn" value="修改">
+			</div>
 		</div>
 		<p class="subtit">文章编辑时间</p>
 		<div class="tag-wrapper">
@@ -101,6 +121,8 @@
 <script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>
 <script type="text/javascript" src="../js/third_party/datepicker.min.js"></script>
 <script type="text/javascript" src="../js/i18n/datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../js/third_party/select2.min.js"></script>
+<script type="text/javascript" src="../js/i18n/select2.zh-CN.js"></script>
 <script type="text/javascript" src="../js/ueditor.js"></script>
 
 </html>

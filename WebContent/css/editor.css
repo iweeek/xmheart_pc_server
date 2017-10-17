@@ -35,19 +35,54 @@
   line-height: 30px;
   overflow: hidden;
 }
-.input-wrapper .select-title {
+.title-input-wrapper {
+	width: 100%;
+}
+.title-input-wrapper .select-title {
   float: left;
   margin-right: 10px;
   height: 20px;
   text-align: center;
 }
-.input-wrapper .select-title-second {
+.title-input-wrapper .select-title-second {
   display: none;
 }
-.input-wrapper .article-title {
-  width: 480px;
+.title-input-wrapper .select-title-third {
+  display: none;
+}
+.title-input-wrapper .select-title-fourth {
+  display: none;
+}
+.title-input-wrapper .article-title {
+  width: 300px;
+  border: #d4d4d4 solid 1px;
+  text-align: center;
+}
+.title-input-wrapper .article-label {
+  width: 100px;
   border: #d4d4d4 solid 1px;
 }
+.title-input-wrapper .article-btn {
+	width: 40px;
+	text-align:center;
+	border: #d4d4d4 solid 1px;
+}
+.article-create .row{
+	height: 34px;
+	line-height:34px;
+	margin-bottom: 10px;
+}
+.article-edit {
+	display: none;
+}
+.article-edit .select-title {
+	height: 26px;
+	line-height: 26px;
+}
+.article-create .select2-label {
+	margin-right: 20px;
+}
+
 .tag-wrapper .tag-input {
   width: 600px;
 }
