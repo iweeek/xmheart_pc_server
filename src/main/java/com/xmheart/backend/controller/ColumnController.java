@@ -62,7 +62,7 @@ public class ColumnController {
     public ResponseEntity<?> subColumn(@ApiParam("栏目的Id") @PathVariable Long id) {
         
         List<XPWColumn> list = ColumnService.readSubColumn(id);
-        if (list == null) {
+        if (list.size() == 0) {
             return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
