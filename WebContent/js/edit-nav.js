@@ -106,6 +106,7 @@ exports.XPW.NavEdit = (function() {
   NavEdit.postDialogHandle = function () {
     $('#secondTable').on('click', '.post-btn-edit', function() {
     	  $('#secondColumnId').val($(this).data('column-name'));
+    	  $('#secondColumnId').data('nav-id', $(this).data('nav-id'))
     	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
     	  $('#postModal').modal('show');
     })
@@ -156,7 +157,7 @@ exports.XPW.NavEdit = (function() {
   
   NavEdit.bindNavNews = function () {
 	  $('#postModal').on('click', '#bindNavTitle', function() {
-		  var id = $('#secondColumnId').data('column-id')
+		  var id = $('#secondColumnId').data('nav-id')
 		  var postId = $('#postSelect').val();
 		  $.ajax({
 		      url: '/navs/' + id,
