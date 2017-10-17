@@ -6,7 +6,7 @@ var mySwiper = new Swiper ('#bannerSwiper', {
 })
 
 var mySwiper2 = new Swiper ('#noticeSwiper', {
-	direction: 'vertical',
+  direction: 'vertical',
   loop: true,
   paginationClickable :true,
   pagination: '.swiper-pagination'
@@ -39,23 +39,40 @@ $(function(){
   });
 
   // 专家轮播
-  var swiper = new Swiper('#expertSwiper', {
-    slidesPerView: 5,
-    paginationClickable: true,
-    spaceBetween: 0,
-    freeMode: true,
-    prevButton:'.doctorsBase .Aprev',
-    nextButton:'.doctorsBase .Anext',
+  $('.officesBase').each(function(idx, e){
+    var swiper = new Swiper($(this).find('.contentsDoctor'), {
+      slidesPerView: 4,
+      paginationClickable: true,
+      spaceBetween: 0,
+      freeMode: true,
+      prevButton:$(this).find('.Aprev'),
+      nextButton:$(this).find('.Anext'),
+    });
+  })
+
+
+  $('.contentsDoctor li').hover(function(){
+	var $this = $(this);
+	$this.find('.doctorDialog').show();
+    var nextIndex = $this.siblings('.swiper-slide-next').index();
+    var currentIndex = $this.index();
+    if (nextIndex !== -1 && currentIndex === (nextIndex + 2)) {
+    		setTimeout(function(){
+    			$this.parents('.contents').siblings('.toolsBase').find('.Anext').trigger('click');
+    		}, 800)
+    }
+  },function(){
+    $(this).find('.doctorDialog').hide();
   });
   // 科室轮播
-  var swiper = new Swiper('#officeSwiper', {
-    slidesPerView: 4,
-    paginationClickable: true,
-    spaceBetween: 0,
-    freeMode: true,
-    prevButton:'.officesBase .Aprev',
-    nextButton:'.officesBase .Anext',
-  });
+  // var swiper = new Swiper('#officeSwiper', {
+  //   slidesPerView: 4,
+  //   paginationClickable: true,
+  //   spaceBetween: 0,
+  //   freeMode: true,
+  //   prevButton:'.officesBase .Aprev',
+  //   nextButton:'.officesBase .Anext',
+  // });
 
   // 胸痛中心
   $(".quickMenus li.first").hover(function(){
@@ -72,7 +89,21 @@ $(function(){
 			$obj.hide();
 		}
 	});
-
+  
+  $(".QMSubMenus li.second").hover(function(){
+		$t=$(this);
+		$obj=$t.find(".third-menus");
+		if($obj.length>0){
+			$obj.show();
+		}
+	},function(){
+		$t=$(this);
+		$obj=$t.find(".third-menus");
+		if($obj.length>0){
+			$obj.hide();
+		}
+	});
+  
   var mySwiper = new Swiper ('#xtSwiper', {
     loop: true,
     paginationClickable :true,
@@ -81,21 +112,20 @@ $(function(){
 
   //  详情页字体控制
   $("#EMChange a").click(function(){
-	console.log(123)
-	$t=$(this);
-	if($t.data("type")=="0"){
-		$("#EMChange img").stop().animate({"left":"-5px"},288);
-		$("#FontState").text("12px");
-		$("#DIVContent").css({"font-size":"12px","line-height":"24px"});
-	}else if($t.data("type")=="1"){
-	$("#EMChange img").stop().animate({"left":"40px"},288);
-	$("#FontState").text("14px");
-	$("#DIVContent").css({"font-size":"14px","line-height":"28px"});
-	}else{
-		$("#EMChange img").stop().animate({"left":"86px"},288);
-		$("#FontState").text("16px");
-		$("#DIVContent").css({"font-size":"16px","line-height":"32px"});
-	}
+  	$t=$(this);
+  	if($t.data("type")=="0"){
+  		$("#EMChange img").stop().animate({"left":"-5px"},288);
+  		$("#FontState").text("12px");
+  		$("#DIVContent").css({"font-size":"12px","line-height":"24px"});
+  	}else if($t.data("type")=="1"){
+    	$("#EMChange img").stop().animate({"left":"40px"},288);
+    	$("#FontState").text("14px");
+    	$("#DIVContent").css({"font-size":"14px","line-height":"28px"});
+  	}else{
+  		$("#EMChange img").stop().animate({"left":"86px"},288);
+  		$("#FontState").text("16px");
+  		$("#DIVContent").css({"font-size":"16px","line-height":"32px"});
+  	}
   });
 
   // 电子院报
@@ -111,7 +141,7 @@ $(function(){
 	  var str = "?page=1&itemIndex=0	&year=" + year + "&time=" + time ;
 	  location.href = str;
   });
-  
+
   $('#ddlYears2').change(function(){
     var selectVal = $(this).val();
     if (selectVal !== 0) {
@@ -139,6 +169,4 @@ $(function(){
       $('#ddlTimes2').html(html);
     })
   }
-
-  
 })

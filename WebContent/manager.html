@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>厦门大学附属心血管病医院（厦门市心脏中心）</title>
+    <link rel="stylesheet" type="text/css" href="./css/manager.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/angular-growl.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/list.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <!--左边 -->
+    <div class="col-md-2 col-xs-2 col-sm-2 manager_index_left">
+        <span class="title">ADMIN</span>
+        <ul id="main-nav" class="main-nav nav">
+            <li>
+                <a href="#column" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-barcode"></i> 栏目管理
+                    <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                </a>
+                <ul id="column" class="nav nav-list secondmenu collapse">
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'groupList.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;一级栏目管理
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'classifyList.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;二级栏目管理
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'nav_list.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;导航管理
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'article-list.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;文章列表
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'doctor.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;医生列表
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'office.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;科室列表
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'index_edit.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;首页编辑
+                        </a>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <a href="#priv" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-cog"></i> 权限管理
+                    <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                </a>
+                <ul id="priv" class="nav nav-list secondmenu collapse">
+                    <li>
+                        <a onclick="document.getElementById('rightContentFrame').src = 'guanliyuan.html'">
+                            <i class="glyphicon glyphicon-magnet"></i> &nbsp;管理员
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="manager_index_left_tip">
+            <h4>公告</h4>
+            <ul>
+                <li><a href="">热烈庆祝19大的召开普天同庆</a></li>
+                <li><a href="">厦门大学附属心血管病医院热烈庆祝19大的召开</a></li>
+                <li><a href="">新功能上线通知</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部 -->
+    <div class="xm-header">
+        <div class="xm-container">
+            <a href="#" class="header-logo"><img src="img/layout/logo.png" alt=""></a>
+        </div>
+    </div>
+    <!-- 右边  -->
+    <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-left: 40px; padding-right: 40px;">
+        <iframe id="rightContentFrame" frameborder="no" width="100%" border="0" marginwidth="0" marginheight=" 0" scrolling="yes"
+            allowtransparency="yes" width="100%" style="min-height: 600px;"> </iframe>
+    </div>
+    <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/third_party/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
+</body>
+
+</html>
+<script>
+    $("#rightContentFrame").load(function () {
+        var mainheight = $(this).contents().find("body").height() + 200;
+        $(this).height(mainheight);
+    });
+
+</script>

@@ -25,9 +25,9 @@ public class ColumnServiceImpl implements ColumnService {
 	private XPWNavMapper xpwNavMapper;
 
 	@Override
-	public List<XPWColumn> getFirstColumns() {
+	public List<XPWColumn> getTopFirstColumns() {
 		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andParentColumnIdEqualTo(0l);
+		example.createCriteria().andParentColumnIdEqualTo(0l).andPositionEqualTo(false);
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}
@@ -41,7 +41,7 @@ public class ColumnServiceImpl implements ColumnService {
 	}
 
 	@Override
-	public List<XPWNav> getChildNavsById(long id) {
+	public List<XPWNav> getNavsByColumnId(long id) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
@@ -53,12 +53,6 @@ public class ColumnServiceImpl implements ColumnService {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andChildColumnNameEqualTo(name);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
-		return list;
-	}
-
-	@Override
-	public List<XPWNav> getChildNavsByTitle(String title) {
-		List<XPWNav> list = xpwNavMapper.getColumnByTitle(title);
 		return list;
 	}
 
@@ -94,4 +88,37 @@ public class ColumnServiceImpl implements ColumnService {
 			return HttpServletResponse.SC_NOT_FOUND;
 		}
 	}
+	
+    @Override
+    public List<XPWColumn> getColumns() {
+        List<XPWColumn> list = xpwColumnMapper.selectByExample(null);
+        return list;
+    }
+
+    @Override
+    public List<XPWColumn> getColumnsByParentId(Long parentColumnId) {
+        XPWColumnExample example = new XPWColumnExample();
+        example.createCriteria().andParentColumnIdEqualTo(parentColumnId);
+        List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public XPWColumn getColumnById(Long columnId) {
+        return xpwColumnMapper.selectByPrimaryKey(columnId);
+    }
+
+    @Override
+    public int updateColumn(XPWColumn column) {
+        int ret = xpwColumnMapper.updateByPrimaryKeySelective(column);
+        return ret;
+    }
+
+    @Override
+    public XPWColumn getParentColumnById(long id) {
+        long parentId = xpwColumnMapper.selectByPrimaryKey(id).getParentColumnId();
+        XPWColumn column = xpwColumnMapper.selectByPrimaryKey(parentId);
+        return column;
+    }
+
 }

@@ -2,32 +2,97 @@ package com.xmheart.service;
 
 import java.util.List;
 
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWElecNewspaper;
-import com.xmheart.model.XPWNewsMediaArticle;
-import com.xmheart.model.XPWNewsMediaArticleWithBLOBs;
 
+
+/**
+ * The Interface NewsService.
+ * 用于处理新闻相关
+ */
 public interface NewsService {
 
-	List<XPWNewsMediaArticleWithBLOBs> getPinnedMediaNews();
+	/**
+	 * Gets the pinned media news.
+	 *
+	 * @return the pinned media news
+	 */
+	List<XPWArticle> getPinnedMediaNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedMediaNews();
+	/**
+	 * Gets the no pinned media news.
+	 *
+	 * @return the no pinned media news
+	 */
+	List<XPWArticle> getNoPinnedMediaNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getPinnedHospitalNews();
+	/**
+	 * Gets the pinned hospital news.
+	 *
+	 * @return the pinned hospital news
+	 */
+	List<XPWArticle> getPinnedHospitalNews();
 
-	List<XPWNewsMediaArticleWithBLOBs> getNoPinnedHospitalNews();
+	/**
+	 * Gets the no pinned hospital news.
+	 *
+	 * @return the no pinned hospital news
+	 */
+	List<XPWArticle> getNoPinnedHospitalNews();
 
-	XPWNewsMediaArticle getNewsByTitle(String title);
+	/**
+	 * Gets the news by title.
+	 *
+	 * @param title the title
+	 * @return the news by title
+	 */
+	XPWArticle getNewsByTitle(String title);
 
-	XPWNewsMediaArticleWithBLOBs getNewsById(Long id);
+	/**
+	 * Gets the news by id.
+	 *
+	 * @param id the id
+	 * @return the news by id
+	 */
+	XPWArticle getNewsById(Long id);
 
+	/**
+	 * Gets the elec news paper.
+	 *
+	 * @param year the year
+	 * @param time the time
+	 * @return the elec news paper
+	 */
 	List<XPWElecNewspaper> getElecNewsPaper(String year, String time);
 
+	/**
+	 * Gets the new paper years.
+	 *
+	 * @return the new paper years
+	 */
 	List<String> getNewsPaperYears();
 
+	/**
+	 * Gets the news paper times.
+	 *
+	 * @param year the year
+	 * @return the news paper times
+	 */
 	List<String> getNewsPaperTimes(String year);
 
-	List<XPWNewsMediaArticleWithBLOBs> getNews();
+	/**
+	 * Gets the news.
+	 *
+	 * @return the news
+	 */
+	List<XPWArticle> getNews();
 
-	int updateNews(XPWNewsMediaArticleWithBLOBs news);
+	/**
+	 * Update news.
+	 *
+	 * @param news the news
+	 * @return the int
+	 */
+	int updateNews(XPWArticle news);
 
 }

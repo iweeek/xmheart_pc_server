@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <link rel="stylesheet" type="text/css" href="./css/business.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/angular-growl.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/article-list.css">
+</head>
+
+<body>
+    <div class="page-article-list">
+        <ol class="breadcrumb">
+            <li><a href="#"></a>栏目管理</li>
+            <li class="active">文章列表</li>
+        </ol>
+        <div class="row"> 
+            <div class="col-md-1 select-title select-title-first" style="line-height: 34px;">一级栏目</div>
+            <div class="col-sm-2 select-title select-title-first">
+                <select class="form-control" id="J_select_first"></select>
+            </div>
+            <div class="col-md-1 select-title select-title-second" style="line-height: 34px;">二级栏目</div>
+            <div class="col-sm-2 select-title select-title-second">
+                <select class="form-control" id="J_select_second"></select>
+            </div>
+            <div class="operate-panel">
+                <button class="btn btn-primary" id="J_filter_btn">筛选</button>
+                <button class="btn btn-primary" id="J_create_btn">新建文章</button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <!-- <th style="text-align: center;">一级栏目</th> -->
+                    <th style="text-align: center;">二级栏目</th>
+                    <th style="text-align: center;">文章标题</th>
+                    <th style="text-align: center;">是否置顶</th>
+                    <th style="text-align: center;">发布时间</th>
+                    <th style="text-align: center;">操作</th>
+                </tr>
+            </thead>
+            <tbody id="J_articles"></tbody>
+        </table>
+        <div class="ui-nodata">
+            该栏目下无数据～请重新选择栏目
+        </div>
+        <div class="ui-loading">
+            <img src="./img/progress_circle.gif" alt="loading">
+        </div>
+        <!--  翻页的按钮  -->
+        <div>
+            <ul class="pager">
+                <li class="previous">
+                    <a>
+                        <span aria-hidden="true">&larr;</span> 前一页
+                    </a>
+                </li>
+                <li class="next">
+                    <a>
+                        后一页 <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script id="J_articles_tmpl" type="x-tmpl-mustache">
+        {{#result}}
+        <tr>
+            <td>{{columnName}}</td>
+            <td>{{title}}</td>
+			<td>
+				{{#isPinned}}是{{/isPinned}}
+				{{^isPinned}}否{{/isPinned}}
+			</td>
+			<td>{{publishTime}}</td>
+            <td>
+                <button class='btn btn-default edit-btn' data-id={{id}}>编辑</button>
+                {{#isPublished}}
+                		<button class='btn btn-danger offline-btn' data-id={{id}}>下线</button>
+				{{/isPublished}}
+				{{^isPublished}}
+                		<button class='btn btn-default publish-btn' data-id={{id}}>发布</button>
+				{{/isPublished}}
+				{{#isPinned}}
+					<button class='btn btn-default cancel-pinned-btn' data-id={{id}}>取消置顶</button>
+					<button class='btn btn-default up-btn' data-id={{id}} data-order={{pinOrder}}>上移</button>
+					<button class='btn btn-default down-btn' data-id={{id}} data-order={{pinOrder}}>下移</button>
+				{{/isPinned}}
+				{{^isPinned}}
+					<button class='btn btn-default pinned-btn' data-id={{id}}>置顶</button>
+				{{/isPinned}}
+            </td>
+        </tr>
+        {{/result}}
+
+    </script>     
+    <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/third_party/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="./js/third_party/mustache.min.js"></script>
+    <script type="text/javascript" src="./js/article-list.js"></script>
+</body>
+
+</html>
