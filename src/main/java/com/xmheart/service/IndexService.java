@@ -1,6 +1,7 @@
 package com.xmheart.service;
 
 import com.xmheart.model.XPWIndex;
+import com.xmheart.model.XPWXTIndex;
 
 
 /**
@@ -9,8 +10,12 @@ import com.xmheart.model.XPWIndex;
  */
 public interface IndexService {
 
-    XPWIndex read();
+    XPWIndex indexRead();
 
     int update(XPWIndex index);
+
+    XPWXTIndex xtIndexRead();
+
+    int xtUpdate(XPWXTIndex index);
 
 }

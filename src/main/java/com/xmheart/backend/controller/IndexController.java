@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.xmheart.model.XPWIndex;
+import com.xmheart.model.XPWXTIndex;
 import com.xmheart.service.IndexService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class IndexController {
     @RequestMapping(value = { "/indexPage" }, method = RequestMethod.GET)
     public ResponseEntity<?> index() {
         
-        XPWIndex index = indexService.read();
+        XPWIndex index = indexService.indexRead();
 
         return ResponseEntity.ok(index);
         
@@ -38,6 +39,9 @@ public class IndexController {
             @ApiParam("轮播图1的地址") @RequestParam() String bannerImage1Url, 
             @ApiParam("轮播图2的地址") @RequestParam() String bannerImage2Url,
             @ApiParam("轮播图3的地址") @RequestParam() String bannerImage3Url,
+            @ApiParam("轮播图1的响应地址") @RequestParam() String bannerImage1ActionUrl,
+            @ApiParam("轮播图2的响应地址") @RequestParam() String bannerImage2ActionUrl,
+            @ApiParam("轮播图3的响应地址") @RequestParam() String bannerImage3ActionUrl,
             @ApiParam("轮播文章1的地址") @RequestParam() String bannerArticle1Url,
             @ApiParam("轮播文章2的地址") @RequestParam() String bannerArticle2Url,
             @ApiParam("轮播文章3的地址") @RequestParam() String bannerArticle3Url,
@@ -50,6 +54,9 @@ public class IndexController {
         index.setBannerImage1Url(bannerImage1Url);
         index.setBannerImage2Url(bannerImage2Url);
         index.setBannerImage3Url(bannerImage3Url);
+        index.setBannerImage1ActionUrl(bannerImage1ActionUrl);
+        index.setBannerImage2ActionUrl(bannerImage2ActionUrl);
+        index.setBannerImage3ActionUrl(bannerImage3ActionUrl);
         index.setBannerArticle1Url(bannerArticle1Url);
         index.setBannerArticle2Url(bannerArticle2Url);
         index.setBannerArticle3Url(bannerArticle3Url);
@@ -63,7 +70,43 @@ public class IndexController {
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }
+    }
+    
+    @ApiOperation(value = "获取胸痛首页信息", notes = "获取胸痛首页信息")
+    @RequestMapping(value = { "/xtIndexPage" }, method = RequestMethod.GET)
+    public ResponseEntity<?> xtIndex() {
         
+        XPWXTIndex index = indexService.xtIndexRead();
+
+        return ResponseEntity.ok(index);
+        
+    }
+    
+    @ApiOperation(value = "更新胸痛首页信息", notes = "更新胸痛首页信息")
+    @RequestMapping(value = { "/xtIndexPage/{id}" }, method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@ApiParam("首页信息的Id") @PathVariable Long id,
+            @ApiParam("轮播图1的地址") @RequestParam() String bannerImage1Url, 
+            @ApiParam("轮播图2的地址") @RequestParam() String bannerImage2Url,
+            @ApiParam("轮播图3的地址") @RequestParam() String bannerImage3Url,
+            @ApiParam("轮播图1的响应地址") @RequestParam() String bannerImage1ActionUrl,
+            @ApiParam("轮播图2的响应地址") @RequestParam() String bannerImage2ActionUrl,
+            @ApiParam("轮播图3的响应地址") @RequestParam() String bannerImage3ActionUrl
+            ) {
+        XPWXTIndex index = new XPWXTIndex();
+        index.setId(id);
+        index.setBannerImage1Url(bannerImage1Url);
+        index.setBannerImage2Url(bannerImage2Url);
+        index.setBannerImage3Url(bannerImage3Url);
+        index.setBannerImage1ActionUrl(bannerImage1ActionUrl);
+        index.setBannerImage2ActionUrl(bannerImage2ActionUrl);
+        index.setBannerImage3ActionUrl(bannerImage3ActionUrl);
+        
+        int ret = indexService.xtUpdate(index);
+        if (ret > 0) {
+            return ResponseEntity.ok(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
+        }
     }
     
 }
