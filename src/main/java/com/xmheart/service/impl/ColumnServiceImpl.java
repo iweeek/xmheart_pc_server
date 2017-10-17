@@ -121,4 +121,12 @@ public class ColumnServiceImpl implements ColumnService {
         return column;
     }
 
+    @Override
+    public List<XPWColumn> readSubColumn(Long id) {
+        XPWColumnExample example = new XPWColumnExample();
+        example.createCriteria().andParentColumnIdEqualTo(id);
+        List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+        return list;
+    }
+
 }

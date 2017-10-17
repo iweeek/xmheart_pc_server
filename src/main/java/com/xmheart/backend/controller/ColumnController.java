@@ -56,5 +56,18 @@ public class ColumnController {
         }
         
     }
+    
+    @ApiOperation(value = "获取子栏目", notes = "获取子栏目")
+    @RequestMapping(value = { "/columns/{id}" }, method = RequestMethod.GET)
+    public ResponseEntity<?> subColumn(@ApiParam("栏目的Id") @PathVariable Long id) {
+        
+        List<XPWColumn> list = ColumnService.readSubColumn(id);
+        if (list == null) {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+        }
+        
+    }
 
 }
