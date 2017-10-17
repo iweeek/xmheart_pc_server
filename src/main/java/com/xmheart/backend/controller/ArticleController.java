@@ -224,10 +224,19 @@ public class ArticleController {
     @RequestMapping(value = { "/articles/show" }, method = RequestMethod.GET)
     public ResponseEntity<?> show(@ApiParam("文章标题的关键字") @RequestParam String keyword, 
             @ApiParam("文章的栏目Id") @RequestParam(required = false) Long columnId) {
-        //TODO 需要做分页，需不需要送栏目Id呢？这个地方的结构要考虑一下。
-        List<XPWArticle> list = articleService.show(columnId, keyword);
-
-        return ResponseEntity.ok(list);
+        
+        List<XPWArticle> list;
+        if (columnId != null) {
+            list = articleService.show(columnId, keyword);
+        } else {
+            list = articleService.show(keyword);
+        }
+        
+        if (list.size() != 0) {
+            return ResponseEntity.ok(list);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        }
     }
 
 
