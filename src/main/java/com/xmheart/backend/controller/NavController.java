@@ -53,6 +53,8 @@ public class NavController {
         XPWArticle article  = articleService.read(articleId);
         
         nav.setArticleTitle(article.getTitle());
+        nav.setPublishTime(article.getPublishTime());
+        nav.setUrl(article.getUrl());
         
         int ret = ColumnService.updateNav(nav);
         if (ret == 0) {

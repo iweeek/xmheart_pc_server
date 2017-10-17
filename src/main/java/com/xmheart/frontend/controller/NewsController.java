@@ -392,7 +392,21 @@ public class NewsController {
     @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
     public String xtIndex(Model model) {
         model = addTopNav(1, model);
-
+        List<XPWColumn> columnList = columnService.getChildColumnsById(77);
+        Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
+        
+        for (XPWColumn column : columnList) {
+        	List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
+        	for (XPWColumn secCol : secColList) {
+        		List<XPWNav> navs = columnService.getNavListBySecondColumnName(secCol.getColumnName());
+        		if (navs.size() != 0) {
+        			navMap.put(secCol.getColumnName(), navs);
+        		}		
+        	}
+        }
+        
+        model.addAttribute("navMap", navMap);
+        
         return "xt_index";
     }
 
