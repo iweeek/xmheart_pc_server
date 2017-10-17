@@ -219,6 +219,16 @@ public class ArticleController {
         imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
         return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
     }
+    
+    @ApiOperation(value = "搜索文章", notes = "搜索文章")
+    @RequestMapping(value = { "/articles/show" }, method = RequestMethod.GET)
+    public ResponseEntity<?> show(@ApiParam("文章标题的关键字") @RequestParam String keyword, 
+            @ApiParam("文章的栏目Id") @RequestParam(required = false) Long columnId) {
+        //TODO 需要做分页，需不需要送栏目Id呢？这个地方的结构要考虑一下。
+        List<XPWArticle> list = articleService.show(columnId, keyword);
+
+        return ResponseEntity.ok(list);
+    }
 
 
 }

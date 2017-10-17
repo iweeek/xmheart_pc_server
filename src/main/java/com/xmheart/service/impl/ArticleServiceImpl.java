@@ -55,7 +55,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public XPWArticle read(Long id) {
-        XPWArticle article = articleMapper.selectWithFirstColumnByPrimaryKey(id);
+        XPWArticle article = articleMapper.selectByPrimaryKey(id);
         return article;
     }
 
@@ -95,6 +95,14 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.updateByPrimaryKey(article2);
         
         return 0;
+    }
+
+    @Override
+    public List<XPWArticle> show(Long columnId, String keyword) {
+        XPWArticleExample example = new XPWArticleExample();
+        example.createCriteria().andColumnIdEqualTo(columnId).andTitleLike("%" + keyword + "%");
+        List<XPWArticle> list = articleMapper.selectByExample(example);
+        return list;
     }
 
 

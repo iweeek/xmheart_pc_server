@@ -119,10 +119,11 @@ exports.XPW.NavEdit = (function() {
 		      minimumInputLength: 1,
 		      minimumResultsForSearch: Infinity,
 		      ajax: {
-		        url: '/news/articles/show',
+		        url: '/articles/show',
 		        dataType: 'json',
 		        data: function (params) {
 		        		var query = {
+		        			  columnId: $('#secondColumnId').data('column-id'),
 	  		        		  keyword: params.term
 	  		            }
 	  		        return query;

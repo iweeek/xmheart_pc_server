@@ -29,5 +29,7 @@ public interface ArticleService {
 
     int swapPinOrder(Long articleId1, Long articleId2);
 
+    List<XPWArticle> show(Long columnId, String keyword);
+
 
 }
