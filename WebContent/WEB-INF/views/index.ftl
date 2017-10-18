@@ -4,9 +4,9 @@
 			<div class="xm-banner-slide">
 				<div class="swiper-container" id="bannerSwiper">
 			    <div class="swiper-wrapper">
-		        <div class="swiper-slide"><img src="${index.bannerImage1Url}" alt=""></div>
-		        <div class="swiper-slide"><img src="${index.bannerImage2Url}" alt=""></div>
-		        <div class="swiper-slide"><img src="${index.bannerImage3Url}" alt=""></div>
+		        <div class="swiper-slide"><a href="${index.bannerImage1ActionUrl}"><img src="${index.bannerImage1Url}" alt=""></a></div>
+		        <div class="swiper-slide"><a href="${index.bannerImage2ActionUrl}"><img src="${index.bannerImage2Url}" alt=""></a></div>
+		        <div class="swiper-slide"><a href="${index.bannerImage3ActionUrl}"><img src="${index.bannerImage3Url}" alt=""></a></div>
 			    </div>
 			    <div class="swiper-pagination"></div>
 				</div>
@@ -27,8 +27,8 @@
 					<div class="swiper-container" id="noticeSwiper">
 				    <div class="swiper-wrapper">
 				        <div class="swiper-slide">
-				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">医院动态</span>“元康之家”首场健康主题活动开启家庭康复</h5>
-									<p class="xm-notice-info">2017年3月23日下午，由仙岳医院社工部、睡眠医学中心及厦大社工项目团队共同策划的“元康携手·健康睡眠” 活动在仙岳医院成...</p>
+				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">媒体看厦心</span>王焱：用爱心和医术筑起“心”的健康</h5>
+							<p class="xm-notice-info">医生、教师、记者、工程师、演员、运动员，第五批厦门市拔尖人才分布在全市50多个单位，涉及社会、经济、文化、教育、卫生、体育等不同行业，他们在各自领域中做出杰出业绩成为熠熠发光的明星，他们在不同的岗位上为厦门新一轮跨越式发展贡献着智慧和汗水。</p>
 				        </div>
 				        <div class="swiper-slide">Slide 2</div>
 				        <div class="swiper-slide">Slide 3</div>
