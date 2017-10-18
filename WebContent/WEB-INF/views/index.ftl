@@ -62,7 +62,7 @@
 			</a>
 			<a href="#" class="xm-banner-list mr-0 xm-list4">
 				<div class="list-info">
-					<h3 class="list-info-title">待定</h3>
+					<h3 class="list-info-title">下载专区</h3>
 					<p class="list-info-desc">为您特殊定制</p>
 				</div>
 			</a>
