@@ -74,15 +74,15 @@ public class DoctorAndDeptController {
 //        return "doctor_dept";
 //    }
 
-    @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
-    public String doctorInfo(@RequestParam Long id, Model model) {
-    	model = addCommonHeader(model);
-
-    	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
-    	model.addAttribute("doctor", doctor);
-//    	model.addAttribute("dept", doctor.getDept());
-        return "doctor_detail";
-    }
+//    @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
+//    public String doctorInfo(@RequestParam Long id, Model model) {
+//    	model = addCommonHeader(model);
+//
+//    	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
+//    	model.addAttribute("doctor", doctor);
+////    	model.addAttribute("dept", doctor.getDept());
+//        return "doctor_detail";
+//    }
 
     @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
     public String deptDoctor(@RequestParam Long id, Model model) {
