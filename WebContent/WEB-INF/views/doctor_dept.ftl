@@ -24,7 +24,7 @@
             </div>
             <div class="contents">
                 <div class="contentsOffice">
-                    <i class="ico01"></i>
+                    <!-- <i class="ico01"></i> -->
                     <div class="img animated">
                         <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
