@@ -36,35 +36,32 @@
 		<div class="wrapper category category-edit"></div>
 		<p class="subtit">文章栏目以及标题</p>
 		<div class="title-input-wrapper" id="titleWrapper">
-			<div class="article-create">
-				<div class="row">
-					<div class="select-title select-title-first">一级栏目</div>
-					<div class="col-sm-2 select-title select-title-first">
-						<select class="form-control" id="J_select_first"></select>
-					</div>
-					<div class="select-title select-title-second">二级栏目</div>
-					<div class="col-sm-2 select-title select-title-second">
-						<select class="form-control" id="J_select_second"></select>
-					</div>
-					<div class="select-title select-title-third">三级栏目</div>
-					<div class="col-sm-2 select-title select-title-third">
-						<select class="form-control" id="J_select_third"></select>
-					</div>
-					<div class="select-title select-title-fourth">四级栏目</div>
-					<div class="col-sm-2 select-title select-title-fourth">
-						<select class="form-control" id="J_select_fourth"></select>
-					</div>
+			<div class="column-create">
+				<div class="select-title select-title-first">一级栏目</div>
+				<div class="col-sm-2 select-title select-title-first">
+					<select class="form-control" id="J_select_first"></select>
 				</div>
-				<div class="row">
-					<span class="select2-label">文章标题</span>
-					<select class="article-title" id="searchPost"></select>
+				<div class="select-title select-title-second">二级栏目</div>
+				<div class="col-sm-2 select-title select-title-second">
+					<select class="form-control" id="J_select_second"></select>
+				</div>
+				<div class="select-title select-title-third">三级栏目</div>
+				<div class="col-sm-2 select-title select-title-third">
+					<select class="form-control" id="J_select_third"></select>
+				</div>
+				<div class="select-title select-title-fourth">四级栏目</div>
+				<div class="col-sm-2 select-title select-title-fourth">
+					<select class="form-control" id="J_select_fourth"></select>
 				</div>
 			</div>
-			<div class="article-edit">
+			<div class="column-edit">
 				<div class="select-title">所属栏目</div>
-				<input type="text" class="article-label" disabled="disabled">
-				<input type="text" class="article-title" disabled="disabled" value="">
-				<input type="button" class="article-btn" value="修改">
+				<input type="text" class="article-label" id="columnEditName" disabled="disabled">
+				<input type="button" class="article-btn" value="修改" id="editColumn">
+			</div>
+			<div class="article-title-wrapper">
+				<div class="select-title">文章标题</div>
+				<input type="text" class="article-title" id="articleTitle">
 			</div>
 		</div>
 		<p class="subtit">文章编辑时间</p>

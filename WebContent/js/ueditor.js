@@ -1,6 +1,6 @@
 $(function () {
     var ue = UE.getEditor('container');
-    var title = $('#searchPost');
+    var title = $('#articleTitle');
     var digest = $("#wordCount").find("textArea");
     var word = $("#wordCount").find(".word");
     var tags = $('.tag-input');
@@ -34,10 +34,11 @@ $(function () {
                 ctrl.statInputNum(digest, word);
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
-                $('.article-create').hide();
-                $('.article-edit').show();
-                $('.article-label').val(res.columnName);
-                $('.article-edit .article-title').val(res.title);
+                $('.column-create').hide();
+                $('.column-edit').show();
+                $('#columnEditName').val(res.columnName);
+                $('#articleTitle').val(res.title);
+                columnId = res.columnId
                 // $('.category-create').hide();
                 //对编辑器的操作最好在编辑器ready之后再做
                 ue.ready(function () {
@@ -56,8 +57,7 @@ $(function () {
             var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
-//                title: title.val(),
-                title: $('.article-edit .article-title').val(),
+                title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
@@ -116,8 +116,7 @@ $(function () {
         		var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
-//                title: title.val(),
-                title: $('.article-edit .article-title').val(),
+                title: title.val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
@@ -216,43 +215,6 @@ $(function () {
                 $(selectTitle).show();
             });
         },
-        initSearchPost: function () {
-        		$('#searchPost').select2({
-  		      placeholder: '请输入要查询的文章标题...',
-  		      allowClear: true,
-  		      minimumInputLength: 1,
-  		      minimumResultsForSearch: Infinity,
-  		      ajax: {
-  		        url: '/articles/show',
-  		        dataType: 'json',
-  		        data: function (params) {
-  		        		var query = {
-  	  		        		  keyword: params.term
-  	  		            }
-  	  		        return query;
-  		        },
-  		        processResults: function (data, params) {
-  		          var de;
-  		          return {
-  		            results: (function () {
-  		              var i, len, results;
-  		              results = [];
-  		              for (i = 0, len = data.length; i < len; i++) {
-  		                de = data[i];
-  		                results.push({
-  		                  id: de.id,
-  		                  text: de.title
-  		                });
-  		              }
-  		              return results;
-  		            })()
-  		          };
-  		        },
-  		        cache: true
-  		      },
-  		      language: 'zh-CN',
-  		    });
-        },
         uploadImg: function () {
         		$('.add-img-list').on('click', '#addImgBtn', function (){
         			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
@@ -302,7 +264,6 @@ $(function () {
     ctrl.init();
     ctrl.initDate();
     ctrl.uploadImg();
-    ctrl.initSearchPost();
     // 二级分类的出现
     $('#J_select_first').change(function () {
         var firstId = $(this).val();
@@ -334,8 +295,8 @@ $(function () {
     $('#preview').on('click', ctrl.preview);
     $('#cancel').on('click', ctrl.cancel);
     
-    $('.article-btn').on('click', function(){
-    		$('.article-create').show();
-    		$('.article-edit').hide();
+    $('#editColumn').on('click', function(){
+    		$('.column-create').show();
+    		$('.column-edit').hide();
     })
 })
