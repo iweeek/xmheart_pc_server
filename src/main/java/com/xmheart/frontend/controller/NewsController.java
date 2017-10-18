@@ -466,4 +466,14 @@ public class NewsController {
 
         return "doctor_dept";
     }
+    
+    @RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
+    public String doctorInfo(@RequestParam Long id, Model model) {
+    	model = addTopNav(3l, model);
+
+    	XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
+    	model.addAttribute("doctor", doctor);
+//    	model.addAttribute("dept", doctor.getDept());
+        return "doctor_detail";
+    }
 }
