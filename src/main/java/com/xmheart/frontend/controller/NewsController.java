@@ -476,4 +476,23 @@ public class NewsController {
 //    	model.addAttribute("dept", doctor.getDept());
         return "doctor_detail";
     }
+    
+    @RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
+    public String deptDoctor(@RequestParam Long id, Model model) {
+    	model = addTopNav(3l, model);
+
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
+    	model.addAttribute("dept", dept);
+        return "dept_doctor";
+    }
+    
+    @RequestMapping(value = { "/deptDetail" }, method = RequestMethod.GET)
+    public String deptDetail(@RequestParam Long id, Model model) {
+    	model = addTopNav(3l, model);
+
+    	XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
+    	model.addAttribute("dept", dept);
+//    	model.addAttribute("dept", doctor.getDept());
+        return "dept_detail";
+    }
 }
