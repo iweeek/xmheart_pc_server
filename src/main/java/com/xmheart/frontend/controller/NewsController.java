@@ -64,7 +64,7 @@ public class NewsController {
     static final long EXPERT_COLUMN_ID = 3;
     static final long VIDEO_NEWS_COLUMN_ID = 22;
     static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
-
+    static final long CHEST_PAIN_COLUMN_ID = 77;
     // private static Map<String, String> secColumns = new HashMap<String,
     // String>();
 
@@ -392,20 +392,29 @@ public class NewsController {
     @RequestMapping(value = {"/xtIndex"}, method = RequestMethod.GET)
     public String xtIndex(Model model) {
         model = addTopNav(1, model);
-        List<XPWColumn> columnList = columnService.getChildColumnsById(77);
-        Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
         
-        for (XPWColumn column : columnList) {
-        	List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
-        	for (XPWColumn secCol : secColList) {
-        		List<XPWNav> navs = columnService.getNavListBySecondColumnName(secCol.getColumnName());
-        		if (navs.size() != 0) {
-        			navMap.put(secCol.getColumnName(), navs);
-        		}		
+        List<XPWColumn> firstColList = columnService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
+        Map<String,List<XPWColumn>> secondColList = new LinkedHashMap<String, List<XPWColumn>>();
+        Map<String,List<XPWColumn>> thirdColList = new LinkedHashMap<String, List<XPWColumn>>();
+        
+        for (XPWColumn column : firstColList) {
+        	List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());   
+        	if (secColList.size() > 0)
+        		secondColList.put(column.getColumnName(), secColList);	
+        	
+        	for (XPWColumn newColumn : secColList) {
+        		List<XPWColumn> thiColLost = columnService.getColumnsByParentId(newColumn.getId());
+        		if (thiColLost.size() > 0)
+        			thirdColList.put(newColumn.getColumnName(), thiColLost);
+        		
+        		//System.out.println(thiColLost.size());
         	}
+        	//System.out.println(column.getColumnName());
         }
         
-        model.addAttribute("navMap", navMap);
+        model.addAttribute("firstColList", firstColList);
+        model.addAttribute("secondColList", secondColList);
+        model.addAttribute("thirdColList", thirdColList);
         
         return "xt_index";
     }
