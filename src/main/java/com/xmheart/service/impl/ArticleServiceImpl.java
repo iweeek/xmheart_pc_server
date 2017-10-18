@@ -105,6 +105,15 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+	@Override
+	public List<XPWArticle> showByColNameAndKey(String columnName, String keyword) {
+		// TODO Auto-generated method stub
+		XPWArticleExample example = new XPWArticleExample();
+		example.createCriteria().andColumnNameEqualTo(columnName).andTitleLike("%" + keyword + "%");
+		List<XPWArticle> list = articleMapper.selectByExample(example);
+        return list;
+	}
+
 
 
 }

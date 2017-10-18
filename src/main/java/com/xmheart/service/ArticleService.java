@@ -31,5 +31,5 @@ public interface ArticleService {
 
     List<XPWArticle> show(Long columnId, String keyword);
 
-
+    List<XPWArticle> showByColNameAndKey(String columnName, String keyword);
 }
