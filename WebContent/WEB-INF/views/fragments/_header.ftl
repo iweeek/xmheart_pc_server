@@ -270,12 +270,11 @@
         <#if key == parentColumnName>
         <div class="breadcrumb">
             <div class="xm-container">
-                <span class="icon"></span><a href="/index">您当前所在位置 首页</a> &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}<a> &gt ${columnName}
+                <span class="icon"></span>您当前所在位置<a href="/index"> 首页</a> &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}</a> &gt ${columnName}
             </div>
         </div>
         </#if>
         </#if>
         </#list>
     
-        <#--  <a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>-->
     
