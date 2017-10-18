@@ -422,12 +422,14 @@ public class NewsController {
         model = addTopNav(1, model);
         
         List<XPWColumn> firstColList = columnService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
+        Map<String, String> xtfirstColumns = new LinkedHashMap<String, String>();
         Map<String,List<XPWColumn>> secondColList = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String,List<XPWColumn>> thirdColList = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String,List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
         
         for (XPWColumn column : firstColList) {
-        	List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());    	
+        	List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());
+        	xtfirstColumns.put(column.getColumnName(), column.getUrl());
         	if (secColList.size() > 0) {
         		secondColList.put(column.getColumnName(), secColList);
         	}
@@ -451,6 +453,7 @@ public class NewsController {
         model.addAttribute("secondColList", secondColList);
         model.addAttribute("thirdColList", thirdColList);
         model.addAttribute("navMap", navMap);
+        model.addAttribute("xtfirstColumns", xtfirstColumns);
         
         return "xt_index";
     }

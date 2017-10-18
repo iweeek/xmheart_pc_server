@@ -116,7 +116,7 @@
 									</#if>   
                                 
                                 
-									<#if key == "新闻公告">
+								    <#if key == "新闻公告">
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                     <#list secondColNavMap as skey, sv>                             
                                         <#if skey == "媒体看厦心">
@@ -186,9 +186,10 @@
                                     </#if>
 									
                     <#-- 新增1 -->           
-                             <#if key == "名医名科">
+                                    <#if key == "名医名科">
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
-									<#list secondColNavMap as skey, sv>                        		
+									<#list secondColNavMap as skey, sv>   
+									                     		
                                     	<#if skey == "心血管外科">
                                     	  	<dl class="Img02">
 											<dt class="title01">${skey}</dt>
@@ -224,22 +225,21 @@
 											</dl>	
 										</#if>	
 							
-									
 							<#-- 新增2 -->			
 									
-									<#if skey == "心功能科">
-									</div>
-									<div class="navSub4 nav_Menu02 noPic">
-									<dl>
-									<dt class="title02">${skey}</dt>
-											<#list sv as scol>
-											<dd class="url">
-												<span>${scol.publishTime?date}</span>
-												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-											</dd>
-											</#list>
-										</dl>
-									</#if>
+									   <#if skey == "心功能科">
+									   </div>
+									   <div class="navSub4 nav_Menu02 noPic">
+									       <dl>
+									       <dt class="title02">${skey}</dt>
+										   <#list sv as scol>
+										   <dd class="url">
+										      <span>${scol.publishTime?date}</span>
+										      <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+										   </dd>
+										   </#list>
+										   </dl>
+									   </#if>
 									
 							<#-- 新增2 -->		
 									
@@ -247,8 +247,6 @@
 									</div>	
 									</#if>
 			                <#-- 新增1 -->  		
-							
-							
 							
                                     <div class="clear"></div>
                                 </div>
@@ -266,3 +264,18 @@
                 </div>
             </div>
         </div>
+
+        <#list firstColumns as key, value>
+        <#if parentColumnName??>
+        <#if key == parentColumnName>
+        <div class="breadcrumb">
+            <div class="xm-container">
+                <span class="icon"></span><a href="/index">您当前所在位置 首页</a> &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}<a> &gt ${columnName}
+            </div>
+        </div>
+        </#if>
+        </#if>
+        </#list>
+    
+        <#--  <a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>-->
+    

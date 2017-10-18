@@ -11,16 +11,21 @@
         <ul class="firstUl">
         
           <li class="first">
-            <a href="ArticleList-54.html" class="firstA">
-              <em>认证中心</em>
+          <#list secondColList as key, value>
+                <#if key == "认证中心">
+                <#list xtfirstColumns as xtkey, xtvalue>
+                <#if xtkey == key>
+            <a href="${xtvalue}" class="firstA">
+              <em>${xtkey}</em>
+                </#if>
+                </#list>
               <i class="style01"></i>
               <span></span>
             </a>
             
             <div class="QMSub QMSubMenus" style="top: -12px; display: none;">           
                <ul>
-              <#list secondColList as key, value>
-            	<#if key == "认证中心">
+              
             		<#list value as secCol >
             			<#list thirdColList as key1, value1>     		
                 			<#if key1 == secCol.columnName>
@@ -48,11 +53,17 @@
             </div>
           </li>
           <li class="first">
-            <a href="" target="_blank" class="firstA"><em>示范中心</em><i class="style02"></i><span></span></a>
+          <#list secondColList as key, value>
+                 <#if key== "示范中心" >
+                 <#list xtfirstColumns as xtkey, xtvalue>
+                <#if xtkey == key>
+            <a href="${xtvalue}" target="_blank" class="firstA"><em>${xtkey}</em>
+            </#if>
+                </#list>
+            <i class="style02"></i><span></span></a>
             <div class="QMSub QMSubMenus" style="top: -73px; display: none;">
               <ul>
-              <#list secondColList as key, value>
-            	 <#if key== "示范中心" >
+              
              		 <#list value as secCol >
                		 <li>
                 	  <a href="${secCol.url}">${secCol.columnName}<span>进入</span></a>
@@ -65,11 +76,17 @@
             </div>
           </li>
           <li class="first">
-            <a href="DutyTime.html" class="firstA"><em>胸痛中心动态</em><i class="style03"></i><span></span></a>
+          <#list secondColList as key, value>
+                <#if key == "胸痛中心动态" >
+                <#list xtfirstColumns as xtkey, xtvalue>
+                <#if xtkey == key>
+            <a href="${xtvalue}" class="firstA"><em>${xtkey}</em>
+            </#if>
+                </#list>
+                <i class="style03"></i><span></span></a>
             <div class="QMSub QMSubMenus" style="top: -134px; display: none;">
               <ul>
-              <#list secondColList as key, value>
-              	<#if key == "胸痛中心动态" >
+              
              	 <#list value as secCol >
                 	<li>
                  	 <a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>
