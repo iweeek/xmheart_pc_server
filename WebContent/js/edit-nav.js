@@ -108,6 +108,7 @@ exports.XPW.NavEdit = (function() {
     	  $('#secondColumnId').val($(this).data('column-name'));
     	  $('#secondColumnId').data('nav-id', $(this).data('nav-id'))
     	  $('#secondColumnId').data('column-id', $(this).data('column-id'))
+    	  $('#secondColumnId').data('column-name', $(this).data('column-name'))
     	  $('#postModal').modal('show');
     })
   }
@@ -124,7 +125,7 @@ exports.XPW.NavEdit = (function() {
 		        dataType: 'json',
 		        data: function (params) {
 		        		var query = {
-		        			  columnId: $('#secondColumnId').data('column-id'),
+		        			  columnName: $('#secondColumnId').data('column-name'),
 	  		        		  keyword: params.term
 	  		            }
 	  		        return query;

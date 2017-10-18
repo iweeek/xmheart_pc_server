@@ -225,11 +225,17 @@ public class ArticleController {
     @ApiOperation(value = "搜索文章", notes = "搜索文章")
     @RequestMapping(value = { "/articles/show" }, method = RequestMethod.GET)
     public ResponseEntity<?> show(@ApiParam("文章标题的关键字") @RequestParam String keyword, 
-            @ApiParam("文章的栏目Id") @RequestParam(required = false) Long columnId) {
-        
+            @ApiParam("文章的栏目Id") @RequestParam(required = false) Long columnId,
+            @ApiParam("文章的栏目的名称") @RequestParam(required = false) String columnName) {
         List<XPWArticle> list;
         if (columnId != null) {
             list = articleService.show(columnId, keyword);
+        } else {
+            list = articleService.show(keyword);
+        }
+        
+        if (columnName != null) {
+        	list = articleService.showByColNameAndKey(columnName, keyword);
         } else {
             list = articleService.show(keyword);
         }
