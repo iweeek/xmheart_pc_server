@@ -52,6 +52,8 @@ public class ArticleController {
             list = articleService.index(columnId);
         }
 
+        
+        
         return ResponseEntity.ok(list);
         
     }

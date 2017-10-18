@@ -42,6 +42,7 @@
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
+                    
                         <li class="xm-navbar-item">
                     </#if>
                     
@@ -50,128 +51,148 @@
                         <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                     <#else>
                         <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
-                    
-                    <#-- 悬浮导航 -->
-                    <#list columnMap as kc, vc>
-                    <#if kc == key>
-                    <div class="navboxBase">
-                        <div class="navboxBg">
-                            <div class="navbox BaseMark">
-                                <div class="navMenus">
-                                    <ul>
-                                    <#list vc as col>
-                                        <#if vc?index == 0>
-                                        <li class="first">
-                                            <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
-                                        </li>
-                                        <#else>
-                                        <li>
-                                            <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
-                                        </li>
-                                        </#if>
-                                    </#list>
-                                    </ul>
-                                </div>
-                                
-                                <#list navMap as k, v>
-                                <#if k == key>
-                                <div class="navSub2 nav_Menu02 noPic NewsSub">
-                                    <dl class="Img02">
-                                        <dt class="title01">${v[0].childColumnName}</dt>
-                                        <dd class="pic">
-                                            <img alt="" src="/img/pic/pic_002.jpg" width="126" height="77">
-                                        </dd>
-                                        <dd class="Lurl">
-                                            <em>${v[0].publishTime?date}</em>
-                                            <a href="${v[0].url}" title="${v[0].articleTitle}">${v[0].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[1].publishTime?date}</span>
-                                            <a href="${v[1].url}" title="${v[1].articleTitle}">${v[1].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[2].publishTime?date}</span>
-                                            <a href="${v[2].url}" title="${v[2].articleTitle}">${v[2].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[3].publishTime?date}</span>
-                                            <a href="${v[3].url}" title="${v[3].articleTitle}">${v[3].articleTitle}</a>
-                                        </dd>
-                                    </dl>
-                                    <div class="BottomHidden"></div>
-                                    <dl>
-                                        <dt class="title01">${v[4].childColumnName}</dt>
-                                        <dd class="url">
-                                            <span>${v[4].publishTime?date}</span>
-                                            <a href="${v[4].url}" title="${v[4].articleTitle}">${v[4].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[5].publishTime?date}</span>
-                                            <a href="${v[5].url}" title="${v[5].articleTitle}">${v[5].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[6].publishTime?date}</span>
-                                            <a href="${v[6].url}" title="${v[6].articleTitle}">${v[6].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[7].publishTime?date}</span>
-                                            <a href="${v[7].url}" title="${v[7].articleTitle}">${v[7].articleTitle}</a>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="navSub4 nav_Menu02 noPic">
-                                    <dl>
-                                        <dt class="title02">${v[8].childColumnName}</dt>
-                                        <dd class="url">
-                                            <span>${v[8].publishTime?date}</span>
-                                            <a href="${v[8].url}" title="${v[8].articleTitle}">${v[8].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[9].publishTime?date}</span>
-                                            <a href="${v[9].url}" title="${v[9].articleTitle}">${v[9].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[10].publishTime?date}</span>
-                                            <a href="${v[10].url}" title="${v[10].articleTitle}">${v[10].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[11].publishTime?date}</span>
-                                            <a href="${v[11].url}" title="${v[11].articleTitle}">${v[11].articleTitle}</a>
-                                        </dd>
-                                    </dl>
-                                    <div class="BottomHidden"></div>
-                                    <dl>
-                                        <dt class="title02">${v[12].childColumnName}</dt>
-                                        <dd class="url">
-                                            <span>${v[12].publishTime?date}</span>
-                                            <a href="${v[12].url}" title="${v[12].articleTitle}">${v[12].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[13].publishTime?date}</span>
-                                            <a href="${v[13].url}" title="${v[13].articleTitle}">${v[13].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[14].publishTime?date}</span>
-                                            <a href="${v[14].url}" title="${v[14].articleTitle}">${v[14].articleTitle}</a>
-                                        </dd>
-                                        <dd class="url">
-                                            <span>${v[15].publishTime?date}</span>
-                                            <a href="${v[15].url}" title="${v[15].articleTitle}">${v[15].articleTitle}</a>
-                                        </dd>
-                                    </dl>
-                                    <div class="BottomHidden"></div>
+                        
+                        <#list columnMap as kc, vc>
+                        <#if kc == key>
+                        <div class="navboxBase">
+                            <div class="navboxBg">
+                                <div class="navbox BaseMark">
+                                    <div class="navMenus">
+                                        <ul>
+                                        <#list vc as col>
+                                            <#if vc?index == 0>
+                                            <li class="first">
+                                                <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                            </li>
+                                            <#else>
+                                            <li>
+                                                <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                            </li>
+                                            
+                                            </#if>
+                                        </#list>
+                                        </ul>
+                                 	 </div>
+                                 	   
+                                     <#if key == "走进厦心">
+									<#list secondColNavMap as skey,sv>                        		
+                                    	<#if skey == "医院简介">
+                                    	  <div class="navSub5">
+											<h3 class="title01">${skey}</h3>
+											<img src="http://120.77.72.16:82/images/pic_001.jpg" alt="">
+											<p class="first hospital-desc">
+                                    		<#list sv as scol>
+                                    		<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>     
+                                            </#list>
+                                            </p>
+                                      		<a href="#" class="more">查看详细</a>
+										  </div>	
+										</#if>
+											
+										<#if skey == "厦心荣誉">					
+                                  		  <div class="navSub6">
+											<h3>${skey}</h3>
+											<ul>										
+											<#list sv as scol>
+											<li>            
+                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                            </li>
+                                            </#list>
+                                            </ul>
+                                            <a href="#" class="more">查看详细</a>
+										  </div>
+										</#if>
+											
+										<#if skey == "文化理念">
+										  <div class="navSub7">
+											<h3>${skey}</h3>
+											<#list sv as scol>										
+											<p>                                               
+                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                            </p>
+                                          	</#list>
+											</div>										
+										</#if>
+									</#list>
+									</#if>   
+                                    
+                  <#-- 新增1 -->                  
+                             <#if key == "名医名科">
+                                    <div class="navSub2 nav_Menu02 noPic NewsSub">
+									<#list secondColNavMap as skey, sv>                        		
+                                    	<#if skey == "心血管外科">
+                                    	  	<dl class="Img02">
+											<dt class="title01">${skey}</dt>
+											<dd class="pic">
+												<img alt="最新公告" src="./img/pic/pic_002.jpg" width="126" height="77">
+											</dd>
+											<#list sv as scol>
+											<#if scol?index == 0>
+											<dd class="Lurl">
+												<em>${scol.publishTime?date}111</em>
+												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+											</dd>
+											<#else>
+											<dd class="url">
+												<span>${scol.publishTime?date}222</span>
+												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+											</dd>
+											</#if>
+                                    	  	</#list>
+                                    	  	</dl>
+                                    	  </#if>	
+                                    	   	  
+                                    	<#if skey == "心血管内科">
+                                    	<div class="BottomHidden"></div>
+											<dl>
+											<dt class="title01">${skey}</dt>
+											<#list sv as scol>
+											<dd class="url">
+												<span>${scol.publishTime?date}</span>
+												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+											</dd>
+											</#list>
+											</dl>	
+										</#if>	
+							
+									
+							<#-- 新增2 -->			
+									
+									<#if skey == "心功能科">
+									</div>
+									<div class="navSub4 nav_Menu02 noPic">
+									<dl>
+									<dt class="title02">${skey}</dt>
+											<#list sv as scol>
+											<dd class="url">
+												<span>${scol.publishTime?date}</span>
+												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+											</dd>
+											</#list>
+										</dl>
+									</#if>
+									
+							<#-- 新增2 -->		
+									
+									</#list>	
+									</div>	
+									</#if>
+			<#-- 新增1 -->  		
+							
+							
+							
+                                    <div class="clear"></div>
                                 </div>
                                 </#if>
                                 </#list>
                                 <div class="clear"></div>
                             </div>
                         </div>
-                    </div>
-                    </#if>
-                    </#list>
-                    </#if>
-                    </li>
-                    </#list>
+                     
+                        </#if>
+                        </#list>
+                        </li>
+                        		
                     </ul>
                 </div>
             </div>
