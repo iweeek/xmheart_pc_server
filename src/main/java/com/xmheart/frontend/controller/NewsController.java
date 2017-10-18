@@ -419,17 +419,24 @@ public class NewsController {
         List<XPWColumn> firstColList = columnService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
         Map<String,List<XPWColumn>> secondColList = new LinkedHashMap<String, List<XPWColumn>>();
         Map<String,List<XPWColumn>> thirdColList = new LinkedHashMap<String, List<XPWColumn>>();
+        Map<String,List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
         
         for (XPWColumn column : firstColList) {
-        	List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());   
-        	if (secColList.size() > 0)
-        		secondColList.put(column.getColumnName(), secColList);	
-        	
+        	List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());    	
+        	if (secColList.size() > 0) {
+        		secondColList.put(column.getColumnName(), secColList);
+        	}
+        		
         	for (XPWColumn newColumn : secColList) {
         		List<XPWColumn> thiColLost = columnService.getColumnsByParentId(newColumn.getId());
-        		if (thiColLost.size() > 0)
+        		if (thiColLost.size() > 0) {
         			thirdColList.put(newColumn.getColumnName(), thiColLost);
+        		}
         		
+        		List<XPWNav> nav = columnService.getNavListBySecondColumnName(newColumn.getColumnName());
+        		if (nav.size() != 0) {
+        			navMap.put(newColumn.getColumnName(), nav);
+        		}	
         		//System.out.println(thiColLost.size());
         	}
         	//System.out.println(column.getColumnName());
@@ -438,6 +445,7 @@ public class NewsController {
         model.addAttribute("firstColList", firstColList);
         model.addAttribute("secondColList", secondColList);
         model.addAttribute("thirdColList", thirdColList);
+        model.addAttribute("navMap", navMap);
         
         return "xt_index";
     }

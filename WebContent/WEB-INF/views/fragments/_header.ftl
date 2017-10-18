@@ -46,8 +46,7 @@
                         <li class="xm-navbar-item">
                     </#if>
                     
-                    <#if key == "首页" || key == "走进厦心" || key == "名医名科" || key == "就医服务" || key == "党群工作" || key == "护理天地" 
-                        || key == "科研教学" || key == "招贤纳士">
+                    <#if key == "首页" >
                         <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                     <#else>
                         <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
@@ -75,7 +74,7 @@
                                  	 </div>
                                  	   
                                      <#if key == "走进厦心">
-									<#list secondColNavMap as skey,sv>                        		
+										<#list secondColNavMap as skey,sv>                        		
                                     	<#if skey == "医院简介">
                                     	  <div class="navSub5">
 											<h3 class="title01">${skey}</h3>
@@ -116,7 +115,48 @@
 									</#list>
 									</#if>   
                                     
-                  <#-- 新增1 -->                  
+                  <#-- 新增1 -->     <#if key == "新闻公告">
+									<#list secondColNavMap as skey,sv>                        		
+                                    	<#if skey == "媒体看厦心">
+                                    	  <div class="navSub5">
+											<h3 class="title01">${skey}</h3>
+											<img src="http://120.77.72.16:82/images/pic_001.jpg" alt="">
+											<p class="first hospital-desc">
+                                    		<#list sv as scol>
+                                    		<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>     
+                                            </#list>
+                                            </p>
+                                      		<a href="#" class="more">查看详细</a>
+										  </div>	
+										</#if>
+											
+										<#if skey == "医院新闻">					
+                                  		  <div class="navSub6">
+											<h3>${skey}</h3>
+											<ul>										
+											<#list sv as scol>
+											<li>            
+                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                            </li>
+                                            </#list>
+                                            </ul>
+                                            <a href="#" class="more">查看详细</a>
+										  </div>
+										</#if>
+											
+										<#if skey == "影像厦心">
+										  <div class="navSub7">
+											<h3>${skey}</h3>
+											<#list sv as scol>										
+											<p>                                               
+                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                            </p>
+                                          	</#list>
+											</div>										
+										</#if>
+									</#list>
+									</#if>
+                               
                              <#if key == "名医名科">
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
 									<#list secondColNavMap as skey, sv>                        		
