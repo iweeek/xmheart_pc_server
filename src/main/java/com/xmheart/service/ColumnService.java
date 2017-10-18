@@ -85,5 +85,7 @@ public interface ColumnService {
 
     int updateColumn(XPWColumn column);
 
+	List<XPWNav> getNavsByChildColumnName(String childColumnName);
+
 
 }

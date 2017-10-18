@@ -80,8 +80,9 @@ public class NewsController {
         List<XPWColumn> columnList = columnService.getTopFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
         Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
-        Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
-
+        Map<Long, List<XPWNav>> navMap = new LinkedHashMap<Long, List<XPWNav>>();
+        Map<String, List<XPWNav>> secondColNavMap = new LinkedHashMap<String, List<XPWNav>>();
+        
         for (XPWColumn column : columnList) {
             firstColumns.put(column.getColumnName(), column.getUrl());
 
@@ -92,13 +93,26 @@ public class NewsController {
 
             List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
             if (navList.size() > 0) {
-                navMap.put(column.getColumnName(), navList);
+                navMap.put(column.getId(), navList);
+                //System.out.println(column.getId());
             }
+            
+            for (XPWNav nav : navList) {
+            	if (secondColNavMap.containsKey(nav.getChildColumnName()) == false) {
+            		List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(nav.getChildColumnName());
+            		secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
+            	}             
+            }        
         }
-
+        
+        /*for(String key : secondColNavMap.keySet()){
+        	System.out.println("Key = " + key);
+        	}*/
+        
         model.addAttribute("firstColumns", firstColumns);
         model.addAttribute("columnMap", columnMap);
         model.addAttribute("navMap", navMap);
+        model.addAttribute("secondColNavMap", secondColNavMap);
         
         //这个地方只能体现两级栏目关系
         XPWColumn parentColumn = columnService.getParentColumnById(columnId);
