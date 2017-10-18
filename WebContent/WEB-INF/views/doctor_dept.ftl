@@ -37,7 +37,7 @@
                     <ul data-num="0" class="swiper-wrapper">
                         <#list doctors as doctor>
                         <#if doctor.deptId == dept.id>
-                        <li class="swiper-slide">
+                        <li class="swiper-slide" style="overflow:hidden;">
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="img">
                                 <img alt="${doctor.name}" title="${doctor.name}"
                                     src="${doctor.imageUrl}"
@@ -46,20 +46,18 @@
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="name">${doctor.name}</a>
                             <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
                             <br/>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle}</a>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.grade}</a>
+                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
+                            <div class="doctor-intro">
+                                <#if doctor.intro?length lt 126>
+                                ${doctor.intro}
+                                <#else>
+                                ${doctor.intro[0..126]}......
+                                <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
+                                </#if>
+                            </div>
+                            <!-- <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a> -->
                             <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
                             <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
-                            <#if doctor.intro?length lt 150>
-                                <div class="doctorDialog">${doctor.intro}</div>
-                            <#else>
-                                <div class="doctorDialog">
-                                    <div>${doctor.intro[0..150]}......
-                                        <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="more">查看详细</a>
-                                    </div>
-                                </div>
-                            </#if>
                         </li>
                         </#if>
                         </#list>
