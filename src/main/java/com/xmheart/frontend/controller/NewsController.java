@@ -30,12 +30,15 @@ import com.github.pagehelper.PageInfo;
 import com.xmheart.util.FileUtil;
 import com.xmheart.util.PathUtil;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWDept;
+import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
+import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.IndexService;
 import com.xmheart.service.NewsService;
 
@@ -57,6 +60,9 @@ public class NewsController {
     
     @Autowired
     private ArticleService articleService;
+    
+    @Autowired
+	private DoctorAndDeptService doctorAndDeptService;
     
     @Autowired
     private IndexService indexService;
@@ -90,7 +96,6 @@ public class NewsController {
         
         for (XPWColumn column : columnList) {
             firstColumns.put(column.getColumnName(), column.getUrl());
-
             List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
             if (secColList.size() > 0) {
                 columnMap.put(column.getColumnName(), secColList);
@@ -450,4 +455,15 @@ public class NewsController {
         return "xt_index";
     }
 
+    @RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
+    public String doctorDept(Model model) {
+    	model = addTopNav(3l, model);
+    	List<XPWDoctor> doctors = doctorAndDeptService.getDisplayDoctors();
+    	model.addAttribute("doctors", doctors);
+
+    	List<XPWDept> depts = doctorAndDeptService.getOutServiceDepts();
+    	model.addAttribute("depts", depts);
+
+        return "doctor_dept";
+    }
 }

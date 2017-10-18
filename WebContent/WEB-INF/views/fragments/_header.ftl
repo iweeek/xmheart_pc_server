@@ -115,7 +115,7 @@
 									</#list>
 									</#if>   
                                     
-                  <#-- 新增1 -->     <#if key == "新闻公告">
+                                 <#if key == "新闻公告">
 									<#list secondColNavMap as skey,sv>                        		
                                     	<#if skey == "媒体看厦心">
                                     	  <div class="navSub5">
@@ -156,7 +156,7 @@
 										</#if>
 									</#list>
 									</#if>
-                               
+                    <#-- 新增1 -->           
                              <#if key == "名医名科">
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
 									<#list secondColNavMap as skey, sv>                        		
@@ -217,7 +217,7 @@
 									</#list>	
 									</div>	
 									</#if>
-			<#-- 新增1 -->  		
+			                <#-- 新增1 -->  		
 							
 							
 							
