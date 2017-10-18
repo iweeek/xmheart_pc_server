@@ -24,7 +24,7 @@
             </div>
             <div class="contents">
                 <div class="contentsOffice">
-                    <i class="ico01"></i>
+                    <!-- <i class="ico01"></i> -->
                     <div class="img animated">
                         <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
@@ -56,7 +56,7 @@
                             <#else>
                                 <div class="doctorDialog">
                                     <div>${doctor.intro[0..150]}......
-                                        <a href="doctorDetail?id=${doctor.id}" title="${dept.name}">查看详细</a>
+                                        <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="more">查看详细</a>
                                     </div>
                                 </div>
                             </#if>

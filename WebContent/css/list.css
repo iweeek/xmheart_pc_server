@@ -345,7 +345,7 @@
 /*名医名科*/
 .BaseMark{ font-size: 12px;}
 .officesBase .toolsBase{ width:100%; height:47px;position:relative; border-bottom:1px solid #ddd;}
-.officesBase .title{ float:left; height:45px; width:251px;padding-top:3px; padding-left:52px; border-bottom:5px solid #6bcbca; background:url(../img/list/ico_029.jpg) 7px top no-repeat;
+.officesBase .title{ float:left; height:45px; width:251px;padding-top:3px; padding-left:52px; border-bottom:5px solid #0690f7; background:url(../img/list/ico_029.jpg) 7px top no-repeat;
 }
 .officesBase .tools{width:280px; height:35px; position:absolute; top:0px; right:6px;}
 .officesBase .tools a{display:block; position:absolute; top:0px;}
@@ -358,7 +358,7 @@
 .officesBase .tools .Amore{ display: none; font-size:14px; color:#6bcbca; width:50px; height:100%; text-align:center; position:absolute; top:0px; line-height:33px; right:88px;}
 .officesBase .tools .Amore:hover{color:#ff7544; background:#FFF; text-decoration:underline;}
 .officesBase .title em{ font-size:18px; color:#333; line-height:32px;}
-.officesBase .title span{ padding-left:3px; color:#6bcbca; font-size: 12px;}
+.officesBase .title span{ padding-left:3px; color:#0690f7; font-size: 12px;}
 .officesBase .contents{width:1260px;position:absolute;height:360px; top:80px;left:-30px;padding-top: 10px; padding-left: 30px;}
 .officesBase .contents ul{ position:absolute; width:8888px; height:320px; top:0px; left:30px;}
 .officesBase .contents ul li{width:240px;height:362px;position:relative; float:left;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
@@ -407,6 +407,7 @@
 .officesBase .contents .contentsDoctor .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px; margin-bottom: 15px;}
 .officesBase .contents .contentsDoctor .btn{display:block;position:absolute; bottom:35px; width:68px; height:30px; text-align:center; line-height:30px;color:#fff;font-size: 12px;}
 .officesBase .contents .contentsDoctor .more{left:32px;background:#bda179;}
+.officesBase .contents .contentsDoctor .more{color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
 .officesBase .contents .contentsDoctor .date{right:32px;background:#6bcbca;}
 .officesBase .contents .contentsDoctor .btn:hover{ background:#ff7544;}
 .officesBase .contents .contentsDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
