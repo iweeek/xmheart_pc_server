@@ -4,9 +4,9 @@
 			<div class="xm-banner-slide">
 				<div class="swiper-container" id="bannerSwiper">
 			    <div class="swiper-wrapper">
-		        <div class="swiper-slide"><img src="img/slider1.jpg" alt=""></div>
-		        <div class="swiper-slide">Slide 2</div>
-		        <div class="swiper-slide">Slide 3</div>
+		        <div class="swiper-slide"><img src="${index.bannerImage1Url}" alt=""></div>
+		        <div class="swiper-slide"><img src="${index.bannerImage2Url}" alt=""></div>
+		        <div class="swiper-slide"><img src="${index.bannerImage3Url}" alt=""></div>
 			    </div>
 			    <div class="swiper-pagination"></div>
 				</div>

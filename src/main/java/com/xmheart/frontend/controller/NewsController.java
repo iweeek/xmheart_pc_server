@@ -31,10 +31,12 @@ import com.xmheart.util.FileUtil;
 import com.xmheart.util.PathUtil;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWElecNewspaper;
+import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
+import com.xmheart.service.IndexService;
 import com.xmheart.service.NewsService;
 
 import freemarker.template.Template;
@@ -55,6 +57,9 @@ public class NewsController {
     
     @Autowired
     private ArticleService articleService;
+    
+    @Autowired
+    private IndexService indexService;
 
     private final int PAGE_SIZE = 10;
 
@@ -399,6 +404,10 @@ public class NewsController {
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
         model = addTopNav(1, model);
+        
+        XPWIndex index = indexService.indexRead();
+        
+        model.addAttribute("index", index);
 
         return "index";
     }
