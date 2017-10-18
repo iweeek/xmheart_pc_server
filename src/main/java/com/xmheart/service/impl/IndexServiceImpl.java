@@ -26,7 +26,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public int update(XPWIndex index) {
-        int ret = indexMapper.updateByPrimaryKey(index);
+        int ret = indexMapper.updateByPrimaryKeySelective(index);
         return ret;
     }
 
@@ -38,7 +38,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public int xtUpdate(XPWXTIndex index) {
-        int ret = xtIndexMapper.updateByPrimaryKey(index);
+        int ret = xtIndexMapper.updateByPrimaryKeySelective(index);
         return ret;
     }
 	

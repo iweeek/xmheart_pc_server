@@ -102,9 +102,9 @@
         <div class="notice notice01">
           <a href="XTindex-list.html" class="more">更多</a>
           <div class="title"><em>${key}</em><span>Latest Announcement</span></div>
-        <#list news as new>
+            <#list news as new>
         	<#if new?index == 0>
-        <div class="first">
+            <div class="first">
             <a href="${new.url}" id="ANoticeFirst" target="_blank" title="${new.articleTitle}">
               <img src="image/pic_005.jpg" class="load" width="126" height="76" original="image/pic_005.jpg" style="display: block;"></a>
               <div>

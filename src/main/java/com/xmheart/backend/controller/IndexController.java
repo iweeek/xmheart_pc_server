@@ -36,33 +36,69 @@ public class IndexController {
     @ApiOperation(value = "更新首页信息", notes = "更新首页信息")
     @RequestMapping(value = { "/indexPage/{id}" }, method = RequestMethod.PUT)
     public ResponseEntity<?> update(@ApiParam("首页信息的Id") @PathVariable Long id,
-            @ApiParam("轮播图1的地址") @RequestParam() String bannerImage1Url, 
-            @ApiParam("轮播图2的地址") @RequestParam() String bannerImage2Url,
-            @ApiParam("轮播图3的地址") @RequestParam() String bannerImage3Url,
-            @ApiParam("轮播图1的响应地址") @RequestParam() String bannerImage1ActionUrl,
-            @ApiParam("轮播图2的响应地址") @RequestParam() String bannerImage2ActionUrl,
-            @ApiParam("轮播图3的响应地址") @RequestParam() String bannerImage3ActionUrl,
-            @ApiParam("轮播文章1的地址") @RequestParam() String bannerArticle1Url,
-            @ApiParam("轮播文章2的地址") @RequestParam() String bannerArticle2Url,
-            @ApiParam("轮播文章3的地址") @RequestParam() String bannerArticle3Url,
-            @ApiParam("轮播文章1的摘要") @RequestParam() String bannerArticle1Brief,
-            @ApiParam("轮播文章2的摘要") @RequestParam() String bannerArticle2Brief,
-            @ApiParam("轮播文章3的摘要") @RequestParam() String bannerArticle3Brief
+            @ApiParam("轮播图1的地址") @RequestParam(required = false) String bannerImage1Url, 
+            @ApiParam("轮播图2的地址") @RequestParam(required = false) String bannerImage2Url,
+            @ApiParam("轮播图3的地址") @RequestParam(required = false) String bannerImage3Url,
+            @ApiParam("轮播图1的响应地址") @RequestParam(required = false) String bannerImage1ActionUrl,
+            @ApiParam("轮播图2的响应地址") @RequestParam(required = false) String bannerImage2ActionUrl,
+            @ApiParam("轮播图3的响应地址") @RequestParam(required = false) String bannerImage3ActionUrl,
+            @ApiParam("轮播文章1的地址") @RequestParam(required = false) String bannerArticle1Url,
+            @ApiParam("轮播文章2的地址") @RequestParam(required = false) String bannerArticle2Url,
+            @ApiParam("轮播文章3的地址") @RequestParam(required = false) String bannerArticle3Url,
+            @ApiParam("轮播文章1的摘要") @RequestParam(required = false) String bannerArticle1Brief,
+            @ApiParam("轮播文章2的摘要") @RequestParam(required = false) String bannerArticle2Brief,
+            @ApiParam("轮播文章3的摘要") @RequestParam(required = false) String bannerArticle3Brief
             ) {
         XPWIndex index = new XPWIndex();
         index.setId(id);
-        index.setBannerImage1Url(bannerImage1Url);
-        index.setBannerImage2Url(bannerImage2Url);
-        index.setBannerImage3Url(bannerImage3Url);
-        index.setBannerImage1ActionUrl(bannerImage1ActionUrl);
-        index.setBannerImage2ActionUrl(bannerImage2ActionUrl);
-        index.setBannerImage3ActionUrl(bannerImage3ActionUrl);
-        index.setBannerArticle1Url(bannerArticle1Url);
-        index.setBannerArticle2Url(bannerArticle2Url);
-        index.setBannerArticle3Url(bannerArticle3Url);
+        
+        if (bannerImage1Url != null) {
+            index.setBannerImage1Url(bannerImage1Url);
+        }
+        
+        if (bannerImage2Url != null) {
+            index.setBannerImage2Url(bannerImage2Url);
+        }
+        
+        if (bannerImage3Url != null) {
+            index.setBannerImage3Url(bannerImage3Url);
+        }
+        
+        if (bannerImage1ActionUrl != null) {
+            index.setBannerImage1ActionUrl(bannerImage1ActionUrl);
+        }
+        
+        if (bannerImage2ActionUrl != null) {
+            index.setBannerImage2ActionUrl(bannerImage2ActionUrl);
+        }
+        
+        if (bannerImage3ActionUrl != null) {
+            index.setBannerImage3ActionUrl(bannerImage3ActionUrl);
+        }
+        
+        if (bannerArticle1Url != null) { 
+            index.setBannerArticle1Url(bannerArticle1Url);
+        }
+        
+        if (bannerArticle2Url != null) {
+            index.setBannerArticle2Url(bannerArticle2Url);
+        }
+        
+        if (bannerArticle3Url != null) {
+            index.setBannerArticle3Url(bannerArticle3Url);
+        }
+        
+        if (bannerArticle1Brief != null) {
         index.setBannerArticle1Brief(bannerArticle1Brief);
-        index.setBannerArticle2Brief(bannerArticle2Brief);
-        index.setBannerArticle3Brief(bannerArticle3Brief);
+        }
+        
+        if (bannerArticle2Brief != null) {
+            index.setBannerArticle2Brief(bannerArticle2Brief);
+        }
+        
+        if (bannerArticle3Brief != null) {
+            index.setBannerArticle3Brief(bannerArticle3Brief);
+        }
         
         int ret = indexService.update(index);
         if (ret > 0) {
