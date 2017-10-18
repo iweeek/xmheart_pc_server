@@ -49,7 +49,7 @@ exports.XPW.NavEdit = (function() {
     	    	    $('#secondTable').html(rendered);
     		} else {
     			swal({ 
-    				  title: "当前一级栏目下没有二级栏目", 
+    				  title: "当前栏目下没有导航信息", 
     				  timer: 1500, 
     				  showConfirmButton: false 
     			});
