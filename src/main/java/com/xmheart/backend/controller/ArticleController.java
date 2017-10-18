@@ -2,6 +2,8 @@ package com.xmheart.backend.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -51,8 +53,6 @@ public class ArticleController {
         } else {
             list = articleService.index(columnId);
         }
-
-        
         
         return ResponseEntity.ok(list);
         
@@ -130,6 +130,7 @@ public class ArticleController {
             @ApiParam("文章配图，可选") @RequestParam(required = false) String imgUrl, 
             @ApiParam("文章是否置顶，可选") @RequestParam(required = false) Boolean isPinned, 
             @ApiParam("文章置顶的顺序，可选") @RequestParam(required = false) Byte pinOrder, 
+            @ApiParam("文章发表时间，可选") @RequestParam(required = false) String publishTime,
             @ApiParam("文章是否发表，可选") @RequestParam(required = false) Boolean isPublished, 
             @ApiParam("文章关键字，可选") @RequestParam(required = false) String tags, 
             @ApiParam("文章标题，可选") @RequestParam(required = false) String title, 
@@ -158,7 +159,14 @@ public class ArticleController {
             }
         }
         
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+        if (publishTime != null) {
+            try {
+                article.setPublishTime(sdf.parse(publishTime));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         
         if (isPublished != null) {
             article.setIsPublished(isPublished);
