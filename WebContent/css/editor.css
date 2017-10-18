@@ -38,6 +38,7 @@
 .title-input-wrapper {
 	width: 100%;
 }
+
 .title-input-wrapper .select-title {
   float: left;
   margin-right: 10px;
@@ -53,11 +54,7 @@
 .title-input-wrapper .select-title-fourth {
   display: none;
 }
-.title-input-wrapper .article-title {
-  width: 300px;
-  border: #d4d4d4 solid 1px;
-  text-align: center;
-}
+
 .title-input-wrapper .article-label {
   width: 100px;
   border: #d4d4d4 solid 1px;
@@ -67,21 +64,55 @@
 	text-align:center;
 	border: #d4d4d4 solid 1px;
 }
-.article-create .row{
-	height: 34px;
-	line-height:34px;
-	margin-bottom: 10px;
+.column-create {
+	height: 40px;
+    overflow: hidden;
+    line-height: 40px;
+    margin-bottom: 5px;
 }
-.article-edit {
+.column-create .select2-label {
+	margin-right: 20px;
+}
+.column-edit {
+	height: 40px;
+	overflow:hidden;
+	line-height: 40px;
 	display: none;
+	margin-bottom: 5px;
 }
-.article-edit .select-title {
+.column-edit .select-title {
+	height: 26px;
+	line-height: 40px;
+}
+.column-edit .article-label  {
+	height: 26px;
+	float: left;
+	margin-top: 7px;
+	margin-right: 10px;
+	text-align: center;
+}
+.column-edit .article-btn {
+	height: 26px;
+	float: left;
+	margin-top: 7px;
+	line-height: 22px;
+}
+
+.article-title-wrapper {
+	height: 30px;
+	overflow: hidden;
+	margin-bottom:10px;
+}
+.article-title-wrapper .select-title {
 	height: 26px;
 	line-height: 26px;
 }
-.article-create .select2-label {
-	margin-right: 20px;
+.article-title-wrapper .article-title {
+	 width: 300px;
+  	border: #d4d4d4 solid 1px;
+  	text-align: center;
 }
+
 
 .tag-wrapper .tag-input {
   width: 600px;
