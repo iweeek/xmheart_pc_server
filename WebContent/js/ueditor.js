@@ -48,15 +48,16 @@ $(function () {
             });
         },
         publish: function () {
-        		var $this = $(this);
-        		$this.attr('disabled','disabled');
+    		var $this = $(this);
+    		$this.attr('disabled','disabled');
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate')
             var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
-                title: title.val(),
+//                title: title.val(),
+                title: $('.article-edit .article-title').val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
@@ -115,7 +116,8 @@ $(function () {
         		var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
-                title: title.val(),
+//                title: title.val(),
+                title: $('.article-edit .article-title').val(),
                 content: ue.getContent(),
                 tags: tags.val(),
                 brief: brief,
@@ -123,7 +125,7 @@ $(function () {
                 imgUrl: imgUrl,
                 publishTime: publishTime
             };
-
+            
             if (!ctrl.valid(params)) {
                 return;
             }
