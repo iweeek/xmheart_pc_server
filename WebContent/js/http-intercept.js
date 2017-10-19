@@ -1,4 +1,4 @@
-$(function () {
+$(function () {    
     function getCookieValue(name) {
         var strCookie = document.cookie;
         var arrCookie = strCookie.split(";");
@@ -10,7 +10,12 @@ $(function () {
         }
         return ''
     }
-    
+
+    if(!getCookieValue('xmheart_token')) {
+        var url = 'http://' + window.location.host + '/login.html'
+        window.location.replace(url);
+    }
+
     // 在接受到数据后做统一处理s
     $(document).ajaxError(function (event, request, settings) {
         if (request.status == 401) {
