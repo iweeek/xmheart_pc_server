@@ -86,6 +86,11 @@ exports.XPW.DoctorEdit = (function() {
     			});
     		}
     })
+    .fail(function(e) {
+    	 	$('.ui-loading').hide();
+    	 	$('#doctorTable').html('');
+    	 	swal('当前栏目下没有医生！')
+     })
   }
 
   DoctorEdit.jumpDoctorDep = function () {

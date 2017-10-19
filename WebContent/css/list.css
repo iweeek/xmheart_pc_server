@@ -230,7 +230,7 @@
 .article .QRcode p{ margin-top:0; line-height:48px; color:#ff7544; text-indent:0;}
 .detail{ padding:0px; font-size:12px;}
 .detail h2{font-size:22px; line-height:22px; color:#333; margin-top:40px; margin-bottom:35px;}
-.detail .DIVContent{line-height:26px; font-size:14px;padding:0 18px;}
+.detail .DIVContent{line-height:26px; font-size:14px;padding:0 18px; color: #3a3a4b;}
 #DIVContent a{ color:#bda179;}
 #DIVContent a:hover{ text-decoration:underline; color:#ff7544;}
 
@@ -255,9 +255,11 @@
 
 .PrevNext{ padding-top:30px; line-height:32px;}
 .PrevNext p{ text-indent: 0; margin-top:6px; overflow: hidden;}
+.PrevNext .prev { float: left;}
+.PrevNext .next { float: right;}
 .PrevNext p a { color: #505050 }
 .PrevNext p a:hover{ color:#ff7544;}
-.PrevNext .btn-prev-next{ width:61px; height:30px; background:url(/image/articleBtn_bg.jpg); border:1px #e6e6e6 solid; text-align:center; line-height:30px; display:block; margin-right:14px; float: left;}
+.PrevNext .btn-prev-next{ text-indent: 0; width:61px; height:30px; background:url(/image/articleBtn_bg.jpg); border:1px #e6e6e6 solid; text-align:center; line-height:30px; display:block; float: left;}
 
 .article{ padding:0px 18px;font-size:14px;}
 .intro{line-height:26px;padding:30px 18px;}
@@ -268,14 +270,14 @@
 .article .QRcode p{ margin-top:0; line-height:48px; color:#ff7544; text-indent:0;}
 .detail{ padding:0px; font-size:12px;}
 .detail h2{font-size:22px; line-height:22px; color:#333; margin-top:40px; margin-bottom:35px;}
-.detail .DIVContent{line-height:26px; font-size:14px;padding:0 18px;}
+.detail .DIVContent{line-height:26px; font-size:16px;padding:0 18px;}
 #DIVContent a{ color:#bda179;}
 #DIVContent a:hover{ text-decoration:underline; color:#ff7544;}
 
 .baseRight .article .title04{ height:40px; background:#f3f3f3; border:none; padding:8px 15px; line-height:24px; margin-bottom:35px;}
 .baseRight .article .title04 span{ float:none; padding-right:12px; margin-right:12px; border-right:1px #e5e5e5 solid;}
 #EMChange{ width:102px; position:relative; height:12px; margin:0px 10px; background:url(/image/font_bg.png) 0px 3px no-repeat; display:inline-block; text-align:center; padding-right:12px;}
-#EMChange img{ position:absolute; top:-4px; left:40px;}
+#EMChange img{ position:absolute; top:-4px; left:86px;}
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.fot12{left:-7px;}
 #EMChange a.fot14{left:36px;}
@@ -290,12 +292,6 @@
 .thumb-up { font-size: 14px; color: #666; text-align: center; line-height: 2; border-bottom: 1px solid #ebebeb; padding-bottom: 30px; }
 .thumb-up span { display: block; }
 .thumb-up .up { width: 45px; height: 45px; margin: 0 auto; border-radius: 50%; color: #fff; background-color: #6EB9FF; display: block; font-size: 30px; line-height: 45px; }
-
-.PrevNext{ padding: 30px 0; line-height:32px;}
-.PrevNext p{ text-indent: 0; margin-top:6px; overflow: hidden;}
-.PrevNext p a { color: #505050 }
-.PrevNext p a:hover{ color:#ff7544;}
-.PrevNext .btn-prev-next{ width:61px; height:30px; background:url(/image/articleBtn_bg.jpg); border:1px #e6e6e6 solid; text-align:center; line-height:30px; display:block; margin-right:14px; float: left;}
 
 
 /* 院报 */

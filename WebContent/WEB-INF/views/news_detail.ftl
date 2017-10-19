@@ -32,7 +32,7 @@
 								<a class="fot14" href="javascript:;" data-type="1"></a>
 								<a class="fot16" href="javascript:;" data-type="2"></a>
 							</em>
-							<b id="FontState">14px</b>
+							<b id="FontState">16px</b>
 						</span>
 						<!--<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
 						<div class="itemBase" id="phoneArticle">
@@ -52,16 +52,16 @@
 					<div id="DIVContent" class="DIVContent">
 						${article.content}
 					</div>
-          <div class="PrevNext">
-          	<!--<p>
-          		<span class="btn-prev-next">上一篇</span>
-          		<a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a>
-          	</p>
-          	<p>
-          		<span class="btn-prev-next">下一篇</span>
-          		<a href="NewsDetail-8173.html" title="海西晨报：尤颢：患者的信任让我全力以赴">海西晨报：尤颢：患者的信任让我全力以赴</a>
-          	</p>-->
-          </div>
+		          <div class="PrevNext">
+		          	<p class="prev">
+		          		<a href="#" class="btn-prev-next">上一篇</a>
+		          		<a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a>
+		          	</p>
+		          	<p class="next">
+		          		<a href="#" class="btn-prev-next">下一篇</a>
+		          		<a href="NewsDetail-8173.html" title="海西晨报：尤颢：患者的信任让我全力以赴">海西晨报：尤颢：患者的信任让我全力以赴</a>
+		          	</p>
+		          </div>
 				</div>
 			</div>
 		</div>
