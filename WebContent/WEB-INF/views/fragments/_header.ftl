@@ -266,7 +266,7 @@
         </div>
 
         <#list firstColumns as key, value>
-        <#if parentColumnName??>
+        <#if parentColumnName?? && columnName??>
         <#if key == parentColumnName>
         <div class="breadcrumb">
             <div class="xm-container">
