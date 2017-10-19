@@ -51,7 +51,6 @@ $(function () {
         },
         publish: function () {
     		var $this = $(this);
-    		$this.attr('disabled','disabled');
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();
@@ -70,6 +69,7 @@ $(function () {
             if (!ctrl.valid(params, 'publish')) {
                 return;
             }
+            $this.attr('disabled','disabled');
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
@@ -88,7 +88,10 @@ $(function () {
                     }, function () {
                         window.history.go(-1);
                     });
-                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });;
+                }).error(function() { 
+                		$this.removeAttr('disabled');
+                		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                	});
 
                 return;
             }
@@ -106,11 +109,13 @@ $(function () {
                     ctrl.cancel();
                 });
                 // window.history.go(-1);
-            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
+            }).error(function() { 
+            		$this.removeAttr('disabled');
+            		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+            	});
         },
         save: function () {
         		var $this = $(this);
-        		$this.attr('disabled','disabled');
             // 保存(提交请求但isPublished为false)
         		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
         		var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
@@ -129,7 +134,7 @@ $(function () {
             if (!ctrl.valid(params)) {
                 return;
             }
-            
+            $this.attr('disabled','disabled');
             // 编辑模式
             var articleId = ctrl.getUrlParam('articleId');
             if (articleId) {
@@ -147,7 +152,10 @@ $(function () {
                     }, function () {
                         ctrl.publish();
                     });
-                }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
+                }).error(function() { 
+                		$this.removeAttr('disabled');
+                		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                	});
 
                 return;
             }
@@ -164,7 +172,10 @@ $(function () {
                 }, function () {
                     ctrl.cancel();
                 });
-            }).error(function() { sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); });
+            }).error(function() { 
+            		$this.removeAttr('disabled');
+            		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+            	});
         },
         valid: function (params, type) {
             var articleId = ctrl.getUrlParam('articleId');
@@ -270,6 +281,9 @@ $(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
         		columnId = firstId;
+        		$('.select-title-second').hide();
+        		$('.select-title-third').hide();
+        		$('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_second', '.select-title-second');
         }
     });
@@ -278,6 +292,8 @@ $(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
         		columnId = firstId;
+        		$('.select-title-third').hide();
+        		$('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_third', '.select-title-third');
         }
     });
@@ -286,6 +302,7 @@ $(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
         		columnId = firstId;
+        		$('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_fourth', '.select-title-fourth');
         }
     });
