@@ -8,7 +8,8 @@ import org.apache.commons.lang3.StringUtils;
  * Created by kouga on 2017/8/19.
  */
 public class PathUtil {
-	public static final String HOST_NAME = "localhost:8080";
+    //需要配置
+	public static final String HOST_NAME = "120.77.72.16:8080";
 	public static final String ORIGIN = "http://" + HOST_NAME;
 	
 	public static final String WEBSERVER_PATH = System.getProperty("catalina.base");

@@ -2,6 +2,7 @@ package com.xmheart.backend.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWColumn;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.util.FileUtil;
@@ -141,6 +143,8 @@ public class ArticleController {
         article.setId(id);
         if (columnId != null) {
             article.setColumnId(columnId);
+            XPWColumn column = columnService.getColumnById(columnId);
+            article.setColumnName(column.getColumnName());
         }
         
         if (imgUrl != null) {
@@ -159,13 +163,11 @@ public class ArticleController {
             }
         }
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
         if (publishTime != null) {
-            try {
-                article.setPublishTime(sdf.parse(publishTime));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            Date date = new Date();
+//            Timestamp ts = Timestamp.valueOf(publishTime); 
+//            date = ts;
+            article.setPublishTime(date);
         }
         
         if (isPublished != null) {
