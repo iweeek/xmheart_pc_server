@@ -20,9 +20,9 @@ $(function () {
 
             digest[0].setAttribute("maxlength", max);
             curLength = digest.val().length;
-            numItem.text(max - curLength);
+            numItem.text(curLength);
             digest.on('input propertychange', function () {
-                numItem.text(max - $(this).val().length);
+                numItem.text($(this).val().length);
             });
         },
         getArticle: function (articleId) {
@@ -161,6 +161,8 @@ $(function () {
             }
 
             $.post('/articles', params, function (res) {
+            		$this.removeAttr('disabled');
+            		$('#wordCount textarea').val(brief);
                 swal({
                     title: "新建文章成功",
                     type: "success",
