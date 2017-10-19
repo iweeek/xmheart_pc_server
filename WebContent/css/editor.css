@@ -117,6 +117,9 @@
 .tag-wrapper .tag-input {
   width: 600px;
 }
+.tag-wrapper .date-input {
+  width: 180px;
+}
 .tag-wrapper span {
   font-size: 12px;
 }
