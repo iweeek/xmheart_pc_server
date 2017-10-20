@@ -16,6 +16,7 @@ import com.xmheart.mapper.XPWUserMapper;
 import com.xmheart.model.XPWUser;
 import com.xmheart.model.XPWUserExample;
 import com.xmheart.service.TokenService;
+import com.xmheart.util.MessageDigestUtil;
 import com.xmheart.util.ResponseBody;
 
 import io.jsonwebtoken.CompressionCodecs;
@@ -51,7 +52,7 @@ public class TokenServiceImpl implements TokenService {
 	}
 	
     @Override
-    public int create(String username, String password, int expiredHour, ResponseBody body) {
+    public int create(String username, String password, String salt, int expiredHour, ResponseBody body) {
         XPWUser user;
         XPWUserExample example = new XPWUserExample();
         example.createCriteria().andUsernameEqualTo(username);
@@ -62,7 +63,8 @@ public class TokenServiceImpl implements TokenService {
             user = list.get(0);
         }
         
-        if (!user.getPassword().equals(password)) {
+        String result = MessageDigestUtil.Md5(user.getPassword() + salt);
+        if (!result.equals(password)) {
             return -1;
         }
         
