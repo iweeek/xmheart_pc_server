@@ -53,13 +53,23 @@
 						${article.content}
 					</div>
 		          <div class="PrevNext">
-		          	<p class="prev">
-		          		<a href="#" class="btn-prev-next">上一篇</a>
-		          		<a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a>
-		          	</p>
-		          	<p class="next">
-		          		<a href="#" class="btn-prev-next">下一篇</a>
-		          		<a href="NewsDetail-8173.html" title="海西晨报：尤颢：患者的信任让我全力以赴">海西晨报：尤颢：患者的信任让我全力以赴</a>
+		              <p class="prev">
+		              <#if articlePrev??>
+		                  <a href="${articlePrev.url}" class="btn-prev-next">上一篇</a>
+                          <a href="${articlePrev.url}" title="${articlePrev.title}">${articlePrev.title}</a>
+		              <#else>
+    		              <a href="#" class="btn-prev-next">上一篇</a>
+    		              <a disabled="disabled" title="已经是第一篇">[已经是第一篇]</a>
+		              </#if>
+		              </p>
+		              <p class="next">
+		              <#if articleNext??>
+		                  <a href="${articleNext.url}" class="btn-prev-next">下一篇</a>
+                          <a href="${articleNext.url}" title="${articleNext.title}">${articleNext.title}</a>
+		          	  <#else>
+		                  <a href="#" class="btn-prev-next">下一篇</a>
+		                  <a disabled="disabled" title="已经是最后一篇">[已经是最后一篇]</a>
+		              </#if>>
 		          	</p>
 		          </div>
 				</div>

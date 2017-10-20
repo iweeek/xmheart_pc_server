@@ -335,6 +335,12 @@ public class NewsController {
         XPWArticle article = newsService.getNewsById(id);
         model.addAttribute("article", article);
         
+        XPWArticle articlePrev = newsService.getPrevNewsById(id);
+        model.addAttribute("articlePrev", articlePrev);
+        
+        XPWArticle articleNext = newsService.getNextNewsById(id);
+        model.addAttribute("articleNext", articleNext);
+        
         model = addTopNav(article.getColumnId(), model);
 
         model = addLeftNav(article.getColumnId(), model);
