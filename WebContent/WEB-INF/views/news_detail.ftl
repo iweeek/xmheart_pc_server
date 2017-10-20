@@ -69,7 +69,7 @@
 		          	  <#else>
 		                  <a href="#" class="btn-prev-next">下一篇</a>
 		                  <a disabled="disabled" title="已经是最后一篇">[已经是最后一篇]</a>
-		              </#if>>
+		              </#if>
 		          	</p>
 		          </div>
 				</div>
