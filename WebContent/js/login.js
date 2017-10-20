@@ -30,8 +30,10 @@ $(function () {
             var params = {
                 username: $('#username').val(),
                 password: $.md5(($.md5(originPas).toString() + salt.toString())),
+                salt: salt,
                 expiredHour: 168
             }
+            console.log(originPas, salt, params)
 
             $.post('/tokens', params, function (res) {
                 document.cookie = 'xmheart_token=' + res.obj;
