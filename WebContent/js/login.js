@@ -25,9 +25,11 @@ $(function () {
     }
     var ctrl = {
         login: function () {
+            var originPas = $('#password').val();
+            var salt = Math.ceil(Math.random()*10);
             var params = {
                 username: $('#username').val(),
-                password: $('#password').val(),
+                password: $.md5(($.md5(originPas).toString() + salt.toString())),
                 expiredHour: 168
             }
 
