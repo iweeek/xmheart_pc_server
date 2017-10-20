@@ -119,4 +119,22 @@ public class NewsServiceImpl implements NewsService {
 		return ret;
 	}
 
+        @Override
+        public XPWArticle getPrevNewsById(Long id) {
+            XPWArticleExample example = new XPWArticleExample();
+            example.createCriteria().andIdLessThan(id);
+            XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
+
+            return article;
+        }
+
+        @Override
+        public XPWArticle getNextNewsById(Long id) {
+            XPWArticleExample example = new XPWArticleExample();
+            example.createCriteria().andIdGreaterThan(id);
+            XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
+
+            return article;
+        }
+
 }

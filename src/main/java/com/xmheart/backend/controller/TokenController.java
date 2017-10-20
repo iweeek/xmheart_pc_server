@@ -46,11 +46,13 @@ public class TokenController {
 								@RequestParam String username,
 								@ApiParam("密码")
 								@RequestParam String password,
+								@ApiParam("盐值")
+                                @RequestParam String salt,
 								@ApiParam("有效时间(单位:小时)，不填则默认为1")
 								@RequestParam(required=false, defaultValue="1") Integer expiredHour
 								) {
 	    ResponseBody body = new ResponseBody();
-		int status = tokenService.create(username, password, expiredHour, body);
+		int status = tokenService.create(username, password, salt, expiredHour, body);
 		if (status == 0) {
 		    return ResponseEntity.status(HttpServletResponse.SC_OK).body(body);
 		} else {

@@ -15,11 +15,12 @@ public interface TokenService {
 	* 
 	* @param username 用户名
 	* @param password 密码
+	 * @param salt 
 	* @param expiredHour 过期时间(小时)
 	* @return token传输对象
 	*/
 	@SuppressWarnings("rawtypes")
-	int create(String username, String password, int expiredHour, ResponseBody body);
+	int create(String username, String password, String salt, int expiredHour, ResponseBody body);
 	
 
 }

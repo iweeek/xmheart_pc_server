@@ -108,7 +108,7 @@
 
 </html>
 <script>
-    $("#rightContentFrame").load(function () {
+    $("#rightContentFrame").load(function() {
         var mainheight = $(this).contents().find("body").height() + 200;
         $(this).height(mainheight);
     });
@@ -124,7 +124,7 @@
         }
         return ''
     }
-    if(!getCookieValue('xmheart_token')) {
+    if (!getCookieValue('xmheart_token')) {
         var url = 'http://' + window.location.host + '/login.html'
         window.location.replace(url);
     }

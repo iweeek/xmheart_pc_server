@@ -11,7 +11,7 @@ $(function () {
         return ''
     }
 
-    if(!getCookieValue('xmheart_token')) {
+    if (!getCookieValue('xmheart_token')) {
         var url = 'http://' + window.location.host + '/login.html'
         window.location.replace(url);
     }
