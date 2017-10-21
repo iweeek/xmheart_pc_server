@@ -68,8 +68,8 @@ public class UserController {
 		result = userService.update(user, resBody);
 		
 //		user.setAvatarUrl(userService.getAvatarUrl(user.getAvatarUrl()));
-
-		return ResponseEntity.status(result).body(resBody);
+		resBody.statusMsg = "更新成功";
+		return ResponseEntity.status(HttpServletResponse.SC_OK).body(resBody);
 	}
 	
 	
