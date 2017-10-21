@@ -51,6 +51,7 @@ public class TokenServiceImpl implements TokenService {
 	    
 	}
 	
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public int create(String username, String password, String salt, int expiredHour, ResponseBody body) {
         XPWUser user;
@@ -75,7 +76,8 @@ public class TokenServiceImpl implements TokenService {
 //        for(int i = 0; i < roles.length; i++) {
 //            roles[i] = user.getRoles().get(i).getName();
 //        }
-        body.obj = Jwts.builder()
+        body.obj1 = user;
+        body.obj2 = Jwts.builder()
                 .setSubject(String.valueOf(userId))
                 .setExpiration(expiredDate)
                 .compressWith(CompressionCodecs.DEFLATE)

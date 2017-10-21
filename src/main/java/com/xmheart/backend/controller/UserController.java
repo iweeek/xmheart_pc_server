@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(value = "/users", produces = "application/json;charset=UTF-8")
 public class UserController {
 
-//	private static final Logger logger = LogManager.getLogger(UserController.class);
+	private static final Logger logger = LogManager.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userService;
@@ -57,7 +57,7 @@ public class UserController {
 		XPWUser user = userService.read(id);
 		if (user == null) {
 			resBody.statusMsg = "没有找到该用户";
-			resBody.obj = null;
+//			resBody.obj = null;
 			return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(resBody);
 		}		
 		
@@ -67,7 +67,10 @@ public class UserController {
 		
 		result = userService.update(user, resBody);
 		
+//		user.setAvatarUrl(userService.getAvatarUrl(user.getAvatarUrl()));
+
 		return ResponseEntity.status(result).body(resBody);
 	}
+	
 	
 }
