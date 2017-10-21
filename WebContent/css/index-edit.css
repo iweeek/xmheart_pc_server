@@ -10,41 +10,40 @@
 	overflow: hidden;
 }
 .add-img-list {
-	width: 150px;
-	float: left;
+	width: 500px;
 	position: relative;
-	margin-right: 30px;
+	margin-bottom: 10px;
 }
 .add-img-list .add-image-button {
-	width: 150px;
-	height: 150px;
+	width: 500px;
+	height: 250px;
 	text-align: center;
-	line-height: 150px;
+	line-height: 250px;
 	border: 1px solid #808080;
 	cursor: pointer;
 }
 .add-img-list .add-image-url {
-	width: 150px;
-	height: 150px;
+	width: 500px;
+	height: 250px;
 	display:none;
 }
 .add-img-list .add-image-edit {
-	width: 80px;
-	height: 80px;
+	width: 160px;
+	height: 160px;
 	position: absolute;
 	top: 30px;
 	left: 50%;
-	margin-left: -40px;
+	margin-left: -80px;
 	display: none;
 	cursor: pointer;
 }
 .add-img-list .add-image-edit  img {
-	width: 80px;
-	height: 80px;
+	width: 160px;
+	height: 160px;
 }
 .add-img-list .add-image-url img{
-	width: 150px;
-	height: 150px;
+	width: 500px;
+	height: 250px;
 }
 .add-img-list .add-img-file {
 	display: none;
@@ -69,6 +68,10 @@
 	position: relative;
 	margin-right: 30px;
 }
+.digest-wrapper {
+	position: relative;
+	height: 125px;
+}
 .add-font-list p {
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -78,9 +81,13 @@
 }
 .add-font-list textarea {
 	width: 100%;
-	height: 100px;
+	height: 125px;
 }
-
+.wordwrap {
+	position: absolute;
+    right: 3px;
+    bottom: 2px;
+}
 .search-button {
 	width: 80px;
   	height: 30px;
