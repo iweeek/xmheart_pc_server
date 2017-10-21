@@ -7,6 +7,7 @@ exports.XPW.IndexEdit = (function() {
 	  IndexEdit.getData();
 	  IndexEdit.pageId = 0;
 	  IndexEdit.postData();
+	  IndexEdit.limitFont();
   }
   
   IndexEdit.addSlideImg = function () {
@@ -47,7 +48,6 @@ exports.XPW.IndexEdit = (function() {
   
   IndexEdit.getData = function () {
 	  $.get('/indexPage',function(data){
-		  console.log(data);
 		  IndexEdit.pageId = data.id;
 		  if(data.bannerImage1Url) {
 			  $('.add-img-list').eq(0).find('.add-image-url img').attr('src', data.bannerImage1Url);
@@ -73,6 +73,12 @@ exports.XPW.IndexEdit = (function() {
 		  if (data.bannerImage3ActionUrl) {
 			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage1ActionUrl);
 		  }
+		  $('.add-font-list').eq(0).find('textarea').val(data.bannerArticle1Brief),
+		  $('.add-font-list').eq(0).find('.input-link').val(data.bannerArticle1Url),
+		  $('.add-font-list').eq(1).find('textarea').val(data.bannerArticle2Brief),
+		  $('.add-font-list').eq(1).find('.input-link').val(data.bannerArticle2Url),
+		  $('.add-font-list').eq(2).find('textarea').val(data.bannerArticle3Brief),
+		  $('.add-font-list').eq(2).find('.input-link').val(data.bannerArticle3Url)
 	  });
   }
   IndexEdit.postData = function () {
@@ -83,7 +89,13 @@ exports.XPW.IndexEdit = (function() {
 			bannerImage2Url: $('.add-img-list').eq(1).find('.add-image-url img').attr('src'),
 			bannerImage2ActionUrl: $('.add-img-list').eq(1).find('.add-img-link input').val(),
 			bannerImage3Url: $('.add-img-list').eq(2).find('.add-image-url img').attr('src'),
-			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val()
+			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val(),
+			bannerArticle1Brief: $('.add-font-list').eq(0).find('textarea').val(),
+			bannerArticle1Url: $('.add-font-list').eq(0).find('.input-link').val(),
+			bannerArticle2Brief: $('.add-font-list').eq(1).find('textarea').val(),
+			bannerArticle2Url: $('.add-font-list').eq(1).find('.input-link').val(),
+			bannerArticle3Brief:$('.add-font-list').eq(2).find('textarea').val(),
+			bannerArticle3Url: $('.add-font-list').eq(2).find('.input-link').val()
 		  };
 		  var url = 'indexPage/'+ IndexEdit.pageId;
 		  $.ajax({
@@ -97,9 +109,19 @@ exports.XPW.IndexEdit = (function() {
 		   })
 	  });
   }
-  
-  
-
+  IndexEdit.limitFont = function () {
+	  var numItem = $('.word');
+	  var digest = $('.digest-wrapper textarea');
+	  var max = $('.word').eq(0).text(), curLength;
+      digest[0].setAttribute("maxlength", max);
+      digest[1].setAttribute("maxlength", max);
+      digest[2].setAttribute("maxlength", max);
+      curLength = digest.val().length;
+      numItem.text(curLength);
+      digest.on('input propertychange', function () {
+    	  	 $(this).siblings('.wordwrap').find('.word').text($(this).val().length);
+      });
+  }
 
   return IndexEdit;
 })();
