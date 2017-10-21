@@ -22,11 +22,10 @@ $(function () {
             }
 
             var params = {
-                id: getCookieValue('user_id'),
                 password: $.md5($('#password').val())
             }
             
-            $.post('/users/' + params.id, params)
+            $.post('/users/' + getCookieValue('user_id'), params)
             .success(function(res) {
                 swal('密码修改成功~');
                 var url = 'http://' + window.location.host + '/manager.html'
