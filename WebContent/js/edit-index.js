@@ -73,12 +73,15 @@ exports.XPW.IndexEdit = (function() {
 		  if (data.bannerImage3ActionUrl) {
 			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage1ActionUrl);
 		  }
+		  $('.add-font-list').eq(0).find('.link-tag').val(data.bannerArticle1Tag),
 		  $('.add-font-list').eq(0).find('.link-title').val(data.bannerArticle1Title),
 		  $('.add-font-list').eq(0).find('textarea').val(data.bannerArticle1Brief),
 		  $('.add-font-list').eq(0).find('.input-link').val(data.bannerArticle1Url),
+		  $('.add-font-list').eq(1).find('.link-tag').val(data.bannerArticle2Tag),
 		  $('.add-font-list').eq(1).find('.link-title').val(data.bannerArticle2Title),
 		  $('.add-font-list').eq(1).find('textarea').val(data.bannerArticle2Brief),
 		  $('.add-font-list').eq(1).find('.input-link').val(data.bannerArticle2Url),
+		  $('.add-font-list').eq(2).find('.link-tag').val(data.bannerArticle3Tag),
 		  $('.add-font-list').eq(2).find('.link-title').val(data.bannerArticle3Title),
 		  $('.add-font-list').eq(2).find('textarea').val(data.bannerArticle3Brief),
 		  $('.add-font-list').eq(2).find('.input-link').val(data.bannerArticle3Url)
@@ -93,12 +96,15 @@ exports.XPW.IndexEdit = (function() {
 			bannerImage2ActionUrl: $('.add-img-list').eq(1).find('.add-img-link input').val(),
 			bannerImage3Url: $('.add-img-list').eq(2).find('.add-image-url img').attr('src'),
 			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val(),
+			bannerArticle1Tag: $('.add-font-list').eq(0).find('.link-tag').val(),
 			bannerArticle1Title: $('.add-font-list').eq(0).find('.link-title').val(),
 			bannerArticle1Brief: $('.add-font-list').eq(0).find('textarea').val(),
 			bannerArticle1Url: $('.add-font-list').eq(0).find('.input-link').val(),
+			bannerArticle2Tag: $('.add-font-list').eq(1).find('.link-tag').val(),
 			bannerArticle2Title: $('.add-font-list').eq(1).find('.link-title').val(),
 			bannerArticle2Brief: $('.add-font-list').eq(1).find('textarea').val(),
 			bannerArticle2Url: $('.add-font-list').eq(1).find('.input-link').val(),
+			bannerArticle3Tag: $('.add-font-list').eq(2).find('.link-tag').val(),
 			bannerArticle3Title: $('.add-font-list').eq(2).find('.link-title').val(),
 			bannerArticle3Brief:$('.add-font-list').eq(2).find('textarea').val(),
 			bannerArticle3Url: $('.add-font-list').eq(2).find('.input-link').val()
@@ -111,7 +117,7 @@ exports.XPW.IndexEdit = (function() {
 		      data: parms
 		    })
 		   .done(function(data) {
-			   swal('更新成功')
+			   swal('更新成功');
 		   })
 	  });
   }
