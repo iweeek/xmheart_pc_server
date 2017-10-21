@@ -1,4 +1,4 @@
-$(function () {    
+$(function () {
     function getCookieValue(name) {
         var strCookie = document.cookie;
         var arrCookie = strCookie.split(";");

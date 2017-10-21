@@ -1,52 +1,45 @@
 $(function () {
-    if (!Array.prototype.indexOf) {
-        Array.prototype.indexOf = function (ele) {
-            // 获取数组长度
-            var len = this.length;
-            // 检查值为数字的第二个参数是否存在，默认值为0
-            var fromIndex = Number(arguments[1]) || 0;
-            // 当第二个参数小于0时，为倒序查找，相当于查找索引值为该索引加上数组长度后的值
-            if (fromIndex < 0) {
-                fromIndex += len;
-            }
-            // 从fromIndex起循环数组
-            while (fromIndex < len) {
-                // 检查fromIndex是否存在且对应的数组元素是否等于ele
-                if (fromIndex in this && this[fromIndex] === ele) {
-                    return fromIndex;
-                }
-                fromIndex++;
-            }
-            // 当数组长度为0时返回不存在的信号：-1
-            if (len === 0) {
-                return -1;
+    function getCookieValue(name) {
+        var strCookie = document.cookie;
+        var arrCookie = strCookie.split(";");
+        for (var i = 0; i < arrCookie.length; i++) {
+            var c = arrCookie[i].split("=");
+            if (c[0].indexOf(name) > -1) {
+                return c[1];
             }
         }
+        return ''
     }
+
     var ctrl = {
-        login: function () {
+        modify: function () {
             var originPas = $('#password').val();
-            var salt = Math.ceil(Math.random()*10);
-            var params = {
-                username: $('#username').val(),
-                password: $.md5(($.md5(originPas).toString() + salt.toString())),
-                expiredHour: 168
+            var originrePas = $('#rePassword').val();
+            
+            if (originPas !== originrePas) {
+                swal('两次输入的密码不一样~请重新输入');
+                return;
             }
 
-            $.post('/tokens', params, function (res) {
-                document.cookie = 'xmheart_token=' + res.obj;
-                swal('登录成功~');
-            })
-            .success(function() {
+            var params = {
+                id: getCookieValue('user_id'),
+                password: $.md5($('#password').val())
+            }
+            
+            $.post('/users/' + params.id, params)
+            .success(function(res) {
+                swal('密码修改成功~');
                 var url = 'http://' + window.location.host + '/manager.html'
                 window.location.replace(url);
             })
-            .error(function() { swal('账号或密码错误，登录失败~'); })
+            .error(function(res) { 
+                swal(res.responseJSON.statusMsg);
+            })
 
         }
     }
 
-    $('#login').on('click', function () {
-        ctrl.login();
+    $('#modify').on('click', function () {
+        ctrl.modify();
     });
 });
