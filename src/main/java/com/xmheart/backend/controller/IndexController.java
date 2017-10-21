@@ -42,12 +42,18 @@ public class IndexController {
             @ApiParam("轮播图1的响应地址") @RequestParam(required = false) String bannerImage1ActionUrl,
             @ApiParam("轮播图2的响应地址") @RequestParam(required = false) String bannerImage2ActionUrl,
             @ApiParam("轮播图3的响应地址") @RequestParam(required = false) String bannerImage3ActionUrl,
+            @ApiParam("轮播文章1的题目") @RequestParam(required = false) String bannerArticle1Title,
+            @ApiParam("轮播文章2的题目") @RequestParam(required = false) String bannerArticle2Title,
+            @ApiParam("轮播文章3的题目") @RequestParam(required = false) String bannerArticle3Title,
             @ApiParam("轮播文章1的地址") @RequestParam(required = false) String bannerArticle1Url,
             @ApiParam("轮播文章2的地址") @RequestParam(required = false) String bannerArticle2Url,
             @ApiParam("轮播文章3的地址") @RequestParam(required = false) String bannerArticle3Url,
             @ApiParam("轮播文章1的摘要") @RequestParam(required = false) String bannerArticle1Brief,
             @ApiParam("轮播文章2的摘要") @RequestParam(required = false) String bannerArticle2Brief,
-            @ApiParam("轮播文章3的摘要") @RequestParam(required = false) String bannerArticle3Brief
+            @ApiParam("轮播文章3的摘要") @RequestParam(required = false) String bannerArticle3Brief,
+            @ApiParam("轮播文章1的标签") @RequestParam(required = false) String bannerArticle1Tag,
+            @ApiParam("轮播文章2的标签") @RequestParam(required = false) String bannerArticle2Tag,
+            @ApiParam("轮播文章3的标签") @RequestParam(required = false) String bannerArticle3Tag
             ) {
         XPWIndex index = new XPWIndex();
         index.setId(id);
@@ -99,6 +105,30 @@ public class IndexController {
         if (bannerArticle3Brief != null) {
             index.setBannerArticle3Brief(bannerArticle3Brief);
         }
+        
+        if (bannerArticle1Title != null) {
+            index.setBannerArticle1Title(bannerArticle1Title);
+        }
+        
+        if (bannerArticle2Title != null) {
+            index.setBannerArticle1Title(bannerArticle2Title);
+        }
+        
+        if (bannerArticle3Title != null) {
+            index.setBannerArticle1Title(bannerArticle3Title);
+        }
+        
+        if (bannerArticle1Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle1Tag);
+        }
+        
+        if (bannerArticle2Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle2Tag);
+        }
+        
+        if (bannerArticle3Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle3Tag);
+        }        
         
         int ret = indexService.update(index);
         if (ret > 0) {
