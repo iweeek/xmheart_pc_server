@@ -37,7 +37,6 @@ $(function () {
             $.post('/tokens', params)
             .success(function(res) {
                 document.cookie = 'xmheart_token=' + res.obj2 + 'user_id=' + res.obj1.id;
-                swal('登录成功~');
                 var url = 'http://' + window.location.host + '/manager.html'
                 window.location.replace(url);
             })
