@@ -50,7 +50,10 @@ public class IndexController {
             @ApiParam("轮播文章3的地址") @RequestParam(required = false) String bannerArticle3Url,
             @ApiParam("轮播文章1的摘要") @RequestParam(required = false) String bannerArticle1Brief,
             @ApiParam("轮播文章2的摘要") @RequestParam(required = false) String bannerArticle2Brief,
-            @ApiParam("轮播文章3的摘要") @RequestParam(required = false) String bannerArticle3Brief
+            @ApiParam("轮播文章3的摘要") @RequestParam(required = false) String bannerArticle3Brief,
+            @ApiParam("轮播文章1的标签") @RequestParam(required = false) String bannerArticle1Tag,
+            @ApiParam("轮播文章2的标签") @RequestParam(required = false) String bannerArticle2Tag,
+            @ApiParam("轮播文章3的标签") @RequestParam(required = false) String bannerArticle3Tag
             ) {
         XPWIndex index = new XPWIndex();
         index.setId(id);
@@ -114,6 +117,18 @@ public class IndexController {
         if (bannerArticle3Title != null) {
             index.setBannerArticle1Title(bannerArticle3Title);
         }
+        
+        if (bannerArticle1Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle1Tag);
+        }
+        
+        if (bannerArticle2Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle2Tag);
+        }
+        
+        if (bannerArticle3Tag != null) {
+            index.setBannerArticle1Tag(bannerArticle3Tag);
+        }        
         
         int ret = indexService.update(index);
         if (ret > 0) {
