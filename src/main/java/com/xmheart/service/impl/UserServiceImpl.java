@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public XPWUser read(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        XPWUser user = userMapper.selectByPrimaryKey(id);
+        return user;
     }
 
     @Override
