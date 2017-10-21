@@ -16,6 +16,24 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/list.css">
     <link rel="stylesheet" href="./css/common.css">
+    <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
+    <script>
+        function getCookieValue(name) {
+            var strCookie = document.cookie;
+            var arrCookie = strCookie.split(";");
+            for (var i = 0; i < arrCookie.length; i++) {
+                var c = arrCookie[i].split("=");
+                if (c[0].indexOf(name) > -1) {
+                    return c[1];
+                }
+            }
+            return ''
+        }
+        if (!getCookieValue('xmheart_token')) {
+            var url = 'http://' + window.location.host + '/login.html'
+            window.location.replace(url);
+        }
+    </script>
 </head>
 
 <body>
@@ -101,7 +119,6 @@
         <iframe id="rightContentFrame" frameborder="no" width="100%" border="0" marginwidth="0" marginheight=" 0" scrolling="yes"
             allowtransparency="yes" width="100%" style="min-height: 600px;"> </iframe>
     </div>
-    <script type="text/javascript" src="./js/third_party/jquery.min.js"></script>
     <script type="text/javascript" src="./js/third_party/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/third_party/sweetalert-dev.js"></script>
 </body>
@@ -112,20 +129,4 @@
         var mainheight = $(this).contents().find("body").height() + 200;
         $(this).height(mainheight);
     });
-    
-    function getCookieValue(name) {
-        var strCookie = document.cookie;
-        var arrCookie = strCookie.split(";");
-        for (var i = 0; i < arrCookie.length; i++) {
-            var c = arrCookie[i].split("=");
-            if (c[0].indexOf(name) > -1) {
-                return c[1];
-            }
-        }
-        return ''
-    }
-    if (!getCookieValue('xmheart_token')) {
-        var url = 'http://' + window.location.host + '/login.html'
-        window.location.replace(url);
-    }
 </script>
