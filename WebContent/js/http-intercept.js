@@ -16,6 +16,13 @@ $(function () {
         window.location.replace(url);
     }
 
+    $.ajaxSetup({
+        beforeSend:function(xhr){
+            token = getCookieValue('xmheart_token');
+            xhr.setRequestHeader("Authorization", token);  
+        }
+    });
+
     // 在接收到数据后做统一处理
     $(document).ajaxError(function (event, request, settings) {
         if (request.status == 401) {
