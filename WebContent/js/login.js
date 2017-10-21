@@ -33,13 +33,10 @@ $(function () {
                 salt: salt,
                 expiredHour: 168
             }
-            console.log(originPas, salt, params)
 
-            $.post('/tokens', params, function (res) {
-                document.cookie = 'xmheart_token=' + res.obj;
-                swal('登录成功~');
-            })
-            .success(function() {
+            $.post('/tokens', params)
+            .success(function(res) {
+                document.cookie = 'xmheart_token=' + res.obj2 + 'user_id=' + res.obj1.id;
                 var url = 'http://' + window.location.host + '/manager.html'
                 window.location.replace(url);
             })
