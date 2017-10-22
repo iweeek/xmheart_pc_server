@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * Created by kouga on 2017/8/19.
  */
 public class PathUtil {
-    //需要配置
+    //需要配置，图片和视频服务器
 	public static final String HOST_NAME = "120.77.72.16:8080";
 	public static final String ORIGIN = "http://" + HOST_NAME;
 	
@@ -17,6 +17,9 @@ public class PathUtil {
 	
 	public static final String IMG_FOLDER_PATH = "images" + File.separator;
 	public static final String IMG_STORAGE_PATH = WEBAPP_PATH + File.separator + IMG_FOLDER_PATH + File.separator;
+	
+	public static final String VIDEO_FOLDER_PATH = "videos" + File.separator;
+	public static final String VIDEO_STORAGE_PATH = WEBAPP_PATH + File.separator + VIDEO_FOLDER_PATH + File.separator;
 
     /**
      * 获取到classes目录

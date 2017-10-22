@@ -232,6 +232,21 @@ public class ArticleController {
         return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
     }
     
+    @RequestMapping(value = { "/uploadVideo" }, method = RequestMethod.POST)
+    public ResponseEntity<?> uploadVideo(@ApiParam("视频") @RequestParam MultipartFile video) {
+        String videoPath = "";
+        String videoUrl = "";
+        try {
+            videoPath = FileUtil.uploadImage(PathUtil.VIDEO_STORAGE_PATH, video);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        videoUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + videoPath;
+        return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(videoUrl);
+    }
+    
     @ApiOperation(value = "搜索文章", notes = "搜索文章")
     @RequestMapping(value = { "/articles/show" }, method = RequestMethod.GET)
     public ResponseEntity<?> show(@ApiParam("文章标题的关键字") @RequestParam String keyword, 
