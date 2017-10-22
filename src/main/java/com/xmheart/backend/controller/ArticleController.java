@@ -222,7 +222,7 @@ public class ArticleController {
         String imagePath = "";
         String imageUrl = "";
         try {
-            imagePath = FileUtil.uploadImage(PathUtil.IMG_STORAGE_PATH, image);
+            imagePath = FileUtil.uploadFile(PathUtil.IMG_STORAGE_PATH, image);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -237,7 +237,7 @@ public class ArticleController {
         String videoPath = "";
         String videoUrl = "";
         try {
-            videoPath = FileUtil.uploadImage(PathUtil.VIDEO_STORAGE_PATH, video);
+            videoPath = FileUtil.uploadFile(PathUtil.VIDEO_STORAGE_PATH, video);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

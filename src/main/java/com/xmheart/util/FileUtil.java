@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUtil {
 	
-	static 	public String uploadImage(String path, MultipartFile mFile) throws IOException {
+	static 	public String uploadFile(String path, MultipartFile mFile) throws IOException {
 
 		String fileName = UUID.randomUUID().toString();
 		String filePath = path + File.separator + fileName;

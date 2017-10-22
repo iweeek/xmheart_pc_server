@@ -15,7 +15,7 @@ buildscript {
 apply plugin: "base"
 apply plugin: "java"
 apply plugin: "war"
-apply plugin: "jetty"
+//apply plugin: "jetty"
 apply plugin: "eclipse-wtp"
 apply plugin: "eclipse"
 apply plugin: "org.hidetake.ssh"

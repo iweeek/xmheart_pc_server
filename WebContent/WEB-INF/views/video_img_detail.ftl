@@ -10,7 +10,7 @@
 			<div class="list-main-nav">
 				<h4 class="list-nav-title">${parentColumnName}</h4>
 				<ul class="list-nav-list">
-				<#list listMainNav as k>
+				<#list leftNav as k>
 					<#if k.columnName == columnName>
 						<li class="active"><a href="${k.url}">${k.columnName}</a>
 					<#else>
@@ -34,7 +34,7 @@
 							</em>
 							<b id="FontState">14px</b>
 						</span>
-						<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
+						<!--<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
 						<div class="itemBase" id="phoneArticle">
 							<div class="divType">手机看新闻</div>
 							<ul>
@@ -46,7 +46,7 @@
 							</div>
 							<script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=6713615" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=417542"></script>
 							<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);</script>
-						</div>
+						</div>-->
 					</div>
 					<div class="clear"></div>
 					<div class="video-img-content">
