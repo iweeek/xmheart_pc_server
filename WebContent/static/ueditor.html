@@ -37,7 +37,7 @@
 		<p class="subtit">文章栏目以及标题</p>
 		<div class="title-input-wrapper" id="titleWrapper">
 			<div class="column-create">
-				<div class="select-title select-title-first">一级栏目</div>
+				<div class="select-title select-title-first required">一级栏目</div>
 				<div class="col-sm-2 select-title select-title-first">
 					<select class="form-control" id="J_select_first"></select>
 				</div>
@@ -60,7 +60,7 @@
 				<input type="button" class="article-btn" value="修改" id="editColumn">
 			</div>
 			<div class="article-title-wrapper">
-				<div class="select-title">文章标题</div>
+				<div class="select-title required">文章标题</div>
 				<input type="text" class="article-title" id="articleTitle">
 			</div>
 		</div>
@@ -86,9 +86,9 @@
 	        		</form>
         		</div>
 		</div>
-		<p class="subtit">文章内容</p>
+		<p class="subtit required">文章内容</p>
 		<textarea id="container" name="container" style="width: 1024px; height: 300px; margin: 0 auto;"></textarea>
-		<p class="subtit">文章标签</p>
+		<p class="subtit required">文章标签</p>
 		<div class="tag-wrapper">
 			<input type="text" class="tag-input" value=""> <span>（最多添加5个标签，多个标签之间用“,”分隔）</span>
 		</div>
