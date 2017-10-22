@@ -243,7 +243,7 @@ public class ArticleController {
             return null;
         }
 
-        videoUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + videoPath;
+        videoUrl = PathUtil.ORIGIN + File.separator + PathUtil.VIDEO_FOLDER_PATH + videoPath;
         return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(videoUrl);
     }
     
