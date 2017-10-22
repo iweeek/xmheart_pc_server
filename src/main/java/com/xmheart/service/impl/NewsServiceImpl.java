@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.xmheart.mapper.XPWArticleMapper;
 import com.xmheart.mapper.XPWElecNewspaperMapper;
 import com.xmheart.model.XPWArticle;
@@ -76,7 +77,7 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public XPWArticle getNewsById(Long id) {
 		XPWArticleExample example = new XPWArticleExample();
-		example.createCriteria().andIdEqualTo(id);
+		example.createCriteria().andIdEqualTo(id).andIsPublishedEqualTo(true);
 		XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
 
 		return article;
@@ -120,21 +121,33 @@ public class NewsServiceImpl implements NewsService {
 	}
 
         @Override
-        public XPWArticle getPrevNewsById(Long id) {
+        public XPWArticle getColPrevNewsById(Long colId, Long id) {
             XPWArticleExample example = new XPWArticleExample();
-            example.createCriteria().andIdLessThan(id);
-            XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
-
-            return article;
+            example.createCriteria().andColumnIdEqualTo(colId).andIdLessThan(id).andIsPublishedEqualTo(true);
+            example.setOrderByClause("id desc");
+            
+            PageHelper.startPage(1, 1);
+            List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+            if (list.size() != 0) {
+                return list.get(0);
+            } else {
+                return null;
+            }
         }
 
         @Override
-        public XPWArticle getNextNewsById(Long id) {
+        public XPWArticle getColNextNewsById(Long colId, Long id) {
             XPWArticleExample example = new XPWArticleExample();
-            example.createCriteria().andIdGreaterThan(id);
-            XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
-
-            return article;
+            example.createCriteria().andColumnIdEqualTo(colId).andIdGreaterThan(id).andIsPublishedEqualTo(true);
+            example.setOrderByClause("id asc");
+            
+            PageHelper.startPage(1, 1);
+            List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+            if (list.size() != 0) {
+                return list.get(0);
+            } else {
+                return null;
+            }
         }
 
 }

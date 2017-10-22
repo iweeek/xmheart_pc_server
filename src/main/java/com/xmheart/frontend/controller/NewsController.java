@@ -334,11 +334,13 @@ public class NewsController {
     public String newsDetail(@RequestParam Long id, Model model) {
         XPWArticle article = newsService.getNewsById(id);
         model.addAttribute("article", article);
+        long cateId = article.getColumnId();
         
-        XPWArticle articlePrev = newsService.getPrevNewsById(id);
+        //需要判断同品类
+        XPWArticle articlePrev = newsService.getColPrevNewsById(cateId, id);
         model.addAttribute("articlePrev", articlePrev);
         
-        XPWArticle articleNext = newsService.getNextNewsById(id);
+        XPWArticle articleNext = newsService.getColNextNewsById(cateId, id);
         model.addAttribute("articleNext", articleNext);
         
         model = addTopNav(article.getColumnId(), model);

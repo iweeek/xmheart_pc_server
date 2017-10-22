@@ -95,8 +95,8 @@ public interface NewsService {
 	 */
 	int updateNews(XPWArticle news);
 
-    XPWArticle getPrevNewsById(Long id);
+    XPWArticle getColPrevNewsById(Long colId, Long articleId);
 
-    XPWArticle getNextNewsById(Long id);
+    XPWArticle getColNextNewsById(Long colId, Long id);
 
 }
