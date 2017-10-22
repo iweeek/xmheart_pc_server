@@ -310,3 +310,8 @@
 	display: none;
 }
 
+
+.required:before { 
+  content:"*";
+  color: red;
+}

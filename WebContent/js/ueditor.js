@@ -191,15 +191,13 @@ $(function () {
                 return false;
             }
 
-            if (type === 'publish') {
-                if (!params.content) {
-                    sweetAlert("信息不完整", "请填写内容", "error");
-                    return false;
-                }
-                if (!params.tags) {
-                    sweetAlert("信息不完整", "请填写标签", "error");
-                    return false;
-                }
+            if (!params.content) {
+                sweetAlert("信息不完整", "请填写内容", "error");
+                return false;
+            }
+            if (!params.tags) {
+                sweetAlert("信息不完整", "请填写标签", "error");
+                return false;
             }
             
             return true;
