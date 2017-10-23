@@ -16,4 +16,8 @@ public interface VideoService {
 
     int update(XPWVideo video);
 
+    List<XPWVideo> index();
+
+    XPWVideo read(Long id);
+
 }

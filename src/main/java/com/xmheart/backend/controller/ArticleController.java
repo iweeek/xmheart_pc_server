@@ -144,8 +144,12 @@ public class ArticleController {
     @RequestMapping(value = { "/articles/swapPinOrder" }, method = RequestMethod.POST)
 	public ResponseEntity<?> swapPinOrder(@ApiParam("文章1的Id") Long articleId1, 
 	        @ApiParam("文章2的Id") Long articleId2) {
-	    articleService.swapPinOrder(articleId1, articleId2);
-	    return ResponseEntity.ok(null);
+	    int ret = articleService.swapPinOrder(articleId1, articleId2);
+	    if (ret == 0) {
+	        return ResponseEntity.ok(null);
+	    } else {
+	        return ResponseEntity.status(HttpServletResponse.SC_FORBIDDEN).body(null);
+	    }
 	}
 	
     @ApiOperation(value = "更新一篇文章", notes = "更新一篇文章")

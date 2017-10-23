@@ -105,14 +105,13 @@ public class ElecNewspaperController {
     @RequestMapping(value = { "/newspapers/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("院报Id") @PathVariable Long id,
             @ApiParam("院报标题") @RequestParam(required = false) String title,
-            @ApiParam("院报年份") @RequestParam() String year,
-            @ApiParam("院报期数") @RequestParam() String times,
-            @ApiParam("页数") @RequestParam() Byte page,
+            @ApiParam("院报年份") @RequestParam(required = false) String year,
+            @ApiParam("院报期数") @RequestParam(required = false) String times,
+            @ApiParam("页数") @RequestParam(required = false) Byte page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
             @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
             @ApiParam("是否发布") @RequestParam(required = false) Boolean isPublished) {
         XPWElecNewspaper newspaper = new XPWElecNewspaper();
-
         
         newspaper.setId(id);
 

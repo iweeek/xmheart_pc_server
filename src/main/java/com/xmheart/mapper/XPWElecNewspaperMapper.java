@@ -103,4 +103,7 @@ public interface XPWElecNewspaperMapper {
 
 	@Select("SELECT times FROM xpw_electronic_newspaper WHERE is_published = 1 and years=#{year} GROUP BY times ORDER BY times asc")
 	List<String> getNewsPaperTimes(@Param("year") String year);
+
+	@Select("SELECT * FROM xpw_electronic_newspaper GROUP BY title")
+    List<XPWElecNewspaper> selectByExampleGroup(Object object);
 }

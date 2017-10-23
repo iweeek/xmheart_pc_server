@@ -20,17 +20,17 @@ exports.XPW.videoEdit = (function() {
 //		   swfPath: "/js",
 //		   supplied: "m4a, oga"
 //		  });
-	  var videoSrc = video;
+	  var videoSrc = video || '';
 	  $("#jquery_jplayer_1").jPlayer({
 			ready: function () {
 				$(this).jPlayer("setMedia", {
 					title: "Big Buck Bunny",
-					M4V: videoSrc,
+					m4v: videoSrc,
 					poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 				});
 			},
-			swfPath: "../../dist/jplayer",
-			supplied: "M4V",
+			swfPath: "./third_party/jquery.jplayer.swf",
+			supplied: "m4v",
 			size: {
 				width: "640px",
 				height: "360px",

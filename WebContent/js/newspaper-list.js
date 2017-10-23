@@ -5,6 +5,9 @@ $(function() {
 		pageTotal : 0,
 		noNextPage : false,
 		pinnedNum : 0,
+		years : 0,
+		times : 0,
+		page : 1,
         getColumns: function (parentColumnId, htmlId) {
             $.get('/columns', {
                 parentColumnId: parentColumnId
@@ -57,22 +60,25 @@ $(function() {
 			});
 			return formatDate;
 		},
-		getArticles : function(pageNo, pageSize, columnId) {
+		
+		getNewspaper : function(pageNo, pageSize) {
 			$('.ui-loading').show();
 			var loading = true;
-			$.get('/articles', {
+			$.get('/newspapers', {
 				pageNo : pageNo,
-				pageSize : pageSize,
-				columnId : columnId
+				pageSize : pageSize
 			}, function(data) {
 				if (data.length < ctrl.pageSize) {
 					ctrl.noNextPage = true;
 				}
 				$.each(data, function(name, val) {
 					val.publishTime = ctrl.dateFilter(val.publishTime)
-					if (val.isPinned) {
-						ctrl.pinnedNum++
-					}
+					ctrl.years = val.years;
+					ctrl.times = val.times;
+					ctrl.page = val.page;
+//					if (val.isPinned) {
+//						ctrl.pinnedNum++
+//					}
 				})
 				var template = $('#J_articles_tmpl').html();
 				Mustache.parse(template);
@@ -89,26 +95,32 @@ $(function() {
 				$('.ui-loading').hide();
 			});
 		},
-		publish : function(articleId) {
+		publish : function(newspaperId, year, times, page) {
 			var params = {
-				isPublished : true
+				isPublished : true,
+				year: year,
+				times: times,
+				page: page
 			};
 			// 编辑模式
-			var url = '/articles/' + articleId;
+			var url = '/newspapers/' + newspaperId;
 			$.post(url, params, function(res) {
 				swal("发布成功！");
-				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+				ctrl.getNewspaper(ctrl.pageNo, 10);
 			});
 		},
-		offline : function(articleId) {
+		offline : function(newspaperId, year, times, page) {
 			var params = {
-				isPublished : false
+				isPublished : false,
+				year: year,
+				times: times,
+				page: page
 			};
 			// 编辑模式
-			var url = '/articles/' + articleId;
+			var url = '/newspapers/' + newspaperId;
 			$.post(url, params, function(res) {
 				swal("下线成功！");
-				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+				ctrl.getNewspaper(ctrl.pageNo, 10);
 			});
 		},
 		previous : function() {
@@ -151,11 +163,27 @@ $(function() {
 				}
 			})
 		},
-		handleUpDown : function(articleId1, articleId2) {
-			var url = '/articles/swapPinOrder';
+		handleUpDown : function(articleId, pinOrder, type) {
+			var url = '/articles/' + articleId;
+			if (type === 'up') {
+				if (pinOrder == 0) {
+					swal('已经是最顶部了!');
+					return false;
+				} else {
+					pinOrder = pinOrder - 1;
+				}
+			}
+			if (type === 'down') {
+				if (pinOrder == ctrl.pinnedNum) {
+					swal('已经是最底部了!');
+					return false;
+				} else {
+					pinOrder = pinOrder + 1;
+				}
+			}
 			var params = {
-				articleId1 : articleId1,
-				articleId2 : articleId2
+				pinOrder : pinOrder,
+				isPinned : true
 			};
 			$.post(url, params, function(res) {
 				swal({
@@ -168,24 +196,10 @@ $(function() {
 				}, function() {
 					location.reload()
 				});
-			})
-			.error(function(jqXHR, textStatus, errorThrown){
-				console.log(jqXHR.status);
-				if (jqXHR.status == 403) {
-					swal({
-						title : "不在同一个栏目下",
-						type : "error",
-						showCancelButton : false,
-						confirmButtonColor : "#DD6B55",
-						confirmButtonText : "确定！",
-						closeOnConfirm : false
-					});
-				}
 			});
 		},
 		init : function() {
-			this.getColumns(0, '#J_select_first');
-			ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+			ctrl.getNewspaper(ctrl.pageNo, 10);
 			$('.ui-nodata').hide();
 		}
 	}
@@ -219,7 +233,7 @@ $(function() {
 
 	// 筛选
 	$('#J_filter_btn').on('click', function() {
-		ctrl.getArticles(1, 10, ctrl.columnId);
+		ctrl.getVideos(1, 10, ctrl.columnId);
 	});
 
 	// 上一页
@@ -241,14 +255,20 @@ $(function() {
 
 	// 发布
 	$('#J_articles').on('click', '.publish-btn', function() {
-		var articleId = $(this).data('id');
-		ctrl.publish(articleId);
+		var newspaperId = $(this).data('id');
+		var years = $(this).data('years');
+		var times = $(this).data('times');
+		var page = $(this).data('page');
+		ctrl.publish(newspaperId, years, times, page);
 	});
 
 	// 下线
 	$('#J_articles').on('click', '.offline-btn', function() {
-		var articleId = $(this).data('id');
-		ctrl.offline(articleId);
+		var newspaperId = $(this).data('id');
+		var years = $(this).data('years');
+		var times = $(this).data('times');
+		var page = $(this).data('page');
+		ctrl.offline(newspaperId, years, times, page);
 	})
 
 	// 新建
@@ -268,25 +288,14 @@ $(function() {
 	})
 	// 上移
 	$('#J_articles').on('click', '.up-btn', function() {
-		var articleId2 = $(this).data('id');
-		var index = $(this).parents('tr').index();
-		if(index === 0) {
-			swal('已经是最顶部了!');
-			return false;
-		}
-		var articleId1 = $('#J_articles tr').eq(index-1).find('.up-btn').data('id');
-		ctrl.handleUpDown(articleId1, articleId2);
+		var articleId = $(this).data('id');
+		var pinOrder = $(this).data('order');
+		ctrl.handleUpDown(articleId, pinOrder, 'up');
 	})
 	// 下移
 	$('#J_articles').on('click', '.down-btn', function() {
-		var articleId1 = $(this).data('id');
-		var index = $(this).parents('tr').index();
-		console.log($('#J_articles tr').eq(index+1).find('.down-btn').length)
-		if($('#J_articles tr').eq(index+1).find('.down-btn').length === 0) {
-			swal('已经是最底部了!');
-			return false;
-		}
-		var articleId2 = $('#J_articles tr').eq(index+1).find('.down-btn').data('id');
-		ctrl.handleUpDown(articleId1, articleId2);
+		var articleId = $(this).data('id');
+		var pinOrder = $(this).data('order');
+		ctrl.handleUpDown(articleId, pinOrder, 'down');
 	})
 })
