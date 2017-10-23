@@ -21,6 +21,8 @@ public interface ArticleService {
 
     List<XPWArticle> index(Long columnId);
 
+    List<XPWArticle> index(List<Long> columnIds);
+    
     XPWArticle read(Long id);
 
     List<XPWArticle> index(Long columnId, boolean isPublished);
