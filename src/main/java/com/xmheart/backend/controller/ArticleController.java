@@ -155,9 +155,9 @@ public class ArticleController {
         if (isPinned != null) {
             article.setIsPinned(isPinned);
             if (isPinned) {
-                if (pinOrder != null) {
-                    article.setPinOrder(pinOrder);
-                }
+                pinOrder = articleService.getMaxPinOrder();
+                article.setPinOrder((byte) (pinOrder + 1));
+                
             } else {
                 article.setPinOrder((byte) 0);
             }
