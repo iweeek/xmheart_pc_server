@@ -244,6 +244,7 @@ public class NewsController {
         model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
         
         String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
+        
         model.addAttribute("columnName", columnName);
 
         return "video";
