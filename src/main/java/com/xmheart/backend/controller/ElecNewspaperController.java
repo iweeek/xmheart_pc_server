@@ -72,14 +72,20 @@ public class ElecNewspaperController {
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);
+        } else {
+        		newspaper.setDownloadUrl("");
         }
 
         if (imageUrl != null) {
             newspaper.setImageUrl(imageUrl);
+        } else {
+    			newspaper.setImageUrl("");
         }
         
         if (isPublished != null) {
             newspaper.setIsPublished(isPublished);
+        } else {
+    			newspaper.setIsPublished(false);
         }
         
         newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
