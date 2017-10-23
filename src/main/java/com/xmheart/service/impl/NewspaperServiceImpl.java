@@ -29,7 +29,7 @@ public class NewspaperServiceImpl implements NewspaperService {
 
     @Override
     public List<XPWElecNewspaper> index() {
-        List<XPWElecNewspaper> list = newspaperMapper.selectByExampleGroup(null);
+        List<XPWElecNewspaper> list = newspaperMapper.selectByExample(null);
         return list;
     }
 

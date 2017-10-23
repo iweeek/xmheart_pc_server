@@ -19,11 +19,11 @@
     <body>
         <div class="xm-header">
             <div class="xm-container">
-                <!--<div class="header-icon">
-                    <span class="header-icon-lang">English</span>
+                <<div class="header-icon">
+                    <!--span class="header-icon-lang">English</span-->
                     <a href="#" class="header-icon-wechat"></a>
                     <a href="#" class="header-icon-weibo"></a>
-                </div>-->
+                </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
                 <!--<div class="header-search">
                     <input type="text" class="header-search-text">
