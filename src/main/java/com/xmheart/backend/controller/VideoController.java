@@ -60,7 +60,7 @@ public class VideoController {
 
     }
     
-    @ApiOperation(value = "创建一个视频", notes = "创建一篇视频")
+    @ApiOperation(value = "更新一个视频", notes = "更新一篇视频")
     @RequestMapping(value = { "/videos/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("视频Id") @PathVariable Long id,
             @ApiParam("视频标题") @RequestParam(required = false) String title,
@@ -72,7 +72,9 @@ public class VideoController {
         
         video.setId(id);
 
-        video.setTitle(title);
+        if (title != null) {
+            video.setTitle(title);
+        }
 
         if (imgUrl != null) {
             video.setUrl(imgUrl);

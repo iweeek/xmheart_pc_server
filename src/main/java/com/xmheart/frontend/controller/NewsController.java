@@ -3,7 +3,6 @@ package com.xmheart.frontend.controller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,9 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,13 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xmheart.util.FileUtil;
-import com.xmheart.util.PathUtil;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
@@ -313,9 +306,6 @@ public class NewsController {
 
         PageInfo pageInfo = new PageInfo(list);
         model.addAttribute("pageInfo", pageInfo);
-
-
-
 
         model.addAttribute("page", page);
 
