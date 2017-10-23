@@ -95,7 +95,7 @@ public class IndexController {
         }
         
         if (bannerArticle1Brief != null) {
-        index.setBannerArticle1Brief(bannerArticle1Brief);
+            index.setBannerArticle1Brief(bannerArticle1Brief);
         }
         
         if (bannerArticle2Brief != null) {
@@ -111,11 +111,11 @@ public class IndexController {
         }
         
         if (bannerArticle2Title != null) {
-            index.setBannerArticle1Title(bannerArticle2Title);
+            index.setBannerArticle2Title(bannerArticle2Title);
         }
         
         if (bannerArticle3Title != null) {
-            index.setBannerArticle1Title(bannerArticle3Title);
+            index.setBannerArticle3Title(bannerArticle3Title);
         }
         
         if (bannerArticle1Tag != null) {
@@ -123,11 +123,11 @@ public class IndexController {
         }
         
         if (bannerArticle2Tag != null) {
-            index.setBannerArticle1Tag(bannerArticle2Tag);
+            index.setBannerArticle2Tag(bannerArticle2Tag);
         }
         
         if (bannerArticle3Tag != null) {
-            index.setBannerArticle1Tag(bannerArticle3Tag);
+            index.setBannerArticle3Tag(bannerArticle3Tag);
         }        
         
         int ret = indexService.update(index);

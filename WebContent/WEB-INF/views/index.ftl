@@ -27,11 +27,17 @@
 					<div class="swiper-container" id="noticeSwiper">
 				    <div class="swiper-wrapper">
 				        <div class="swiper-slide">
-				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">媒体看厦心</span>王焱：用爱心和医术筑起“心”的健康</h5>
-							<p class="xm-notice-info">医生、教师、记者、工程师、演员、运动员，第五批厦门市拔尖人才分布在全市50多个单位，涉及社会、经济、文化、教育、卫生、体育等不同行业，他们在各自领域中做出杰出业绩成为熠熠发光的明星，他们在不同的岗位上为厦门新一轮跨越式发展贡献着智慧和汗水。</p>
+				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle1Tag}</span>${index.bannerArticle1Title}</h5>
+							<p class="xm-notice-info">${index.bannerArticle1Brief}</p>
 				        </div>
-				        <div class="swiper-slide">Slide 2</div>
-				        <div class="swiper-slide">Slide 3</div>
+				        <div class="swiper-slide">
+				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle2Tag}</span>${index.bannerArticle2Title}</h5>
+                            <p class="xm-notice-info">${index.bannerArticle2Brief}</p>
+				        </div>
+				        <div class="swiper-slide">
+				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle3Tag}</span>${index.bannerArticle3Title}</h5>
+                            <p class="xm-notice-info">${index.bannerArticle3Brief}</p>
+				        </div>
 				    </div>
 				    <div class="swiper-pagination"></div>
 					</div>
