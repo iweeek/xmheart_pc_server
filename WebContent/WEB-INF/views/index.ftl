@@ -60,7 +60,7 @@
 					<p class="list-info-desc">了解最新医院公告</p>
 				</div>
 			</a>
-			<a href="#" class="xm-banner-list xm-list3">
+			<a href="/map.html" class="xm-banner-list xm-list3">
 				<div class="list-info">
 					<h3 class="list-info-title">医院导航</h3>
 					<p class="list-info-desc">快速找到我们</p>
