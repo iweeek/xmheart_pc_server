@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -278,35 +279,28 @@ public class NewsController {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @ApiOperation(value = "电子院报列表页", notes = "电子院报列表页")
     @RequestMapping(value = { "/elecNewsPaper" }, method = RequestMethod.GET)
-    public String elecNewsPaper(Model model, @RequestParam(required = false) Integer page,
-            @RequestParam(required = false) Integer itemIndex, @RequestParam(required = false) String year,
-            @RequestParam(required = false) String time) {
+    public String elecNewsPaper(Model model, @RequestParam(required = false, defaultValue = "1") Integer page,
+            @RequestParam(required = false, defaultValue = "0") Integer itemIndex, @RequestParam(required = false, defaultValue = "") String year,
+            @RequestParam(required = false, defaultValue = "") String times) {
 
-        if (page == null) {
-            page = new Integer(1);
+        if (year.equals("")) {
+            DateTime now = new DateTime();
+            year = String.valueOf(now.getYear());
         }
-        if (itemIndex == null) {
-            itemIndex = new Integer(0);
-        }
-        if (year == null) {
-            year = "";
-        }
-        if (time == null) {
-            time = "";
-        }
-        
         //23是栏目Id，暂时写死
-        model = addTopNav(23, model);
+        model = addTopNav(ELEC_NEWS_PAPER_COLUMN_ID, model);
 
-        model = addLeftNav(23, model);
+        model = addLeftNav(ELEC_NEWS_PAPER_COLUMN_ID, model);
 
         String columnName = columnService.getColumnById(ELEC_NEWS_PAPER_COLUMN_ID).getColumnName();
         model.addAttribute("pageName", columnName);
 
         PageHelper.startPage(page, PAGE_SIZE);
 
-        List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, time);
-        model.addAttribute("newsPaperList", list);
+        List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, times);
+        if (list.size() != 0) {
+            model.addAttribute("newsPaperList", list);
+        }
 
         PageInfo pageInfo = new PageInfo(list);
         model.addAttribute("pageInfo", pageInfo);
@@ -314,8 +308,8 @@ public class NewsController {
         List<String> years = newsService.getNewsPaperYears();
         model.addAttribute("years", years);
 
-        List<String> times = newsService.getNewsPaperTimes(years.get(0));
-        model.addAttribute("times", times);
+        List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
+        model.addAttribute("times", timesList);
 
         model.addAttribute("itemIndex", itemIndex);
 

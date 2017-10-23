@@ -84,15 +84,19 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<XPWElecNewspaper> getElecNewsPaper(String year, String time) {
+	public List<XPWElecNewspaper> getElecNewsPaper(String year, String times) {
 		XPWElecNewspaperExample example = new XPWElecNewspaperExample();
 		Criteria criteria = example.createCriteria();
-		if (year != "") {
+		
+		if (!year.equals("")) {
 			criteria.andYearsEqualTo(year);
+		} 
+		
+		if (!times.equals("")) {
+			criteria.andTimesEqualTo(times);
 		}
-		if (time != "") {
-			criteria.andTimesEqualTo(time);
-		}
+		
+		example.setOrderByClause("publish_time desc");
 		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(example);
 		return list;
 	}

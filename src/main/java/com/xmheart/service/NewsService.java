@@ -63,7 +63,7 @@ public interface NewsService {
 	 * @param time the time
 	 * @return the elec news paper
 	 */
-	List<XPWElecNewspaper> getElecNewsPaper(String year, String time);
+	List<XPWElecNewspaper> getElecNewsPaper(String year, String times);
 
 	/**
 	 * Gets the new paper years.

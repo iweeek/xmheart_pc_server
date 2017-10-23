@@ -21,7 +21,7 @@
 		</div>
 			<div class="baseRight news-paper">
 				<div class="title01">${pageName}</div>
-				<#if (newsPaperList?size>0)>
+				<#if newsPaperList?? && (newsPaperList?size>0)>
 				<div class="title07">${newsPaperList[itemIndex].title}
 				</#if>
 					<form>
@@ -44,6 +44,7 @@
 				<div class="inst">
 					<div class="instRleft">
 						<ul>
+						    <#if newsPaperList??>
 							<#list newsPaperList as key>
 							<#if key_index == 0>
 								<li class="first">
@@ -53,7 +54,7 @@
 									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								</#if>
 										<em class="animated">
-											<span class="title">${key.title}</span>
+											<span class="title">第${key_index + 1}页</span>
 										</em>
 									</a>
 								</li>
@@ -65,16 +66,19 @@
 									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
 								</#if>
 										<em class="animated">
-											<span class="title">${key.title}</span>
+											<span class="title">第${key_index + 1}页</span>
 										</em>
 									</a>
 								</li>
 							</#if>
 							</#list>
+							</#if>
 						</ul>
 					</div>
 					<div class="instRright">
+					   <#if newsPaperList??>
 						${newsPaperList[itemIndex].content}
+					   </#if>
 					</div>
 					<div class="clear"></div>
 				</div>
