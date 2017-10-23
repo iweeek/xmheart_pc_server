@@ -99,6 +99,10 @@ public class ArticleServiceImpl implements ArticleService {
             return -1;
         }
         
+        if (article1.getColumnId() != article2.getColumnId()) {
+            return -1;
+        }
+        
         Byte order1 = article1.getPinOrder();
         article1.setPinOrder(article2.getPinOrder());
         articleMapper.updateByPrimaryKey(article1);
