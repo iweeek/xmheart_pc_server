@@ -135,10 +135,10 @@ $(function(){
 	  year = $(this).val();
   });
   $("#ddlTimes2").change(function(){
-	  time = $(this).val();
+	  times = $(this).val();
   });
   $("#GoToNewspaper2").on("click",function(){
-	  var str = "?page=1&itemIndex=0	&year=" + year + "&time=" + time ;
+	  var str = "?page=1&year=" + year + "&times=" + times;
 	  location.href = str;
   });
 

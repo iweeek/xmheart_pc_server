@@ -283,9 +283,18 @@ public class NewsController {
             @RequestParam(required = false, defaultValue = "") String year,
             @RequestParam(required = false, defaultValue = "") String times) {
 
+        List<String> years = newsService.getNewsPaperYears();
+        model.addAttribute("years", years);
+        
+        List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
+        model.addAttribute("times", timesList);
+        
         if (year.equals("")) {
-            DateTime now = new DateTime();
-            year = String.valueOf(now.getYear());
+            year = years.get(0);
+        }
+        
+        if (times.equals("")) {
+            times = timesList.get(0);
         }
         //23是栏目Id，暂时写死
         model = addTopNav(ELEC_NEWS_PAPER_COLUMN_ID, model);
@@ -305,11 +314,8 @@ public class NewsController {
         PageInfo pageInfo = new PageInfo(list);
         model.addAttribute("pageInfo", pageInfo);
 
-        List<String> years = newsService.getNewsPaperYears();
-        model.addAttribute("years", years);
 
-        List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
-        model.addAttribute("times", timesList);
+
 
         model.addAttribute("page", page);
 
