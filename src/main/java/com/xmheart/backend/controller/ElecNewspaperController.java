@@ -59,7 +59,7 @@ public class ElecNewspaperController {
             @ApiParam("页数") @RequestParam() Byte page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
             @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
-            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
+            @ApiParam("是否发布") @RequestParam(required = false) Boolean isPublished) {
         XPWElecNewspaper newspaper = new XPWElecNewspaper();
 
         newspaper.setTitle(title);
@@ -104,7 +104,7 @@ public class ElecNewspaperController {
             @ApiParam("页数") @RequestParam() Byte page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
             @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
-            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
+            @ApiParam("是否发布") @RequestParam(required = false) Boolean isPublished) {
         XPWElecNewspaper newspaper = new XPWElecNewspaper();
 
         
