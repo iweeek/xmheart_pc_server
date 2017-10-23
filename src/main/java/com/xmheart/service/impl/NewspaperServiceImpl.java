@@ -1,5 +1,7 @@
 package com.xmheart.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,18 @@ public class NewspaperServiceImpl implements NewspaperService {
     public int update(XPWElecNewspaper newspaper) {
         int ret = newspaperMapper.updateByPrimaryKeySelective(newspaper);
         return ret;
+    }
+
+    @Override
+    public List<XPWElecNewspaper> index() {
+        List<XPWElecNewspaper> list = newspaperMapper.selectByExample(null);
+        return list;
+    }
+
+    @Override
+    public XPWElecNewspaper read(Long id) {
+        XPWElecNewspaper newspaper = newspaperMapper.selectByPrimaryKey(id);
+        return newspaper;
     }
 	
 }

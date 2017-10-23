@@ -1,5 +1,9 @@
 package com.xmheart.backend.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +26,37 @@ public class ElecNewspaperController {
 
     @Autowired
     NewspaperService newspaperService;
+    
+    @ApiOperation(value = "获取院报列表", notes = "获取院报列表")
+    @RequestMapping(value = { "/newspapers" }, method = RequestMethod.GET)
+    public ResponseEntity<?> index() {
+        List<XPWElecNewspaper> list = new ArrayList<XPWElecNewspaper>();
+
+        list = newspaperService.index();
+        if (list.size() > 0) {
+            return ResponseEntity.ok(list);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        }
+    }
+    
+    @ApiOperation(value = "获取院报列表", notes = "获取院报列表")
+    @RequestMapping(value = { "/newspapers/{id}" }, method = RequestMethod.GET)
+    public ResponseEntity<?> read(@PathVariable Long id) {
+        XPWElecNewspaper newspaper = newspaperService.read(id);
+        if (newspaper != null) {
+            return ResponseEntity.ok(newspaper);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        }
+    }    
 
     @ApiOperation(value = "创建一个院报", notes = "创建一个院报")
     @RequestMapping(value = { "/newspapers" }, method = RequestMethod.POST)
     public ResponseEntity<?> create(@ApiParam("院报标题") @RequestParam String title,
             @ApiParam("院报年份") @RequestParam String year,
             @ApiParam("院报期数") @RequestParam String times,
-            @ApiParam("页数") @RequestParam() String page,
+            @ApiParam("页数") @RequestParam() Byte page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
             @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
             @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
@@ -39,6 +67,8 @@ public class ElecNewspaperController {
         newspaper.setYears(year);
 
         newspaper.setTimes(times);
+        
+        newspaper.setPage(page);
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);
@@ -51,11 +81,13 @@ public class ElecNewspaperController {
         if (isPublished != null) {
             newspaper.setIsPublished(isPublished);
         }
+        
+        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
+        
+        newspaper.setPublishTime(new Date());
 
         int ret = newspaperService.create(newspaper);
         if (ret > 0) {
-            newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "$times=" + times);
-            newspaperService.update(newspaper);
             return ResponseEntity.ok(null);
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
@@ -69,7 +101,7 @@ public class ElecNewspaperController {
             @ApiParam("院报标题") @RequestParam(required = false) String title,
             @ApiParam("院报年份") @RequestParam() String year,
             @ApiParam("院报期数") @RequestParam() String times,
-            @ApiParam("页数") @RequestParam() String page,
+            @ApiParam("页数") @RequestParam() Byte page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
             @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
             @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
@@ -86,7 +118,9 @@ public class ElecNewspaperController {
 
         newspaper.setTimes(times);
         
-        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "$times=" + times);
+        newspaper.setPage(page);
+        
+        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);

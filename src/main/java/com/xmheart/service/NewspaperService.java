@@ -1,5 +1,7 @@
 package com.xmheart.service;
 
+import java.util.List;
+
 import com.xmheart.model.XPWElecNewspaper;
 
 
@@ -12,5 +14,9 @@ public interface NewspaperService {
     int create(XPWElecNewspaper newspaper);
 
     int update(XPWElecNewspaper newspaper);
+
+    List<XPWElecNewspaper> index();
+
+    XPWElecNewspaper read(Long id);
 
 }

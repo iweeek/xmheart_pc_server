@@ -97,7 +97,7 @@ public class NewsServiceImpl implements NewsService {
 		}
 		
 		criteria.andIsPublishedEqualTo(true);
-		example.setOrderByClause("publish_time desc");
+		example.setOrderByClause("page asc");
 		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(example);
 		return list;
 	}
