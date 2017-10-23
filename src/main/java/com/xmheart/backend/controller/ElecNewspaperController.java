@@ -62,7 +62,7 @@ public class ElecNewspaperController {
     }
     
     @ApiOperation(value = "更新一个视频", notes = "更新一篇视频")
-    @RequestMapping(value = { "/videos/{id}" }, method = RequestMethod.POST)
+    @RequestMapping(value = { "/newspapers/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("院报Id") @PathVariable Long id,
             @ApiParam("院报标题") @RequestParam(required = false) String title,
             @ApiParam("院报年份") @RequestParam(required = false) String year,

@@ -197,21 +197,25 @@ $(function() {
 	// 二级分类的出现
 	$('#J_select_first').change(function() {
 		var firstId = $(this).val();
-		if (firstId === '请选择') {
+		var currentText = $( "#J_select_first option:selected" ).text();
+		if (currentText === '请选择') {
 			$('.select-title-second').hide();
 		}
-
-		if (firstId !== 0 && firstId !== '请选择') {
+		if (firstId !== 0 && currentText !== '请选择') {
 			ctrl.columnId = firstId;
 			$('.select-title-second').show();
 			ctrl.getColumns(firstId, '#J_select_second');
+		}
+		if (currentText == '首页') {
+			$('.select-title-second').hide();
 		}
 	});
 
 	// 获取二级分类的id
 	$('#J_select_second').change(function() {
-		var firstId = $(this).val();
-		if (firstId !== 0 && firstId !== '请选择') {
+		var secondId = $(this).val();
+		var currentText = $( "#J_select_second option:selected" ).text();
+		if (secondId !== 0 && currentText !== '请选择') {
 			ctrl.columnId = $(this).val()
 		};
 	});

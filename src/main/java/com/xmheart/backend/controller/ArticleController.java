@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,24 +42,46 @@ public class ArticleController {
     @Autowired
     private ColumnService columnService;
 	
-    @ApiOperation(value = "获取文章", notes = "获取文章")
-    @RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
-    public ResponseEntity<?> index(@ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer pageNo,
-            @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize, 
-            @ApiParam("栏目Id") @RequestParam(required = false) Long columnId) {
-        List<XPWArticle> list;
-       
-        PageHelper.startPage(pageNo, pageSize);
-        
-        if (columnId == null) {
-            list = articleService.index();
-        } else {
-            list = articleService.index(columnId);
-        }
-        
-        return ResponseEntity.ok(list);
-        
-    }
+	@ApiOperation(value = "获取文章", notes = "获取文章")
+	@RequestMapping(value = { "/articles" }, method = RequestMethod.GET)
+	public ResponseEntity<?> index(@ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer pageNo,
+			@ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+			@ApiParam("栏目Id") @RequestParam(required = false) Long columnId) {
+		List<XPWArticle> list = null;
+		List<Long> allColumns = null;
+		allColumns = getChildColumns(allColumns, columnId);
+		
+		PageHelper.startPage(pageNo, pageSize);
+
+		if (columnId == null) {
+			list = articleService.index();
+		} else {
+			list = (articleService.index(allColumns));
+		}
+		
+		for (long id : allColumns) {
+			System.out.println(id);
+		}
+		return ResponseEntity.ok(list);
+	}
+
+	public List<Long> getChildColumns(List<Long> list, Long columnId) {
+		System.out.println(columnId);
+		if (list == null) {
+			list = new ArrayList<Long>();
+		}
+		List<XPWColumn> columns = columnService.getColumnsByParentId(columnId);
+		if (columns.size() == 0) {
+			list.add(columnId);
+			return list;
+		} else {
+			for (XPWColumn item : columns) {
+				getChildColumns(list, item.getId());
+			}
+		}
+
+		return list;
+	}
     
 	
     //TODO 这个接口要移到后台系统中去
