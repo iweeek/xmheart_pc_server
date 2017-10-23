@@ -21,7 +21,8 @@
 		<script src="/js/swiper-3.4.2.jquery.min.js"></script>
 		<script src="/js/common.js"></script>
 		
-		<div class="xm-float-right">
+		<#if firstColumnName != "首页">
+        <div class="xm-float-right">
             <a>
                 <img src="/image/img21.png">
                 <p>收起</p>
@@ -31,17 +32,17 @@
                 <div class="up" style="display: none; opacity: 1;">掌上厦心</div>
                 <div class="code"><img src="/image/barcode_app.gif" alt=""></div>
             </a>-->
-            <a style="display: block;">
+            <a href="#" style="display: block;">
                 <img src="/image/img12.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">官方微信</div>
                 <!--<div class="code"><img src="/image/barcode_wx.gif" alt=""></div>-->
             </a>
-            <a style="display: block;">
+            <a href="#" style="display: block;">
                 <img src="/image/img13.png"><i></i>
                 <div class="up" style="opacity: 1; display: none;">官方微博</div>
                 <!--<div class="code"><img src="/image/barcode_wx.gif" alt=""></div>-->
             </a>
-            <a href="" style="display: block;">
+            <a href="#" style="display: block;">
                 <img src="/image/img14.png"><i></i>
                 <div class="up" style="display: none; opacity: 1;">我要挂号</div>
             </a>
@@ -58,6 +59,7 @@
                 <div class="up" style="opacity: 1; display: none;">返回顶部</div>
             </a>
         </div>
+        </#if>
     </body>
 </html>
 <script>
