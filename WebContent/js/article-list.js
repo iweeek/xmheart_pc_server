@@ -151,27 +151,11 @@ $(function() {
 				}
 			})
 		},
-		handleUpDown : function(articleId, pinOrder, type) {
-			var url = '/articles/' + articleId;
-			if (type === 'up') {
-				if (pinOrder == 0) {
-					swal('已经是最顶部了!');
-					return false;
-				} else {
-					pinOrder = pinOrder - 1;
-				}
-			}
-			if (type === 'down') {
-				if (pinOrder == ctrl.pinnedNum) {
-					swal('已经是最底部了!');
-					return false;
-				} else {
-					pinOrder = pinOrder + 1;
-				}
-			}
+		handleUpDown : function(articleId1, articleId2) {
+			var url = '/articles/swapPinOrder';
 			var params = {
-				pinOrder : pinOrder,
-				isPinned : true
+				articleId1 : articleId1,
+				articleId2 : articleId2
 			};
 			$.post(url, params, function(res) {
 				swal({
@@ -184,6 +168,19 @@ $(function() {
 				}, function() {
 					location.reload()
 				});
+			})
+			.error(function(jqXHR, textStatus, errorThrown){
+				console.log(jqXHR.status);
+				if (jqXHR.status == 403) {
+					swal({
+						title : "不在同一个栏目下",
+						type : "error",
+						showCancelButton : false,
+						confirmButtonColor : "#DD6B55",
+						confirmButtonText : "确定！",
+						closeOnConfirm : false
+					});
+				}
 			});
 		},
 		init : function() {
@@ -271,14 +268,25 @@ $(function() {
 	})
 	// 上移
 	$('#J_articles').on('click', '.up-btn', function() {
-		var articleId = $(this).data('id');
-		var pinOrder = $(this).data('order');
-		ctrl.handleUpDown(articleId, pinOrder, 'up');
+		var articleId2 = $(this).data('id');
+		var index = $(this).parents('tr').index();
+		if(index === 0) {
+			swal('已经是最顶部了!');
+			return false;
+		}
+		var articleId1 = $('#J_articles tr').eq(index-1).find('.up-btn').data('id');
+		ctrl.handleUpDown(articleId1, articleId2);
 	})
 	// 下移
 	$('#J_articles').on('click', '.down-btn', function() {
-		var articleId = $(this).data('id');
-		var pinOrder = $(this).data('order');
-		ctrl.handleUpDown(articleId, pinOrder, 'down');
+		var articleId1 = $(this).data('id');
+		var index = $(this).parents('tr').index();
+		console.log($('#J_articles tr').eq(index+1).find('.down-btn').length)
+		if($('#J_articles tr').eq(index+1).find('.down-btn').length === 0) {
+			swal('已经是最底部了!');
+			return false;
+		}
+		var articleId2 = $('#J_articles tr').eq(index+1).find('.down-btn').data('id');
+		ctrl.handleUpDown(articleId1, articleId2);
 	})
 })
