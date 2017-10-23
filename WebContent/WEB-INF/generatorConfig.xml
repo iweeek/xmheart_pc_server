@@ -66,6 +66,7 @@
 
     <table schema="xmeart_pc_web" tableName="xpw_electronic_newspaper" domainObjectName ="XPWElecNewspaper" >
       <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <columnOverride column="is_published" javaType="java.lang.Boolean"/>
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>

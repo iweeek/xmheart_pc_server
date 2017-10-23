@@ -16,7 +16,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@Api(tags = "文章管理接口")
+@Api(tags = "院报管理接口")
 @Controller
 public class ElecNewspaperController {
 
@@ -26,21 +26,19 @@ public class ElecNewspaperController {
     @ApiOperation(value = "创建一个院报", notes = "创建一个院报")
     @RequestMapping(value = { "/newspapers" }, method = RequestMethod.POST)
     public ResponseEntity<?> create(@ApiParam("院报标题") @RequestParam String title,
-            @ApiParam("院报年份") @RequestParam(required = false) String year,
-            @ApiParam("院报期数") @RequestParam(required = false) String times,
+            @ApiParam("院报年份") @RequestParam String year,
+            @ApiParam("院报期数") @RequestParam String times,
+            @ApiParam("页数") @RequestParam() String page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
-            @ApiParam("图片地址") @RequestParam(required = false) String imageUrl) {
+            @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
+            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
         XPWElecNewspaper newspaper = new XPWElecNewspaper();
 
         newspaper.setTitle(title);
 
-        if (year != null) {
-            newspaper.setYears(year);
-        }
+        newspaper.setYears(year);
 
-        if (times != null) {
-            newspaper.setTimes(times);
-        }
+        newspaper.setTimes(times);
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);
@@ -49,10 +47,14 @@ public class ElecNewspaperController {
         if (imageUrl != null) {
             newspaper.setImageUrl(imageUrl);
         }
+        
+        if (isPublished != null) {
+            newspaper.setIsPublished(isPublished);
+        }
 
         int ret = newspaperService.create(newspaper);
         if (ret > 0) {
-            newspaper.setUrl("/videoNewsDetail?id=" + String.valueOf(newspaper.getId()));
+            newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "$times=" + times);
             newspaperService.update(newspaper);
             return ResponseEntity.ok(null);
         } else {
@@ -65,10 +67,12 @@ public class ElecNewspaperController {
     @RequestMapping(value = { "/newspapers/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("院报Id") @PathVariable Long id,
             @ApiParam("院报标题") @RequestParam(required = false) String title,
-            @ApiParam("院报年份") @RequestParam(required = false) String year,
-            @ApiParam("院报期数") @RequestParam(required = false) String times,
+            @ApiParam("院报年份") @RequestParam() String year,
+            @ApiParam("院报期数") @RequestParam() String times,
+            @ApiParam("页数") @RequestParam() String page,
             @ApiParam("下载地址") @RequestParam(required = false) String downloadUrl,
-            @ApiParam("图片地址") @RequestParam(required = false) String imageUrl) {
+            @ApiParam("图片地址") @RequestParam(required = false) String imageUrl,
+            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
         XPWElecNewspaper newspaper = new XPWElecNewspaper();
 
         
@@ -78,13 +82,11 @@ public class ElecNewspaperController {
             newspaper.setTitle(title);
         }
 
-        if (year != null) {
-            newspaper.setYears(year);
-        }
+        newspaper.setYears(year);
 
-        if (times != null) {
-            newspaper.setTimes(times);
-        }
+        newspaper.setTimes(times);
+        
+        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "$times=" + times);
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);
@@ -93,7 +95,11 @@ public class ElecNewspaperController {
         if (imageUrl != null) {
             newspaper.setImageUrl(imageUrl);
         }
-
+        
+        if (isPublished != null) {
+            newspaper.setIsPublished(isPublished);
+        }
+        
         int ret = newspaperService.update(newspaper);
         if (ret > 0) {
             return ResponseEntity.ok(null);

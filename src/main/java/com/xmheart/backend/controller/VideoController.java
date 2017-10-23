@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@Api(tags = "文章管理接口")
+@Api(tags = "影像管理接口")
 @Controller
 public class VideoController {
 
@@ -28,7 +28,8 @@ public class VideoController {
             @ApiParam("视频缩略图的地址") @RequestParam(required = false) String imgUrl,
             @ApiParam("视频地址") @RequestParam(required = false) String videoUrl,
             @ApiParam("视频描述") @RequestParam(required = false) String brief,
-            @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned) {
+            @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned,
+            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
         XPWVideo video = new XPWVideo();
 
         video.setTitle(title);
@@ -47,6 +48,10 @@ public class VideoController {
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        }
+        
+        if (isPublished != null) {
+            video.setIsPublished(isPublished);
         }
 
         int ret = videoService.create(video);
@@ -67,7 +72,8 @@ public class VideoController {
             @ApiParam("视频缩略图的地址") @RequestParam(required = false) String imgUrl,
             @ApiParam("视频地址") @RequestParam(required = false) String videoUrl,
             @ApiParam("视频描述") @RequestParam(required = false) String brief,
-            @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned) {
+            @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned,
+            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished) {
         XPWVideo video = new XPWVideo();
         
         video.setId(id);
@@ -90,6 +96,11 @@ public class VideoController {
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        }
+        
+        
+        if (isPublished != null) {
+            video.setIsPublished(isPublished);
         }
 
         int ret = videoService.update(video);
