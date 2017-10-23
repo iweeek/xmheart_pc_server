@@ -280,7 +280,7 @@ public class NewsController {
     @ApiOperation(value = "电子院报列表页", notes = "电子院报列表页")
     @RequestMapping(value = { "/elecNewsPaper" }, method = RequestMethod.GET)
     public String elecNewsPaper(Model model, @RequestParam(required = false, defaultValue = "1") Integer page,
-            @RequestParam(required = false, defaultValue = "0") Integer itemIndex, @RequestParam(required = false, defaultValue = "") String year,
+            @RequestParam(required = false, defaultValue = "") String year,
             @RequestParam(required = false, defaultValue = "") String times) {
 
         if (year.equals("")) {
@@ -295,7 +295,7 @@ public class NewsController {
         String columnName = columnService.getColumnById(ELEC_NEWS_PAPER_COLUMN_ID).getColumnName();
         model.addAttribute("pageName", columnName);
 
-        PageHelper.startPage(page, PAGE_SIZE);
+        PageHelper.startPage(1, PAGE_SIZE);
 
         List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, times);
         if (list.size() != 0) {
@@ -311,7 +311,7 @@ public class NewsController {
         List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
         model.addAttribute("times", timesList);
 
-        model.addAttribute("itemIndex", itemIndex);
+        model.addAttribute("page", page);
 
         return "news_paper";
     }

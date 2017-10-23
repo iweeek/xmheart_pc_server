@@ -22,7 +22,7 @@
 			<div class="baseRight news-paper">
 				<div class="title01">${pageName}</div>
 				<#if newsPaperList?? && (newsPaperList?size>0)>
-				<div class="title07">${newsPaperList[itemIndex].title}
+				<div class="title07">${newsPaperList[page].title}
 				</#if>
 					<form>
 						<select id="ddlYears2">
@@ -48,10 +48,11 @@
 							<#list newsPaperList as key>
 							<#if key_index == 0>
 								<li class="first">
-								<#if key_index == itemIndex>
-									<a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+								<#-- index从0开始，page从1开始-->
+								<#if key_index == page - 1>
+									<a class="active" href="${key.url}">${key_index + 1}
 								<#else>
-									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+									<a href="${key.url}">${key_index + 1}
 								</#if>
 										<em class="animated">
 											<span class="title">第${key_index + 1}页</span>
@@ -60,10 +61,10 @@
 								</li>
 							<#else>
 								<li >
-								<#if key_index == itemIndex>
-									<a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+								<#if key_index == page - 1>
+									<a class="active" href="${key.url}">${key_index + 1}
 								<#else>
-									<a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+									<a href="${key.url}">${key_index + 1}
 								</#if>
 										<em class="animated">
 											<span class="title">第${key_index + 1}页</span>
@@ -77,7 +78,7 @@
 					</div>
 					<div class="instRright">
 					   <#if newsPaperList??>
-						${newsPaperList[itemIndex].content}
+						${newsPaperList[page].content}
 					   </#if>
 					</div>
 					<div class="clear"></div>
