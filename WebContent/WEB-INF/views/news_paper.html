@@ -1,101 +1,91 @@
-<#include "./fragments/_header.ftl">
-    <!-- list container -->
-    <div class="breadcrumb">
-        <div class="xm-container">
-            <a href="#">新闻中心</a><i>/</i><span>媒体聚焦</span>
-        </div>
+<#include"./fragments/_header.ftl"> <!-- list container -->
+<div class="breadcrumb">
+    <div class="xm-container">
+        <a href="#">新闻中心</a>
+        <i>/</i><span>媒体聚焦</span>
     </div>
-    <div class="list-container">
-        <div class="list-main">
-            <div class="list-main-nav">
+</div>
+<div class="list-container">
+    <div class="list-main">
+        <div class="list-main-nav">
             <h4 class="list-nav-title">新闻中心</h4>
             <ul class="list-nav-list">
-            <#list leftNav as k>
-                <#if k.columnName == pageName>
-                    <li class="active"><a href="${k.url}">${k.columnName}</a>
-                <#else>
+                <#list leftNav as k> <#if k.columnName== pageName>
+                <li class="active"><a href="${k.url}">${k.columnName}</a> <#else>
                     <li><a href="${k.url}">${k.columnName}</a></li>
-                </#if>
-            </#list>
+                </#if> </#list>
             </ul>
         </div>
-            <div class="baseRight news-paper">
-                <div class="title01">${pageName}</div>
-                <#if (newsPaperList?size>0)>
-                <div class="title07">${newsPaperList[itemIndex].title}
-                </#if>
-                    <form>
-                        <select id="ddlYears2">
-                            <option value="" selected="selected">选择年份</option>
-                            <#list years as year>
-                                <option value=${year}>${year}年</option>
-                            </#list>
-                        </select>
-                        <select id="ddlTimes2">
-                            <option value="" selected="selected">选择期数</option>
-                            <#list times as time>
-                                <option value=${time}>${time}</option>
-                            </#list>>
-                        </select>
-                        <input type="button" id="GoToNewspaper2" value="阅览">
-                    </form>
-                    <div class="clear"></div>
-                </div>
-                <div class="inst">
-                    <div class="instRleft">
-                        <ul>
+        <div class="baseRight news-paper">
+            <div class="title01">${pageName}</div>
+            <#if newsPaperList?? && (newsPaperList?size>0)>
+            <div class="title07">${newsPaperList[page].title}
+            </#if>
+            <form>
+                <select id="ddlYears2">
+                    <option value="" selected="selected">选择年份</option>
+                    <#list years as year>
+                    <option value=${year}>${year}年</option>
+                    </#list>
+                </select> <select id="ddlTimes2">
+                    <option value="" selected="selected">选择期数</option>
+                    <#list times as time>
+                    <option value=${time}>${time}</option>
+                    </#list>>
+                </select> <input type="button" id="GoToNewspaper2" value="阅览">
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div class="inst">
+            <div class="instRleft">
+                <ul>
+                    <#ifnewsPaperList??>
                             <#list newsPaperList as key>
                             <#if key_index == 0>
                                 <li class="first">
-                                <#if key_index == itemIndex>
-                                    <a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+                                <#-- index从0开始，page从1开始-->
+                                <#if key_index == page - 1>
+                                    <a class="active" href="${key.url}">${key_index + 1}
                                 <#else>
-                                    <a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+                                    <a href="${key.url}">${key_index + 1}
                                 </#if>
                                         <em class="animated">
-                                            <span class="title">${key.title}</span>
+                                            <span class="title">第${key_index + 1}页</span>
                                         </em>
                                     </a>
                                 </li>
                             <#else>
                                 <li >
-                                <#if key_index == itemIndex>
-                                    <a class="active" href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+                                <#if key_index == page - 1>
+                                    <a class="active" href="${key.url}">${key_index + 1}
                                 <#else>
-                                    <a href="?page=${pageInfo.pageNum}&itemIndex=${key_index}">${key_index + 1}
+                                    <a href="${key.url}">${key_index + 1}
                                 </#if>
                                         <em class="animated">
-                                            <span class="title">${key.title}</span>
+                                            <span class="title">第${key_index + 1}页</span>
                                         </em>
                                     </a>
                                 </li>
                             </#if>
                             </#list>
+                            </#if>
                         </ul>
-                    </div>
-                    <div class="instRright">
-                        <p>
-                            <span style="font-size:16px;line-height:2;">下载：
-                                <a href="厦门市" target="_blank">
-                                    <a href="./attached/file/20160630/20160630171040_6290.zip" target="_blank">厦门市心血管病医院院刊《心潮》第一期（2016.05）</a>
-                                 </a>
-                            </span>
-                            <p>
-                            <p>
-                                <span style="font-size:16px;line-height:2;">
-                                    <br />
-                                </span>
+            </div>
+            <div class="instRright">
+                <#--
+                <#ifnewsPaperList??>
+                        ${newsPaperList[page].content}
+                       </#if>-->
+                       <p>
+                           <span style="font-size:16px;">下载链接：</span><a href="./attached/file/20170125/20170125171242_1581.zip" target="_blank"><span style="font-size:16px;">厦门大学附属心血管病医院院刊《心潮》第五期（2017.01）</span></a>
                             </p>
                             <p>
-                                <span style="font-size:16px;line-height:2;"><img src="./attached/image/20160630/20160630171143_5430.jpg" alt="" />
-                                    <br />
-                                </span>
-                            </p>
+                            <img src="./attached/image/20170125/20170125171111_8911.png" alt="" />
                         </p>
                     </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
+            <div class="clear"></div>
         </div>
     </div>
-<#include "./fragments/_footer.ftl">
+</div>
+</div>
+<#include"./fragments/_footer.ftl">

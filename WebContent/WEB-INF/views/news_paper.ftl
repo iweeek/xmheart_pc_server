@@ -22,7 +22,7 @@
 			<div class="baseRight news-paper">
 				<div class="title01">${pageName}</div>
 				<#if newsPaperList?? && (newsPaperList?size>0)>
-				<div class="title07">${newsPaperList[page].title}
+				<div class="title07">${newsPaperList[page - 1].title}
 				</#if>
 					<form>
 						<select id="ddlYears2">
@@ -77,9 +77,18 @@
 						</ul>
 					</div>
 					<div class="instRright">
-					   <#if newsPaperList??>
-						${newsPaperList[page].content}
-					   </#if>
+					    <#if newsPaperList??>
+						<#--${newsPaperList[page].content}-->
+					   <p>
+					       <span style="font-size:16px;">下载链接：</span>
+					       <a href="${newsPaperList[page - 1].downloadUrl}" target="_blank">
+					           <span style="font-size:16px;">${newsPaperList[page - 1].title}</span>
+					       </a>
+                       </p>
+                       <p>
+                            <img src="${newsPaperList[page - 1].imageUrl}" alt="" />
+                        </p>
+                        </#if>
 					</div>
 					<div class="clear"></div>
 				</div>
