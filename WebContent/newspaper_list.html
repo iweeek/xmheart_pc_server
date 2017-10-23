@@ -27,9 +27,11 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th style="text-align: center;">Id</th>
                     <th style="text-align: center;">名称</th>
                     <th style="text-align: center;">年份</th>
                     <th style="text-align: center;">期数</th>
+                    <th style="text-align: center;">页号</th>
                     <th style="text-align: center;">是否发表</th>
                     <th style="text-align: center;">发布时间</th>
                     <th style="text-align: center;">操作</th>
@@ -59,9 +61,11 @@
     <script id="J_articles_tmpl" type="x-tmpl-mustache">
         {{#result}}
         <tr>
+            <td>{{id}}</td>
             <td>{{title}}</td>
             <td>{{years}}</td>
             <td>{{times}}</td>
+            <td>{{page}}</td>
 			<td>
 				{{#isPublished}}是{{/isPublished}}
 				{{^isPublished}}否{{/isPublished}}
@@ -70,10 +74,10 @@
             <td>
                 <button class='btn btn-default edit-btn' data-id={{id}}>编辑</button>
                 {{#isPublished}}
-                		<button class='btn btn-danger offline-btn' data-id={{id}}>下线</button>
+                		<button class='btn btn-danger offline-btn' data-id={{id}} data-years={{years}} data-times={{times}} data-page={{page}}>下线</button>
 				{{/isPublished}}
 				{{^isPublished}}
-                		<button class='btn btn-default publish-btn' data-id={{id}}>发布</button>
+                    <button class='btn btn-default publish-btn' data-id={{id}} data-years={{years}} data-times={{times}} data-page={{page}}>发布</button>
 				{{/isPublished}}
 				<!--{{#isPinned}}
 					<button class='btn btn-default cancel-pinned-btn' data-id={{id}}>取消置顶</button>

@@ -95,12 +95,12 @@ $(function() {
 				$('.ui-loading').hide();
 			});
 		},
-		publish : function(newspaperId) {
+		publish : function(newspaperId, year, times, page) {
 			var params = {
 				isPublished : true,
-				years: ctrl.years,
-				times: ctrl.times,
-				page: ctrl.page
+				year: year,
+				times: times,
+				page: page
 			};
 			// 编辑模式
 			var url = '/newspapers/' + newspaperId;
@@ -109,12 +109,12 @@ $(function() {
 				ctrl.getNewspaper(ctrl.pageNo, 10);
 			});
 		},
-		offline : function(newspaperId) {
+		offline : function(newspaperId, year, times, page) {
 			var params = {
 				isPublished : false,
-				years: ctrl.years,
-				times: ctrl.times,
-				page: ctrl.page
+				year: year,
+				times: times,
+				page: page
 			};
 			// 编辑模式
 			var url = '/newspapers/' + newspaperId;
@@ -256,13 +256,19 @@ $(function() {
 	// 发布
 	$('#J_articles').on('click', '.publish-btn', function() {
 		var newspaperId = $(this).data('id');
-		ctrl.publish(newspaperId);
+		var years = $(this).data('years');
+		var times = $(this).data('times');
+		var page = $(this).data('page');
+		ctrl.publish(newspaperId, years, times, page);
 	});
 
 	// 下线
 	$('#J_articles').on('click', '.offline-btn', function() {
 		var newspaperId = $(this).data('id');
-		ctrl.offline(newspaperId);
+		var years = $(this).data('years');
+		var times = $(this).data('times');
+		var page = $(this).data('page');
+		ctrl.offline(newspaperId, years, times, page);
 	})
 
 	// 新建
