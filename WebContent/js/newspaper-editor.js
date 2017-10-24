@@ -4,24 +4,36 @@ $(function() {
 	var times = $('#times');
 	var page = $('#page');
 	var imageUrl;
+	var newspaperId;
 	var article = {};
 	var ctrl = {
 		// 获取url中的参数
 		getUrlParam : function(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
 			var r = window.location.search.substr(1).match(reg); // 匹配目标参数
-			console.log(window.location.search);
-			console.log(window.location.search.substr(1));
 			if (r != null)
 				return unescape(r[2]);
 			return null; // 返回参数值
 		},
-
+		
+		getNewspaper: function (newspaperId) {
+            var url = '/newspapers/' + newspaperId;
+            $.get(url, function (res) {
+                article = res;
+                $('#elecNewspaperTitle').val(res.title);
+                $('#year').val(res.years);
+                $('#times').val(res.times);
+                $('#page').val(res.page);
+                $('#upload-img').attr('src', res.imageUrl);
+                $('#add-image-url').show();
+                $('#addImgBtn').hide();
+            });
+        },
+		
 		publish : function() {
 			var $this = $(this);
 
 			var imgUrl = $('.upload-img').attr('src');
-			console.log(imgUrl);
 			var params = {
 				title : title.val(),
 				year : year.val(),
@@ -36,10 +48,7 @@ $(function() {
 				return;
 			}
 			$this.attr('disabled', 'disabled');
-			// 编辑模式
-			// var articleId = ctrl.getUrlParam('articleId');
-			// console.log(articleId);
-			// if (articleId) {
+	
 			var url = '/newspapers';
 			$.post(url, params, function(res) {
 				$this.removeAttr('disabled');
@@ -63,33 +72,32 @@ $(function() {
 			return;
 			
 		},
-		/* save : function() {
+		save : function() {
 			var $this = $(this);
 
 			var imgUrl = $('.upload-img').attr('src');
-			console.log(imgUrl);
 			var params = {
 				title : title.val(),
 				year : year.val(),
 				times : times.val(),
-				page : 1,
+				page : page.val(),
 				isPublished : true,
 				download_url : '#',
 				imageUrl : imgUrl,
 			};
 
-			// if (!ctrl.valid(params)) {
-			// return;
-			// }
+			if (!ctrl.valid(params, 'save')) {
+				return;
+			}
 			$this.attr('disabled', 'disabled');
 			// 编辑模式
-			var articleId = ctrl.getUrlParam('articleId');
-			if (articleId) {
-				var url = '/articles/' + articleId;
+//			var articleId = ctrl.getUrlParam('articleId');
+			if (newspaperId) {
+				var url = '/newspapers/' + newspaperId;
 				$.post(url, params, function(res) {
 					$this.removeAttr('disabled');
 					swal({
-						title : "保存成功",
+						title : "更新成功",
 						type : "success",
 						showCancelButton : true,
 						confirmButtonColor : "#8cd4f5",
@@ -103,30 +111,31 @@ $(function() {
 					$this.removeAttr('disabled');
 					sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error");
 				});
+				
 
 				return;
 			}
 
-			$.post('/articles', params, function(res) {
-				$this.removeAttr('disabled');
-				// $('#wordCount textarea').val(brief);
-				swal({
-					title : "新建文章成功",
-					type : "success",
-					showCancelButton : true,
-					confirmButtonColor : "#8cd4f5",
-					confirmButtonText : "返回上一页",
-					cancelButtonText : "取消",
-					closeOnConfirm : false
-				}, function() {
-					ctrl.cancel();
-				});
-			}).error(function() {
-				$this.removeAttr('disabled');
-				sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error");
-			});
+//			$.post('/articles', params, function(res) {
+//				$this.removeAttr('disabled');
+//				// $('#wordCount textarea').val(brief);
+//				swal({
+//					title : "新建文章成功",
+//					type : "success",
+//					showCancelButton : true,
+//					confirmButtonColor : "#8cd4f5",
+//					confirmButtonText : "返回上一页",
+//					cancelButtonText : "取消",
+//					closeOnConfirm : false
+//				}, function() {
+//					ctrl.cancel();
+//				});
+//			}).error(function() {
+//				$this.removeAttr('disabled');
+//				sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error");
+//			});
 		},
-		*/
+		
 		valid : function(params, type) {
 			var articleId = ctrl.getUrlParam('articleId');
 
@@ -203,13 +212,12 @@ $(function() {
 		    		})
 		},
 		init : function() {
-//			$('.ui-loading').show();
-//			var articleId = ctrl.getUrlParam('articleId');
-			// // 编辑模式
-			// // ctrl.getColumn(0, '#J_select_first');
-			// // if (articleId) {
-			// // ctrl.getArticle(articleId);
-			// // }
+			$('.ui-loading').show();
+			newspaperId = ctrl.getUrlParam('newspaperId');
+            // 编辑模式
+            if (newspaperId) {
+                ctrl.getNewspaper(newspaperId);
+            }
 			$('.ui-loading').hide();
 		}
 	}
