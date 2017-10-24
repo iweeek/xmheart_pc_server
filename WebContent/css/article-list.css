@@ -2,7 +2,14 @@
     outline: none !important;
     margin-right: 10px;
 }
+
 .page-article-list .select-title-second {
+    display: none;
+}
+.page-article-list .select-title-third {
+    display: none;
+}
+.page-article-list .select-title-fourth {
     display: none;
 }
 .page-article-list .row {
