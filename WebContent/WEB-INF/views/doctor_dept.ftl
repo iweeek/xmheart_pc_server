@@ -48,10 +48,10 @@
                             <br/>
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
                             <div class="doctor-intro">
-                                <#if doctor.intro?length lt 126>
+                                <#if doctor.intro?length lt 80>
                                 ${doctor.intro}
                                 <#else>
-                                ${doctor.intro[0..126]}......
+                                ${doctor.intro[0..80]}......
                                 <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
                                 </#if>
                             </div>
