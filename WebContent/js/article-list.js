@@ -5,6 +5,7 @@ $(function() {
 		pageTotal : 0,
 		noNextPage : false,
 		pinnedNum : 0,
+		col: [],
         getColumns: function (parentColumnId, htmlId) {
             $.get('/columns', {
                 parentColumnId: parentColumnId
@@ -183,7 +184,8 @@ $(function() {
 				}
 			});
 		},
-		init : function() {
+		init: function() {
+			console.log(location.href);
 			this.getColumns(0, '#J_select_first');
 			ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
 			$('.ui-nodata').hide();
@@ -199,9 +201,11 @@ $(function() {
 			$('.select-title-second').hide();
 		}
 		if (firstId !== 0 && currentText !== '请选择') {
+			ctrl.col.push(firstId);
 			ctrl.columnId = firstId;
 			$('.select-title-second').show();
 			ctrl.getColumns(firstId, '#J_select_second');
+			
 		}
 		if (currentText == '首页') {
 			$('.select-title-second').hide();
@@ -213,7 +217,8 @@ $(function() {
 		var secondId = $(this).val();
 		var currentText = $( "#J_select_second option:selected" ).text();
 		if (secondId !== 0 && currentText !== '请选择') {
-			ctrl.columnId = $(this).val()
+			ctrl.col.push($(this).val());
+			ctrl.columnId = $(this).val();
 		};
 	});
 
@@ -229,15 +234,11 @@ $(function() {
 	$('.next').on('click', ctrl.next);
 
 	// 编辑
-	$('#J_articles')
-			.on(
-					'click',
-					'.edit-btn',
-					function() {
-						var articleId = $(this).data('id');
-						location.href = '/static/ueditor.html?articleId='
-								+ articleId;
-					});
+	$('#J_articles').on('click','.edit-btn',function() {
+		var articleId = $(this).data('id');
+		var url = '/static/ueditor.html?articleId=' + articleId + '&col=' + ctrl.col;
+		location.href = url;
+	});
 
 	// 发布
 	$('#J_articles').on('click', '.publish-btn', function() {
@@ -253,7 +254,8 @@ $(function() {
 
 	// 新建
 	$('#J_create_btn').on('click', function() {
-		location.href = '/static/ueditor.html';
+		var url = '/static/ueditor.html?col=' + ctrl.col;
+		location.href = url;
 	})
 
 	// 置顶
