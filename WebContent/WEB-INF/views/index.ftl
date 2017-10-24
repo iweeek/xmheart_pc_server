@@ -28,7 +28,9 @@
 				    <div class="swiper-wrapper">
 				        <div class="swiper-slide">
 				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle1Tag}</span>${index.bannerArticle1Title}</h5>
-							<p class="xm-notice-info">${index.bannerArticle1Brief}</p>
+							<p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle1Brief[0..40]}...
+							<a href="doctorDetail?id=${index.bannerArticle1Url}" title="" class="show-more">查看详细</a>
+							</p>
 				        </div>
 				        <div class="swiper-slide">
 				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle2Tag}</span>${index.bannerArticle2Title}</h5>

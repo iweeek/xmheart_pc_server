@@ -97,7 +97,13 @@
 .xm-notice .swiper-container .swiper-slide {
 	padding: 10px;
 }
+
+.xm-notice .swiper-container .swiper-slide .show-more{
+	color:#ff7544; 
+	background: #fff;
+}
 .xm-notice-title {
+	margin: 10px;
 	font-size: 16px;
 	font-weight: normal;
 	color: #505050;
@@ -113,6 +119,7 @@
 	margin-right: 5px;
 }
 .xm-notice-info {
+	margin: 10px;
 	font-size: 14px;
 	color: #505050;
 	line-height: 20px;
