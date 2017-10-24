@@ -156,8 +156,6 @@ $(function() {
 				sweetAlert("信息不完整", "请选择图片", "error");
 				return false;
 			}
-			
-
 			return true;
 		},
 		// preview: function () {

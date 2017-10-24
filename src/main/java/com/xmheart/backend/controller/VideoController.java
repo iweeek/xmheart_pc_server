@@ -58,7 +58,7 @@ public class VideoController {
             @ApiParam("视频地址") @RequestParam(required = false) String videoUrl,
             @ApiParam("视频描述") @RequestParam(required = false) String brief,
             @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned,
-            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished,
+            @ApiParam("是否发布") @RequestParam(required = false) Boolean isPublished,
             @ApiParam("发布时间") @RequestParam(required = false) String publishTime) {
         XPWVideo video = new XPWVideo();
 
@@ -66,22 +66,32 @@ public class VideoController {
 
         if (imgUrl != null) {
             video.setImgUrl(imgUrl);
+        } else {
+        		video.setImgUrl("");
         }
 
         if (videoUrl != null) {
             video.setVideoUrl(videoUrl);
+        } else {
+    			video.setVideoUrl("");
         }
 
         if (brief != null) {
             video.setBrief(brief);
+        } else {
+        		video.setBrief("");
         }
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        } else {
+        		video.setIsPinned(false);
         }
         
         if (isPublished != null) {
             video.setIsPublished(isPublished);
+        } else {
+        		video.setIsPublished(false);
         }
         
         if (publishTime != null) {
@@ -115,29 +125,36 @@ public class VideoController {
         
         video.setId(id);
 
-        if (title != null) {
-            video.setTitle(title);
-        }
-
+        video.setTitle(title);
+        
         if (imgUrl != null) {
-            video.setUrl(imgUrl);
+            video.setImgUrl(imgUrl);
+        } else {
+        		video.setImgUrl("");
         }
 
         if (videoUrl != null) {
-            video.setImgUrl(videoUrl);
+            video.setVideoUrl(videoUrl);
+        } else {
+    			video.setVideoUrl("");
         }
 
         if (brief != null) {
             video.setBrief(brief);
+        } else {
+        		video.setBrief("");
         }
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        } else {
+        		video.setIsPinned(false);
         }
-        
         
         if (isPublished != null) {
             video.setIsPublished(isPublished);
+        } else {
+        		video.setIsPublished(false);
         }
 
         int ret = videoService.update(video);

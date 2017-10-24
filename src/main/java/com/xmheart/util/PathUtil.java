@@ -19,7 +19,7 @@ public class PathUtil {
 	public static final String IMG_FOLDER_PATH = "images" + File.separator;
 	public static final String IMG_STORAGE_PATH = WEBAPP_PATH + File.separator + IMG_FOLDER_PATH + File.separator;
 	
-	public static final String VIDEO_FOLDER_PATH = "videos" + File.separator;
+	public static final String VIDEO_FOLDER_PATH = "videos_storage" + File.separator;
 	public static final String VIDEO_STORAGE_PATH = WEBAPP_PATH + File.separator + VIDEO_FOLDER_PATH + File.separator;
 
     /**
