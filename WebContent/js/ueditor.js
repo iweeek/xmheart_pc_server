@@ -9,6 +9,7 @@ $(function () {
     var columnId = ''
     var article = {};
     var ctrl = {
+    		col: [],
         //获取url中的参数
         getUrlParam: function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -86,7 +87,8 @@ $(function () {
                         cancelButtonText: "留在本页",
                         closeOnConfirm: false
                     }, function () {
-                        window.history.go(-1);
+//                        window.history.go(-1);
+                        location.href="../article-list.html?col=" + ctrl.col
                     });
                 }).error(function() { 
                 		$this.removeAttr('disabled');
@@ -106,7 +108,7 @@ $(function () {
                     cancelButtonText: "取消",
                     closeOnConfirm: false
                 }, function () {
-                    ctrl.cancel();
+                		location.href="article-list.html?col=" + ctrl.col
                 });
                 // window.history.go(-1);
             }).error(function() { 
@@ -172,7 +174,7 @@ $(function () {
                     cancelButtonText: "取消",
                     closeOnConfirm: false
                 }, function () {
-                    ctrl.cancel();
+                		location.href="article-list.html?col=" + ctrl.col
                 });
             }).error(function() { 
             		$this.removeAttr('disabled');
@@ -259,6 +261,10 @@ $(function () {
         init: function () {
             $('.ui-loading').show();
             var articleId = ctrl.getUrlParam('articleId');
+            var col = ctrl.getUrlParam('col');
+            console.log(location.href);
+            ctrl.col = col.split(',')
+            console.log(ctrl.col);
             ctrl.statInputNum(digest, word);
             // 编辑模式
             ctrl.getColumn(0, '#J_select_first');
@@ -280,6 +286,8 @@ $(function () {
     $('#J_select_first').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
+        		ctrl.col = [];
+        		ctrl.col.push(firstId);
         		columnId = firstId;
         		$('.select-title-second').hide();
         		$('.select-title-third').hide();
@@ -291,6 +299,7 @@ $(function () {
     $('#J_select_second').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
+        		ctrl.col.push(firstId);
         		columnId = firstId;
         		$('.select-title-third').hide();
         		$('.select-title-fourth').hide();
@@ -301,12 +310,18 @@ $(function () {
     $('#J_select_third').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
+        		ctrl.col.push(firstId);
         		columnId = firstId;
         		$('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_fourth', '.select-title-fourth');
         }
     });
-   
+    $('#J_select_fourth').change(function () {
+        var firstId = $(this).val();
+        if (firstId !== 0) {
+        		ctrl.col.push(firstId);
+        }
+    });
     $('#publish').on('click', ctrl.publish);
     $('#reset').on('click', ctrl.reset);
     $('#save').on('click', ctrl.save)
