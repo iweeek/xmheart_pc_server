@@ -79,10 +79,12 @@
 	height: 35px;
 }
 .online-service-list li a span {
+	font-size: 16px;
 	position: absolute;
 	left: 45px;
 	top: 50%;
 	margin-top: -9px;
+	margin-left: 4px;
 }
 .xm-notice {
 	background: #f6f6f6;
