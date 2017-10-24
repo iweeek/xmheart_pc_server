@@ -29,7 +29,7 @@
                         <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
                     <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
-                    <p>厦门大学附属心血管病医院心内科是国家临床重点专科，卫生部国家级心血管疾病介入培训基地，……</p>
+                    <p>${dept.brief}……</p>
                     <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
                     <!--<a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>-->
                 </div>
@@ -51,7 +51,7 @@
                                 <#if doctor.intro?length lt 80>
                                 ${doctor.intro}
                                 <#else>
-                                ${doctor.intro[0..80]}......
+                                ${doctor.intro[0..60]}......
                                 <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
                                 </#if>
                             </div>

@@ -42,19 +42,40 @@ public class NavController {
         return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
     }
     
+//    @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
+//    @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
+//    public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
+//            @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
+//        
+//        XPWNav nav = ColumnService.getNavById(id);
+//        if (nav == null) {
+//            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+//        } else {
+//            return ResponseEntity.status(HttpServletResponse.SC_OK).body(nav);
+//        }
+//    }
+    
     @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
     @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
-            @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
+            @ApiParam("导航父栏目的名称") @RequestParam String childColumnName,
+            @ApiParam("文章的名称") @RequestParam String articleTitle,
+            @ApiParam("导航图片的地址") @RequestParam String imgUrl) {
+        
+        XPWNav nav = ColumnService.getNavById(id);
+        if (nav == null) {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(nav);
+        }
+    }
+    
+    @ApiOperation(value = "根据Id获取导航内容", notes = "根据Id获取导航内容")
+    @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.GET)
+    public ResponseEntity<?> read(@ApiParam("导航条目的Id") @PathVariable Long id) {
         
         XPWNav nav = new XPWNav();
         nav.setId(id);
-        
-        XPWArticle article  = articleService.read(articleId);
-        
-        nav.setArticleTitle(article.getTitle());
-        nav.setPublishTime(article.getPublishTime());
-        nav.setUrl(article.getUrl());
         
         int ret = ColumnService.updateNav(nav);
         if (ret == 0) {
@@ -62,7 +83,6 @@ public class NavController {
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_OK).body(null);
         }
-        
     }
 
 }
