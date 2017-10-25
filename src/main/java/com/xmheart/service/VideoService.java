@@ -3,6 +3,7 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWVideo;
 
 
@@ -19,5 +20,5 @@ public interface VideoService {
     List<XPWVideo> index();
 
     XPWVideo read(Long id);
-
+    
 }

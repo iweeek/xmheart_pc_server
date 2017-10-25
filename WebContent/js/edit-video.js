@@ -154,16 +154,18 @@ exports.XPW.videoEdit = (function() {
 				$this.removeAttr('disabled');
 				swal({
 					title : "上传成功",
-					text : "返回上一页？",
 					type : "success",
 					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
-					confirmButtonText : "返回上一页",
+					confirmButtonText : "确定",
 					cancelButtonText : "继续上传",
-					closeOnConfirm : false
+					closeOnConfirm : true
 				}, function() {
-					window.history.go(-1);
+//					window.history.go(-1);
 				});
+			}).error(function() {
+				$this.removeAttr('disabled');
+				sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error");
 			});
 
 			return;
@@ -191,15 +193,14 @@ exports.XPW.videoEdit = (function() {
 				$this.removeAttr('disabled');
 				swal({
 					title : "更新成功",
-					text : "返回上一页？",
 					type : "success",
 					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
-					confirmButtonText : "返回上一页",
+					confirmButtonText : "确定",
 					cancelButtonText : "继续修改",
-					closeOnConfirm : false
+					closeOnConfirm : true
 				}, function() {
-					window.history.go(-1);
+//					window.history.go(-1);
 				});
 			});
 

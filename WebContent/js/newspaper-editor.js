@@ -54,15 +54,14 @@ $(function() {
 				$this.removeAttr('disabled');
 				swal({
 					title : "上传成功",
-					text : "返回上一页？",
 					type : "success",
 					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
-					confirmButtonText : "返回上一页",
+					confirmButtonText : "确定",
 					cancelButtonText : "新增一页",
-					closeOnConfirm : false
+					closeOnConfirm : true
 				}, function() {
-					window.history.go(-1);
+//					window.history.go(-1);
 				});
 			}).error(function() {
 				$this.removeAttr('disabled');
