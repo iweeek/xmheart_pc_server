@@ -50,7 +50,7 @@
 					</div>
 					<div class="clear"></div>
 					<div id="DIVContent" class="DIVContent">
-						${article.content}
+					${article.content}
 					</div>
 		          <div class="PrevNext">
 		              <p class="prev">
