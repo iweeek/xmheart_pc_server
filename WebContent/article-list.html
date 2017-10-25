@@ -22,19 +22,24 @@
             <li class="active">文章列表</li>
         </ol>
         <div class="row"> 
-            <div class="col-md-1 select-title select-title-first" style="line-height: 34px;">一级栏目</div>
-            <div class="col-sm-2 select-title select-title-first">
+            <div class="col-md-1 select-title select-title-first" style="line-height: 34px;">栏目选择</div>
+            <div class="col-sm-1 select-title select-title-first">
                 <select class="form-control" id="J_select_first"></select>
             </div>
-            <div class="col-md-1 select-title select-title-second" style="line-height: 34px;">二级栏目</div>
-            <div class="col-sm-2 select-title select-title-second">
+            <div class="col-sm-1 select-title select-title-second">
                 <select class="form-control" id="J_select_second"></select>
             </div>
+            <div class="col-sm-1 select-title select-title-third">
+                <select class="form-control" id="J_select_third"></select>
+            </div>
+            <div class="col-sm-1 select-title select-title-fourth">
+                <select class="form-control" id="J_select_fourth"></select>
+            </div>
             <div class="operate-panel">
-                <button class="btn btn-primary" id="J_filter_btn">筛选</button>
+                <button class="btn btn-primary" id="J_filter_btn" data-first="" data-second="" data-third="" data-fourth="">筛选</button>
                 <button class="btn btn-primary" id="J_create_btn">新建文章</button>
                 <button id="search" class="btn btn-primary post-btn-edit" data-title={{articleTitle}} data-nav-id={{id}} data-column-id={{columnId}}
-                        data-column-name={{childColumnName}} style="margin-bottom: 5px;">搜索</button>
+                        data-column-name={{childColumnName}}>搜索</button>
             </div>
         </div>
         <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModal">

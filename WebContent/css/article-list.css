@@ -2,7 +2,14 @@
     outline: none !important;
     margin-right: 10px;
 }
+
 .page-article-list .select-title-second {
+    display: none;
+}
+.page-article-list .select-title-third {
+    display: none;
+}
+.page-article-list .select-title-fourth {
     display: none;
 }
 .page-article-list .row {
@@ -13,6 +20,7 @@
 }
 .page-article-list .operate-panel {
     display: inline-block;
+    margin-bottom: 10px;
 }
 .ui-loading {
     width: 100%;

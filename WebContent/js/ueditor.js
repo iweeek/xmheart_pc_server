@@ -3,6 +3,7 @@ $(function () {
     var title = $('#articleTitle');
     var digest = $("#wordCount").find("textArea");
     var word = $("#wordCount").find(".word");
+    var maxWord = $("#wordCount").find(".max");
     var tags = $('.tag-input');
     var category1 = $('.select-title-first');
     var category2 = $('.select-title-second');
@@ -17,8 +18,9 @@ $(function () {
             if (r != null) return unescape(r[2]); return null; //返回参数值
         },
         statInputNum: function (digest, numItem) {
-            var max = numItem.text(), curLength;
-
+            var max = numItem.text();
+            var curLength;
+            console.log('max',max)
             digest[0].setAttribute("maxlength", max);
             curLength = digest.val().length;
             numItem.text(curLength);
@@ -32,7 +34,12 @@ $(function () {
                 article = res;
                 tags.val(res.tags);
                 digest.val(res.brief.slice(0,200));
-                ctrl.statInputNum(digest, word);
+                if (res.brief.length > 200) {
+                		word.text(200);
+                } else {
+                		word.text(res.brief.length);
+                }
+                
                 $('.category').show();
                 $('.category-edit').text(res.columnName);
                 $('.column-create').hide();

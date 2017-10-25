@@ -6,6 +6,13 @@ $(function() {
         noNextPage : false,
         pinnedNum : 0,
         col: [],
+        newCol: [],
+      //获取url中的参数
+        getUrlParam: function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        },
         postDialogHandle : function () {
             $('.post-btn-edit').on('click', function() {
               $('#postModal').modal('show');
@@ -78,7 +85,7 @@ $(function() {
             //     解决 select2 在 bootstarp 弹窗中无法输入问题
             $.fn.modal.Constructor.prototype.enforceFocus = function () { };
         },
-        getColumns: function (parentColumnId, htmlId) {
+        getColumns: function (parentColumnId, htmlId, selectedVal) {
             $.get('/columns', {
                 parentColumnId: parentColumnId
             }, function (data) {
@@ -88,6 +95,12 @@ $(function() {
                     optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
                 }
+                if (data.length > 0) {
+                		$(htmlId).parent().show();
+                }
+                if (selectedVal) {
+                		$(htmlId + ' ' + 'option[value='+selectedVal+']').attr('selected', 'selected');
+                }           
             });
         },
         dateFilter: function(date, formatString) {
@@ -200,7 +213,6 @@ $(function() {
         pinned : function(articleId, type) {
             var url = '/articles/' + articleId;
             $.get(url, function(res){
-                console.log(res)
                 if (!res.imgUrl) {
                     swal('置顶文章必须带有图片')
                 } else {
@@ -244,7 +256,6 @@ $(function() {
                 });
             })
             .error(function(jqXHR, textStatus, errorThrown){
-                console.log(jqXHR.status);
                 if (jqXHR.status == 403) {
                     swal({
                         title : "不在同一个栏目下",
@@ -258,14 +269,26 @@ $(function() {
             });
         },
         init: function() {
-            console.log(location.href);
-            this.getColumns(0, '#J_select_first');
-            ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
-            $('.ui-nodata').hide();
+        		$('.ui-nodata').hide();
             ctrl.postDialogHandle();
             ctrl.select2Handle();
             ctrl.bindSearchArticle();
-            
+            var col = ctrl.getUrlParam('col');
+	    		if (col) {
+	    			ctrl.newCol = col.split(',');
+	    			if (ctrl.newCol.length == 1) {
+	    				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
+	    			}
+	    			if (ctrl.newCol.length == 2) {
+	    				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
+	    				$('.select-title-second').show();
+	    				ctrl.getColumns(ctrl.newCol[0], '#J_select_second', ctrl.newCol[1]);
+	    				ctrl.getArticles(1, 10, ctrl.newCol[1]);
+	    				return false;
+	    			}
+	    		}
+	    		ctrl.getColumns(0, '#J_select_first');
+            ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
         }
     }
     ctrl.init();
@@ -274,33 +297,71 @@ $(function() {
     $('#J_select_first').change(function() {
         var firstId = $(this).val();
         var currentText = $( "#J_select_first option:selected" ).text();
-        if (currentText === '请选择') {
-            $('.select-title-second').hide();
-        }
+        $('.select-title-second').hide();
+        $('.select-title-third').hide();
+        $('.select-title-fourth').hide();
         if (firstId !== 0 && currentText !== '请选择') {
-            ctrl.col.push(firstId);
             ctrl.columnId = firstId;
-            $('.select-title-second').show();
+            $('#J_filter_btn').data('first', firstId);
             ctrl.getColumns(firstId, '#J_select_second');
-            
         }
         if (currentText == '首页') {
             $('.select-title-second').hide();
         }
     });
 
-    // 获取二级分类的id
+    // 获取三级分类的id
     $('#J_select_second').change(function() {
         var secondId = $(this).val();
         var currentText = $( "#J_select_second option:selected" ).text();
+        $('.select-title-third').hide();
+        $('.select-title-fourth').hide();
         if (secondId !== 0 && currentText !== '请选择') {
-            ctrl.col.push($(this).val());
             ctrl.columnId = $(this).val();
+            $('#J_filter_btn').data('third', secondId);
+            ctrl.getColumns(secondId, '#J_select_third');
         };
     });
+    
+ // 获取四级分类的id
+    $('#J_select_third').change(function() {
+        var thirdId = $(this).val();
+        var currentText = $( "#J_select_third option:selected" ).text();
+        $('.select-title-fourth').hide();
+        if (thirdId !== 0 && currentText !== '请选择') {
+            ctrl.columnId = $(this).val();
+            $('#J_filter_btn').data('third', thirdId);
+            ctrl.getColumns(thirdId, '#J_select_fourth');
+        };
+    });
+    
+    // 获取四级分类的id
+    $('#J_select_fourth').change(function() {
+        var fourthId = $(this).val();
+        var currentText = $( "#J_select_fourth option:selected" ).text();
+        if (fourthId !== 0 && currentText !== '请选择') {
+            ctrl.columnId = $(this).val();
+            $('#J_filter_btn').data('fourth', fourthId);
+        };
+    });
+    
 
     // 筛选
     $('#J_filter_btn').on('click', function() {
+    		var $this = $(this);
+    		ctrl.col = [];
+    		if ($this.data('first')) {
+    			ctrl.col.push($this.data('first'));
+    		}
+    		if ($this.data('second')) {
+    			ctrl.col.push($this.data('second'));
+    		}
+    		if ($this.data('third')) {
+    			ctrl.col.push($this.data('third'));
+    		}
+    		if ($this.data('fourth')) {
+    			ctrl.col.push($this.data('fourth'));
+    		}
         ctrl.getArticles(1, 10, ctrl.columnId);
     });
 
@@ -314,8 +375,8 @@ $(function() {
     $('#J_articles').on('click','.edit-btn',function() {
         var articleId = $(this).data('id');
         var url = '/static/ueditor.html?articleId=' + articleId + '&col=' + ctrl.col;
-//        location.href = url;
-        window.open(url, "new window");
+        location.href = url;
+//        window.open(url, "new window");
     });
 
     // 发布
@@ -362,7 +423,6 @@ $(function() {
     $('#J_articles').on('click', '.down-btn', function() {
         var articleId1 = $(this).data('id');
         var index = $(this).parents('tr').index();
-        console.log($('#J_articles tr').eq(index+1).find('.down-btn').length)
         if($('#J_articles tr').eq(index+1).find('.down-btn').length === 0) {
             swal('已经是最底部了!');
             return false;
