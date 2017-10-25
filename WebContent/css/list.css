@@ -393,7 +393,7 @@
 .officesBase .contents .contentsOffice .img{ background:#bda179;}
 .officesBase .contents .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
 .officesBase .contents .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
-.officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
+.officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:-10px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
 .officesBase .contents .contentsOffice .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
 .officesBase .contents .contentsOffice .btn:hover{background-position:79px center;}
 .officesBase .contents .contentsDoctor { width: 910px; height: 360px; margin: 0; float: left;}
@@ -409,7 +409,9 @@
 .officesBase .contents .contentsDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
 .officesBase .contents .contentsDoctor .doctorDialog { width: 230px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
 .officesBase .contents .contentsDoctor .doctorDialog p { line-height: 20px;}
-.officesBase .contents .contentsDoctor .doctor-intro { margin:15px;color: #5a5a5a;line-height: 1.3;}
+.officesBase .contents .contentsDoctor .doctor-intro { margin:15px;color: #5a5a5a;line-height: 1.3;text-indent=2em;}
+.officesBase .contents .contentsOffice .dept-intro { margin:0px auto;color: #5a5a5a;line-height: 22px;text-align:center;padding: 0px 25px;}
+
 /* 科室导航 */
 .baseLeft .title08{ background:#6bcbca url(/image/treat_ico01.png) left 13px center no-repeat;}
 .partNav{ position:relative; top:0px; background:url(/image/part_ico01.gif) left top no-repeat, url(/image/part_ico01.gif) left bottom no-repeat, url(/image/part_ico04.gif) left repeat-y; margin-left:15px; margin-top:55px; overflow:visible; padding:15px 0px;}

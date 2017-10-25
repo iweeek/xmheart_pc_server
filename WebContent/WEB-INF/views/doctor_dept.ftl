@@ -29,8 +29,17 @@
                         <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
                     <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
-                    <p>${dept.brief}……</p>
-                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
+                    <div class="dept-intro">
+                        <#if dept.brief?length lt 50>
+                                    ${dept.brief}......
+                                    <#else>
+                                    ${dept.brief[0..50]}......
+                                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
+                                    
+                        </#if>
+                    </div>
+                   <!-- <p>${dept.brief}</p>
+                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a> -->
                     <!--<a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>-->
                 </div>
                 <div class="contentsDoctor swiper-container">
@@ -48,10 +57,10 @@
                             <br/>
                             <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
                             <div class="doctor-intro">
-                                <#if doctor.intro?length lt 80>
-                                ${doctor.intro}
+                                <#if doctor.brief?length lt 35>
+                                ${doctor.brief}......
                                 <#else>
-                                ${doctor.intro[0..60]}......
+                                ${doctor.brief[0..35]}......
                                 <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
                                 </#if>
                             </div>

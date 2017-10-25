@@ -79,7 +79,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 
     @Override
     public List<XPWDept> getDepts() {
-        List<XPWDept> list = xpwDeptMapper.selectByExample(null);
+        List<XPWDept> list = xpwDeptMapper.selectByExampleWithBLOBs(null);
         return list;
     }
 
