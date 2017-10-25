@@ -9,6 +9,7 @@ import com.xmheart.mapper.XPWIndexMapper;
 import com.xmheart.mapper.XPWXTIndexMapper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWXTIndex;
+import com.xmheart.model.XPWXTIndexExample;
 import com.xmheart.service.IndexService;
 
 @Service
@@ -46,6 +47,12 @@ public class IndexServiceImpl implements IndexService {
     public int xtUpdate(XPWXTIndex index) {
         int ret = xtIndexMapper.updateByPrimaryKeySelective(index);
         return ret;
+    }
+
+    @Override
+    public XPWXTIndex getXTIndex() {
+        XPWXTIndexExample example = new XPWXTIndexExample();
+        return null;
     }
 	
 

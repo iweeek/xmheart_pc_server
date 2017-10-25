@@ -29,6 +29,7 @@ import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
+import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
@@ -446,16 +447,17 @@ public class NewsController {
         		if (nav.size() != 0) {
         			navMap.put(newColumn.getColumnName(), nav);
         		}	
-        		//System.out.println(thiColLost.size());
         	}
-        	//System.out.println(column.getColumnName());
         }
+        
+        XPWXTIndex index = indexService.xtIndexRead();
         
         model.addAttribute("firstColList", firstColList);
         model.addAttribute("secondColList", secondColList);
         model.addAttribute("thirdColList", thirdColList);
         model.addAttribute("navMap", navMap);
         model.addAttribute("xtfirstColumns", xtfirstColumns);
+        model.addAttribute("index", index);
         
         return "xt_index";
     }

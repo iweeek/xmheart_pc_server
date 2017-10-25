@@ -103,9 +103,9 @@
       <div class="Banners">
         <div class="swiper-container xt-swiper" id="xtSwiper">
           <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="img/slider1.jpg" alt=""></div>
-              <div class="swiper-slide">Slide 2</div>
-              <div class="swiper-slide">Slide 3</div>
+              <div class="swiper-slide"><a href="${index.bannerImage1ActionUrl}"><img src="${index.bannerImage1Url}" alt=""></a></div>
+              <div class="swiper-slide"><a href="${index.bannerImage2ActionUrl}"><img src="${index.bannerImage2Url}" alt=""></a></div>
+              <div class="swiper-slide"><a href="${index.bannerImage3ActionUrl}"><img src="${index.bannerImage3Url}" alt=""></a></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>

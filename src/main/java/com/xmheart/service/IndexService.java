@@ -18,4 +18,6 @@ public interface IndexService {
 
     int xtUpdate(XPWXTIndex index);
 
+    XPWXTIndex getXTIndex();
+
 }

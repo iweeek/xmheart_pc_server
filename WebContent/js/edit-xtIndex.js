@@ -5,7 +5,7 @@ exports.XPW.xtIndexEdit = (function() {
 	  // 初始化页面处理。
 	  xtIndexEdit.addSlideImg();
 	  xtIndexEdit.getData();
-	  xtIndexEdit.pageId = 0;
+	  xtIndexEdit.pageId = 1;
 	  xtIndexEdit.postData();
   }
   
@@ -46,9 +46,10 @@ exports.XPW.xtIndexEdit = (function() {
   }
   
   xtIndexEdit.getData = function () {
-	  $.get('/xtIndexPage',function(data){
-		  IndexEdit.pageId = data.id;
-		  if(data.bannerImage1Url) {
+	  $.get('/xtIndexPage', function(data){
+		  debugger;
+		  xtIndexEdit.pageId = data.id;
+		  if (data.bannerImage1Url) {
 			  $('.add-img-list').eq(0).find('.add-image-url img').attr('src', data.bannerImage1Url);
 			  $('.add-img-list').eq(0).find('.add-image-button').hide();
 			  $('.add-img-list').eq(0).find('.add-image-url').show();
@@ -74,6 +75,7 @@ exports.XPW.xtIndexEdit = (function() {
 		  }
 	  });
   }
+  
   xtIndexEdit.postData = function () {
 	  $('.search-button').on('click', function(){
 		  var parms = {
@@ -99,3 +101,4 @@ exports.XPW.xtIndexEdit = (function() {
 
   return xtIndexEdit;
 })();
+
