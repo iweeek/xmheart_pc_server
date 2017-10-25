@@ -200,13 +200,8 @@ public class NewsController {
         
         if (articleList.size() > 0) {
             if (page == 1) {
-                if (articleList.size() > 3) {
-                    articleList = articleList.subList(3, articleList.size());
-                    model.addAttribute("noPinnedArticleList", articleList);
-                } else {
-                    model.addAttribute("noPinnedArticleList", articleList);
-                }
-               
+                articleList.removeAll(pinnedArticleList);
+                model.addAttribute("noPinnedArticleList", articleList);
             } else {
                 model.addAttribute("noPinnedArticleList", articleList);
             }

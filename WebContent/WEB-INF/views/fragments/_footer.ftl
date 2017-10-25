@@ -101,7 +101,7 @@
     }
     
         //标注点数组
-    var markerArr = [{title:"厦门大学附属心血管医院",content:"我的备注",point:"118.104525|24.476845",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}];
+    var markerArr = [{title:"厦门大学附属心血管医院",content:"地址：厦门市湖滨南路205号振河大楼",point:"118.104525|24.476845",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}];
     //创建marker
     function addMarker(){
         for(var i=0;i<markerArr.length;i++){
