@@ -1,10 +1,10 @@
 <#include "./fragments/_header.ftl">
 	<!-- list container -->
-	<div class="breadcrumb">
+	<!--<div class="breadcrumb">
 		<div class="xm-container">
 			<a href="#">新闻中心</a><i>/</i><span>媒体聚焦</span>
 		</div>
-	</div>
+	</div>-->
 	<div class="list-container">
 		<div class="list-main">
 			<div class="list-main-nav">
