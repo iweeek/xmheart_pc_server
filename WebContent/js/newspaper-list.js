@@ -273,7 +273,7 @@ $(function() {
 
 	// 新建
 	$('#J_create_btn').on('click', function() {
-		location.href = '/static/ueditor.html';
+		location.href = 'newspaper_create.html';
 	})
 
 	// 置顶

@@ -38,22 +38,24 @@
                 <input type="text" class="article-title" id="elecNewspaperTitle">
             </div>
         </div>
-        <span class="select-title required">年份：</span>
-         <input type="text" class="article-title" id="year"> 
-         <br/><br/>
-         <span class="select-title required">期号：</span>
-         <input type="text" class="article-title" id="times">
-         <br/><br/>
-         <span class="select-title required">页号：</span>
-         <input type="text" class="article-title" id="page">
-        <p class="subtit">院报图片</p>
+         <p class="subtit">院报编辑时间</p>
+            <span class="select-title required">年份：</span>
+             <input type="text" class="article-title" id="year"> 
+             <br/><br/>
+             <span class="select-title required">期号：</span>
+             <input type="text" class="article-title" id="times">
+             <br/><br/>
+             <span class="select-title required">页号：</span>
+             <input type="text" class="article-title" id="page">
+
+        <p class="subtit">院报导航显示图片</p>
         <div class="upload-wrapper" id="uploadWrapper">
             <div class="add-img-list">
                 <div class="add-image-button" id="addImgBtn">
                      添加图片
                 </div>
-                <div class="add-image-url">
-                    <img src="#" class="upload-img">
+                <div class="add-image-url" id = "add-image-url">
+                    <img src="#" class="upload-img" id = "upload-img">
                 </div>
                 <div class="add-image-edit">
                     <img src="../img/manager/edit.png">
@@ -63,7 +65,6 @@
                     <input type="submit" class="add-img-submit" />
                 </form>
            </div>
-           
         </div>
        
         <div class="btn-group">

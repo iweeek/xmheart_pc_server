@@ -45,7 +45,7 @@
                 <div class="media-wrapper video-wrapper">
                     <#list videoList as v>
                     <div class="media-item">
-                    <a href="videoNewsDetail">
+                    <a href="${v.url}">
                         <div class="media-img"><img src="${v.imgUrl}" alt=""></div>
                         <div class="media-info">
                             <h4 class="media-info-title">${v.title}</h4>

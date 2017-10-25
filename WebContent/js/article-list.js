@@ -92,7 +92,10 @@ $(function() {
                 var optionString = '';
                 for (var i in data) {
                     var jsonObj = data[i];
-                    optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
+                    if (jsonObj.columnName == "电子院报" || jsonObj.columnName == "影像厦心") {
+                    		continue;
+                    }
+                    	optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
                 }
                 if (data.length > 0) {
@@ -321,6 +324,7 @@ $(function() {
             $('#J_filter_btn').data('third', secondId);
             ctrl.getColumns(secondId, '#J_select_third');
         };
+        
     });
     
  // 获取四级分类的id

@@ -22,10 +22,10 @@
 			<div class="baseRight list-news">
 				<div class="title01">影像厦心</div>
 				<div class="article detail">
-					<h2 id="H2Title">好消息！河南省人民医院将免费救助百名先心病患儿</h2>
+					<h2 id="H2Title">${video.title}</h2>
 					<div id="DIVTool" class="title04">
-						<span id="SPANDate">发布日期：2016-11-09</span>
-						<span>字号调整
+						<span id="SPANDate">发布日期：${video.publishTime?string('yyyy-MM-dd')}</span>
+						<!-- <span>字号调整
 							<em id="EMChange">
 								<img src="img/detail/font_ico02.png" alt="" width="22" height="23">
 								<a class="font-size-1" href="javascript:;" data-type="0"></a>
@@ -33,7 +33,7 @@
 								<a class="font-size-3" href="javascript:;" data-type="2"></a>
 							</em>
 							<b id="FontState">14px</b>
-						</span>
+						</span> -->
 						<!--<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
 						<div class="itemBase" id="phoneArticle">
 							<div class="divType">手机看新闻</div>
