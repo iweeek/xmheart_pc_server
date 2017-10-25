@@ -170,7 +170,7 @@ public class NewsController {
 
         return null;
     }
-
+    
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/col/{columnId}" }, method = RequestMethod.GET)
     public String columnArticleList(@RequestParam(required = false, defaultValue = "1") Integer page, 
@@ -198,13 +198,6 @@ public class NewsController {
         List<XPWArticle> articleList = articleService.index(columnId, isPublished);
         PageInfo pageInfo = new PageInfo(articleList);
         
-//        List<XPWArticle> list = new ArrayList<XPWArticle>();
-//        
-//        System.out.println(articleList.size());
-//        for (int i = 0; i < articleList.size(); i++) {
-//        	list.add(articleList.get(i));
-//        }
-//        PageInfo pageInfos = new PageInfo(list);
         model.addAttribute("pageInfo", pageInfo);
         
         if (articleList.size() > 0) {
@@ -251,29 +244,36 @@ public class NewsController {
      * 影像厦心列表页
      */
     @ApiOperation(value = "影像厦心列表页", notes = "影像厦心列表页")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/videoNews" }, method = RequestMethod.GET)
-    public String videoNews(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
-
+    public String videoNews(@RequestParam(required = false, defaultValue = "1") Integer page, 
+         Model model) {
         model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
         model = addLeftNav(VIDEO_NEWS_COLUMN_ID, model);
-        
+
         String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
-        
         model.addAttribute("columnName", columnName);
 
-        List<XPWVideo> videoList = videoService.index();
-        model.addAttribute("videoList", videoList);
+        boolean isPublished = true;
+        
+        PageHelper.startPage(page, 6);
+        List<XPWVideo> videoList = videoService.index(isPublished);
+        PageInfo pageInfo = new PageInfo(videoList);
+        
+        model.addAttribute("pageInfo", pageInfo);
+        
+        model.addAttribute("videoList", videoList	);
         
         for (XPWVideo video : videoList) {
-        		if (video.getImgUrl().equals("")) {
-        			// 默认图片
-        			video.setImgUrl("/img/pic/pic_002.jpg");
-        		}
+	    		if (video.getImgUrl().equals("")) {
+	    			// 默认图片
+	    			video.setImgUrl("/img/pic/pic_002.jpg");
+	    		}
         }
-        
         return "video";
     }
+    
     
     /**
      * 影像厦心详情页
