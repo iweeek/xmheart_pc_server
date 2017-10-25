@@ -32,7 +32,7 @@
 								<a class="fot14" href="javascript:;" data-type="1"></a>
 								<a class="fot16" href="javascript:;" data-type="2"></a>
 							</em>
-							<b id="FontState">16px</b>
+							<b id="FontState">18px</b>
 						</span>
 						<!--<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
 						<div class="itemBase" id="phoneArticle">
