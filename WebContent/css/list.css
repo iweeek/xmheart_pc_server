@@ -389,8 +389,8 @@
 .officesBase .contents .contentsOffice:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
 .officesBase .contents .contentsOffice i{display:block; width:26px; height:44px; position:absolute; top:0px; right:29px;}
 .officesBase .contents .contentsOffice i.ico01{ background:url(../img/list/ico_033.jpg) no-repeat;}
-.officesBase .contents .contentsOffice .img{ width:80px; height:80px; border-radius:50%; margin:40px auto 20px auto; background:#6bcbca;}
-.officesBase .contents .contentsOffice .img{ background:#bda179;}
+.officesBase .contents .contentsOffice .img{ width:80px; height:80px; margin:40px auto 20px auto;}
+.officesBase .contents .contentsOffice .img{ }
 .officesBase .contents .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
 .officesBase .contents .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
 .officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:18px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
