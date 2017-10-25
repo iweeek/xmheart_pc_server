@@ -28,20 +28,20 @@
 				    <div class="swiper-wrapper">
 				        <div class="swiper-slide">
 				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle1Tag}</span>${index.bannerArticle1Title}</h5>
-							<p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle1Brief[0..30]}...
-							<a href="doctorDetail?id=${index.bannerArticle1Url}" title="" class="show-more">查看详细</a>
+							<p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle1Brief}...
+							<a href="${index.bannerArticle1Url}" title="" class="show-more">查看详细</a>
 							</p>
 				        </div>
 				        <div class="swiper-slide">
 				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle2Tag}</span>${index.bannerArticle2Title}</h5>
-                            <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle2Brief[0..30]}...
-                            <a href="doctorDetail?id=${index.bannerArticle2Url}" title="" class="show-more">查看详细</a>
+                            <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle2Brief}...
+                            <a href="${index.bannerArticle2Url}" title="" class="show-more">查看详细</a>
                             </p>
 				        </div>
 				        <div class="swiper-slide">
 				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle3Tag}</span>${index.bannerArticle3Title}</h5>
-                            <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle3Brief[0..30]}...
-                            <a href="doctorDetail?id=${index.bannerArticle3Url}" title="" class="show-more">查看详细</a>
+                            <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle3Brief}...
+                            <a href="${index.bannerArticle3Url}" title="" class="show-more">查看详细</a>
                             </p>
 				        </div>
 				    </div>
