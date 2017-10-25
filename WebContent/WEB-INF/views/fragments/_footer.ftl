@@ -67,6 +67,8 @@
 		<script src="/js/third_party/jquery.min.js"></script>
 		<script src="/js/respond.min.js"></script>
 		<script src="/js/swiper-3.4.2.jquery.min.js"></script>
+		<script type="text/javascript" src="./js/third_party/jquery.jplayer.min.js"></script>
+    		<script type="text/javascript" src="./js/third_party/jplayer.playlist.min.js"></script>
 		<script src="/js/common.js"></script>
 		
 		<#if firstColumnName != "首页">
