@@ -40,13 +40,13 @@ exports.XPW.NavEdit = (function() {
 	        	$('#secondColumn').text(res.childColumnName);
 	        	$('#articleTitle').text(res.articleTitle);
 	        	$('#publishTime').text(NavEdit.dateFilter(res.publishTime));
-//	        	$('#articleId').text(res.id);
 	        	$('#url').text(res.url);
-//	        	$('#upload-img').attr('src', res.imgUrl);
-//	        $('#add-image-url').show();
-//	        $('#addImgBtn').hide();
-//	        	 console.log(res.imgUrl);
-	        	 
+	        	
+	        	
+	        // 为 secondColumnId 设置分量
+	        	$('#secondColumnId').data('nav-id', res.id)
+	 	  	$('#secondColumnId').data('column-id', res.columnId)
+	 	  	$('#secondColumnId').data('column-name', res.childColumnName)
         });
     },
     
@@ -80,7 +80,7 @@ exports.XPW.NavEdit = (function() {
 					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
 					confirmButtonText : "返回上一页",
-					cancelButtonText : "继续上传",
+					cancelButtonText : "确定",
 					closeOnConfirm : false
 				}, function() {
 					window.history.go(-1);
@@ -209,7 +209,17 @@ exports.XPW.NavEdit = (function() {
     
 
     NavEdit.postDialogHandle = function () {
+//        $('#secondTable').on('click', '.post-btn-edit', function() {
+//        		console.log($(this).data('column-name'));
+//	  	    $('#secondColumnId').val($(this).data('column-name'));
+//	  	    $('#secondColumnId').data('nav-id', $(this).data('nav-id'))
+//	  	    $('#secondColumnId').data('column-id', $(this).data('column-id'))
+//	  	    $('#secondColumnId').data('column-name', $(this).data('column-name'))
+//	  	    $('#postModal').modal('show');
+//      ·	})
+    		
 		$('.post-btn-edit').on('click', function() {
+			$('#secondColumnId').val($('#secondColumnId').data('column-name'));
 	        $('#postModal').modal('show');
 	    })
   	  }
