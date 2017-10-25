@@ -1,5 +1,7 @@
 package com.xmheart.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,12 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public XPWXTIndex xtIndexRead() {
-        XPWXTIndex index = xtIndexMapper.selectByExample(null).get(0);
-        return index;
+        List<XPWXTIndex> list = xtIndexMapper.selectByExample(null);
+        if (list.size() != 0) {
+            return list.get(0);
+        } else {
+            return null;
+        }
     }
 
     @Override
