@@ -239,9 +239,9 @@
 #EMChange{ width:102px; position:relative; height:12px; margin:0px 10px; background:url(/image/font_bg.png) 0px 3px no-repeat; display:inline-block; text-align:center; border-right:1px #333 dotted; padding-right:12px;}
 #EMChange img{ position:absolute; top:-4px; left:40px;}
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
-#EMChange a.fot12{left:-7px;}
-#EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:0;}
+#EMChange a.font-size-1{left:-7px;}
+#EMChange a.font-size-2{left:36px;}
+#EMChange a.font-size-3{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
@@ -279,9 +279,9 @@
 #EMChange{ width:102px; position:relative; height:12px; margin:0px 10px; background:url(/image/font_bg.png) 0px 3px no-repeat; display:inline-block; text-align:center; padding-right:12px;}
 #EMChange img{ position:absolute; top:-4px; left:86px;}
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
-#EMChange a.fot12{left:-7px;}
-#EMChange a.fot14{left:36px;}
-#EMChange a.fot16{right:0;}
+#EMChange a.font-size-1{left:-7px;}
+#EMChange a.font-size-2{left:36px;}
+#EMChange a.font-size-3{right:0;}
 
 #FontState{ font-weight:normal;}
 .baseRight .article .title04 .itemBase{ position:relative; width:97px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
@@ -296,7 +296,7 @@
 
 /* 院报 */
 .baseRight .title06{ border-bottom:none;}
-.baseRight .title07{ height:151px; padding:53px 29px; border:1px #e7e6e6 solid; font-size:22px; color:#0f76c3; line-height:45px; }
+.baseRight .title07{ height:100px; padding:30px 29px; border:1px #e7e6e6 solid; font-size:22px; color:#0f76c3; line-height:45px; }
 .baseRight .title07 form{ float:right;}
 .baseRight .title07 form select{ float:left; width:200px; height:45px; padding:12px 15px; appearance:none; -moz-appearance:none; -webkit-appearance:none; border:2px #ddd solid; background:url(../img/list/ico_005.jpg) 170px center no-repeat; font-size:12px; color:#666;}
 .baseRight .title07 form input{ float:left; width:110px; height:45px; background:#0f76c3; color:#fff; border:none; font-size:14px; cursor:pointer;}
@@ -452,9 +452,9 @@ a.blue{ background:#79a9b8;}
 .partRight .title04 span{ float:none; padding-right:12px; margin-right:12px; border-right:1px #e5e5e5 solid;}
 .partRight .title04 span em{ width:91px; height:24px; margin:0px 10px; background:url(/image/font_bg.jpg) 0px 11px no-repeat; display:inline-block; text-align:center; border-right:1px #333 dotted; padding-right:12px;}
 .partRight .title04 span em img{ vertical-align:middle;}
-.partRight .title04 span em a.fot12{ float:left; margin-left:-4px;}
-.partRight .title04 span em a.fot12{ float:left;}
-.partRight .title04 span em a.fot16{ float:right; margin-right:-4px;}
+.partRight .title04 span em a.font-size-1{ float:left; margin-left:-4px;}
+.partRight .title04 span em a.font-size-1{ float:left;}
+.partRight .title04 span em a.font-size-3{ float:right; margin-right:-4px;}
 .partRight .title04 .itemBase{ position:relative; width:85px; padding-left:12px; border-left:1px solid #e7e6e6; display:inline-block; }
 .partRight .title04 .share{ float:right; width:130px; border:none;}
 .partRight .title04 .itemBase .divType{ background:url(/image/ico_066.png) right center no-repeat;10000000000000000000 cursor:pointer;}

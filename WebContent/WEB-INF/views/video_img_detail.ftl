@@ -28,9 +28,9 @@
 						<span>字号调整
 							<em id="EMChange">
 								<img src="img/detail/font_ico02.png" alt="" width="22" height="23">
-								<a class="fot12" href="javascript:;" data-type="0"></a>
-								<a class="fot14" href="javascript:;" data-type="1"></a>
-								<a class="fot16" href="javascript:;" data-type="2"></a>
+								<a class="font-size-1" href="javascript:;" data-type="0"></a>
+								<a class="font-size-2" href="javascript:;" data-type="1"></a>
+								<a class="font-size-3" href="javascript:;" data-type="2"></a>
 							</em>
 							<b id="FontState">14px</b>
 						</span>
