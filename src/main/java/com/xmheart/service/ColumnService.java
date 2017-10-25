@@ -83,6 +83,8 @@ public interface ColumnService {
      */
     XPWColumn getColumnById(Long columnId);
 
+    XPWNav getNavById(Long id);
+    
     int updateColumn(XPWColumn column);
 
     List<XPWColumn> readSubColumn(Long id);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWNav;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
@@ -42,19 +43,35 @@ public class NavController {
         return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
     }
     
+    @ApiOperation(value = "根据Id获取导航内容", notes = "根据Id获取导航内容")
+    @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.GET)
+    public ResponseEntity<?> read(@ApiParam("导航条目的Id") @PathVariable Long id) {
+        
+        XPWNav nav = ColumnService.getNavById(id);
+        if (nav == null) {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(nav);
+        }
+    }
+    
     @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
     @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
+            @ApiParam("图片地址") @RequestParam(required = false) String imgUrl,
             @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
         
         XPWNav nav = new XPWNav();
         nav.setId(id);
         
+        System.out.println(articleId);
         XPWArticle article  = articleService.read(articleId);
         
         nav.setArticleTitle(article.getTitle());
         nav.setPublishTime(article.getPublishTime());
         nav.setUrl(article.getUrl());
+        nav.setImgUrl(imgUrl);
+        // TODO url
         
         int ret = ColumnService.updateNav(nav);
         if (ret == 0) {
