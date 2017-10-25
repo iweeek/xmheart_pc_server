@@ -64,10 +64,10 @@ public class TokenServiceImpl implements TokenService {
             user = list.get(0);
         }
         
-//        String result = MessageDigestUtil.Md5(user.getPassword() + salt);
-//        if (!result.equals(password)) {
-//            return -1;
-//        }
+        String result = MessageDigestUtil.Md5(user.getPassword() + salt);
+        if (!result.equals(password)) {
+            return -1;
+        }
         
         //创建token
         long userId = user.getId();
