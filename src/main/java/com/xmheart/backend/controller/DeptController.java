@@ -1,6 +1,9 @@
 package com.xmheart.backend.controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +75,12 @@ public class DeptController {
         }
         
         if (intro != null) {
-            dept.setIntro(intro);
+        		dept.setIntro(intro);
+            String brief = delHTMLTag(intro);
+            if (brief.length() > 100) {
+        			brief = brief.substring(0, 100);
+            }
+            dept.setBrief(brief);
         }
         
         if (outService != null) {
@@ -110,7 +118,14 @@ public class DeptController {
         }
         
         if (intro != null) {
-            dept.setIntro(intro);
+        		dept.setIntro(intro);
+            String brief = delHTMLTag(intro);
+            if (brief.length() > 100) {
+        			brief = brief.substring(0, 100);
+            }
+            dept.setBrief(brief);
+        } else {
+        		dept.setIntro("");
         }
         
         if (outService != null) {
@@ -128,4 +143,26 @@ public class DeptController {
             return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(dept);
         }
     }
+    
+    public String delHTMLTag(String htmlStr) {
+		String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式
+		String regEx_html = "<[^>]+>"; // 定义HTML标签的正则表达式
+
+		Pattern p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);
+		Matcher m_style = p_style.matcher(htmlStr);
+		htmlStr = m_style.replaceAll(""); // 过滤style标签
+
+		Pattern p_html = Pattern.compile(regEx_html, Pattern.CASE_INSENSITIVE);
+		Matcher m_html = p_html.matcher(htmlStr);
+		htmlStr = m_html.replaceAll(""); // 过滤html标签
+
+		htmlStr = htmlStr.replace(" ", "");
+		htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n", "");
+		htmlStr = htmlStr.replace("“", "");
+		htmlStr = htmlStr.replace("”", "");
+		htmlStr = htmlStr.replaceAll("　", "");
+		htmlStr = htmlStr.replaceAll("&nbsp;", " ");
+
+		return htmlStr.trim(); // 返回文本字符串
+	}
 }
