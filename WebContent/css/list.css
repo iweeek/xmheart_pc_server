@@ -745,6 +745,20 @@ a.blue{ background:#79a9b8;}
 	border: #666 solid 1px;
 	margin-right: 9px;
 }
+.list-pagination .paginations li a.current{
+    display: block;
+    float: left;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 3px;
+    border: #ff7544 solid 1px;
+    margin-right: 9px;
+    background: #ff7544
+}
 @media all and (min-width:1441px) and (max-width:1920px){
 	.list-main-nav {
 		width: 305px;

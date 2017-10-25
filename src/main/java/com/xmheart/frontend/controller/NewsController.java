@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -196,6 +197,14 @@ public class NewsController {
         PageHelper.startPage(page, PAGE_SIZE);
         List<XPWArticle> articleList = articleService.index(columnId, isPublished);
         PageInfo pageInfo = new PageInfo(articleList);
+        
+//        List<XPWArticle> list = new ArrayList<XPWArticle>();
+//        
+//        System.out.println(articleList.size());
+//        for (int i = 0; i < articleList.size(); i++) {
+//        	list.add(articleList.get(i));
+//        }
+//        PageInfo pageInfos = new PageInfo(list);
         model.addAttribute("pageInfo", pageInfo);
         
         if (articleList.size() > 0) {
