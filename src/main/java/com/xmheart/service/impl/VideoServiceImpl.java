@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xmheart.mapper.XPWVideoMapper;
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWVideo;
+import com.xmheart.model.XPWVideoExample;
 import com.xmheart.service.VideoService;
 
 @Service
@@ -39,4 +41,17 @@ public class VideoServiceImpl implements VideoService {
         XPWVideo video = videoMapper.selectByPrimaryKey(id);
         return video;
     }
+
+	@Override
+	public List<XPWVideo> index(boolean isPublished) {
+		XPWVideoExample example = new XPWVideoExample();
+
+        example.createCriteria().andIsPublishedEqualTo(isPublished);
+
+        example.setOrderByClause("publish_time desc");
+
+        List<XPWVideo> list = videoMapper.selectByExample(example);
+
+        return list;
+	}
 }

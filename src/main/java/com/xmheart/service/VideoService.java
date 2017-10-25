@@ -21,4 +21,5 @@ public interface VideoService {
 
     XPWVideo read(Long id);
     
+    List<XPWVideo> index(boolean isPublished);
 }

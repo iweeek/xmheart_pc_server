@@ -1,3 +1,51 @@
+		
+		<div class="list-pagination">
+                <ul class="paginations">
+                    <#if pageInfo?? && (pageInfo.pages > 0)>
+                        <#if pageInfo.pages lt 5><!-- 如果页面总是小于5，直接显示完 -->
+                            <#list 1..pageInfo.pages as i>
+                                <#if pageInfo.pageNum == i>
+                                    <li><a href="?page=${i}" class="current">${i}</a></li>
+                                <#else>
+                                    <li><a href="?page=${i}">${i}</a></li>
+                                </#if>
+                            </#list>
+                        <#else>
+                        <#if pageInfo.pageNum gt 3 >
+                                <li><a href="?page=${pageInfo.prePage}"><<</a></li>
+                            </#if>
+                                <#if pageInfo.pageNum <= 2 >  
+                                    <#list  1..(pageInfo.pageNum + (5 - pageInfo.pageNum)) as i> <!-- 前两页开头显示5页 -->
+                                         <#if pageInfo.pageNum == i>
+                                     <li><a href="?page=${i}" class="current">${i}</a></li>
+                                     <#else>
+                                     <li><a href="?page=${i}">${i}</a></li>
+                                     </#if>
+                                 </#list>
+                                 <li><a href="?page=${pageInfo.pageNum+1}">>></a></li>
+                                <#elseif (pageInfo.pageNum gt 2) && (pageInfo.pageNum lt pageInfo.pages - 2)> 
+                                    <#list (pageInfo.pageNum - 2)..(pageInfo.pageNum + 2) as i>
+                                        <#if pageInfo.pageNum == i>
+                                     <li><a href="?page=${i}" class="current">${i}</a></li>
+                                     <#else>
+                                     <li><a href="?page=${i}">${i}</a></li>
+                                     </#if>
+                                 </#list>
+                                 <li><a href="?page=${pageInfo.pageNum+1}">>></a></li>
+                             <#else>
+                                 <#list (pageInfo.pages - 4)..pageInfo.pages as i> <!-- 后两页结尾显示5页 -->
+                                        <#if pageInfo.pageNum == i>
+                                     <li><a href="?page=${i}" class="current">${i}</a></li>
+                                     <#else>
+                                     <li><a href="?page=${i}">${i}</a></li>
+                                     </#if>
+                                 </#list>
+                            </#if>
+                            </#if>
+                    </#if>
+                </ul>
+            </div>
+		
 		<div class="xm-footer">
 			<div class="xm-footer-main">
 				<div class="xm-footer-link">
@@ -19,6 +67,8 @@
 		<script src="/js/third_party/jquery.min.js"></script>
 		<script src="/js/respond.min.js"></script>
 		<script src="/js/swiper-3.4.2.jquery.min.js"></script>
+		<script type="text/javascript" src="./js/third_party/jquery.jplayer.min.js"></script>
+    		<script type="text/javascript" src="./js/third_party/jplayer.playlist.min.js"></script>
 		<script src="/js/common.js"></script>
 		
 		<#if firstColumnName != "首页">

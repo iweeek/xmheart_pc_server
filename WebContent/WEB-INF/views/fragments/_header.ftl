@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/list.css">
         <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/jplayer.blue.monday.min.css">
         <!--[if lt IE 9]>
             <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="/js/respond.min.js"></script>

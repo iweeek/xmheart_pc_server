@@ -169,4 +169,30 @@ $(function(){
       $('#ddlTimes2').html(html);
     })
   }
+//  前台视频播放
+  var videoUrl = $('#H2Title').data('src');
+  if (videoUrl) {
+	  $("#jquery_jplayer_1").jPlayer({
+			ready: function () {
+				$(this).jPlayer("setMedia", {
+					title: "Big Buck Bunny",
+					m4v: videoUrl,
+					poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+				});
+			},
+			swfPath: "./third_party/jquery.jplayer.swf",
+			supplied: "m4v",
+			size: {
+				width: "640px",
+				height: "360px",
+				cssClass: "jp-video-360p"
+			},
+			useStateClassSkin: true,
+			autoBlur: false,
+			smoothPlayBar: true,
+			keyEnabled: true,
+			remainingDuration: true,
+			toggleDuration: true
+		});
+  }
 })

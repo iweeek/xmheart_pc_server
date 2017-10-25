@@ -74,25 +74,6 @@
 			    </ul>
 		     </div>
 			<div class="clear"></div>
-			<div class="list-pagination">
-				<ul class="paginations">
-                    <#if pageInfo?? && (pageInfo.pages > 0)>
-    					<#if pageInfo.pageNum != 1>
-    						<li><a href="?page=${pageInfo.prePage}"><<</a></li>
-    					</#if>
-    					<#if pageInfo.pageNum + 4 lt pageInfo.pages>
-        					<#list pageInfo.pageNum..pageInfo.pageNum + 4 as i>
-        						<li><a href="?page=${i}">${i}</a></li>
-                            </#list>
-        					<li><a href="?page=${pageInfo.pageNum+5}">>></a></li>
-        				<#else>
-                            <#list 1..pageInfo.pages as i>
-    						  <li><a href="?page=${i}">${i}</a></li>
-                            </#list>
-    					</#if>
-                    </#if>
-				</ul>
-			</div>
 		</div>
 	</div>
 </div>
