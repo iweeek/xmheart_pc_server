@@ -8,6 +8,11 @@
 	<div class="list-container">
 		<div class="bannerBase BaseMark">
       <div class="quickMenus">
+      	<div class="xt-logo-wrapper">
+      		<div class="xt-logo-img"><img src="/img/layout/xt_logo.jpg"></div>
+      		<div class="xt-logo-font">国家胸痛中心</div>
+      		<div class="xt-logo-font">区域认证中心（厦门）</div>
+      	</div>
         <ul class="firstUl">
         
           <li class="first">
