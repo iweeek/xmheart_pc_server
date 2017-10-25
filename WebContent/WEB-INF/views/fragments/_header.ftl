@@ -1,5 +1,15 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>百度地图API自定义地图</title>
+    <!--引用百度地图API-->
+    <style type="text/css">
+        html,body{margin:0;padding:0;}
+        .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+        .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">  
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="renderer" content="webkit">

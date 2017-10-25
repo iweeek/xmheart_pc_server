@@ -357,6 +357,26 @@ public class NewsController {
         return "news_detail";
 
     }
+    
+    @RequestMapping(value = { "/mapDetail" }, method = RequestMethod.GET)
+    public String mapDetail(@RequestParam Long id, Model model) {
+        
+        XPWColumn column = columnService.getColumnById(id);
+        XPWArticle article = new XPWArticle();
+        
+        article.setColumnName(column.getColumnName());
+        article.setTitle(column.getColumnName());
+        article.setPublishTime(column.getPublishTime());
+        
+        model.addAttribute("article", article);
+        
+        model = addTopNav(id, model);
+
+        model = addLeftNav(id, model);
+
+        return "map_detail";
+
+    }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @RequestMapping(value = { "/replaceCSS" }, method = RequestMethod.GET)
