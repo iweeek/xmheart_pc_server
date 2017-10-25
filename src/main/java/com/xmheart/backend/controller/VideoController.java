@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.service.VideoService;
 import io.swagger.annotations.Api;
@@ -29,7 +31,7 @@ public class VideoController {
     
     @ApiOperation(value = "获取视频列表", notes = "获取视频列表")
     @RequestMapping(value = { "/videos" }, method = RequestMethod.GET)
-    public ResponseEntity<?> index() {
+    public ResponseEntity<?> index(Model model) {
         List<XPWVideo> list = new ArrayList<XPWVideo>();
 
         list = videoService.index();
@@ -40,7 +42,7 @@ public class VideoController {
         }
     }
     
-    @ApiOperation(value = "获取院报列表", notes = "获取院报列表")
+    @ApiOperation(value = "获取院报", notes = "获取院报列表")
     @RequestMapping(value = { "/videos/{id}" }, method = RequestMethod.GET)
     public ResponseEntity<?> read(@PathVariable Long id) {
         XPWVideo video = videoService.read(id);
@@ -58,7 +60,7 @@ public class VideoController {
             @ApiParam("视频地址") @RequestParam(required = false) String videoUrl,
             @ApiParam("视频描述") @RequestParam(required = false) String brief,
             @ApiParam("是否置顶") @RequestParam(required = false) Boolean isPinned,
-            @ApiParam("图片地址") @RequestParam(required = false) Boolean isPublished,
+            @ApiParam("是否发布") @RequestParam(required = false) Boolean isPublished,
             @ApiParam("发布时间") @RequestParam(required = false) String publishTime) {
         XPWVideo video = new XPWVideo();
 
@@ -66,22 +68,32 @@ public class VideoController {
 
         if (imgUrl != null) {
             video.setImgUrl(imgUrl);
+        } else {
+        		video.setImgUrl("");
         }
 
         if (videoUrl != null) {
             video.setVideoUrl(videoUrl);
+        } else {
+    			video.setVideoUrl("");
         }
 
         if (brief != null) {
             video.setBrief(brief);
+        } else {
+        		video.setBrief("");
         }
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        } else {
+        		video.setIsPinned(false);
         }
         
         if (isPublished != null) {
             video.setIsPublished(isPublished);
+        } else {
+        		video.setIsPublished(false);
         }
         
         if (publishTime != null) {
@@ -115,29 +127,36 @@ public class VideoController {
         
         video.setId(id);
 
-        if (title != null) {
-            video.setTitle(title);
-        }
-
+        video.setTitle(title);
+        
         if (imgUrl != null) {
-            video.setUrl(imgUrl);
+            video.setImgUrl(imgUrl);
+        } else {
+        		video.setImgUrl("");
         }
 
         if (videoUrl != null) {
-            video.setImgUrl(videoUrl);
+            video.setVideoUrl(videoUrl);
+        } else {
+    			video.setVideoUrl("");
         }
 
         if (brief != null) {
             video.setBrief(brief);
+        } else {
+        		video.setBrief("");
         }
 
         if (isPinned != null) {
             video.setIsPinned(isPinned);
+        } else {
+        		video.setIsPinned(false);
         }
-        
         
         if (isPublished != null) {
             video.setIsPublished(isPublished);
+        } else {
+        		video.setIsPublished(false);
         }
 
         int ret = videoService.update(video);
@@ -146,7 +165,6 @@ public class VideoController {
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }
-
     }
 
 }

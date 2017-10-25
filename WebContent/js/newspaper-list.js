@@ -248,9 +248,9 @@ $(function() {
 					'click',
 					'.edit-btn',
 					function() {
-						var articleId = $(this).data('id');
-						location.href = '/static/ueditor.html?articleId='
-								+ articleId;
+						var newspaperId = $(this).data('id');
+						location.href = '/static/newspaper_editor.html?newspaperId='
+								+ newspaperId;
 					});
 
 	// 发布

@@ -139,10 +139,10 @@ public class ColumnServiceImpl implements ColumnService {
 		return list;
 	}
 
-    @Override
-    public XPWNav getNavById(Long id) {
-        XPWNav nav = xpwNavMapper.selectByPrimaryKey(id);
+	@Override
+	public XPWNav getNavById(Long id) {
+		XPWNav nav = xpwNavMapper.selectByPrimaryKey(id);
         return nav;
-    }
+	}
 
 }

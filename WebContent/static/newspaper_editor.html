@@ -32,28 +32,34 @@
             <li><a href="../article-list.html">院报列表</a></li>
             <li class="active">编辑院报</li>
         </ol>
+        <p class="subtit category">当前所属栏目</p>
+        <div class="wrapper category category-edit"></div>
+        <p class="subtit">院报栏目以及标题</p>
         <div class="title-input-wrapper" id="titleWrapper">
+          
+            
             <div class="article-title-wrapper">
                 <div class="select-title required">院报标题：</div>
                 <input type="text" class="article-title" id="elecNewspaperTitle">
             </div>
         </div>
-        <span class="select-title required">年份：</span>
-         <input type="text" class="article-title" id="year"> 
-         <br/><br/>
-         <span class="select-title required">期号：</span>
-         <input type="text" class="article-title" id="times">
-         <br/><br/>
-         <span class="select-title required">页号：</span>
-         <input type="text" class="article-title" id="page">
-        <p class="subtit">院报图片</p>
+        <p class="subtit">院报编辑时间</p>
+            <span class="select-title required">年份：</span>
+             <input type="text" class="article-title" id="year"> 
+             <br/><br/>
+             <span class="select-title required">期号：</span>
+             <input type="text" class="article-title" id="times">
+             <br/><br/>
+             <span class="select-title required">页号：</span>
+             <input type="text" class="article-title" id="page">
+        <p class="subtit">院报导航显示图片</p>
         <div class="upload-wrapper" id="uploadWrapper">
             <div class="add-img-list">
                 <div class="add-image-button" id="addImgBtn">
                      添加图片
                 </div>
-                <div class="add-image-url">
-                    <img src="#" class="upload-img">
+                <div class="add-image-url" id = "add-image-url">
+                    <img src="#" class="upload-img" id = "upload-img">
                 </div>
                 <div class="add-image-edit">
                     <img src="../img/manager/edit.png">
@@ -67,8 +73,8 @@
         </div>
        
         <div class="btn-group">
-            <input id="publish" type="button" name="" value="提交">
-            <!-- <input id="save" type="button" name="" value="保存"> -->
+            <!-- <input id="publish" type="button" name="" value="提交"> -->
+            <input id="save" type="button" name="" value="更新">
            <!--  <input id="preview" type="button" name="" value="预览"> -->
             <input id="cancel" type="button" name="cancel" value="取消">
             <!-- <input id="reset" type="reset" name="" value="舍弃"> -->
@@ -88,6 +94,6 @@
 <script type="text/javascript" src="../js/i18n/datepicker.zh-CN.js"></script>
 <script type="text/javascript" src="../js/third_party/select2.min.js"></script>
 <script type="text/javascript" src="../js/i18n/select2.zh-CN.js"></script>
-<script type="text/javascript" src="../js/elec-editor.js"></script>
+<script type="text/javascript" src="../js/newspaper-editor.js"></script>
 
 </html>

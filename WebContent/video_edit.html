@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="./css/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="./css/jplayer.blue.monday.min.css">
 <link rel="stylesheet" type="text/css" href="./css/video-edit.css">
+
 </head>
 <body>
     <!--   主题部分  -->
@@ -18,12 +19,23 @@
         		<div class="row">
              	<h4 class="slide-title">视频长传<span>（上传视频规格式）</span></h4>
              </div>
+             
+             <div class="title-input-wrapper" id="titleWrapper">
+                 <div class="article-title-wrapper">
+                     <span class="select-title required">视频标题：</span>
+                     <input type="text" class="article-title" id="videoTitle">
+                 </div>
+                 <div class="article-title-wrapper">
+                     <span class="select-title required">视频简介：</span>
+                     <input type="text" class="article-title" id="brief">
+                 </div>
+             </div>
              <div class="row add-list-main">
                 	<div class="add-img-list ">
               		<div class="add-image-button" id="addImgBtn">
          				 上传视频
         				</div>
-        				<div class="add-image-url">
+        				<div class="add-image-url" id = "add-image-url">
         					<div class="video-img-content">
 			             	<div id="jp_container_1" class="jp-video jp-video-360p" role="application" aria-label="media player">
 								<div class="jp-type-single">
@@ -77,15 +89,16 @@
                   		<input type="file" name="video" class="add-img-file" />
                   		<input type="submit" class="add-img-submit" />
               		</form>
-                		<div class="add-img-link">
+                		<!-- <div class="add-img-link">
                 			<p>请输入跳转的链接地址</p>
                 			<input type="text">
-                		</div>
+                		</div> -->
                 	</div>      	
              </div>
         		 <div class="row btn-group">
-        		 	<input type="button" class="search-button"  value="确定">
-            		<input type="button" class="search-button" value="取消">
+        		 	<input type="button" class="search-button" id="publish" value="上传">
+        		 	<input type="button" class="search-button" id="update" value="更新">
+            		<input type="button" class="search-button" id="cancel" value="取消">
         		 </div>
         </div>
     </div>

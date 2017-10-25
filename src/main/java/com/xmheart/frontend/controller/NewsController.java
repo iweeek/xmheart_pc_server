@@ -30,12 +30,14 @@ import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWXTIndex;
+import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.IndexService;
 import com.xmheart.service.NewsService;
+import com.xmheart.service.VideoService;
 
 import freemarker.template.Template;
 import io.swagger.annotations.ApiOperation;
@@ -55,6 +57,9 @@ public class NewsController {
     
     @Autowired
     private ArticleService articleService;
+    
+    @Autowired
+    private VideoService videoService;
     
     @Autowired
 	private DoctorAndDeptService doctorAndDeptService;
@@ -248,9 +253,19 @@ public class NewsController {
         
         model.addAttribute("columnName", columnName);
 
+        List<XPWVideo> videoList = videoService.index();
+        model.addAttribute("videoList", videoList);
+        
+        for (XPWVideo video : videoList) {
+        		if (video.getImgUrl().equals("")) {
+        			// 默认图片
+        			video.setImgUrl("/img/pic/pic_002.jpg");
+        		}
+        }
+        
         return "video";
     }
-
+    
     /**
      * 影像厦心详情页
      */

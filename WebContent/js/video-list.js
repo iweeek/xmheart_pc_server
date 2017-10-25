@@ -236,9 +236,9 @@ $(function() {
 					'click',
 					'.edit-btn',
 					function() {
-						var articleId = $(this).data('id');
-						location.href = '/static/ueditor.html?articleId='
-								+ articleId;
+						var videoId = $(this).data('id');
+						location.href = 'video_edit.html?videoId='
+								+ videoId;
 					});
 
 	// 发布

@@ -43,40 +43,19 @@
                 </div>-->
                 <div class="clear"></div>
                 <div class="media-wrapper video-wrapper">
+                    <#list videoList as v>
                     <div class="media-item">
                     <a href="videoNewsDetail">
-                        <div class="media-img"><img src="./img/media.jpg" alt=""></div>
+                        <div class="media-img"><img src="${v.imgUrl}" alt=""></div>
                         <div class="media-info">
-                            <h4 class="media-info-title">有哪些常见的心脑血管疾病？</h4>
+                            <h4 class="media-info-title">${v.title}</h4>
                                 <div class="media-bottom">
-                                <span class="date">2017/08/10</span>
-                                <span class="visit">10000</span>
+                                <span class="date">${v.publishTime?string('yyyy-MM-dd')}</span>
                             </div>
                         </div>
                     </a>
                     </div>
-                    <div class="media-item">
-                    <a href="videoNewsDetail">
-                        <div class="media-img"><img src="./img/media.jpg" alt=""></div>
-                        <div class="media-info">
-                            <h4 class="media-info-title">有哪些常见的心脑血管疾病？</h4>
-                            <div class="media-bottom">
-                                <span class="date">2017/08/10</span>
-                                <span class="visit">10000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media-item">
-                    <a href="videoNewsDetail">
-                        <div class="media-img"><img src="./img/media.jpg" alt=""></div>
-                        <div class="media-info">
-                            <h4 class="media-info-title">有哪些常见的心脑血管疾病？</h4>
-                            <div class="media-bottom">
-                                <span class="date">2017/08/10</span>
-                                <span class="visit">10000</span>
-                            </div>
-                        </div>
-                    </div>
+                    </#list>
                 </div>
                 <div class="list-pagination">
                     <ul class="paginations">

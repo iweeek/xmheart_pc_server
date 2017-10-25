@@ -120,20 +120,20 @@
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                     <#list secondColNavMap as skey, sv>                             
                                         <#if skey == "媒体看厦心">
+                                            <#list sv as scol>
+                                            <#if scol?index == 0>
                                             <dl class="Img02">
                                             <dt class="title01">${skey}</dt>
                                             <dd class="pic">
-                                                <img alt="最新公告" src="./img/pic/pic_002.jpg" width="126" height="77">
+                                                <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
                                             </dd>
-                                            <#list sv as scol>
-                                            <#if scol?index == 0>
                                             <dd class="Lurl">
-                                                <em>${scol.publishTime?date}111</em>
+                                                <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
                                                 <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                             </dd>
                                             <#else>
                                             <dd class="url">
-                                                <span>${scol.publishTime?date}222</span>
+                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
                                                 <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                             </dd>
                                             </#if>
@@ -147,7 +147,7 @@
                                             <dt class="title01">${skey}</dt>
                                             <#list sv as scol>
                                             <dd class="url">
-                                                <span>${scol.publishTime?date}</span>
+                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
                                                 <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                             </dd>
                                             </#list>
@@ -161,7 +161,7 @@
                                     <dt class="title02">${skey}</dt>
                                             <#list sv as scol>
                                             <dd class="url">
-                                                <span>${scol.publishTime?date}</span>
+                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
                                                 <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                             </dd>
                                             </#list>
@@ -174,7 +174,7 @@
                                             <dt class="title02">${skey}</dt>
                                             <#list sv as scol>
                                             <dd class="url">
-                                                <span>${scol.publishTime?date}</span>
+                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
                                                 <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                             </dd>
                                             </#list>
@@ -192,19 +192,19 @@
 									                     		
                                     	<#if skey == "心血管外科">
                                     	  	<dl class="Img02">
+                                    	  	    <#list sv as scol>
+                                             <#if scol?index == 0>
 											<dt class="title01">${skey}</dt>
 											<dd class="pic">
-												<img alt="最新公告" src="./img/pic/pic_002.jpg" width="126" height="77">
+												<img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
 											</dd>
-											<#list sv as scol>
-											<#if scol?index == 0>
 											<dd class="Lurl">
-												<em>${scol.publishTime?date}111</em>
+												<em>${scol.publishTime?string('yyyy-MM-dd')}</em>
 												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
 											</dd>
 											<#else>
 											<dd class="url">
-												<span>${scol.publishTime?date}222</span>
+												<span>${scol.publishTime?string('yyyy-MM-dd')}</span>
 												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
 											</dd>
 											</#if>
@@ -218,7 +218,7 @@
 											<dt class="title01">${skey}</dt>
 											<#list sv as scol>
 											<dd class="url">
-												<span>${scol.publishTime?date}</span>
+												<span>${scol.publishTime?string('yyyy-MM-dd')}</span>
 												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
 											</dd>
 											</#list>
@@ -234,7 +234,7 @@
 									       <dt class="title02">${skey}</dt>
 										   <#list sv as scol>
 										   <dd class="url">
-										      <span>${scol.publishTime?date}</span>
+										      <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
 										      <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
 										   </dd>
 										   </#list>
