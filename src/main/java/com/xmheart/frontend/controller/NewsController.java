@@ -270,7 +270,7 @@ public class NewsController {
      */
     @ApiOperation(value = "影像厦心详情页", notes = "影像厦心详情页")
     @RequestMapping(value = { "/videoNewsDetail" }, method = RequestMethod.GET)
-    public String videoNewsDetail(Model model, @RequestParam(required = false, defaultValue = "1") Integer page) {
+    public String videoNewsDetail(Model model, @RequestParam Long id) {
 
         model = addTopNav(VIDEO_NEWS_COLUMN_ID, model);
 
@@ -278,10 +278,15 @@ public class NewsController {
         
         String columnName = columnService.getColumnById(VIDEO_NEWS_COLUMN_ID).getColumnName();
         model.addAttribute("columnName", columnName);
+        
+        XPWVideo video = videoService.read(id);
+        model.addAttribute("video", video);
 
         return "video_img_detail";
     }
 
+    
+    
     /**
      * 电子院报列表页
      */
