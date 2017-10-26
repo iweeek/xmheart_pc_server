@@ -8,6 +8,7 @@ exports.XPW.OfficeUeditor = (function() {
   	OfficeUeditor.uploadImg()
   	OfficeUeditor.ue = UE.getEditor('container');
 	OfficeUeditor.isDisplayed = false;
+	OfficeUeditor.cancel();
   }
 
   OfficeUeditor.getUrlParam = function (name) {
@@ -105,6 +106,13 @@ exports.XPW.OfficeUeditor = (function() {
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
   }
+  
+    OfficeUeditor.cancel = function() {
+      $('#cancel').on('click', function(){
+			// 取消(直接返回上一级，不做接口交互)
+			window.history.go(-1);
+      });
+	}
   
   return OfficeUeditor;
 })();

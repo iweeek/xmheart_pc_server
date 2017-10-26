@@ -9,6 +9,7 @@ exports.XPW.DoctorUeditor = (function() {
   	DoctorUeditor.uploadImg()
   	DoctorUeditor.ue = UE.getEditor('container');
 	DoctorUeditor.isDisplayed = false;
+	DoctorUeditor.cancel();
   }
 
   DoctorUeditor._getUrlParam = function (name) {
@@ -139,6 +140,13 @@ exports.XPW.DoctorUeditor = (function() {
 		  });
 	  })
   }
+  
+  DoctorUeditor.cancel = function() {
+      $('#cancel').on('click', function(){
+			// 取消(直接返回上一级，不做接口交互)
+			window.history.go(-1);
+      });
+	}
   
   DoctorUeditor.uploadImg = function () {
 	  $('.add-img-list').on('click', '#addImgBtn', function (){
