@@ -59,6 +59,7 @@ public class NavController {
     @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
             @ApiParam("图片地址") @RequestParam(required = false) String imgUrl,
+            @ApiParam("文章摘要") @RequestParam(required = false) String brief,
             @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
         
         XPWNav nav = new XPWNav();
@@ -71,6 +72,10 @@ public class NavController {
         nav.setPublishTime(article.getPublishTime());
         nav.setUrl(article.getUrl());
         nav.setImgUrl(imgUrl);
+        if (brief.length() > 100) {
+        		brief = brief.substring(0, 100);
+        }
+        nav.setBrief(brief);
         
         int ret = ColumnService.updateNav(nav);
         if (ret == 0) {

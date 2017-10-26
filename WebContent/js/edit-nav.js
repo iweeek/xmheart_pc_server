@@ -3,6 +3,7 @@ exports.XPW = exports.EDIT || {};
 var articleTitle = $('#articleTitle');
 var secondColumn = $('#secondColumn');
 var publishTime = $('#publishTime');
+var brief = $('#brief');
 var navId;
 exports.XPW.NavEdit = (function() {
   function NavEdit() {
@@ -40,8 +41,8 @@ exports.XPW.NavEdit = (function() {
 	        	$('#secondColumn').text(res.childColumnName);
 	        	$('#articleTitle').text(res.articleTitle);
 	        	$('#publishTime').text(NavEdit.dateFilter(res.publishTime));
+	        	$('#brief').val(res.brief);
 	        	$('#url').text(res.url);
-	        	
 	        	
 	        // 为 secondColumnId 设置分量
 	        	$('#secondColumnId').data('nav-id', res.id)
@@ -63,7 +64,8 @@ exports.XPW.NavEdit = (function() {
 			var params = {
 				imgUrl : imgUrl,
 				id: navId,
-				articleId: $('#articleId').text()
+				articleId: $('#articleId').text(),
+				brief: $('#brief').val()
 			};
 	
 			if (!NavEdit.valid(params, 'publish')) {
@@ -74,13 +76,13 @@ exports.XPW.NavEdit = (function() {
 			$.post(url, params, function(res) {
 				$this.removeAttr('disabled');
 				swal({
-					title : "上传成功",
+					title : "更新成功",
 					text : "返回上一页？",
 					type : "success",
 					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
 					confirmButtonText : "返回上一页",
-					cancelButtonText : "确定",
+					cancelButtonText : "继续编辑",
 					closeOnConfirm : false
 				}, function() {
 					window.history.go(-1);
@@ -139,6 +141,7 @@ exports.XPW.NavEdit = (function() {
 //                console.log(data);
 	 	        	$('#articleTitle').text(data.title);
 	 	        	$('#publishTime').text(NavEdit.dateFilter(data.publishTime));
+	 	        	$('#brief').val(data.brief);
 	 	        	$('#articleId').text(data.id);
 	 	       	$('#url').text(data.url);
 	 	        	$('#upload-img').attr('src', data.imgUrl);
