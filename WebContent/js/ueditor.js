@@ -46,6 +46,9 @@ $(function () {
                 $('.column-edit').show();
                 $('#columnEditName').val(res.columnName);
                 $('#articleTitle').val(res.title);
+                $('#upload-img').attr('src', res.imgUrl);
+                $('#add-image-url').show();
+                $('#addImgBtn').hide();
                 columnId = res.columnId;
                 $('#articleDate').datepicker('setDate', new Date(res.publishTime));
                 // $('.category-create').hide();
@@ -177,17 +180,32 @@ $(function () {
                     type: "success",
                     showCancelButton: true,
                     confirmButtonColor: "#8cd4f5",
-                    confirmButtonText: "返回上一页",
-                    cancelButtonText: "取消",
+                    confirmButtonText: "继续编辑",
+                    cancelButtonText: "新建一篇",
                     closeOnConfirm: false
-                }, function () {
-                		location.href="article-list.html?col=" + ctrl.col
-                });
+                }, function(isConfirm){
+                	    if (isConfirm) {
+                		  	ctrl.goToEditor(res);
+                	    } else {
+                		    ctrl.goToCreate();
+                	    }
+                	}); 
             }).error(function() { 
             		$this.removeAttr('disabled');
             		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
             	});
         },
+        
+        goToEditor: function(res) {
+        		var url = '/static/ueditor.html?articleId=' + res.id + '&col=' + ctrl.col;
+            location.href = url;
+        },
+        
+        goToCreate: function() {
+        		var url = '/static/ueditor.html?col=' + ctrl.col;
+            location.href = url;
+        },
+        
         valid: function (params, type) {
             var articleId = ctrl.getUrlParam('articleId');
             
@@ -271,7 +289,7 @@ $(function () {
             var col = ctrl.getUrlParam('col');
             console.log(location.href);
             ctrl.col = col.split(',')
-            console.log(ctrl.col);
+            console.log("ctrl.col" + ctrl.col);
             ctrl.statInputNum(digest, word);
             // 编辑模式
             ctrl.getColumn(0, '#J_select_first');

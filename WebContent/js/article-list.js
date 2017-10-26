@@ -398,8 +398,8 @@ $(function() {
     // 新建
     $('#J_create_btn').on('click', function() {
         var url = '/static/ueditor.html?col=' + ctrl.col;
-//        location.href = url;
-        window.open(url, "new window");
+        location.href = url;
+//        window.open(url, "new window");
     })
 
     // 置顶

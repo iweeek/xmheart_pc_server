@@ -134,7 +134,7 @@ public class ArticleController {
 		if (ret > 0) {
 		    article.setUrl("/newsDetail?id=" + String.valueOf(article.getId()));
 		    articleService.update(article);
-			return ResponseEntity.ok(null);
+			return ResponseEntity.ok(article);
 		} else {
 			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
 		}
@@ -190,11 +190,13 @@ public class ArticleController {
             }
         }
         
-        if (publishTime != null) {
+        if (publishTime == null) {
             Date date = new Date();
 //            Timestamp ts = Timestamp.valueOf(publishTime); 
 //            date = ts;
             article.setPublishTime(date);
+        } else {
+        		
         }
         
         if (isPublished != null) {
