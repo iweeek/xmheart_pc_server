@@ -55,10 +55,8 @@ $(function() {
 				swal({
 					title : "上传成功",
 					type : "success",
-					showCancelButton : true,
 					confirmButtonColor : "#8cd4f5",
 					confirmButtonText : "确定",
-					cancelButtonText : "新增一页",
 					closeOnConfirm : true
 				}, function() {
 //					window.history.go(-1);
@@ -98,13 +96,11 @@ $(function() {
 					swal({
 						title : "更新成功",
 						type : "success",
-						showCancelButton : true,
 						confirmButtonColor : "#8cd4f5",
-						confirmButtonText : "发表文章",
-						cancelButtonText : "取消",
-						closeOnConfirm : false
+						confirmButtonText : "确定",
+						closeOnConfirm : true
 					}, function() {
-						ctrl.publish();
+//						ctrl.publish();
 					});
 				}).error(function() {
 					$this.removeAttr('disabled');

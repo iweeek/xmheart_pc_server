@@ -37,7 +37,7 @@ exports.XPW.OfficeUeditor = (function() {
     var id = OfficeUeditor.getUrlParam('deptId')
     if (id) {
 	    $.ajax({
-	  	  url: '/dept/' + id,
+	  	  url: '/depts/' + id,
 	        type: 'GET',
 	        dataType: 'json',
 	        data: {id: id}
@@ -50,7 +50,7 @@ exports.XPW.OfficeUeditor = (function() {
  
   OfficeUeditor.postOfficeInfo = function () {
 	  var id = OfficeUeditor.getUrlParam('deptId');
-	  var url = id ? '/dept/' + id : '/dept'
+	  var url = id ? '/depts/' + id : '/depts'
 	  $('.btn-group').on('click', '#save', function() {
 		  var $this = $(this);
 		  $this.attr('disabled','disabled');

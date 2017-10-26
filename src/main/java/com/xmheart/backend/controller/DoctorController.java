@@ -206,10 +206,12 @@ public class DoctorController {
         }
         
         int ret = doctorAndDeptService.createDoctor(doctor);
-        if (ret == 0) {
-            return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
-        } else {
+        if (ret > 0) {
+        		doctor.setUrl("/doctorDetail?id=" + String.valueOf(doctor.getId()));
+	        	doctorAndDeptService.updateDoctor(doctor);
             return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(doctor);
+        } else {
+        		return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }
     }
     
