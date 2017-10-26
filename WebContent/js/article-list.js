@@ -277,6 +277,7 @@ $(function() {
             ctrl.select2Handle();
             ctrl.bindSearchArticle();
             var col = ctrl.getUrlParam('col');
+            ctrl.col = col;
 	    		if (col) {
 	    			ctrl.newCol = col.split(',');
 	    			if (ctrl.newCol.length == 1) {
@@ -294,6 +295,7 @@ $(function() {
             ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
         }
     }
+    
     ctrl.init();
 
     // 二级分类的出现

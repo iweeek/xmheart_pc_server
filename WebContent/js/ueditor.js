@@ -98,7 +98,7 @@ $(function () {
                         closeOnConfirm: false
                     }, function () {
 //                        window.history.go(-1);
-                        location.href="../article-list.html?col=" + ctrl.col
+                        location.href="../article-list.html?col=" + ctrl.col;
                     });
                 }).error(function() { 
                 		$this.removeAttr('disabled');
@@ -118,7 +118,7 @@ $(function () {
                     cancelButtonText: "取消",
                     closeOnConfirm: false
                 }, function () {
-                		location.href="article-list.html?col=" + ctrl.col
+                		location.href="../article-list.html?col=" + ctrl.col;
                 });
                 // window.history.go(-1);
             }).error(function() { 
@@ -234,7 +234,8 @@ $(function () {
         },
         cancel: function () {
             // 取消(直接返回上一级，不做接口交互)
-            window.history.go(-1);
+//            window.history.go(-1);
+            location.href="../article-list.html?col=" + ctrl.col;
         },
         reset: function () {
             ue.setContent('');
