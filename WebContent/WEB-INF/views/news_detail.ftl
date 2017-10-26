@@ -32,7 +32,7 @@
 								<a class="font-size-2" href="javascript:;" data-type="1"></a>
 								<a class="font-size-3" href="javascript:;" data-type="2"></a>
 							</em>
-							<b id="FontState">18px</b>
+							<b id="FontState">16px</b>
 						</span>
 						<!--<span id="SPANNum" style="border:none; margin-right:0;">浏览次数（3093）</span>
 						<div class="itemBase" id="phoneArticle">
@@ -50,7 +50,7 @@
 					</div>
 					<div class="clear"></div>
 					<div id="DIVContent" class="DIVContent">
-						${article.content}
+					${article.content}
 					</div>
 		          <div class="PrevNext">
 		              <p class="prev">

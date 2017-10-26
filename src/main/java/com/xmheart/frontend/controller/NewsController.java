@@ -64,7 +64,6 @@ public class NewsController {
 
 	@Autowired
 	private DoctorAndDeptService doctorAndDeptService;
-
 	@Autowired
 	private IndexService indexService;
 

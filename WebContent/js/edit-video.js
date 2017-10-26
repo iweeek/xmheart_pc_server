@@ -181,7 +181,7 @@ exports.XPW.videoEdit = (function() {
 					confirmButtonText : "确定",
 					closeOnConfirm : true
 					}).then(function () {
-						
+					 
 					});
 			}).error(function() {
 				$this.removeAttr('disabled');

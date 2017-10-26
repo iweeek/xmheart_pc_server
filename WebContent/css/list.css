@@ -277,7 +277,7 @@
 .baseRight .article .title04{ height:40px; background:#f3f3f3; border:none; padding:8px 15px; line-height:24px; margin-bottom:35px;}
 .baseRight .article .title04 span{ float:none; padding-right:12px; margin-right:12px; border-right:1px #e5e5e5 solid;}
 #EMChange{ width:102px; position:relative; height:12px; margin:0px 10px; background:url(/image/font_bg.png) 0px 3px no-repeat; display:inline-block; text-align:center; padding-right:12px;}
-#EMChange img{ position:absolute; top:-4px; left:86px;}
+#EMChange img{ position:absolute; top:-4px; left:40px;}
 #EMChange a{ display:block; width:28px; height:23px; position:absolute; top:-5px; }
 #EMChange a.font-size-1{left:-7px;}
 #EMChange a.font-size-2{left:36px;}
@@ -332,6 +332,8 @@
 .video-tab .active { color: #0f76c3; border-bottom: #0f76c3 solid 2px; height: 57px; }
 .video-wrapper .media-item { margin-bottom: 30px; }
 .video-img-content { background: #ccc; width: 100%; height: 500px; margin-bottom: 30px; }
+.video-img-content .jp-video-360p {width: 100%;}
+.video-img-content .jp-jplayer img {width: 100% !important; height: 430px !important; }
 
 .jp-video-270p { width: 100%; }
 .jp-jplayer { width: 100% !important; height: 430px !important;}
@@ -389,8 +391,8 @@
 .officesBase .contents .contentsOffice:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
 .officesBase .contents .contentsOffice i{display:block; width:26px; height:44px; position:absolute; top:0px; right:29px;}
 .officesBase .contents .contentsOffice i.ico01{ background:url(../img/list/ico_033.jpg) no-repeat;}
-.officesBase .contents .contentsOffice .img{ width:80px; height:80px; border-radius:50%; margin:40px auto 20px auto; background:#6bcbca;}
-.officesBase .contents .contentsOffice .img{ background:#bda179;}
+.officesBase .contents .contentsOffice .img{ width:80px; height:80px; margin:40px auto 20px auto;}
+.officesBase .contents .contentsOffice .img{ }
 .officesBase .contents .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
 .officesBase .contents .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
 .officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:-10px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
@@ -584,7 +586,7 @@ a.blue{ background:#79a9b8;}
 #AreaDuty .visitList .namelist .list01 a:hover{ background:#ff7544; color:#fff;}
 
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:2em;}
+.article p{text-indent:0em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
@@ -641,15 +643,22 @@ a.blue{ background:#79a9b8;}
 
 
 /* 胸痛中心 */
-.bannerBase{height:450px;position:relative;overflow:hidden; }
+.bannerBase{height:450px;position:relative;}
 .lt-ie9 .bannerBase{margin-top:16px;}
 .bannerBase .xt-swiper{ position:absolute; top:0px; left:257px; height:100%; width:980px;}
 .bannerBase .xt-swiper .swiper-slide img { width: 100%; height: 100%;}
 
 .bannerBase .quickMenus{ width:251px; height:450px;  float: left; z-index:100; background:#FFF;}
+.bannerBase .quickMenus .xt-logo-wrapper {padding:11px 0px;border:1px solid #dedede; margin-bottom: 10px;}
+.bannerBase .quickMenus .xt-logo-wrapper .xt-logo-img { text-align:center; margin-bottom: 5px;}
+.bannerBase .quickMenus .xt-logo-wrapper .xt-logo-img img {width: 75px; height: 75px;}
+.bannerBase .quickMenus .xt-logo-wrapper .xt-logo-font { color: #333; text-align: center; font-size: 14px; margin-bottom: 5px;}
+
+
+
 .bannerBase .quickMenus .firstUl{ padding:11px 0px;border:1px solid #dedede;}
 .bannerBase .quickMenus li.first{ position:relative; width:100%; height:61px;}
-.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 9; height:380px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
+.bannerBase li.first .QMSub{ position:absolute; display:none; top:0px; left:100%; z-index: 109; height:380px;box-shadow:0px 8px 15px rgba(128 ,128 ,128 ,0.25); background:#fff;border:1px solid #dedede;}
 .bannerBase li.first .QMSubMenus{width:280px;}
 .bannerBase li.first .QMSubMenus ul{ float:left; margin-left:19px; width:222px; height:380px;}
 .bannerBase li.first .QMSubMenus li{width:250px; height:74px;background:url(../image/ico_004.png) 18px center no-repeat; font-size:14px;}

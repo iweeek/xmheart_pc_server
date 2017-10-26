@@ -9,8 +9,8 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class PathUtil {
     //需要配置，图片和视频服务器
-//	public static final String HOST_NAME = "120.77.72.16:8080";
-    public static final String HOST_NAME = "127.0.0.1:8080";
+	public static final String HOST_NAME = "120.77.72.16:8080";
+//    public static final String HOST_NAME = "127.0.0.1:8080";
 	public static final String ORIGIN = "http://" + HOST_NAME;
 	
 	public static final String WEBSERVER_PATH = System.getProperty("catalina.base");
