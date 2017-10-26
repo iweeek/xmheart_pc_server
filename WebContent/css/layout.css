@@ -170,29 +170,29 @@
 /* 悬浮框 */
 .BaseMark{ margin:0px auto; position:relative;}
 div.topHidden{width:100%; height:40px;}
-.navboxBase{width:1200px; position:absolute; top:60px; padding-top:10px; display:none;  left:0px;  z-index:1000;}
+.navboxBase{width:1200px;min-width: 1200px; position:absolute; top:60px; padding-top:10px; display:none;  left:0px;  z-index:1000;}
 .navboxBase .navboxBg{ width:100%; height:100%;background:#FFF; box-shadow:0px 6px 18px rgba(0,0,0,0.15); border-bottom:1px solid #e6e5e5; border-top:1px solid #e6e5e5;}
 .navbox{ width:1200px;min-height:450px; margin:0 auto; padding:14px 0px; text-align:left;color:#323232; overflow:visible;font-size:12px;line-height:26px;}
 .navbox dd.url{ width:100%; height:22px; overflow:hidden;}
 .navbox dd.url span{color:#bda179; padding-right:13px;}
 .navbox .Amore{ width:96px; height:36px; color:#FFF; display:block; text-align:center; line-height:36px; background:#bda179; border-radius:2px; position:absolute; bottom:38px;}
 .navbox .Amore:hover{ background:#ff7544;}
-.navSub2,.navSub5,.navSub6{height:386px; padding:0px 28px; border-left:1px solid #ececec;float:left; margin-top:18px; display:inline; color:#666;}
-.navSub3,.navSub4,.navSub7{height:386px;padding-left:34px;position:relative;border-left:1px solid #ececec;float:left; margin-top:18px; color:#666; display:inline;  line-height:24px;}
+.navSub2{height:386px; padding:0px 28px; border-left:1px solid #ececec;float:left; margin-top:18px; display:inline; color:#666;}
+.navSub3,.navSub4{height:386px;padding-left:34px;position:relative;border-left:1px solid #ececec;float:left; margin-top:18px; color:#666; display:inline;  line-height:24px;}
 .navSub5 h3, .navSub6 h3, .navSub7 h3{font-size:18px; padding-bottom:8px; color:#29596f;}
-.navSub5 .more, .navSub6 .more, .navSub7 .more {right:40px;position:absolute;bottom:10px;background: #ff7544; padding: 2px 6px; color: #fff; border-radius: 3px; margin-top: 10px;}
-.navSub5{width:300px; position:relative;}
+.navSub5 .more, .navSub6 .more, .navSub7 .more {background: #ff7544; padding: 2px 6px; color: #fff; border-radius: 3px; margin-top: 10px; float: right;}
+.navSub5, .navSub6, .navSub7 {width:220px; position:relative; float: left; padding:0px 28px; border-left:1px solid #ececec;float:left; margin-top:18px; display:inline; color:#666;}
+/* .navSub5 p, .navSub6 p, .navSub7 p{ height:220px;}  */
+.navSub5 img, .navSub6 img, .navSub7 img { width: 100%; margin-bottom: 10px;}
 .navSub5 .hospital-desc { height: 170px; overflow: hidden;}
 .navSub5 p{ line-height:22px;}
 .navSub5 .first{ padding-top:16px;}
 
-.navSub6{width:300px;padding:0px 28px; position:relative;}
 .navSub6 ul li{background:url(../img/layout/honor.png) left 5px no-repeat; padding-left:19px;}
 .navSub6 ul li{background:url(../img/layout/ico_044.jpg) left center no-repeat; padding-left:19px;}
 .navSub6 ul li span{ color:#ff7544; font-size:18px; vertical-align:middle; padding-right:11px;}
 .navSub6 ul li em{ vertical-align:middle;}
 
-.navSub7{padding:0px 28px; width:300px;}
 .navSub7 h3{ font-size:18px; padding-bottom:8px; color:#29596f;}
 .navSub7 ul{ padding-bottom:16px;}
 .navSub7 ul li{background:url(../img/layout//ico_038.jpg) left center no-repeat; padding-left:18px; height:24px; overflow:hidden;}
@@ -328,6 +328,9 @@ div.BottomHidden{width:100%; height:38px;}
 		width: 110px;
 		margin-left: 30px;
 		padding:0 10px;
+	}
+	.navSub5, .navSub6, .navSub7 {
+		width: 280px;
 	}
 	.xm-footer-main {
 		width: 1500px;
