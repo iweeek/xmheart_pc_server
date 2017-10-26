@@ -8,7 +8,34 @@ exports.XPW.NavEdit = (function() {
     NavEdit.postDialogHandle();
     NavEdit.select2Handle()
     NavEdit.bindNavNews()
+    NavEdit.init();
   }
+  
+  NavEdit.getUrlParam = function (name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+      if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+  
+  NavEdit.init = function() {
+	  var col = NavEdit.getUrlParam('col');
+	  NavEdit.col = col;
+  		if (col) {
+//  			NavEdit.newCol = col.split(',');
+//  			if (ctrl.newCol.length == 1) {
+//  				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
+  				NavEdit.firstColumnData(col);
+//  			}
+//  			if (ctrl.newCol.length == 2) {
+//  				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
+//  				$('.select-title-second').show();
+//  				ctrl.getColumns(ctrl.newCol[0], '#J_select_second', ctrl.newCol[1]);
+//  				ctrl.getArticles(1, 10, ctrl.newCol[1]);
+//  				return false;
+//  			}
+  		}
+  }
+  
   NavEdit.firstNavLoad = function () {
 	$.ajax({
 	  url: '/columns',
@@ -23,11 +50,12 @@ exports.XPW.NavEdit = (function() {
      $('#typeSelectInput').html(rendered);
    })
   }
-
+  
   NavEdit.firstSelectHandle = function () {
     $('#columnSearch').click(function() {
-    		var val = $('#typeSelectInput').val();
-    		NavEdit.firstColumnData(val);
+    		var firstId = $('#typeSelectInput').val();
+    		NavEdit.firstColumnData(firstId);
+    		NavEdit.col = firstId;
     })
   }
 
@@ -119,8 +147,7 @@ exports.XPW.NavEdit = (function() {
 //  	    $('#secondColumnId').data('column-id', $(this).data('column-id'))
 //  	    $('#secondColumnId').data('column-name', $(this).data('column-name'))
     		var navId = $(this).data('nav-id');
-		location.href = '/static/nav_editor.html?navId='
-				+ navId;
+		location.href = '/static/nav_editor.html?navId=' + navId + '&col=' + NavEdit.col;
 	});
   }
   

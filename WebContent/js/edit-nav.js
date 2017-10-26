@@ -5,12 +5,14 @@ var secondColumn = $('#secondColumn');
 var publishTime = $('#publishTime');
 var brief = $('#brief');
 var navId;
+var col;
 exports.XPW.NavEdit = (function() {
   function NavEdit() {
     // 初始化页面处理。
 	NavEdit.initDate();
 	NavEdit.uploadImg();
 	navId = NavEdit.getUrlParam("navId");
+	col = NavEdit.getUrlParam("col");
 	NavEdit.getNav(navId);
 	NavEdit.bindSearchArticle();
     NavEdit.postDialogHandle();
@@ -290,6 +292,7 @@ exports.XPW.NavEdit = (function() {
         $('#cancel').on('click', function(){
 			// 取消(直接返回上一级，不做接口交互)
 			window.history.go(-1);
+			location.href="../nav_list.html?col=" + col;
         });
 	}
   return NavEdit;
