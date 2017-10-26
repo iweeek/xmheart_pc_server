@@ -249,6 +249,9 @@ $(function () {
                 var optionString = '';
                 for (var i in data) {
                     var jsonObj = data[i];
+                    if (jsonObj.columnName == "电子院报" || jsonObj.columnName == "影像厦心") {
+                			continue;
+                    }
                     optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
                 }
