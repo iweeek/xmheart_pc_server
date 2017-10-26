@@ -293,7 +293,7 @@ public class NewsController {
 		XPWVideo video = videoService.read(id);
 		model.addAttribute("video", video);
 
-		return "video_img_detail";
+		return "video_detail";
 	}
 
 	/**
