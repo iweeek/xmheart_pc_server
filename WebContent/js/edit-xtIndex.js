@@ -77,7 +77,7 @@ exports.XPW.xtIndexEdit = (function() {
   }
   
   xtIndexEdit.postData = function () {
-	  $('.search-button').on('click', function(){
+	  $('#submit').on('click', function(){
 		  var parms = {
 		    bannerImage1Url: $('.add-img-list').eq(0).find('.add-image-url img').attr('src'),
 			bannerImage1ActionUrl: $('.add-img-list').eq(0).find('.add-img-link input').val(),
@@ -86,10 +86,10 @@ exports.XPW.xtIndexEdit = (function() {
 			bannerImage3Url: $('.add-img-list').eq(2).find('.add-image-url img').attr('src'),
 			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val()
 		  };
-		  var url = 'xtIndexPage/'+ xtIndexEdit.pageId;
+		  var url = '/xtIndexPage/'+ xtIndexEdit.pageId;
 		  $.ajax({
 			  url: url,
-		      type: 'put',
+		      type: 'POST',
 		      dataType: 'json',
 		      data: parms
 		    })

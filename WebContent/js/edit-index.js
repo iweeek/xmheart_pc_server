@@ -88,7 +88,7 @@ exports.XPW.IndexEdit = (function() {
 	  });
   }
   IndexEdit.postData = function () {
-	  $('.search-button').on('click', function(){
+	  $('#submit').on('click', function(){
 		  var parms = {
 		    bannerImage1Url: $('.add-img-list').eq(0).find('.add-image-url img').attr('src'),
 			bannerImage1ActionUrl: $('.add-img-list').eq(0).find('.add-img-link input').val(),
@@ -109,10 +109,10 @@ exports.XPW.IndexEdit = (function() {
 			bannerArticle3Brief:$('.add-font-list').eq(2).find('textarea').val(),
 			bannerArticle3Url: $('.add-font-list').eq(2).find('.input-link').val()
 		  };
-		  var url = 'indexPage/'+ IndexEdit.pageId;
+		  var url = '/indexPage/'+ IndexEdit.pageId;
 		  $.ajax({
 			  url: url,
-		      type: 'put',
+		      type: 'POST',
 		      dataType: 'json',
 		      data: parms
 		    })
@@ -121,6 +121,7 @@ exports.XPW.IndexEdit = (function() {
 		   })
 	  });
   }
+  
   IndexEdit.limitFont = function () {
 	  var numItem = $('.word');
 	  var digest = $('.digest-wrapper textarea');

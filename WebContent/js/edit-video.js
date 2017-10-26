@@ -30,6 +30,7 @@ exports.XPW.videoEdit = (function() {
 	  videoEdit.addVideo();
 	  videoEdit.publish();
 	  videoEdit.update();
+	  videoEdit.cancel();
 	  videoEdit.init();
 //	  xtIndexEdit.getData();
 //	  xtIndexEdit.pageId = 0;
@@ -223,6 +224,12 @@ exports.XPW.videoEdit = (function() {
 			});
 
 			return;
+  	    });
+    }
+    
+    videoEdit.cancel = function () {
+	    $('#cancel').on('click', function(){
+	    		window.history.go(-1);
   	    });
     }
   

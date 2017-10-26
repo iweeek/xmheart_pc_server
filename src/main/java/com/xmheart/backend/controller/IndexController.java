@@ -34,7 +34,7 @@ public class IndexController {
     }
     
     @ApiOperation(value = "更新首页信息", notes = "更新首页信息")
-    @RequestMapping(value = { "/indexPage/{id}" }, method = RequestMethod.PUT)
+    @RequestMapping(value = { "/indexPage/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("首页信息的Id") @PathVariable Long id,
             @ApiParam("轮播图1的地址") @RequestParam(required = false) String bannerImage1Url, 
             @ApiParam("轮播图2的地址") @RequestParam(required = false) String bannerImage2Url,
@@ -132,7 +132,7 @@ public class IndexController {
         
         int ret = indexService.update(index);
         if (ret > 0) {
-            return ResponseEntity.ok(null);
+            return ResponseEntity.ok(index);
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }
@@ -149,7 +149,7 @@ public class IndexController {
     }
     
     @ApiOperation(value = "更新胸痛首页信息", notes = "更新胸痛首页信息")
-    @RequestMapping(value = { "/xtIndexPage/{id}" }, method = RequestMethod.PUT)
+    @RequestMapping(value = { "/xtIndexPage/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("首页信息的Id") @PathVariable Long id,
             @ApiParam("轮播图1的地址") @RequestParam() String bannerImage1Url, 
             @ApiParam("轮播图2的地址") @RequestParam() String bannerImage2Url,
@@ -169,7 +169,7 @@ public class IndexController {
         
         int ret = indexService.xtUpdate(index);
         if (ret > 0) {
-            return ResponseEntity.ok(null);
+            return ResponseEntity.ok(index);
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }
