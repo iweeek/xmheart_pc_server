@@ -73,7 +73,7 @@ public class NavController {
         nav.setUrl(article.getUrl());
         nav.setImgUrl(imgUrl);
         if (brief.length() > 200) {
-        		brief = brief.substring(0, 200);
+            brief = brief.substring(0, 200);
         }
         nav.setBrief(brief);
         

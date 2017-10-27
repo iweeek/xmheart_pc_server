@@ -46,10 +46,11 @@ exports.XPW.NavEdit = (function() {
 	        	$('#brief').val(res.brief);
 	        	$('#url').text(res.url);
 	        	
-	        // 为 secondColumnId 设置分量
+	        	// 为 secondColumnId 设置分量
 	        	$('#secondColumnId').data('nav-id', res.id)
-	 	  	$('#secondColumnId').data('column-id', res.columnId)
-	 	  	$('#secondColumnId').data('column-name', res.childColumnName)
+	        	$('#secondColumnId').data('column-id', res.columnId)
+	        	$('#secondColumnId').data('column-name', res.childColumnName)
+	        	$('#articleId').text(res.url.substr(res.url.indexOf('=')+1));
         });
     },
     
@@ -96,7 +97,6 @@ exports.XPW.NavEdit = (function() {
     }
     
     NavEdit.valid = function(params, type) {
-
 		if (!params.articleId) {
 			sweetAlert("信息不完整", "请选择文章", "error");
 			return false;
@@ -139,7 +139,6 @@ exports.XPW.NavEdit = (function() {
         $('#postModal').on('click', '#bindNavTitle', function() {
             var articleId = $('#postSelect').val();
             $.get('/articles/' + articleId, function(data) {
-                debugger;
 //                console.log(data);
 	 	        	$('#articleTitle').text(data.title);
 	 	        	$('#publishTime').text(NavEdit.dateFilter(data.publishTime));
