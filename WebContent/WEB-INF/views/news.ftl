@@ -8,7 +8,11 @@
 </div> -->
 <div class="list-container">
 	<div class="list-main">
-		<div class="list-main-nav">
+		<#if parentColumnName == '党群工作'>
+			<div class="list-main-nav party-work">
+		<#else>
+			<div class="list-main-nav">
+		</#if>
 			<h4 class="list-nav-title">${parentColumnName}</h4>
 			<ul class="list-nav-list">
 			<#list leftNav as k>
