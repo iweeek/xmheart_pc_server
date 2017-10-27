@@ -3,12 +3,16 @@ exports.XPW = exports.EDIT || {};
 var articleTitle = $('#articleTitle');
 var secondColumn = $('#secondColumn');
 var publishTime = $('#publishTime');
-var brief = $('#brief');
+//var brief = $('#brief');
 var navId;
 var col;
+// 摘要输入框
+var digest = $("#wordCount").find("textArea");
+var word = $("#wordCount").find(".word");
 exports.XPW.NavEdit = (function() {
   function NavEdit() {
     // 初始化页面处理。
+	NavEdit.initTextArea();
 	NavEdit.initDate();
 	NavEdit.uploadImg();
 	navId = NavEdit.getUrlParam("navId");
@@ -22,6 +26,22 @@ exports.XPW.NavEdit = (function() {
     NavEdit.cancel();
   }
   
+  	NavEdit.initTextArea = function() {
+  		NavEdit.statInputNum(digest, word);
+  	}
+  	
+  	NavEdit.statInputNum = function (digest, numItem) {
+        var max = numItem.text();
+        var curLength;
+        console.log('max',max)
+        digest[0].setAttribute("maxlength", max);
+        curLength = digest.val().length;
+        numItem.text(curLength);
+        digest.on('input propertychange', function () {
+            numItem.text($(this).val().length);
+        });
+    }
+  	
     NavEdit.getUrlParam = function(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
 		var r = window.location.search.substr(1).match(reg); // 匹配目标参数
@@ -40,10 +60,17 @@ exports.XPW.NavEdit = (function() {
     NavEdit.getNav = function (navId) {
         var url = '/navs/' + navId;
         $.get(url, function (res) {
+        		digest.val(res.brief.slice(0, 100));
+            if (res.brief.length > 100) {
+            		word.text(100);
+            } else {
+            		word.text(res.brief.length);
+            }
+        	
 	        	$('#secondColumn').text(res.childColumnName);
 	        	$('#articleTitle').text(res.articleTitle);
 	        	$('#publishTime').text(NavEdit.dateFilter(res.publishTime));
-	        	$('#brief').val(res.brief);
+//	        	$('#brief').val(res.brief);
 	        	$('#url').text(res.url);
 	        	$('#upload-img').attr('src', res.imgUrl);
 	 	    $('#add-image-url').show();
@@ -60,6 +87,7 @@ exports.XPW.NavEdit = (function() {
 	    $('#publish').on('click', function(){
 		    var $this = $(this);
 		    var imgUrl = $('#upload-img').attr('src');
+		    var briefText = digest.val() ? digest.val() : ue.getContentTxt().slice(0,100) 
 		    
 //	        	console.log(articleTitle.text());
 //	        	console.log(publishTime.text());
@@ -70,7 +98,7 @@ exports.XPW.NavEdit = (function() {
 				imgUrl : imgUrl,
 				id: navId,
 				articleId: $('#articleId').text(),
-				brief: $('#brief').val()
+				brief: briefText
 			};
 	
 			if (!NavEdit.valid(params, 'publish')) {
@@ -142,10 +170,16 @@ exports.XPW.NavEdit = (function() {
         $('#postModal').on('click', '#bindNavTitle', function() {
             var articleId = $('#postSelect').val();
             $.get('/articles/' + articleId, function(data) {
-//                console.log(data);
 	 	        	$('#articleTitle').text(data.title);
 	 	        	$('#publishTime').text(NavEdit.dateFilter(data.publishTime));
-	 	        	$('#brief').val(data.brief);
+//	 	        	$('#brief').val(data.brief);
+	 	        	// 摘要
+	 	        	digest.val(data.brief.slice(0, 100));
+ 	            if (data.brief.length > 100) {
+ 	            		word.text(100);
+ 	            } else {
+ 	            		word.text(data.brief.length);
+ 	            }
 	 	        	$('#articleId').text(data.id);
 	 	       	$('#url').text(data.url);
 	 	        	$('#upload-img').attr('src', data.imgUrl);

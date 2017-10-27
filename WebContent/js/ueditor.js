@@ -3,7 +3,7 @@ $(function () {
     var title = $('#articleTitle');
     var digest = $("#wordCount").find("textArea");
     var word = $("#wordCount").find(".word");
-    var maxWord = $("#wordCount").find(".max");
+//    var maxWord = $("#wordCount").find(".max");
     var tags = $('.tag-input');
     var category1 = $('.select-title-first');
     var category2 = $('.select-title-second');
@@ -61,7 +61,7 @@ $(function () {
             });
         },
         publish: function () {
-    		var $this = $(this);
+    			var $this = $(this);
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();

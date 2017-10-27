@@ -46,8 +46,15 @@
       <span class="select-title required">文章发布时间：</span>
       <span class="select-title" id = "publishTime"></span>
        <p></p>
-      <span class="select-title required">文章摘要：</span>
-      <input type="text" class="article-title" id="brief"> 
+  <!--     <span class="select-title required">文章摘要：</span>
+      <input type="text" class="article-title" id="brief" size="50">  -->
+      
+      <p class="subtit">文章摘要<span class="article-digest">(默认提取您文章的前100字作为文章摘要，摘要将显示在首页导航上)</span></p>
+      <p></p>
+      <div class="digest-wrapper" id='wordCount'>
+          <textarea name="name" rows="3" cols="40"></textarea>
+          <span class="wordwrap"><var class="word">100</var>/100</span>
+      </div>
       
       
      <span class="select-title" id = "articleId" style="display:none"></span>
@@ -56,14 +63,16 @@
        <p class="subtit">选择文章</p>
       <button id="search" class="btn btn-primary post-btn-edit" style="margin-bottom: 5px;">搜索</button>
                         
+      
       <p class="subtit">配图</p>
+       <p class="select-title required">注意：若文章要显示在首页导航上，推荐图片尺寸的比例为2:1</p> 
       <div class="upload-wrapper" id="uploadWrapper">
           <div class="add-img-list">
               <div class="add-image-button" id="addImgBtn">
                    添加图片
               </div>
               <div class="add-image-url" id="add-image-url">
-                  <img src="#" class="upload-img" id = "upload-img">
+                  <img src="#" class="upload-img" id = "upload-img" width="300px">
               </div>
               <div class="add-image-edit">
                   <img src="../img/manager/edit.png">
