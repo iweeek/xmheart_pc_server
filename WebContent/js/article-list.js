@@ -101,6 +101,7 @@ $(function() {
                 if (data.length > 0) {
                 		$(htmlId).parent().show();
                 }
+                // 自动显示select option当前选中的内容
                 if (selectedVal) {
                 		$(htmlId + ' ' + 'option[value='+selectedVal+']').attr('selected', 'selected');
                 }           

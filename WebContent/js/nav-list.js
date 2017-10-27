@@ -24,7 +24,7 @@ exports.XPW.NavEdit = (function() {
 //  			NavEdit.newCol = col.split(',');
 //  			if (ctrl.newCol.length == 1) {
 //  				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
-  				NavEdit.firstColumnData(col);
+  				NavEdit.firstColumnData(col, col, '#typeSelectInput');
 //  			}
 //  			if (ctrl.newCol.length == 2) {
 //  				ctrl.getColumns(0, '#J_select_first', ctrl.newCol[0]);
@@ -59,7 +59,7 @@ exports.XPW.NavEdit = (function() {
     })
   }
 
-  NavEdit.firstColumnData = function (val) {
+  NavEdit.firstColumnData = function (val, selectedVal, htmlId) {
     $.ajax({
       url: '/navs',
       type: 'GET',
@@ -82,6 +82,10 @@ exports.XPW.NavEdit = (function() {
     				  showConfirmButton: false 
     			});
     		}
+    	    // 自动显示select option当前选中的内容
+        if (selectedVal) {
+            $(htmlId + ' ' + 'option[value='+selectedVal+']').attr('selected', 'selected');
+        }  
     })
   }
 
