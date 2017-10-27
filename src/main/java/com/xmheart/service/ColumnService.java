@@ -91,5 +91,7 @@ public interface ColumnService {
 
     XPWNav getNavById(Long id);
 
+    List<XPWNav> getNavList();
+
 
 }

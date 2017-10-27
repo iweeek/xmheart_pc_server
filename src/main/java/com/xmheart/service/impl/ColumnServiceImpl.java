@@ -145,4 +145,10 @@ public class ColumnServiceImpl implements ColumnService {
         return nav;
 	}
 
+    @Override
+    public List<XPWNav> getNavList() {
+        List<XPWNav> list = xpwNavMapper.selectByExample(null);
+        return list;
+    }
+
 }

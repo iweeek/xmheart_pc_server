@@ -84,83 +84,26 @@
                                  	 </div>
                                  	   
                                      <#if key == "走进厦心">
-										<#list secondColNavMap as skey,sv>                        		
-                                    	   <#if skey == "医院简介">
-                                    	       <#list sv as scol>
-                                    	       <div class="navSub5">
-											<h3 class="title01">${skey}</h3>
-											<img src="${scol.imgUrl}" alt="">
+									<#list columnNavMap as columnName, navList>     
+									<#if columnName == key>       
+									<#list navList as nav>            		
+                                    	     <div class="navSub5">
+											<h3 class="title01">${columnName}</h3>
+											<img src="${nav.imgUrl}" alt="">
 											<br/>
 											&#8195;&#8195;
-                                    		    <!--<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>-->
+                                    		    <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
                                              <p class="first hospital-desc">
-                                                <#if scol.brief?length lt 120>
-                                                ${scol.brief}......
+                                                <#if nav.brief?length lt 120>
+                                                ${nav.brief}......
                                                 <#else>
-                                                ${scol.brief[0..120]}......
+                                                ${nav.brief[0..120]}......
                                                 </#if>
                                               </p>
-                                            </#list>
                                       		<a href="#" class="more">查看详细</a>
 										  </div>	
-										</#if>
-										
-										<#if skey == "组织架构">	
-										    <div class="navSub6">
-										        <#list sv as scol>
-                                                     <h3 class="title01">${skey}</h3>
-                                                     <img src="${scol.imgUrl}" alt="">
-                                                     <br/>
-                                                     &#8195;&#8195;
-                                                     <p class="first hospital-desc">
-	                                                     <#if scol.brief?length lt 120>
-	                                                     ${scol.brief}......
-	                                                     <#else>
-	                                                     ${scol.brief[0..120]}......
-	                                                     </#if>
-                                                     </p>
-                                                 </#list>
-                                                 <a href="#" class="more">查看详细</a>
-                                             </div>
-										</#if>
-										
-										<#if skey == "厦心荣誉">	
-										    <div class="navSub6">
-										        <#list sv as scol>
-                                                     <h3 class="title01">${skey}</h3>
-                                                     <img src="${scol.imgUrl}" alt="">
-                                                     <br/>
-                                                     &#8195;&#8195;
-                                                     <p class="first hospital-desc">
-	                                                     <#if scol.brief?length lt 120>
-	                                                     ${scol.brief}......
-	                                                     <#else>
-	                                                     ${scol.brief[0..120]}......
-	                                                     </#if>
-                                                     </p>
-                                                 </#list>
-                                                 <a href="#" class="more">查看详细</a>
-                                             </div>
-										</#if>
-										
-										<#if skey == "文化理念">
-										    <div class="navSub7">
-                                                <#list sv as scol>
-                                                     <h3 class="title01">${skey}</h3>
-                                                     <img src="${scol.imgUrl}" alt="">
-                                                     <br/>
-                                                     &#8195;&#8195;
-                                                     <p class="first hospital-desc">
-	                                                     <#if scol.brief?length lt 120>
-	                                                     ${scol.brief}......
-	                                                     <#else>
-	                                                     ${scol.brief[0..120]}......
-	                                                     </#if>
-                                                     </p>
-                                                 </#list>
-                                                 <a href="#" class="more">查看详细</a>
-											</div>										
-										</#if>
+								    </#list>
+									</#if>
 									</#list>
 									</#if>   
                                 
