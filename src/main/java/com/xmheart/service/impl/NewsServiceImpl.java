@@ -78,9 +78,12 @@ public class NewsServiceImpl implements NewsService {
 	public XPWArticle getNewsById(Long id) {
 		XPWArticleExample example = new XPWArticleExample();
 		example.createCriteria().andIdEqualTo(id).andIsPublishedEqualTo(true);
-		XPWArticle article = xpwArticleMapper.selectByExampleWithBLOBs(example).get(0);
-
-		return article;
+		List<XPWArticle> list = xpwArticleMapper.selectByExampleWithBLOBs(example);
+		if (list.size() > 0) {
+		    return list.get(0);
+		} else {
+		    return null;
+		}
 	}
 
 	@Override
