@@ -89,15 +89,14 @@
                                     <#list navList as nav>                    
                                         <div class="navSub5">
                                         <h3 class="title01">${nav.childColumnName}</h3>
-                                        <img src="${nav.imgUrl}" alt="">
+                                        <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
                                         <br/>
-                                        &#8195;&#8195;
                                             <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
                                          <p class="first hospital-desc">
                                             <#if nav.brief?length lt 120>
-                                            ${nav.brief}......
+                                            &#8195;&#8195;${nav.brief}......
                                             <#else>
-                                            ${nav.brief[0..120]}......
+                                            &#8195;&#8195;${nav.brief[0..120]}......
                                             </#if>
                                           </p>
                                           <a href="#" class="more">查看详细</a>

@@ -39,13 +39,15 @@ exports.XPW.NavEdit = (function() {
     
     NavEdit.getNav = function (navId) {
         var url = '/navs/' + navId;
-	        $.get(url, function (res) {
+        $.get(url, function (res) {
 	        	$('#secondColumn').text(res.childColumnName);
 	        	$('#articleTitle').text(res.articleTitle);
 	        	$('#publishTime').text(NavEdit.dateFilter(res.publishTime));
 	        	$('#brief').val(res.brief);
 	        	$('#url').text(res.url);
-	        	
+	        	$('#upload-img').attr('src', res.imgUrl);
+	 	    $('#add-image-url').show();
+	 	    $('#addImgBtn').hide();
 	        	// 为 secondColumnId 设置分量
 	        	$('#secondColumnId').data('nav-id', res.id)
 	        	$('#secondColumnId').data('column-id', res.columnId)
@@ -88,7 +90,8 @@ exports.XPW.NavEdit = (function() {
 					cancelButtonText : "继续编辑",
 					closeOnConfirm : false
 				}, function() {
-					window.history.go(-1);
+//					window.history.go(-1);
+					location.href="../nav_list.html?col=" + col;
 				});
 			});
 
@@ -290,7 +293,7 @@ exports.XPW.NavEdit = (function() {
     NavEdit.cancel = function() {
         $('#cancel').on('click', function(){
 			// 取消(直接返回上一级，不做接口交互)
-			window.history.go(-1);
+//			window.history.go(-1);
 			location.href="../nav_list.html?col=" + col;
         });
 	}
