@@ -190,20 +190,25 @@ public class ArticleController {
             }
         }
         
-        if (publishTime == null) {
-            Date date = new Date();
-//            Timestamp ts = Timestamp.valueOf(publishTime); 
-//            date = ts;
-            article.setPublishTime(date);
-        } else {
-        		
+//        if (publishTime == null) {
+//            Date date = new Date();
+////            Timestamp ts = Timestamp.valueOf(publishTime); 
+////            date = ts;
+//            article.setPublishTime(date);
+//        } else {
+//        		
+//        }
+        
+        if (publishTime != null) {
+            long milliSeconds= Long.parseLong(publishTime);
+            article.setPublishTime(new Date(milliSeconds));
         }
         
         if (isPublished != null) {
             article.setIsPublished(isPublished);
-            if (isPublished) {
-                article.setPublishTime(new Date());
-            }
+//            if (isPublished) {
+//                article.setPublishTime(new Date());
+//            }
         }
         
         if (tags != null) {
