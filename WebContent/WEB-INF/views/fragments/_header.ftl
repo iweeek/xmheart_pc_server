@@ -81,18 +81,18 @@
                                             </#if>
                                         </#list>
                                         </ul>
-                                 	 </div>
-                                 	   
-                                     <#if key == "走进厦心">
-									<#list columnNavMap as columnName, navList>     
-									<#if columnName == key>       
-									<#list navList as nav>            		
-                                    	     <div class="navSub5">
-											<h3 class="title01">${columnName}</h3>
-											<img src="${nav.imgUrl}" alt="">
-											<br/>
-											&#8195;&#8195;
-                                    		    <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
+                                      </div>
+                                        
+                                     <#if key == "走进厦心" || key == '名医名科' || key == '就医服务'>
+                                    <#list columnNavMap as columnName, navList>     
+                                    <#if columnName == key>       
+                                    <#list navList as nav>                    
+                                             <div class="navSub5">
+                                            <h3 class="title01">${nav.childColumnName}</h3>
+                                            <img src="${nav.imgUrl}" alt="">
+                                            <br/>
+                                            &#8195;&#8195;
+                                                <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
                                              <p class="first hospital-desc">
                                                 <#if nav.brief?length lt 120>
                                                 ${nav.brief}......
@@ -100,146 +100,82 @@
                                                 ${nav.brief[0..120]}......
                                                 </#if>
                                               </p>
-                                      		<a href="#" class="more">查看详细</a>
-										  </div>	
-								    </#list>
-									</#if>
-									</#list>
-									</#if>   
-                                
-                                
-								    <#if key == "新闻公告">
+                                              <a href="#" class="more">查看详细</a>
+                                          </div>    
+                                    </#list>
+                                    </#if>
+                                    </#list>
+                                    </#if>   
+                                    
+                                    <#if key == "新闻公告">
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                     <#list secondColNavMap as skey, sv>                             
-                                        <#if skey == "媒体看厦心">
-                                            <#list sv as scol>
-                                            <#if scol?index == 0>
-                                            <dl class="Img02">
-                                            <dt class="title01">${skey}</dt>
-                                            <dd class="pic">
-                                                <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
-                                            </dd>
-                                            <dd class="Lurl">
-                                                <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
-                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                            </dd>
-                                            <#else>
-                                            <dd class="url">
-                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                            </dd>
-                                            </#if>
-                                            </#list>
-                                            </dl>
-                                          </#if>    
-                                              
-                                        <#if skey == "医院新闻">
-                                        <div class="BottomHidden"></div>
-                                            <dl>
-                                            <dt class="title01">${skey}</dt>
-                                            <#list sv as scol>
-                                            <dd class="url">
-                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                            </dd>
-                                            </#list>
-                                            </dl>   
-                                        </#if>  
-                             
+                                    <#if skey == "媒体看厦心">
+                                    <#list sv as scol>
+                                    <#if scol?index == 0>
+                                    <dl class="Img02">
+                                    <dt class="title01">${skey}</dt>
+                                    <dd class="pic">
+                                        <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
+                                    </dd>
+                                    <dd class="Lurl">
+                                        <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    <#else>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#if>
+                                    </#list>
+                                    </dl>
+                                    </#if>    
+                                          
+                                    <#if skey == "医院新闻">
+                                    <div class="BottomHidden"></div>
+                                    <dl>
+                                    <dt class="title01">${skey}</dt>
+                                    <#list sv as scol>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#list>
+                                    </dl>   
+                                    </#if>  
+                         
                                     <#if skey == "影像厦心">
                                     </div>
                                     <div class="navSub4 nav_Menu02 noPic">
                                     <dl>
                                     <dt class="title02">${skey}</dt>
-                                            <#list sv as scol>
-                                            <dd class="url">
-                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                            </dd>
-                                            </#list>
-                                        </dl>
+                                    <#list sv as scol>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#list>
+                                    </dl>
                                     </#if>
-                                    
+                                
                                     <#if skey == "电子院报">
-                                          <div class="BottomHidden"></div>
-                                        <dl>
-                                            <dt class="title02">${skey}</dt>
-                                            <#list sv as scol>
-                                            <dd class="url">
-                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                            </dd>
-                                            </#list>
-                                        </dl>   
-                                     </#if>   
+                                    <div class="BottomHidden"></div>
+                                    <dl>
+                                        <dt class="title02">${skey}</dt>
+                                        <#list sv as scol>
+                                        <dd class="url">
+                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                        </dd>
+                                        </#list>
+                                    </dl>   
+                                    </#if>   
                                               
                                     </#list>    
                                     </div>  
                                     </#if>
-									
-                    <#-- 新增1 -->           
-                                    <#if key == "名医名科">
-                                    <div class="navSub2 nav_Menu02 noPic NewsSub">
-									<#list secondColNavMap as skey, sv>   
-									                     		
-                                    	<#if skey == "心血管外科">
-                                    	  	<dl class="Img02">
-                                    	  	    <#list sv as scol>
-                                             <#if scol?index == 0>
-											<dt class="title01">${skey}</dt>
-											<dd class="pic">
-												<img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
-											</dd>
-											<dd class="Lurl">
-												<em>${scol.publishTime?string('yyyy-MM-dd')}</em>
-												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-											</dd>
-											<#else>
-											<dd class="url">
-												<span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-											</dd>
-											</#if>
-                                    	  	</#list>
-                                    	  	</dl>
-                                    	  </#if>	
-                                    	   	  
-                                    	<#if skey == "心血管内科">
-                                    	<div class="BottomHidden"></div>
-											<dl>
-											<dt class="title01">${skey}</dt>
-											<#list sv as scol>
-											<dd class="url">
-												<span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-												<a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-											</dd>
-											</#list>
-											</dl>	
-										</#if>	
-							
-							<#-- 新增2 -->			
-									
-									   <#if skey == "心功能科">
-									   </div>
-									   <div class="navSub4 nav_Menu02 noPic">
-									       <dl>
-									       <dt class="title02">${skey}</dt>
-										   <#list sv as scol>
-										   <dd class="url">
-										      <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-										      <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-										   </dd>
-										   </#list>
-										   </dl>
-									   </#if>
-									
-							<#-- 新增2 -->		
-									
-									</#list>	
-									</div>	
-									</#if>
-			                <#-- 新增1 -->  		
-							
+                                    
                                     <div class="clear"></div>
                                 </div>
                                 </#if>
@@ -251,7 +187,6 @@
                         </#if>
                         </#list>
                         </li>
-                        		
                     </ul>
                 </div>
             </div>
