@@ -58,7 +58,7 @@ public class RoleController {
 	
 	@RequestMapping(value = { "/role/{id}" }, method = RequestMethod.POST)
 	public ResponseEntity<?> update(Model model,
-			@ApiParam("文章Id，必填") @PathVariable Long id, 
+			@ApiParam("角色Id，必填") @PathVariable Long id, 
 			@ApiParam("角色名字") @RequestParam String name,
 			@ApiParam("角色拥有的权限Id") @RequestParam Long[] privIds) {
 		
@@ -89,7 +89,7 @@ public class RoleController {
 	
 	@RequestMapping(value = { "/role/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<?> delete(Model model,
-			@ApiParam("文章Id，必填") @PathVariable Long id) {
+			@ApiParam("角色Id，必填") @PathVariable Long id) {
 		
 		int ret = roleService.delete(id);
 		if (ret > 0) {
@@ -101,7 +101,7 @@ public class RoleController {
 	
 	@RequestMapping(value = { "/role/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<?> read(Model model,
-			@ApiParam("文章Id，必填") @PathVariable Long id) {
+			@ApiParam("角色Id，必填") @PathVariable Long id) {
 		XPWRole role = roleService.read(id);
 		
 		if (role != null) {
