@@ -36,9 +36,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	/**
-	* 
-	*/
 	@ApiOperation(value = "搜索用户信息", notes = "搜索用户信息")
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public ResponseEntity<?> show() {

@@ -58,6 +58,5 @@ public class TokenController {
 		} else {
 		    return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
 		}
-		
 	}
 }
