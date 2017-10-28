@@ -34,6 +34,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 	 */
 	private final String KEY;
 	
+	@Autowired
 	public TokenInterceptor(@Value("${jwt.key}") String key) {		
 		KEY = key;
 	}

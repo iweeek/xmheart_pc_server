@@ -41,17 +41,14 @@ public class TokenServiceImpl implements TokenService {
 	/**
 	 * jwt加密、解密的密匙
 	 */
-	private final String KEY = "12345678";
+	private final String KEY;
 	
-//	public TokenServiceImpl(@Value("${jwt.key}") String key) {		
-//		KEY = key;
-//	}
-
-	public TokenServiceImpl() {
-	    
+	@Autowired
+	public TokenServiceImpl(@Value("${jwt.key}") String key) {		
+		KEY = key;
 	}
 	
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public int create(String username, String password, String salt, int expiredHour, ResponseBody body) {
         XPWUser user;
@@ -76,6 +73,7 @@ public class TokenServiceImpl implements TokenService {
 //        for(int i = 0; i < roles.length; i++) {
 //            roles[i] = user.getRoles().get(i).getName();
 //        }
+        user.setPassword("");
         body.obj1 = user;
         body.obj2 = Jwts.builder()
                 .setSubject(String.valueOf(userId))
@@ -86,7 +84,5 @@ public class TokenServiceImpl implements TokenService {
         
         return 0;
     }
-
 	
-		
 }
