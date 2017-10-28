@@ -19,39 +19,66 @@
 }
 
 .add-img-list .add-image-button {
-	width: 640px;
-	height: 360px;
+	width: 320px;
+	height: 180px;
 	text-align: center;
-	line-height: 360px;
+	line-height: 180px;
 	border: 1px solid #808080;
 	cursor: pointer;
 }
 
 .add-img-list .add-image-url {
-	width: 640px;
-	height: 360px;
+	width: 320px;
+	height: 180px;
 	display: none;
 }
 
+.add-img-list .add-video-url {
+    width: 640px;
+    height: 360px;
+    display: none;
+}
+
 .add-img-list .add-image-edit {
-	width: 160px;
-	height: 160px;
+	width: 80px;
+	height: 80px;
 	position: absolute;
 	top: 30px;
-	left: 50%;
-	margin-left: -80px;
+	left: 25%;
+	margin-left: -40px;
 	display: none;
 	cursor: pointer;
 }
 
+.add-img-list .add-video-edit {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 30px;
+    left: 51%;
+    margin-left: -40px;
+    display: none;
+    cursor: pointer;
+}
+
 .add-img-list .add-image-edit  img {
-	width: 160px;
-	height: 160px;
+	width: 80px;
+	height: 80px;
+}
+
+.add-img-list .add-video-edit  img {
+    width: 80px;
+    height: 80px;
+}
+
+.add-img-list .add-video-url img {
+	width: 640px;
+	height: 360px;
 }
 
 .add-img-list .add-image-url img {
-	width: 640px;
-	height: 360px;
+    width: 320px;
+    height: 180px;
 }
 
 .add-img-list .add-img-file {
@@ -147,4 +174,9 @@
 	margin-right: 10px;
 	height: 20px;
 	text-align: center;
+}
+
+.required:before {
+    content: "* ";
+    color: red;
 }

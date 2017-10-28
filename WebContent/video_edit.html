@@ -17,7 +17,7 @@
     <div class="index-edit-container">
         <div class="slide-edit-container">
         		<div class="row">
-             	<h4 class="slide-title">视频长传<span>（上传视频规格式）</span></h4>
+             	<h4 class="slide-title">视频上传<span>（上传视频规格式）</span></h4>
              </div>
              
              <div class="title-input-wrapper" id="titleWrapper">
@@ -32,10 +32,10 @@
              </div>
              <div class="row add-list-main">
                 	<div class="add-img-list ">
-              		<div class="add-image-button" id="addImgBtn">
+              		<div class="add-image-button" id="addVideoBtn">
          				 上传视频
         				</div>
-        				<div class="add-image-url" id = "add-image-url">
+        				<div class="add-video-url" id = "add-video-url">
         					<div class="video-img-content">
 			             	<div id="jp_container_1" class="jp-video jp-video-360p" role="application" aria-label="media player">
 								<div class="jp-type-single">
@@ -82,7 +82,7 @@
 							</div>
 			             </div>
         				</div>
-        				<div class="add-image-edit">
+        				<div class="add-video-edit" id="add-video-edit">
         					<img src="./img/manager/edit.png">
         				</div>
         				<form class="upload-form js-upload-form" enctype="multipart/form-data" method="post" action="/uploadVideo" >
@@ -95,6 +95,29 @@
                 		</div> -->
                 	</div>      	
              </div>
+             <p></p>
+            <div class="row">
+                <h4 class="slide-title">请上传视频默认显示图片<span>（上传视频规格式）</span></h4>
+             </div>
+	        <div class="upload-wrapper" id="uploadWrapper">
+	            <div class="add-img-list">
+	                <div class="add-image-button" id="addImgBtn">
+	                     添加图片
+	                </div>
+	                <!-- 选择图片后显示的图片 -->
+	                <div class="add-image-url" id="add-image-url">
+	                    <img src="#" class="upload-img" id="upload-img">
+	                </div>
+	                <div class="add-image-edit" id="add-image-edit">
+	                    <img src="../img/manager/edit.png">
+	                </div>
+	                <form class="upload-form" id="uploadForm" enctype="multipart/form-data" method="post" action="/uploadImage" >
+	                        <input type="file" name="image" class="add-img-file" />
+	                        <input type="submit" class="add-img-submit" />
+	                    </form>
+	                </div>
+	        </div>
+             
         		 <div class="row btn-group">
         		 	<input type="button" class="search-button" id="publish" value="上传">
         		 	<input type="button" class="search-button" id="update" value="更新">

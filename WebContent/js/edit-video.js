@@ -18,7 +18,7 @@ exports.XPW.videoEdit = (function() {
     function videoEdit() {
 //	  videoEdit.initVideo();
     	  var id = videoEdit.getUrlParam("videoId");
-    	  console.log(id);
+//    	  console.log(id);
     	  if (!id) {
     		  $("#publish").show();
     		  $("#update").hide();
@@ -32,24 +32,15 @@ exports.XPW.videoEdit = (function() {
 	  videoEdit.update();
 	  videoEdit.cancel();
 	  videoEdit.init();
+	  videoEdit.uploadImg();
 //	  xtIndexEdit.getData();
 //	  xtIndexEdit.pageId = 0;
 //	  xtIndexEdit.postData();
     }
   videoEdit.initVideo = function (video) {
-//	  $("#jquery_jplayer_1").jPlayer({
-//		   ready: function () {
-//		    $(this).jPlayer("setMedia", {
-//		     m4a: "http://localhost:8080/js/third_party/01.mp4",
-//		     oga: "/media/mysound.ogg"
-//		    });
-//		   },
-//		   swfPath: "/js",
-//		   supplied: "m4a, oga"
-//		  });
 	  var videoSrc = video || '';
 	  videoUrl = videoSrc;
-	  console.log(videoUrl);// TODO
+//	  console.log(videoUrl);// TODO
 	  $("#jquery_jplayer_1").jPlayer({
 			ready: function () {
 				$(this).jPlayer("setMedia", {
@@ -76,7 +67,7 @@ exports.XPW.videoEdit = (function() {
   }
   
   videoEdit.addVideo = function () {
-	  $('.add-list-main').on('click', '#addImgBtn', function (){
+	  $('.add-list-main').on('click', '#addVideoBtn', function (){
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
 	  $('.add-list-main').on('change', '.add-img-file', function (){
@@ -90,24 +81,24 @@ exports.XPW.videoEdit = (function() {
 				  videoEdit.initVideo(video);
 //				  $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
 				  $this.siblings('.add-image-button').hide();
-				  $this.siblings('.add-image-url').show();
+				  $this.siblings('.add-video-url').show();
 			  }
 		  });
 		  return false;
 	  })
-	  $('.add-list-main').on('mouseover', '.add-image-url, .add-image-edit', function (){
-		  $(this).siblings('.add-image-edit').show();
+	  $('.add-list-main').on('mouseover', '.add-video-url, #add-video-edit', function (){
+		  $(this).siblings('#add-video-edit').show();
 	  })
-	  $('.add-list-main').on('mouseleave', '.add-image-url, .add-image-edit', function (){
-		  $(this).siblings('.add-image-edit').hide();
+	  $('.add-list-main').on('mouseleave', '.add-video-url, #add-video-edit', function (){
+		  $(this).siblings('#add-video-edit').hide();
 	  })
-	  $('.add-list-main').on('mouseover', '.add-image-edit', function (){
+	  $('.add-list-main').on('mouseover', '#add-video-edit', function (){
 		  $(this).show();
 	  })
-	  $('.add-list-main').on('mouseleave', '.add-image-edit', function (){
+	  $('.add-list-main').on('mouseleave', '#add-video-edit', function (){
 		  $(this).hide();
 	  })
-	  $('.add-list-main').on('click', '.add-image-edit', function (){
+	  $('.add-list-main').on('click', '#add-video-edit', function (){
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
   }
@@ -134,15 +125,15 @@ exports.XPW.videoEdit = (function() {
     videoEdit.publish = function () {
 	    $('#publish').on('click', function(){
 		    var $this = $(this);
-	
-		    console.log(title.val());
-		    console.log(brief.val());
-		    console.log(videoUrl);
+		    	var imgUrl = $('.upload-img').attr('src');
+//		    console.log(title.val());
+//		    console.log(brief.val());
+//		    console.log(videoUrl);
 			var params = {
 				title : title.val(),
 				brief : brief.val(),
 				isPublished : true,
-				imgUrl : '',
+				imgUrl : imgUrl,
 				videoUrl : videoUrl
 			};
 	
@@ -153,27 +144,6 @@ exports.XPW.videoEdit = (function() {
 			var url = '/videos';
 			$.post(url, params, function(res) {
 				$this.removeAttr('disabled');
-//				swal({
-//					title : "上传成功",
-//					type : "success",
-//					showCancelButton : true,
-//					confirmButtonColor : "#8cd4f5",
-//					confirmButtonText : "确定",
-//					cancelButtonText : "继续上传",
-//					closeOnConfirm : true
-//				}).then(function() {
-//					//成功
-//				}, function (dismiss) {
-//					  // dismiss can be 'cancel', 'overlay',
-//					  // 'close', and 'timer'
-//					  if (dismiss === 'cancel') {
-//					    swal(
-//					      'Cancelled',
-//					      'Your imaginary file is safe :)',
-//					      'error'
-//					    )
-//					  }
-//				});
 				
 				swal({
 					title : "上传成功",
@@ -196,12 +166,12 @@ exports.XPW.videoEdit = (function() {
     videoEdit.update = function () {
 	    $('#update').on('click', function(){
 		    var $this = $(this);
-	
+		    var imgUrl = $('.upload-img').attr('src');
 			var params = {
 				title : title.val(),
 				brief : brief.val(),
 				isPublished : true,
-				imgUrl : '',
+				imgUrl : imgUrl,
 				videoUrl : videoUrl
 			};
 	
@@ -239,10 +209,13 @@ exports.XPW.videoEdit = (function() {
             $('#videoTitle').val(res.title);
             $('#brief').val(res.brief);
 //            $('#upload-img').attr('src', res.imageUrl);
-            console.log(res.videoUrl);
+//            console.log(res.videoUrl);
             videoEdit.initVideo(res.videoUrl);
+            $('#upload-img').attr('src', res.imgUrl);
             $('#add-image-url').show();
+            $('#add-video-url').show();
             $('#addImgBtn').hide();
+            $('#addVideoBtn').hide();
         });
     }
 		
@@ -253,6 +226,36 @@ exports.XPW.videoEdit = (function() {
         }
     }
   
+    videoEdit.uploadImg = function () {
+		$('.add-img-list').on('click', '#addImgBtn', function (){
+			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		})
+		$('.add-img-list').on('change', '.add-img-file', function (){
+			$(this).siblings('.add-img-submit').trigger('click');
+		})
+		$('#uploadForm').submit(function(){
+			$this = $(this);
+			$this.ajaxSubmit({
+				success: function (responseText) {
+					var img = responseText;
+					$this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+					$this.siblings('.add-image-button').hide();
+					$this.siblings('.add-image-url').show();
+				}
+			});
+			return false;
+		})
+		$('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
+			$('.add-image-edit').show();
+		})
+		$('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
+			$('.add-image-edit').hide();
+		})
+		$('.add-img-list').on('click', '.add-image-edit', function (){
+			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		})
+    }
+    
 //  xtIndexEdit.getData = function () {
 //	  $.get('/xtIndexPage',function(data){
 //		  IndexEdit.pageId = data.id;
