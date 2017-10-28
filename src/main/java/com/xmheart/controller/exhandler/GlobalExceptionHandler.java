@@ -4,13 +4,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.omg.IOP.ExceptionDetailMessage;
-import org.springframework.dao.DataRetrievalFailureException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,68 +23,68 @@ import io.jsonwebtoken.ExpiredJwtException;
 public class GlobalExceptionHandler {
 	private final Logger logger = LogManager.getLogger(GlobalExceptionHandler.class);
 	
-	/**
-	* @author x1ny
-	* @date 2017年5月9日
-	* @Description: 处理shiro抛出的凭证错误异常
-	* @param exception
-	* @return
-	* @throws
-	*/
-	@ExceptionHandler(IncorrectCredentialsException.class)
-	public ResponseEntity<RestError> handler(IncorrectCredentialsException exception) {
-		RestError restError = new RestError();
-		restError.setStatus(HttpStatus.UNAUTHORIZED.value());
-		restError.setCode(HttpStatus.UNAUTHORIZED.value());
-		restError.setMessage("用户名或密码错误");
-		restError.setDeveloperMessages(new String[]{exception.getMessage()});
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(restError);
-	}
-
-	/**
-	* @author x1ny
-	* @date 2017年5月9日
-	* @Description: 处理使用spring mvc的@RequestParam时，参数不存在时异常
-	* @param exception
-	* @return
-	* @throws
-	*/
-	@ExceptionHandler(MissingServletRequestParameterException.class)
-	public ResponseEntity<RestError> handler(MissingServletRequestParameterException exception) {
-		RestError restError = new RestError();
-		restError.setStatus(HttpStatus.BAD_REQUEST.value());
-		restError.setCode(HttpStatus.BAD_REQUEST.value());
-		restError.setMessage("缺少请求参数:" + exception.getParameterName());
-		restError.setDeveloperMessages(new String[]{exception.getMessage()});
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
-	}
-	
-	/**
-	* 处理重复记录异常
-	*/
-	@ExceptionHandler(DuplicateKeyException.class)
-	public ResponseEntity<RestError> handler(DuplicateKeyException exception) {
-		RestError restError = new RestError();
-		restError.setStatus(HttpStatus.BAD_REQUEST.value());
-		restError.setCode(HttpStatus.BAD_REQUEST.value());
-		restError.setMessage(exception.getMessage());
-		restError.setDeveloperMessages(new String[]{exception.getMessage()});
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
-	}
-	
-	/**
-	* 处理记录不存在异常
-	*/
-	@ExceptionHandler(DataRetrievalFailureException.class)
-	public ResponseEntity<RestError> handler(DataRetrievalFailureException exception) {
-		RestError restError = new RestError();
-		restError.setStatus(HttpStatus.BAD_REQUEST.value());
-		restError.setCode(HttpStatus.BAD_REQUEST.value());
-		restError.setMessage(exception.getMessage());
-		restError.setDeveloperMessages(new String[]{exception.getMessage()});
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
-	}
-	
+//	/**
+//	* @author x1ny
+//	* @date 2017年5月9日
+//	* @Description: 处理shiro抛出的凭证错误异常
+//	* @param exception
+//	* @return
+//	* @throws
+//	*/
+//	@ExceptionHandler(IncorrectCredentialsException.class)
+//	public ResponseEntity<RestError> handler(IncorrectCredentialsException exception) {
+//		RestError restError = new RestError();
+//		restError.setStatus(HttpStatus.UNAUTHORIZED.value());
+//		restError.setCode(HttpStatus.UNAUTHORIZED.value());
+//		restError.setMessage("用户名或密码错误");
+//		restError.setDeveloperMessages(new String[]{exception.getMessage()});
+//		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(restError);
+//	}
+//
+//	/**
+//	* @author x1ny
+//	* @date 2017年5月9日
+//	* @Description: 处理使用spring mvc的@RequestParam时，参数不存在时异常
+//	* @param exception
+//	* @return
+//	* @throws
+//	*/
+//	@ExceptionHandler(MissingServletRequestParameterException.class)
+//	public ResponseEntity<RestError> handler(MissingServletRequestParameterException exception) {
+//		RestError restError = new RestError();
+//		restError.setStatus(HttpStatus.BAD_REQUEST.value());
+//		restError.setCode(HttpStatus.BAD_REQUEST.value());
+//		restError.setMessage("缺少请求参数:" + exception.getParameterName());
+//		restError.setDeveloperMessages(new String[]{exception.getMessage()});
+//		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
+//	}
+//	
+//	/**
+//	* 处理重复记录异常
+//	*/
+//	@ExceptionHandler(DuplicateKeyException.class)
+//	public ResponseEntity<RestError> handler(DuplicateKeyException exception) {
+//		RestError restError = new RestError();
+//		restError.setStatus(HttpStatus.BAD_REQUEST.value());
+//		restError.setCode(HttpStatus.BAD_REQUEST.value());
+//		restError.setMessage(exception.getMessage());
+//		restError.setDeveloperMessages(new String[]{exception.getMessage()});
+//		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
+//	}
+//	
+//	/**
+//	* 处理记录不存在异常
+//	*/
+//	@ExceptionHandler(DataRetrievalFailureException.class)
+//	public ResponseEntity<RestError> handler(DataRetrievalFailureException exception) {
+//		RestError restError = new RestError();
+//		restError.setStatus(HttpStatus.BAD_REQUEST.value());
+//		restError.setCode(HttpStatus.BAD_REQUEST.value());
+//		restError.setMessage(exception.getMessage());
+//		restError.setDeveloperMessages(new String[]{exception.getMessage()});
+//		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restError);
+//	}
+//	
 
 	/**
 	* @author x1ny
