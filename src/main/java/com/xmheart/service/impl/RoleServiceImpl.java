@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xmheart.mapper.XPWPrivMapper;
 import com.xmheart.mapper.XPWRoleMapper;
+import com.xmheart.model.XPWPriv;
+import com.xmheart.model.XPWPrivExample;
 import com.xmheart.model.XPWRole;
 import com.xmheart.model.XPWRoleExample;
 import com.xmheart.service.RoleService;
@@ -15,7 +18,9 @@ public class RoleServiceImpl implements RoleService{
 	
 	@Autowired
 	XPWRoleMapper roleMapper;
-
+	@Autowired
+	XPWPrivMapper privMapper;
+	
 	@Override
 	public int create(XPWRole role) {
 		return roleMapper.insert(role);
@@ -42,9 +47,15 @@ public class RoleServiceImpl implements RoleService{
     @Override
     public List<XPWRole> index() {
     		XPWRoleExample example = new XPWRoleExample();
-//        example.setOrderByClause("is_pinned desc, pin_order asc, publish_time desc");
         List<XPWRole> list = roleMapper.selectByExample(example);
         return list;
     }
+
+	@Override
+	public List<XPWPriv> indexPriv() {
+ 		XPWPrivExample example = new XPWPrivExample();
+        List<XPWPriv> list = privMapper.selectByExample(example);
+		return list;
+	}
 
 }

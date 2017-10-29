@@ -22,14 +22,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     XPWUserMapper userMapper;
-    @Override
-    public List<XPWUser> search(XPWUser user) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
+	@Override
+	public List<XPWUser> search(XPWUser user) {
+		return null;
+	}
+    
     @Override
-    public int update(XPWUser user, ResponseBody resBody) {
+    public int update(XPWUser user) {
         userMapper.updateByPrimaryKey(user);
         return 0;
     }

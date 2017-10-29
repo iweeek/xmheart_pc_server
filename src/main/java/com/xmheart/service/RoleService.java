@@ -2,6 +2,7 @@ package com.xmheart.service;
 
 import java.util.List;
 
+import com.xmheart.model.XPWPriv;
 import com.xmheart.model.XPWRole;
 
 public interface RoleService {
@@ -15,4 +16,6 @@ public interface RoleService {
 	public XPWRole read(Long id);
 	
     public List<XPWRole> index();
+    
+    public List<XPWPriv> indexPriv();
 }

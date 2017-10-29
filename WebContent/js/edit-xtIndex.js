@@ -47,7 +47,6 @@ exports.XPW.xtIndexEdit = (function() {
   
   xtIndexEdit.getData = function () {
 	  $.get('/xtIndexPage', function(data){
-		  debugger;
 		  xtIndexEdit.pageId = data.id;
 		  if (data.bannerImage1Url) {
 			  $('.add-img-list').eq(0).find('.add-image-url img').attr('src', data.bannerImage1Url);

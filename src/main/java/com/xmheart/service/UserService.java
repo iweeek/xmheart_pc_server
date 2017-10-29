@@ -16,16 +16,14 @@ public interface UserService {
 	List<XPWUser> search(XPWUser user);
 
 	@SuppressWarnings("rawtypes")
-	int update(XPWUser user, ResponseBody resBody);
+	int update(XPWUser user);
+	
+	int create(XPWUser user);
 	
 	XPWUser read(Long id);
 	
     String getAvatarUrl(String fileName);
 
     List<XPWUser> index();
-
-    int create(XPWUser user);
-
-    
 
 }
