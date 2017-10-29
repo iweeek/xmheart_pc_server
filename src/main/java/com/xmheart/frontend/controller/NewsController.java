@@ -97,29 +97,57 @@ public class NewsController {
 		Map<String, List<XPWNav>> secondColNavMap = new LinkedHashMap<String, List<XPWNav>>();
 		Map<String, List<XPWNav>> columnNavMap = new LinkedHashMap<String, List<XPWNav>>();
 		
+		XPWIndex index = indexService.indexRead();
+		Integer language = index.getLanguage();
 		
-		for (XPWColumn column : columnList) {
-			firstColumns.put(column.getColumnName(), column.getUrl());
-			List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
-			if (secColList.size() > 0) {
-				columnMap.put(column.getColumnName(), secColList);
-			}
-
-			List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
-			columnNavMap.put(column.getColumnName(), navList);
-			if (navList.size() > 0) {
-				navMap.put(column.getId(), navList);
-				// System.out.println(column.getId());
-			}
-
-			for (XPWNav nav : navList) {
-				if (secondColNavMap.containsKey(nav.getChildColumnName()) == false) {
-					List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(nav.getChildColumnName());
-					secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
+		if (language == 0) {
+			for (XPWColumn column : columnList) {
+				
+				firstColumns.put(column.getColumnName(), column.getUrl());
+				
+				List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
+				if (secColList.size() > 0) {
+					columnMap.put(column.getColumnName(), secColList);
 				}
-			}
-			
-			
+	
+				List<XPWNav> navList = columnService.getNavsWithColumnByColumnId(column.getId());
+				columnNavMap.put(column.getColumnName(), navList);
+				
+				for (XPWNav nav : navList) {
+					XPWNav navWithColumn = newsService.selectNavWithColumnByPrimaryKey(nav.getId());
+					if (secondColNavMap.containsKey(navWithColumn.getColumn().getColumnName()) == false) { // TODO
+						List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(navWithColumn.getColumn().getColumnName());
+						secondColNavMap.put(navWithColumn.getColumn().getColumnName(), secondColNavList);
+					}
+				}
+			}	
+		} else {
+			for (XPWColumn column : columnList) {
+				
+				firstColumns.put(column.getColumnNameEn(), column.getUrl());
+				
+				List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
+				if (secColList.size() > 0) {
+					columnMap.put(column.getColumnNameEn(), secColList);
+				}
+	
+				List<XPWNav> navList = columnService.getNavsWithColumnByColumnId(column.getId());
+				System.out.println("navList: " + navList.size());
+				columnNavMap.put(column.getColumnNameEn(), navList);
+	
+				for (XPWNav nav : navList) {
+					XPWNav navWithColumn = newsService.selectNavWithColumnByPrimaryKey(nav.getId());
+					if (secondColNavMap.containsKey(navWithColumn.getColumn().getColumnNameEn()) == false) { 
+						List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(navWithColumn.getColumn().getColumnName());
+//						List<XPWNav> secondColNavList = columnService.getNavsByChildColumnId(navWithColumn.getChildColumnId());
+						System.out.println("nav.getChildColumnId(): " + nav.getChildColumnId());
+						System.out.println("secondColNavList: " + secondColNavList.size());
+						secondColNavMap.put(navWithColumn.getColumn().getColumnNameEn(), secondColNavList);//TODO
+						System.out.println("nav.getId() = " + nav.getId() + ", En:" + navWithColumn.getColumn().getColumnNameEn());
+					}
+				}
+				System.out.println("-----");
+			}	
 		}
 
 		/*
@@ -127,22 +155,33 @@ public class NewsController {
 		 * key); }
 		 */
 
+		model.addAttribute("language", language);
 		model.addAttribute("firstColumns", firstColumns);
 		model.addAttribute("columnMap", columnMap);
-		model.addAttribute("navMap", navMap);
+//		model.addAttribute("navMap", navMap);
 		model.addAttribute("secondColNavMap", secondColNavMap);
 		model.addAttribute("columnNavMap", columnNavMap);
 
 		// 这个地方只能体现两级栏目关系
 		XPWColumn parentColumn = columnService.getParentColumnById(columnId);
-		// 有父栏目，父栏目是一级栏目
-		if (parentColumn != null) {
-			model.addAttribute("firstColumnName", parentColumn.getColumnName());
+		
+		if (language == 0) {
+			// 有父栏目，父栏目是一级栏目
+			if (parentColumn != null) {
+				model.addAttribute("firstColumnName", parentColumn.getColumnName());
+			} else {
+				XPWColumn column = columnService.getColumnById(columnId);
+				model.addAttribute("firstColumnName", column.getColumnName());
+			}
 		} else {
-			XPWColumn column = columnService.getColumnById(columnId);
-			model.addAttribute("firstColumnName", column.getColumnName());
+			// 有父栏目，父栏目是一级栏目
+			if (parentColumn != null) {
+				model.addAttribute("firstColumnName", parentColumn.getColumnNameEn());
+			} else {
+				XPWColumn column = columnService.getColumnById(columnId);
+				model.addAttribute("firstColumnName", column.getColumnNameEn());
+			}
 		}
-
 		return model;
 	}
 

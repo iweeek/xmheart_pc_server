@@ -97,6 +97,8 @@ public class GlobalExceptionHandler {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> handler(Exception exception) {
+//		logger.error("ResponseEntity handler exception: " + exception.getMessage());
+		exception.printStackTrace();
 		if (exception instanceof ExpiredJwtException) {
 			return ResponseEntity.status(HttpServletResponse.SC_UNAUTHORIZED).body(null);
 		} else {

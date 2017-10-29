@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.xmheart.mapper.XPWArticleMapper;
 import com.xmheart.mapper.XPWElecNewspaperMapper;
+import com.xmheart.mapper.XPWNavMapper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWArticleExample;
+import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWElecNewspaperExample;
 import com.xmheart.model.XPWElecNewspaperExample.Criteria;
+import com.xmheart.model.XPWNav;
 import com.xmheart.service.NewsService;
 
 @Service
@@ -26,6 +29,8 @@ public class NewsServiceImpl implements NewsService {
 	XPWArticleMapper xpwArticleMapper;
 	@Autowired
 	XPWElecNewspaperMapper xpwElecNewspaperMapper;
+	@Autowired
+	XPWNavMapper xpwNavMapper;
 
 	@Override
 	public List<XPWArticle> getPinnedMediaNews() {
@@ -157,5 +162,11 @@ public class NewsServiceImpl implements NewsService {
                 return null;
             }
         }
+
+		@Override
+		public XPWNav selectNavWithColumnByPrimaryKey(Long id) {
+			XPWNav nav = xpwNavMapper.selectNavWithColumnByPrimaryKey(id);
+			return nav;
+		}
 
 }

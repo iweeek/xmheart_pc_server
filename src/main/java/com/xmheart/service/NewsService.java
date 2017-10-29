@@ -3,7 +3,9 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
+import com.xmheart.model.XPWNav;
 
 
 /**
@@ -99,4 +101,5 @@ public interface NewsService {
 
     XPWArticle getColNextNewsById(Long colId, Long id);
 
+	public XPWNav selectNavWithColumnByPrimaryKey(Long id);
 }

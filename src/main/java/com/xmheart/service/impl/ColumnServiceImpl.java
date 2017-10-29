@@ -39,12 +39,21 @@ public class ColumnServiceImpl implements ColumnService {
 		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
 		return list;
 	}
-
+	
 	@Override
 	public List<XPWNav> getNavsByColumnId(long id) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		return list;
+	}
+	
+	@Override
+	public List<XPWNav> getNavsWithColumnByColumnId(long id) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andColumnIdEqualTo(id);
+//		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		List<XPWNav> list = xpwNavMapper.selectNavWithColumnByColumnId(id);
 		return list;
 	}
 
@@ -137,6 +146,12 @@ public class ColumnServiceImpl implements ColumnService {
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
 		
 		return list;
+	}
+	
+	@Override
+	public List<XPWNav> getNavsByChildColumnId(Long childId) {
+		List<XPWNav> navList = xpwNavMapper.selectNavWithColumnByChildColumnId(childId);
+		return navList;
 	}
 
 	@Override

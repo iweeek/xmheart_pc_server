@@ -52,11 +52,10 @@
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
-                    
                         <li class="xm-navbar-item">
                     </#if>
                     
-                    <#if key == "首页" >
+                    <#if key?index == 0 >
                         <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                     <#else>
                         <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
@@ -71,11 +70,19 @@
                                         <#list vc as col>
                                             <#if vc?index == 0>
                                             <li class="first">
+                                                <#if language == 0>
                                                 <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                                <#elseif language == 1>
+                                                <a href="${col.url}" title="${col.columnName}">${col.columnNameEn}<span>进入</span></a>
+                                                </#if>
                                             </li>
                                             <#else>
                                             <li>
+                                                <#if language == 0>
                                                 <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                                <#elseif language == 1>
+                                                <a href="${col.url}" title="${col.columnName}">${col.columnNameEn}<span>进入</span></a>
+                                                </#if>
                                             </li>
                                             
                                             </#if>
@@ -88,7 +95,11 @@
                                     <#if columnName == key>       
                                     <#list navList as nav>                    
                                     <div class="navSub5">
-                                    <h3 class="title01">${nav.childColumnName}</h3>
+                                    <#if language == 0>
+                                    <h3 class="title01">${nav.column.columnName}</h3>
+                                    <#elseif language == 1>
+                                    <h3 class="title01">${nav.column.columnNameEn}</h3>
+                                    </#if>
                                     <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
                                     <br/>
                                         <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
@@ -106,9 +117,12 @@
                                     </#list>
                                     </#if>   
                                     
+                                    <!-- 新闻公告 -->
                                     <#if key?index == 4>
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
-                                    <#list secondColNavMap as skey, sv>       
+                                    <#list secondColNavMap as skey, sv>  
+                                     <!-- 媒体看厦心 -->
+                                    <#if language == 0>
                                     <#if skey == vc[0].columnName>
                                     <#list sv as scol>
                                     <#if scol?index == 0>
@@ -129,8 +143,33 @@
                                     </#if>
                                     </#list>
                                     </dl>
-                                    </#if>    
-                                          
+                                    </#if>  
+                                    <#elseif language == 1>
+                                    <#if skey == vc[0].columnNameEn>
+                                    <#list sv as scol>
+                                    <#if scol?index == 0>
+                                    <dl class="Img02">
+                                    <dt class="title01">${skey}</dt>
+                                    <dd class="pic">
+                                        <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
+                                    </dd>
+                                    <dd class="Lurl">
+                                        <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    <#else>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#if>
+                                    </#list>
+                                    </dl>
+                                    </#if>  
+                                    </#if>
+                                    
+                                    <!-- 医院新闻 -->
+                                    <#if language == 0>
                                     <#if skey == vc[1].columnName>
                                     <div class="BottomHidden"></div>
                                     <dl>
@@ -141,9 +180,25 @@
                                         <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                     </dd>
                                     </#list>
-                                    </dl>   
-                                    </#if>  
-                         
+                                    </dl>
+                                    </#if>
+                                    <#elseif language == 1>
+                                    <#if skey == vc[1].columnNameEn>
+                                    <div class="BottomHidden"></div>
+                                    <dl>
+                                    <dt class="title01">${skey}</dt>
+                                    <#list sv as scol>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#list>
+                                    </dl>
+                                    </#if>
+                                    </#if>
+                                    
+                                    <!-- 医院新闻 -->
+                                    <#if language == 0>
                                     <#if skey == vc[2].columnName>
                                     </div>
                                     <div class="navSub4 nav_Menu02 noPic">
@@ -157,7 +212,24 @@
                                     </#list>
                                     </dl>
                                     </#if>
-                                
+                                    <#elseif language == 1>
+                                    <#if skey == vc[2].columnNameEn>
+                                    </div>
+                                    <div class="navSub4 nav_Menu02 noPic">
+                                    <dl>
+                                    <dt class="title02">${skey}</dt>
+                                    <#list sv as scol>
+                                    <dd class="url">
+                                        <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                        <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                    </dd>
+                                    </#list>
+                                    </dl>
+                                    </#if>
+                                    </#if>
+                                    
+                                    <!-- 医院新闻 -->
+                                    <#if language == 0>
                                     <#if skey == vc[3].columnName>
                                     <div class="BottomHidden"></div>
                                     <dl>
@@ -168,11 +240,26 @@
                                             <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
                                         </dd>
                                         </#list>
-                                    </dl>   
-                                    </#if>   
-                                              
-                                    </#list>    
-                                    </div>  
+                                    </dl>
+                                    </#if>
+                                    <#elseif language == 1>
+                                    <#if skey == vc[3].columnNameEn>
+                                    <div class="BottomHidden"></div>
+                                    <dl>
+                                        <dt class="title02">${skey}</dt>
+                                        <#list sv as scol>
+                                        <dd class="url">
+                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                        </dd>
+                                        </#list>
+                                    </dl>
+                                    </#if>
+                                    </#if>
+                                    
+                                    <!-- 结束 -->
+                                    </#list>
+                                    </div>
                                     </#if>
                                     
                                     <div class="clear"></div>

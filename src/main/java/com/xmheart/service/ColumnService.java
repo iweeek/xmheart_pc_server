@@ -89,9 +89,11 @@ public interface ColumnService {
     
 	List<XPWNav> getNavsByChildColumnName(String childColumnName);
 
+	List<XPWNav> getNavsByChildColumnId(Long childId);
+	
     XPWNav getNavById(Long id);
 
     List<XPWNav> getNavList();
-
-
+    
+    List<XPWNav> getNavsWithColumnByColumnId(long id);
 }
