@@ -8,23 +8,13 @@ $(function() {
 		getRoles : function(pageNo, pageSize) {
 			$('.ui-loading').show();
 			var loading = true;
-			$.get('/users', {
+			$.get('/roles', {
 				pageNo : pageNo,
 				pageSize : pageSize
 			}, function(data) {
 				if (data.length < ctrl.pageSize) {
 					ctrl.noNextPage = true;
 				}
-				$.each(data, function(name, val) {
-					console.log(val)
-					if(val.userType == 1) {
-						val.userType = '超级管理员';
-					}
-					if(val.userType == 2) {
-						val.userType = '普通管理员';
-					}
-					
-				})
 				var template = $('#J_articles_tmpl').html();
 				Mustache.parse(template);
 				var rendered = Mustache.render(template, {
@@ -69,6 +59,7 @@ $(function() {
 			}
 		},
 		init : function() {
+			console.log(123);
 			ctrl.getRoles(ctrl.pageNo, 10, ctrl.columnId);
 			$('.ui-nodata').hide();
 		}
@@ -83,8 +74,9 @@ $(function() {
 
 	// 编辑
 	$('#J_articles').on('click','.edit-btn', function() {
-		var userId = $(this).data('id');
-		location.href = '/static/role_editor.html?userId=' + userId;
+		var roleId = $(this).data('id');
+		console.log(roleId)
+		location.href = '/static/role_editor.html?roleId=' + roleId;
 	});
 	
 	// 删除
