@@ -315,3 +315,11 @@
   content:"*";
   color: red;
 }
+.input-wrapper .user-limit {
+	float: left;
+	margin-right: 10px;
+}
+.input-wrapper .user-limit input {
+	float: left;
+	margin-top: 10px;
+}
