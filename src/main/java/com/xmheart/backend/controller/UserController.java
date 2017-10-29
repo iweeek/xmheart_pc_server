@@ -45,101 +45,90 @@ public class UserController {
 
 	@Autowired
 	UserRoleService userRoleService;
-	
-   @ApiOperation(value = "用户列表", notes = "用户列表")
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public ResponseEntity<?> index() {
-        List<XPWUser> list = userService.index();
-        if (list.size() > 0) {
-            return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
-        } else {
-            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
-        }
-    }
-	
+
+	@ApiOperation(value = "用户列表", notes = "用户列表")
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public ResponseEntity<?> index() {
+		List<XPWUser> list = userService.index();
+		if (list.size() > 0) {
+			return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+		} else {
+			return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+		}
+	}
+
 	@ApiOperation(value = "更新用户信息", notes = "更新用户信息")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> update(@ApiParam("用户Id") @PathVariable Long id,
 			@ApiParam("用户名") @RequestParam(required = false) String username,
 			@ApiParam("密码") @RequestParam(required = false) String password,
-			@ApiParam("用户类型") @RequestParam(required = false) Byte userType,
 			@ApiParam("角色") @RequestParam(required = false) Long roleId) throws IOException {
-		
-//		ResponseBody resBody = new ResponseBody<XPWUser>();
+
+		// ResponseBody resBody = new ResponseBody<XPWUser>();
 
 		XPWUser user = userService.read(id);
 		if (user == null) {
-//			resBody.statusMsg = "没有找到该用户";
-//			resBody.obj = null;
+			// resBody.statusMsg = "没有找到该用户";
+			// resBody.obj = null;
 			return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
 		}
 
-		user.setId(id);
 		if (username != null) {
 			user.setUsername(username);
 		}
 		if (password != null) {
-		    user.setPassword(password);
+			user.setPassword(password);
 		}
 		if (roleId != null) {
 			user.setRoleId(roleId);
 		}
-		if (userType != null) {
-			user.setUserType(userType);
-		}
-		
+
 		int ret = userService.update(user);
 		if (ret > 0) {
-//			resBody.statusMsg = "更新成功";
+			// resBody.statusMsg = "更新成功";
 			return ResponseEntity.status(HttpServletResponse.SC_OK).body(user);
 		} else {
-//			resBody.statusMsg = "更新失败";
-			return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+			// resBody.statusMsg = "更新失败";
+			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
-	
+
+	@ApiOperation(value = "创建一个用户", notes = "创建一个用户")
 	@RequestMapping(value = { "/users" }, method = RequestMethod.POST)
-	public ResponseEntity<?> create(
-			@ApiParam("用户名") @RequestParam(required = false) String username,
+	public ResponseEntity<?> create(@ApiParam("用户名") @RequestParam(required = false) String username,
 			@ApiParam("密码") @RequestParam(required = false) String password,
-			@ApiParam("用户类型") @RequestParam(required = false) Byte userType,
 			@ApiParam("角色Id") @RequestParam(required = false) Long roleId) {
-		
+
 		XPWUser user = new XPWUser();
-		
+
 		if (username != null) {
 			user.setUsername(username);
 		}
 		if (password != null) {
-		    user.setPassword(password);
+			user.setPassword(password);
 		}
 		if (roleId != null) {
 			user.setRoleId(roleId);
 		}
-		if (userType != null) {
-			user.setUserType(userType);
-		} else {
-			user.setUserType((byte) 2);
-		}
-		
+		user.setUserType((byte) 2);
+
 		int ret = userService.create(user);
 		if (ret > 0) {
 			return ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.status(HttpServletResponse.SC_FORBIDDEN).body(null);
+			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
-	
 
+	@ApiOperation(value = "读取一个用户信息", notes = "读取一个用户信息")
 	@RequestMapping(value = { "/users/{id}" }, method = RequestMethod.GET)
-	public ResponseEntity<?> read(
-			@ApiParam("用户角色对应关系Id，必填") @PathVariable Long id) {
+	public ResponseEntity<?> read(@ApiParam("用户角色对应关系Id，必填") @PathVariable Long id) {
 		XPWUser user = userService.read(id);
-		
+
 		if (user != null) {
 			return ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.status(HttpServletResponse.SC_FORBIDDEN).body(null);
+			return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
 		}
 	}
 
