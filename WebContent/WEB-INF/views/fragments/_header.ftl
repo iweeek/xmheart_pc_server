@@ -83,33 +83,33 @@
                                         </ul>
                                       </div>
                                         
-                                     <#if key == "走进厦心" || key == '名医名科' || key == '就医服务'>
+                                     <#if key?index == 1 || key?index == 2 || key?index == 3>
                                     <#list columnNavMap as columnName, navList>     
                                     <#if columnName == key>       
                                     <#list navList as nav>                    
-                                        <div class="navSub5">
-                                        <h3 class="title01">${nav.childColumnName}</h3>
-                                        <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
-                                        <br/>
-                                            <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
-                                         <p class="first hospital-desc">
-                                            <#if nav.brief?length lt 120>
-                                            &#8195;&#8195;${nav.brief}......
-                                            <#else>
-                                            &#8195;&#8195;${nav.brief[0..120]}......
-                                            </#if>
-                                          </p>
-                                          <a href="#" class="more">查看详细</a>
-                                      </div>    
+                                    <div class="navSub5">
+                                    <h3 class="title01">${nav.childColumnName}</h3>
+                                    <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
+                                    <br/>
+                                        <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
+                                    <p class="first hospital-desc">
+                                    <#if nav.brief?length lt 120>
+                                    &#8195;&#8195;${nav.brief}......
+                                    <#else>
+                                    &#8195;&#8195;${nav.brief[0..120]}......
+                                    </#if>
+                                    </p>
+                                        <a href="#" class="more">查看详细</a>
+                                    </div>    
                                     </#list>
                                     </#if>
                                     </#list>
                                     </#if>   
                                     
-                                    <#if key == "新闻公告">
+                                    <#if key?index == 4>
                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
-                                    <#list secondColNavMap as skey, sv>                             
-                                    <#if skey == "媒体看厦心">
+                                    <#list secondColNavMap as skey, sv>       
+                                    <#if skey == vc[0].columnName>
                                     <#list sv as scol>
                                     <#if scol?index == 0>
                                     <dl class="Img02">
@@ -131,7 +131,7 @@
                                     </dl>
                                     </#if>    
                                           
-                                    <#if skey == "医院新闻">
+                                    <#if skey == vc[1].columnName>
                                     <div class="BottomHidden"></div>
                                     <dl>
                                     <dt class="title01">${skey}</dt>
@@ -144,7 +144,7 @@
                                     </dl>   
                                     </#if>  
                          
-                                    <#if skey == "影像厦心">
+                                    <#if skey == vc[2].columnName>
                                     </div>
                                     <div class="navSub4 nav_Menu02 noPic">
                                     <dl>
@@ -158,7 +158,7 @@
                                     </dl>
                                     </#if>
                                 
-                                    <#if skey == "电子院报">
+                                    <#if skey == vc[3].columnName>
                                     <div class="BottomHidden"></div>
                                     <dl>
                                         <dt class="title02">${skey}</dt>

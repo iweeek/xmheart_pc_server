@@ -1,7 +1,6 @@
 package com.xmheart.mapper;
 
 import com.xmheart.model.XPWUserRoleExample;
-import com.xmheart.model.XPWUserRoleKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
