@@ -226,28 +226,28 @@ public class NewsController {
 		return "news";
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
-	public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
-		// model = addTopNav(model);
-
-		// model = addHeader(model);
-
-		model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
-
-		// 获取置顶的新闻
-		List<XPWArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
-		model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
-
-		PageHelper.startPage(page, PAGE_SIZE);
-		List<XPWArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
-		model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
-
-		PageInfo pageInfo = new PageInfo(noPinnedNewsList);
-		model.addAttribute("pageInfo", pageInfo);
-
-		return "news";
-	}
+//	@SuppressWarnings({ "rawtypes", "unchecked" })
+//	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
+//	public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
+//		// model = addTopNav(model);
+//
+//		// model = addHeader(model);
+//
+//		model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
+//
+//		// 获取置顶的新闻
+//		List<XPWArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
+//		model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
+//
+//		PageHelper.startPage(page, PAGE_SIZE);
+//		List<XPWArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+//		model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
+//
+//		PageInfo pageInfo = new PageInfo(noPinnedNewsList);
+//		model.addAttribute("pageInfo", pageInfo);
+//
+//		return "news";
+//	}
 
 	/**
 	 * 影像厦心列表页
