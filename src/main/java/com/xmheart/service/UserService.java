@@ -21,6 +21,11 @@ public interface UserService {
 	XPWUser read(Long id);
 	
     String getAvatarUrl(String fileName);
+
+    List<XPWUser> index();
+
+    int create(XPWUser user);
+
     
 
 }

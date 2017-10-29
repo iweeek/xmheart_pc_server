@@ -18,6 +18,8 @@ import com.xmheart.service.UserService;
 import com.xmheart.util.ResponseBody;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -41,6 +43,34 @@ public class UserController {
 	public ResponseEntity<?> show() {
 	    return null;
 	}
+	
+   @ApiOperation(value = "用户列表", notes = "用户列表")
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<?> index() {
+        List<XPWUser> list = userService.index();
+        if (list.size() > 0) {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(list);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
+        }
+    }
+   
+   @ApiOperation(value = "创建用户", notes = "创建用户")
+   @RequestMapping(value = "", method = RequestMethod.POST)
+   public ResponseEntity<?> create(@ApiParam("用户名") @RequestParam String username,
+           @ApiParam("密码") @RequestParam(required = false) String password) {
+       XPWUser user = new XPWUser();
+       user.setUsername(username);
+       
+       if (password != null) {
+           user.setPassword(password);
+       }
+       
+       user.setUserType((byte) 1);
+       
+       int ret = userService.create(user);
+       return ResponseEntity.status(HttpServletResponse.SC_OK).body(user);
+   }
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@ApiOperation(value = "更新用户信息", notes = "更新用户信息")

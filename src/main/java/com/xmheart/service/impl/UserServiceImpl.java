@@ -45,5 +45,17 @@ public class UserServiceImpl implements UserService {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public List<XPWUser> index() {
+        List<XPWUser> list = userMapper.selectByExample(null);
+        return list;
+    }
+
+    @Override
+    public int create(XPWUser user) {
+        int ret = userMapper.insert(user);
+        return ret;
+    }
 	
 }
