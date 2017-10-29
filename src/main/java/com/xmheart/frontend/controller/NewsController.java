@@ -129,7 +129,7 @@ public class NewsController {
 
 		model.addAttribute("firstColumns", firstColumns);
 		model.addAttribute("columnMap", columnMap);
-		model.addAttribute("navMap", navMap);
+//		model.addAttribute("navMap", navMap);
 		model.addAttribute("secondColNavMap", secondColNavMap);
 		model.addAttribute("columnNavMap", columnNavMap);
 

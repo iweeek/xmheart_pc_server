@@ -34,7 +34,7 @@
 						<div class="media-img"><img src="${key.imgUrl}" alt=""></div>
 						<div class="media-info">
 							<h4 class="media-info-title">${key.title}</h4>
-							<p class="media-info-desc">内容摘要，暂时缺乏该字段</p>
+							<p class="media-info-desc"></p>
 							<!-- <#if key.brief?length gt 20>
 								<p class="media-info-desc">${key.brief[0..20]}</p>
 							<#else>
