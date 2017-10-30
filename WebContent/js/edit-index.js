@@ -80,12 +80,17 @@ exports.XPW.IndexEdit = (function() {
         $('#postModal').on('click', '#bindIndexTitle', function() {
             var articleId = $('#postSelect').val();
             $.get('/articles/' + articleId, function(data) {
-      		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-tag').val(data.columnName),
-	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-title').val(data.title),
-	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('textarea').val(data.brief),
-	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.input-link').val(data.url),
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-tag').val(data.columnName);
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-title').val(data.title);
+	    		  
+	    		  var digest = $('.digest-wrapper textarea');
+	    		  var brief = data.brief.substring(0, 40);
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('textarea').val(brief);
+	    		 
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.input-link').val(data.url);
+
                $('.ui-loading').hide();
-           })
+              })
 	         .done(function() {
 	             $('#postModal').modal('hide');
 	          })
@@ -167,7 +172,7 @@ exports.XPW.IndexEdit = (function() {
 		  $('.add-font-list').eq(2).find('.link-title').val(data.bannerArticle3Title),
 		  $('.add-font-list').eq(2).find('textarea').val(data.bannerArticle3Brief),
 		  $('.add-font-list').eq(2).find('.input-link').val(data.bannerArticle3Url)
-	  });
+	  })
     }
     
     IndexEdit.postData = function () {

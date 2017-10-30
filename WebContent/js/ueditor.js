@@ -20,7 +20,7 @@ $(function () {
         statInputNum: function (digest, numItem) {
             var max = numItem.text();
             var curLength;
-            console.log('max',max)
+            console.log('max',max);
             digest[0].setAttribute("maxlength", max);
             curLength = digest.val().length;
             numItem.text(curLength);
