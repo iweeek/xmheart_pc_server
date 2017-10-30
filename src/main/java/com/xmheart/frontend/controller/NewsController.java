@@ -118,8 +118,6 @@ public class NewsController {
 					secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
 				}
 			}
-			
-			
 		}
 
 		model.addAttribute("firstColumns", firstColumns);

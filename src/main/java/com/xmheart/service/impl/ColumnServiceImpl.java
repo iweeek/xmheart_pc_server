@@ -64,7 +64,12 @@ public class ColumnServiceImpl implements ColumnService {
 	public List<XPWNav> getNavsByColumnId(long id) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andColumnIdEqualTo(id);
-		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		List<XPWNav> list = null;
+		if (getLanguage() == 1) {
+			list = xpwNavMapper.selectEnglishByColumnId(id);
+		} else {
+			list = xpwNavMapper.selectByExample(example);
+		}
 		return list;
 	}
 
