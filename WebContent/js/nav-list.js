@@ -37,18 +37,14 @@ exports.XPW.NavEdit = (function() {
   }
   
   NavEdit.firstNavLoad = function () {
-	$.ajax({
-	  url: '/columns',
-      type: 'GET',
-      dataType: 'json',
-      data: {parentColumnId: 0}
-    })
-   .done(function(data) {
-     var firstColumnTemplate = $('#firstColumnTemplate').html();
-     Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
-     var rendered = Mustache.render(firstColumnTemplate, {data:data});
-     $('#typeSelectInput').html(rendered);
-   })
+	$.get('/columns', {
+		parentColumnId : 0
+    }, function(data) {
+        var firstColumnTemplate = $('#firstColumnTemplate').html();
+        Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
+        var rendered = Mustache.render(firstColumnTemplate, {data:data});
+        $('#typeSelectInput').html(rendered);
+    });
   }
   
   NavEdit.firstSelectHandle = function () {
