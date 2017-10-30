@@ -16,7 +16,6 @@ $(function() {
 					ctrl.noNextPage = true;
 				}
 				$.each(data, function(name, val) {
-					console.log(val)
 					if(val.userType == 1) {
 						val.userType = '超级管理员';
 					}

@@ -26,7 +26,7 @@
       
      	<p class="subtit">角色名称</p>
 		<div class="input-wrapper">
-			<input type="text" class="article-title" id="officeName" value="">
+			<input type="text" class="article-title" id="roleName" value="">
 		</div>
 		<p class="subtit">角色选择</p>
 		<div class="input-wrapper">
@@ -41,7 +41,7 @@
 			</label>
 		</div>
 	   <div class="btn-group">
-	       <input id="publish" type="button" name="" value="保存">
+	       <input id="save" type="button" name="" value="保存">
 	       <input id="cancel" type="button" name="cancel" value="取消">
 	   </div>
 	</div>	   
@@ -49,10 +49,11 @@
 </body>
 <script type="text/javascript" src="../js/third_party/jquery.min.js"></script>
 <script type="text/javascript" src="../js/third_party/jquery.form.min.js"></script>
-<script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script>    
-<script type="text/javascript" src="../js/edit-nav.js"></script>
+<script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script> 
+<script type="text/javascript" src="../js/http-intercept.js"></script>     
+<script type="text/javascript" src="../js/role-editor.js"></script>
 <script type="text/javascript">
-        XPW.NavEdit();
+        XPW.RoleUeditor();
 </script>
 
 </html>
