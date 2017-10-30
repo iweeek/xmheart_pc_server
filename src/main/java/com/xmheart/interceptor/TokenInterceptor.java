@@ -73,6 +73,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 					if (user.getUserType() == 2) {
 						Set<String> keySet = request.getParameterMap().keySet();
 						if (keySet.contains("roleId")) {
+							response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 							return false;
 						}
 					} else {
