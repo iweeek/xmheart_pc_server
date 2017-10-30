@@ -71,4 +71,14 @@ public class XPWPriv {
 	public void setColumnId(Long columnId) {
 		this.columnId = columnId;
 	}
+	
+	private String columnName;
+	
+	public void setColumnName(String columnName) {
+	    this.columnName = columnName;
+	}
+	
+    public String getColumnName() {
+        return columnName;
+    }
 }
