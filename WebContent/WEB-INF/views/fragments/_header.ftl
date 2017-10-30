@@ -190,16 +190,24 @@
             </div>
         </div>
 
+        
         <#list firstColumns as key, value>
         <#if parentColumnName??>
         <#if key == parentColumnName>
         <div class="breadcrumb">
             <div class="xm-container">
-                <span class="icon"></span>您当前所在位置<a href="/index"> 首页</a> &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}</a> 
+                <span class="icon"></span>您当前所在位置<a href="/index"> 首页 </a> &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}</a> 
             </div>
         </div>
         </#if>
         </#if>
         </#list>
-    
+        
+        <#if parentColumnName?? &&  parentColumnName == "院务公开">
+        <div class="breadcrumb">
+            <div class="xm-container">
+                <span class="icon"></span>您当前所在位置<a href="/index"> 首页 </a> &gt <a href="" title="${parentColumnName}">${parentColumnName}</a> 
+            </div>
+        </div>
+        </#if>
     
