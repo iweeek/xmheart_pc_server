@@ -36,15 +36,44 @@ exports.XPW.NavEdit = (function() {
   		}
   }
   
+  NavEdit.getCookieValue = function(name) {
+      var strCookie = document.cookie;
+      var arrCookie = strCookie.split(";");
+      for (var i = 0; i < arrCookie.length; i++) {
+          var c = arrCookie[i].split("=");
+          if (c[0].indexOf(name) > -1) {
+              return c[1];
+          }
+      }
+      return ''
+  }
+  
   NavEdit.firstNavLoad = function () {
-	$.get('/columns', {
-		parentColumnId : 0
-    }, function(data) {
-        var firstColumnTemplate = $('#firstColumnTemplate').html();
-        Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
-        var rendered = Mustache.render(firstColumnTemplate, {data:data});
-        $('#typeSelectInput').html(rendered);
-    });
+		$.ajax({
+			  url: '/columns',
+		      type: 'GET',
+		      dataType: 'json',
+		      data: {parentColumnId: 0},
+				beforeSend:function(xhr){
+		            token = NavEdit.getCookieValue('xmheart_token');
+		            xhr.setRequestHeader("Authorization", token);  
+		        }
+		    })
+		   .done(function(data) {
+		     var firstColumnTemplate = $('#firstColumnTemplate').html();
+		     Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
+		     var rendered = Mustache.render(firstColumnTemplate, {data:data});
+		     $('#typeSelectInput').html(rendered);
+		   });
+
+//	$.get('/columns', {
+//		parentColumnId : 0
+//    }, function(data) {
+//        var firstColumnTemplate = $('#firstColumnTemplate').html();
+//        Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
+//        var rendered = Mustache.render(firstColumnTemplate, {data:data});
+//        $('#typeSelectInput').html(rendered);
+//    });
   }
   
   NavEdit.firstSelectHandle = function () {
