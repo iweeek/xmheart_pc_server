@@ -22,7 +22,6 @@ $(function() {
             $('#postModal').on('click', '#bindNavTitle', function() {
                 var articleId = $('#postSelect').val();
                 $.get('/articles/' + articleId, function(data) {
-                     debugger;
                      console.log(data);
                      data.publishTime = ctrl.dateFilter(data.publishTime)
                    var template = $('#J_articles_tmpl').html();
