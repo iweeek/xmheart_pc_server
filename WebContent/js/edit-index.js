@@ -163,14 +163,17 @@ exports.XPW.IndexEdit = (function() {
 		  $('.add-font-list').eq(0).find('.link-tag').val(data.bannerArticle1Tag),
 		  $('.add-font-list').eq(0).find('.link-title').val(data.bannerArticle1Title),
 		  $('.add-font-list').eq(0).find('textarea').val(data.bannerArticle1Brief),
+		  $('.add-font-list').eq(0).find('.word').text(data.bannerArticle1Brief.length),
 		  $('.add-font-list').eq(0).find('.input-link').val(data.bannerArticle1Url),
 		  $('.add-font-list').eq(1).find('.link-tag').val(data.bannerArticle2Tag),
 		  $('.add-font-list').eq(1).find('.link-title').val(data.bannerArticle2Title),
 		  $('.add-font-list').eq(1).find('textarea').val(data.bannerArticle2Brief),
+		  $('.add-font-list').eq(1).find('.word').text(data.bannerArticle2Brief.length),
 		  $('.add-font-list').eq(1).find('.input-link').val(data.bannerArticle2Url),
 		  $('.add-font-list').eq(2).find('.link-tag').val(data.bannerArticle3Tag),
 		  $('.add-font-list').eq(2).find('.link-title').val(data.bannerArticle3Title),
 		  $('.add-font-list').eq(2).find('textarea').val(data.bannerArticle3Brief),
+		  $('.add-font-list').eq(2).find('.word').text(data.bannerArticle3Brief.length),
 		  $('.add-font-list').eq(2).find('.input-link').val(data.bannerArticle3Url)
 	  })
     }
