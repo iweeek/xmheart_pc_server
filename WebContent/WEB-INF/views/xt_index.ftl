@@ -130,7 +130,7 @@
             <a href="${new.url}" id="ANoticeFirst" target="_blank" title="${new.articleTitle}">
               <img src="image/pic_005.jpg" class="load" width="126" height="76" original="image/pic_005.jpg" style="display: block;"></a>
               <div>
-                <span>${new.publishTime?date}</span>
+                <span>${new.publishTime?string('yyyy-MM-dd')}</span>
                 <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
               </div>
               <div class="clear"></div>
@@ -138,7 +138,7 @@
           <ul>
           <#else>
             <li>
-              <span>${new.publishTime?date}</span>
+              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
               <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
             </li>
             </#if>
@@ -158,7 +158,7 @@
           <div class="first">
             <a href="${new.url}" id="ANewsFirst" target="_blank" title="${new.articleTitle}"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
             <div>
-              <span>${new.publishTime?date}</span>
+              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
               <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
             </div>
             <div class="clear"></div>
@@ -166,7 +166,7 @@
           <ul>
           <#else>
             <li>
-              <span>${new.publishTime?date}</span>
+              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
               <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
             </li>
             </#if>
