@@ -58,20 +58,20 @@ exports.XPW.IndexEdit = (function() {
 			  $('.add-img-list').eq(0).find('.add-img-link input').val(data.bannerImage1ActionUrl);
 		  }
 		  if(data.bannerImage2Url) {
-			  $('.add-img-list').eq(1).find('.add-image-url img').attr('src', data.bannerImage1Url);
+			  $('.add-img-list').eq(1).find('.add-image-url img').attr('src', data.bannerImage2Url);
 			  $('.add-img-list').eq(1).find('.add-image-button').hide();
 			  $('.add-img-list').eq(1).find('.add-image-url').show();
 		  }
 		  if (data.bannerImage2ActionUrl) {
-			  $('.add-img-list').eq(1).find('.add-img-link input').val(data.bannerImage1ActionUrl);
+			  $('.add-img-list').eq(1).find('.add-img-link input').val(data.bannerImage2ActionUrl);
 		  }
 		  if(data.bannerImage3Url) {
-			  $('.add-img-list').eq(2).find('.add-image-url img').attr('src', data.bannerImage1Url);
+			  $('.add-img-list').eq(2).find('.add-image-url img').attr('src', data.bannerImage3Url);
 			  $('.add-img-list').eq(2).find('.add-image-button').hide();
 			  $('.add-img-list').eq(2).find('.add-image-url').show();
 		  }
 		  if (data.bannerImage3ActionUrl) {
-			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage1ActionUrl);
+			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage3ActionUrl);
 		  }
 		  $('.add-font-list').eq(0).find('.link-tag').val(data.bannerArticle1Tag),
 		  $('.add-font-list').eq(0).find('.link-title').val(data.bannerArticle1Title),
