@@ -1,5 +1,5 @@
-		
-		<div class="list-pagination">
+		<#if firstColumnName != "首页">
+		    <div class="list-pagination">
                 <ul class="paginations">
                     <#if pageInfo?? && (pageInfo.pages > 0)>
                         <#if pageInfo.pages lt 5><!-- 如果页面总是小于5，直接显示完 -->
@@ -45,6 +45,7 @@
                     </#if>
                 </ul>
             </div>
+		</#if>
 		
 		<div class="xm-footer">
 			<div class="xm-footer-main">
