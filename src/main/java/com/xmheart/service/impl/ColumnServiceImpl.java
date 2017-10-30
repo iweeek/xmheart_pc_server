@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xmheart.mapper.XPWColumnMapper;
+import com.xmheart.mapper.XPWIndexMapper;
 import com.xmheart.mapper.XPWNavMapper;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWColumnExample;
+import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNavExample;
 import com.xmheart.service.ColumnService;
@@ -23,12 +25,25 @@ public class ColumnServiceImpl implements ColumnService {
 
 	@Autowired
 	private XPWNavMapper xpwNavMapper;
+	
+	@Autowired
+	private XPWIndexMapper xpwIndexMapper;
 
+	private int getLanguage() {
+		XPWIndex index = xpwIndexMapper.selectByPrimaryKey((long) 1);
+		return index.getLanguage();
+	}
+	
 	@Override
 	public List<XPWColumn> getTopFirstColumns() {
 		XPWColumnExample example = new XPWColumnExample();
 		example.createCriteria().andParentColumnIdEqualTo(0l).andPositionEqualTo(false);
-		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+		List<XPWColumn> list = null;
+		if (getLanguage() == 1) {
+			list = xpwColumnMapper.selectAllEnglishColumns();
+		} else {
+			list = xpwColumnMapper.selectByExample(example);
+		}
 		return list;
 	}
 

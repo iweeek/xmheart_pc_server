@@ -122,11 +122,6 @@ public class NewsController {
 			
 		}
 
-		/*
-		 * for(String key : secondColNavMap.keySet()){ System.out.println("Key = " +
-		 * key); }
-		 */
-
 		model.addAttribute("firstColumns", firstColumns);
 		model.addAttribute("columnMap", columnMap);
 		model.addAttribute("navMap", navMap);
@@ -226,6 +221,7 @@ public class NewsController {
 		return "news";
 	}
 
+	/*
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
 	public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
@@ -248,6 +244,7 @@ public class NewsController {
 
 		return "news";
 	}
+	*/
 
 	/**
 	 * 影像厦心列表页
