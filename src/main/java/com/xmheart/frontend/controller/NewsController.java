@@ -312,11 +312,11 @@ public class NewsController {
 		model.addAttribute("times", timesList);
 
 		if (year.equals("")) {
-			year = years.get(0);
+			year = years.get(years.size() - 1);
 		}
 
 		if (times.equals("")) {
-			times = timesList.get(0);
+			times = timesList.get(timesList.size() - 1);
 		}
 		// 23是栏目Id，暂时写死
 		model = addTopNav(ELEC_NEWS_PAPER_COLUMN_ID, model);
