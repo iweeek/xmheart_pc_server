@@ -28,10 +28,13 @@
     </head>
     <body>
         <div class="xm-header">
-            <div class="xm-container">
+            <div class="xm-header-container">
                 <div class="header-icon">
                     <!--<span class="header-icon-lang">English</span>-->
-                    <a href="#" class="header-icon-wechat"></a>
+                    <div class="header-icon-wechat-wrapper" id="wechatCode">
+                    		<a href="#" class="header-icon-wechat"></a>
+                    		<img src="/img/layout/wechat_code.jpg" class="wechat-code">
+                    </div>
                     <a href="#" class="header-icon-weibo"></a>
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
