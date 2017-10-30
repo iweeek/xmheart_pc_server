@@ -40,21 +40,20 @@ public class RoleServiceImpl implements RoleService{
     
     @Override
     public XPWRole read(Long id) {
-    		XPWRole role = roleMapper.selectByPrimaryKey(id);
+        XPWRole role = roleMapper.selectByPrimaryKey(id);
         return role;
     }
     
     @Override
     public List<XPWRole> index() {
-    		XPWRoleExample example = new XPWRoleExample();
+        XPWRoleExample example = new XPWRoleExample();
         List<XPWRole> list = roleMapper.selectByExample(example);
         return list;
     }
 
 	@Override
 	public List<XPWPriv> indexPriv() {
- 		XPWPrivExample example = new XPWPrivExample();
-        List<XPWPriv> list = privMapper.selectByExample(example);
+        List<XPWPriv> list = privMapper.selectWithColumnNameByExample();
 		return list;
 	}
 
