@@ -48,15 +48,14 @@
                 <ul class="xm-navbar-nav">
                     <#-- 顶部栏目导航 -->
                     <#list firstColumns as key, value>
-                    <#--  <li class="xm-navbar-item"><a class="xm-navbar-item-info" href="#"><span>走进厦心</span><i></i></a></li>-->
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
-                    
                         <li class="xm-navbar-item">
                     </#if>
                     
-                    <#if key == "首页" >
+                    <!-- 首页 -->
+                    <#if key?index == 0 >
                         <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                     <#else>
                         <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>

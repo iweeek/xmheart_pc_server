@@ -129,8 +129,14 @@ public class ColumnServiceImpl implements ColumnService {
     }
 
     @Override
-    public XPWColumn getColumnById(Long columnId) {
-        return xpwColumnMapper.selectByPrimaryKey(columnId);
+    public XPWColumn getColumnById(Long id) {
+    		XPWColumn column = null;
+    		if (getLanguage() == 1) {
+    			column = xpwColumnMapper.selectEnglishByPrimaryKey(id);
+    		} else {
+    			column = xpwColumnMapper.selectByPrimaryKey(id);
+    		}
+        return column;
     }
 
     @Override
