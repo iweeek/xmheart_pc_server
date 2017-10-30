@@ -28,10 +28,13 @@
     </head>
     <body>
         <div class="xm-header">
-            <div class="xm-container">
+            <div class="xm-header-container">
                 <div class="header-icon">
                     <!--<span class="header-icon-lang">English</span>-->
-                    <a href="#" class="header-icon-wechat"></a>
+                    <div class="header-icon-wechat-wrapper" id="wechatCode">
+                    		<a href="#" class="header-icon-wechat"></a>
+                    		<img src="/img/layout/wechat_code.jpg" class="wechat-code">
+                    </div>
                     <a href="#" class="header-icon-weibo"></a>
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
@@ -203,12 +206,3 @@
         </#if>
         </#if>
         </#list>
-        
-        <#if parentColumnName?? &&  parentColumnName == "院务公开">
-        <div class="breadcrumb">
-            <div class="xm-container">
-                <span class="icon"></span>您当前所在位置<a href="/index"> 首页 </a> &gt <a href="" title="${parentColumnName}">${parentColumnName}</a> 
-            </div>
-        </div>
-        </#if>
-    

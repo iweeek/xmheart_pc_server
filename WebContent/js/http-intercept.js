@@ -13,21 +13,21 @@ $(function () {
 
     if (!getCookieValue('xmheart_token')) {
         var url = 'http://' + window.location.host + '/login.html'
-        window.location.replace(url);
+        window.top.location.href = url;
     }
-
-    $.ajaxSetup({
-        beforeSend:function(xhr){
-            token = getCookieValue('xmheart_token');
-            xhr.setRequestHeader("Authorization", token);  
-        }
-    });
-
+    
+    $.ajax({
+    		beforeSend:function(xhr) {
+    			var token = getCookieValue('xmheart_token');
+             xhr.setRequestHeader("Authorization", token);  
+    		}
+    })
+    
     // 在接收到数据后做统一处理
     $(document).ajaxError(function (event, request, settings) {
         if (request.status == 401) {
-            var url = 'http://' + window.location.host + '/login.html'
-            window.location.replace(url);
+            var url = 'http://' + window.location.host + '/login.html';
+            window.top.location.href = url;
         }
     });
 });

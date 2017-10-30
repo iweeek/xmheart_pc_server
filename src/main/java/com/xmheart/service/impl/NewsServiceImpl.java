@@ -100,7 +100,7 @@ public class NewsServiceImpl implements NewsService {
 		}
 		
 		criteria.andIsPublishedEqualTo(true);
-		example.setOrderByClause("page asc");
+		example.setOrderByClause("`years`, times desc, page asc");
 		List<XPWElecNewspaper> list = xpwElecNewspaperMapper.selectByExample(example);
 		return list;
 	}

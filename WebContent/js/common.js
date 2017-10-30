@@ -37,7 +37,14 @@ $(function(){
       $xmNav.removeClass('xm-nav-fixed');
     }
   });
-
+  
+ // 头部二维码显示 
+  $('#wechatCode').hover(function(){
+	  $(this).find('.wechat-code').show();
+  },function(){
+	  $(this).find('.wechat-code').hide();
+  })
+  
   // 专家轮播
   $('.officesBase').each(function(idx, e){
     var swiper = new Swiper($(this).find('.contentsDoctor'), {

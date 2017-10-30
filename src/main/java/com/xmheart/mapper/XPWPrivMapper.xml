@@ -11,6 +11,9 @@
     <result column="table_name" jdbcType="VARCHAR" property="tableName" />
     <result column="column_id" jdbcType="BIGINT" property="columnId" />
   </resultMap>
+  <resultMap extends="BaseResultMap" id="ColumnNameBaseResultMap" type="com.xmheart.model.XPWPriv">
+    <result column="column_name" jdbcType="LONGVARCHAR" property="columnName" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
