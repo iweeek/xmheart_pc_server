@@ -60,7 +60,7 @@
 					<p class="list-info-desc">迅速定位您的问题</p>
 				</div>
 			</a>
-			<a href="/col/98" class="xm-banner-list xm-list2">
+			<a href="/col/97" class="xm-banner-list xm-list2">
 				<div class="list-info">
 					<h3 class="list-info-title">院务公开</h3>
 					<p class="list-info-desc">了解最新医院公告</p>
