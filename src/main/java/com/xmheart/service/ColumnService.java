@@ -88,6 +88,8 @@ public interface ColumnService {
     List<XPWColumn> readSubColumn(Long id);
     
 	List<XPWNav> getNavsByChildColumnName(String childColumnName);
+	
+	List<XPWNav> getNavsByChildColumnId(Long id);
 
     XPWNav getNavById(Long id);
 

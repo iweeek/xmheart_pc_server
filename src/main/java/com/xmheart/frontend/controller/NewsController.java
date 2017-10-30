@@ -114,7 +114,7 @@ public class NewsController {
 
 			for (XPWNav nav : navList) {
 				if (secondColNavMap.containsKey(nav.getChildColumnName()) == false) {
-					List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(nav.getChildColumnName());
+					List<XPWNav> secondColNavList = columnService.getNavsByChildColumnId(nav.getChildColumnId());
 					secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
 				}
 			}

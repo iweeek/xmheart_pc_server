@@ -142,7 +142,12 @@ public class ColumnServiceImpl implements ColumnService {
     @Override
     public XPWColumn getParentColumnById(long id) {
         long parentId = xpwColumnMapper.selectByPrimaryKey(id).getParentColumnId();
-        XPWColumn column = xpwColumnMapper.selectByPrimaryKey(parentId);
+        XPWColumn column = null;
+        if (getLanguage() == 1) {
+        		column = xpwColumnMapper.selectEnglishByPrimaryKey(parentId);
+		} else {
+			column = xpwColumnMapper.selectByPrimaryKey(parentId);
+		}
         return column;
     }
 
@@ -158,8 +163,20 @@ public class ColumnServiceImpl implements ColumnService {
 	public List<XPWNav> getNavsByChildColumnName(String childColumnName) {
 		XPWNavExample example = new XPWNavExample();
 		example.createCriteria().andChildColumnNameEqualTo(childColumnName);
-		
 		List<XPWNav> list = xpwNavMapper.selectByExample(example);
+		return list;
+	}
+	
+	@Override
+	public List<XPWNav> getNavsByChildColumnId(Long id) {
+		XPWNavExample example = new XPWNavExample();
+		example.createCriteria().andChildColumnIdEqualTo(id);
+		List<XPWNav> list = null;
+		if (getLanguage() == 1) {
+			list = xpwNavMapper.selectEnglishByChildColumnId(id);
+		} else {
+			list = xpwNavMapper.selectByExample(example);
+		}
 		
 		return list;
 	}

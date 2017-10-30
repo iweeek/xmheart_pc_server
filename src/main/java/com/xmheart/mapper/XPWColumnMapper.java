@@ -94,7 +94,7 @@ public interface XPWColumnMapper {
     
     @Select({ "select", "c.id, l.column_name_en as column_name, c.url, c.parent_column_id, c.position, c.publish_time",
         "FROM xpw_column AS c LEFT JOIN xpw_column_language AS l", "ON c.id = l.column_id",
-        "where id = #{id,jdbcType=BIGINT}" })
+        "where c.id = #{id,jdbcType=BIGINT}" })
 	@ResultMap("com.xmheart.mapper.XPWColumnMapper.BaseResultMap")
 	XPWColumn selectEnglishByPrimaryKey(Long id);
     
