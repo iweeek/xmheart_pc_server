@@ -51,7 +51,12 @@ public class ColumnServiceImpl implements ColumnService {
 	public List<XPWColumn> getChildColumnsById(long id) {
 		XPWColumnExample example = new XPWColumnExample();
 		example.createCriteria().andParentColumnIdEqualTo(id);
-		List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+		List<XPWColumn> list = null;
+		if (getLanguage() == 1) {
+			list = xpwColumnMapper.selectAllEnglishColumnsByParentColumnId(id);
+		} else {
+			list = xpwColumnMapper.selectByExample(example);
+		}
 		return list;
 	}
 
