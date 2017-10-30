@@ -80,13 +80,13 @@
 }
 .header-icon-wechat-wrapper .header-icon-wechat {
 	display: block;
-	height: 24px;
-	width: 30px;
+	height: 32px;
+	width: 32px;
 	background: url('../img/layout/wechat.png') no-repeat;
 }
 .header-icon-wechat-wrapper .wechat-code {
 	position: absolute;
-	top: 25px;
+	top: 32px;
 	left: -28px;
 	width: 100px;
 	height: 100px;
@@ -95,8 +95,8 @@
 }
 .header-icon .header-icon-weibo {
 	display: block;
-	height: 24px;
-	width: 30px;
+	height: 32px;
+	width: 32px;
 	background: url('../img/layout/weibo.png') no-repeat;
 	margin-left: 60px;
 	float: left;
