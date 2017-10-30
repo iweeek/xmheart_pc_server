@@ -1,16 +1,98 @@
 exports = this;
 exports.XPW = exports.EDIT || {};
 exports.XPW.IndexEdit = (function() {
-  function IndexEdit() {
-	  // 初始化页面处理。
-	  IndexEdit.addSlideImg();
-	  IndexEdit.getData();
-	  IndexEdit.pageId = 0;
-	  IndexEdit.postData();
-	  IndexEdit.limitFont();
-  }
+	function IndexEdit() {
+		// 初始化页面处理。
+		IndexEdit.init();
+		IndexEdit.addSlideImg();
+		IndexEdit.getData();
+		IndexEdit.pageId = 0;
+		IndexEdit.postData();
+		IndexEdit.limitFont();
+	}
+
+	IndexEdit.init = function() {
+		IndexEdit.postDialogHandle();
+		IndexEdit.select2Handle();
+		IndexEdit.bindSearchArticle();
+	}
+
+	IndexEdit.whichPostDialog = -1;
+	IndexEdit.postDialogHandle = function () {
+		$('.post-btn-edit1').on('click', function() {
+	        $('#postModal').modal('show');
+	        IndexEdit.whichPostDialog = 0;
+	    })
+	    $('.post-btn-edit2').on('click', function() {
+	        $('#postModal').modal('show');
+	        IndexEdit.whichPostDialog = 1;
+	    })
+	    $('.post-btn-edit3').on('click', function() {
+	        $('#postModal').modal('show');
+	        IndexEdit.whichPostDialog = 2;
+	    })
+	}
   
-  IndexEdit.addSlideImg = function () {
+	IndexEdit.select2Handle = function () {
+	  $('#postModal').on('shown.bs.modal', function(e) {
+		  $('#postSelect').select2({
+		      placeholder: '请输入要查询的文章标题...',
+		      allowClear: true,
+		      minimumInputLength: 1,
+		      minimumResultsForSearch: Infinity,
+		      ajax: {
+		        url: '/articles/show',
+		        dataType: 'json',
+		        data: function (params) {
+		        		var query = {
+//		        			  columnName: $('#secondColumnId').data('column-name'),
+	  		        		  keyword: params.term
+	  		            }
+	  		        return query;
+		        },
+		        processResults: function (data, params) {
+		          var de;
+		          return {
+		            results: (function () {
+		              var i, len, results;
+		              results = [];
+		              for (i = 0, len = data.length; i < len; i++) {
+		                de = data[i];
+		                results.push({
+		                  id: de.id,
+		                  text: de.title
+		                });
+		              }
+		              return results;
+		            })()
+		          };
+		        },
+		        cache: true
+		      },
+		      language: 'zh-CN',
+		    });
+	  })
+	  //	 解决 select2 在 bootstarp 弹窗中无法输入问题
+	  $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+    }
+  
+	IndexEdit.bindSearchArticle = function () {
+        $('#postModal').on('click', '#bindIndexTitle', function() {
+            var articleId = $('#postSelect').val();
+            $.get('/articles/' + articleId, function(data) {
+      		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-tag').val(data.columnName),
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.link-title').val(data.title),
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('textarea').val(data.brief),
+	    		  $('.add-font-list').eq(IndexEdit.whichPostDialog).find('.input-link').val(data.url),
+               $('.ui-loading').hide();
+           })
+	         .done(function() {
+	             $('#postModal').modal('hide');
+	          })
+        })
+	}
+
+    IndexEdit.addSlideImg = function () {
 	  $('.add-list-main').on('click', '#addImgBtn', function (){
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
@@ -44,9 +126,9 @@ exports.XPW.IndexEdit = (function() {
 	  $('.add-list-main').on('click', '.add-image-edit', function (){
 		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 	  })
-  }
-  
-  IndexEdit.getData = function () {
+    }
+
+    IndexEdit.getData = function () {
 	  $.get('/indexPage',function(data){
 		  IndexEdit.pageId = data.id;
 		  if(data.bannerImage1Url) {
@@ -86,8 +168,9 @@ exports.XPW.IndexEdit = (function() {
 		  $('.add-font-list').eq(2).find('textarea').val(data.bannerArticle3Brief),
 		  $('.add-font-list').eq(2).find('.input-link').val(data.bannerArticle3Url)
 	  });
-  }
-  IndexEdit.postData = function () {
+    }
+    
+    IndexEdit.postData = function () {
 	  $('#submit').on('click', function(){
 		  var parms = {
 		    bannerImage1Url: $('.add-img-list').eq(0).find('.add-image-url img').attr('src'),
@@ -120,21 +203,22 @@ exports.XPW.IndexEdit = (function() {
 			   swal('更新成功');
 		   })
 	  });
-  }
-  
-  IndexEdit.limitFont = function () {
-	  var numItem = $('.word');
-	  var digest = $('.digest-wrapper textarea');
-	  var max = $('.word').eq(0).text(), curLength;
-      digest[0].setAttribute("maxlength", max);
-      digest[1].setAttribute("maxlength", max);
-      digest[2].setAttribute("maxlength", max);
-      curLength = digest.val().length;
-      numItem.text(curLength);
-      digest.on('input propertychange', function () {
-    	  	 $(this).siblings('.wordwrap').find('.word').text($(this).val().length);
-      });
-  }
+    }
 
-  return IndexEdit;
+	IndexEdit.limitFont = function() {
+		var numItem = $('.word');
+		var digest = $('.digest-wrapper textarea');
+		var max = $('.word').eq(0).text(), curLength;
+		digest[0].setAttribute("maxlength", max);
+		digest[1].setAttribute("maxlength", max);
+		digest[2].setAttribute("maxlength", max);
+		curLength = digest.val().length;
+		numItem.text(curLength);
+		digest.on('input propertychange', function() {
+			$(this).siblings('.wordwrap').find('.word').text(
+					$(this).val().length);
+		});
+	}
+
+	return IndexEdit;
 })();

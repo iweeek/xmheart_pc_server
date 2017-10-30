@@ -21,7 +21,7 @@ exports.XPW.NavEdit = (function() {
 	NavEdit.bindSearchArticle();
     NavEdit.postDialogHandle();
     NavEdit.select2Handle();
-    NavEdit.bindNavNews();
+//    NavEdit.bindNavNews();
     NavEdit.publish();
     NavEdit.cancel();
   }
@@ -308,21 +308,21 @@ exports.XPW.NavEdit = (function() {
   	  $.fn.modal.Constructor.prototype.enforceFocus = function () { };
     }
     
-    NavEdit.bindNavNews = function () {
-  	  $('#postModal').on('click', '#bindNavTitle', function() {
-  		  var id = $('#secondColumnId').data('nav-id')
-  		  var postId = $('#postSelect').val();
-  		  $.ajax({
-  		      url: '/navs/' + id,
-  		      type: 'POST',
-  		      data: {id: id, articleId: postId}
-  		   })
-  		   .done(function() {
-  			   $('#postModal').modal('hide');
-//  			   window.location.reload()
-  		    })
-  	  })
-    }
+//    NavEdit.bindNavNews = function () {
+//  	  $('#postModal').on('click', '#bindNavTitle', function() {
+//  		  var id = $('#secondColumnId').data('nav-id')
+//  		  var postId = $('#postSelect').val();
+//  		  $.ajax({
+//  		      url: '/navs/' + id,
+//  		      type: 'POST',
+//  		      data: {id: id, articleId: postId}
+//  		   })
+//  		   .done(function() {
+//  			   $('#postModal').modal('hide');
+////  			   window.location.reload()
+//  		    })
+//  	  })
+//    }
 
     NavEdit.cancel = function() {
         $('#cancel').on('click', function(){
