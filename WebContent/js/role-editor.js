@@ -6,6 +6,7 @@ exports.XPW.RoleUeditor = (function() {
   	RoleUeditor.getRoleInfo()
   	RoleUeditor.postRoleInfo()
 	RoleUeditor.cancel();
+  	RoleUeditor.getPrivs();
   }
 
   RoleUeditor._getUrlParam = function (name) {
@@ -18,9 +19,22 @@ exports.XPW.RoleUeditor = (function() {
 	  $('#roleName').val(data.name);
   }
   
+  RoleUeditor.getPrivs = function() {
+	  $.ajax({
+	  	  	url: '/privs',
+	        type: 'GET',
+	        dataType: 'json',
+	      })
+	     .done(function(data) {
+	    	 	var firstColumnTemplate = $('#roleCheckbox').html();
+	    	    Mustache.parse(firstColumnTemplate);   
+	    	    var rendered = Mustache.render(firstColumnTemplate, {data: data});
+	    	    $('#roleBoxWrapper').html(rendered);
+	     })
+  }
+  
   RoleUeditor.getRoleInfo = function () {
     var id = RoleUeditor._getUrlParam('roleId');
-    
     if (id) {
 	    $.ajax({
 	  	  url: '/roles/' + id,
@@ -41,11 +55,10 @@ exports.XPW.RoleUeditor = (function() {
 		  var $this = $(this);
 		  $this.attr('disabled','disabled');
 		  var name = $('#roleName').val();
-//		  Fixed  暂时写死 测试
-		  var privIds = [2, 3];
-//		  $('.user-limit input:checked').each(function(){
-//			  privIds.push($(this).val());//向数组中添加元素
-//		  });
+		  var privIds = [];
+		  $('.user-limit input:checked').each(function(){
+			  privIds.push(parseInt($(this).val()));//向数组中添加元素
+		  });
 		  if (!name) {
 			  swal("名称不能为空");
 			  $this.removeAttr('disabled');
