@@ -54,6 +54,7 @@ $(function() {
 				$this.removeAttr('disabled');
 				swal({
 					title : "上传成功",
+					text: "您可以在本页继续进行编辑上传新的院报",
 					type : "success",
 					confirmButtonColor : "#8cd4f5",
 					confirmButtonText : "确定",
