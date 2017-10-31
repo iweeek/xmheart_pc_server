@@ -110,3 +110,7 @@ exports.XPW.RoleUeditor = (function() {
   
   return RoleUeditor;
 })();
+
+$(function() {
+	exports.XPW.RoleUeditor();
+})

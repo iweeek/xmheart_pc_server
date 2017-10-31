@@ -131,3 +131,7 @@ exports.XPW.UserUeditor = (function() {
   
   return UserUeditor;
 })();
+
+$(function() {
+	exports.XPW.UserUeditor();
+})
