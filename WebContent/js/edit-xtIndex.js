@@ -101,3 +101,6 @@ exports.XPW.xtIndexEdit = (function() {
   return xtIndexEdit;
 })();
 
+$(function() {
+	exports.XPW.xtIndexEdit();
+})
