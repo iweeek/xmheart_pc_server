@@ -310,3 +310,7 @@ exports.XPW.videoEdit = (function() {
 
   return videoEdit;
 })();
+
+$(function() {
+	exports.XPW.videoEdit();
+})
