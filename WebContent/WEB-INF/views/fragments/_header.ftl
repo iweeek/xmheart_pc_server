@@ -193,7 +193,17 @@
             </div>
         </div>
 
-        
+        <#if parentColList??>
+        <div class="breadcrumb">
+            <div class="xm-container">
+                <span class="icon"></span>
+                您当前所在位置<a href="/index"> 首页 </a>
+                <#list parentColList as column>
+                    &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
+                </#list>
+            </div>
+        </div>
+        <#else>
         <#list firstColumns as key, value>
         <#if parentColumnName??>
         <#if key == parentColumnName>
@@ -205,16 +215,7 @@
         </#if>
         </#if>
         </#list>
-        
-        <#if parentColList??>
-        <div class="breadcrumb">
-            <div class="xm-container">
-                <span class="icon"></span>
-                您当前所在位置<a href="/index"> 首页 </a>
-                <#list parentColList as column>
-                    &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
-                </#list>
-            </div>
-        </div>
         </#if>
+        
+
         
