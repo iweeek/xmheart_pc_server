@@ -106,6 +106,9 @@ public class NewsController {
 			}
 
 			List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
+			for (XPWNav nav : navList) {
+				nav.setBrief(nav.getBrief().replaceAll("\\n", "<br/>"));
+			}
 			columnNavMap.put(column.getColumnName(), navList);
 			if (navList.size() > 0) {
 				navMap.put(column.getId(), navList);

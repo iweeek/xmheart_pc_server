@@ -4,6 +4,7 @@ var videoId;
 var title = $('#videoTitle');
 var brief = $('#brief');
 var isAdded = false;
+var videoUrl;
 exports.XPW = exports.EDIT || {};
 exports.XPW.videoEdit = (function() {
 	videoEdit.getUrlParam = function(name) {
@@ -27,26 +28,27 @@ exports.XPW.videoEdit = (function() {
     		  $("#update").show();
     	  }
 	  // 初始化页面处理。
+    	  videoEdit.init();
 	  videoEdit.addVideo();
 	  videoEdit.publish();
 	  videoEdit.update();
 	  videoEdit.cancel();
-	  videoEdit.init();
 	  videoEdit.uploadImg();
 //	  xtIndexEdit.getData();
 //	  xtIndexEdit.pageId = 0;
 //	  xtIndexEdit.postData();
     }
-  videoEdit.initVideo = function (video) {
+  videoEdit.initVideo = function (video, imgUrl) {
 	  var videoSrc = video || '';
 	  videoUrl = videoSrc;
 //	  console.log(videoUrl);// TODO
 	  $("#jquery_jplayer_1").jPlayer({
 			ready: function () {
+//				location.reload(true);
 				$(this).jPlayer("setMedia", {
 					title: "Big Buck Bunny",
 					m4v: videoSrc,
-					poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+					poster: imgUrl
 				});
 			},
 			swfPath: "./third_party/jquery.jplayer.swf",
@@ -78,7 +80,9 @@ exports.XPW.videoEdit = (function() {
 		  $this.ajaxSubmit({
 			  success: function (responseText) {
 				  var video = responseText;
+				  videoUrl = video;
 				  videoEdit.initVideo(video);
+//				  "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 //				  $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
 				  $this.siblings('.add-image-button').hide();
 				  $this.siblings('.add-video-url').show();
@@ -190,6 +194,7 @@ exports.XPW.videoEdit = (function() {
 					closeOnConfirm : true
 				}, function() {
 //					window.history.go(-1);
+					location.reload(true);
 				});
 			});
 
@@ -210,7 +215,8 @@ exports.XPW.videoEdit = (function() {
             $('#brief').val(res.brief);
 //            $('#upload-img').attr('src', res.imageUrl);
 //            console.log(res.videoUrl);
-            videoEdit.initVideo(res.videoUrl);
+            videoUrl = res.videoUrl;
+            videoEdit.initVideo(res.videoUrl, res.imgUrl);
             $('#upload-img').attr('src', res.imgUrl);
             $('#add-image-url').show();
             $('#add-video-url').show();
@@ -239,6 +245,7 @@ exports.XPW.videoEdit = (function() {
 				success: function (responseText) {
 					var img = responseText;
 					$this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+					videoEdit.initVideo(videoUrl, img);
 					$this.siblings('.add-image-button').hide();
 					$this.siblings('.add-image-url').show();
 				}

@@ -126,13 +126,13 @@ $(function() {
 		previous : function() {
 			if (ctrl.pageNo > 1) {
 				ctrl.pageNo--;
-				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+				ctrl.getNewspaper(ctrl.pageNo, 10, ctrl.columnId);
 			}
 		},
 		next : function() {
 			if (!ctrl.noNextPage) {
 				ctrl.pageNo++;
-				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
+				ctrl.getNewspaper(ctrl.pageNo, 10, ctrl.columnId);
 			}
 		},
 		pinned : function(articleId, type) {
