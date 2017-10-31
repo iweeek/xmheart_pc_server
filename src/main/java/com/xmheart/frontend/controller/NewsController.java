@@ -131,15 +131,33 @@ public class NewsController {
 
 		// 这个地方只能体现两级栏目关系
 		XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+		
+		List<XPWColumn> list = new ArrayList<XPWColumn>();
 		// 有父栏目，父栏目是一级栏目
 		if (parentColumn != null) {
-			model.addAttribute("firstColumnName", parentColumn.getColumnName());
+		    iterGetParentColumn(parentColumn, list);
+		    model.addAttribute("parentColList", list);
+		    model.addAttribute("firstColumnName", list.get(0));
 		} else {
 			XPWColumn column = columnService.getColumnById(columnId);
 			model.addAttribute("firstColumnName", column.getColumnName());
 		}
 
 		return model;
+	}
+	
+	private void iterGetParentColumn(XPWColumn column, List<XPWColumn> list) {
+	    if (list.size() == 0) {
+	        if (column.getParentColumnId() != 0) {
+	            iterGetParentColumn(columnService.getParentColumnById(column.getId()), list);
+	        } else {
+	            list.add(column);
+	            return;
+	        }
+	    } 
+	    
+	    list.add(column);
+	    
 	}
 
 	private Model addLeftNav(long columnId, Model model) {
