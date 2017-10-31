@@ -1,3 +1,4 @@
+
 exports = this;
 exports.XPW = exports.EDIT || {};
 exports.XPW.NavEdit = (function() {
@@ -54,10 +55,13 @@ exports.XPW.NavEdit = (function() {
 		      type: 'GET',
 		      dataType: 'json',
 		      data: {parentColumnId: 0},
-				beforeSend:function(xhr){
-		            token = NavEdit.getCookieValue('xmheart_token');
-		            xhr.setRequestHeader("Authorization", token);  
-		        }
+//		      headers: {
+//		          'Authorization': NavEdit.getCookieValue('xmheart_token')
+//		      }
+//				beforeSend:function(xhr){
+//		            token = NavEdit.getCookieValue('xmheart_token');
+//		            xhr.setRequestHeader("Authorization", token);  
+//		        }
 		    })
 		   .done(function(data) {
 		     var firstColumnTemplate = $('#firstColumnTemplate').html();
@@ -89,7 +93,11 @@ exports.XPW.NavEdit = (function() {
       url: '/navs',
       type: 'GET',
       dataType: 'json',
-      data: {columnId: val}
+      data: {columnId: val},
+//		beforeSend:function(xhr){
+//	        token = NavEdit.getCookieValue('xmheart_token');
+//	        xhr.setRequestHeader("Authorization", token);  
+//	    }
     })
     .done(function(data) {
     		if (data.length > 0) {
@@ -227,11 +235,15 @@ exports.XPW.NavEdit = (function() {
 	  $('#postModal').on('click', '#bindNavTitle', function() {
 		  var id = $('#secondColumnId').data('nav-id')
 		  var postId = $('#postSelect').val();
-		  $.ajax({
-		      url: '/navs/' + id,
-		      type: 'POST',
-		      data: {id: id, articleId: postId}
-		   })
+		    $.ajax({
+		        url: '/navs/' + id,
+		        type: 'POST',
+		        data: {id: id, articleId: postId},
+//				beforeSend:function(xhr){
+//		            token = NavEdit.getCookieValue('xmheart_token');
+//		            xhr.setRequestHeader("Authorization", token);  
+//		        }
+		    })
 		   .done(function() {
 			   $('#postModal').modal('hide');
 			   window.location.reload()
@@ -241,3 +253,7 @@ exports.XPW.NavEdit = (function() {
 
   return NavEdit;
 })();
+
+$(function(){
+	exports.XPW.NavEdit();
+});

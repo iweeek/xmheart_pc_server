@@ -15,14 +15,29 @@ $(function () {
         var url = 'http://' + window.location.host + '/login.html'
         window.top.location.href = url;
     }
+   
+//    $.ajaxSetup({
+//        beforeSend:function(xhr){
+//        		token = getCookieValue('xmheart_token');
+//        		xhr.setRequestHeader("Authorization", token);  
+//        }
+//    });  
     
-    $.ajax({
-    		beforeSend:function(xhr) {
-    			var token = getCookieValue('xmheart_token');
-             xhr.setRequestHeader("Authorization", token);  
-    		}
-    })
-    
+    $.ajaxSetup({
+//	    error:function(xhr){
+//	        	alert("An error occured: " + xhr.status + " " + xhr.statusText);
+//	    	},
+        beforeSend:function(xhr){
+        	xhr.setRequestHeader("Authorization", getCookieValue('xmheart_token'));  
+        }
+    });
+
+//    $.ajax({
+//    		headers: {
+//    			'Authorization': getCookieValue('xmheart_token')
+//    		}
+//    })
+  
     // 在接收到数据后做统一处理
     $(document).ajaxError(function (event, request, settings) {
         if (request.status == 401) {

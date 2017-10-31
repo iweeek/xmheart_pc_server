@@ -180,3 +180,7 @@ exports.XPW.DoctorUeditor = (function() {
   
   return DoctorUeditor;
 })();
+
+$(function() {
+	exports.XPW.DoctorUeditor();
+})

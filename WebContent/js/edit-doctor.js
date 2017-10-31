@@ -148,3 +148,7 @@ exports.XPW.DoctorEdit = (function() {
   
   return DoctorEdit;
 })();
+
+$(function() {
+	exports.XPW.DoctorEdit();
+})
