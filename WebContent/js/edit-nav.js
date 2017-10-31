@@ -60,6 +60,8 @@ exports.XPW.NavEdit = (function() {
     NavEdit.getNav = function (navId) {
         var url = '/navs/' + navId;
         $.get(url, function (res) {
+//        		var reg = new RegExp("<br/>", "g");
+//        		var brief = res.brief.replace(reg, "\r\n");
         		digest.val(res.brief.slice(0, 100));
             if (res.brief.length > 100) {
             		word.text(100);
@@ -87,13 +89,11 @@ exports.XPW.NavEdit = (function() {
 	    $('#publish').on('click', function(){
 		    var $this = $(this);
 		    var imgUrl = $('#upload-img').attr('src');
-		    var briefText = digest.val() ? digest.val() : ue.getContentTxt().slice(0,100) 
+//		    var reg=new RegExp("\n","g"); 
+//		    var briefText = digest.val() ? digest.val() : ue.getContentTxt().slice(0,100)
+//		    var briefText = digest.val().replace(reg,"＜br/＞"); 
+		    var briefText = digest.val();
 		    
-//	        	console.log(articleTitle.text());
-//	        	console.log(publishTime.text());
-//	        	console.log(secondColumn.text());
-//	        	console.log(imgUrl);
-//	        	console.log($('#articleId').text());
 			var params = {
 				imgUrl : imgUrl,
 				id: navId,
