@@ -230,3 +230,7 @@ exports.XPW.IndexEdit = (function() {
 
 	return IndexEdit;
 })();
+
+$(function() {
+	exports.XPW.IndexEdit();
+})
