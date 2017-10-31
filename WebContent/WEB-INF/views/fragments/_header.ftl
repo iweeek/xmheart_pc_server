@@ -55,11 +55,10 @@
                     <#if firstColumnName == key>
                         <li class="xm-navbar-item active">
                     <#else>
-                    
                         <li class="xm-navbar-item">
                     </#if>
                     
-                    <#if key == "首页" >
+                    <#if key == "首页">
                         <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                     <#else>
                         <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
@@ -194,7 +193,17 @@
             </div>
         </div>
 
-        
+        <#if parentColList??>
+        <div class="breadcrumb">
+            <div class="xm-container">
+                <span class="icon"></span>
+                您当前所在位置<a href="/index"> 首页 </a>
+                <#list parentColList as column>
+                    &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
+                </#list>
+            </div>
+        </div>
+        <#else>
         <#list firstColumns as key, value>
         <#if parentColumnName??>
         <#if key == parentColumnName>
@@ -206,16 +215,7 @@
         </#if>
         </#if>
         </#list>
-        
-        <#if parentColList??>
-        <div class="breadcrumb">
-            <div class="xm-container">
-                <span class="icon"></span>
-                您当前所在位置<a href="/index"> 首页 </a>
-                <#list parentColList as column>
-                    &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
-                </#list>
-            </div>
-        </div>
         </#if>
+        
+
         
