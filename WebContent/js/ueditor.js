@@ -128,27 +128,21 @@ $(function () {
                     sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
                 });
         },
-        save: function () {
-                var $this = $(this);
+        save: function() {
+            var $this = $(this);
             // 保存(提交请求但isPublished为false)
-<<<<<<< HEAD
-        		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
-        		var publishTime = $(".form_datetime").datetimepicker('getDate').getTime();;
-        		var imgUrl = $('.upload-img').attr('src');
-=======
-                var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
-                var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
-                var imgUrl = $('.upload-img').attr('src');
->>>>>>> b6468263c50eeeef8272929a87b75190486c21a3
+    		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
+    		var publishTime = $(".form_datetime").datetimepicker('getDate').getTime();
+    		var imgUrl = $('.upload-img').attr('src');
             var params = {
-                columnId: columnId,
-                title: title.val(),
-                content: ue.getContent(),
-                tags: tags.val(),
-                brief: brief,
-                isPublished: false,
-                imgUrl: imgUrl,
-                publishTime: publishTime
+	            columnId: columnId,
+	            title: title.val(),
+	            content: ue.getContent(),
+	            tags: tags.val(),
+	            brief: brief,
+	            isPublished: false,
+	            imgUrl: imgUrl,
+	            publishTime: publishTime
             };
             
             if (!ctrl.valid(params)) {
