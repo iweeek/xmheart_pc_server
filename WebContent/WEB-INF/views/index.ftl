@@ -57,7 +57,7 @@
 			<a href="xtIndex" target="_blank" class="xm-banner-list xm-list1">
 				<div class="list-info">
 					<h3 class="list-info-title">胸痛中心</h3>
-					<p class="list-info-desc">迅速定位您的问题</p>
+					<p class="list-info-desc">胸痛胸闷，速拨120</p>
 				</div>
 			</a>
 			<a href="/col/97" class="xm-banner-list xm-list2">

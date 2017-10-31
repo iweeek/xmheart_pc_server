@@ -10,7 +10,7 @@ $(function () {
     var columnId = ''
     var article = {};
     var ctrl = {
-    		col: [],
+            col: [],
         //获取url中的参数
         getUrlParam: function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -35,9 +35,9 @@ $(function () {
                 tags.val(res.tags);
                 digest.val(res.brief.slice(0,200));
                 if (res.brief.length > 200) {
-                		word.text(200);
+                        word.text(200);
                 } else {
-                		word.text(res.brief.length);
+                        word.text(res.brief.length);
                 }
                 
                 $('.category').show();
@@ -63,7 +63,7 @@ $(function () {
             });
         },
         publish: function () {
-    			var $this = $(this);
+                var $this = $(this);
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
             var publishTime = $(".form_datetime").datetimepicker('getDate').getTime();
@@ -88,7 +88,7 @@ $(function () {
             if (articleId) {
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
-                		$this.removeAttr('disabled');
+                        $this.removeAttr('disabled');
                     swal({
                         title: "发表成功",
                         text: "返回上一页？",
@@ -103,9 +103,9 @@ $(function () {
                         location.href="../article-list.html?col=" + ctrl.col;
                     });
                 }).error(function() { 
-                		$this.removeAttr('disabled');
-                		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
-                	});
+                        $this.removeAttr('disabled');
+                        sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                    });
 
                 return;
             }
@@ -120,20 +120,26 @@ $(function () {
                     cancelButtonText: "取消",
                     closeOnConfirm: false
                 }, function () {
-                		location.href="../article-list.html?col=" + ctrl.col;
+                        location.href="../article-list.html?col=" + ctrl.col;
                 });
                 // window.history.go(-1);
             }).error(function() { 
-            		$this.removeAttr('disabled');
-            		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
-            	});
+                    $this.removeAttr('disabled');
+                    sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                });
         },
         save: function () {
-        		var $this = $(this);
+                var $this = $(this);
             // 保存(提交请求但isPublished为false)
+<<<<<<< HEAD
         		var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
         		var publishTime = $(".form_datetime").datetimepicker('getDate').getTime();;
         		var imgUrl = $('.upload-img').attr('src');
+=======
+                var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
+                var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
+                var imgUrl = $('.upload-img').attr('src');
+>>>>>>> b6468263c50eeeef8272929a87b75190486c21a3
             var params = {
                 columnId: columnId,
                 title: title.val(),
@@ -154,7 +160,7 @@ $(function () {
             if (articleId) {
                 var url = '/articles/' + articleId;
                 $.post(url, params, function (res) {
-                		$this.removeAttr('disabled');
+                        $this.removeAttr('disabled');
                     swal({
                         title: "保存成功",
                         type: "success",
@@ -167,16 +173,16 @@ $(function () {
                         ctrl.publish();
                     });
                 }).error(function() { 
-                		$this.removeAttr('disabled');
-                		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
-                	});
+                        $this.removeAttr('disabled');
+                        sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                    });
 
                 return;
             }
 
             $.post('/articles', params, function (res) {
-            		$this.removeAttr('disabled');
-            		$('#wordCount textarea').val(brief);
+                    $this.removeAttr('disabled');
+                    $('#wordCount textarea').val(brief);
                 swal({
                     title: "新建文章成功",
                     type: "success",
@@ -186,25 +192,25 @@ $(function () {
                     cancelButtonText: "新建一篇",
                     closeOnConfirm: false
                 }, function(isConfirm){
-                	    if (isConfirm) {
-                		  	ctrl.goToEditor(res);
-                	    } else {
-                		    ctrl.goToCreate();
-                	    }
-                	}); 
+                        if (isConfirm) {
+                              ctrl.goToEditor(res);
+                        } else {
+                            ctrl.goToCreate();
+                        }
+                    }); 
             }).error(function() { 
-            		$this.removeAttr('disabled');
-            		sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
-            	});
+                    $this.removeAttr('disabled');
+                    sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error"); 
+                });
         },
         
         goToEditor: function(res) {
-        		var url = '/static/ueditor.html?articleId=' + res.id + '&col=' + ctrl.col;
+                var url = '/static/ueditor.html?articleId=' + res.id + '&col=' + ctrl.col;
             location.href = url;
         },
         
         goToCreate: function() {
-        		var url = '/static/ueditor.html?col=' + ctrl.col;
+                var url = '/static/ueditor.html?col=' + ctrl.col;
             location.href = url;
         },
         
@@ -245,14 +251,14 @@ $(function () {
             $("#wordCount").find(".word").html('200');
         },
         getColumn: function (columnId, htmlId, selectTitle) {
-        		var url ="/columns/" + columnId
+                var url ="/columns/" + columnId
             $.get(url, function (data) {
                 $('.ui-loading').hide();
                 var optionString = '';
                 for (var i in data) {
                     var jsonObj = data[i];
                     if (jsonObj.columnName == "电子院报" || jsonObj.columnName == "影像厦心") {
-                			continue;
+                            continue;
                     }
                     optionString += "<option value=\"" + jsonObj.id + "\" >" + jsonObj.columnName + "</option>";
                     $(htmlId).html("<option value='请选择'>请选择</option> " + optionString);
@@ -261,33 +267,33 @@ $(function () {
             });
         },
         uploadImg: function () {
-        		$('.add-img-list').on('click', '#addImgBtn', function (){
-        			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
-        		})
-        		$('.add-img-list').on('change', '.add-img-file', function (){
-        			$(this).siblings('.add-img-submit').trigger('click');
-        		})
-        		$('#uploadForm').submit(function(){
-        			$this = $(this);
-        			$this.ajaxSubmit({
-        				success: function (responseText) {
-        					var img = responseText;
-        					$this.siblings('.add-image-url').find('.upload-img').attr('src', img);
-        					$this.siblings('.add-image-button').hide();
-        					$this.siblings('.add-image-url').show();
-        				}
-        			});
-        			return false;
-        		})
-        		$('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
-        			$('.add-image-edit').show();
-        		})
-        		$('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
-        			$('.add-image-edit').hide();
-        		})
-        		$('.add-img-list').on('click', '.add-image-edit', function (){
-        			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
-        		})
+                $('.add-img-list').on('click', '#addImgBtn', function (){
+                    $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+                })
+                $('.add-img-list').on('change', '.add-img-file', function (){
+                    $(this).siblings('.add-img-submit').trigger('click');
+                })
+                $('#uploadForm').submit(function(){
+                    $this = $(this);
+                    $this.ajaxSubmit({
+                        success: function (responseText) {
+                            var img = responseText;
+                            $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
+                            $this.siblings('.add-image-button').hide();
+                            $this.siblings('.add-image-url').show();
+                        }
+                    });
+                    return false;
+                })
+                $('.add-img-list').on('mouseover', '.add-image-url, .add-image-edit', function (){
+                    $('.add-image-edit').show();
+                })
+                $('.add-img-list').on('mouseleave', '.add-image-url, .add-image-edit', function (){
+                    $('.add-image-edit').hide();
+                })
+                $('.add-img-list').on('click', '.add-image-edit', function (){
+                    $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+                })
         },
         init: function () {
             $('.ui-loading').show();
@@ -325,12 +331,12 @@ $(function () {
     $('#J_select_first').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
-        		ctrl.col = [];
-        		ctrl.col.push(firstId);
-        		columnId = firstId;
-        		$('.select-title-second').hide();
-        		$('.select-title-third').hide();
-        		$('.select-title-fourth').hide();
+                ctrl.col = [];
+                ctrl.col.push(firstId);
+                columnId = firstId;
+                $('.select-title-second').hide();
+                $('.select-title-third').hide();
+                $('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_second', '.select-title-second');
         }
     });
@@ -338,10 +344,10 @@ $(function () {
     $('#J_select_second').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
-        		ctrl.col.push(firstId);
-        		columnId = firstId;
-        		$('.select-title-third').hide();
-        		$('.select-title-fourth').hide();
+                ctrl.col.push(firstId);
+                columnId = firstId;
+                $('.select-title-third').hide();
+                $('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_third', '.select-title-third');
         }
     });
@@ -349,16 +355,18 @@ $(function () {
     $('#J_select_third').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
-        		ctrl.col.push(firstId);
-        		columnId = firstId;
-        		$('.select-title-fourth').hide();
+            ctrl.col.push(firstId);
+            columnId = firstId;
+            $('.select-title-fourth').hide();
             ctrl.getColumn(firstId, '#J_select_fourth', '.select-title-fourth');
         }
     });
+    
     $('#J_select_fourth').change(function () {
         var firstId = $(this).val();
         if (firstId !== 0) {
-        		ctrl.col.push(firstId);
+            ctrl.col.push(firstId);
+            columnId = firstId;
         }
     });
     $('#publish').on('click', ctrl.publish);
@@ -368,7 +376,7 @@ $(function () {
     $('#cancel').on('click', ctrl.cancel);
     
     $('#editColumn').on('click', function(){
-    		$('.column-create').show();
-    		$('.column-edit').hide();
+        $('.column-create').show();
+        $('.column-edit').hide();
     })
 })

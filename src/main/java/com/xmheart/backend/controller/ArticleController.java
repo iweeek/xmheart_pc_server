@@ -91,6 +91,7 @@ public class ArticleController {
             @ApiParam("文章标题，必填") @RequestParam String title, 
             @ApiParam("文章配图，可选") @RequestParam(required = false) String imgUrl, 
             @ApiParam("文章关键字，可选") @RequestParam(required = false) String tags, 
+            @ApiParam("文章发表时间，可选") @RequestParam(required = false) String publishTime,
             @ApiParam("文章摘要，可选") @RequestParam(required = false) String brief, 
             @ApiParam("文章内容，可选") @RequestParam(required = false) String content) {
 		XPWArticle article = new XPWArticle();
@@ -104,6 +105,13 @@ public class ArticleController {
 		    article.setImgUrl(imgUrl);
 		} else {
 		    article.setImgUrl("");
+		}
+		
+		if (publishTime != null) {
+		    long milliSeconds= Long.parseLong(publishTime);
+            article.setPublishTime(new Date(milliSeconds));
+		} else {
+		    article.setPublishTime(new Date());
 		}
 		
 		//创建的时候不设置这几项
