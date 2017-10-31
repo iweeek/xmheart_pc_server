@@ -199,8 +199,8 @@ exports.XPW.NavEdit = (function() {
 //                   $('.ui-nodata').hide();
 //                   $("#J_articles").html(rendered);
 //               }
-               $('.ui-loading').hide();
-           })
+                $('.ui-loading').hide();
+              })
              .done(function() {
                  $('#postModal').modal('hide');
               })
@@ -333,3 +333,7 @@ exports.XPW.NavEdit = (function() {
 	}
   return NavEdit;
 })();
+
+$(function() {
+	exports.XPW.NavEdit();
+})
