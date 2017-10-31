@@ -116,3 +116,7 @@ exports.XPW.OfficeUeditor = (function() {
   
   return OfficeUeditor;
 })();
+
+$(function () {
+	exports.XPW.OfficeUeditor();
+})

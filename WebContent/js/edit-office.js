@@ -38,3 +38,7 @@ exports.XPW.OfficeEdit = (function() {
   
   return OfficeEdit;
 })();
+
+$(function() {
+	exports.XPW.OfficeEdit();
+})
