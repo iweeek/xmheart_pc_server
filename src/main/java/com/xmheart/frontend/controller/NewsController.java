@@ -144,7 +144,7 @@ public class NewsController {
 		if (parentColumn != null) {
 		    iterGetParentColumn(parentColumn, list);
 		    model.addAttribute("parentColList", list);
-		    model.addAttribute("firstColumnName", list.get(0));
+		    model.addAttribute("firstColumnName", list.get(0).getColumnName());
 		} else {
 			XPWColumn column = columnService.getColumnById(columnId);
 			model.addAttribute("firstColumnName", column.getColumnName());
