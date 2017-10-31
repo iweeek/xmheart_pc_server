@@ -135,14 +135,14 @@ $(function () {
             var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
             var imgUrl = $('.upload-img').attr('src');
             var params = {
-                columnId: columnId,
-                title: title.val(),
-                content: ue.getContent(),
-                tags: tags.val(),
-                brief: brief,
-                isPublished: false,
-                imgUrl: imgUrl,
-                publishTime: publishTime
+	            columnId: columnId,
+	            title: title.val(),
+	            content: ue.getContent(),
+	            tags: tags.val(),
+	            brief: brief,
+	            isPublished: false,
+	            imgUrl: imgUrl,
+	            publishTime: publishTime
             };
             
             if (!ctrl.valid(params)) {
@@ -304,25 +304,10 @@ $(function () {
             }
         },
         initDate: function() {
-<<<<<<< HEAD
                 $('[data-toggle="datepicker"]').datepicker({
                     language: 'zh-CN',
                     format: 'yyyy-mm-dd'
                  });
-=======
-//        		$('[data-toggle="datepicker"]').datepicker({
-//        		    language: 'zh-CN',
-//        		    format: 'yyyy-mm-dd'
-//        		 });
-        		
-        		$(".form_datetime").datetimepicker({
-        	        format: "yyyy-mm-dd hh:ii",
-        	        autoclose: true,
-        	        todayBtn: true,
-        	        pickerPosition: "bottom",
-        	        	minuteStep: 1
-        	    });
->>>>>>> datepicker改成了datetimepicker
         }
     }
     ctrl.init();
