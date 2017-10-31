@@ -50,7 +50,9 @@ $(function () {
                 $('#add-image-url').show();
                 $('#addImgBtn').hide();
                 columnId = res.columnId;
-                $('#articleDate').datepicker('setDate', new Date(res.publishTime));
+                $(".form_datetime").datetimepicker('setDate', new Date(res.publishTime));
+//                $('.form_datetime').datetimepicker('update');
+//                $('#articleDate').datetimepicker('setDate', new Date(res.publishTime));
                 // $('.category-create').hide();
                 //对编辑器的操作最好在编辑器ready之后再做
                 ue.ready(function () {
@@ -64,7 +66,7 @@ $(function () {
                 var $this = $(this);
             // 编辑器内容 ue.getContent()获取html内容，返回: <p>hello</p>  ue.getContentTxt()获取纯文本内容，返回: hello
             var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200) 
-            var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();
+            var publishTime = $(".form_datetime").datetimepicker('getDate').getTime();
             var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
@@ -127,11 +129,11 @@ $(function () {
                 });
         },
         save: function () {
-                var $this = $(this);
+            var $this = $(this);
             // 保存(提交请求但isPublished为false)
-                var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
-                var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
-                var imgUrl = $('.upload-img').attr('src');
+            var brief = digest.val() ? digest.val() : ue.getContentTxt().slice(0,200);
+            var publishTime = $('[data-toggle="datepicker"]').datepicker('getDate').getTime();;
+            var imgUrl = $('.upload-img').attr('src');
             var params = {
                 columnId: columnId,
                 title: title.val(),
@@ -302,10 +304,25 @@ $(function () {
             }
         },
         initDate: function() {
+<<<<<<< HEAD
                 $('[data-toggle="datepicker"]').datepicker({
                     language: 'zh-CN',
                     format: 'yyyy-mm-dd'
                  });
+=======
+//        		$('[data-toggle="datepicker"]').datepicker({
+//        		    language: 'zh-CN',
+//        		    format: 'yyyy-mm-dd'
+//        		 });
+        		
+        		$(".form_datetime").datetimepicker({
+        	        format: "yyyy-mm-dd hh:ii",
+        	        autoclose: true,
+        	        todayBtn: true,
+        	        pickerPosition: "bottom",
+        	        	minuteStep: 1
+        	    });
+>>>>>>> datepicker改成了datetimepicker
         }
     }
     ctrl.init();
