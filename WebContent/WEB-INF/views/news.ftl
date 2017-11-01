@@ -33,15 +33,18 @@
 					<a href="${key.url}">
 						<div class="media-img"><img src="${key.imgUrl}" alt=""></div>
 						<div class="media-info">
-							<h4 class="media-info-title">${key.title}</h4>
-							<p class="media-info-desc"></p>
-							<!-- <#if key.brief?length gt 20>
-								<p class="media-info-desc">${key.brief[0..20]}</p>
+						    <#if key.title?length gt 20>
+                                <h4 class="media-info-title">${key.title[0..20]}......</h4>
+                            <#else>
+                                <h4 class="media-info-title">${key.title}</h4>
+                            </#if>
+							<#if key.brief?length gt 30>
+								<p class="media-info-desc">${key.brief[0..30]}......</p>
 							<#else>
 								<p class="media-info-desc">${key.brief}</p>
-							</#if> -->
+							</#if>
 							<div class="media-bottom">
-								<span class="date">${key.publishTime?date}</span>
+								<span class="date">${key.publishTime?string('yyyy-MM-dd')}</span>
 							</div>
 						</div>
 					</a>
@@ -58,14 +61,14 @@
     							<span class="labelTitle">${k.columnName}</span>
     							<a href="${k.url}" title="${k.columnName}" target="_blank"class="title" >${k.title}</a>
     							<#if k.brief?length gt 100>
-    								<p>&#8195;&#8195;${k.brief[0..100]}</p>
+    								<p>&#8195;&#8195;${k.brief[0..100]}......</p>
     							<#else>
     								<p>&#8195;&#8195;${k.brief}</p>
     							</#if>
     						</div>
     						<div class="date">
     							<h3>发布时间</h3>
-    							<h4>${k.publishTime?date}</h4>
+    							<h4>${k.publishTime?string('yyyy-MM-dd')}</h4>
     						</div>
     						<div class="listBtn">
     							<a href="${k.url}" title="综合简讯" target="_blank">查看详情</a>
