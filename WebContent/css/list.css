@@ -47,7 +47,7 @@
 .list-nav-list li.active a, .list2-nav-list li a:hover {
 	background: #EAFAFE;
 	color: #6EB9FF;
-	border-right: #6EB9FF solid 2px;
+	border-right: #f3d600 solid 2px;
 	width: 229px;
 }
 /* list1-news-wrapper */
@@ -720,7 +720,7 @@ a.blue{ background:#79a9b8;}
 .NewsBase .noticeBase ul li a:hover{ text-decoration:underline;}
 
 /* 党群工作 */
-.party-work .list-nav-title{ background: #d40309 url(../img/list/party_ico.png) 13px center no-repeat; border: 2px solid #f3d600;}
+.party-work .list-nav-title{ background: #d40309 url(../img/list/party_ico.png) 13px center no-repeat; border: 2px solid #d40309;}
 .party-work .list-nav-list li.active a, .party-work .list-nav-list li a:hover{ background: #f3d600; color: #d40309;}
 
 
