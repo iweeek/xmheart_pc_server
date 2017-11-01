@@ -1,5 +1,8 @@
 package com.xmheart.backend.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -58,19 +61,27 @@ public class NavController {
     @ApiOperation(value = "根据Id更新导航内容", notes = "根据Id更新导航内容")
     @RequestMapping(value = { "/navs/{id}" }, method = RequestMethod.POST)
     public ResponseEntity<?> update(@ApiParam("导航条目的Id") @PathVariable Long id, 
-            @ApiParam("图片地址") @RequestParam(required = false) String imgUrl,
-            @ApiParam("文章摘要") @RequestParam(required = false) String brief,
-            @ApiParam("导航关联文章的Id") @RequestParam Long articleId) {
+    			@ApiParam("导航标题") @RequestParam(required = false) String articleTitle, 
+    			@ApiParam("文章摘要") @RequestParam(required = false) String brief,
+    			@ApiParam("导航条目的Id") @RequestParam(required = false) String url, 
+    			@ApiParam("导航条目的Id") @RequestParam(required = false) String publishTime, 
+            @ApiParam("图片地址") @RequestParam(required = false) String imgUrl) {
         
         XPWNav nav = new XPWNav();
         nav.setId(id);
         
-        System.out.println(articleId);
-        XPWArticle article  = articleService.read(articleId);
-        
-        nav.setArticleTitle(article.getTitle());
-        nav.setPublishTime(article.getPublishTime());
-        nav.setUrl(article.getUrl());
+        nav.setArticleTitle(articleTitle);
+        if (!publishTime.equals("")) {
+	        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	        try {
+				nav.setPublishTime(format.parse(publishTime));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+        } else {
+        		nav.setPublishTime(new Date());
+        }
+        nav.setUrl(url);
         nav.setImgUrl(imgUrl);
         if (brief.length() > 200) {
             brief = brief.substring(0, 200);
