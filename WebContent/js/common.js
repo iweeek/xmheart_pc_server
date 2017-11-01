@@ -134,7 +134,8 @@ $(function(){
   		$("#DIVContent").find('*').css({"font-size":"18px","line-height":"24px"});
   	}
   });
-
+  
+  
   // 电子院报
   var year = "";
   var time = "";
@@ -145,6 +146,8 @@ $(function(){
 	  times = $(this).val();
   });
   $("#GoToNewspaper2").on("click",function(){
+	  year = $("#ddlYears2").val();
+	  times = $("#ddlTimes2").val();
 	  var str = "?page=1&year=" + year + "&times=" + times;
 	  location.href = str;
   });
@@ -155,7 +158,7 @@ $(function(){
       ajaxTimes(selectVal);
     }else {
       $('#ddlTimes2').html('');
-      var html = '<option value="0">选择期数</option>';
+      var html;
       $('#ddlTimes2').html(html);
     }
   })
@@ -169,7 +172,7 @@ $(function(){
     })
     .done(function(data) {
       $('#ddlTimes2').html('');
-      var html = '<option value="0">选择期数</option>';
+      var html;
       for (var i = 0; i< data.length; i++) {
         html += '<option value = "' + data[i] + '">' + data[i] + '期</option>'
       }
