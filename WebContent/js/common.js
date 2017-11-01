@@ -190,8 +190,8 @@ $(function(){
 			swfPath: "./third_party/jquery.jplayer.swf",
 			supplied: "m4v",
 			size: {
-				width: "640px",
-				height: "360px",
+				width: "100%",
+				height: "460px",
 				cssClass: "jp-video-360p"
 			},
 			useStateClassSkin: true,

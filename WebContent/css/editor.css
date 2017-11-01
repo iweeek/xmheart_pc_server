@@ -315,9 +315,13 @@
   content:"*";
   color: red;
 }
+.role-input {
+	height: 100px;
+}
 .input-wrapper .user-limit {
 	float: left;
 	margin-right: 10px;
+	margin-left: 0;
 }
 .input-wrapper .user-limit input {
 	float: left;

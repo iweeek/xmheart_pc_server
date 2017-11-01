@@ -28,17 +28,8 @@
 		<div class="input-wrapper">
 			<input type="text" class="article-title" id="roleName" value="">
 		</div>
-		<p class="subtit">角色选择</p>
-		<div class="input-wrapper">
-			<label class="checkbox-inline user-limit">
-			  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-			</label>
-			<label class="checkbox-inline user-limit">
-			  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-			</label>
-			<label class="checkbox-inline user-limit">
-			  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-			</label>
+		<p class="subtit">权限选择</p>
+		<div class="input-wrapper role-input" id="roleBoxWrapper">
 		</div>
 	   <div class="btn-group">
 	       <input id="save" type="button" name="" value="保存">
@@ -47,8 +38,15 @@
 	</div>	   
  
 </body>
+<script id="roleCheckbox" type="x-tmpl-mustache">
+	{{#data}}
+        <label class="checkbox-inline user-limit">
+			  <input type="checkbox"  value="{{columnId}}"> {{columnName}}
+		</label>
+	{{/data}}
+</script>
 <script type="text/javascript" src="../js/third_party/jquery.min.js"></script>
-<script type="text/javascript" src="../js/third_party/jquery.form.min.js"></script>
+<script type="text/javascript" src="../js/third_party/mustache.min.js"></script>
 <script type="text/javascript" src="../js/third_party/sweetalert-dev.js"></script> 
 <script type="text/javascript" src="../js/http-intercept.js"></script>     
 <script type="text/javascript" src="../js/role-editor.js"></script>
