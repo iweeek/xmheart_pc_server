@@ -112,7 +112,6 @@ public class NewsController {
 			columnNavMap.put(column.getColumnName(), navList);
 			if (navList.size() > 0) {
 				navMap.put(column.getId(), navList);
-				// System.out.println(column.getId());
 			}
 
 			for (XPWNav nav : navList) {
@@ -121,14 +120,7 @@ public class NewsController {
 					secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
 				}
 			}
-			
-			
 		}
-
-		/*
-		 * for(String key : secondColNavMap.keySet()){ System.out.println("Key = " +
-		 * key); }
-		 */
 
 		model.addAttribute("firstColumns", firstColumns);
 		model.addAttribute("columnMap", columnMap);

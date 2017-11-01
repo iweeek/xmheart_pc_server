@@ -178,6 +178,7 @@ exports.XPW.NavEdit = (function() {
 //  	    $('#secondColumnId').data('nav-id', $(this).data('nav-id'))
 //  	    $('#secondColumnId').data('column-id', $(this).data('column-id'))
 //  	    $('#secondColumnId').data('column-name', $(this).data('column-name'))
+    		var navId =  $(this).data('nav-id');
 		location.href = '/static/nav_editor.html?navId=' + navId + '&col=' + NavEdit.col;
 	});
   }

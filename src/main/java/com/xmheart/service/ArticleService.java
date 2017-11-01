@@ -24,6 +24,8 @@ public interface ArticleService {
     List<XPWArticle> index(List<Long> columnIds);
     
     XPWArticle read(Long id);
+    
+    int delete(Long id);
 
     List<XPWArticle> index(Long columnId, boolean isPublished);
 
