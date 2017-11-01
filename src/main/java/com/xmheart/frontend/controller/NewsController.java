@@ -208,54 +208,34 @@ public class NewsController {
 		boolean isPublished = true;
 		boolean isPinned = true;
 
-		// 顶部三个置顶文章
-		List<XPWArticle> pinnedArticleList = articleService.index(columnId, isPublished, isPinned);
-		if (pinnedArticleList.size() >= 3) {
-			pinnedArticleList = pinnedArticleList.subList(0, 3);
-			model.addAttribute("pinnedArticleList", pinnedArticleList);
-		}
-
-		// 底下的文章
 		PageHelper.startPage(page, PAGE_SIZE);
 		List<XPWArticle> articleList = articleService.index(columnId, isPublished);
         PageInfo pageInfo = new PageInfo(articleList);
         model.addAttribute("pageInfo", pageInfo);
-		
-		if (articleList.size() > 0) {
-			if (page == 1) {
-			   articleList = articleList.subList(pinnedArticleList.size(), articleList.size() - 1);
-			   model.addAttribute("noPinnedArticleList", articleList);
-			} else {
-				model.addAttribute("noPinnedArticleList", articleList);
+		// 顶部三个置顶文章
+		List<XPWArticle> pinnedArticleList = articleService.index(columnId, isPublished, isPinned);
+		if (pinnedArticleList.size() >= 3) {
+			// 有 >=3 个的置顶文章
+	        if (articleList.size() > 0) {
+				if (page == 1) {
+					pinnedArticleList = pinnedArticleList.subList(0, 3);
+					model.addAttribute("pinnedArticleList", pinnedArticleList);
+//				    articleList = articleList.subList(pinnedArticleList.size(), articleList.size());
+					articleList = articleList.subList(pinnedArticleList.size(), articleList.size());
+				    model.addAttribute("noPinnedArticleList", articleList);
+				} else {
+					model.addAttribute("noPinnedArticleList", articleList);
+				}
 			}
+	        
+		} else {
+			// 底下的文章，一篇都没有置顶，全部显示成列表
+	        if (articleList.size() > 0) {
+	        		model.addAttribute("noPinnedArticleList", articleList);
+	        }
 		}
-
-
 		return "news";
 	}
-
-//	@SuppressWarnings({ "rawtypes", "unchecked" })
-//	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
-//	public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
-//		// model = addTopNav(model);
-//
-//		// model = addHeader(model);
-//
-//		model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
-//
-//		// 获取置顶的新闻
-//		List<XPWArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
-//		model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
-//
-//		PageHelper.startPage(page, PAGE_SIZE);
-//		List<XPWArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
-//		model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
-//
-//		PageInfo pageInfo = new PageInfo(noPinnedNewsList);
-//		model.addAttribute("pageInfo", pageInfo);
-//
-//		return "news";
-//	}
 
 	/**
 	 * 影像厦心列表页
