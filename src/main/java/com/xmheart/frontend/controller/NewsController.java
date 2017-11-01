@@ -218,23 +218,18 @@ public class NewsController {
 		// 底下的文章
 		PageHelper.startPage(page, PAGE_SIZE);
 		List<XPWArticle> articleList = articleService.index(columnId, isPublished);
-		PageInfo pageInfo = new PageInfo(articleList);
-
-		model.addAttribute("pageInfo", pageInfo);
-
+        PageInfo pageInfo = new PageInfo(articleList);
+        model.addAttribute("pageInfo", pageInfo);
+		
 		if (articleList.size() > 0) {
 			if (page == 1) {
-				if (articleList.size() > 3) {
-					articleList.removeAll(pinnedArticleList);
-					model.addAttribute("noPinnedArticleList", articleList);
-				} else {
-					model.addAttribute("noPinnedArticleList", articleList);
-				}
-
+			   articleList = articleList.subList(pinnedArticleList.size(), articleList.size() - 1);
+			   model.addAttribute("noPinnedArticleList", articleList);
 			} else {
 				model.addAttribute("noPinnedArticleList", articleList);
 			}
 		}
+
 
 		return "news";
 	}
