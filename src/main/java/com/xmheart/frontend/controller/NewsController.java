@@ -112,7 +112,6 @@ public class NewsController {
 			columnNavMap.put(column.getColumnName(), navList);
 			if (navList.size() > 0) {
 				navMap.put(column.getId(), navList);
-				// System.out.println(column.getId());
 			}
 
 			for (XPWNav nav : navList) {

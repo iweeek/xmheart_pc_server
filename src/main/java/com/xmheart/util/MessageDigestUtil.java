@@ -23,15 +23,15 @@ public class MessageDigestUtil {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < byteData.length; i++) {
          sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-         System.out.println("byteData: " + byteData[i]);
+//         System.out.println("byteData: " + byteData[i]);
         }
         
-        System.out.println("sb: " + sb.toString());
+//        System.out.println("sb: " + sb.toString());
         return sb.toString();
 	}
 	public static void main(String[] args) {
 		String a = "123456";
-		System.out.println(MessageDigestUtil.Md5(a));
+//		System.out.println(MessageDigestUtil.Md5(a));
 	}
 
 }

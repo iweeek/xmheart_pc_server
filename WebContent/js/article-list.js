@@ -271,6 +271,35 @@ $(function() {
                 }
             });
         },
+        delete : function(articleId) {
+            var url = '/articles/' + articleId;
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function(result) {
+                		swal({
+                        title : "操作成功",
+                        type : "success",
+                        confirmButtonColor : "#DD6B55",
+                        confirmButtonText : "确定！",
+                        closeOnConfirm : false
+                    }, function() {
+                        location.reload()
+                    });
+                },
+                error: function(request,msg,error) {
+                		swal({
+                        title : "操作失败",
+                        type : "success",
+                        confirmButtonColor : "#DD6B55",
+                        confirmButtonText : "确定！",
+                        closeOnConfirm : false
+                    }, function() {
+                        location.reload()
+                    });
+                }
+            });
+        },
         init: function() {
         		$('.ui-nodata').hide();
             ctrl.postDialogHandle();
@@ -435,5 +464,10 @@ $(function() {
         }
         var articleId2 = $('#J_articles tr').eq(index+1).find('.down-btn').data('id');
         ctrl.handleUpDown(articleId1, articleId2);
+    })
+    // 删除
+    $('#J_articles').on('click', '.delete-btn', function() {
+        var articleId = $(this).data('id');
+        ctrl.delete(articleId);
     })
 })

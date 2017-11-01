@@ -58,15 +58,10 @@ public class ArticleController {
 		} else {
 			list = (articleService.index(allColumns));
 		}
-		
-		for (long id : allColumns) {
-			System.out.println(id);
-		}
 		return ResponseEntity.ok(list);
 	}
 
 	public List<Long> getChildColumns(List<Long> list, Long columnId) {
-		System.out.println(columnId);
 		if (list == null) {
 			list = new ArrayList<Long>();
 		}
@@ -242,6 +237,17 @@ public class ArticleController {
             return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
         }
     }
+    
+	@RequestMapping(value = { "/articles/{id}" }, method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@ApiParam("文章Id，必填") @PathVariable Long id) {
+		
+		int ret = articleService.delete(id);
+		if (ret > 0) {
+			return ResponseEntity.ok(null);
+		} else {
+			return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
     
     @ApiOperation(value = "获取一篇文章", notes = "获取一篇文章")
     @RequestMapping(value = { "/articles/{id}" }, method = RequestMethod.GET)
