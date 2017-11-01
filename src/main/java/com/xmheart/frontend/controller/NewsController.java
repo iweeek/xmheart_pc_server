@@ -538,6 +538,14 @@ public class NewsController {
 
 		return "index";
 	}
+	
+	@RequestMapping(value = {"/search" }, method = RequestMethod.GET)
+	public String search(Model model) {
+		model = addTopNav(1, model);
+
+		return "search";
+	}
+	
 
 	@RequestMapping(value = { "/xtIndex" }, method = RequestMethod.GET)
 	public String xtIndex(Model model) {

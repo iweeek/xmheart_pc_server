@@ -32,33 +32,66 @@
 }
 .header-search {
 	margin-top: 34px;
-	width: 280px;
+	width: 374px;
 	height: 33px;
 	border: #1683D5 solid 1px;
-	border-radius: 16px;
-	overflow: hidden;
-	float: left;
-	padding-left: 16px;
-	margin-right: 70px;
+	float: right;
+	margin-right: 20px;
+	position: relative;
+}
+.header-search .search-type-wrapper {
+	width: 110px;
+    border-right: 1px solid #1683D5;
+    line-height: 33px;
+    height: 33px;
+    float: left;
+}
+.search-type-wrapper .search-type {
+	text-indent: 20px;
+	font-size: 12px;
+	background: url(../img/layout/search_arrow_down.png) 84px center  no-repeat;
+}
+.search-type-wrapper .search-type-list {
+	display: none;
+	position: absolute;
+	top: 31px;
+	left: 0px;
+	width: 110px;
+	border: 1px solid #1683D5;
+	z-index: 222;
+    background: #fff;
+    font-size: 12px;
+}
+.search-type-wrapper .search-type-list li {
+	height: 28px;
+    line-height: 28px;
+    text-indent: 20px;
+    cursor: pointer;
+    padding: 0px;
+}
+.search-type-wrapper .search-type-list li:hover {
+	background: #0690f7;
+	color: #fff;
 }
 .header-search .header-search-text {
 	width: 200px;
 	height: 31px;
 	float: left;
 	border: none;
+	text-indent: 10px;
 }
 .header-search .header-search-button {
 	width: 62px;
 	height: 33px;
 	border: none;
 	background: #1683D5 url('../img/layout/search.png') no-repeat center center;
-	border-radius: 16px;
 	cursor: pointer;
+	font-size: 0;
 }
 .header-icon {
-	width: 240px;
+	width: 150px;
 	padding: 0;
-	padding-top: 40px;
+	padding-top: 35px;
 	float: right;
 }
 .header-icon .header-icon-lang {
@@ -74,7 +107,7 @@
 	display: block;
 	height: 24px;
 	width: 30px;
-	margin-left: 60px;
+	margin-left: 20px;
 	float: left;
 	position: relative;
 }
@@ -98,7 +131,7 @@
 	height: 32px;
 	width: 32px;
 	background: url('../img/layout/weibo.png') no-repeat;
-	margin-left: 60px;
+	margin-left: 20px;
 	float: left;
 }
 /*header end*/

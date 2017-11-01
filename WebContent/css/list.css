@@ -47,7 +47,7 @@
 .list-nav-list li.active a, .list2-nav-list li a:hover {
 	background: #EAFAFE;
 	color: #6EB9FF;
-	border-right: #f3d600 solid 2px;
+	border-right: #6EB9FF solid 2px;
 	width: 229px;
 }
 /* list1-news-wrapper */
@@ -584,14 +584,14 @@ a.blue{ background:#79a9b8;}
 #AreaDuty .visitList .namelist .list01 a:hover{ background:#ff7544; color:#fff;}
 
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:0em;}
+.article p{text-indent:2em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
 .article .QRcode p{ margin-top:0; line-height:48px; color:#ff7544; text-indent:0;}
 .detail{ padding:0px; font-size:12px;}
 .detail h2{font-size:22px; line-height:22px; color:#333; margin-top:40px; margin-bottom:35px;}
-.detail .DIVContent{line-height:26px; font-size:14px;padding:0 18px;}
+.detail .DIVContent{line-height:26px; font-size:16px;padding:0 18px;}
 #DIVContent a{ color:#bda179;}
 #DIVContent a:hover{ text-decoration:underline; color:#ff7544;}
 
@@ -721,7 +721,7 @@ a.blue{ background:#79a9b8;}
 
 /* 党群工作 */
 .party-work .list-nav-title{ background: #d40309 url(../img/list/party_ico.png) 13px center no-repeat; border: 2px solid #d40309;}
-.party-work .list-nav-list li.active a, .party-work .list-nav-list li a:hover{ background: #f3d600; color: #d40309;}
+.party-work .list-nav-list li.active a, .party-work .list-nav-list li a:hover{ background: #f3d600; color: #d40309; border-right: none;}
 
 
 /* 护理天地 */
@@ -730,6 +730,34 @@ a.blue{ background:#79a9b8;}
 .announce ul li{ line-height:39px; background:url(/image/announce_ico.gif) left center no-repeat; padding-left:16px; font-size:14px;}
 .announce ul li span{ color:#8c8c8c; padding-right:15px;}
 .announce ul li a:hover{ color:#ff7544; text-decoration:underline;}
+
+/* 搜索结果页 */
+.Service .title{font-size:18px;color:#333;line-height:50px}
+.emailMain .tabBase{height:43px;border-bottom:1px solid #e5e5e5;padding-left:240px;font-size:14px;color:#666}
+.emailMain .tabBase a,.emailMain .tabBase span{width:160px;height:42px;line-height:42px;border-top:1px solid #e5e5e5;border-left:1px solid #e5e5e5;border-right:1px solid #e5e5e5;background:#fff;display:block;text-align:center;margin-right:6px;float:left}
+.emailMain .tabBase a:hover,.emailMain .tabBase a.active,.emailMain .tabBase span.active{height:43px;border-top:3px solid #0690f7}
+.emailMain .emaillist{width:1200px; padding-left:240px;padding-top:36px;min-height:324px}
+
+.emaillist .newsItem{height:180px;border-bottom:1px #f5f5f5 solid;padding:30px 18px;color:#666}
+.emaillist .newsItem:hover{box-shadow:0px 5px 15px 5px rgba(128 ,128 ,128 ,0.25);position:relative;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear}
+.emaillist .newsItem:hover .headLines h2 a{color:#ff7544}
+.emaillist .newsItem .headLines{width:59%;float:left;line-height:24px}
+.emaillist .newsItem .headLines p a{color:#666}
+.emaillist .newsItem .headLines h2 a{display:block;height:36px;overflow:hidden;font-size:16px;line-height:36px}
+.emaillist .newsItem .headLines h2 a:hover{text-decoration:underline}
+.emaillist .newsItem .date{width:18%;float:left;margin-left:10.5%}
+.emaillist .newsItem .date h3{font-size:14px;line-height:30px}
+.emaillist .newsItem .date h4{font-size:12px;color:#8c8c8c}
+.emaillist .newsItem .date p{line-height:25px;margin-top:20px}
+.emaillist .newsItem .date p span{width:69px;height:25px;color:#6bcbca; display:inline-block;line-height:25px;text-align:center}
+.emaillist .newsItem .date p em{color:#6bcbca;padding-left:6px}
+.emaillist .newsItem .listBtn a{width:94px;height:32px;background:#ff7544;float:right;line-height:32px;text-align:center;border-radius:3px;margin-right:4px;margin-top:29px;color:#fff}
+.emaillist .newsItem .listBtn a:hover{background:#ff7544}
+.emaillist .search_none{line-height:28px;font-size:14px}
+.emaillist .search_none span{font-size:28px;color:#6bcbca}
+.emaillist .search_none div span{font-size:16px;color:#ff7544}
+.emaillist a span{color:#ff7544}
+
 
 /* list-pagination */
 .list-pagination {

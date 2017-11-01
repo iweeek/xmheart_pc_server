@@ -45,6 +45,17 @@ $(function(){
 	  $(this).find('.wechat-code').hide();
   })
   
+//  头部搜索框 
+  $('#searchType').click(function(){
+	  $('#searchTypeList').show();
+  })
+  $('#searchTypeList li').click(function(){
+	  $('#searchType').text($(this).text());
+	  $('#searchTypeList').hide();
+	  $('#searchTypeInput').val($(this).data('id'));
+  })
+  
+  
   // 专家轮播
   $('.officesBase').each(function(idx, e){
     var swiper = new Swiper($(this).find('.contentsDoctor'), {
