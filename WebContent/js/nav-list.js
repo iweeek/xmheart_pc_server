@@ -66,18 +66,11 @@ exports.XPW.NavEdit = (function() {
 		   .done(function(data) {
 		     var firstColumnTemplate = $('#firstColumnTemplate').html();
 		     Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
-		     var rendered = Mustache.render(firstColumnTemplate, {data:data});
+		     var rendered = Mustache.render(firstColumnTemplate, {
+		    	 	data:data
+		    	 });
 		     $('#typeSelectInput').html(rendered);
 		   });
-
-//	$.get('/columns', {
-//		parentColumnId : 0
-//    }, function(data) {
-//        var firstColumnTemplate = $('#firstColumnTemplate').html();
-//        Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
-//        var rendered = Mustache.render(firstColumnTemplate, {data:data});
-//        $('#typeSelectInput').html(rendered);
-//    });
   }
   
   NavEdit.firstSelectHandle = function () {
@@ -106,7 +99,9 @@ exports.XPW.NavEdit = (function() {
     	    	    })
     	    		var secondColumnTemplate = $('#secondColumnTd').html();
     	    	    Mustache.parse(secondColumnTemplate);   // optional, speeds up future uses
-    	    	    var rendered = Mustache.render(secondColumnTemplate, {data:data});
+    	    	    var rendered = Mustache.render(secondColumnTemplate, {
+    	    	    		data:data
+    	    	    	});
     	    	    $('#secondTable').html(rendered);
     		} else {
     			swal({ 
@@ -183,7 +178,6 @@ exports.XPW.NavEdit = (function() {
 //  	    $('#secondColumnId').data('nav-id', $(this).data('nav-id'))
 //  	    $('#secondColumnId').data('column-id', $(this).data('column-id'))
 //  	    $('#secondColumnId').data('column-name', $(this).data('column-name'))
-    		var navId = $(this).data('nav-id');
 		location.href = '/static/nav_editor.html?navId=' + navId + '&col=' + NavEdit.col;
 	});
   }

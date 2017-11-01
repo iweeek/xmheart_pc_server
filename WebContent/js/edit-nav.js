@@ -1,9 +1,5 @@
 exports = this;
 exports.XPW = exports.EDIT || {};
-var articleTitle = $('#articleTitle');
-var secondColumn = $('#secondColumn');
-var publishTime = $('#publishTime');
-//var brief = $('#brief');
 var navId;
 var col;
 // 摘要输入框
@@ -81,7 +77,6 @@ exports.XPW.NavEdit = (function() {
 	        	$('#secondColumnId').data('nav-id', res.id)
 	        	$('#secondColumnId').data('column-id', res.columnId)
 	        	$('#secondColumnId').data('column-name', res.childColumnName)
-	        	$('#articleId').text(res.url.substr(res.url.indexOf('=')+1));
         });
     },
     
@@ -95,10 +90,12 @@ exports.XPW.NavEdit = (function() {
 		    var briefText = digest.val();
 		    
 			var params = {
-				imgUrl : imgUrl,
 				id: navId,
-				articleId: $('#articleId').text(),
-				brief: briefText
+				articleTitle: $('#articleTitle').text(),
+				brief: briefText,
+				url: $('#url').text(),
+				imgUrl: imgUrl,
+				publishTime: $('#publishTime').text()
 			};
 	
 			if (!NavEdit.valid(params, 'publish')) {
@@ -128,11 +125,6 @@ exports.XPW.NavEdit = (function() {
     }
     
     NavEdit.valid = function(params, type) {
-		if (!params.articleId) {
-			sweetAlert("信息不完整", "请选择文章", "error");
-			return false;
-		}
-
 		return true;
 	},
     
@@ -170,6 +162,7 @@ exports.XPW.NavEdit = (function() {
         $('#postModal').on('click', '#bindNavTitle', function() {
             var articleId = $('#postSelect').val();
             $.get('/articles/' + articleId, function(data) {
+            		$('#secondColumn').text(data.columnName);
 	 	        	$('#articleTitle').text(data.title);
 	 	        	$('#publishTime').text(NavEdit.dateFilter(data.publishTime));
 //	 	        	$('#brief').val(data.brief);
@@ -180,7 +173,6 @@ exports.XPW.NavEdit = (function() {
  	            } else {
  	            		word.text(data.brief.length);
  	            }
-	 	        	$('#articleId').text(data.id);
 	 	       	$('#url').text(data.url);
 	 	        	$('#upload-img').attr('src', data.imgUrl);
 	 	        $('#add-image-url').show();
