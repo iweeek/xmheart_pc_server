@@ -98,7 +98,7 @@
                                                                                        &#8195;&#8195;${nav.brief[0..120]}......
                                                                                     </#if>
                                                                                 </p>
-                                                                                    <a href="#" class="more">查看详细</a>
+                                                                                    <a href="${nav.url}" class="more">查看详细</a>
                                                                                 </div>    
                                                                                 </#list>
                                                                                 </#if>
