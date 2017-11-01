@@ -65,6 +65,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return list;
 	}
 
+	@Override
+	public int delete(Long id) {
+		return articleMapper.deleteByPrimaryKey(id);
+	}
+
     @Override
     public XPWArticle read(Long id) {
         XPWArticle article = articleMapper.selectByPrimaryKey(id);

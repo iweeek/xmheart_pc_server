@@ -42,7 +42,6 @@ public class RoleController {
 		if (privIds != null) {
 			StringBuilder sb = new StringBuilder();
 			for (long id : privIds) {
-				System.out.println(id);
 				sb.append(id);
 				sb.append(",");
 			}
@@ -72,7 +71,6 @@ public class RoleController {
 		if (privIds != null) {
 			StringBuilder sb = new StringBuilder();
 			for (long pId : privIds) {
-				System.out.println(pId);
 				sb.append(pId);
 				sb.append(",");
 			}
