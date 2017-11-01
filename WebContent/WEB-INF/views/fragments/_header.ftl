@@ -38,14 +38,24 @@
                     <a href="#" class="header-icon-weibo"></a>
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
-                <!--<div class="header-search">
-                    <input type="text" class="header-search-text">
-                    <input type="button" class="header-search-button">
-                </div>-->
+                <div class="header-search">
+                		<div class="search-type-wrapper">
+                			<div class="search-type" id="searchType">全部内容</div>
+                			<ul class="search-type-list" id="searchTypeList">
+                				<li data-id="1">全站内容</li>
+                				<li data-id="2">医生查找</li>
+                				<li data-id="3">文章查找</li>
+                				<li data-id="4">科室查找</li>
+                			</ul>
+                		</div>
+                		<form>
+                			<input type="hidden" name="type" id="searchTypeInput" value="1">
+                    		<input type="text" class="header-search-text">
+                    		<input type="submit" class="header-search-button">
+                    </form>
+                </div>
             </div>
         </div>
-        
-        
         
         <div style="height:60px;">
             <div class="xm-nav">
