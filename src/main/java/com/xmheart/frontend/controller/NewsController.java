@@ -325,19 +325,72 @@ public class NewsController {
 			@RequestParam(required = false, defaultValue = "") String year,
 			@RequestParam(required = false, defaultValue = "") String times) {
 
-		List<String> years = newsService.getNewsPaperYears();
-		model.addAttribute("years", years);
+//		List<String> years = newsService.getNewsPaperYears();
+//		model.addAttribute("years", years);
+//		model.addAttribute("curYear", year);
+		
+		if (!year.isEmpty() && !times.isEmpty()) {
+			List<String> years = newsService.getNewsPaperYears();
+			model.addAttribute("years", years);
+			model.addAttribute("curYear", year);
+			
+			List<String> timesList = newsService.getNewsPaperTimes(year);
+			model.addAttribute("times", timesList);
+			model.addAttribute("curTimes", times);
+			
+			PageHelper.startPage(1, PAGE_SIZE);
 
-		List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
-		model.addAttribute("times", timesList);
+			List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, times);
+			if (list.size() != 0) {
+				model.addAttribute("newsPaperList", list);
+			}
 
-		if (year.equals("")) {
-			year = years.get(years.size() - 1);
+			PageInfo pageInfo = new PageInfo(list);
+			model.addAttribute("pageInfo", pageInfo);
+		} else {
+			// 获取最新
+			List<String> years = newsService.getNewsPaperYears();
+			model.addAttribute("years", years);
+			model.addAttribute("curYear", years.get(0));
+			
+			List<String> timesList = newsService.getNewsPaperTimes(years.get(0));
+			model.addAttribute("times", timesList);
+			model.addAttribute("curTimes", timesList.get(timesList.size() - 1));
+			
+			PageHelper.startPage(1, PAGE_SIZE);
+
+//			String newsTimes = "";
+//			if (timesList.size() < 10) {
+//				newsTimes = "0" + (timesList.size() - 1);
+//			}
+			List<XPWElecNewspaper> list = newsService.getElecNewsPaper(years.get(0), timesList.get(timesList.size() - 1));
+			if (list.size() != 0) {
+				model.addAttribute("newsPaperList", list);
+			}
+
+			PageInfo pageInfo = new PageInfo(list);
+			model.addAttribute("pageInfo", pageInfo);
 		}
+//		List<String> timesList = newsService.getNewsPaperTimes(year);
+//		model.addAttribute("times", timesList);
+//		model.addAttribute("curTimes", times);
 
-		if (times.equals("")) {
-			times = timesList.get(timesList.size() - 1);
-		}
+		// 得到最新的
+//		if (year.equals("")) {
+//			if (years.size() == 0) {
+//				year = years.get(0);
+//			} else {
+//				year = years.get(years.size() - 1);
+//			}
+//		}
+//
+//		if (times.equals("")) {
+//			if (timesList.size() == 0) {
+//				times = timesList.get(0);
+//			} else {
+//				times = timesList.get(timesList.size() - 1);
+//			}
+//		}
 		// 23是栏目Id，暂时写死
 		model = addTopNav(ELEC_NEWS_PAPER_COLUMN_ID, model);
 
@@ -345,16 +398,6 @@ public class NewsController {
 
 		String columnName = columnService.getColumnById(ELEC_NEWS_PAPER_COLUMN_ID).getColumnName();
 		model.addAttribute("pageName", columnName);
-
-		PageHelper.startPage(1, PAGE_SIZE);
-
-		List<XPWElecNewspaper> list = newsService.getElecNewsPaper(year, times);
-		if (list.size() != 0) {
-			model.addAttribute("newsPaperList", list);
-		}
-
-		PageInfo pageInfo = new PageInfo(list);
-		model.addAttribute("pageInfo", pageInfo);
 
 		model.addAttribute("page", page);
 
@@ -444,22 +487,25 @@ public class NewsController {
 	public ResponseEntity<?> replaceCSS() {
 
 		int pageNo = 1;
-		PageHelper.startPage(pageNo, PAGE_SIZE);
-		List<XPWDoctor> list = doctorAndDeptService.getDisplayDoctors();
-		PageInfo pageInfo = new PageInfo(list);
+//		PageHelper.startPage(pageNo, PAGE_SIZE);
+		List<XPWArticle> list = articleService.index();
+//		PageInfo pageInfo = new PageInfo(list);
 
-		do {
-			for (XPWDoctor doctor : list) {
-				String content = doctor.getIntro();
+//		do {
+			for (XPWArticle doctor : list) {
+				String content = doctor.getContent();
 				content = delHTMLTag(content);
+				if (content.length() > 200) {
+					content = content.substring(0, 200);
+				}
 				doctor.setBrief(content);
-				doctorAndDeptService.updateDoctor(doctor);
+				articleService.update(doctor);
 			}
 
-			pageNo++;
-			PageHelper.startPage(pageNo, PAGE_SIZE);
-			list = doctorAndDeptService.getDisplayDoctors();
-		} while (pageNo <= pageInfo.getPages());
+//			pageNo++;
+//			PageHelper.startPage(pageNo, PAGE_SIZE);
+//			list = articleService.getDisplayDoctors();
+//		} while (pageNo <= pageInfo.getPages());
 
 		return null;
 	}
@@ -483,25 +529,28 @@ public class NewsController {
 	// }
 
 	public String delHTMLTag(String htmlStr) {
-		String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式
-		String regEx_html = "<[^>]+>"; // 定义HTML标签的正则表达式
-
-		Pattern p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);
-		Matcher m_style = p_style.matcher(htmlStr);
-		htmlStr = m_style.replaceAll(""); // 过滤style标签
-
-		Pattern p_html = Pattern.compile(regEx_html, Pattern.CASE_INSENSITIVE);
-		Matcher m_html = p_html.matcher(htmlStr);
-		htmlStr = m_html.replaceAll(""); // 过滤html标签
-
-		htmlStr = htmlStr.replace(" ", "");
-		htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n", "");
-		htmlStr = htmlStr.replace("“", "");
-		htmlStr = htmlStr.replace("”", "");
-		htmlStr = htmlStr.replaceAll("　", "");
-		htmlStr = htmlStr.replaceAll("&nbsp;", " ");
-
-		return htmlStr.trim(); // 返回文本字符串
+		if (htmlStr != null) {
+			String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式
+			String regEx_html = "<[^>]+>"; // 定义HTML标签的正则表达式
+	
+			Pattern p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);
+			Matcher m_style = p_style.matcher(htmlStr);
+			htmlStr = m_style.replaceAll(""); // 过滤style标签
+	
+			Pattern p_html = Pattern.compile(regEx_html, Pattern.CASE_INSENSITIVE);
+			Matcher m_html = p_html.matcher(htmlStr);
+			htmlStr = m_html.replaceAll(""); // 过滤html标签
+	
+			htmlStr = htmlStr.replace(" ", "");
+			htmlStr = htmlStr.replaceAll("\\s*|\t|\r|\n", "");
+			htmlStr = htmlStr.replace("“", "");
+			htmlStr = htmlStr.replace("”", "");
+			htmlStr = htmlStr.replaceAll("　", "");
+			htmlStr = htmlStr.replaceAll("&nbsp;", " ");
+	
+			return htmlStr.trim(); // 返回文本字符串
+		}
+		return null;
 	}
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)

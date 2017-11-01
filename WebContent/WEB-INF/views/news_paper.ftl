@@ -26,15 +26,21 @@
 				</#if>
 					<form>
 						<select id="ddlYears2">
-							<option value="" selected="selected">选择年份</option>
 							<#list years as year>
+							    <#if year != curYear> 
 								<option value=${year}>${year}年</option>
+								<#else>
+								<option value=${year} selected="selected">${year}年</option>
+								</#if>
 							</#list>
 						</select>
 						<select id="ddlTimes2">
-							<option value="" selected="selected">选择期数</option>
 							<#list times as time>
-								<option value=${time}>${time}</option>
+							   <#if time != curTimes> 
+                                <option value=${time}>${time}期</option>
+                                <#else>
+                                <option value=${time} selected="selected">${time}期</option>
+                                </#if>
 							</#list>>
 						</select>
 						<input type="button" id="GoToNewspaper2" value="阅览">
