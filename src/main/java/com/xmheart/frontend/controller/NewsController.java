@@ -30,6 +30,7 @@ import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
+import com.xmheart.model.XPWOnlineVideo;
 import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWArticle;
@@ -38,6 +39,7 @@ import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.IndexService;
 import com.xmheart.service.NewsService;
+import com.xmheart.service.OnlineVideoService;
 import com.xmheart.service.VideoService;
 
 import freemarker.template.Template;
@@ -61,6 +63,8 @@ public class NewsController {
 
 	@Autowired
 	private VideoService videoService;
+    @Autowired
+    private OnlineVideoService onlinevideoService;
 
 	@Autowired
 	private DoctorAndDeptService doctorAndDeptService;
@@ -74,6 +78,7 @@ public class NewsController {
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
 	static final long VIDEO_NEWS_COLUMN_ID = 22;
+	static final long ONLINE_VIDEO_NEWS_COLUMN_ID = 82;
 	static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
 	static final long CHEST_PAIN_COLUMN_ID = 77;
 	// private static Map<String, String> secColumns = new HashMap<String,
@@ -267,8 +272,41 @@ public class NewsController {
 				video.setImgUrl("/img/pic/pic_002.jpg");
 			}
 		}
-		return "video";
+		return "video_list";
 	}
+	
+	/**
+     * 在线视频学习列表页
+     */
+    @ApiOperation(value = "在线视频学习列表页", notes = "在线视频学习列表页")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @RequestMapping(value = { "/onlineVideoNews" }, method = RequestMethod.GET)
+    public String onlineVideoNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
+        model = addTopNav(ONLINE_VIDEO_NEWS_COLUMN_ID, model);
+
+        model = addLeftNav(ONLINE_VIDEO_NEWS_COLUMN_ID, model);
+
+        String columnName = columnService.getColumnById(ONLINE_VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
+
+        boolean isPublished = true;
+
+        PageHelper.startPage(page, 6);
+        List<XPWOnlineVideo> videoList = onlinevideoService.index(isPublished);
+        PageInfo pageInfo = new PageInfo(videoList);
+
+        model.addAttribute("pageInfo", pageInfo);
+
+        model.addAttribute("videoList", videoList);
+
+        for (XPWOnlineVideo video : videoList) {
+            if (video.getImgUrl().equals("")) {
+                // 默认图片
+                video.setImgUrl("/img/pic/pic_002.jpg");
+            }
+        }
+        return "online_video_list";
+    }
 
 	/**
 	 * 影像厦心详情页
@@ -289,6 +327,26 @@ public class NewsController {
 
 		return "video_detail";
 	}
+	
+	/**
+     * 在线视频详情页
+     */
+    @ApiOperation(value = "在线视频详情页", notes = "在线视频详情页")
+    @RequestMapping(value = { "/onlineVideoNewsDetail" }, method = RequestMethod.GET)
+    public String onlineVideoNewsDetail(Model model, @RequestParam Long id) {
+
+        model = addTopNav(ONLINE_VIDEO_NEWS_COLUMN_ID, model);
+
+        model = addLeftNav(ONLINE_VIDEO_NEWS_COLUMN_ID, model);
+
+        String columnName = columnService.getColumnById(ONLINE_VIDEO_NEWS_COLUMN_ID).getColumnName();
+        model.addAttribute("columnName", columnName);
+
+        XPWOnlineVideo video = onlinevideoService.read(id);
+        model.addAttribute("video", video);
+
+        return "online_video_detail";
+    }
 
 	/**
 	 * 电子院报列表页
