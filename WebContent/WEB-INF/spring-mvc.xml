@@ -96,6 +96,7 @@
 		    <mvc:mapping path="/navs/**"/>
 			<mvc:mapping path="/articles/**"/>
 		    <mvc:mapping path="/videos/**"/>
+            <mvc:mapping path="/onlineVideos/**"/>
 		    <mvc:mapping path="/uploadVideo/**"/>
 			<mvc:mapping path="/columns/**"/>
 		    <mvc:mapping path="/indexPage/**"/>
@@ -104,6 +105,7 @@
 			<mvc:mapping path="/newspapers/**"/>
 			<mvc:mapping path="/depts/**"/>
 			<mvc:mapping path="/roles/**"/>
+            <mvc:mapping path="/deleteRoles/**"/>
 			<mvc:mapping path="/privs/**"/>
 			<mvc:mapping path="/doctors/**"/>
 			<mvc:mapping path="/news/**"/>
