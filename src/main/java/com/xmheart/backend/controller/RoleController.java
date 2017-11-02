@@ -1,30 +1,26 @@
 package com.xmheart.backend.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.pagehelper.PageHelper;
-import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWPriv;
 import com.xmheart.model.XPWRole;
-import com.xmheart.model.XPWVideo;
 import com.xmheart.service.RoleService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@RestController
+@Controller
 public class RoleController {
 	
 	@Autowired
@@ -32,7 +28,7 @@ public class RoleController {
 
 	@RequestMapping(value = { "/roles" }, method = RequestMethod.POST)
 	public ResponseEntity<?> create(@ApiParam("角色名字") @RequestParam String name,
-			@ApiParam("角色拥有的权限Id") @RequestParam Long[] privIds) {
+			@ApiParam("角色拥有的权限Id") @RequestParam("privIds[]") Long[] privIds) {
 		
 		XPWRole role = new XPWRole();
 		if (name != null) {
@@ -86,7 +82,7 @@ public class RoleController {
 		}
 	}
 	
-	@RequestMapping(value = { "/roles/{id}" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = { "/deleteRoles/{id}" }, method = RequestMethod.POST)
 	public ResponseEntity<?> delete(@ApiParam("角色Id，必填") @PathVariable Long id) {
 		
 		int ret = roleService.delete(id);

@@ -62,6 +62,36 @@ $(function() {
 				ctrl.getArticles(ctrl.pageNo, 10, ctrl.columnId);
 			}
 		},
+		delete : function() {
+            // 编辑模式
+            var url = '/users/' + id;
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function(result) {
+                        swal({
+                        title : "操作成功",
+                        type : "success",
+                        confirmButtonColor : "#DD6B55",
+                        confirmButtonText : "确定！",
+                        closeOnConfirm : false
+                    }, function() {
+                        location.reload()
+                    });
+                },
+                error: function(request,msg,error) {
+                        swal({
+                        title : "操作失败",
+                        type : "success",
+                        confirmButtonColor : "#DD6B55",
+                        confirmButtonText : "确定！",
+                        closeOnConfirm : false
+                    }, function() {
+                        location.reload()
+                    });
+                }
+            });
+        },
 		init : function() {
 			ctrl.getUsers(ctrl.pageNo, 10, ctrl.columnId);
 			$('.ui-nodata').hide();
@@ -85,5 +115,7 @@ $(function() {
 	$('#J_create_btn').on('click', function() {
 		location.href = '/static/user_editor.html';
 	})
-
+	
+	// 删除 TODO
+    
 })
