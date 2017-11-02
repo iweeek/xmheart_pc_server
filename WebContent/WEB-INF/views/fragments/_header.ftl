@@ -48,9 +48,9 @@
                 				<li data-id="4">科室查找</li>
                 			</ul>
                 		</div>
-                		<form>
+                		<form action="search" method="get" onsubmit="return CheckSearchForm()">
                 			<input type="hidden" name="type" id="searchTypeInput" value="1">
-                    		<input type="text" class="header-search-text">
+                    		<input type="text" name="keywords" id="searchValInput" class="header-search-text">
                     		<input type="submit" class="header-search-button">
                     </form>
                 </div>
@@ -354,6 +354,3 @@
         </#if>
         </#list>
         </#if>
-        
-
-        
