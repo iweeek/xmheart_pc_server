@@ -31,6 +31,7 @@ import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWOnlineVideo;
+import com.xmheart.model.XPWTeacher;
 import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWArticle;
@@ -40,6 +41,7 @@ import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.IndexService;
 import com.xmheart.service.NewsService;
 import com.xmheart.service.OnlineVideoService;
+import com.xmheart.service.TeacherTeamService;
 import com.xmheart.service.VideoService;
 
 import freemarker.template.Template;
@@ -68,6 +70,9 @@ public class NewsController {
 
 	@Autowired
 	private DoctorAndDeptService doctorAndDeptService;
+    @Autowired
+    private TeacherTeamService teacherTeamService;
+	
 	@Autowired
 	private IndexService indexService;
 
@@ -77,6 +82,7 @@ public class NewsController {
 
 	static final long NEWS_COLUMN_ID = 5;
 	static final long EXPERT_COLUMN_ID = 3;
+	static final long TEACHER_COLUMN_ID = 49;
 	static final long VIDEO_NEWS_COLUMN_ID = 22;
 	static final long ONLINE_VIDEO_NEWS_COLUMN_ID = 82;
 	static final long ELEC_NEWS_PAPER_COLUMN_ID = 23;
@@ -658,16 +664,37 @@ public class NewsController {
 
 		return "doctor_dept";
 	}
+	
+   @RequestMapping(value = { "/teacherTeam" }, method = RequestMethod.GET)
+    public String teacherTeam(Model model) {
+       model = addTopNav(3l, model);
+       List<XPWTeacher> teachers = teacherTeamService.getDisplayTeachers();
+       model.addAttribute("doctors", teachers);
+
+       List<XPWDept> depts = teacherTeamService.getOutServiceDepts();
+       model.addAttribute("depts", depts);
+
+       return "teacher_dept";
+    }
 
 	@RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
 	public String doctorInfo(@RequestParam Long id, Model model) {
-		model = addTopNav(3l, model);
+		model = addTopNav(EXPERT_COLUMN_ID, model);
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
 		model.addAttribute("doctor", doctor);
 		// model.addAttribute("dept", doctor.getDept());
 		return "doctor_detail";
 	}
+	
+    @RequestMapping(value = { "/teacherDetail" }, method = RequestMethod.GET)
+    public String teacherInfo(@RequestParam Long id, Model model) {
+        model = addTopNav(TEACHER_COLUMN_ID, model);
+
+        XPWTeacher teacher = teacherTeamService.getTeacherAndDeptById(id);
+        model.addAttribute("doctor", teacher);
+        return "teacher_detail";
+    }
 
 	@RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
 	public String deptDoctor(@RequestParam Long id, Model model) {
