@@ -222,4 +222,15 @@
         $(this).find('.up').stop().fadeToggle(300);
         $(this).find('.code').fadeToggle(300);
     });
+    
+	function CheckSearchForm () {
+	  	var obj = $("#searchValInput");
+	  	var str = $.trim(obj.val());
+	  	if (str == "") {
+	      	obj.focus();
+	      	return false;
+	  	}
+	  	return true;
+	}
+    
 </script>

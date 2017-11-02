@@ -8,6 +8,8 @@ var mySwiper = new Swiper ('#bannerSwiper', {
 var mySwiper2 = new Swiper ('#noticeSwiper', {
   direction: 'vertical',
   loop: true,
+  autoplay : 2000,
+  effect : 'fade',
   paginationClickable :true,
   pagination: '.swiper-pagination'
 })
@@ -15,13 +17,13 @@ var mySwiper2 = new Swiper ('#noticeSwiper', {
 // 导航
 $(function(){
 	$(".xm-navbar-nav .xm-navbar-item").hover(function(){
-  	$t=$(this);
-  	$obj=$t.find(".navboxBase");
-  	$obj.css({"left":-$t.offset().left+"px","width":$("body").width()});
-  	$obj.show();
-  },function(){
-    $(this).find('.navboxBase').hide();
-  });
+	  	$t=$(this);
+	  	$obj=$t.find(".navboxBase");
+	  	$obj.css({"left":-$t.offset().left+"px","width":$("body").width()});
+	  	$obj.show();
+	  },function(){
+	    $(this).find('.navboxBase').hide();
+	  });
 
   // 导航悬浮
   var $xmNav = $('.xm-nav');
@@ -54,6 +56,37 @@ $(function(){
 	  $('#searchTypeList').hide();
 	  $('#searchTypeInput').val($(this).data('id'));
   })
+  
+  //  搜索页面逻辑处理
+ function getUrlParam (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+ }
+  if (window.location.pathname == '/search') {
+	  var type = getUrlParam('type');
+	  var val = getUrlParam('keywords');
+	  $('#searchValInput').val(val);
+	  $('#ASearchAll').attr('href', 'search?type=1&keywords=' + val);
+	  $('#ASearchDoctor').attr('href', 'search?type=2&keywords=' + val);
+	  $('#ASearchNews').attr('href', 'search?type=3&keywords=' + val);
+	  $('#ASearchOffice').attr('href', 'search?type=4&keywords=' + val);
+	  
+	  if(type == 1) {
+		  $('#ASearchAll').addClass('active').siblings().removeClass('active');
+	  }
+	  if(type == 2) {
+		  $('#ASearchDoctor').addClass('active').siblings().removeClass('active');
+	  }
+	  if(type == 3) {
+		  $('#ASearchNews').addClass('active').siblings().removeClass('active');
+	  }
+	  if(type == 4) {
+		  $('#ASearchOffice').addClass('active').siblings().removeClass('active');
+	  }
+  }
+  
+  
   
   
   // 专家轮播

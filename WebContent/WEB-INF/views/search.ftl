@@ -5,10 +5,10 @@
 				<div class="title">搜索结果</div>
 				<div class="emailMain">
 					<div class="tabBase">
-						<a href="Search.html?type=1&amp;SearchWords=23" id="ASearchAll" class="active">全站内容</a>
-						<a href="Search.html?type=2&amp;SearchWords=23" id="ASearchDoctor">医生查询</a>
-						<a href="Search.html?type=3&amp;SearchWords=23" id="ASearchNews">文章查询</a>
-						<a href="Search.html?type=3&amp;SearchWords=23" id="ASearchNews">科室查询</a>
+						<a href="search?type=1&amp;SearchWords=" id="ASearchAll" class="active">全站内容</a>
+						<a href="search?type=2&amp;SearchWords=" id="ASearchDoctor">医生查询</a>
+						<a href="search?type=3&amp;SearchWords=" id="ASearchNews">文章查询</a>
+						<a href="search?type=4&amp;SearchWords=" id="ASearchOffice">科室查询</a>
 					</div>
 					<div class="clear"></div>
 					<div class="emaillist">
