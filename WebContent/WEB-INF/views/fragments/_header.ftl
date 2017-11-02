@@ -71,129 +71,124 @@
                                 <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                             <#else>
                                 <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
-                                                                <#list columnMap as kc, vc>
-                                                                <#if kc == key && !(key?index == 5 || key?index == 6 || key?index == 7 || key?index == 8) >
-                                                                     <div class="navboxBase">
-                                                                         <div class="navboxBg">
-                                                                             <div class="navbox BaseMark">
-                                                                              <div class="navMenus">
-                                                                                <ul>
-                                                                                <#list vc as col>
-                                                                                    <#if vc?index == 0>
-                                                                                    <li class="first">
-                                                                                        <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
-                                                                                    </li>
-                                                                                    <#else>
-                                                                                    <li>
-                                                                                        <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
-                                                                                    </li>
-                                                                                    </#if>
-                                                                                </#list>
-                                                                                </ul>
-                                                                              </div>
-                                                        
-                                                                                <#if key?index == 1 || key?index == 2 || key?index == 3>
-                                                                                <#list columnNavMap as columnName, navList>     
-                                                                                <#if columnName == key>       
-                                                                                <#list navList as nav>                    
-                                                                                <div class="navSub5">
-                                                                                <h3 class="title01">${nav.childColumnName}</h3>
-                                                                                <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
-                                                                                <br/>
-                                                                                    <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
-                                                                                <p class="first hospital-desc">
-                                                                                    <#if nav.brief?length lt 120>
-                                                                                       &#8195;&#8195;${nav.brief}......
-                                                                                    <#else>
-                                                                                       &#8195;&#8195;${nav.brief[0..120]}......
-                                                                                    </#if>
-                                                                                </p>
-                                                                                    <a href="${nav.url}" class="more">查看详细</a>
-                                                                                </div>    
-                                                                                </#list>
-                                                                                </#if>
-                                                                                </#list>
-                                                                                </#if>   
-                                                   
-                                                                                <#if key?index == 4>
-                                                                                <div class="navSub2 nav_Menu02 noPic NewsSub">
-                                                                                <#list secondColNavMap as skey, sv>
-                                                                                            <#if skey == vc[0].columnName>
-                                                                                            <#list sv as scol>
-                                                                                                <#if scol?index == 0>
-                                                                                                <dl class="Img02">
-                                                                                                <dt class="title01">${skey}</dt>
-                                                                                                <dd class="pic">
-                                                                                                    <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
-                                                                                                </dd>
-                                                                                                <dd class="Lurl">
-                                                                                                    <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
-                                                                                                    <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                                                                                </dd>
-                                                                                                <#else>
-                                                                                                <dd class="url">
-                                                                                                    <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                                                                    <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                                                                                </dd>
-                                                                                                </dl>
-                                                                                                </#if>
-                                                                                            </#list>
-                                                                                            </#if>
-                                                                                          
-                                                                                            <#if skey == vc[1].columnName>
-                                                                                            <div class="BottomHidden"></div>
-                                                                                            <dl>
-                                                                                            <dt class="title01">${skey}</dt>
-                                                                                            <#list sv as scol>
-                                                                                            <dd class="url">
-                                                                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                                                                            </dd>
-                                                                                            </#list>
-                                                                                            </dl>
-                                                                                            </div>
-                                                                                            </#if>
-                                                                                        <!-- </div> -->
-                                                                                        
-                                                                                        
-                                                                                        <#if skey == vc[2].columnName>
-                                                                                        <div class="navSub4 nav_Menu02 noPic">
-                                                                                        <dl>
-                                                                                        <dt class="title02">${skey}</dt>
-                                                                                        <#list sv as scol>
-                                                                                        <dd class="url">
-                                                                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                                                                        </dd>
-                                                                                        </#list>
-                                                                                        </dl>
-                                                                                        </#if>
-                                                                            
-                                                                                        <#if skey == vc[3].columnName>
-                                                                                        <div class="BottomHidden"></div>
-                                                                                        <dl>
-                                                                                            <dt class="title02">${skey}</dt>
-                                                                                            <#list sv as scol>
-                                                                                            <dd class="url">
-                                                                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
-                                                                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
-                                                                                            </dd>
-                                                                                            </#list>
-                                                                                        </dl>   
-                                                                                        </div> 
-                                                                                        </#if>   
-                                                                                         
-                                                                                        
-                                                                                        
-                                                                                </#list>  
-                                                                                </#if>
-                                                                                 <div class="clear"></div>
-                                                                             </div>
-                                                                             <div class="clear"></div>
-                                                                         </div>
-                                                                     </div>
-                                                                </#if>
-                                                                </#list>
+                                    <#list columnMap as kc, vc>
+                                    <#if kc == key && !(key?index == 5 || key?index == 6 || key?index == 7 || key?index == 8) >
+                                         <div class="navboxBase">
+                                             <div class="navboxBg">
+                                                 <div class="navbox BaseMark">
+                                                  <div class="navMenus">
+                                                    <ul>
+                                                    <#list vc as col>
+                                                        <#if vc?index == 0>
+                                                        <li class="first">
+                                                            <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                                        </li>
+                                                        <#else>
+                                                        <li>
+                                                            <a href="${col.url}" title="${col.columnName}">${col.columnName}<span>进入</span></a>
+                                                        </li>
+                                                        </#if>
+                                                    </#list>
+                                                    </ul>
+                                                  </div>
+                            
+                                                    <#if key?index == 1 || key?index == 2 || key?index == 3>
+                                                    <#list columnNavMap as columnName, navList>     
+                                                    <#if columnName == key>       
+                                                    <#list navList as nav>                    
+                                                    <div class="navSub5">
+                                                    <h3 class="title01">${nav.childColumnName}</h3>
+                                                    <img src="${nav.imgUrl}" height="100px" width="100%" alt="">
+                                                    <br/>
+                                                        <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
+                                                    <p class="first hospital-desc">
+                                                        <#if nav.brief?length lt 120>
+                                                           &#8195;&#8195;${nav.brief}......
+                                                        <#else>
+                                                           &#8195;&#8195;${nav.brief[0..120]}......
+                                                        </#if>
+                                                    </p>
+                                                        <a href="${nav.url}" class="more">查看详细</a>
+                                                    </div>    
+                                                    </#list>
+                                                    </#if>
+                                                    </#list>
+                                                    </#if>   
+                       
+                                                    <#if key?index == 4>
+                                                    <div class="navSub2 nav_Menu02 noPic NewsSub">
+                                                    <#list secondColNavMap as skey, sv>
+                                                        <#if skey == vc[0].columnName>
+                                                        <#list sv as scol>
+                                                            <#if scol?index == 0>
+                                                            <dl class="Img02">
+                                                            <dt class="title01">${skey}</dt>
+                                                            <dd class="pic">
+                                                                <img alt="最新公告" src="${scol.imgUrl}" width="126" height="77">
+                                                            </dd>
+                                                            <dd class="Lurl">
+                                                                <em>${scol.publishTime?string('yyyy-MM-dd')}</em>
+                                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                            </dd>
+                                                            <#else>
+                                                            <dd class="url">
+                                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                            </dd>
+                                                            </dl>
+                                                            </#if>
+                                                        </#list>
+                                                        </#if>
+                                                      
+                                                        <#if skey == vc[1].columnName>
+                                                        <div class="BottomHidden"></div>
+                                                        <dl>
+                                                        <dt class="title01">${skey}</dt>
+                                                        <#list sv as scol>
+                                                        <dd class="url">
+                                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                        </dd>
+                                                        </#list>
+                                                        </dl>
+                                                        </div>
+                                                        </#if>
+                                                            
+                                                        <#if skey == vc[2].columnName>
+                                                        <div class="navSub4 nav_Menu02 noPic">
+                                                        <dl>
+                                                        <dt class="title02">${skey}</dt>
+                                                        <#list sv as scol>
+                                                        <dd class="url">
+                                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                        </dd>
+                                                        </#list>
+                                                        </dl>
+                                                        </#if>
+                                            
+                                                        <#if skey == vc[3].columnName>
+                                                        <div class="BottomHidden"></div>
+                                                        <dl>
+                                                            <dt class="title02">${skey}</dt>
+                                                            <#list sv as scol>
+                                                            <dd class="url">
+                                                                <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                                                <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                            </dd>
+                                                            </#list>
+                                                        </dl>   
+                                                        </div> 
+                                                        </#if>   
+                                                    </#list>  
+                                                    </#if>
+                                                     <div class="clear"></div>
+                                                 </div>
+                                                 <div class="clear"></div>
+                                             </div>
+                                         </div>
+                                    </#if>
+                                    </#list>
                             </#if>
                         </li>
                      </#list>
