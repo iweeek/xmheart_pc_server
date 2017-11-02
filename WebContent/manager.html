@@ -109,7 +109,7 @@
                     </li> -->
                 </ul>
             </li>
-            <li>
+            <li id="privs">
                 <a href="#priv" class="nav-header collapsed" data-toggle="collapse">
                     <i class="glyphicon glyphicon-cog"></i> 权限管理
                     <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
@@ -161,4 +161,7 @@
         var mainheight = $(this).contents().find("body").height() + 200;
         $(this).height(mainheight);
     });
+    if (getCookieValue('user_type') != 1){ 
+        $("#privs").css("display", "none");
+    }
 </script>

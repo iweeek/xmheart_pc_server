@@ -109,7 +109,11 @@ exports.XPW.RoleUeditor = (function() {
                      location.href = url;
                   });
 			  }
+		  })
+		  .error(function() {
+		      swal("出错啦");
 		  });
+		  $this.removeAttr('disabled');
 	  })
   }
   

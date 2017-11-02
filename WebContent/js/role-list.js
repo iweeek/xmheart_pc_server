@@ -35,15 +35,15 @@ $(function() {
 				id : roleId
 			};
 			// 编辑模式
-			var url = '/role/' + roleId;
+			var url = '/deleteRoles/' + roleId;
 			$.ajax({
 				  url: url,
 			      type: 'post',
-			    	  data: {id : roleId, _method: 'delete'}
+			    	  data: {id : roleId}
 			    })
 			   .done(function(data) {
 				   swal("删除成功！");
-				   ctrl.getVideos(ctrl.pageNo, 10);
+				   ctrl.getRoles(ctrl.pageNo, 10);
 			   })
 		},
 		previous : function() {

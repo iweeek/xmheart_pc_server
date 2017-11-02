@@ -76,7 +76,7 @@ exports.XPW.UserUeditor = (function() {
 			  return false;
 		  }
 		  var salt = Math.ceil(Math.random()*10);
-		  var saltPassword = $.md5(($.md5(password).toString() + salt.toString()));
+		  var saltPassword = ($.md5(password).toString()/* + salt.toString()*/);
 		  var upateParms = {id: id, username: username, password: saltPassword, roleId: roleId };
 		  var newParms = {username: username, password: saltPassword, roleId: roleId };
 		  var parms = id ? upateParms : newParms;
