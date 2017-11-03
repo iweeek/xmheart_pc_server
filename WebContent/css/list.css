@@ -267,7 +267,7 @@
 
 .article{ padding:0px 18px;font-size:14px;}
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:2em;}
+.article p{text-indent:0em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
@@ -584,7 +584,7 @@ a.blue{ background:#79a9b8;}
 #AreaDuty .visitList .namelist .list01 a:hover{ background:#ff7544; color:#fff;}
 
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:2em;}
+.article p{text-indent:0em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
