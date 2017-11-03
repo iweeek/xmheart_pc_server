@@ -70,10 +70,10 @@ exports.XPW.videoEdit = (function() {
   
   videoEdit.addVideo = function () {
 	  $('.add-list-main').on('click', '#addVideoBtn', function (){
-		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		  $(this).siblings('.upload-form').find('.add-video-file').trigger('click');
 	  })
-	  $('.add-list-main').on('change', '.add-img-file', function (){
-		  $(this).siblings('.add-img-submit').trigger('click');
+	  $('.add-list-main').on('change', '.add-video-file', function (){
+		  $(this).siblings('.add-video-submit').trigger('click');
 	  })
 	  $('.js-upload-form').submit(function(){
 		  $this = $(this);
@@ -103,7 +103,7 @@ exports.XPW.videoEdit = (function() {
 		  $(this).hide();
 	  })
 	  $('.add-list-main').on('click', '#add-video-edit', function (){
-		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		  $(this).siblings('.upload-form').find('.add-video-file').trigger('click');
 	  })
   }
   
@@ -230,6 +230,8 @@ exports.XPW.videoEdit = (function() {
         if (videoId) {
             videoEdit.getVideos(videoId);
         }
+        $('.add-video-file').hide();
+        $('.add-video-submit').hide();
     }
   
     videoEdit.uploadImg = function () {
