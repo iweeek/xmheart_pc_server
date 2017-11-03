@@ -1,10 +1,10 @@
 <#include "./fragments/_header.ftl">
 	<!-- list container -->
-	<div class="breadcrumb">
+	<!--<div class="breadcrumb">
 		<div class="xm-container">
 			<a href="#">${parentColumnName}</a><i>/</i><span>${columnName}</span>
 		</div>
-	</div>
+	</div>-->
 	<div class="list-container">
 		<div class="list-main">
 			<div class="list-main-nav">
