@@ -27,19 +27,37 @@
 					<div class="swiper-container" id="noticeSwiper">
 				    <div class="swiper-wrapper">
 				        <div class="swiper-slide">
-				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle1Tag}</span>${index.bannerArticle1Title}</h5>
+				        	<h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle1Tag}</span>
+				        	       <#if index.bannerArticle1Title?length lt 20>
+				        	       ${index.bannerArticle1Title}
+				        	       <#else>
+				        	       ${index.bannerArticle1Title[0..20]}......
+				        	       </#if>
+				        	</h5>
 							<p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle1Brief}...
 							<a href="${index.bannerArticle1Url}" title="" class="show-more">查看详细</a>
 							</p>
 				        </div>
 				        <div class="swiper-slide">
-				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle2Tag}</span>${index.bannerArticle2Title}</h5>
+				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle2Tag}</span>
+				                <#if index.bannerArticle2Title?length lt 20>
+                                ${index.bannerArticle2Title}
+                                <#else>
+                                ${index.bannerArticle2Title[0..20]}......
+                                </#if>
+                            </h5>
                             <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle2Brief}...
                             <a href="${index.bannerArticle2Url}" title="" class="show-more">查看详细</a>
                             </p>
 				        </div>
 				        <div class="swiper-slide">
-				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle3Tag}</span>${index.bannerArticle3Title}</h5>
+				            <h5 class="xm-notice-title"><span class="xm-notice-tag">${index.bannerArticle3Tag}</span>
+				                <#if index.bannerArticle3Title?length lt 20>
+                                ${index.bannerArticle3Title}......
+                                <#else>
+                                ${index.bannerArticle3Title[0..20]}......
+                                </#if>
+				            </h5>
                             <p class="xm-notice-info">&nbsp;&nbsp;&nbsp;&nbsp;${index.bannerArticle3Brief}...
                             <a href="${index.bannerArticle3Url}" title="" class="show-more">查看详细</a>
                             </p>
