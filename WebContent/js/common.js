@@ -1,6 +1,8 @@
 // 轮播
 var mySwiper = new Swiper ('#bannerSwiper', {
   loop: true,
+  autoplay : 3000,
+  effect : 'cube',
   paginationClickable :true,
   pagination: '.swiper-pagination'
 })
