@@ -6,8 +6,8 @@ var brief = $('#brief');
 var isAdded = false;
 var videoUrl;
 exports.XPW = exports.EDIT || {};
-exports.XPW.videoEdit = (function() {
-	videoEdit.getUrlParam = function(name) {
+exports.XPW.OnlineVideoEdit = (function() {
+	OnlineVideoEdit.getUrlParam = function(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
 			var r = window.location.search.substr(1).match(reg); // 匹配目标参数
 			if (r != null)
@@ -16,9 +16,9 @@ exports.XPW.videoEdit = (function() {
 			
 	    }
 	
-    function videoEdit() {
-//	  videoEdit.initVideo();
-    	  var id = videoEdit.getUrlParam("videoId");
+    function OnlineVideoEdit() {
+//	  OnlineVideoEdit.initVideo();
+    	  var id = OnlineVideoEdit.getUrlParam("videoId");
 //    	  console.log(id);
     	  if (!id) {
     		  $("#publish").show();
@@ -28,17 +28,17 @@ exports.XPW.videoEdit = (function() {
     		  $("#update").show();
     	  }
 	  // 初始化页面处理。
-    	  videoEdit.init();
-	  videoEdit.addVideo();
-	  videoEdit.publish();
-	  videoEdit.update();
-	  videoEdit.cancel();
-	  videoEdit.uploadImg();
+    	  OnlineVideoEdit.init();
+	  OnlineVideoEdit.addVideo();
+	  OnlineVideoEdit.publish();
+	  OnlineVideoEdit.update();
+	  OnlineVideoEdit.cancel();
+	  OnlineVideoEdit.uploadImg();
 //	  xtIndexEdit.getData();
 //	  xtIndexEdit.pageId = 0;
 //	  xtIndexEdit.postData();
     }
-  videoEdit.initVideo = function (video, imgUrl) {
+  OnlineVideoEdit.initVideo = function (video, imgUrl) {
 	  var videoSrc = video || '';
 	  videoUrl = videoSrc;
 //	  console.log(videoUrl);// TODO
@@ -68,12 +68,12 @@ exports.XPW.videoEdit = (function() {
 	  isAdded = true;
   }
   
-  videoEdit.addVideo = function () {
+  OnlineVideoEdit.addVideo = function () {
 	  $('.add-list-main').on('click', '#addVideoBtn', function (){
-		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		  $(this).siblings('.upload-form').find('.add-video-file').trigger('click');
 	  })
-	  $('.add-list-main').on('change', '.add-img-file', function (){
-		  $(this).siblings('.add-img-submit').trigger('click');
+	  $('.add-list-main').on('change', '.add-video-file', function (){
+		  $(this).siblings('.add-video-submit').trigger('click');
 	  })
 	  $('.js-upload-form').submit(function(){
 		  $this = $(this);
@@ -81,7 +81,7 @@ exports.XPW.videoEdit = (function() {
 			  success: function (responseText) {
 				  var video = responseText;
 				  videoUrl = video;
-				  videoEdit.initVideo(video);
+				  OnlineVideoEdit.initVideo(video);
 //				  "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 //				  $this.siblings('.add-image-url').find('.upload-img').attr('src', img);
 				  $this.siblings('.add-image-button').hide();
@@ -103,11 +103,11 @@ exports.XPW.videoEdit = (function() {
 		  $(this).hide();
 	  })
 	  $('.add-list-main').on('click', '#add-video-edit', function (){
-		  $(this).siblings('.upload-form').find('.add-img-file').trigger('click');
+		  $(this).siblings('.upload-form').find('.add-video-file').trigger('click');
 	  })
   }
   
-  videoEdit.valid = function (params, type) {
+  OnlineVideoEdit.valid = function (params, type) {
 
 	if (!params.title) {
 		sweetAlert("信息不完整", "请填写标题", "error");
@@ -126,7 +126,7 @@ exports.XPW.videoEdit = (function() {
 	return true;
   }
   
-    videoEdit.publish = function () {
+    OnlineVideoEdit.publish = function () {
 	    $('#publish').on('click', function(){
 		    var $this = $(this);
 		    	var imgUrl = $('.upload-img').attr('src');
@@ -141,7 +141,7 @@ exports.XPW.videoEdit = (function() {
 				videoUrl : videoUrl
 			};
 	
-			if (!videoEdit.valid(params, 'publish')) {
+			if (!OnlineVideoEdit.valid(params, 'publish')) {
 				return;
 			}
 			$this.attr('disabled', 'disabled');
@@ -150,14 +150,14 @@ exports.XPW.videoEdit = (function() {
 				$this.removeAttr('disabled');
 				
 				swal({
-					title : "上传成功",
-					type : "success",
-					confirmButtonColor : "#8cd4f5",
-					confirmButtonText : "确定",
-					closeOnConfirm : true
-					}).then(function () {
-					 
-					});
+				    title : "上传成功",
+                    type : "success",
+                    confirmButtonColor : "#8cd4f5",
+                    confirmButtonText : "确定",
+                    closeOnConfirm : true
+                }, function() {
+//                    location.reload(true);
+                });
 			}).error(function() {
 				$this.removeAttr('disabled');
 				sweetAlert("哎呀", "服务器开小差了~请稍后再试", "error");
@@ -167,7 +167,7 @@ exports.XPW.videoEdit = (function() {
   	    });
     }
     
-    videoEdit.update = function () {
+    OnlineVideoEdit.update = function () {
 	    $('#update').on('click', function(){
 		    var $this = $(this);
 		    var imgUrl = $('.upload-img').attr('src');
@@ -179,7 +179,7 @@ exports.XPW.videoEdit = (function() {
 				videoUrl : videoUrl
 			};
 	
-			if (!videoEdit.valid(params, 'update')) {
+			if (!OnlineVideoEdit.valid(params, 'update')) {
 				return;
 			}
 			$this.attr('disabled', 'disabled');
@@ -202,13 +202,13 @@ exports.XPW.videoEdit = (function() {
   	    });
     }
     
-    videoEdit.cancel = function () {
+    OnlineVideoEdit.cancel = function () {
 	    $('#cancel').on('click', function(){
 	    		window.history.go(-1);
   	    });
     }
   
-    videoEdit.getVideos = function(videoId) {
+    OnlineVideoEdit.getVideos = function(videoId) {
     		var url = '/onlineVideos/' + videoId;
         $.get(url, function (res) {
             $('#videoTitle').val(res.title);
@@ -216,7 +216,7 @@ exports.XPW.videoEdit = (function() {
 //            $('#upload-img').attr('src', res.imageUrl);
 //            console.log(res.videoUrl);
             videoUrl = res.videoUrl;
-            videoEdit.initVideo(res.videoUrl, res.imgUrl);
+            OnlineVideoEdit.initVideo(res.videoUrl, res.imgUrl);
             $('#upload-img').attr('src', res.imgUrl);
             $('#add-image-url').show();
             $('#add-video-url').show();
@@ -225,14 +225,16 @@ exports.XPW.videoEdit = (function() {
         });
     }
 		
-    videoEdit.init = function() {
-    		videoId = videoEdit.getUrlParam('videoId');
+    OnlineVideoEdit.init = function() {
+    		videoId = OnlineVideoEdit.getUrlParam('videoId');
         if (videoId) {
-            videoEdit.getVideos(videoId);
+            OnlineVideoEdit.getVideos(videoId);
         }
+        $('.add-video-file').hide();
+        $('.add-video-submit').hide();
     }
   
-    videoEdit.uploadImg = function () {
+    OnlineVideoEdit.uploadImg = function () {
 		$('.add-img-list').on('click', '#addImgBtn', function (){
 			$(this).siblings('.upload-form').find('.add-img-file').trigger('click');
 		})
@@ -245,7 +247,7 @@ exports.XPW.videoEdit = (function() {
 				success: function (responseText) {
 					var img = responseText;
 					$this.siblings('.add-image-url').find('.upload-img').attr('src', img);
-					videoEdit.initVideo(videoUrl, img);
+					OnlineVideoEdit.initVideo(videoUrl, img);
 					$this.siblings('.add-image-button').hide();
 					$this.siblings('.add-image-url').show();
 				}
@@ -263,61 +265,9 @@ exports.XPW.videoEdit = (function() {
 		})
     }
     
-//  xtIndexEdit.getData = function () {
-//	  $.get('/xtIndexPage',function(data){
-//		  IndexEdit.pageId = data.id;
-//		  if(data.bannerImage1Url) {
-//			  $('.add-img-list').eq(0).find('.add-image-url img').attr('src', data.bannerImage1Url);
-//			  $('.add-img-list').eq(0).find('.add-image-button').hide();
-//			  $('.add-img-list').eq(0).find('.add-image-url').show();
-//		  }
-//		  if (data.bannerImage1ActionUrl) {
-//			  $('.add-img-list').eq(0).find('.add-img-link input').val(data.bannerImage1ActionUrl);
-//		  }
-//		  if(data.bannerImage2Url) {
-//			  $('.add-img-list').eq(1).find('.add-image-url img').attr('src', data.bannerImage1Url);
-//			  $('.add-img-list').eq(1).find('.add-image-button').hide();
-//			  $('.add-img-list').eq(1).find('.add-image-url').show();
-//		  }
-//		  if (data.bannerImage2ActionUrl) {
-//			  $('.add-img-list').eq(1).find('.add-img-link input').val(data.bannerImage1ActionUrl);
-//		  }
-//		  if(data.bannerImage3Url) {
-//			  $('.add-img-list').eq(2).find('.add-image-url img').attr('src', data.bannerImage1Url);
-//			  $('.add-img-list').eq(2).find('.add-image-button').hide();
-//			  $('.add-img-list').eq(2).find('.add-image-url').show();
-//		  }
-//		  if (data.bannerImage3ActionUrl) {
-//			  $('.add-img-list').eq(2).find('.add-img-link input').val(data.bannerImage1ActionUrl);
-//		  }
-//	  });
-//  }
-//  xtIndexEdit.postData = function () {
-//	  $('.search-button').on('click', function(){
-//		  var parms = {
-//		    bannerImage1Url: $('.add-img-list').eq(0).find('.add-image-url img').attr('src'),
-//			bannerImage1ActionUrl: $('.add-img-list').eq(0).find('.add-img-link input').val(),
-//			bannerImage2Url: $('.add-img-list').eq(1).find('.add-image-url img').attr('src'),
-//			bannerImage2ActionUrl: $('.add-img-list').eq(1).find('.add-img-link input').val(),
-//			bannerImage3Url: $('.add-img-list').eq(2).find('.add-image-url img').attr('src'),
-//			bannerImage3ActionUrl: $('.add-img-list').eq(2).find('.add-img-link input').val()
-//		  };
-//		  var url = 'xtIndexPage/'+ xtIndexEdit.pageId;
-//		  $.ajax({
-//			  url: url,
-//		      type: 'put',
-//		      dataType: 'json',
-//		      data: parms
-//		    })
-//		   .done(function(data) {
-//			   swal('更新成功');
-//		   })
-//	  });
-//  }
-
-  return videoEdit;
+  return OnlineVideoEdit;
 })();
 
 $(function() {
-	exports.XPW.videoEdit();
+	exports.XPW.OnlineVideoEdit();
 })

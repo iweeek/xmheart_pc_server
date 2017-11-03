@@ -237,7 +237,7 @@ $(function() {
                     '.edit-btn',
                     function() {
                         var videoId = $(this).data('id');
-                        location.href = 'video_edit.html?videoId='
+                        location.href = 'online_video_edit.html?videoId='
                                 + videoId;
                     });
 
