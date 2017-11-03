@@ -38,7 +38,7 @@
                     <a href="#" class="header-icon-weibo"></a>
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
-                <div class="header-search">
+                <!--<div class="header-search">
                 		<div class="search-type-wrapper">
                 			<div class="search-type" id="searchType">全部内容</div>
                 			<ul class="search-type-list" id="searchTypeList">
@@ -53,7 +53,7 @@
                     		<input type="text" name="keywords" id="searchValInput" class="header-search-text">
                     		<input type="submit" class="header-search-button">
                     </form>
-                </div>
+                </div>-->
             </div>
         </div>
         
