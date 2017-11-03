@@ -72,7 +72,7 @@
                             <#else>
                                 <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
                                     <#list columnMap as kc, vc>
-                                    <#if kc == key && !(key?index == 5 || key?index == 6 || key?index == 7 || key?index == 8) >
+                                    <#if kc == key && !(key?index == 5 || key?index == 6 || key?index == 8) >
                                          <div class="navboxBase">
                                              <div class="navboxBg">
                                                  <div class="navbox BaseMark">
@@ -103,9 +103,9 @@
                                                         <!--<a href="${nav.url}" title="${nav.articleTitle}">${nav.articleTitle}</a>-->
                                                     <p class="first hospital-desc">
                                                         <#if nav.brief?length lt 120>
-                                                           &#8195;&#8195;${nav.brief}......
+                                                           ${nav.brief}......
                                                         <#else>
-                                                           &#8195;&#8195;${nav.brief[0..120]}......
+                                                           ${nav.brief[0..120]}......
                                                         </#if>
                                                     </p>
                                                         <a href="${nav.url}" class="more">查看详细</a>
@@ -115,7 +115,7 @@
                                                     </#list>
                                                     </#if>   
                        
-                                                    <#if key?index == 4>
+                                                    <#if key?index == 4 || key?index == 7>
                                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                                     <#list secondColNavMap as skey, sv>
                                                         <#if skey == vc[0].columnName>
