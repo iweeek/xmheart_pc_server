@@ -170,15 +170,15 @@ $(function(){
   	if($t.data("type")=="0"){
   		$("#EMChange img").stop().animate({"left":"-5px"},288);
   		$("#FontState").text("14px");
-  		$("#DIVContent").find('*').css({"font-size":"14px","line-height":"24px"});
+  		$("#DIVContent").find('*').css({"font-size":"14px"});
   	}else if($t.data("type")=="1"){
   		$("#EMChange img").stop().animate({"left":"40px"},288);
   		$("#FontState").text("16px");
-  		$("#DIVContent").find('*').css({"font-size":"16px","line-height":"24px"});
+  		$("#DIVContent").find('*').css({"font-size":"16px"});
   	}else{
   		$("#EMChange img").stop().animate({"left":"86px"},288);
   		$("#FontState").text("18px");
-  		$("#DIVContent").find('*').css({"font-size":"18px","line-height":"24px"});
+  		$("#DIVContent").find('*').css({"font-size":"18px"});
   	}
   });
   
