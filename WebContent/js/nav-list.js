@@ -67,7 +67,7 @@ exports.XPW.NavEdit = (function() {
 		     var firstColumnTemplate = $('#firstColumnTemplate').html();
 		     Mustache.parse(firstColumnTemplate);   // optional, speeds up future uses
 		     var rendered = Mustache.render(firstColumnTemplate, {
-		    	 	data:data
+		    	 	data:data,
 		    	 });
 		     $('#typeSelectInput').html(rendered);
 		   });
@@ -100,7 +100,13 @@ exports.XPW.NavEdit = (function() {
     	    		var secondColumnTemplate = $('#secondColumnTd').html();
     	    	    Mustache.parse(secondColumnTemplate);   // optional, speeds up future uses
     	    	    var rendered = Mustache.render(secondColumnTemplate, {
-    	    	    		data:data
+    	    	    		data : data,
+    	    	    		isDisplayed : function() {  
+                    if (!(this.childColumnId == 23 || this.childColumnId == 22)) {
+                        return true;  
+                    }  
+                    return false;  
+    	            }
     	    	    	});
     	    	    $('#secondTable').html(rendered);
     		} else {
