@@ -37,7 +37,7 @@ public class UpdateTask {
    
 //    @RequestMapping(value = { "/test" }, method = RequestMethod.POST)
 //    public ResponseEntity<?> job()   {  
-    @Scheduled(cron = "0 0 1 * * ?")
+    @Scheduled(cron = "* * */1 * * *")
     public void job()   {  
         // 电子院报
         List<XPWElecNewspaper> lastestNewspaper = newspaperService.indexLastest();
