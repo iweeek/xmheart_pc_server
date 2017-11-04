@@ -129,4 +129,10 @@ public interface XPWArticleMapper {
         "where a.column_id = b.id and a.id = #{id,jdbcType=BIGINT}" })
     @ResultMap("com.xmheart.mapper.XPWArticleMapper.ResultMapWithBLOBsAndFirstColumn")
     XPWArticle selectWithFirstColumnByPrimaryKey(Long id);
+    
+    @Select({"SELECT a.id, a.url, a.title, a.publish_time, a.pin_order, a.is_pinned, a.img_url, a.column_name, a.brief\n" + 
+            "from xpw_article as a where is_published = 1 and title like '%${title}%' \n" + 
+            "order by is_pinned desc, pin_order asc, publish_time desc"}) 
+    @ResultMap("com.xmheart.mapper.XPWArticleMapper.BaseResultMap")
+    List<XPWArticle> selectArticleByTitle(@Param("title") String title);
 }

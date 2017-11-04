@@ -65,11 +65,13 @@ public class NewsController {
 
 	@Autowired
 	private VideoService videoService;
+	
     @Autowired
     private OnlineVideoService onlinevideoService;
 
 	@Autowired
 	private DoctorAndDeptService doctorAndDeptService;
+	
     @Autowired
     private TeacherTeamService teacherTeamService;
 	
@@ -603,12 +605,12 @@ public class NewsController {
 		return "index";
 	}
 	
-	@RequestMapping(value = {"/search" }, method = RequestMethod.GET)
-	public String search(Model model) {
-		model = addTopNav(1, model);
-
-		return "search";
-	}
+//	@RequestMapping(value = {"/search" }, method = RequestMethod.GET)
+//	public String search(Model model) {
+//		model = addTopNav(1, model);
+//
+//		return "search";
+//	}
 	
 
 	@RequestMapping(value = { "/xtIndex" }, method = RequestMethod.GET)

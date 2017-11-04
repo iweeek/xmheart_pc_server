@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.xmheart.mapper.XPWDeptMapper;
 import com.xmheart.mapper.XPWDoctorMapper;
+import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWArticleExample;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDeptExample;
 import com.xmheart.model.XPWDoctor;
@@ -101,4 +103,9 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
         return ret;
     }
 
+    @Override
+    public List<XPWDoctor> searchDoctorByName(String name) {
+        List<XPWDoctor> list = xpwDoctorMapper.selectDoctorByName(name);
+        return list;
+    }
 }
