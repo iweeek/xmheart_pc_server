@@ -1,5 +1,6 @@
 package com.xmheart.mapper;
 
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWDoctorExample;
 import java.util.List;
@@ -104,4 +105,6 @@ public interface XPWDoctorMapper {
 	@ResultMap(value = { "doctorWithDeptMap" })
     XPWDoctor selectDoctorWithDeptByPrimaryKey(@Param("id") long id);
 	
+    @Select({ "SELECT * from xpw_doctor where is_displayed = 1 and name like '%${keywords}%' \n"})
+    List<XPWDoctor> selectDoctorByName(@Param("keywords") String keywords);
 }

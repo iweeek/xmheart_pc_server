@@ -1,6 +1,8 @@
 package com.xmheart.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.xmheart.model.XPWArticle;
 
@@ -38,4 +40,6 @@ public interface ArticleService {
     List<XPWArticle> showByColNameAndKey(String columnName, String keyword);
 
     Byte getMaxPinOrder();
+
+    List<XPWArticle> searchArticleByTitle(String title);
 }

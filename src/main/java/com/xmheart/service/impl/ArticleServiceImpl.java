@@ -1,6 +1,11 @@
 package com.xmheart.service.impl;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,6 +87,12 @@ public class ArticleServiceImpl implements ArticleService {
         example.createCriteria().andIsPublishedEqualTo(isPublished).andColumnIdEqualTo(columnId);
         example.setOrderByClause("is_pinned desc, pin_order asc, publish_time desc");
         List<XPWArticle> list = articleMapper.selectByExample(example);
+        return list;
+    }
+    
+    @Override
+    public List<XPWArticle> searchArticleByTitle(String title) {
+        List<XPWArticle> list = articleMapper.selectArticleByTitle(title);
         return list;
     }
 

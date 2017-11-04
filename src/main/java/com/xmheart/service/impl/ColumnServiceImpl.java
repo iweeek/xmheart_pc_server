@@ -116,7 +116,11 @@ public class ColumnServiceImpl implements ColumnService {
 
     @Override
     public XPWColumn getParentColumnById(long id) {
-        long parentId = xpwColumnMapper.selectByPrimaryKey(id).getParentColumnId();
+        Long parentId = 0l;
+        XPWColumn col = xpwColumnMapper.selectByPrimaryKey(id);
+        if (col != null) {
+            parentId = col.getParentColumnId();
+        }
         XPWColumn column = xpwColumnMapper.selectByPrimaryKey(parentId);
         return column;
     }
