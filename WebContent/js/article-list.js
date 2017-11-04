@@ -234,7 +234,8 @@ $(function() {
                             confirmButtonText : "确定！",
                             closeOnConfirm : false
                         }, function() {
-                            location.reload()
+                        		var url = 'article-list.html?col=' + ctrl.col;
+                        		location.href = url;
                         });
                     });
                 }
