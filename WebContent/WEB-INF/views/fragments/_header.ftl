@@ -48,7 +48,7 @@
                 				<#--<li data-id="4">科室查找</li>-->
                 			</ul>
                 		</div>
-                		<form action="search" method="get" onsubmit="return CheckSearchForm()">
+                		<form action="/search" method="get" onsubmit="return CheckSearchForm()">
                 			<input type="hidden" name="type" id="searchTypeInput" value="3">
                     		<input type="text" name="keywords" id="searchValInput" class="header-search-text">
                     		<input type="submit" class="header-search-button">

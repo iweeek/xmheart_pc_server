@@ -72,6 +72,14 @@ public class ColumnServiceImpl implements ColumnService {
 		}
 		return list;
 	}
+	
+    @Override
+    public List<XPWNav> getNavsByChildColumnIdOrderByPublishTime(long id) {
+        XPWNavExample example = new XPWNavExample();
+        example.createCriteria().andChildColumnIdEqualTo(id);
+        List<XPWNav> list = xpwNavMapper.selectByExample(example);
+        return list;
+    }
 
 	@Override
 	public List<XPWNav> getNavListBySecondColumnName(String name) {

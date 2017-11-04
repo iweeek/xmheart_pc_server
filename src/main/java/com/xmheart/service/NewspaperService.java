@@ -19,4 +19,6 @@ public interface NewspaperService {
 
     XPWElecNewspaper read(Long id);
 
+    List<XPWElecNewspaper> indexLastest();
+
 }
