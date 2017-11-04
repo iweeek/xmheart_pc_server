@@ -61,7 +61,7 @@
 				<div class="chestListLink top20">
 					<#list value as secCol>
             			<#list thirdColList as key1, value1>
-               				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}</a>
+               			<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}</a>
                 		</#list>
                 	</#list>
 				</div>
@@ -105,7 +105,7 @@
 				<li>
 					<div class="newsDate">${new.publishTime?string('yyyy/MM/dd')}</div>
 					<a class="newsTitle" target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
-					<a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
+					<a target="_blank" href="${new.url}" title="${new.brief}">${new.brief}</a>
 				</li>
 				</#if>
 				</#list>
