@@ -1,5 +1,6 @@
 package com.xmheart.mapper;
 
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWVideoExample;
 import java.util.List;
@@ -93,4 +94,7 @@ public interface XPWVideoMapper {
             "is_published = #{isPublished,jdbcType=TINYINT},", "publish_time = #{publishTime,jdbcType=TIMESTAMP}",
             "where id = #{id,jdbcType=BIGINT}" })
     int updateByPrimaryKey(XPWVideo record);
+    
+    @Select("SELECT * FROM xpw_video where is_published = 1 ORDER BY publish_time desc")
+    List<XPWVideo> selectLastest();
 }

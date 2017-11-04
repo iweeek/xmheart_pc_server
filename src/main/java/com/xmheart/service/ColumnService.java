@@ -93,5 +93,6 @@ public interface ColumnService {
 
     List<XPWNav> getNavList();
 
+    List<XPWNav> getNavsByChildColumnIdOrderByPublishTime(long id);
 
 }

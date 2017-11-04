@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.xmheart.mapper.XPWVideoMapper;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWVideoExample;
 import com.xmheart.service.VideoService;
@@ -54,4 +55,10 @@ public class VideoServiceImpl implements VideoService {
 
         return list;
 	}
+
+    @Override
+    public List<XPWVideo> indexLastest() {
+        List<XPWVideo> list = videoMapper.selectLastest();
+        return list;
+    }
 }

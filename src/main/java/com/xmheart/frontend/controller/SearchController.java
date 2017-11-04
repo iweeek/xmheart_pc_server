@@ -70,23 +70,6 @@ public class SearchController {
         return "search";
     }
     
-//    @ApiOperation(value = "医生查找", notes = "医生查找")
-//    @RequestMapping(value = { "/searchDoctors" }, method = RequestMethod.GET)
-//    public String searchDoctors(Model model, @ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer page,
-//            @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-//            @ApiParam("医生名字") @RequestParam(required = false) String keywords) {
-//        
-//        PageHelper.startPage(page, pageSize);
-//        List<XPWDoctor> list = doctorAndDeptService.indexDoctorNameLike(keywords);
-//        model.addAttribute("doctorList", list);
-//        model.addAttribute("keywords", keywords);
-//        
-//        PageInfo pageInfo = new PageInfo<>(list);
-//        model.addAttribute("pageInfo", pageInfo);
-//        
-//        return "search";
-//    }
-    
     private Model addTopNav(long columnId, Model model) {
 
         List<XPWColumn> columnList = columnService.getTopFirstColumns();

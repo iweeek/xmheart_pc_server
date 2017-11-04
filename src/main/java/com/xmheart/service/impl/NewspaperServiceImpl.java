@@ -32,11 +32,17 @@ public class NewspaperServiceImpl implements NewspaperService {
         List<XPWElecNewspaper> list = newspaperMapper.selectByExample(null);
         return list;
     }
+    
+    @Override
+    public List<XPWElecNewspaper> indexLastest() {
+        List<XPWElecNewspaper> list = newspaperMapper.selectLastest();
+        return list;
+    }
 
     @Override
     public XPWElecNewspaper read(Long id) {
         XPWElecNewspaper newspaper = newspaperMapper.selectByPrimaryKey(id);
         return newspaper;
     }
-	
+
 }

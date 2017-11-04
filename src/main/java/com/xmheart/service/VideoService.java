@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWElecNewspaper;
 import com.xmheart.model.XPWVideo;
 
 
@@ -22,4 +23,6 @@ public interface VideoService {
     XPWVideo read(Long id);
     
     List<XPWVideo> index(boolean isPublished);
+    
+    List<XPWVideo> indexLastest();
 }

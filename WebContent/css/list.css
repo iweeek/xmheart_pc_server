@@ -786,6 +786,8 @@ a.blue{ background:#79a9b8;}
 .emaillist .newsItem .headLines p a{color:#666}
 .emaillist .newsItem .headLines h2 a{display:block;height:36px;overflow:hidden;font-size:16px;line-height:36px}
 .emaillist .newsItem .headLines h2 a:hover{text-decoration:underline}
+.emaillist .newsItem .headLines h2{font-size: medium}
+.emaillist .newsItem .headLines p{font-size: small}
 .emaillist .newsItem .date{width:18%;float:left;margin-left:10.5%}
 .emaillist .newsItem .date h3{font-size:14px;line-height:30px}
 .emaillist .newsItem .date h4{font-size:12px;color:#8c8c8c}
