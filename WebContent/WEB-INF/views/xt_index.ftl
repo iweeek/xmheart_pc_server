@@ -1,182 +1,117 @@
 <#include "./fragments/_header.ftl"> 
 	<!-- list container -->
-	<div class="breadcrumb">
-		<div class="xm-container xt-container">
-			<span class="icon"></span><a href="#">您当前所在位置 胸痛中心</a>
-		</div>
-	</div>
-	<div class="list-container">
-		<div class="bannerBase BaseMark">
-      <div class="quickMenus">
-      	<div class="xt-logo-wrapper">
-      		<div class="xt-logo-img"><img src="/img/layout/xt_logo.jpg"></div>
-      		<div class="xt-logo-font">国家胸痛中心</div>
-      		<div class="xt-logo-font">区域认证中心（厦门）</div>
-      	</div>
-        <ul class="firstUl">
-        
-          <li class="first">
-          <#list secondColList as key, value>
-                <#if key == "认证中心">
-                <#list xtfirstColumns as xtkey, xtvalue>
-                <#if xtkey == key>
-            <a href="${xtvalue}" class="firstA">
-              <em>${xtkey}</em>
-                </#if>
-                </#list>
-              <i class="style01"></i>
-              <span></span>
-            </a>
-            
-            <div class="QMSub QMSubMenus" style="top: -12px; display: none;">           
-               <ul>
-              
-            		<#list value as secCol >
-            			<#list thirdColList as key1, value1>     		
-                			<#if key1 == secCol.columnName>
-                			<li class="second">
-                				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>             			
-                				<div class="third-menus">
-                					<ul>
-                						<#list value1 as thirdCol>
-                						<li><a href="${thirdCol.url}" title="${thirdCol.columnName}">${thirdCol.columnName}<span>进入</span></a></li>
-                						</#list>
-                					<ul>
-                				</div>
-                			</li>          		
-                			<#else>
-                			<li>
-               					<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>
-                			</li>
-                			</#if>
+	<div class="chestCenterBg"></div>
+	<div class="chestContainer">
+		<ul class="chestCenter3Col clearfix_n">
+			<li>
+			<#list secondColList as key, value>
+				<#if key == "认证中心">
+				<div class="chestListTitle">
+					<span class="chestIcon1"></span>
+					<#list xtfirstColumns as xtkey, xtvalue>
+						<#if xtkey == key>
+						<em>${xtkey}</em>
+						</#if>
+					</#list>
+				</div>
+				<div class="chestListLink">
+					<#list value as secCol>
+            			<#list thirdColList as key1, value1>
+               				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}</a>
                 		</#list>
                 	</#list>
-                </#if>
-              </#list>
-              </ul>
-              <div class="clear"></div>
-            </div>
-          </li>
-          <li class="first">
-          <#list secondColList as key, value>
-                 <#if key== "示范中心" >
-                 <#list xtfirstColumns as xtkey, xtvalue>
-                <#if xtkey == key>
-            <a href="${xtvalue}" target="_blank" class="firstA"><em>${xtkey}</em>
-            </#if>
-                </#list>
-            <i class="style02"></i><span></span></a>
-            <div class="QMSub QMSubMenus" style="top: -73px; display: none;">
-              <ul>
-              
-             		 <#list value as secCol >
-               		 <li>
-                	  <a href="${secCol.url}">${secCol.columnName}<span>进入</span></a>
-              		 </li>
-              		 </#list>
-              	 </#if>
-              </#list>
-              </ul>
-              <div class="clear"></div>
-            </div>
-          </li>
-          <li class="first">
-          <#list secondColList as key, value>
-                <#if key == "胸痛中心动态" >
-                <#list xtfirstColumns as xtkey, xtvalue>
-                <#if xtkey == key>
-            <a href="${xtvalue}" class="firstA"><em>${xtkey}</em>
-            </#if>
-                </#list>
-                <i class="style03"></i><span></span></a>
-            <div class="QMSub QMSubMenus" style="top: -134px; display: none;">
-              <ul>
-              
-             	 <#list value as secCol >
-                	<li>
-                 	 <a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}<span>进入</span></a>
-               	 	</li>
-                 </#list>
-                </#if>
-         	  </#list>
-              </ul>            
-              <div class="clear"></div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="Banners">
-        <div class="swiper-container xt-swiper" id="xtSwiper">
-          <div class="swiper-wrapper">
-              <div class="swiper-slide"><a href="${index.bannerImage1ActionUrl}"><img src="${index.bannerImage1Url}" alt=""></a></div>
-              <div class="swiper-slide"><a href="${index.bannerImage2ActionUrl}"><img src="${index.bannerImage2Url}" alt=""></a></div>
-              <div class="swiper-slide"><a href="${index.bannerImage3ActionUrl}"><img src="${index.bannerImage3Url}" alt=""></a></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </div>
-    <div class="NewsBase BaseMark">
-      <div class="noticeBase">
-        
-        <#list navMap as key, news>
-        <#if key == "胸痛中心简介">
-        <div class="notice notice01">
-          <a href="XTindex-list.html" class="more">更多</a>
-          <div class="title"><em>${key}</em><span>Latest Announcement</span></div>
-            <#list news as new>
-        	<#if new?index == 0>
-            <div class="first">
-            <a href="${new.url}" id="ANoticeFirst" target="_blank" title="${new.articleTitle}">
-              <img src="image/pic_005.jpg" class="load" width="126" height="76" original="image/pic_005.jpg" style="display: block;"></a>
-              <div>
-                <span>${new.publishTime?string('yyyy-MM-dd')}</span>
-                <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
-              </div>
-              <div class="clear"></div>
-          </div>
-          <ul>
-          <#else>
-            <li>
-              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
-              <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
-            </li>
-            </#if>
-           </#list>
-          </ul>
-        </div>
-        </#if>
-        </#list>
-        
-        <#list navMap as key, news>
-        <#if key == "胸痛认证标准">
-        <div class="notice notice02">
-          <a href="XTindex-list.html" class="more">更多</a>
-          <div class="title"><em>${key}</em><span>Hospital News</span></div>
-          <#list news as new>
-        	<#if new?index == 0>
-          <div class="first">
-            <a href="${new.url}" id="ANewsFirst" target="_blank" title="${new.articleTitle}"><img src="pic/pic_005.jpg" class="load" width="126" height="76" original="pic/pic_005.jpg" style="display: block;"></a>
-            <div>
-              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
-              <a href="${new.url}" title="${new.articleTitle}" target="_blank">${new.articleTitle}</a>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <ul>
-          <#else>
-            <li>
-              <span>${new.publishTime?string('yyyy-MM-dd')}</span>
-              <a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
-            </li>
-            </#if>
-           </#list>        
-          </ul>
-        </div>
-        </#if>
-        </#list>
-      </div>
-      <div class="clear"></div>
-    </div>
+				</div>
+				</#if>
+			</#list>
+			</li>
+			
+			<li class="chestCenter3Col_li2">
+			<#list secondColList as key, value>
+				<#if key == "示范中心">
+				<div class="chestListTitle">
+					<span class="chestIcon2"></span>
+					<#list xtfirstColumns as xtkey, xtvalue>
+						<#if xtkey == key>
+						<em>${xtkey}</em>
+						</#if>
+					</#list>
+				</div>
+				<div class="chestListLink top20">
+					<#list value as secCol>
+            			<#list thirdColList as key1, value1>
+               				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}</a>
+                		</#list>
+                	</#list>
+				</div>
+				</#if>
+			</#list>
+			</li>	
+			
+			<li>
+			<#list secondColList as key, value>
+				<#if key == "胸痛中心动态">
+				<div class="chestListTitle">
+					<span class="chestIcon3"></span>
+					<#list xtfirstColumns as xtkey, xtvalue>
+						<#if xtkey == key>
+						<em>${xtkey}</em>
+						</#if>
+					</#list>
+				</div>
+				<div class="chestListLink top20">
+					<#list value as secCol>
+            			<#list thirdColList as key1, value1>
+               				<a href="${secCol.url}" title="${secCol.columnName}">${secCol.columnName}</a>
+                		</#list>
+                	</#list>
+				</div>
+				</#if>
+			</#list>
+			</li>			
+		</ul>
+		<div class="clear"></div>
+		
+		<h3 class="chestCenterTitle_30">胸痛中心简介</h3>
+		<div class="chestCenterInfo_l">
+			<h5>我们的成长故事</h5>
+			<p>2013年，厦门大学附属心血管病医院在市委市政府的大力支持和市科技局、市卫生计生委的帮助下，设立胸痛中心，牵头启动区域协同胸痛急救网络，并获厦门市重大科技创新平台资助。</p>
+			<p>2015年底，该体系再获认可，经中华医学会心血管病学分会下设的中国胸痛中心协会认定，厦门市心血管病医院获批设立“国家胸痛中心区域认证中心”，在全国范围内仅有四家。并于2016年举办“加速推进中国胸痛中心系统化建设”项目区域认证中心启动会，未来三年将与其它三家认证中心共同承担全国千家胸痛中心的认证工作，同时承担华东区域胸痛中心建设的培训、推进重任。</p>
+			<p>2017年，在市卫生计生委的组织下，由厦门大学附属心血管病医院牵头的厦门市胸痛中心联盟正式成立，16家厦门市二级以上综合性医院（中医医院）组团建设全市覆盖的胸痛中心。</p>
+		</div>
+		<div class="chestCenterInfo_r">
+			<div class="bannerBase BaseMark">
+			  <div class="Banners">
+				<div class="swiper-container xt-swiper" id="xtSwiper">
+				  <div class="swiper-wrapper">
+					  <div class="swiper-slide"><a href="${index.bannerImage1ActionUrl}"><img src="${index.bannerImage1Url}" alt=""></a></div>
+					  <div class="swiper-slide"><a href="${index.bannerImage2ActionUrl}"><img src="${index.bannerImage2Url}" alt=""></a></div>
+					  <div class="swiper-slide"><a href="${index.bannerImage3ActionUrl}"><img src="${index.bannerImage3Url}" alt=""></a></div>
+				  </div>
+				  <div class="swiper-pagination"></div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<div class="clear"></div>		
 	</div>
+		
+	<div class="newsCenter">
+		<h3 class="chestCenterTitle_30">资讯中心</h3>
+		<ul class="clearfix_n">
+			<#list navMap as key, news>
+			<#if key == "胸痛中心简介">
+				<#list news as new>
+				<#if new?index < 3>
+				<li>
+					<div class="newsDate">${new.publishTime?string('yyyy/MM/dd')}</div>
+					<a class="newsTitle" target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
+					<a target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
+				</li>
+				</#if>
+				</#list>
+			</#if>
+			</#list>
+		</ul>
+	</div>
+	
 <#include "./fragments/_footer.ftl">
