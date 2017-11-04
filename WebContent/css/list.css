@@ -267,7 +267,7 @@
 
 .article{ padding:0px 18px;font-size:14px;}
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:0em;}
+.article p{text-indent:2em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
@@ -584,7 +584,7 @@ a.blue{ background:#79a9b8;}
 #AreaDuty .visitList .namelist .list01 a:hover{ background:#ff7544; color:#fff;}
 
 .intro{line-height:26px;padding:30px 18px;}
-.article p{text-indent:0em;}
+.article p{text-indent:2em;}
 .article img{ max-width:100%; height:auto;}
 .article .QRcode{ text-align:center; margin-top:45px;}
 .article .QRcode img{ width:95px; height:95px; padding:2px; border:1px #e1e1e1 solid;}
@@ -718,6 +718,47 @@ a.blue{ background:#79a9b8;}
 .NewsBase .noticeBase ul li{ width:100%; height:22px; line-height:22px; overflow:hidden;}
 .NewsBase .noticeBase ul li span{ padding-right:12px; color:#bda179;}
 .NewsBase .noticeBase ul li a:hover{ text-decoration:underline;}
+
+/* 胸痛中心 - 1104 */
+.chestCenterBg{width:1220px; height:450px; background: url(../img/layout/chestCenterBg.jpg) 0 0 no-repeat; background-size:100% 100%; display:block; margin:10px auto;}
+.chestContainer,.newsCenter ul{width:1220px; margin: 0 auto;}
+.chestCenter3Col{width:92%; height:150px; margin:-60px 4%; background:#1b5e90;}
+.chestCenter3Col li{width:33.33%; display:inline-block; height:150px; padding:25px 2% 0; float:left; text-align:center; color:#fff;}
+.chestCenter3Col li:hover{background:#145687;}
+.chestCenter3Col_li2{background:#246a9e;}
+.chestCenter3Col li .chestListTitle{display: block; height: 48px; line-height: 48px; white-space: nowrap; font-size:18px; font-weight:bold; margin-bottom:10px;}
+.chestCenter3Col li .chestListTitle .chestIcon1,.chestCenter3Col li .chestListTitle .chestIcon2,.chestCenter3Col li .chestListTitle .chestIcon3{width:55px; height:48px; display:inline-block; vertical-align: top; background: url(../img/layout/chestIcon.png) 0 0 no-repeat;}
+.chestCenter3Col li .chestListTitle .chestIcon2{background-position:0 -100px;}
+.chestCenter3Col li .chestListTitle .chestIcon3{background-position:0 -200px;}
+.chestCenter3Col li .chestListTitle em{display:inline-block;}
+.chestCenter3Col li .chestListLink a{margin:0 6px; font-size:14px; line-height:24px; color:#fff; white-space:nowrap;}
+.chestCenter3Col li .chestListLink a:hover{color:#91d0ff;}
+.chestCenter3Col li .chestListLink.top20{margin-top:20px;}
+.chestCenterTitle_30{color:#0f76c3; font-size:30px; line-height:40px; padding:40px 0 20px; text-align:center; letter-spacing:5px;}
+.chestCenterInfo_l{width:460px; margin:0 40px 0 80px; float:left;}
+.chestCenterInfo_l h5{font-size:18px; font-weight:bold; color:#333; line-height:30px;}
+.chestCenterInfo_l p{text-indent:20px; font-size:14px; color:#333; line-height:20px; padding-top:5px;}
+.chestCenterInfo_r{width:562px; height:280px; float:left;}
+.chestCenterInfo_r .bannerBase .xt-swiper{ left:0; height:100%; width:562px; height:280px;}
+.chestCenterInfo_r .bannerBase{height:280px;}
+.newsCenter{background:#f1f5f9; margin-top:60px;}
+.newsCenter ul li{width:25.33%; margin:0 4% 40px; float:left;}
+.newsCenter ul li .newsDate{font-size:14px; color:#9fadbb; letter-spacing:3px; padding-bottom:4px;}
+.newsCenter ul li  a{display:block; font-size:14px; color:#666; line-height:24px;}
+.newsCenter ul li  a.newsTitle{color:#333; font-size:16px; font-weight:bold;padding:4px 0;}
+.newsCenter ul li  a:hover{color:#0f76c3;}
+
+.clearfix_n:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix_n{*+height:1%;}
+
+@media all and (min-width:1441px) and (max-width:1920px){
+	.chestCenterBg{width:1500px; height:553px;}
+	.chestContainer,.newsCenter ul{width:1500px;}
+	.chestCenterInfo_l{margin:0 60px 0 140px;}
+	.chestCenterInfo_r{width:640px; height:320px;}
+	.chestCenterInfo_r .bannerBase{height:320px;}
+	.chestCenterInfo_r .bannerBase .xt-swiper{left: 0; width:640px; height:320px;}
+}
 
 /* 党群工作 */
 .party-work .list-nav-title{ background: #d40309 url(../img/list/party_ico.png) 13px center no-repeat; border: 2px solid #d40309;}
