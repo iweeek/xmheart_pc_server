@@ -103,7 +103,7 @@
 				<#list news as new>
 				<#if new?index < 3>
 				<li>
-					<div class="newsDate">${new.publishTime?string('yyyy/MM/dd')}</div>
+					<div class="newsDate">${new.publishTime?string('yyyy-MM-dd')}</div>
 					<a class="newsTitle" target="_blank" href="${new.url}" title="${new.articleTitle}">${new.articleTitle}</a>
 					<a target="_blank" href="${new.url}" title="${new.brief}">${new.brief}</a>
 				</li>

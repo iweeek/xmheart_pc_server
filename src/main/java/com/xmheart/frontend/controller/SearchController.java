@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.HtmlUtils;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -44,13 +48,14 @@ public class SearchController {
     public String search(Model model, @ApiParam("开始页号") @RequestParam(required = false, defaultValue = "1") Integer page,
             @ApiParam("每页的数目") @RequestParam(required = false, defaultValue = "10") Integer pageSize,
             @ApiParam("搜索类型") @RequestParam(required = false, defaultValue = "1") Integer type,
-            @ApiParam("标题名字") @RequestParam(required = false) String keywords) {
+            @ApiParam("搜索关键字") @RequestParam(required = false) String keywords) {
         
         model = addTopNav(1, model);
         PageHelper.startPage(page, pageSize);
         model.addAttribute("keywords", keywords);
         model.addAttribute("type", type);
         model.addAttribute("isSearch", true);
+        keywords = StringEscapeUtils.escapeSql(keywords);
         if (type == 1) {
             
             

@@ -131,8 +131,9 @@ public interface XPWArticleMapper {
     XPWArticle selectWithFirstColumnByPrimaryKey(Long id);
     
     @Select({"SELECT a.id, a.url, a.title, a.publish_time, a.pin_order, a.is_pinned, a.img_url, a.column_name, a.brief\n" + 
-            "from xpw_article as a where is_published = 1 and title like '%${title}%' \n" + 
+//            "from xpw_article as a where is_published = 1 and title like '%${keywords}%'   \n" +
+            "from xpw_article as a where is_published = 1 and title like concat('%', #{keywords, jdbcType=VARCHAR}, '%')   \n" +
             "order by is_pinned desc, pin_order asc, publish_time desc"}) 
     @ResultMap("com.xmheart.mapper.XPWArticleMapper.BaseResultMap")
-    List<XPWArticle> selectArticleByTitle(@Param("title") String title);
+    List<XPWArticle> selectArticleByTitle(@Param("keywords") String keywords);
 }
