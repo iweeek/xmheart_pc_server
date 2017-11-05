@@ -5,7 +5,7 @@
 		<ul class="chestCenter3Col clearfix_n">
 			<li>
 			<#list secondColList as key, value>
-				<#if key == "认证中心">
+				<#if key?index == 0>
 				<div class="chestListTitle">
 					<span class="chestIcon1"></span>
 					<#list xtfirstColumns as xtkey, xtvalue>
@@ -27,7 +27,7 @@
 			
 			<li class="chestCenter3Col_li2">
 			<#list secondColList as key, value>
-				<#if key == "示范中心">
+				<#if key?index == 1>
 				<div class="chestListTitle">
 					<span class="chestIcon2"></span>
 					<#list xtfirstColumns as xtkey, xtvalue>
@@ -49,7 +49,7 @@
 			
 			<li>
 			<#list secondColList as key, value>
-				<#if key == "胸痛中心动态">
+				<#if key?index == 2>
 				<div class="chestListTitle">
 					<span class="chestIcon3"></span>
 					<#list xtfirstColumns as xtkey, xtvalue>
@@ -99,7 +99,6 @@
 		<h3 class="chestCenterTitle_30">资讯中心</h3>
 		<ul class="clearfix_n">
 			<#list navMap as key, news>
-			<#if key == "胸痛中心简介">
 				<#list news as new>
 				<#if new?index < 3>
 				<li>
@@ -109,7 +108,6 @@
 				</li>
 				</#if>
 				</#list>
-			</#if>
 			</#list>
 		</ul>
 	</div>
