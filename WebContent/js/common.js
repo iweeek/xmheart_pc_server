@@ -118,6 +118,29 @@ $(function(){
   },function(){
     $(this).find('.doctorDialog').hide();
   });
+  
+//导师团队轮播
+    var swiper = new Swiper('#teacherTeam', {
+      slidesPerView: 4,
+      paginationClickable: true,
+      spaceBetween: 0,
+      freeMode: true,
+      prevButton: '.prev',
+      nextButton: '.next',
+    });
+
+
+  $('#teacherTeam li').hover(function(){
+	var $this = $(this);
+    var nextIndex = $this.siblings('.swiper-slide-next').index();
+    var currentIndex = $this.index();
+    if (nextIndex !== -1 && currentIndex === (nextIndex + 2)) {
+    		setTimeout(function(){
+    			$this.parents('.teacher-team-wrapper').find('.next').trigger('click');
+    		}, 800)
+    }
+  });
+  
   // 科室轮播
   // var swiper = new Swiper('#officeSwiper', {
   //   slidesPerView: 4,

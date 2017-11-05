@@ -6,89 +6,124 @@
     </div>
 </div>
 <div class="list-container">
-		<div class="list-main">
-		<#list depts as dept>
-        <!-- office-doctor start-->
-        <div class="officesBase BaseMark">
-            <div class="toolsBase">
-                <div class="title">
-                    <em>${dept.name}</em> <span>Key Specialty</span>
-                </div>
-                <div class="tools">
-                    <a href="javascript:;" class="ASwitch" id="OSearchSwitch">快速查找科室</a>
-                    <a href="DepartmentNav.html" class="Amore">更多 &gt;&gt;</a>
-                    <a href="javascript:;" class="Aprev"></a>
-                    <a href="javascript:;" class="Anext"></a>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="contents">
-                <div class="contentsOffice">
-                    <!-- <i class="ico01"></i> -->
-                    <div class="img animated">
-                        <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
-                    </div>
-                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
-                    <div class="dept-intro">
-                        <#if dept.brief?length lt 50>
-                                    &#8195;&#8195;${dept.brief}......
-                                    <#else>
-                                    &#8195;&#8195;${dept.brief[0..50]}......
-                                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
-                                    
-                        </#if>
-                    </div>
-                   <!-- <p>${dept.brief}</p>
-                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a> -->
-                    <!--<a href="ExpertInfo-11.html" title="心内科医生" class="btn doctor">科室专家</a>-->
-                </div>
-                <div class="contentsDoctor swiper-container">
+	<div class="list-main">
+	
+		<div class="list-main-nav">
+			<h4 class="list-nav-title">科研教学</h4>
+			<ul class="list-nav-list">
+				<li class="active"><a href="/col/47">科教概况</a>
+				</li><li><a href="/col/48">科教动态</a></li>
+				<li><a href="/teacherTeam">导师团队</a></li>
+				<li><a href="/col/50">临床教学</a></li>
+				<li><a href="/col/51">研究生教育</a></li>
+				<li><a href="/col/52">医学伦理委员会</a></li>
+			</ul>
+		</div>
+		
+		<div class="baseRight list-media teacher-team-wrapper">
+			<div class="title01">
+				导师团队
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+				<div class="teacher-team swiper-container" id="teacherTeam">
                     <ul data-num="0" class="swiper-wrapper">
-                        <#list doctors as doctor>
-                        <#if doctor.deptId == dept.id>
-                        <li class="swiper-slide" style="overflow:hidden;">
-                            <a href="teacherDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="img">
-                                <img alt="${doctor.name}" title="${doctor.name}"
-                                    src="${doctor.imageUrl}"
-                                    width="120" height="162"/>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
                             </a>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="name">${doctor.name}</a>
-                            <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
-                            <br/>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
-                            <div class="doctor-intro">
-                                <#if doctor.brief?length lt 35>
-                                &#8195;&#8195;${doctor.brief}......
-                                <#else>
-                                &#8195;&#8195;${doctor.brief[0..35]}......
-                                <a href="teacherDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
-                                </#if>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
                             </div>
-                            <!-- <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a> -->
-                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
-                            <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
                         </li>
-                        </#if>
-                        </#list>
-                        <li class="swiper-slide">
-                            <a href="doctorDetail?id=" title="" target="_blank" class="img">
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
                             </a>
-                            <a href="" title="" target="_blank" class="name"></a>
-                            <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
-                            <br/>
-                            <a href="" title="" target="_blank" class="post"></a>
-                            <a href="" title="" target="_blank" class="post"></a>
-                            <a href="" title="" target="_blank" class="post"></a>
-                            <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
-                            <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
+                            </a>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
+                            </a>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
+                            </a>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
+                            </a>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev">
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="img">
+                                <img alt="王焱" title="王焱" src="/attached/image/20150826/20150826145204_1624.jpg" width="120" height="162">
+                            </a>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="name">王焱</a>
+                            
+                            <br>
+                            <a href="doctorDetail?id=131" title="王焱" target="_blank" class="post">主任医师 &nbsp;博士</a>
+                            <div class="dept-intro">
+                                &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
+                                <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-        <!-- office-doctor end-->
-    </#list>
+			</div>
 		</div>
+	</div>
 </div>
 
 <#include "./fragments/_footer.ftl">
