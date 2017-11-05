@@ -1,19 +1,20 @@
 <#include "./fragments/_header.ftl">
 <!-- list container -->
-<div class="breadcrumb">
+<!--<div class="breadcrumb">
     <div class="xm-container">
-       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">导师团队</a> 
+       <span class="icon"></span>您当前所在位置 <a href="index">首页</a> &gt <a href="doctorDept">科研教学</a> 
+       &gt <a href="doctorDept">导师团队</a> 
     </div>
-</div>
+</div>-->
 <div class="list-container">
 	<div class="list-main">
 	
 		<div class="list-main-nav">
 			<h4 class="list-nav-title">科研教学</h4>
 			<ul class="list-nav-list">
-				<li class="active"><a href="/col/47">科教概况</a>
+				<li><a href="/col/47">科教概况</a>
 				</li><li><a href="/col/48">科教动态</a></li>
-				<li><a href="/teacherTeam">导师团队</a></li>
+				<li class="active"><a href="/teacherTeam">导师团队</a></li>
 				<li><a href="/col/50">临床教学</a></li>
 				<li><a href="/col/51">研究生教育</a></li>
 				<li><a href="/col/52">医学伦理委员会</a></li>

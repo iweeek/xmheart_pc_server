@@ -657,7 +657,7 @@ public class NewsController {
 
 	@RequestMapping(value = { "/doctorDept" }, method = RequestMethod.GET)
 	public String doctorDept(Model model) {
-		model = addTopNav(3l, model);
+		model = addTopNav(EXPERT_COLUMN_ID, model);
 		List<XPWDoctor> doctors = doctorAndDeptService.getDisplayDoctors();
 		model.addAttribute("doctors", doctors);
 
@@ -669,7 +669,15 @@ public class NewsController {
 	
    @RequestMapping(value = { "/teacherTeam" }, method = RequestMethod.GET)
     public String teacherTeam(Model model) {
-       model = addTopNav(3l, model);
+       
+       model = addTopNav(TEACHER_COLUMN_ID, model);
+
+       model = addLeftNav(TEACHER_COLUMN_ID, model);
+
+       String columnName = columnService.getColumnById(TEACHER_COLUMN_ID).getColumnName();
+       model.addAttribute("columnName", columnName);
+       
+//       model = addTopNav(TEACHER_COLUMN_ID, model);
        List<XPWTeacher> teachers = teacherTeamService.getDisplayTeachers();
        model.addAttribute("teachers", teachers);
 
