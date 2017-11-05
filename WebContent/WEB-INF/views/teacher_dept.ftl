@@ -41,7 +41,7 @@
                                 &emsp;&emsp;王焱，博士，教授，主任医师，博士生导师，厦门大学附属心血管病医院（厦门市......
                                 <a href="doctorDetail?id=131" title="心血管内科" class="show-more">查看详细</a>
                             </div> -->
-                            <div class="doctor-intro">
+                            <div class="dept-intro">
                                 <#if teacher.brief?length lt 35>
                                 &#8195;&#8195;${teacher.brief}......
                                 <#else>
