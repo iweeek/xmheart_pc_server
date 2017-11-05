@@ -31,6 +31,7 @@ public class TeacherTeamServiceImpl implements TeacherTeamService {
 	public List<XPWTeacher> getDisplayTeachers() {
 	    XPWTeacherExample example = new XPWTeacherExample();
 	    example.createCriteria().andIsDisplayedEqualTo(true);
+	    example.setOrderByClause("doc_order asc");
 		List<XPWTeacher> list = xpwTeacherMapper.selectByExample(example);
 		return list;
 	}
@@ -59,7 +60,7 @@ public class TeacherTeamServiceImpl implements TeacherTeamService {
     public List<XPWTeacher> getTeachersByDeptId(Long deptId) {
         XPWTeacherExample example = new XPWTeacherExample();
         example.createCriteria().andDeptIdEqualTo(deptId);
-        
+        example.setOrderByClause("doc_order asc");
         List<XPWTeacher> list = xpwTeacherMapper.selectByExample(example);
         return list;
     }
@@ -104,6 +105,43 @@ public class TeacherTeamServiceImpl implements TeacherTeamService {
     public int createDept(XPWDept dept) {
         int ret = xpwDeptMapper.insertSelective(dept);
         return ret;
+    }
+    
+    @Override
+    public int swapDocOrder(Long doctorId1, Long doctorId2) {
+        XPWTeacher doctor1 = xpwTeacherMapper.selectByPrimaryKey(doctorId1);
+        XPWTeacher doctor2 = xpwTeacherMapper.selectByPrimaryKey(doctorId2);
+        
+        //只有置顶的文章才可以交换order
+        if (!doctor1.getIsDisplayed() || !doctor2.getIsDisplayed()) {
+            return -1;
+        }
+        
+//        if (doctor1.getColumnId() != doctor2.getColumnId()) {
+//            return -1;
+//        }
+        
+        Byte order1 = doctor1.getDocOrder();
+        doctor1.setDocOrder(doctor2.getDocOrder());
+        xpwTeacherMapper.updateByPrimaryKey(doctor1);
+        
+        doctor2.setDocOrder(order1);
+        xpwTeacherMapper.updateByPrimaryKey(doctor2);
+        
+        return 0;
+    }
+    
+    @Override
+    public int getMaxOrder() {
+        XPWTeacherExample example = new XPWTeacherExample();
+        example.createCriteria().andIsDisplayedEqualTo(true);
+        example.setOrderByClause("doc_order desc limit 1");
+        List<XPWTeacher> list = xpwTeacherMapper.selectByExample(example);
+        if (list.size() != 0) {
+            return list.get(0).getDocOrder();
+        } else {
+            return 0;
+        }
     }
 
 }
