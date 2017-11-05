@@ -34,8 +34,8 @@ public interface DoctorAndDeptService {
 
     List<XPWDoctor> searchDoctorByName(String name);
 
-    int swapOrder(Long doctorId1, Long doctorId2);
-
     int getMaxOrder();
+
+    int swapDocOrder(Long doctorId1, Long doctorId2);
 
 }
