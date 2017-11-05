@@ -10,7 +10,9 @@ exports.XPW.DoctorEdit = (function() {
 	DoctorEdit.online();
 	DoctorEdit.next();
 	DoctorEdit.prev();
-	DoctorEdit.deptId = 0;
+	DoctorEdit.handleUp();
+	DoctorEdit.handleDown();
+	DoctorEdit.deptId = '';
 	DoctorEdit.hasNextPage = true;
 	DoctorEdit.hasPreviousPage = false;
 	DoctorEdit.totalPage = 0;
@@ -34,6 +36,10 @@ exports.XPW.DoctorEdit = (function() {
       Mustache.parse(firstColumnTemplate);   
       var rendered = Mustache.render(firstColumnTemplate, {data:data});
       $('#typeSelectInput').html(rendered);
+      if (DoctorEdit._getUrlParam('deptId')) {
+    	  	DoctorEdit.deptId = DoctorEdit._getUrlParam('deptId');
+    	  	$('#typeSelectInput option[value='+DoctorEdit.deptId+']').attr('selected', 'selected');
+      }
       $('#columnSearch').trigger('click');
    })
   }
@@ -145,6 +151,66 @@ exports.XPW.DoctorEdit = (function() {
 	      }
 	  })
   }
+  
+  //上移
+  DoctorEdit.handleUp = function () {
+	  $('#doctorTable').on('click', '.up-btn', function() {
+	      var doctorId2 = $(this).data('id');
+	      var index = $(this).parents('tr').index();
+	      if(index === 0) {
+	          swal('已经是最顶部了!');
+	          return false;
+	      }
+	      var doctorId1 = $('#doctorTable tr').eq(index-1).find('.up-btn').data('id');
+	      DoctorEdit.handleUpDown(doctorId1, doctorId2);
+	  })
+  }
+  
+  //下移
+  DoctorEdit.handleDown = function () {
+	  $('#doctorTable').on('click', '.down-btn', function() {
+	      var doctorId1 = $(this).data('id');
+	      var index = $(this).parents('tr').index();
+	      if($('#doctorTable tr').eq(index+1).find('.down-btn').length === 0) {
+	          swal('已经是最底部了!');
+	          return false;
+	      }
+	      var doctorId2 = $('#doctorTable tr').eq(index+1).find('.down-btn').data('id');
+	      DoctorEdit.handleUpDown(doctorId1, doctorId2);
+	  })
+  }
+  
+ DoctorEdit.handleUpDown = function (doctorId1, doctorId2) {
+     var url = '/doctors/swapOrder';
+     var params = {
+    		 doctorId1 : doctorId1,
+    		 doctorId2 : doctorId2
+     };
+     $.post(url, params, function(res) {
+         swal({
+             title : "操作成功",
+             type : "success",
+             showCancelButton : false,
+             confirmButtonColor : "#DD6B55",
+             confirmButtonText : "确定！",
+             closeOnConfirm : false
+         }, function() {
+             location.href = 'doctor.html?deptId=' + DoctorEdit.deptId;
+         });
+     })
+     .error(function(jqXHR, textStatus, errorThrown){
+         if (jqXHR.status == 403) {
+             swal({
+                 title : "不在同一个栏目下",
+                 type : "error",
+                 showCancelButton : false,
+                 confirmButtonColor : "#DD6B55",
+                 confirmButtonText : "确定！",
+                 closeOnConfirm : false
+             });
+         }
+     });
+ }
   
   return DoctorEdit;
 })();
