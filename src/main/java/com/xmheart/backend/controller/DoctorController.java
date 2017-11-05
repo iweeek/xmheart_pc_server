@@ -140,10 +140,10 @@ public class DoctorController {
             doctor.setIsDisplayed(isDisplayed);
             if (isDisplayed) {
                 order = doctorAndDeptService.getMaxOrder();
-                doctor.setOrder((byte) (order + 1));
+                doctor.setDocOrder((byte) (order + 1));
                 
             } else {
-                doctor.setOrder((byte) 0);
+                doctor.setDocOrder((byte) 0);
             }
         }
         
@@ -247,7 +247,7 @@ public class DoctorController {
     
     @ApiOperation(value = "交换医生顺序", notes = "交换医生顺序")
     @RequestMapping(value = { "/doctors/swapOrder" }, method = RequestMethod.POST)
-    public ResponseEntity<?> swapPinOrder(@ApiParam("医生的Id") Long doctorId1, 
+    public ResponseEntity<?> swapOrder(@ApiParam("医生的Id") Long doctorId1, 
             @ApiParam("医生的Id") Long doctorId2) {
         int ret = doctorAndDeptService.swapOrder(doctorId1, doctorId2);
         if (ret == 0) {

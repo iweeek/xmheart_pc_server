@@ -114,7 +114,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
         XPWDoctor doctor1 = xpwDoctorMapper.selectByPrimaryKey(doctorId1);
         XPWDoctor doctor2 = xpwDoctorMapper.selectByPrimaryKey(doctorId2);
         
-        //只有置顶的文章才可以交换pinOrder
+        //只有置顶的文章才可以交换order
         if (!doctor1.getIsDisplayed() || !doctor2.getIsDisplayed()) {
             return -1;
         }
@@ -123,11 +123,11 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 //            return -1;
 //        }
         
-        Byte order1 = doctor1.getOrder();
-        doctor1.setOrder(doctor2.getOrder());
+        Byte order1 = doctor1.getDocOrder();
+        doctor1.setDocOrder(doctor2.getDocOrder());
         xpwDoctorMapper.updateByPrimaryKey(doctor1);
         
-        doctor2.setOrder(order1);
+        doctor2.setDocOrder(order1);
         xpwDoctorMapper.updateByPrimaryKey(doctor2);
         
         return 0;
@@ -140,7 +140,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
         example.setOrderByClause("order desc limit 1");
         List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
         if (list.size() != 0) {
-            return list.get(0).getOrder();
+            return list.get(0).getDocOrder();
         } else {
             return 0;
         }
