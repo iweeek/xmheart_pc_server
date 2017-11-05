@@ -32,4 +32,8 @@ public interface TeacherTeamService {
 
     int createDept(XPWDept dept);
 
+    int swapDocOrder(Long doctorId1, Long doctorId2);
+
+    int getMaxOrder();
+
 }
