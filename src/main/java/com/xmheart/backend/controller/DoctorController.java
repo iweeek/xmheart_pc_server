@@ -101,7 +101,8 @@ public class DoctorController {
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
-            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
+            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer order) {
         
         XPWDoctor doctor;
         doctor = doctorAndDeptService.getDoctorById(id);
@@ -134,9 +135,16 @@ public class DoctorController {
             }
             doctor.setBrief(brief);
         } 
-        
+
         if (isDisplayed != null) {
             doctor.setIsDisplayed(isDisplayed);
+            if (isDisplayed) {
+                order = doctorAndDeptService.getMaxOrder();
+                doctor.setOrder((byte) (order + 1));
+                
+            } else {
+                doctor.setOrder((byte) 0);
+            }
         }
         
         int ret = doctorAndDeptService.updateDoctor(doctor);
@@ -236,5 +244,17 @@ public class DoctorController {
 
 		return htmlStr.trim(); // 返回文本字符串
 	}
+    
+    @ApiOperation(value = "交换医生顺序", notes = "交换医生顺序")
+    @RequestMapping(value = { "/doctors/swapOrder" }, method = RequestMethod.POST)
+    public ResponseEntity<?> swapPinOrder(@ApiParam("医生的Id") Long doctorId1, 
+            @ApiParam("医生的Id") Long doctorId2) {
+        int ret = doctorAndDeptService.swapOrder(doctorId1, doctorId2);
+        if (ret == 0) {
+            return ResponseEntity.ok(null);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_FORBIDDEN).body(null);
+        }
+    }
 
 }
