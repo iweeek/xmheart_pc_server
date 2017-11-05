@@ -102,7 +102,7 @@ public class DoctorController {
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
             @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
-            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer order) {
+            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer docOrder) {
         
         XPWDoctor doctor;
         doctor = doctorAndDeptService.getDoctorById(id);
@@ -139,11 +139,11 @@ public class DoctorController {
         if (isDisplayed != null) {
             doctor.setIsDisplayed(isDisplayed);
             if (isDisplayed) {
-                order = doctorAndDeptService.getMaxOrder();
-                doctor.setDocOrder((byte) (order + 1));
+                docOrder = doctorAndDeptService.getMaxOrder();
+                doctor.setDocOrder((docOrder + 1));
                 
             } else {
-                doctor.setDocOrder((byte) 0);
+                doctor.setDocOrder(0);
             }
         }
         
@@ -213,6 +213,9 @@ public class DoctorController {
             doctor.setIsDisplayed(false);
         }
         
+        int maxOrder = doctorAndDeptService.getMaxOrder();
+        doctor.setDocOrder(maxOrder + 1);
+        
         int ret = doctorAndDeptService.createDoctor(doctor);
         if (ret > 0) {
         		doctor.setUrl("/doctorDetail?id=" + String.valueOf(doctor.getId()));
@@ -246,10 +249,10 @@ public class DoctorController {
 	}
     
     @ApiOperation(value = "交换医生顺序", notes = "交换医生顺序")
-    @RequestMapping(value = { "/doctors/swapOrder" }, method = RequestMethod.POST)
-    public ResponseEntity<?> swapOrder(@ApiParam("医生的Id") Long doctorId1, 
+    @RequestMapping(value = { "/doctors/swapDocOrder" }, method = RequestMethod.POST)
+    public ResponseEntity<?> swapDocOrder(@ApiParam("医生的Id") Long doctorId1, 
             @ApiParam("医生的Id") Long doctorId2) {
-        int ret = doctorAndDeptService.swapOrder(doctorId1, doctorId2);
+        int ret = doctorAndDeptService.swapDocOrder(doctorId1, doctorId2);
         if (ret == 0) {
             return ResponseEntity.ok(null);
         } else {

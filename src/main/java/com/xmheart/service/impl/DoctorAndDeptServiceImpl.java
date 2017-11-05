@@ -28,6 +28,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 	public List<XPWDoctor> getDisplayDoctors() {
 	    XPWDoctorExample example = new XPWDoctorExample();
 	    example.createCriteria().andIsDisplayedEqualTo(true);
+	    example.setOrderByClause("doc_order asc");
 		List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
 		return list;
 	}
@@ -56,7 +57,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
     public List<XPWDoctor> getDoctorsByDeptId(Long deptId) {
         XPWDoctorExample example = new XPWDoctorExample();
         example.createCriteria().andDeptIdEqualTo(deptId);
-        
+        example.setOrderByClause("doc_order asc");
         List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
         return list;
     }
@@ -110,7 +111,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
     }
     
     @Override
-    public int swapOrder(Long doctorId1, Long doctorId2) {
+    public int swapDocOrder(Long doctorId1, Long doctorId2) {
         XPWDoctor doctor1 = xpwDoctorMapper.selectByPrimaryKey(doctorId1);
         XPWDoctor doctor2 = xpwDoctorMapper.selectByPrimaryKey(doctorId2);
         
@@ -123,7 +124,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 //            return -1;
 //        }
         
-        Byte order1 = doctor1.getDocOrder();
+        int order1 = doctor1.getDocOrder();
         doctor1.setDocOrder(doctor2.getDocOrder());
         xpwDoctorMapper.updateByPrimaryKey(doctor1);
         
@@ -137,7 +138,7 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
     public int getMaxOrder() {
         XPWDoctorExample example = new XPWDoctorExample();
         example.createCriteria().andIsDisplayedEqualTo(true);
-        example.setOrderByClause("order desc limit 1");
+        example.setOrderByClause("doc_order desc limit 1");
         List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
         if (list.size() != 0) {
             return list.get(0).getDocOrder();

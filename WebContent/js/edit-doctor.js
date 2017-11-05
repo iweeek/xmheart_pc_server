@@ -181,7 +181,7 @@ exports.XPW.DoctorEdit = (function() {
   }
   
  DoctorEdit.handleUpDown = function (doctorId1, doctorId2) {
-     var url = '/doctors/swapOrder';
+     var url = '/doctors/swapDocOrder';
      var params = {
     		 doctorId1 : doctorId1,
     		 doctorId2 : doctorId2
