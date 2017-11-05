@@ -671,7 +671,7 @@ public class NewsController {
     public String teacherTeam(Model model) {
        model = addTopNav(3l, model);
        List<XPWTeacher> teachers = teacherTeamService.getDisplayTeachers();
-       model.addAttribute("doctors", teachers);
+       model.addAttribute("teachers", teachers);
 
        List<XPWDept> depts = teacherTeamService.getOutServiceDepts();
        model.addAttribute("depts", depts);
