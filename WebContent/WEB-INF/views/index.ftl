@@ -15,13 +15,13 @@
                 <div class="xm-online-service">
                     <h5 class="online-service-title">便民入口</h5>
                     <ul class="online-service-list">
-                        <li><a href="http://www.xmsmjk.com/urponline"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
+                        <li><a href="http://www.xmsmjk.com/urponline" target="_blank"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
                         <li><a href="/newsDetail?id=997"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>
                         <!--<li><a href="http://www.xmsmjk.com/UrpOnline/Home/Hospital/182"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>-->
                         <li><a href="/deptDetail?id=3"><img src="img/index/online-service-list2.png" alt=""><span>体检中心</span></a></li>
                         <li><a href="/404"><img src="img/index/online-service-list4.png" alt=""><span>报告查询</span></a></li>
                         <li><a href="/newsDetail?id=978"><img src="img/index/online-service-list5.png" alt=""><span>就医流程</span></a></li>
-                        <li><a href="http://oa.xmheart.com/xzzx"><img src="img/index/online-service-list6.png" alt=""><span>院内办公</span></a></li>
+                        <li><a href="http://oa.xmheart.com/xzzx" target="_blank"><img src="img/index/online-service-list6.png" alt=""><span>院内办公</span></a></li>
                     </ul>
                 </div>
                 <div class="xm-notice">
@@ -91,7 +91,7 @@
                     <p class="list-info-desc">快速找到我们</p>
                 </div>
             </a>
-            <a href="#" class="xm-banner-list mr-0 xm-list4">
+            <a href="/404" class="xm-banner-list mr-0 xm-list4">
                 <div class="list-info">
                     <h3 class="list-info-title">下载专区</h3>
                     <p class="list-info-desc">为您特殊定制</p>
