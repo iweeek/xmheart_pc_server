@@ -275,8 +275,7 @@ public class ArticleController {
             e.printStackTrace();
             return null;
         }
-
-        imageUrl = PathUtil.ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
+        imageUrl = PathUtil.getInstance().ORIGIN + File.separator + PathUtil.IMG_FOLDER_PATH + imagePath;
         return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(imageUrl);
     }
     
@@ -291,7 +290,7 @@ public class ArticleController {
             return null;
         }
 
-        videoUrl = PathUtil.ORIGIN + File.separator + PathUtil.VIDEO_FOLDER_PATH + videoPath;
+        videoUrl = PathUtil.getInstance().ORIGIN + File.separator + PathUtil.VIDEO_FOLDER_PATH + videoPath;
         return ResponseEntity.status(HttpServletResponse.SC_CREATED).body(videoUrl);
     }
     
