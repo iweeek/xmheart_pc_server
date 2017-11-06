@@ -121,7 +121,7 @@ public class TeacherTeamServiceImpl implements TeacherTeamService {
 //            return -1;
 //        }
         
-        Byte order1 = doctor1.getDocOrder();
+        Integer order1 = doctor1.getDocOrder();
         doctor1.setDocOrder(doctor2.getDocOrder());
         xpwTeacherMapper.updateByPrimaryKey(doctor1);
         

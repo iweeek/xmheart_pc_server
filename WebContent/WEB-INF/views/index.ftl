@@ -16,10 +16,11 @@
 					<h5 class="online-service-title">便民入口</h5>
 					<ul class="online-service-list">
 						<li><a href="http://www.xmsmjk.com/urponline"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
-						<li><a href="http://www.xmsmjk.com/UrpOnline/Home/Hospital/182"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-list2.png" alt=""><span>体检中心</span></a></li>
+						<li><a href="/newsDetail?id=997"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>
+						<!--<li><a href="http://www.xmsmjk.com/UrpOnline/Home/Hospital/182"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>-->
+						<li><a href="/deptDetail?id=3"><img src="img/index/online-service-list2.png" alt=""><span>体检中心</span></a></li>
 						<li><a href="#"><img src="img/index/online-service-list4.png" alt=""><span>报告查询</span></a></li>
-						<li><a href="#"><img src="img/index/online-service-list5.png" alt=""><span>就医流程</span></a></li>
+						<li><a href="/newsDetail?id=978"><img src="img/index/online-service-list5.png" alt=""><span>就医流程</span></a></li>
 						<li><a href="http://oa.xmheart.com/xzzx"><img src="img/index/online-service-list6.png" alt=""><span>院内办公</span></a></li>
 					</ul>
 				</div>

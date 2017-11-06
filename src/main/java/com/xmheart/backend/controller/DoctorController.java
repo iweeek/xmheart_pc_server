@@ -101,8 +101,7 @@ public class DoctorController {
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
-            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
-            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer docOrder) {
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
         
         XPWDoctor doctor;
         doctor = doctorAndDeptService.getDoctorById(id);
@@ -138,13 +137,6 @@ public class DoctorController {
 
         if (isDisplayed != null) {
             doctor.setIsDisplayed(isDisplayed);
-            if (isDisplayed) {
-                docOrder = doctorAndDeptService.getMaxOrder();
-                doctor.setDocOrder((docOrder + 1));
-                
-            } else {
-                doctor.setDocOrder(0);
-            }
         }
         
         int ret = doctorAndDeptService.updateDoctor(doctor);
@@ -163,7 +155,8 @@ public class DoctorController {
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
             @ApiParam("医生头像，可选") @RequestParam(required = false) String imageUrl,
-            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
+            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer docOrder) {
         
         XPWDoctor doctor = new XPWDoctor();
         
@@ -206,9 +199,15 @@ public class DoctorController {
             doctor.setIntro("");
         }
         
-        
         if (isDisplayed != null) {
             doctor.setIsDisplayed(isDisplayed);
+            if (isDisplayed) {
+                docOrder = doctorAndDeptService.getMaxOrder();
+                doctor.setDocOrder((docOrder + 1));
+                
+            } else {
+                doctor.setDocOrder(0);
+            }
         } else {
             doctor.setIsDisplayed(false);
         }

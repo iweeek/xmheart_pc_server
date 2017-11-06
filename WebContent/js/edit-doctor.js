@@ -181,27 +181,37 @@ exports.XPW.DoctorEdit = (function() {
   }
   
  DoctorEdit.handleUpDown = function (doctorId1, doctorId2) {
+     $('.ui-loading').show();
+     var $this = $(this);
+     var id = $this.data('id');
      var url = '/doctors/swapDocOrder';
      var params = {
     		 doctorId1 : doctorId1,
     		 doctorId2 : doctorId2
      };
      $.post(url, params, function(res) {
-         swal({
-             title : "操作成功",
-             type : "success",
-             showCancelButton : false,
-             confirmButtonColor : "#DD6B55",
-             confirmButtonText : "确定！",
-             closeOnConfirm : false
-         }, function() {
-             location.href = 'doctor.html?deptId=' + DoctorEdit.deptId;
-         });
+//         swal({
+//             title : "操作成功",
+//             type : "success",
+//             showCancelButton : false,
+//             confirmButtonColor : "#DD6B55",
+//             confirmButtonText : "确定！",
+//             closeOnConfirm : false
+//         }, function() {
+//             location.href = 'doctor.html?deptId=' + DoctorEdit.deptId;
+//         });
      })
+     .done(function(data) {
+         var doctorTemplate = $('#doctorTd').html();
+         Mustache.parse(doctorTemplate);   // optional, speeds up future uses
+         var rendered = Mustache.render(doctorTemplate, {data:data});
+         $('#'+id).replaceWith(rendered);
+         $('.ui-loading').hide();
+      })
      .error(function(jqXHR, textStatus, errorThrown){
          if (jqXHR.status == 403) {
              swal({
-                 title : "不在同一个栏目下",
+                 title : "移动失败",
                  type : "error",
                  showCancelButton : false,
                  confirmButtonColor : "#DD6B55",
