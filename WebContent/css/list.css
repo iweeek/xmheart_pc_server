@@ -1,3 +1,9 @@
+.vertical {
+    height: 100%;/*元素的高度*/
+    top: 50%;/*元素的顶部边界离父元素的的位置是父元素高度的一半*/
+    left:50%;
+    /* margin-top: 50%; *//*设置元素顶边负边距，大小为元素高度的一半*/
+}
 
 .list-body {
 	background: #f4f4f4;
