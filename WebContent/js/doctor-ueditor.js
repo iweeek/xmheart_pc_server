@@ -70,7 +70,7 @@ exports.XPW.DoctorUeditor = (function() {
 		  var $this = $(this);
 		  $this.attr('disabled','disabled');
 		  var name = $('#doctorName').val();
-		  var deptId = parseInt($('#typeSelectInput').val());
+		  var deptId = $('#typeSelectInput').val();
 		  var duty = $('#doctorDuty').val();
 		  var professionalTitle = $('#doctorProfessiona').val();
 		  var grade = $('#grade').val()

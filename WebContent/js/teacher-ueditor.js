@@ -70,7 +70,7 @@ exports.XPW.DoctorUeditor = (function() {
 		  var $this = $(this);
 		  $this.attr('disabled','disabled');
 		  var name = $('#doctorName').val();
-		  var deptId = parseInt($('#typeSelectInput').val());
+		  var deptId = $('#typeSelectInput').val();
 		  var duty = $('#doctorDuty').val();
 		  var professionalTitle = $('#doctorProfessiona').val();
 		  var grade = $('#grade').val()
@@ -123,6 +123,7 @@ exports.XPW.DoctorUeditor = (function() {
                       window.history.go(-1);
                   });
 			  } else {
+			      $this.removeAttr('disabled');
 				  $.get('/teachers',{deptId: deptId}, function(data){
 					  swal({
 	                      title: "创建成功",
