@@ -35,7 +35,11 @@
                             <a href="#" class="header-icon-wechat"></a>
                             <img src="/img/layout/wechat_code.jpg" class="wechat-code">
                     </div>
-                    <a href="#" class="header-icon-weibo"></a>
+                    <div class="header-icon-wechat-wrapper" id="weboCode">
+                            <a href="#" class="header-icon-weibo"></a>
+                            <img src="/img/layout/webo_code.jpg" class="webo-code">
+                    </div>
+                    
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
                 <!--
