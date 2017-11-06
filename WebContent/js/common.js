@@ -48,6 +48,11 @@ $(function(){
   },function(){
 	  $(this).find('.wechat-code').hide();
   })
+  $('#weboCode').hover(function(){
+      $(this).find('.webo-code').show();
+  },function(){
+      $(this).find('.webo-code').hide();
+  })
   
 //  头部搜索框 
   $('#searchType').click(function(){

@@ -117,14 +117,29 @@
 	width: 32px;
 	background: url('../img/layout/wechat.png') no-repeat;
 }
+.header-icon-wechat-wrapper .header-icon-webo {
+    display: block;
+    height: 32px;
+    width: 32px;
+    background: url('../img/layout/wechat.png') no-repeat;
+}
 .header-icon-wechat-wrapper .wechat-code {
 	position: absolute;
 	top: 32px;
-	left: -28px;
-	width: 100px;
-	height: 100px;
+	left: -100px;
+	width: 250px;
+	height: 250px;
 	z-index: 2000;
 	display: none;
+}
+.header-icon-wechat-wrapper .webo-code {
+    position: absolute;
+    top: 32px;
+    left: -100px;
+    width: 250px;
+    height: 250px;
+    z-index: 2000;
+    display: none;
 }
 .header-icon .header-icon-weibo {
 	display: block;
