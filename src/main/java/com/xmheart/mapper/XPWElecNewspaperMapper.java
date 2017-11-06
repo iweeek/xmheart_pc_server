@@ -107,7 +107,7 @@ public interface XPWElecNewspaperMapper {
 	@Select("SELECT * FROM xpw_electronic_newspaper GROUP BY title")
     List<XPWElecNewspaper> selectByExampleGroup(Object object);
 	
-    @Select("SELECT * FROM xpw_electronic_newspaper GROUP BY times ORDER BY publish_time")
+    @Select("SELECT * FROM xpw_electronic_newspaper GROUP BY times ORDER BY publish_time desc")
     List<XPWElecNewspaper> selectLastest();
 	
 }
