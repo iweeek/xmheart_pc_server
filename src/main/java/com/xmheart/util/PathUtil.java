@@ -3,16 +3,38 @@ package com.xmheart.util;
 import java.io.File;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by kouga on 2017/8/19.
  */
+@Component
 public class PathUtil {
-    //需要配置，图片和视频服务器
-	public static final String HOST_NAME = "120.77.72.16:8080";
-//    public static final String HOST_NAME = "127.0.0.1:8080";
-	public static final String ORIGIN = "http://" + HOST_NAME;
-	
+    
+    private static PathUtil instance;
+    
+    public static PathUtil getInstance() {
+        return instance;
+    }
+    
+    /**
+     * 需要配置，图片和视频服务器
+     */
+    private String HOST_NAME = "120.77.72.16:8080";
+    public String ORIGIN = "http://120.77.72.16:8080";
+    
+    /**
+     * 不能有默认的无参构造方法
+     */
+    @Autowired
+    public PathUtil(@Value("${hostname}") String hostName) {      
+        HOST_NAME = hostName;
+        ORIGIN = "http://" + HOST_NAME;
+        instance = this;
+    }
+    
 	public static final String WEBSERVER_PATH = System.getProperty("catalina.base");
 	public static final String WEBAPP_PATH  = WEBSERVER_PATH + File.separator +"webapps" + File.separator;
 	
