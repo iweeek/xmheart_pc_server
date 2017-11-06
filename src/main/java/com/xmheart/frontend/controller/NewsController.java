@@ -605,6 +605,17 @@ public class NewsController {
 		return "index";
 	}
 	
+    @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
+    public String notFound(Model model) {
+        model = addTopNav(1, model);
+
+//        XPWIndex index = indexService.indexRead();
+
+//        model.addAttribute("index", index);
+
+        return "404";
+    }
+	
 //	@RequestMapping(value = {"/search" }, method = RequestMethod.GET)
 //	public String search(Model model) {
 //		model = addTopNav(1, model);
