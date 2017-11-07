@@ -111,5 +111,21 @@
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
+    
+    <table schema="xmeart_pc_web" tableName="xpw_role" domainObjectName ="XPWRole" >
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <ignoreColumn column="created_at"/>
+      <ignoreColumn column="updated_at"/>
+    </table>
+    
+    <table schema="xmeart_pc_web" tableName="xpw_user_role" domainObjectName ="XPWUserRole" >
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+    </table>
+    
+    <table schema="xmeart_pc_web" tableName="xpw_priv" domainObjectName ="XPWPriv" >
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <ignoreColumn column="created_at"/>
+      <ignoreColumn column="updated_at"/>
+    </table>
   </context>
 </generatorConfiguration>

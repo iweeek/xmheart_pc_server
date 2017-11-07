@@ -15,7 +15,7 @@
                 <div class="xm-online-service">
                     <h5 class="online-service-title">便民入口</h5>
                     <ul class="online-service-list">
-                        <li><a href="http://www.xmsmjk.com/urponline" target="_blank"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
+                        <li><a href="http://www.xmsmjk.com/UrpOnline/Home/Index/182_____1" target="_blank"><img src="img/index/online-service-list1.png" alt=""><span>预约挂号</span></a></li>
                         <li><a href="/newsDetail?id=997"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>
                         <!--<li><a href="http://www.xmsmjk.com/UrpOnline/Home/Hospital/182"><img src="img/index/online-service-list3.png" alt=""><span>门诊排班</span></a></li>-->
                         <li><a href="/deptDetail?id=3"><img src="img/index/online-service-list2.png" alt=""><span>体检中心</span></a></li>

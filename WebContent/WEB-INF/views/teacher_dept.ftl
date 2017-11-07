@@ -12,12 +12,12 @@
 		<div class="list-main-nav">
 			<h4 class="list-nav-title">科研教学</h4>
 			<ul class="list-nav-list">
-				<li><a href="/col/47">科教概况</a>
-				</li><li><a href="/col/48">科教动态</a></li>
+				<li><a href="/col/47">科教概况</a></li>
+				<li><a href="/col/48">科教动态</a></li>
+				<li><a href="/col/49">临床教学</a></li>
+				<li><a href="/col/50">研究生教育</a></li>
+				<li><a href="/col/51">医学伦理委员会</a></li>
 				<li class="active"><a href="/teacherTeam">导师团队</a></li>
-				<li><a href="/col/50">临床教学</a></li>
-				<li><a href="/col/51">研究生教育</a></li>
-				<li><a href="/col/52">医学伦理委员会</a></li>
 			</ul>
 		</div>
 		
