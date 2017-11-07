@@ -22,16 +22,14 @@ public class PathUtil {
     /**
      * 需要配置，图片和视频服务器
      */
-    private String HOST_NAME = "120.77.72.16:8080";
-    public String ORIGIN = "http://120.77.72.16:8080";
+    public String ORIGIN = "";
     
     /**
      * 不能有默认的无参构造方法
      */
     @Autowired
     public PathUtil(@Value("${hostname}") String hostName) {      
-        HOST_NAME = hostName;
-        ORIGIN = "http://" + HOST_NAME;
+        ORIGIN = hostName;
         instance = this;
     }
     
