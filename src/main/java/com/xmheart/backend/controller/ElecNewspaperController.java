@@ -88,7 +88,7 @@ public class ElecNewspaperController {
     			newspaper.setIsPublished(false);
         }
         
-        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
+        newspaper.setUrl("/elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
         
         newspaper.setPublishTime(new Date());
 
@@ -125,7 +125,7 @@ public class ElecNewspaperController {
         
         newspaper.setPage(page);
         
-        newspaper.setUrl("elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
+        newspaper.setUrl("/elecNewsPaper?page=" + page + "&year=" + year + "&times=" + times);
 
         if (downloadUrl != null) {
             newspaper.setDownloadUrl(downloadUrl);
