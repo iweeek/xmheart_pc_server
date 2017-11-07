@@ -16,7 +16,7 @@
                 alt="${doctor.name}">
             <h3 id="H3Name">${doctor.name}</h3>
             <h4 id="H4Position">${doctor.professionalTitle}</h4>
-            <a href="order-detail.html" target="_blank">
+            <a href="${doctor.appointmentUrl}" target="_blank">
                 <img src="image/yy_ico.png" width="22" height="22">预约
             </a>
         </div>

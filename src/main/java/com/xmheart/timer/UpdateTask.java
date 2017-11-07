@@ -5,7 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -37,7 +39,7 @@ public class UpdateTask {
    
 //    @RequestMapping(value = { "/test" }, method = RequestMethod.POST)
 //    public ResponseEntity<?> job()   {  
-    @Scheduled(cron = "* * */1 * * *")
+    @Scheduled(cron = "0 0 */1 * * *")
     public void job()   {  
         // 电子院报
         List<XPWElecNewspaper> lastestNewspaper = newspaperService.indexLastest();

@@ -97,6 +97,19 @@ public class ColumnServiceImpl implements ColumnService {
 		}
 	}
 	
+   @Override
+    public int updateNavByExample(XPWNav nav) {
+//        XPWNavExample example = new XPWNavExample();
+//        example.createCriteria().andIdEqualTo(nav.getId());
+//        List<XPWNav> list = xpwNavMapper.selectByExample(example);
+        int ret = xpwNavMapper.updateByPrimaryKey(nav);
+        if (ret > 0) {
+            return HttpServletResponse.SC_OK;
+        } else {
+            return HttpServletResponse.SC_NOT_FOUND;
+        }
+    }
+	
     @Override
     public List<XPWColumn> getColumns() {
         List<XPWColumn> list = xpwColumnMapper.selectByExample(null);

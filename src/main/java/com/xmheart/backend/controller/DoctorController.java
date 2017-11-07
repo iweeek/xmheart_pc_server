@@ -101,7 +101,8 @@ public class DoctorController {
             @ApiParam("职务，可选") @RequestParam(required = false) String duty,
             @ApiParam("职称，可选") @RequestParam(required = false) String professionalTitle,
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
-            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed) {
+            @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
+            @ApiParam("预约地址，可选") @RequestParam(required = false) String appointmentUrl) {
         
         XPWDoctor doctor;
         doctor = doctorAndDeptService.getDoctorById(id);
@@ -139,6 +140,10 @@ public class DoctorController {
             doctor.setIsDisplayed(isDisplayed);
         }
         
+        if (appointmentUrl != null) {
+            doctor.setAppointmentUrl(appointmentUrl);
+        }
+        
         int ret = doctorAndDeptService.updateDoctor(doctor);
         if (ret == 0) {
             return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(null);
@@ -156,7 +161,8 @@ public class DoctorController {
             @ApiParam("介绍，可选") @RequestParam(required = false) String intro,
             @ApiParam("医生头像，可选") @RequestParam(required = false) String imageUrl,
             @ApiParam("是否可以展示，可选") @RequestParam(required = false) Boolean isDisplayed,
-            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer docOrder) {
+            @ApiParam("医生的顺序，可选") @RequestParam(required = false) Integer docOrder,
+            @ApiParam("预约地址，可选") @RequestParam(required = false) String appointmentUrl) {
         
         XPWDoctor doctor = new XPWDoctor();
         
@@ -210,6 +216,12 @@ public class DoctorController {
             }
         } else {
             doctor.setIsDisplayed(false);
+        }
+        
+        if (appointmentUrl != null) {
+            doctor.setAppointmentUrl(appointmentUrl);
+        } else {
+            doctor.setAppointmentUrl("");
         }
         
         int maxOrder = doctorAndDeptService.getMaxOrder();
