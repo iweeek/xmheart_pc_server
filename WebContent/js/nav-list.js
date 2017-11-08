@@ -102,6 +102,7 @@ exports.XPW.NavEdit = (function() {
     	    	    var rendered = Mustache.render(secondColumnTemplate, {
     	    	    		data : data,
     	    	    		isDisplayed : function() {  
+    	    	    		    // 去除电子院报和影像厦心
                     if (!(this.childColumnId == 23 || this.childColumnId == 22)) {
                         return true;  
                     }  
