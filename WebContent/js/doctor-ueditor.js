@@ -1,10 +1,11 @@
 exports = this;
+var deptId;
 exports.XPW = exports.EDIT || {};
 exports.XPW.DoctorUeditor = (function() {
   function DoctorUeditor() {
     // 初始化页面处理。
+    DoctorUeditor.getDoctorInfo()
 	DoctorUeditor.firstOfficeLoad()
-  	DoctorUeditor.getDoctorInfo()
   	DoctorUeditor.postDoctorInfo()
   	DoctorUeditor.uploadImg()
   	DoctorUeditor.ue = UE.getEditor('container');
@@ -23,7 +24,8 @@ exports.XPW.DoctorUeditor = (function() {
       $('#doctorProfessiona').val(data.professionalTitle);
       $('#doctorDuty').val(data.duty);
       $('#doctorAppointmentAddress').val(data.appointmentUrl);
-      $('#typeSelectInput').val(data.deptId);
+//      $('#typeSelectInput').val(data.deptId);
+      deptId = data.deptId;
       $('#grade').val(data.grade);
       DoctorUeditor.isDisplayed = data.isDisplayed;
       DoctorUeditor.ue.ready(function () {
@@ -46,6 +48,8 @@ exports.XPW.DoctorUeditor = (function() {
 	      Mustache.parse(firstColumnTemplate);   
 	      var rendered = Mustache.render(firstColumnTemplate, {data});
 	      $('#typeSelectInput').html(rendered);
+//	      console.log($('#typeSelectInput').val());
+	      $('#typeSelectInput' + ' ' + 'option[value='+ deptId +']').attr('selected', 'selected');
 	   })
   }
   

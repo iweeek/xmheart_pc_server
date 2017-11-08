@@ -75,14 +75,14 @@
         <div class="xm-container">
             <a href="xtIndex" target="_blank" class="xm-banner-list xm-list1">
                 <div class="list-info">
-                    <h3 class="list-info-title">胸痛中心</h3>
-                    <p class="list-info-desc">胸痛胸闷，速拨120</p>
+                    <h3 class="list-info-title">国家胸痛中心</h3>
+                    <p class="list-info-desc">区域认证中心（厦门）</p>
                 </div>
             </a>
-            <a href="/col/97" class="xm-banner-list xm-list2">
+            <a href="/doctorDept" class="xm-banner-list mr-0 xm-list4">
                 <div class="list-info">
-                    <h3 class="list-info-title">院务公开</h3>
-                    <p class="list-info-desc">了解最新医院公告</p>
+                    <h3 class="list-info-title">专家介绍</h3>
+                    <p class="list-info-desc">了解专家信息便捷预约</p>
                 </div>
             </a>
             <a href="/mapDetail?id=29" class="xm-banner-list xm-list3">
@@ -91,10 +91,10 @@
                     <p class="list-info-desc">快速找到我们</p>
                 </div>
             </a>
-            <a href="/404" class="xm-banner-list mr-0 xm-list4">
+            <a href="/col/97" class="xm-banner-list xm-list2">
                 <div class="list-info">
-                    <h3 class="list-info-title">下载专区</h3>
-                    <p class="list-info-desc">为您特殊定制</p>
+                    <h3 class="list-info-title">院务公开</h3>
+                    <p class="list-info-desc">了解最新医院公告</p>
                 </div>
             </a>
         </div>

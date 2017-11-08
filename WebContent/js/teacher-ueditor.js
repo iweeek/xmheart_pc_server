@@ -1,4 +1,5 @@
 exports = this;
+var deptId;
 exports.XPW = exports.EDIT || {};
 exports.XPW.DoctorUeditor = (function() {
   function DoctorUeditor() {
@@ -23,6 +24,7 @@ exports.XPW.DoctorUeditor = (function() {
       $('#doctorProfessiona').val(data.professionalTitle);
       $('#doctorDuty').val(data.duty);
       $('#typeSelectInput').val(data.deptId);
+      deptId = data.deptId;
       $('#grade').val(data.grade);
       DoctorUeditor.isDisplayed = data.isDisplayed;
       DoctorUeditor.ue.ready(function () {
@@ -45,6 +47,7 @@ exports.XPW.DoctorUeditor = (function() {
 	      Mustache.parse(firstColumnTemplate);   
 	      var rendered = Mustache.render(firstColumnTemplate, {data});
 	      $('#typeSelectInput').html(rendered);
+	      $('#typeSelectInput' + ' ' + 'option[value='+ deptId +']').attr('selected', 'selected');
 	   })
   }
   
