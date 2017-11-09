@@ -94,7 +94,7 @@ public class ElecNewspaperController {
 
         int ret = newspaperService.create(newspaper);
         if (ret > 0) {
-            return ResponseEntity.ok(null);
+            return ResponseEntity.ok(newspaper);
         } else {
             return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).body(null);
         }

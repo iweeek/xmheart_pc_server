@@ -24,7 +24,8 @@ exports.XPW.DoctorUeditor = (function() {
       $('#doctorProfessiona').val(data.professionalTitle);
       $('#doctorDuty').val(data.duty);
       $('#doctorAppointmentAddress').val(data.appointmentUrl);
-//      $('#typeSelectInput').val(data.deptId);
+      $('#typeSelectInput').val(data.deptId);
+      console.log($('#typeSelectInput').val());
       deptId = data.deptId;
       $('#grade').val(data.grade);
       DoctorUeditor.isDisplayed = data.isDisplayed;
@@ -48,7 +49,7 @@ exports.XPW.DoctorUeditor = (function() {
 	      Mustache.parse(firstColumnTemplate);   
 	      var rendered = Mustache.render(firstColumnTemplate, {data});
 	      $('#typeSelectInput').html(rendered);
-//	      console.log($('#typeSelectInput').val());
+	      console.log($('#typeSelectInput').val());
 	      $('#typeSelectInput' + ' ' + 'option[value='+ deptId +']').attr('selected', 'selected');
 	   })
   }
