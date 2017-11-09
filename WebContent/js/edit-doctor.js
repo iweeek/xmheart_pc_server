@@ -181,9 +181,9 @@ exports.XPW.DoctorEdit = (function() {
   }
   
  DoctorEdit.handleUpDown = function (doctorId1, doctorId2) {
-     $('.ui-loading').show();
-     var $this = $(this);
-     var id = $this.data('id');
+//     $('.ui-loading').show();
+//     var $this = $(this);
+//     var id = $this.data('id');
      var url = '/doctors/swapDocOrder';
      var params = {
     		 doctorId1 : doctorId1,
@@ -198,16 +198,17 @@ exports.XPW.DoctorEdit = (function() {
 //             confirmButtonText : "确定！",
 //             closeOnConfirm : false
 //         }, function() {
-//             location.href = 'doctor.html?deptId=' + DoctorEdit.deptId;
+             location.href = 'doctor.html?deptId=' + DoctorEdit.deptId;
 //         });
+
      })
-     .done(function(data) {
-         var doctorTemplate = $('#doctorTd').html();
-         Mustache.parse(doctorTemplate);   // optional, speeds up future uses
-         var rendered = Mustache.render(doctorTemplate, {data:data});
-         $('#'+id).replaceWith(rendered);
-         $('.ui-loading').hide();
-      })
+//     .done(function(data) {
+//         var doctorTemplate = $('#doctorTd').html();
+//         Mustache.parse(doctorTemplate);   // optional, speeds up future uses
+//         var rendered = Mustache.render(doctorTemplate, {data:data});
+//         $('#'+id).replaceWith(rendered);
+//         $('.ui-loading').hide();
+//      })
      .error(function(jqXHR, textStatus, errorThrown){
          if (jqXHR.status == 403) {
              swal({
