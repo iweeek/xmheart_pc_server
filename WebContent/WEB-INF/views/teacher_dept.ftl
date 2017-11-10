@@ -47,7 +47,7 @@
                                 &#8195;&#8195;${teacher.brief}......
                                 <#else>
                                 &#8195;&#8195;${teacher.brief[0..35]}......
-                                <a href="doctorDetail?id=${teacher.id}" title="${teacher.name}" class="show-more">查看详细</a>
+                                <a href="${teacher.url}" title="${teacher.name}" class="show-more">查看详细</a>
                                 </#if>
                             </div>
                         </li>
