@@ -76,7 +76,7 @@
             <a href="xtIndex" target="_blank" class="xm-banner-list xm-list1">
                 <div class="list-info">
                     <h3 class="list-info-title">国家胸痛中心</h3>
-                    <p class="list-info-desc">区域认证中心（厦门）</p>
+                    <h3 class="list-info-title">区域认证中心</h3>
                 </div>
             </a>
             <a href="/doctorDept" class="xm-banner-list mr-0 xm-list4">
