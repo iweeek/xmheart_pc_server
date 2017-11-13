@@ -131,8 +131,13 @@ task deploy(dependsOn: [war]) {
     doLast {
         ssh.run {
           session(remotes.testServer) {
+<<<<<<< HEAD
             remove '/usr/local/webserver/tomcat/webapps/xmheart_pc_server_front.war'
             put from: buildDir.toString() + '/libs/xmheart_pc_server_front.war', into: '/usr/local/webserver/tomcat/webapps/'
+=======
+            remove '/usr/local/webserver/tomcat/webapps/xmheart_pc_server_backend.war'
+            put from: buildDir.toString() + '/libs/xmheart_pc_server_backend.war', into: '/usr/local/webserver/tomcat/webapps/'
+>>>>>>> 30c5298f7824bcf9feb6052e85d0c82ef4033d1a
           }
         }
     }

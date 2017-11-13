@@ -19,6 +19,7 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
+<<<<<<< HEAD
     <javaModelGenerator targetPackage="com.xmheart.model" targetProject="xmheart_pc_server_front">
     </javaModelGenerator>
 
@@ -26,6 +27,15 @@
     </sqlMapGenerator>
 
     <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server_front">
+=======
+    <javaModelGenerator targetPackage="com.xmheart.model" targetProject="xmheart_pc_server_backend">
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server_backend">
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server_backend">
+>>>>>>> 30c5298f7824bcf9feb6052e85d0c82ef4033d1a
     </javaClientGenerator>
 
     <table schema="xmeart_pc_web" tableName="xpw_column" domainObjectName ="XPWColumn" >
