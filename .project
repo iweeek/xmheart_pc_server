@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
 	<name>xmheart_pc_server</name>
-	<comment>Project xmheart_pc_server_front created by Buildship.</comment>
-=======
-	<name>xmheart_pc_server_backend</name>
-	<comment>Project xmheart_pc_server_backend created by Buildship.</comment>
->>>>>>> 30c5298f7824bcf9feb6052e85d0c82ef4033d1a
+	<comment>Project xmheart_pc_server created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
