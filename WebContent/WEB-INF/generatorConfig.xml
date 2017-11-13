@@ -19,13 +19,13 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.xmheart.model" targetProject="xmheart_pc_server_front">
+    <javaModelGenerator targetPackage="com.xmheart.model" targetProject="xmheart_pc_server">
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server_front">
+    <sqlMapGenerator targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server">
     </sqlMapGenerator>
 
-    <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server_front">
+    <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.xmheart.mapper"  targetProject="xmheart_pc_server">
     </javaClientGenerator>
 
     <table schema="xmeart_pc_web" tableName="xpw_column" domainObjectName ="XPWColumn" >
