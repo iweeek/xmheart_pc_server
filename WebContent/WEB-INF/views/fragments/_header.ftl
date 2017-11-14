@@ -210,6 +210,9 @@
                 您当前所在位置<a href="/index"> 首页 </a>
                 <#list parentColList as column>
                     &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
+                    <#if column.columnName == "科研教学"> 
+                    &gt <a href="/teacherTeam" title="导师团队">导师团队</a>
+                    </#if>
                 </#list>
             </div>
         </div>
