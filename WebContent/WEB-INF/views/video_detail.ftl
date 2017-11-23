@@ -22,7 +22,7 @@
 			<div class="baseRight list-news">
 				<div class="title01">影像厦心</div>
 				<div class="article detail">
-					<h2 id="H2Title" data-src="${video.videoUrl}">${video.title}</h2>
+					<h2 id="H2Title" data-src="${video.videoUrl}" data-img="${video.imgUrl}">${video.title}</h2>
 					<div id="DIVTool" class="title04">
 						<span id="SPANDate">发布日期：${video.publishTime?string('yyyy-MM-dd')}</span>
 						<!-- <span>字号调整
