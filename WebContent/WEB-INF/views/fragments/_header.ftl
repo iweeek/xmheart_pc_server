@@ -78,7 +78,7 @@
                             <#else>
                                 <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
                                     <#list columnMap as kc, vc>
-                                    <#if kc == key && !(key?index == 5 || key?index == 6 || key?index == 8) >
+                                    <#if kc == key && !(key?index == 6 || key?index == 8) >
                                          <div class="navboxBase">
                                              <div class="navboxBg">
                                                  <div class="navbox BaseMark">
@@ -121,10 +121,10 @@
                                                     </#list>
                                                     </#if>   
                        
-                                                    <#if key?index == 4 || key?index == 7>
+                                                    <#if key?index == 4 || key?index == 5 || key?index == 7>
                                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                                     <#list secondColNavMap as skey, sv>
-                                                        <#if skey == vc[0].columnName>
+                                                        <#if skey == vc[0].columnName && key?index != 5 >
                                                         <#list sv as scol>
                                                             <#if scol?index == 0>
                                                             <dl class="Img02">
@@ -144,6 +144,17 @@
                                                             </dl>
                                                             </#if>
                                                         </#list>
+                                                        </#if>
+                                                        
+                                                        <#if skey == vc[0].columnName && key?index == 5 >
+                                                        <dt class="title01">${skey}</dt>
+                                                        <#list sv as scol>
+                                                        <dd class="url">
+                                                            <span>${scol.publishTime?string('yyyy-MM-dd')}</span>
+                                                            <a href="${scol.url}" title="${scol.articleTitle}">${scol.articleTitle}</a>
+                                                        </dd>
+                                                        </#list>
+                                                        </dl>
                                                         </#if>
                                                       
                                                         <#if skey == vc[1].columnName>

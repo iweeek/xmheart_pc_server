@@ -105,7 +105,6 @@ public interface XPWDoctorMapper {
 		    "LEFT JOIN xpw_dept AS t " +
     	    "ON " +  
     		"d.dept_id = t.id where d.id = #{id}")
-
 	@ResultMap(value = { "doctorWithDeptMap" })
     XPWDoctor selectDoctorWithDeptByPrimaryKey(@Param("id") long id);
 	
