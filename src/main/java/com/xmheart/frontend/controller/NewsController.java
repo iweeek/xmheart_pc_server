@@ -12,6 +12,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.xmheart.service.impl.TokenServiceImpl;
+import com.xmheart.util.HisUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -602,6 +607,10 @@ public class NewsController {
 
 		model.addAttribute("index", index);
 
+		String hisTest = HisUtil.testDb();
+
+		model.addAttribute("his", hisTest);
+
 		return "index";
 	}
 	
@@ -734,5 +743,21 @@ public class NewsController {
 		model.addAttribute("dept", dept);
 		// model.addAttribute("dept", doctor.getDept());
 		return "dept_detail";
+	}
+
+
+	private static final Logger logger = LoggerFactory.getLogger(TokenServiceImpl.class);
+
+	@RequestMapping(value = { "/his" }, method = RequestMethod.GET)
+	public String his(Model model) {
+		model = addTopNav(1, model);
+
+		model.addAttribute("index", "#333333333333");
+
+		String hisTest = HisUtil.testDb();
+
+		model.addAttribute("his", hisTest);
+
+		return "his";
 	}
 }
