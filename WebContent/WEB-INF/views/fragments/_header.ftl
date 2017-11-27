@@ -147,6 +147,7 @@
                                                         </#if>
                                                         
                                                         <#if skey == vc[0].columnName && key?index == 5 >
+                                                        <dl>
                                                         <dt class="title01">${skey}</dt>
                                                         <#list sv as scol>
                                                         <dd class="url">
