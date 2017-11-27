@@ -121,4 +121,6 @@ public interface XPWIndexMapper {
             "banner_article_3_brief = #{bannerArticle3Brief,jdbcType=VARCHAR},",
             "banner_article_3_tag = #{bannerArticle3Tag,jdbcType=VARCHAR}", "where id = #{id,jdbcType=BIGINT}" })
     int updateByPrimaryKey(XPWIndex record);
+    
+
 }

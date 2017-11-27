@@ -31,7 +31,7 @@
         <div class="xm-header">
             <div class="xm-header-container">
                 <div class="header-icon">
-                    <!-- <a class="header-icon-lang" id="switchLanguage" href="">切换语言</a> -->
+                    <a class="header-icon-lang" id="switchLanguage" href="">切换语言</a>
                     <div class="header-icon-wechat-wrapper" id="wechatCode">
                             <a href="#" class="header-icon-wechat"></a>
                             <img src="/img/layout/wechat_code.jpg" class="wechat-code">
@@ -43,6 +43,7 @@
                     
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
+                <!-- <button id="switchLanguage">切换语言</button> -->
                 <!--
                 <div class="header-search">
                 		<div class="search-type-wrapper">
@@ -185,6 +186,7 @@
                                                         </#list>
                                                         </dl>
                                                         </#if>
+
                                             
                                                         <#if skey == vc[3].columnName>
                                                         <div class="BottomHidden"></div>
