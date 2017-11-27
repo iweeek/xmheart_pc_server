@@ -254,7 +254,7 @@ $(function(){
       $('#ddlTimes2').html(html);
     })
   }
-//  前台视频播放
+  //  前台视频播放
   var videoUrl = $('#H2Title').data('src');
   var imgUrl = $('#H2Title').data('img');
   if (videoUrl) {
@@ -284,4 +284,20 @@ $(function(){
 			toggleDuration: true
 		});
   }
+  
+  //切换语言
+  
+  $("#switchLanguage").click(function(){
+        $.ajax({
+            url: '/language',
+            type: 'GET',
+            success: function(result) {
+                location.reload()
+            }
+        });
+    });
+  
 })
+
+
+

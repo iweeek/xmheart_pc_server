@@ -99,8 +99,23 @@
 		
 		<div class="xm-footer">
 			<div class="xm-footer-main">
+			    <div class="xm-footer-link">
+                    <a href="http://www.xmhealth.gov.cn/" target="_blank">厦门市卫生和计划生育委员会</a>
+                    <span>|</span>
+                    <a href="http://www.xmsmjk.com/" target="_blank">厦门市民健康信息系统</a>
+                    <span>|</span>
+                    <a href="http://www.xmu.edu.cn/" target="_blank">厦门大学</a>
+                    <span>|</span>
+                    <a href="http://med.xmu.edu.cn/" target="_blank">厦门大学医学院</a>
+                    <span>|</span>
+                    <a href="http://www.xmwsrc.com/" target="_blank">厦门卫生人才服务中心</a>
+                    <span>|</span>
+                    <a href="http://www.cma.org.cn/" target="_blank">中华医学会</a>
+                    <span>|</span>
+                    <a href="http://www.ccahouse.org/index.html" target="_blank">中国心血管健康联盟</a>
+                </div>
 				<div class="xm-footer-link">
-					<a href="#">网站地图</a>
+					<a href="/mapDetail?id=29"  target="_blank">网站地图</a>
 					<span>|</span>
 					<a href="#">法律声明</a>
 					<span>|</span>
@@ -110,6 +125,7 @@
 					<span>|</span>
 					<a href="#">帮助信息</a>
 				</div>
+				
 				<p class="xm-footer-info">版权所有：厦门大学附属心血管病医院（本网站所有内容未经许可，不得以任何形式进行转载）</p>
 				<p class="xm-footer-info">闽ICP备09051364号-1</p>
 				<script src="http://dcs.conac.cn/js/14/215/0000/41619365/CA142150000416193650001.js"></script>

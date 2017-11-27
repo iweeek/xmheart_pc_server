@@ -1,5 +1,6 @@
 package com.xmheart.mapper;
 
+import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNavExample;
 import java.util.List;
@@ -95,4 +96,32 @@ public interface XPWNavMapper {
             "url = #{url,jdbcType=VARCHAR},", "img_url = #{imgUrl,jdbcType=VARCHAR},",
             "publish_time = #{publishTime,jdbcType=DATE}", "where id = #{id,jdbcType=BIGINT}" })
     int updateByPrimaryKey(XPWNav record);
+    
+//    @Select({ "select", "n.id, n.column_id, n.child_column_id, l.column_name_en as column_name, n.article_title, n.brief, n.url, n.img_url, n.publish_time ",
+//        "FROM xpw_nav AS n LEFT JOIN xpw_column_language AS l", "ON n.column_id = l.column_id",
+//        "where n.column_id = #{columnId,jdbcType=BIGINT}" })
+//	@ResultMap("com.xmheart.mapper.XPWNavMapper.BaseResultMap")
+//	List<XPWNav> selectEnglishByColumnId(Long id);
+    
+    @Select({ "select a.*, b.column_name_en as child_column_name from \n" + 
+    		"(SELECT n.id, n.column_id, n.child_column_id, l.column_name_en as column_name, n.article_title, n.brief, n.url, n.img_url, n.publish_time \n" + 
+    		"FROM xpw_nav AS n \n" + 
+    		"LEFT JOIN xpw_column_language AS l \n" + 
+    		"ON n.column_id = l.column_id) as a\n" + 
+    		"left join xpw_column_language as b \n" + 
+    		"on a.child_column_id = b.column_id",
+        "where a.column_id = #{columnId,jdbcType=BIGINT}" })
+	@ResultMap("com.xmheart.mapper.XPWNavMapper.BaseResultMap")
+	List<XPWNav> selectEnglishByColumnId(Long id);
+    
+    @Select({ "select a.*, b.column_name_en as child_column_name from \n" + 
+    		"(SELECT n.id, n.column_id, n.child_column_id, l.column_name_en as column_name, n.article_title, n.brief, n.url, n.img_url, n.publish_time \n" + 
+    		"FROM xpw_nav AS n \n" + 
+    		"LEFT JOIN xpw_column_language AS l \n" + 
+    		"ON n.column_id = l.column_id) as a\n" + 
+    		"left join xpw_column_language as b \n" + 
+    		"on a.child_column_id = b.column_id",
+        "where a.child_column_id = #{childColumnId,jdbcType=BIGINT}" })
+	@ResultMap("com.xmheart.mapper.XPWNavMapper.BaseResultMap")
+	List<XPWNav> selectEnglishByChildColumnId(Long id);
 }

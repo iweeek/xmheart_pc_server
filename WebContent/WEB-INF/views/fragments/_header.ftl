@@ -42,6 +42,7 @@
                     
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
+                <button id="switchLanguage">切换语言</button>
                 <!--
                 <div class="header-search">
                 		<div class="search-type-wrapper">
@@ -147,6 +148,7 @@
                                                         </#if>
                                                         
                                                         <#if skey == vc[0].columnName && key?index == 5 >
+                                                        <dl>
                                                         <dt class="title01">${skey}</dt>
                                                         <#list sv as scol>
                                                         <dd class="url">
@@ -183,6 +185,7 @@
                                                         </#list>
                                                         </dl>
                                                         </#if>
+
                                             
                                                         <#if skey == vc[3].columnName>
                                                         <div class="BottomHidden"></div>

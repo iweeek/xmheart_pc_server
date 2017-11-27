@@ -129,7 +129,7 @@ public class NewsController {
 
 			for (XPWNav nav : navList) {
 				if (secondColNavMap.containsKey(nav.getChildColumnName()) == false) {
-					List<XPWNav> secondColNavList = columnService.getNavsByChildColumnName(nav.getChildColumnName());
+					List<XPWNav> secondColNavList = columnService.getNavsByChildColumnId(nav.getChildColumnId());
 					secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
 				}
 			}
@@ -247,8 +247,34 @@ public class NewsController {
 	        		model.addAttribute("noPinnedArticleList", articleList);
 	        }
 		}
+
 		return "news";
 	}
+
+	/*
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = { "/hospitalNews" }, method = RequestMethod.GET)
+	public String hospitalNews(@RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
+		// model = addTopNav(model);
+
+		// model = addHeader(model);
+
+		model.addAttribute("columnName", HOSPITAL_NEWS_COLUMN_NAME);
+
+		// 获取置顶的新闻
+		List<XPWArticle> pinnedNewsList = newsService.getPinnedHospitalNews();
+		model.addAttribute("pinnedMediaNewsList", pinnedNewsList);
+
+		PageHelper.startPage(page, PAGE_SIZE);
+		List<XPWArticle> noPinnedNewsList = newsService.getNoPinnedHospitalNews();
+		model.addAttribute("noPinnedMediaNewsList", noPinnedNewsList);
+
+		PageInfo pageInfo = new PageInfo(noPinnedNewsList);
+		model.addAttribute("pageInfo", pageInfo);
+
+		return "news";
+	}
+	*/
 
 	/**
 	 * 影像厦心列表页
@@ -604,6 +630,17 @@ public class NewsController {
 
 		return "index";
 	}
+	
+    @RequestMapping(value = { "/language" }, method = RequestMethod.GET)
+    public String language(Model model) {
+        model = addTopNav(1, model);
+        
+        XPWIndex index = indexService.updateLanguage();
+        
+        model.addAttribute("index", index);
+
+        return "index";
+    }
 	
     @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
     public String notFound(Model model) {
