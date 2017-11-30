@@ -12,6 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.xmheart.util.HisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -47,6 +49,8 @@ import com.xmheart.service.VideoService;
 import freemarker.template.Template;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+
+import com.xmheart.his.Response.*;
 
 @Controller
 public class NewsController {
@@ -608,6 +612,12 @@ public class NewsController {
     @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
     public String notFound(Model model) {
         model = addTopNav(1, model);
+
+
+
+		TestDb his = HisUtil.testDb();
+
+		model.addAttribute("his", his);
 
 //        XPWIndex index = indexService.indexRead();
 

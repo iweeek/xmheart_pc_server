@@ -1,22 +1,11 @@
 package com.xmheart.util;
 
-import org.apache.axiom.om.OMAbstractFactory;
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMFactory;
-import org.apache.axiom.om.OMNamespace;
-import org.apache.axis2.client.ServiceClient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
-import javax.xml.namespace.QName;
-
-import org.apache.axis2.AxisFault;
-import org.apache.axis2.addressing.EndpointReference;
-import org.apache.axis2.client.Options;
-import org.apache.axis2.rpc.client.RPCServiceClient;
-
 import com.xmheart.util.soap.*;
+
+import com.xmheart.his.Response.*;
 
 
 /**
@@ -26,7 +15,7 @@ public class HisUtil {
 
     private static final Log log = LogFactory.getLog(HisUtil.class);
 
-    public static String testDb() {
+    public static TestDb testDb() {
     String requestXml = "<Req>" +
       "<oracode>00002</oracode>" +
       "<oraauthcode>cs20171011</oraauthcode>" +
@@ -36,7 +25,147 @@ public class HisUtil {
     Service1 service = new Service1();
     Service1Soap service1Soap =  service.getService1Soap();
     String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
-    return retMsg;
+
+    return (TestDb)XmlUtil.xmlToObject(retMsg, TestDb.class);
+    }
+
+    /**
+     * 查询门诊科室
+     * <Req>
+     <oracode>交易厂商代码</oracode>
+     <oraauthcode>厂商授权码 </oraauthcode>
+     <TransactionCode> JK2002</TransactionCode>
+     <Type>类型：0所有科室，1有排班科室</Type>
+     <WorkDateStart>查询有出诊日期范围 开始</WorkDateStart>
+     <WorkDateEnd>查询有出诊日期范围 结束</WorkDateEnd>
+     <WorkTime>查询有出诊日期范围 时段0-全天 1-上午 2-下午</WorkTime>
+     </Req>
+     */
+    public static Departments departments(String type, String workTime, String workDateStart, String workDateEnd) {
+        String requestXml = "<Req>" +
+                "<oracode>00002</oracode>" +
+                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<TransactionCode> JK2002</TransactionCode>" +
+                "<Type>" + type +"</Type>" +
+                "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
+                "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
+                "<WorkTime>" + workTime + "</WorkTime>" +
+                "</Req>";
+        String tradeCode = "JK2002";
+        Service1 service = new Service1();
+        Service1Soap service1Soap =  service.getService1Soap();
+        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        return (Departments) XmlUtil.xmlToObject(retMsg, Departments.class);
+    }
+
+    /**
+     * 查询科室医生
+     *
+     * <Req>
+     <oracode>交易厂商代码</oracode>
+     <oraauthcode>厂商授权码 </oraauthcode>
+     <TransactionCode> JK2003</TransactionCode>
+     <Type>类型：0所有医生，1有排班医生</Type>
+     <DeptCode>科室代码</DeptCode>
+     <DeptName>科室名称（支持模糊检索）</DeptName>
+     <WorkDateStart>查询有出诊日期范围 开始</WorkDateStart>
+     <WorkDateEnd>查询有出诊日期范围 结束</WorkDateEnd>
+     </Req>
+     */
+    public static Doctors doctors(String type, String deptCode, String DeptName, String workDateStart, String workDateEnd) {
+        String requestXml = "<Req>" +
+                "<oracode>00002</oracode>" +
+                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<TransactionCode>JK2003</TransactionCode>" +
+                "<Type>" + type + "</Type>" +
+                "<DeptCode>" + deptCode +  "</DeptCode>" +
+                "<DeptName>" + DeptName + "</DeptName>" +
+                "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
+                "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
+                "</Req>";
+        String tradeCode = "JK2002";
+        Service1 service = new Service1();
+        Service1Soap service1Soap =  service.getService1Soap();
+        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        return (Doctors) XmlUtil.xmlToObject(retMsg, Doctors.class);
+    }
+
+    /**
+     * 挂号预约
+     *
+     * <Req>
+     <oracode>交易厂商代码</oracode>
+     <oraauthcode>厂商授权码 </oraauthcode>
+     <TransactionCode> JK2006</TransactionCode>
+     <OrderID>订单号（健康之路订单号）</OrderID>
+     <IDCardNo>身份证号</IDCardNo>
+     <CardNo>就诊卡号</CardNo>
+     <Mobile>联系电话</Mobile>
+     <Name>患者姓名</Name>
+     <WorkDate>预约日期</WorkDate>
+     <WorkType>预约的排班类别(1上午;2下午)</WorkType>
+     <DeptCode>科室代码</DeptCode>
+     <DocCode>医生代码</DocCode>
+     <STime>号源开始时间（如08：00：00）</STime>
+     <UserId>微信号</UserId>
+     <CustomTime>第三方当前系统时间</CustomTime>
+     <SickID>病人唯一号</SickID>
+     </Req>
+     */
+    public static Registered  registered(String orderId, String idCardNo, String cardNo, String mobile, String name, String workdate, String workType, String deptCode,
+                                         String docCode, String stime, String userid, String customTime, String sickId) {
+        String requestXml = "<Req>" +
+                "<oracode>00002</oracode>" +
+                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<TransactionCode> JK2006</TransactionCode>" +
+                "<OrderID>"+orderId+"</OrderID>" +
+                "<IDCardNo>"+idCardNo+"</IDCardNo>" +
+                "<CardNo>"+cardNo+"</CardNo>" +
+                "<Mobile>"+mobile+"</Mobile>" +
+                "<Name>"+name+"</Name>" +
+                "<WorkDate>"+workdate+"</WorkDate>" +
+                "<WorkType>"+workType+"</WorkType>" +
+                "<DeptCode>"+deptCode+"</DeptCode>" +
+                "<DocCode>"+docCode+"生代码</DocCode>" +
+                "<STime>"+stime+"</STime>" +
+                "<UserId>"+userid+"</UserId>" +
+                "<CustomTime>"+customTime+"</CustomTime>" +
+                "<SickID>"+sickId+"</SickID>" +
+                "</Req>";
+        String tradeCode = "JK2002";
+        Service1 service = new Service1();
+        Service1Soap service1Soap =  service.getService1Soap();
+        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        return (Registered)XmlUtil.xmlToObject(retMsg, Registered.class);
+    }
+
+    /**
+     * 取消挂号预约
+     */
+    public static UnRegistered  unRegistered(String orderId, String seqNumber, String reason, String cardNo, String name, String workdate, String workType, String deptCode,
+                                             String docCode, String userid, String customTime, String sickId) {
+        String requestXml = "<Req>" +
+                "<oracode>00002</oracode>" +
+                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<TransactionCode> JK2007</TransactionCode>" +
+                "<OrderID>"+orderId+"</OrderID>" +
+                "<Reason>"+reason+"</Reason>" +
+                "<SeqNumber>"+seqNumber+"</SeqNumber>" +
+                "<Name>"+name+"</Name>" +
+                "<CardNo>"+cardNo+"</CardNo>" +
+                "<WorkDate>"+workdate+"</WorkDate>" +
+                "<WorkType>"+workType+"</WorkType>" +
+                "<DeptCode>"+deptCode+"</DeptCode>" +
+                "<DocCode>"+docCode+"</DocCode>" +
+                "<UserId>"+userid+"</UserId>" +
+                "<CustomTime>"+customTime+"</CustomTime>" +
+                "<SickID>"+sickId+"</SickID>" +
+                "</Req>";
+        String tradeCode = "JK2002";
+        Service1 service = new Service1();
+        Service1Soap service1Soap =  service.getService1Soap();
+        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        return (UnRegistered) XmlUtil.xmlToObject(retMsg, UnRegistered.class);
     }
 
 
