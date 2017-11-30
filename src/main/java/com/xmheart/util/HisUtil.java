@@ -15,18 +15,22 @@ public class HisUtil {
 
     private static final Log log = LogFactory.getLog(HisUtil.class);
 
-    public static TestDb testDb() {
-    String requestXml = "<Req>" +
-      "<oracode>00002</oracode>" +
-      "<oraauthcode>cs20171011</oraauthcode>" +
-      "<TransactionCode>JK1001</TransactionCode>" +
-      "</Req>";
-    String tradeCode = "JK1001";
-    Service1 service = new Service1();
-    Service1Soap service1Soap =  service.getService1Soap();
-    String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+    private static String handleResp(String resp){
+        return "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" + resp;
+    }
 
-    return (TestDb)XmlUtil.xmlToObject(retMsg, TestDb.class);
+    public static TestDb testDb() {
+        String requestXml = "<Req>" +
+          "<oracode>00002</oracode>" +
+          "<oraauthcode>cs20171011</oraauthcode>" +
+          "<TransactionCode>JK1001</TransactionCode>" +
+          "</Req>";
+        String tradeCode = "JK1001";
+        Service1 service = new Service1();
+        Service1Soap service1Soap =  service.getService1Soap();
+        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+
+        return (TestDb)XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), TestDb.class);
     }
 
     /**
@@ -55,7 +59,7 @@ public class HisUtil {
         Service1 service = new Service1();
         Service1Soap service1Soap =  service.getService1Soap();
         String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
-        return (Departments) XmlUtil.xmlToObject(retMsg, Departments.class);
+        return (Departments) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Departments.class);
     }
 
     /**
@@ -87,7 +91,7 @@ public class HisUtil {
         Service1 service = new Service1();
         Service1Soap service1Soap =  service.getService1Soap();
         String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
-        return (Doctors) XmlUtil.xmlToObject(retMsg, Doctors.class);
+        return (Doctors) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Doctors.class);
     }
 
     /**
@@ -136,7 +140,7 @@ public class HisUtil {
         Service1 service = new Service1();
         Service1Soap service1Soap =  service.getService1Soap();
         String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
-        return (Registered)XmlUtil.xmlToObject(retMsg, Registered.class);
+        return (Registered)XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Registered.class);
     }
 
     /**
@@ -165,7 +169,7 @@ public class HisUtil {
         Service1 service = new Service1();
         Service1Soap service1Soap =  service.getService1Soap();
         String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
-        return (UnRegistered) XmlUtil.xmlToObject(retMsg, UnRegistered.class);
+        return (UnRegistered) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), UnRegistered.class);
     }
 
 

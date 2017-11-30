@@ -1,5 +1,9 @@
 package com.xmheart.his.Response;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * <Resp>
  <TransactionCode>JK1001</TransactionCode>
@@ -8,23 +12,23 @@ package com.xmheart.his.Response;
  <SysDateTime><SysDateTime>
  </Resp>
  */
+@XmlRootElement(name = "Resp")
 public class TestDb {
 
-    public String TransactionCode;
+    private String TransactionCode;
 
-    public String RespCode;
 
-    public String RespMessage;
+    private String RespCode;
 
-    public String SysDateTime;
 
-    public TestDb(String transactionCode, String respCode, String respMessage, String sysDateTime) {
-        TransactionCode = transactionCode;
-        RespCode = respCode;
-        RespMessage = respMessage;
-        SysDateTime = sysDateTime;
-    }
+    private String RespMessage;
 
+
+    private String SysDateTime;
+
+    public  TestDb(){}
+
+    @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
         return TransactionCode;
     }
@@ -33,6 +37,7 @@ public class TestDb {
         TransactionCode = transactionCode;
     }
 
+    @XmlElement(name = "RespCode")
     public String getRespCode() {
         return RespCode;
     }
@@ -41,6 +46,7 @@ public class TestDb {
         RespCode = respCode;
     }
 
+    @XmlElement(name = "RespMessage")
     public String getRespMessage() {
         return RespMessage;
     }
@@ -49,6 +55,7 @@ public class TestDb {
         RespMessage = respMessage;
     }
 
+    @XmlElement(name = "SysDateTime")
     public String getSysDateTime() {
         return SysDateTime;
     }
