@@ -13,6 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="renderer" content="webkit">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="厦门大学附属心血管病医院（简称“厦心”）为福建省唯一的三级心血管病专科医院，拥有心内科国家临床重点专科，承担冠心病、心律失常、先天性心脏病、瓣膜病变等各类心脏病及心血管疑难复杂重症的救治。" />
         <title>厦门大学附属心血管病医院（厦门市心脏中心）</title>
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/swiper-3.4.2.min.css">
@@ -30,7 +31,7 @@
         <div class="xm-header">
             <div class="xm-header-container">
                 <div class="header-icon">
-                    <!--<span class="header-icon-lang">English</span>-->
+                    <!-- <a class="header-icon-lang" id="switchLanguage" href="">切换语言</a> -->
                     <div class="header-icon-wechat-wrapper" id="wechatCode">
                             <a href="#" class="header-icon-wechat"></a>
                             <img src="/img/layout/wechat_code.jpg" class="wechat-code">
