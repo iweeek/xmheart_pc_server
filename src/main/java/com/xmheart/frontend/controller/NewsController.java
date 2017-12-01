@@ -613,10 +613,56 @@ public class NewsController {
     public String notFound(Model model) {
         model = addTopNav(1, model);
 
-
+        String deptCode = "";
+        String deptName = "";
+        String doctorCode = "";
+        String doctorName = "";
+        String workTime = "0";
+        String workDateStart = "20171115";
+        String workDateEnd = "20171201";
+        
+        String type = "0";
+        String DeptName = "";
+        String status = "2";
+        String workDate = "20171201";// 排班时间 Date
+        String workType = "1";// 排班类别(1上午;2下午)
+        String docCode = "1";//
+        
+        String orderId = "1"; // 订单号
+        String idCardNo = "1"; //身份证
+        String cardNo = "1"; //就诊卡号
+        String mobile = "15167727527"; 
+        String name = "倪军"; 
+        String workdate = "20171201"; 
+        String stime = "08:00:00"; 
+        String userid = ""; //微信号
+        String customTime = "20171201"; //第三方系统时间
+        String sickId = "1"; //病人唯一号
+        
+        String seqNumber = ""; // HIS序号
+        String reason = ""; // 取消原因
+        String IDCardNo = "1"; 
+        String mcardNo = ""; // 医疗保险号
+        String address = ""; // 医疗保险号
+        String birthDay = ""; // 医疗保险号
+        String sex = ""; // 医疗保险号
+        String userID = ""; // 医疗保险号
+        
 
 		TestDb his = HisUtil.testDb();
-
+		HisUtil.searchRegisterTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
+		HisUtil.departments(type, workTime, workDateStart, workDateEnd);
+		HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
+		HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
+		HisUtil.registeredSourceTime(workDate, workType, deptCode, docCode);
+		HisUtil.registered(orderId, idCardNo, cardNo, mobile, name, workdate, workType, 
+		        deptCode, docCode, stime, userid, customTime, sickId);
+		HisUtil.unRegistered(orderId, seqNumber, reason, cardNo, name, 
+		        workdate, workType, deptCode, docCode, userid, customTime, sickId);
+		HisUtil.registerInfo(IDCardNo, seqNumber, workdate, cardNo, deptCode, docCode, status, sickId);
+		HisUtil.patientInfo(IDCardNo, mobile, name, cardNo, mcardNo, sickId);
+		HisUtil.noCardRegister(IDCardNo, mobile, name, address, birthDay, sex, userID);
+		
 		model.addAttribute("his", his);
 
 //        XPWIndex index = indexService.indexRead();
@@ -714,6 +760,8 @@ public class NewsController {
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
 		model.addAttribute("doctor", doctor);
+		
+		
 		// model.addAttribute("dept", doctor.getDept());
 		return "doctor_detail";
 	}
@@ -745,4 +793,5 @@ public class NewsController {
 		// model.addAttribute("dept", doctor.getDept());
 		return "dept_detail";
 	}
+	
 }

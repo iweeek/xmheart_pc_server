@@ -6,18 +6,19 @@ import java.util.List;
 public class Common {
 }
 
-class _date {
-    private List<String> WorkDate;
+class Date {
+    private List<String> workDate;
 
-    public _date(List<String> workDate) {
-        WorkDate = workDate;
+    public Date() {}
+    public Date(List<String> workDate) {
+        this.workDate = workDate;
     }
 
     public List<String> getWorkDate() {
-        return WorkDate;
+        return workDate;
     }
 
     public void setWorkDate(List<String> workDate) {
-        WorkDate = workDate;
+        this.workDate = workDate;
     }
 }

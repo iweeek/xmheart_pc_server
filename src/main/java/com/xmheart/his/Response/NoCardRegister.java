@@ -1,33 +1,26 @@
 package com.xmheart.his.Response;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * <Resp>
- <TransactionCode> JK2006</TransactionCode>
- <RespCode></RespCode>
- <RespMessage>成功</RespMessage>
- <MemoTips>预约成功</ MemoTips >
- < SeqNumber> HIS序号</ SeqNumber>
- </Resp>
- */
 @XmlRootElement(name = "Resp")
-public class Registered {
-
+public class NoCardRegister {
     private String TransactionCode;
     private String RespCode;
     private String RespMessage;
-    private String MemoTips;
-    private String SeqNumber;
+    private String SickID;
 
-    public Registered() {}
-    public Registered(String transactionCode, String respCode, String respMessage, String memoTips, String seqNumber) {
+    public NoCardRegister() {}
+    
+
+    public NoCardRegister(String transactionCode, String respCode, String respMessage, String sickID) {
+        super();
         TransactionCode = transactionCode;
         RespCode = respCode;
         RespMessage = respMessage;
-        MemoTips = memoTips;
-        SeqNumber = seqNumber;
+        SickID = sickID;
     }
 
     @XmlElement(name = "TransactionCode")
@@ -51,20 +44,11 @@ public class Registered {
     public void setRespMessage(String respMessage) {
         this.RespMessage = respMessage;
     }
-    @XmlElement(name = "MemoTips")
-    public String getMemoTips() {
-        return MemoTips;
+    @XmlElement(name = "SickID")
+    public String getSickID() {
+        return SickID;
     }
-
-    public void setMemoTips(String memoTips) {
-        MemoTips = memoTips;
-    }
-    @XmlElement(name = "SeqNumber")
-    public String getSeqNumber() {
-        return SeqNumber;
-    }
-
-    public void setSeqNumber(String seqNumber) {
-        SeqNumber = seqNumber;
+    public void setSickID(String sickID) {
+        SickID = sickID;
     }
 }

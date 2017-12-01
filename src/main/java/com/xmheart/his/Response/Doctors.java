@@ -2,6 +2,9 @@ package com.xmheart.his.Response;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * <Resp>
  <TransactionCode>JK2003</TransactionCode>
@@ -26,53 +29,55 @@ import java.util.List;
  ……
  </Resp>
  */
+@XmlRootElement(name = "Resp")
 public class Doctors {
-    private String TransactionCode;
-    private String RespCode;
-    private String RespMessage;
-    private List<_Doctor> Doctor;
+    public String TransactionCode;
+    public String RespCode;
+    public String RespMessage;
+    private List<Doctor> doctor;
+    
+    public Doctors() {}
 
-    public Doctors(String transactionCode, String respCode, String respMessage, List<_Doctor> doctor) {
-        TransactionCode = transactionCode;
-        RespCode = respCode;
-        RespMessage = respMessage;
-        Doctor = doctor;
+    public Doctors(String transactionCode, String respCode, String respMessage, List<Doctor> doctor) {
+        this.RespCode = respCode;
+        this.TransactionCode = transactionCode;
+        this.RespMessage = respMessage;
+        this.doctor = doctor;
     }
 
+
+    @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
         return TransactionCode;
     }
-
     public void setTransactionCode(String transactionCode) {
-        TransactionCode = transactionCode;
+        this.TransactionCode = transactionCode;
     }
-
+    @XmlElement(name = "RespCode")
     public String getRespCode() {
         return RespCode;
     }
-
     public void setRespCode(String respCode) {
-        RespCode = respCode;
+        this.RespCode = respCode;
     }
-
+    @XmlElement(name = "RespMessage")
     public String getRespMessage() {
         return RespMessage;
     }
-
     public void setRespMessage(String respMessage) {
-        RespMessage = respMessage;
+        this.RespMessage = respMessage;
     }
-
-    public List<_Doctor> getDoctor() {
-        return Doctor;
+    @XmlElement(name = "Doctor")
+    public List<Doctor> getDoctor() {
+        return doctor;
     }
-
-    public void setDoctor(List<_Doctor> doctor) {
-        Doctor = doctor;
+    
+    public void setDoctor(List<Doctor> doctor) {
+        this.doctor = doctor;
     }
 }
-
-class _Doctor{
+@XmlRootElement(name = "Doctor")
+class Doctor{
     private String DeptCode;
     private String DocCode;
     private String DocName;
@@ -83,9 +88,10 @@ class _Doctor{
     private String Sex;
     private String DeptName;
     private String ClinicFee;
-    private  _date Date;
+    private  Date Date;
 
-    public _Doctor(String deptCode, String docCode, String docName, String spec, String remark, String titleName, String titleCode, String sex, String deptName, String clinicFee, _date date) {
+    public Doctor() {}
+    public Doctor(String deptCode, String docCode, String docName, String spec, String remark, String titleName, String titleCode, String sex, String deptName, String clinicFee, Date date) {
         DeptCode = deptCode;
         DocCode = docCode;
         DocName = docName;
@@ -98,7 +104,7 @@ class _Doctor{
         ClinicFee = clinicFee;
         Date = date;
     }
-
+    @XmlElement(name = "DeptCode")
     public String getDeptCode() {
         return DeptCode;
     }
@@ -106,7 +112,7 @@ class _Doctor{
     public void setDeptCode(String deptCode) {
         DeptCode = deptCode;
     }
-
+    @XmlElement(name = "DocCode")
     public String getDocCode() {
         return DocCode;
     }
@@ -114,7 +120,7 @@ class _Doctor{
     public void setDocCode(String docCode) {
         DocCode = docCode;
     }
-
+    @XmlElement(name = "DocName")
     public String getDocName() {
         return DocName;
     }
@@ -122,7 +128,7 @@ class _Doctor{
     public void setDocName(String docName) {
         DocName = docName;
     }
-
+    @XmlElement(name = "Spec")
     public String getSpec() {
         return Spec;
     }
@@ -130,7 +136,7 @@ class _Doctor{
     public void setSpec(String spec) {
         Spec = spec;
     }
-
+    @XmlElement(name = "Remark")
     public String getRemark() {
         return Remark;
     }
@@ -138,7 +144,7 @@ class _Doctor{
     public void setRemark(String remark) {
         Remark = remark;
     }
-
+    @XmlElement(name = "TitleName")
     public String getTitleName() {
         return TitleName;
     }
@@ -146,7 +152,7 @@ class _Doctor{
     public void setTitleName(String titleName) {
         TitleName = titleName;
     }
-
+    @XmlElement(name = "TitleCode")
     public String getTitleCode() {
         return TitleCode;
     }
@@ -154,7 +160,7 @@ class _Doctor{
     public void setTitleCode(String titleCode) {
         TitleCode = titleCode;
     }
-
+    @XmlElement(name = "Sex")
     public String getSex() {
         return Sex;
     }
@@ -162,7 +168,7 @@ class _Doctor{
     public void setSex(String sex) {
         Sex = sex;
     }
-
+    @XmlElement(name = "DeptName")
     public String getDeptName() {
         return DeptName;
     }
@@ -170,7 +176,7 @@ class _Doctor{
     public void setDeptName(String deptName) {
         DeptName = deptName;
     }
-
+    @XmlElement(name = "ClinicFee")
     public String getClinicFee() {
         return ClinicFee;
     }
@@ -178,12 +184,12 @@ class _Doctor{
     public void setClinicFee(String clinicFee) {
         ClinicFee = clinicFee;
     }
-
-    public _date getDate() {
+    @XmlElement(name = "Date")
+    public Date getDate() {
         return Date;
     }
 
-    public void setDate(_date date) {
+    public void setDate(Date date) {
         Date = date;
     }
 }

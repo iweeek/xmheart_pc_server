@@ -32,13 +32,19 @@
                 <p>${doctor.intro}</p>
             </div>
               
-            <!--<div id="DIVOnDutyInfo" class="visitDate">
+            <div id="DIVOnDutyInfo" class="visitDate">
                 <div class="title">
                     出诊安排<em>Visits Time</em>
                 </div>
                 <div class="visitList">
                     <div class="time">
                         <span class="green">时段</span>
+                        <div class="green">
+                            星期一 <em>2017/7/31</em>
+                        </div>
+                        <div class="blue">
+                            星期二 <em>2017/8/1</em>
+                        </div>
                         <div class="blue">
                             星期三 <em>2017/7/26</em>
                         </div>
@@ -54,12 +60,6 @@
                         <div class="blue">
                             星期日 <em>2017/7/30</em>
                         </div>
-                        <div class="green">
-                            星期一 <em>2017/7/31</em>
-                        </div>
-                        <div class="blue">
-                            星期二 <em>2017/8/1</em>
-                        </div>
                     </div>
                     <div class="am">
                         <span>上午</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span><img
@@ -70,7 +70,7 @@
                             src="image/cz_ico3.png" width="22" height="22" alt="出诊"></span>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="clear"></div>
         </div>
     </div>

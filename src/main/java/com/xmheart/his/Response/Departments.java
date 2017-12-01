@@ -2,145 +2,159 @@ package com.xmheart.his.Response;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
- * <Resp>
- <TransactionCode>JK2002</TransactionCode>
- <RespCode>0</RespCode>
- <RespMessage>成功</RespMessage>
- <UpperDept>
- <UpperDeptCode>31100</UpperDeptCode>
- <UpperDeptName>妇产科门诊</UpperDeptName>
- <Dept>
- <DeptCode>31100001</DeptCode>
- <DeptName>产科门诊</DeptName>
- <DeptLocus>地理位置</DeptLocus>
- <Memo>科室介绍</Memo>
- <Date>
- <WorkDate>20151105</WorkDate>
- <WorkDate>20151112</WorkDate>
- ….
- </Date>
- </Dept>
- <Dept>
- <DeptCode>31100002</DeptCode>
- <DeptName>妇科门诊</DeptName>
- <Date>
- <WorkDate>20151117</WorkDate>
- <WorkDate>20151110</WorkDate>
- </Date>
- </Dept>
- </UpperDept>
-
- …
- </Resp>
+<Resp>
+<TransactionCode>JK2002</TransactionCode>
+<RespCode>0</RespCode>
+<RespMessage>成功</RespMessage>
+<UpperDept>
+<UpperDeptCode>31100</UpperDeptCode>
+<UpperDeptName>妇产科门诊</UpperDeptName>
+<Dept>
+<DeptCode>31100001</DeptCode>
+<DeptName>产科门诊</DeptName>
+<DeptLocus>地理位置</DeptLocus>
+<Memo>科室介绍</Memo>
+<Date>
+<WorkDate>20151105</WorkDate>
+<WorkDate>20151112</WorkDate>
+  ….
+</Date>
+</Dept>
+<Dept>
+<DeptCode>31100002</DeptCode>
+<DeptName>妇科门诊</DeptName>
+<Date>
+<WorkDate>20151117</WorkDate>
+<WorkDate>20151110</WorkDate>
+</Date>
+</Dept>
+</UpperDept>
+…
+</Resp>
  */
+@XmlRootElement(name = "Resp")
 public class Departments {
-    private String TransactionCode;
-    private String RespCode;
-    private String RespMessage;
+    public String TransactionCode;
+    public String RespCode;
+    public String RespMessage;
+    
+    private List<Department> upperDept;
 
-    private List<_department> UpperDept;
-
-    public Departments(String transactionCode, String respCode, String respMessage, List<_department> upperDept) {
-        TransactionCode = transactionCode;
-        RespCode = respCode;
-        RespMessage = respMessage;
-        UpperDept = upperDept;
+    public Departments() {}
+    
+    public Departments(String transactionCode, String respCode, String respMessage, List<Department> upperDept) {
+        this.RespCode = respCode;
+        this.TransactionCode = transactionCode;
+        this.RespMessage = respMessage;
+        this.upperDept = upperDept;
+    }
+    
+    @XmlElement(name = "UpperDept")
+    public List<Department> getUpperDept() {
+        return upperDept;
     }
 
+    public void setUpperDept(List<Department> upperDept) {
+        this.upperDept = upperDept;
+    }
+    
+    @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
         return TransactionCode;
     }
-
     public void setTransactionCode(String transactionCode) {
-        TransactionCode = transactionCode;
+        this.TransactionCode = transactionCode;
     }
-
+    @XmlElement(name = "RespCode")
     public String getRespCode() {
         return RespCode;
     }
-
     public void setRespCode(String respCode) {
-        RespCode = respCode;
+        this.RespCode = respCode;
     }
-
+    @XmlElement(name = "RespMessage")
     public String getRespMessage() {
         return RespMessage;
     }
-
     public void setRespMessage(String respMessage) {
-        RespMessage = respMessage;
+        this.RespMessage = respMessage;
     }
-
-    public List<_department> getUpperDept() {
-        return UpperDept;
-    }
-
-    public void setUpperDept(List<_department> upperDept) {
-        UpperDept = upperDept;
-    }
+    
 }
 
-class _department {
-    private String UpperDeptCode;
-    private String UpperDeptName;
+@XmlRootElement(name = "UpperDept")
+class Department {
+    private String upperDeptCode;
+    private String upperDeptName;
 
-    public _department(String upperDeptCode, String upperDeptName) {
-        UpperDeptCode = upperDeptCode;
-        UpperDeptName = upperDeptName;
+    public Department(String upperDeptCode, String upperDeptName) {
+        this.upperDeptCode = upperDeptCode;
+        this.upperDeptName = upperDeptName;
     }
+    
+    public Department() {}
 
+    @XmlElement(name = "UpperDeptCode")
     public String getUpperDeptCode() {
-        return UpperDeptCode;
+        return upperDeptCode;
     }
 
     public void setUpperDeptCode(String upperDeptCode) {
-        UpperDeptCode = upperDeptCode;
+        this.upperDeptCode = upperDeptCode;
     }
-
+    @XmlElement(name = "UpperDeptName")
     public String getUpperDeptName() {
-        return UpperDeptName;
+        return upperDeptName;
     }
 
     public void setUpperDeptName(String upperDeptName) {
-        UpperDeptName = upperDeptName;
+        this.upperDeptName = upperDeptName;
     }
 }
 
-class _dept {
-    private String DeptCode;
-    private String DeptName;
-    private  _date Date;
+@XmlRootElement(name = "Dept")
+class Dept {
+    private String deptCode;
+    private String deptName;
+    private String deptLocus;
+    private String memo;
+    private Date Date;
 
-    public _dept(String deptCode, String deptName, _date date) {
-        DeptCode = deptCode;
-        DeptName = deptName;
+    public Dept() {}
+    
+    public Dept(String deptCode, String deptName, Date date) {
+        this.deptCode = deptCode;
+        this.deptName = deptName;
         Date = date;
     }
-
+    @XmlElement(name = "DeptCode")
     public String getDeptCode() {
-        return DeptCode;
+        return deptCode;
     }
 
     public void setDeptCode(String deptCode) {
-        DeptCode = deptCode;
+        this.deptCode = deptCode;
     }
-
+    @XmlElement(name = "DeptName")
     public String getDeptName() {
-        return DeptName;
+        return deptName;
     }
 
     public void setDeptName(String deptName) {
-        DeptName = deptName;
+        this.deptName = deptName;
     }
-
-    public _date getDate() {
+    @XmlElement(name = "Date")
+    public Date getDate() {
         return Date;
     }
 
-    public void setDate(_date date) {
+    public void setDate(Date date) {
         Date = date;
     }
+    
+    
 }
-
-
