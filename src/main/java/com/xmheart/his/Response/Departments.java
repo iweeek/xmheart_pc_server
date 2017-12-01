@@ -38,18 +38,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "Resp")
 public class Departments {
-    public String TransactionCode;
-    public String RespCode;
-    public String RespMessage;
+    private String transactionCode;
+    private String respCode;
+    private String respMessage;
     
     private List<Department> upperDept;
 
     public Departments() {}
     
     public Departments(String transactionCode, String respCode, String respMessage, List<Department> upperDept) {
-        this.RespCode = respCode;
-        this.TransactionCode = transactionCode;
-        this.RespMessage = respMessage;
+        this.respCode = respCode;
+        this.transactionCode = transactionCode;
+        this.respMessage = respMessage;
         this.upperDept = upperDept;
     }
     
@@ -64,24 +64,24 @@ public class Departments {
     
     @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
-        return TransactionCode;
+        return transactionCode;
     }
     public void setTransactionCode(String transactionCode) {
-        this.TransactionCode = transactionCode;
+        this.transactionCode = transactionCode;
     }
     @XmlElement(name = "RespCode")
     public String getRespCode() {
-        return RespCode;
+        return respCode;
     }
     public void setRespCode(String respCode) {
-        this.RespCode = respCode;
+        this.respCode = respCode;
     }
     @XmlElement(name = "RespMessage")
     public String getRespMessage() {
-        return RespMessage;
+        return respMessage;
     }
     public void setRespMessage(String respMessage) {
-        this.RespMessage = respMessage;
+        this.respMessage = respMessage;
     }
     
 }
@@ -122,14 +122,14 @@ class Dept {
     private String deptName;
     private String deptLocus;
     private String memo;
-    private Date Date;
+    private Date date;
 
     public Dept() {}
     
     public Dept(String deptCode, String deptName, Date date) {
         this.deptCode = deptCode;
         this.deptName = deptName;
-        Date = date;
+        this.date = date;
     }
     @XmlElement(name = "DeptCode")
     public String getDeptCode() {
@@ -149,12 +149,27 @@ class Dept {
     }
     @XmlElement(name = "Date")
     public Date getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(Date date) {
-        Date = date;
+        this.date = date;
     }
-    
+    @XmlElement(name = "DeptLocus")
+    public String getDeptLocus() {
+        return deptLocus;
+    }
+
+    public void setDeptLocus(String deptLocus) {
+        this.deptLocus = deptLocus;
+    }
+    @XmlElement(name = "Memo")
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
     
 }

@@ -618,10 +618,10 @@ public class NewsController {
         String doctorCode = "";
         String doctorName = "";
         String workTime = "0";
-        String workDateStart = "20171115";
+        String workDateStart = "20171125";
         String workDateEnd = "20171201";
         
-        String type = "0";
+        String type = "1";
         String DeptName = "";
         String status = "2";
         String workDate = "20171201";// 排班时间 Date
@@ -650,7 +650,7 @@ public class NewsController {
         
 
 		TestDb his = HisUtil.testDb();
-		HisUtil.searchRegisterTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
+		HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
 		HisUtil.departments(type, workTime, workDateStart, workDateEnd);
 		HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
 		HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
@@ -760,6 +760,8 @@ public class NewsController {
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
 		model.addAttribute("doctor", doctor);
+		
+//		HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
 		
 		
 		// model.addAttribute("dept", doctor.getDept());

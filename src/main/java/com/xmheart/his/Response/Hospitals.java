@@ -23,9 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "Resp")
 public class Hospitals {
-    public String TransactionCode;
-    public String RespCode;
-    public String RespMessage;
+    private String TransactionCode;
+    private String RespCode;
+    private String RespMessage;
     private List<Hos> hos;
     
     public Hospitals() {}
@@ -71,12 +71,12 @@ public class Hospitals {
 }
 @XmlRootElement(name = "Hos")
 class Hos {
-    public String HosID;
-    public String HospitalName;
-    public String Site;
-    public String Address;
-    public String PostCode;
-    public String SysDateTime;
+    private String HosID;
+    private String HospitalName;
+    private String Site;
+    private String Address;
+    private String PostCode;
+    private String SysDateTime;
     public Hos() {}
     public Hos(String hosID, String hospitalName, String site, String address, String postCode, String sysDateTime) {
         super();

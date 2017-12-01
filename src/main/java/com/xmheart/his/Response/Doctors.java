@@ -31,41 +31,40 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "Resp")
 public class Doctors {
-    public String TransactionCode;
-    public String RespCode;
-    public String RespMessage;
+    private String transactionCode; // public 会出现重复的属性
+    private String respCode;
+    private String respMessage;
     private List<Doctor> doctor;
     
     public Doctors() {}
 
     public Doctors(String transactionCode, String respCode, String respMessage, List<Doctor> doctor) {
-        this.RespCode = respCode;
-        this.TransactionCode = transactionCode;
-        this.RespMessage = respMessage;
+        this.respCode = respCode;
+        this.transactionCode = transactionCode;
+        this.respMessage = respMessage;
         this.doctor = doctor;
     }
 
-
     @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
-        return TransactionCode;
+        return transactionCode;
     }
     public void setTransactionCode(String transactionCode) {
-        this.TransactionCode = transactionCode;
+        this.transactionCode = transactionCode;
     }
     @XmlElement(name = "RespCode")
     public String getRespCode() {
-        return RespCode;
+        return respCode;
     }
     public void setRespCode(String respCode) {
-        this.RespCode = respCode;
+        this.respCode = respCode;
     }
     @XmlElement(name = "RespMessage")
     public String getRespMessage() {
-        return RespMessage;
+        return respMessage;
     }
     public void setRespMessage(String respMessage) {
-        this.RespMessage = respMessage;
+        this.respMessage = respMessage;
     }
     @XmlElement(name = "Doctor")
     public List<Doctor> getDoctor() {

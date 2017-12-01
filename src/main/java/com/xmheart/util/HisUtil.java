@@ -63,7 +63,7 @@ public class HisUtil {
         <WorkTime>查询有出诊日期范围 时段0-全天 1-上午 2-下午</WorkTime>
         </Req>
      */
-    public static RegisterTime searchRegisterTime(String deptCode, String deptName, String doctorCode, String doctorName,
+    public static RegisterTime registerTime(String deptCode, String deptName, String doctorCode, String doctorName,
             String workTime, String workDateStart, String workDateEnd) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +

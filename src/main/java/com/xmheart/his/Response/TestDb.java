@@ -16,14 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TestDb {
 
     private String TransactionCode;
-
-
     private String RespCode;
-
-
     private String RespMessage;
-
-
     private String SysDateTime;
 
     public  TestDb(){}
