@@ -38,4 +38,6 @@ public interface DoctorAndDeptService {
 
     int swapDocOrder(Long doctorId1, Long doctorId2);
 
+    List<XPWDoctor> getAllDoctors();
+
 }

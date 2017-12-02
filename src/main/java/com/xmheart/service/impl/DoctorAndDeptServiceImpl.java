@@ -32,6 +32,14 @@ public class DoctorAndDeptServiceImpl implements DoctorAndDeptService {
 		List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
 		return list;
 	}
+	
+    @Override
+    public List<XPWDoctor> getAllDoctors() {
+        XPWDoctorExample example = new XPWDoctorExample();
+        example.setOrderByClause("doc_order asc");
+        List<XPWDoctor> list = xpwDoctorMapper.selectByExample(example);
+        return list;
+    }
 
 	@Override
 	public List<XPWDept> getOutServiceDepts() {

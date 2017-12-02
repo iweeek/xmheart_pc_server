@@ -15,7 +15,7 @@ public class HisUtil {
 
     private static final Log log = LogFactory.getLog(HisUtil.class);
 
-    private static String handleResp(String resp){
+    public static String handleResp(String resp){
         return "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" + resp;
     }
 
