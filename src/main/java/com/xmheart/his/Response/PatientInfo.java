@@ -71,7 +71,7 @@ class SickInfo {
     private String Mobile;
     private String RateType;
     private String IDCardID;
-    private Date BirthDay;
+    private HisDate BirthDay;
     private String ResiNo;
     private String ResiState;
     
@@ -79,7 +79,7 @@ class SickInfo {
     
     public SickInfo(String patientID, String cardNo, String mcardNo, Integer dispbala, String resibala,
             String cardStatus, String name, String sex, String age, String mobile, String rateType, String iDCardID,
-            Date birthDay, String resiNo, String resiState) {
+            HisDate birthDay, String resiNo, String resiState) {
         super();
         PatientID = patientID;
         CardNo = cardNo;
@@ -195,11 +195,11 @@ class SickInfo {
         IDCardID = iDCardID;
     }
     @XmlElement(name = "BirthDay")
-    public Date getBirthDay() {
+    public HisDate getBirthDay() {
         return BirthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(HisDate birthDay) {
         BirthDay = birthDay;
     }
     @XmlElement(name = "ResiNo")

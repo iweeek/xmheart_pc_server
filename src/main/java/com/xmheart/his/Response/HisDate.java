@@ -3,17 +3,16 @@ package com.xmheart.his.Response;
 
 import java.util.List;
 
-public class Common {
-}
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-class Date {
+@XmlRootElement(name = "Date")
+public class HisDate {
     private List<String> workDate;
 
-    public Date() {}
-    public Date(List<String> workDate) {
-        this.workDate = workDate;
-    }
-
+    public HisDate() {}
+    
+    @XmlElement(name = "WorkDate")
     public List<String> getWorkDate() {
         return workDate;
     }

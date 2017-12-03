@@ -23,7 +23,7 @@ public class RegisterTime {
     private String TransactionCode;
     private String RespCode;
     private String RespMessage;
-    private Date date;
+    private HisDate date;
 
     public RegisterTime() {}
     public RegisterTime(String transactionCode, String respCode, String respMessage) {
@@ -54,10 +54,10 @@ public class RegisterTime {
         this.RespMessage = respMessage;
     }
     @XmlElement(name = "date")
-    public Date getDate() {
+    public HisDate getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(HisDate date) {
         this.date = date;
     }
 }

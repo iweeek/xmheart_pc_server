@@ -15,10 +15,10 @@ public class Doctor{
     private String Sex;
     private String DeptName;
     private String ClinicFee;
-    private  Date Date;
+    private  HisDate Date;
 
     public Doctor() {}
-    public Doctor(String deptCode, String docCode, String docName, String spec, String remark, String titleName, String titleCode, String sex, String deptName, String clinicFee, Date date) {
+    public Doctor(String deptCode, String docCode, String docName, String spec, String remark, String titleName, String titleCode, String sex, String deptName, String clinicFee, HisDate date) {
         DeptCode = deptCode;
         DocCode = docCode;
         DocName = docName;
@@ -112,11 +112,11 @@ public class Doctor{
         ClinicFee = clinicFee;
     }
     @XmlElement(name = "Date")
-    public Date getDate() {
+    public HisDate getDate() {
         return Date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(HisDate date) {
         Date = date;
     }
 }

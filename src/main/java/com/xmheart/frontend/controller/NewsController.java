@@ -20,6 +20,7 @@ import com.xmheart.util.soap.Service1;
 import com.xmheart.util.soap.Service1Soap;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTime.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,8 @@ import com.xmheart.model.XPWOnlineVideo;
 import com.xmheart.model.XPWTeacher;
 import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWVideo;
+import com.xmheart.his.Response.Department;
+import com.xmheart.his.Response.Departments;
 import com.xmheart.his.Response.Doctors;
 import com.xmheart.his.Response.RegisteredSource;
 import com.xmheart.his.Response.RegisteredSourcePreInfo;
@@ -688,6 +691,15 @@ public class NewsController {
             @RequestParam String name, @RequestParam String address,@RequestParam String birthDay,
             @RequestParam String sex, @RequestParam String userID) {
         HisUtil.noCardRegister(IDCardNo, mobile, name, address, birthDay, sex, userID);
+        System.out.println("request string :" + "\n" +
+                "IDCardNo: " + IDCardNo + "\n" + 
+                "mobile: " + mobile + "\n" + 
+                "name: " + name + "\n" + 
+                "address: " + address + "\n" + 
+                "birthDay: " + birthDay + "\n" +
+                "sex: " + sex + "\n" +
+                "userID: " + userID + "\n" 
+                );
     }
     @RequestMapping(value = { "/404" }, method = RequestMethod.POST)
     public String notFound(Model model, @RequestParam String doctorCode,
@@ -831,8 +843,8 @@ public class NewsController {
     }
 
 	@RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
-	public String doctorDetail(@RequestParam Long id, Model model,
-	        @RequestParam String deptCode, @RequestParam(required = false, defaultValue = "0") String status, @RequestParam String workTime) {
+	public String doctorDetail(@RequestParam Long id, Model model, @RequestParam String deptCode, 
+	        @RequestParam(required = false, defaultValue = "0") String status, @RequestParam String workTime) {
 		model = addTopNav(EXPERT_COLUMN_ID, model);
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
@@ -948,7 +960,7 @@ public class NewsController {
 	
 	public static void main(String[] args) {
         DateTime workDateStart = new DateTime();
-        workDateStart = workDateStart.withDayOfWeek(1);
+//        workDateStart = workDateStart.withDayOfWeek(1);
         DateTime workDateEnd = workDateStart.plusDays(6);
         
         List<String> week = new ArrayList();
@@ -958,6 +970,8 @@ public class NewsController {
             temp = temp.plusDays(1);
         } while (temp.isBefore(workDateEnd.plusDays(1)));
         
+        int dayOfWeek2 = workDateStart.getDayOfWeek();
+        System.out.println(dayOfWeek2);
         System.out.println(week);
 //        System.out.println("workDateStart.toString(\"yyyy-MM-dd\")" + workDateStart.toString("yyyy-MM-dd"));
 //        System.out.println("workDateEnd.toString(\"yyyy-MM-dd\")" + workDateEnd.toString("yyyy-MM-dd"));
@@ -973,11 +987,81 @@ public class NewsController {
     }
 
 	@RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
-	public String deptDoctor(@RequestParam Long id, Model model) {
+	public String deptDoctor(@RequestParam Long id, Model model,
+            @RequestParam(required = false, defaultValue = "0") String type, @RequestParam String workTime) {
 		model = addTopNav(3l, model);
 
-		XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
-		model.addAttribute("dept", dept);
+		XPWIndex index = indexService.indexRead();
+        model.addAttribute("index", index);
+        
+        XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
+        model.addAttribute("dept", dept);
+        
+        DateTime workDateStart = new DateTime();
+//        workDateStart = workDateStart.withDayOfWeek(1);
+        DateTime workDateEnd = workDateStart.plusDays(6);
+        
+        Map<String, String> currentWeek = new LinkedHashMap<String, String>();
+        DateTime temp = workDateStart.plusDays(0);
+        for (int i = 0; i < 7; i++) {
+            int dayOfWeek = temp.getDayOfWeek();
+            if (dayOfWeek == 1) {
+                currentWeek.put("星期一", temp.toString("yyyy-MM-dd"));
+            } else if (dayOfWeek == 2) {
+                currentWeek.put("星期二", temp.toString("yyyy-MM-dd"));
+            } else if (dayOfWeek == 3) {
+                currentWeek.put("星期三", temp.toString("yyyy-MM-dd"));
+            } else if (dayOfWeek == 4) {
+                currentWeek.put("星期四", temp.toString("yyyy-MM-dd"));
+            } else if (dayOfWeek == 5) {
+                currentWeek.put("星期五", temp.toString("yyyy-MM-dd"));
+            } else if (dayOfWeek == 6) {
+                currentWeek.put("星期六", temp.toString("yyyy-MM-dd"));
+            } else {
+                currentWeek.put("星期天", temp.toString("yyyy-MM-dd"));
+            }
+            
+            temp = temp.plusDays(1);
+        }
+        model.addAttribute("currentWeek", currentWeek);
+        System.out.println("request string :" + "\n" +
+                "type: " + type + "\n" + 
+                "workTime: " + workTime + "\n" + 
+                "workDateStart: " + workDateStart.toString("yyyy-MM-dd") + "\n" + 
+                "workDateEnd: " + workDateEnd.toString("yyyy-MM-dd") + "\n" 
+                );
+        
+        Departments rs = HisUtil.departments(type, workTime, workDateStart.toString("yyyy-MM-dd"), workDateEnd.toString("yyyy-MM-dd"));
+//        String resp = "<Resp><TransactionCode>JK2002</TransactionCode><RespCode>0</RespCode><RespMessage>成功</RespMessage><UpperDept><UpperDeptCode>41000</UpperDeptCode><UpperDeptName>胸痛中心</UpperDeptName><Dept><DeptCode>41000</DeptCode><DeptName>胸痛中心</DeptName><DeptLocus>ccc</DeptLocus><Memo>ddd</Memo><Date><WorkDate></WorkDate></Date></Dept></UpperDept><UpperDept><UpperDeptCode>30100</UpperDeptCode><UpperDeptName>心内科门诊</UpperDeptName><Dept><DeptCode>30100</DeptCode><DeptName>心内科门诊</DeptName><DeptLocus>5号楼4楼</DeptLocus><Memo>ddd</Memo><Date><WorkDate>2017-12-07</WorkDate><WorkDate>2017-12-05</WorkDate><WorkDate>2017-12-08</WorkDate><WorkDate>2017-12-06</WorkDate><WorkDate>2017-12-04</WorkDate><WorkDate>2017-12-03</WorkDate></Date></Dept></UpperDept><UpperDept><UpperDeptCode>30200</UpperDeptCode><UpperDeptName>心外科门诊</UpperDeptName><Dept><DeptCode>30200</DeptCode><DeptName>心外科门诊</DeptName><DeptLocus>5号楼4楼</DeptLocus><Memo>ddd</Memo><Date><WorkDate>2017-12-07</WorkDate><WorkDate>2017-12-05</WorkDate><WorkDate>2017-12-08</WorkDate><WorkDate>2017-12-04</WorkDate><WorkDate>2017-12-06</WorkDate><WorkDate>2017-12-03</WorkDate></Date></Dept></UpperDept><UpperDept><UpperDeptCode>30300</UpperDeptCode><UpperDeptName>预约中心</UpperDeptName><Dept><DeptCode>30300</DeptCode><DeptName>预约中心</DeptName><DeptLocus>ccc</DeptLocus><Memo>ddd</Memo><Date><WorkDate></WorkDate></Date></Dept></UpperDept><UpperDept><UpperDeptCode>30400</UpperDeptCode><UpperDeptName>超声科门诊</UpperDeptName><Dept><DeptCode>30400</DeptCode><DeptName>超声科门诊</DeptName><DeptLocus>5号楼8楼</DeptLocus><Memo>ddd</Memo><Date><WorkDate></WorkDate></Date></Dept></UpperDept></Resp>";
+//        Departments rs = (Departments)XmlUtil.xmlToObject(resp, Departments.class);
+//        System.out.println("4.2 departments \n" + resp);
+        
+//        List<String> isVisits = new ArrayList(7);
+        Map<String, String> isVisits = new LinkedHashMap<String, String>();
+        int counter = 0;
+        // 上午
+        if (rs.getRespCode().equals("-1")) {
+            for (String day : currentWeek.values()) {
+                isVisits.put(day, "-1");
+            }
+            model.addAttribute("isVisits", isVisits);
+        } else {
+            for (String day : currentWeek.values()) {
+                isVisits.put(day, "-1");
+                for (int j = 0; j < rs.getUpperDept().size(); j++) {
+                    Department department = rs.getUpperDept().get(j);
+                    List<String> workDates = department.getDept().getDate().getWorkDate();
+                    for (int k = 0; k < department.getDept().getDate().getWorkDate().size(); k++) {
+                        if (workDates.get(k).equals(day)) {
+                            isVisits.put(day, "0");
+                        }
+                    }
+                }
+                counter++;
+            }
+            model.addAttribute("isVisits", isVisits);
+        }
+		System.out.println(isVisits);
 		return "dept_doctor";
 	}
 

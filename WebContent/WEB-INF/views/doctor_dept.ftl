@@ -28,14 +28,13 @@
                     <div class="img animated">
                         <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
                     </div>
-                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="office">${dept.name}</a>
+                    <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="office">${dept.name}</a>
                     <div class="dept-intro">
                         <#if dept.brief?length lt 50>
                                     &#8195;&#8195;${dept.brief}......
                                     <#else>
                                     &#8195;&#8195;${dept.brief[0..50]}......
-                                    <a href="deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
-                                    
+                                    <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="btn more">查看详细</a>
                         </#if>
                     </div>
                    <!-- <p>${dept.brief}</p>

@@ -4,7 +4,7 @@
     <!-- banner -->
     <div class="BaseMark PartBanner">
       <div class="bannerLeft">
-        <img src="${dept.imageUrl}" alt="${dept.name}">
+        <img src="${index.bannerImage1Url}" alt="${dept.name}">
         <span class="import1"></span>
       </div>
       <div class="bannerRight">
@@ -44,16 +44,17 @@
           <li id="LIExpertInfo2">
             <a href="expert-info.html">缺乏栏目</a>
           </li>
+          
+        </ul>
+        <ul class="margRt">
+          <li>
+            <a href="OfficeNewsList-11-2.html" title="健康教育">缺乏栏目</a>
+          </li>
           <li>
             <a href="OfficeNewsList-11-1.html" title="工作动态">缺乏栏目</a>
           </li>
           <li>
             <a href="OfficeNewsList-11-4.html" title="医疗设备">缺乏栏目</a>
-          </li>
-        </ul>
-        <ul class="margRt">
-          <li>
-            <a href="OfficeNewsList-11-2.html" title="健康教育">缺乏栏目</a>
           </li>
         </ul>
         <div class="clear"></div>
@@ -91,8 +92,10 @@
         <ul data-num="0">
         <#list dept.doctors as k>
 	        <li>
-	            <a href="${k.url}" class="img">
-	              <img src="${k.imageUrl}" alt="${k.name}" title="${k.name}" width="120" height="162"></a>
+	              <a href="doctorDetail?id=${k.id}&deptCode=&doctorCode=${k.hisId}
+                                &status=2&workTime=0" title="${k.name}" target="_blank" class="img a_post">
+	                  <img src="${k.imageUrl}" alt="${k.name}" title="${k.name}" width="120" height="162">
+	              </a>
 	              <a href="Doctor-712.html" class="name">${k.name}</a>
 	              <a href="Doctor-712.html" class="office">${dept.name}</a>
 	              <a href="Doctor-712.html" class="post">${k.professionalTitle}</a>
@@ -100,23 +103,6 @@
 	              <a href="NewsDetail-449.html" target="_blank" class="btn date">预约</a>
 	        </li>
 	    </#list>
-          <!--<li>
-            <a href="Doctor-712.html" class="img">
-              <img src="uploadfiles/thumb/2013102215334198.jpg" alt="马利军" title="马利军" width="120" height="162"></a>
-              <a href="Doctor-712.html" class="name">马利军</a>
-              <a href="Doctor-712.html" class="office">呼吸内科</a>
-              <a href="Doctor-712.html" class="post">主任医师，科主任</a>
-              <a href="Doctor-712.html" class="btn more">详细</a>
-              <a href="NewsDetail-449.html" target="_blank" class="btn date">预约</a>
-          </li>
-          <li><a href="Doctor-714.html" class="img">
-            <img src="uploadfiles/thumb/2013102215395834.jpg" alt="马厚志" title="马厚志" width="120" height="162"></a>
-            <a href="Doctor-714.html" class="name">马厚志</a>
-            <a href="Doctor-714.html" class="office">呼吸内科</a>
-            <a href="Doctor-714.html" class="post">主任医师</a>
-            <a href="Doctor-714.html" class="btn more">详细</a>
-            <a href="NewsDetail-449.html" target="_blank" class="btn date">预约</a>
-          </li>-->
         </ul>
         <div class="hackR"></div>
         <div class="hackL"></div>
@@ -156,13 +142,25 @@
       <div class="title">出诊安排<em>Visits Time</em><span></span></div>
       <div class="visitList">
         <div class="title">
-          <div class="wide">星期三 <em>2017/7/26</em><span class="green">上午</span><span class="blue">下午</span></div>
-          <div class="wide">星期四 <em>2017/7/27</em><span class="green">上午</span><span class="blue">下午</span></div>
+          <#list currentWeek as nameOfWeek, day>
+              <div class="wide">
+              ${nameOfWeek}
+              <em>${day}</em>
+              <#list isVisits as date, vi>
+              <#if date == day>
+                  <#if vi == "0">
+                    <span class="green">出诊</span>
+                  </#if>
+              </#if>
+              </#list>
+              </div>
+          </#list>
+         <!-- <div class="wide">星期四 <em>2017/7/27</em><span class="green">上午</span><span class="blue">下午</span></div>
           <div>星期五 <em>2017/7/28</em><span class="green">上午</span><span class="blue">下午</span></div>
           <div>星期六 <em>2017/7/29</em><span class="green">上午</span><span class="blue">下午</span></div>
           <div>星期日 <em>2017/7/30</em><span class="green">上午</span><span class="blue">下午</span></div>
           <div>星期一 <em>2017/7/31</em><span class="green">上午</span><span class="blue">下午</span></div>
-          <div>星期二 <em>2017/8/1</em><span class="green">上午</span><span class="blue">下午</span></div>
+          <div>星期二 <em>2017/8/1</em><span class="green">上午</span><span class="blue">下午</span></div> -->
         </div>
       </div>
     </div>
