@@ -47,21 +47,25 @@
                         <#list doctors as doctor>
                         <#if doctor.deptId == dept.id>
                         <li class="swiper-slide" style="overflow:hidden;">
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="img">
+                            <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                &status=2&workTime=0" title="${doctor.name}" target="_blank" class="img a_post">
                                 <img alt="${doctor.name}" title="${doctor.name}"
                                     src="${doctor.imageUrl}"
                                     width="120" height="162"/>
                             </a>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="name">${doctor.name}</a>
+                            <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                &status=2&workTime=0" title="${doctor.name}" target="_blank" class="name a_post">${doctor.name}</a>
                             <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
                             <br/>
-                            <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
+                            <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                &status=2&workTime=0" title="${doctor.name}" target="_blank" class="post a_post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
                             <div class="doctor-intro">
                                 <#if doctor.brief?length lt 35>
                                 &#8195;&#8195;${doctor.brief}......
                                 <#else>
                                 &#8195;&#8195;${doctor.brief[0..35]}......
-                                <a href="doctorDetail?id=${doctor.id}" title="${dept.name}" class="show-more">查看详细</a>
+                                <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                    &status=2&workTime=0" title="${dept.name}" class="show-more a_post">查看详细</a>
                                 </#if>
                             </div>
                             <!-- <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a> -->

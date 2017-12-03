@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,11 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 
 import com.xmheart.util.HisUtil;
+import com.xmheart.util.XmlUtil;
+import com.xmheart.util.soap.Service1;
+import com.xmheart.util.soap.Service1Soap;
+
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -36,6 +42,9 @@ import com.xmheart.model.XPWOnlineVideo;
 import com.xmheart.model.XPWTeacher;
 import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWVideo;
+import com.xmheart.his.Response.Doctors;
+import com.xmheart.his.Response.RegisteredSource;
+import com.xmheart.his.Response.RegisteredSourcePreInfo;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
@@ -50,7 +59,6 @@ import freemarker.template.Template;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-import com.xmheart.his.Response.*;
 
 @Controller
 public class NewsController {
@@ -609,22 +617,90 @@ public class NewsController {
 		return "index";
 	}
 	
-    @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
-    public String notFound(Model model) {
+	@RequestMapping(value = { "/registerTime" }, method = RequestMethod.POST)
+	public void registerTime(Model model, @RequestParam String doctorCode, @RequestParam String deptCode,
+	         @RequestParam String deptName, @RequestParam String doctorName, @RequestParam String workTime,
+             @RequestParam String workDateStart, @RequestParam String workDateEnd) {
+	    HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
+	}
+	
+    @RequestMapping(value = { "/departments" }, method = RequestMethod.POST)
+    public void departments(Model model, @RequestParam String type, @RequestParam String workTime,
+             @RequestParam String workDateStart, @RequestParam String workDateEnd) {
+        HisUtil.departments(type, workTime, workDateStart, workDateEnd);
+    }
+    
+    @RequestMapping(value = { "/hisDoctors" }, method = RequestMethod.POST)
+    public void hisDoctors(Model model, @RequestParam String type, @RequestParam String deptCode,
+            @RequestParam String DeptName, @RequestParam String workDateStart, @RequestParam String workDateEnd) {
+        HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
+    }
+    
+    @RequestMapping(value = { "/registeredSource" }, method = RequestMethod.POST)
+    public void registeredSource(Model model, @RequestParam String deptCode, @RequestParam String doctorCode,
+            @RequestParam String status, @RequestParam String workTime,
+            @RequestParam String workDateStart, @RequestParam String workDateEnd) {
+        HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
+    }
+    
+    @RequestMapping(value = { "/registeredSourceTime" }, method = RequestMethod.POST)
+    public void registeredSourceTime(Model model, @RequestParam String workDate, @RequestParam String workType,
+            @RequestParam String deptCode, @RequestParam String docCode) {
+        HisUtil.registeredSourceTime(workDate, workType, deptCode, docCode);
+    }
+    
+    @RequestMapping(value = { "/registered" }, method = RequestMethod.POST)
+    public void registered(Model model, @RequestParam String orderId, @RequestParam String idCardNo,
+            @RequestParam String cardNo, @RequestParam String mobile,@RequestParam String name,
+            @RequestParam String workdate, @RequestParam String workType,@RequestParam String deptCode,
+            @RequestParam String docCode, @RequestParam String stime,@RequestParam String userid,
+            @RequestParam String customTime, @RequestParam String sickId) {
+        HisUtil.registered(orderId, idCardNo, cardNo, mobile, name, workdate, workType, 
+                deptCode, docCode, stime, userid, customTime, sickId);
+    }
+    
+    @RequestMapping(value = { "/unRegistered" }, method = RequestMethod.POST)
+    public void unRegistered(Model model, @RequestParam String orderId, @RequestParam String seqNumber,
+            @RequestParam String reason, @RequestParam String cardNo,@RequestParam String name,
+            @RequestParam String workdate, @RequestParam String workType,@RequestParam String deptCode,
+            @RequestParam String docCode, @RequestParam String userid,
+            @RequestParam String customTime, @RequestParam String sickId) {
+        HisUtil.unRegistered(orderId, seqNumber, reason, cardNo, name, 
+                workdate, workType, deptCode, docCode, userid, customTime, sickId);
+    }
+    
+    @RequestMapping(value = { "/registerInfo" }, method = RequestMethod.POST)
+    public void registerInfo(Model model, @RequestParam String IDCardNo, @RequestParam String seqNumber,
+            @RequestParam String workdate, @RequestParam String cardNo,@RequestParam String deptCode,
+            @RequestParam String docCode, @RequestParam String status, @RequestParam String sickId) {
+        HisUtil.registerInfo(IDCardNo, seqNumber, workdate, cardNo, deptCode, docCode, status, sickId);
+    }
+    
+    @RequestMapping(value = { "/patientInfo" }, method = RequestMethod.POST)
+    public void patientInfo(Model model, @RequestParam String IDCardNo, @RequestParam String mobile,
+            @RequestParam String name, @RequestParam String cardNo,@RequestParam String mcardNo,
+            @RequestParam String sickId) {
+        HisUtil.patientInfo(IDCardNo, mobile, name, cardNo, mcardNo, sickId);
+    }
+    
+    @RequestMapping(value = { "/noCardRegister" }, method = RequestMethod.POST)
+    public void noCardRegister(Model model, @RequestParam String IDCardNo, @RequestParam String mobile,
+            @RequestParam String name, @RequestParam String address,@RequestParam String birthDay,
+            @RequestParam String sex, @RequestParam String userID) {
+        HisUtil.noCardRegister(IDCardNo, mobile, name, address, birthDay, sex, userID);
+    }
+    @RequestMapping(value = { "/404" }, method = RequestMethod.POST)
+    public String notFound(Model model, @RequestParam String doctorCode,
+            @RequestParam String deptCode, @RequestParam String deptName, @RequestParam String doctorName
+            , @RequestParam String workDateStart, @RequestParam String workDateEnd) {
         model = addTopNav(1, model);
-
-        String deptCode = "";
-        String deptName = "";
-        String doctorCode = "";
-        String doctorName = "";
+ 
         String workTime = "0";
-        String workDateStart = "20171125";
-        String workDateEnd = "20171201";
         
-        String type = "1";
+        String type = "0";
         String DeptName = "";
         String status = "2";
-        String workDate = "20171201";// 排班时间 Date
+        String workDate = "2017-12-01";// 排班时间 Date
         String workType = "1";// 排班类别(1上午;2下午)
         String docCode = "1";//
         
@@ -649,21 +725,21 @@ public class NewsController {
         String userID = ""; // 医疗保险号
         
 
-		TestDb his = HisUtil.testDb();
-		HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
-		HisUtil.departments(type, workTime, workDateStart, workDateEnd);
-		HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
-		HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
-		HisUtil.registeredSourceTime(workDate, workType, deptCode, docCode);
-		HisUtil.registered(orderId, idCardNo, cardNo, mobile, name, workdate, workType, 
-		        deptCode, docCode, stime, userid, customTime, sickId);
-		HisUtil.unRegistered(orderId, seqNumber, reason, cardNo, name, 
-		        workdate, workType, deptCode, docCode, userid, customTime, sickId);
-		HisUtil.registerInfo(IDCardNo, seqNumber, workdate, cardNo, deptCode, docCode, status, sickId);
-		HisUtil.patientInfo(IDCardNo, mobile, name, cardNo, mcardNo, sickId);
-		HisUtil.noCardRegister(IDCardNo, mobile, name, address, birthDay, sex, userID);
+//		TestDb his = HisUtil.testDb();
+//		HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
+//		HisUtil.departments(type, workTime, workDateStart, workDateEnd);
+//		HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
+//		HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
+//		HisUtil.registeredSourceTime(workDate, workType, deptCode, docCode);
+//		HisUtil.registered(orderId, idCardNo, cardNo, mobile, name, workdate, workType, 
+//		        deptCode, docCode, stime, userid, customTime, sickId);
+//		HisUtil.unRegistered(orderId, seqNumber, reason, cardNo, name, 
+//		        workdate, workType, deptCode, docCode, userid, customTime, sickId);
+//		HisUtil.registerInfo(IDCardNo, seqNumber, workdate, cardNo, deptCode, docCode, status, sickId);
+//		HisUtil.patientInfo(IDCardNo, mobile, name, cardNo, mcardNo, sickId);
+//		HisUtil.noCardRegister(IDCardNo, mobile, name, address, birthDay, sex, userID);
 		
-		model.addAttribute("his", his);
+//		model.addAttribute("his", his);
 
 //        XPWIndex index = indexService.indexRead();
 
@@ -755,21 +831,140 @@ public class NewsController {
     }
 
 	@RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
-	public String doctorInfo(@RequestParam Long id, Model model) {
+	public String doctorDetail(@RequestParam Long id, Model model,
+	        @RequestParam String deptCode, @RequestParam(required = false, defaultValue = "0") String status, @RequestParam String workTime) {
 		model = addTopNav(EXPERT_COLUMN_ID, model);
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
 		model.addAttribute("doctor", doctor);
 		
-//		HisUtil.registerTime(deptCode, deptName, doctorCode, doctorName, workTime, workDateStart, workDateEnd);
+		DateTime workDateStart = new DateTime();
+        workDateStart = workDateStart.withDayOfWeek(1);
+        DateTime workDateEnd = workDateStart.plusDays(6);
+        
+        Map<String, String> currentWeek = new LinkedHashMap<String, String>();
+        DateTime temp = workDateStart.withDayOfWeek(1);
+        for (int i = 0; i < 7; i++) {
+            if (i == 0) {
+                currentWeek.put("星期一", temp.toString("yyyy-MM-dd"));
+            } else if (i == 1) {
+                currentWeek.put("星期二", temp.toString("yyyy-MM-dd"));
+            } else if (i == 2) {
+                currentWeek.put("星期三", temp.toString("yyyy-MM-dd"));
+            } else if (i == 3) {
+                currentWeek.put("星期四", temp.toString("yyyy-MM-dd"));
+            } else if (i == 4) {
+                currentWeek.put("星期五", temp.toString("yyyy-MM-dd"));
+            } else if (i == 5) {
+                currentWeek.put("星期六", temp.toString("yyyy-MM-dd"));
+            } else {
+                currentWeek.put("星期天", temp.toString("yyyy-MM-dd"));
+            }
+            
+            temp = temp.plusDays(1);
+        }
+        model.addAttribute("currentWeek", currentWeek);
 		
-		
+        System.out.println("request string :" + "\n" +
+                "deptCode: " + deptCode + "\n" + 
+                "doctorCode: " + String.valueOf(doctor.getHisId()) + "\n" + 
+                "status: " + status + "\n" + 
+                "workTime: " + workTime + "\n" + 
+                "workDateStart: " + workDateStart.toString("yyyy-MM-dd") + "\n" + 
+                "workDateEnd: " + workDateEnd.toString("yyyy-MM-dd") + "\n" 
+                );
+        
+//        RegisteredSource rs = HisUtil.registeredSource(deptCode, String.valueOf(doctor.getHisId()), status, workTime, 
+//                workDateStart.toString("yyyy-MM-dd"), workDateEnd.toString("yyyy-MM-dd"));
+        String resp = "<Resp><TransactionCode>JK2004</TransactionCode><RespCode>0</RespCode><RespMessage>成功</RespMessage><CountNum>2</CountNum><PreInfo><WorkDate>2017-12-01</WorkDate><WorkType>1</WorkType><DeptCode>30200</DeptCode><DocCode>259776</DocCode><DeptName>心外科门诊</DeptName><DocName>孙勇</DocName><TitleName>主任医师</TitleName><TitleCode>022</TitleCode><STime>09:00:00</STime><ETime>11:45:00</ETime><SpaceTime>5</SpaceTime><PreLimit>30</PreLimit><Status>0</Status><RegistCode>4</RegistCode><RegistName>主任号</RegistName><PreNum>30</PreNum><Remark>专家号</Remark><CliniqueCode>诊室1</CliniqueCode> <ClinicFee>28</ClinicFee> <QueryType>1</QueryType> </PreInfo><PreInfo><WorkDate>2017-12-02</WorkDate><WorkType>2</WorkType><DeptCode>30200</DeptCode><DocCode>259776</DocCode><DeptName>心外科门诊</DeptName><DocName>孙勇</DocName><TitleName>主任医师</TitleName><TitleCode>022</TitleCode><STime>15:00:00</STime><ETime>17:00:00</ETime><SpaceTime>6</SpaceTime><PreLimit>20</PreLimit><Status>0</Status><RegistCode>4</RegistCode><RegistName>主任号</RegistName><PreNum>20</PreNum><Remark>专家号</Remark><CliniqueCode>诊室1</CliniqueCode> <ClinicFee>28</ClinicFee> <QueryType>1</QueryType> </PreInfo></Resp>";
+        System.out.println("4.4 RegisteredSource \n" + resp);
+        RegisteredSource rs = (RegisteredSource)XmlUtil.xmlToObject(resp, RegisteredSource.class);
+        List<String> isForenoonVisits = new ArrayList(7);
+        List<String> isAfternoonVisits = new ArrayList(7);
+        int counter = 0;
+        
+        if (rs.getRespCode().equals("-1")) {
+            for (int i = 0; i < 7; i++) {
+                isForenoonVisits.add("-1");
+                isAfternoonVisits.add("-1");
+            }
+            model.addAttribute("isForenoonVisits", isForenoonVisits);
+            model.addAttribute("isAfternoonVisits", isAfternoonVisits);
+        } else {
+            for (String day : currentWeek.values()) {
+                isForenoonVisits.add("-1");
+                isAfternoonVisits.add("-1");
+                for (int j = 0; j < rs.getPreInfo().size(); j++) {
+                    RegisteredSourcePreInfo preInfo = rs.getPreInfo().get(j);
+                    if (preInfo.getWorkType().equals("1")) {
+                        // 上午
+                        if (day.equals(preInfo.getWorkDate())) {
+                            isForenoonVisits.set(counter, "0");
+                        }
+                        continue;
+                    } 
+                    if (preInfo.getWorkType().equals("2")) {
+                        // 下午
+                        if (day.equals(preInfo.getWorkDate())) {
+                            isAfternoonVisits.set(counter, "0");
+                        }
+                        continue;
+                    }
+                }
+                counter++;
+            }
+            model.addAttribute("isForenoonVisits", isForenoonVisits);
+            model.addAttribute("isAfternoonVisits", isAfternoonVisits);
+        }
+        System.out.println(rs);
+        System.out.println(isForenoonVisits);
+        System.out.println(isAfternoonVisits);
+//		RegisteredSource registeredSource = HisUtil.registeredSource(deptCode, doctorCode, status, workTime, workDateStart, workDateEnd);
+//		model.addAttribute("registeredSource", registeredSource);
 		// model.addAttribute("dept", doctor.getDept());
 		return "doctor_detail";
 	}
 	
+	 public static RegisteredSource registeredSource(String deptCode, String doctorCode, String status,
+	            String workTime, String workDateStart, String workDateEnd) {
+	        String requestXml = "<Req>" +
+	                "<oracode>00002</oracode>" +
+	                "<oraauthcode>cs20171011</oraauthcode>" +
+	                "<TransactionCode>JK2004</TransactionCode>" +
+	                "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
+	                "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
+	                "<DoctorCode>" + doctorCode + "</DoctorCode>" +
+	                "<DeptCode>" + deptCode + "</DeptCode>" +
+	                "<WorkTime>" + workTime + "</WorkTime>" +
+	                "<Status>" + status + "</Status>" +
+	                "</Req>";
+	        String tradeCode = "JK2004";
+	        Service1 service = new Service1();
+	        Service1Soap service1Soap =  service.getService1Soap();
+	        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+	        System.out.println("4.4 RegisteredSource \n" + retMsg);
+	        return (RegisteredSource)XmlUtil.xmlToObject(retMsg, RegisteredSource.class);
+	    }
+	
+	public static void main(String[] args) {
+        DateTime workDateStart = new DateTime();
+        workDateStart = workDateStart.withDayOfWeek(1);
+        DateTime workDateEnd = workDateStart.plusDays(6);
+        
+        List<String> week = new ArrayList();
+        DateTime temp = workDateStart.withDayOfWeek(1);
+        do {
+            week.add(temp.toString("yyyy-MM-dd"));
+            temp = temp.plusDays(1);
+        } while (temp.isBefore(workDateEnd.plusDays(1)));
+        
+        System.out.println(week);
+//        System.out.println("workDateStart.toString(\"yyyy-MM-dd\")" + workDateStart.toString("yyyy-MM-dd"));
+//        System.out.println("workDateEnd.toString(\"yyyy-MM-dd\")" + workDateEnd.toString("yyyy-MM-dd"));
+    }
+	
     @RequestMapping(value = { "/teacherDetail" }, method = RequestMethod.GET)
-    public String teacherInfo(@RequestParam Long id, Model model) {
+    public String teacherDetail(@RequestParam Long id, Model model) {
         model = addTopNav(TEACHER_COLUMN_ID, model);
 
         XPWTeacher teacher = teacherTeamService.getTeacherAndDeptById(id);

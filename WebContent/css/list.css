@@ -637,6 +637,8 @@ a.blue{ background:#79a9b8;}
 
 .doctorRight .visitDate .visitList .time{ height:53px; line-height:53px; color:#fff; padding:0;}
 .doctorRight .visitDate .visitList span{ width:109px; border-right:1px #dddddd solid; float:left; text-align:center;}
+.doctorRight .visitDate .visitList .am .dt{ width:109px; border-right:1px #dddddd solid; float:left; text-align:center; height:44px; padding-top:10px;}
+.doctorRight .visitDate .visitList .pm .dt{ width:109px; border-right:1px #dddddd solid; float:left; text-align:center; height:44px; padding-top:10px;}
 .doctorRight .visitDate .visitList .time div{width:109px;height:53px; border-right:1px #dddddd solid; padding-top:6px; line-height:20px; float:left; text-align:center;}
 .doctorRight .visitDate .visitList .time div em{ display:block; line-height:22px;}
 .doctorRight .visitDate .visitList span img{ width:22px; height:22px; vertical-align:middle;}

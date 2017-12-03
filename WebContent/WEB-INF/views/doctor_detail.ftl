@@ -39,35 +39,37 @@
                 <div class="visitList">
                     <div class="time">
                         <span class="green">时段</span>
-                        <div class="green">
-                            星期一 <em>2017/7/31</em>
-                        </div>
-                        <div class="blue">
-                            星期二 <em>2017/8/1</em>
-                        </div>
-                        <div class="blue">
-                            星期三 <em>2017/7/26</em>
-                        </div>
-                        <div class="green">
-                            星期四 <em>2017/7/27</em>
-                        </div>
-                        <div class="blue">
-                            星期五 <em>2017/7/28</em>
-                        </div>
-                        <div class="green">
-                            星期六 <em>2017/7/29</em>
-                        </div>
-                        <div class="blue">
-                            星期日 <em>2017/7/30</em>
-                        </div>
+                        <#list currentWeek as nameOfWeek, day>
+                            <#if nameOfWeek?index % 2 == 0>
+                            <div class="blue">
+                                ${nameOfWeek} <em>${day}</em>
+                            </div>
+                            <#else>
+                            <div class="green">
+                                ${nameOfWeek} <em>${day}</em>
+                            </div>
+                            </#if>
+                        </#list>
                     </div>
                     <div class="am">
-                        <span>上午</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span><img
-                            src="image/cz_ico3.png" width="22" height="22" alt="出诊"></span>
+                        <span>上午</span>
+                        <#list isForenoonVisits as isVisits>
+                            <#if isVisits == "-1">
+                            <span class="dt">&nbsp;</span>
+                            <#else>
+                            <span class="dt"><img src="image/cz_ico3.png" width="22" height="22" alt="出诊"></span>
+                            </#if>
+                        </#list>
                     </div>
                     <div class="pm">
-                        <span>下午</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span><img
-                            src="image/cz_ico3.png" width="22" height="22" alt="出诊"></span>
+                        <span>下午</span>
+                        <#list isAfternoonVisits as isVisits>
+                            <#if isVisits == "-1">
+                            <span class="dt">&nbsp;</span>
+                            <#else>
+                            <span class="dt"><img src="image/cz_ico3.png" width="22" height="22" alt="出诊"></span>
+                            </#if>
+                        </#list>
                     </div>
                 </div>
             </div>
