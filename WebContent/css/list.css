@@ -361,7 +361,7 @@
 .officesBase .tools .Amore:hover{color:#ff7544; background:#FFF; text-decoration:underline;}
 .officesBase .title em{ font-size:20px; color:#333; line-height:32px;}
 .officesBase .title span{ padding-left:3px; color:#0690f7; font-size: 12px;}
-.officesBase .contents{width:1260px;position:absolute;height:360px; top:80px;left:-30px;padding-top: 10px; padding-left: 30px;}
+.officesBase .contents{width:110%;position:absolute;height:360px; top:80px;left:-30px;padding-top: 10px; padding-left: 30px;}
 .officesBase .contents ul{ position:absolute; width:8888px; height:320px; top:0px; left:30px;}
 .officesBase .contents ul li{width:240px;height:362px;position:relative; float:left;transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
 .officesBase .contents ul li:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
@@ -402,7 +402,9 @@
 .officesBase .contents .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:-10px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
 .officesBase .contents .contentsOffice .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
 .officesBase .contents .contentsOffice .btn:hover{background-position:79px center;}
+.officesBase .contents .contentsOffice .dept-intro { margin:0px auto;color: #5a5a5a;line-height: 22px;text-align:center;padding: 0px 25px;}
 .officesBase .contents .contentsDoctor { width: 910px; height: 360px; margin: 0; float: left;}
+.officesBase .contents .deptDoctor { width: 1150px; height: 360px; margin: 0; float: left;}
 .officesBase .contents .contentsDoctor .img{ display:block;width:100%; height:162px; text-align:center;}
 .officesBase .contents .contentsDoctor .name{display:block;width:100%; height:16px;  text-align:center; margin-top:18px; font-size:16px; line-height:16px; color:#978571;}
 .officesBase .contents .contentsDoctor .office{display:block;width:100%; text-align:center; line-height:33px; color:#333; font-size: 12px;}
@@ -416,7 +418,26 @@
 .officesBase .contents .contentsDoctor .doctorDialog { width: 230px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
 .officesBase .contents .contentsDoctor .doctorDialog p { line-height: 20px;}
 .officesBase .contents .contentsDoctor .doctor-intro { margin:15px;color: #5a5a5a;line-height: 1.7;text-indent=2em;}
-.officesBase .contents .contentsOffice .dept-intro { margin:0px auto;color: #5a5a5a;line-height: 22px;text-align:center;padding: 0px 25px;}
+
+
+/*科室主页*/
+.officesBase .contents .deptDoctor { width: 910px; height: 360px; margin: 0; float: left;}
+.officesBase .contents .deptDoctor { width: 1150px; height: 360px; margin: 0; float: left;}
+.officesBase .contents .deptDoctor .img{ display:block;width:100%; height:162px; text-align:center;}
+.officesBase .contents .deptDoctor .name{display:block;width:100%; height:16px;  text-align:center; margin-top:18px; font-size:16px; line-height:16px; color:#978571;}
+.officesBase .contents .deptDoctor .office{display:block;width:100%; text-align:center; line-height:33px; color:#333; font-size: 12px;}
+.officesBase .contents .deptDoctor .post{display:block; width:100%; text-align:center; color:#6e6e6e; font-size: 12px; margin-bottom: 15px;}
+.officesBase .contents .deptDoctor .btn{display:block;position:absolute; bottom:35px; width:68px; height:30px; text-align:center; line-height:30px;color:#fff;font-size: 12px;}
+.officesBase .contents .deptDoctor .more{left:32px;background:#bda179;}
+.officesBase .contents .deptDoctor .show-more{color:#ff7544; background: #fff;}
+.officesBase .contents .deptDoctor .date{right:32px;background:#6bcbca;}
+.officesBase .contents .deptDoctor .btn:hover{ background:#ff7544;}
+.officesBase .contents .deptDoctor ul li{width:240px;height:320px;border-right:1px solid #f5f5f5; position: relative;}
+.officesBase .contents .deptDoctor .doctorDialog { width: 230px; padding: 15px; position: absolute; top: 30px; left: 180px; line-height: 20px; background: #fff; border:#ddd solid 1px; display: none; z-index: 100; font-size: 14px;}
+.officesBase .contents .deptDoctor .doctorDialog p { line-height: 20px;}
+.officesBase .contents .deptDoctor .doctor-intro { margin:15px;color: #5a5a5a;line-height: 1.7;text-indent=2em;}
+
+
 
 /* 科室导航 */
 .baseLeft .title08{ background:#6bcbca url(/image/treat_ico01.png) left 13px center no-repeat;}
@@ -484,14 +505,31 @@ a.blue{ background:#79a9b8;}
 
 /*科室详情*/
 .PartBanner{ height:460px; margin-top:18px;}
-.PartBanner .bannerLeft{ float:left; width:884px; height:100%; position:relative; overflow:hidden; background:#f1f1f1;}
+.PartBanner .bannerLeft1{ float:left; width:300px; height:100%; position:relative; overflow:hidden;}
+
+.PartBanner .bannerLeft1 .contentsOffice{ width: 300px; position: relative; height: 320px; float: left; transition:box-shadow .28s linear;-moz-transition:-moz-box-shadow .28s linear;-webkit-transition:-webkit-box-shadow .28s linear;}
+.PartBanner .bannerLeft1 .contentsOffice:hover{box-shadow:0 0 30px rgba(0,0,0,0.15); outline:none; -webkit-box-shadow:0 15px 30px rgba(0,0,0,0.15); -moz-box-shadow:0 15px 30px rgba(0,0,0,0.15);}
+.PartBanner .bannerLeft1 .contentsOffice i{display:block; width:26px; height:44px; position:absolute; top:0px; right:29px;}
+.PartBanner .bannerLeft1 .contentsOffice i.ico01{ background:url(../img/list/ico_033.jpg) no-repeat;}
+.PartBanner .bannerLeft1 .contentsOffice .img{ width:80px; height:80px; margin:40px auto 20px auto;}
+.PartBanner .bannerLeft1 .contentsOffice .img{ }
+.PartBanner .bannerLeft1 .contentsOffice .office{ font-size:18px;text-align:center; display:block; color:#978571; margin-bottom:6px;}
+.PartBanner .bannerLeft1 .contentsOffice p{line-height:22px; width:208px; text-align:center; margin:0px auto;}
+.PartBanner .bannerLeft1 .contentsOffice .more{ position:absolute;bottom:41px; display:block; text-indent:-10px; width:99px; height:29px; line-height:30px; left:50%; margin-left: -50px; color:#ff7544; background:url(../img/list/ico_034.jpg) no-repeat; background-position:71px center;}
+.PartBanner .bannerLeft1 .contentsOffice .doctor{ position:absolute; bottom:41px;display:block;text-indent:18px; width:99px; height:29px;line-height:30px; right:50px; color:#0088a8;background:url(../img/list/ico_035.jpg) no-repeat;background-position:71px center;}
+.PartBanner .bannerLeft1 .contentsOffice .btn:hover{background-position:79px center;}
+.PartBanner .bannerLeft1 .contentsOffice .dept-intro { margin:0px auto;color: #5a5a5a;line-height: 22px;text-align:center;padding: 0px 25px;}
+
+
+/* .PartBanner .bannerLeft{ float:left; width:884px; height:100%; position:relative; overflow:hidden; background:#f1f1f1;} */
+.PartBanner .bannerLeft{ float:left; width:654px; height:100%; position:relative; overflow:hidden; background:#f1f1f1;}
 .PartBanner .bannerLeft img{ width:100%; height:auto;}
 .PartBanner .bannerLeft span{width:99px; height:99px; position:absolute; left:0; top:0;}
 .PartBanner .bannerLeft .import1{ background:url(/image/ico_part01a.png) no-repeat;}
 .PartBanner .bannerLeft .import2{ background:url(/image/ico_part02a.png) no-repeat;}
 .PartBanner .bannerLeft .import3{ background:url(/image/ico_part02a.png) no-repeat;}
-.PartBanner .bannerRight{ float:right; width:298px;height:100%; }
-.PartBanner .bannerRight .righttitle h1{ height:72px; background:#6bcbca; color:#fff; text-align:center; font-size:22px; line-height:72px;}
+.PartBanner .bannerRight{ float:right; width:250px;height:100%; }
+.PartBanner .bannerRight .righttitle h1{ height:72px; background:#6bcbca; color:#fff; text-align:center; font-size:16px; line-height:72px;}
 .PartBanner .bannerRight .righttitle .btns{ border-bottom:1px #e9e9e9 solid; height:130px; padding-top:24px; padding-bottom:11px; background:url(../img/list/part_ico05.gif) center top no-repeat;}
 .PartBanner .bannerRight .righttitle a{ float:left; border-right:1px #e9e9e9 solid; width:50%; text-align:center;display:block;}
 .PartBanner .bannerRight .righttitle .last{ border:none;width:49.6%; float:right;}
@@ -501,8 +539,8 @@ a.blue{ background:#79a9b8;}
 .PartBanner .bannerRight .righttitle a:hover img{animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;;-moz-animation-name:tada .88s cubic-bezier(0.175, 0.885, 0.320, 1.5) 1;-webkit-animation-fill-mode:both; animation-fill-mode:both;}
 
 
-.PartBanner .bannerRight .rightbtn{ width:246px; height:120px; padding:13px; margin:23px auto; background:#fff; box-shadow:0px 0px 15px 3px rgba(128 ,128 ,128 ,0.25);}
-.PartBanner .bannerRight .rightbtn a{ width:100%; height:42px; border:none; border-radius:3px; display:block; text-align:center; color:#fff; line-height:42px; margin-bottom:9px;}
+.PartBanner .bannerRight .rightbtn{ width:246px; height:300px; padding:13px; margin:10px auto; background:#fff; box-shadow:0px 0px 15px 3px rgba(128 ,128 ,128 ,0.25);}
+.PartBanner .bannerRight .rightbtn a{ width:100%; height:42px; border:none; border-radius:3px; display:block; text-align:center; color:#fff; line-height:42px; margin-bottom:9px;font-size:14px;}
 .PartBanner .bannerRight .rightbtn a:hover{ background:#ff7544;}
 .PartBanner .bannerRight .righttel h2{ color:#bda179; text-align:center; font-size:27px; background:url(/image/part_ico06.gif) center bottom no-repeat; padding-top:6px; padding-bottom:20px; line-height:27px;}
 .PartBanner .bannerRight .righttel h3{ height:38px; background:#bda179; color:#fff; text-align:center; font-size:14px; line-height:38px;}
@@ -526,12 +564,12 @@ a.blue{ background:#79a9b8;}
 .PartBanner .introLeft ul li a:hover{ color:#fff;text-indent:55px;background:#ff7544  url(../image/ico_004.png) 25px center no-repeat;}
 
 
-.PartIntro .introRight{ width:882px; height:311px; float:right; border:1px #e9e9e9 solid;}
+.PartIntro .introRight{ width:1218px; height:311px; float:right; border:1px #e9e9e9 solid;}
 .PartIntro .introRight .left{ float:left; text-align:center; padding:25px 66px; line-height:22px;}
 .PartIntro .introRight .left img{ width:72px; height:105px; margin:25px 0px;}
 .PartIntro .introRight .left h3{ color:#999; font-size:18px;}
 .PartIntro .introRight .left h4{ font-size:11px; font-weight:bold; color:#999; font-family:Arial, Helvetica, sans-serif;}
-.PartIntro .introRight .right{ width:627px; float:left; padding:40px 0px; line-height:22px;}
+.PartIntro .introRight .right{ width:300px; float:left; padding:40px 0px; line-height:22px;}
 .PartIntro .introRight .right h1{ color:#2c5771; font-size:24px; margin-bottom:15px; line-height:36px;}
 .PartIntro .introRight .right p{ padding-right:15px;}
 .PartIntro .introRight .rightbottom{ height:60px; margin-top:30px;}
@@ -574,7 +612,7 @@ a.blue{ background:#79a9b8;}
 #AreaDuty .title span{ float:left; font-size:14px; color:#2c5771;}
 #AreaDuty .title span a{color:#2c5771; margin-left:11px; padding-right:11px;}
 #AreaDuty .title span a:hover{color:#ff7544;}
-#AreaDuty .visitList{ width:1191px; height:auto; border:1px #e9e9e9 solid; border-right:none; color:#666; text-align:center; font-size:14px; line-height:43px;}
+#AreaDuty .visitList{ width:98%; height:auto; border:1px #e9e9e9 solid; border-right:none; color:#666; text-align:center; font-size:14px; line-height:43px;}
 
 #AreaDuty .visitList .title{width:100%; color:#666; height:103px; border-bottom:none;background:#FFF; margin:0; padding:0;font-size:14px;}
 #AreaDuty .visitList .title div{width:170px;height:103px;border-right:1px #e9e9e9 solid; padding-top:9px; line-height:22px; display:inline-block; float: left;}

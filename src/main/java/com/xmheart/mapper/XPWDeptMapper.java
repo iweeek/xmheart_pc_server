@@ -120,8 +120,8 @@ public interface XPWDeptMapper {
     int updateByPrimaryKey(XPWDept record);
 
     @Select("SELECT d.id as id, d.name as name, d.image_url as image_url, d.intro as intro, d.dept_doctor_url as dept_doctor_url, "
-			+ "d.url as url, " +
-		    "t.name as doctor_name, t.url as doctor_url, t.image_url as doctor_image_url, "
+			+ "d.url as url, d.brief as brief, " + "t.name as doctor_name, t.url as doctor_url, t.image_url as doctor_image_url, "
+            + "t.grade as doctor_grade, t.brief as doctor_brief, t.duty as doctor_duty, "
 		    + "t.duty as doctor_duty, t.professional_title as doctor_professional_title, " +
 		    "t.his_id as doctor_his_id, t.id as doctor_id " +
 		    "FROM xpw_dept as d " +

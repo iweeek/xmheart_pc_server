@@ -382,6 +382,7 @@
   <resultMap id="deptWithDoctorsMap" type="com.xmheart.model.XPWDept">
 	<id column="id" property="id" />
 	<result column="name" property="name" />
+    <result column="brief" property="brief" />
 	<result column="image_url" property="imageUrl" />
 	<result column="intro" property="intro" />
 	<result column="dept_doctor_url" property="deptDoctorUrl" />
@@ -390,6 +391,9 @@
         <id column="doctor_id" property="id" />
         <id column="doctor_his_id" property="hisId" />
 		<result column="doctor_name" property="name" />
+        <result column="doctor_brief" property="brief" />
+        <result column="doctor_grade" property="grade" />
+        <result column="doctor_duty" property="duty" />
 		<result column="doctor_url" property="url" />
 		<result column="doctor_image_url" property="imageUrl" />
 		<!-- &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;result column="doctor_dept_name" property="deptName" /&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt; -->

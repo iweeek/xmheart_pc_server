@@ -2,14 +2,34 @@
 	<!-- list container -->
 	<div class="list-container">
     <!-- banner -->
-    <div class="BaseMark PartBanner">
+    <div class="BaseMark PartBanner PartIntro">
+      <div class="bannerLeft1">
+            <div class="contentsOffice">
+                    <!-- <i class="ico01"></i> -->
+                    <div class="img animated">
+                        <img alt="${dept.name}" src="${dept.imageUrl}" width="80" height="80">
+                    </div>
+                    <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="office">${dept.name}</a>
+                    <div class="dept-intro">
+                        <#if dept.brief?length lt 100>
+                                &#8195;&#8195;${dept.brief}......
+                                <#else>
+                                &#8195;&#8195;${dept.brief[0..99]}......
+                                <!-- <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="btn more">查看详细</a>-->
+                        </#if>
+                    </div>
+            </div>
+      </div>
       <div class="bannerLeft">
         <img src="${index.bannerImage1Url}" alt="${dept.name}">
         <span class="import1"></span>
       </div>
       <div class="bannerRight">
         <div class="righttitle">
-          <h1>${dept.name}</h1>
+         <!-- <h1><a href="deptDoctor?id=1&type=0&workTime=0" title="心血管内科" class="office">心血管内科</a></h1>
+          <h1><a href="deptDoctor?id=2&type=0&workTime=0" title="心血管外科" class="office">心血管外科</a></h1>
+          <h1><a href="deptDoctor?id=3&type=0&workTime=0" title="体检中心" class="office">体检中心</a></h1>
+          
           <div class="btns">
             <a href="Telephone.html">
               <img src="./img/list/part_tel.png" width="46" height="45" title="其他科室电话" alt="其他科室电话">
@@ -20,21 +40,28 @@
               <em>科室地图查看</em>
             </a>
           </div>
+          -->
           <div class="clear"></div>
         </div>
         <div class="rightbtn">
-          <a href="javascript:;" id="AOnDuty" class="green">出诊安排</a>
-          <a class="blue" href="expert-nav.html">返回科室导航</a>
+          <a href="deptDoctor?id=1&type=0&workTime=0" title="心血管内科" class="office blue">心血管内科</a>
+          <a href="deptDoctor?id=2&type=0&workTime=0" title="心血管外科" class="office green">心血管外科</a>
+          <a href="deptDoctor?id=3&type=0&workTime=0" title="体检中心" class="office blue">体检中心</a>
+          <a href="#AreaDuty" id="AOnDuty" class="green">出诊安排</a>
+          <a class="blue" href="/doctorDept">返回科室导航</a>
         </div>
+        <!--
         <div class="righttel">
           <h2 id="H2Tel"></h2>
           <h3>本科室电话 Telephone Number</h3>
         </div>
+        -->
       </div>
       <div class="clear"></div>
     </div>
     <!-- col -->
-    <div class="BaseMark PartIntro">
+    <!-- <div class="BaseMark PartIntro">
+   
       <div class="introLeft">
         <div class="lefttitle">科室栏目<span>Column sections</span></div>
         <ul>
@@ -59,56 +86,73 @@
         </ul>
         <div class="clear"></div>
       </div>
-      <div class="introRight">
-        <div class="left">
-          <img src="./img/list/ksjj-1.gif" width="72" height="105">
-          <h3>科室简介</h3>
-          <h4>INTRODUCTION</h4>
-        </div>
-        <div class="right">
-          <h1 id="H1Type">国家临床重点专科</h1>
-          <#if dept.intro?length gt 250>
-          	<p id="PDescription">${dept.intro[0..250]}......</p>
-          <#else>
-          	<p id="PDescription">${dept.intro}</p>
-          </#if>
-          <div class="rightbottom"><a href="${dept.url}" class="more">MORE</a></div>
-        </div>
-     	<div class="clear"></div>
-      </div>
-    </div>
+    </div> -->
     <!-- doctor -->
-    <div id="AreaDoctors" class="BaseMark doctorsBase partDoctor">
+    <div id="AreaDoctors" class="BaseMark doctorsBase partDoctor officesBase">
       <div class="toolsPart">
         <div class="title">专家介绍<span>Expert Introduction</span></div>
         <div class="tools">
-          <a href="ExpertInfo-11.html" class="Bmore">MORE 》》</a>
           <a href="javascript:;" class="Aprev"></a>
           <a href="javascript:;" class="Anext"></a>
         </div>
         <div class="clear"></div>
       </div>
+      
       <div class="contents">
-        <ul data-num="0">
-        <#list dept.doctors as k>
-	        <li>
-	              <a href="doctorDetail?id=${k.id}&deptCode=&doctorCode=${k.hisId}
-                                &status=2&workTime=0" title="${k.name}" target="_blank" class="img a_post">
-	                  <img src="${k.imageUrl}" alt="${k.name}" title="${k.name}" width="120" height="162">
-	              </a>
-	              <a href="Doctor-712.html" class="name">${k.name}</a>
-	              <a href="Doctor-712.html" class="office">${dept.name}</a>
-	              <a href="Doctor-712.html" class="post">${k.professionalTitle}</a>
-	              <a href="Doctor-712.html" class="btn more">详细</a>
-	              <a href="NewsDetail-449.html" target="_blank" class="btn date">预约</a>
-	        </li>
-	    </#list>
-        </ul>
+        <!--<ul data-num="0">-->
+        <div class="deptDoctor swiper-container">
+            <ul data-num="0" class="swiper-wrapper">
+    	       <#list dept.doctors as doctor>
+                <li class="swiper-slide" style="overflow:hidden;">
+                    <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                        &status=2&workTime=0" title="${doctor.name}" target="_blank" class="img a_post">
+                        <img alt="${doctor.name}" title="${doctor.name}"
+                            src="${doctor.imageUrl}"
+                            width="120" height="162"/>
+                    </a>
+                    <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                        &status=2&workTime=0" title="${doctor.name}" target="_blank" class="name a_post">${doctor.name}</a>
+                    <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
+                    <br/>
+                    <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                        &status=2&workTime=0" title="${doctor.name}" target="_blank" class="post a_post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
+                    <div class="doctor-intro">
+                        <#if doctor.brief?length lt 45>
+                        &#8195;&#8195;${doctor.brief}......
+                        <#else>
+                        &#8195;&#8195;${doctor.brief[0..45]}......
+                        <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                            &status=2&workTime=0" title="${dept.name}" class="show-more a_post">查看详细</a>
+                        </#if>
+                    </div>
+                    <!-- <a href="doctorDetail?id=${doctor.id}" title="${doctor.name}" target="_blank" class="post">${doctor.duty}</a> -->
+                    <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
+                    <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
+                </li>
+                </#list>
+                <li class="swiper-slide">
+                    <a href="doctorDetail?id=" title="" target="_blank" class="img">
+                    </a>
+                    <a href="" title="" target="_blank" class="name"></a>
+                    <!--<a href="Office-30.html" title="厦门大学附属心血管病医院" target="_blank" class="office">厦门大学附属心血管病医院</a>-->
+                    <br/>
+                    <a href="" title="" target="_blank" class="post"></a>
+                    <a href="" title="" target="_blank" class="post"></a>
+                    <a href="" title="" target="_blank" class="post"></a>
+                    <!--<a href="deptDetail?id=${dept.id}" title="${dept.name}" target="_blank" class="btn more">详细</a>
+                    <a href="./order-detail.html" target="_blank" class="btn date">预约</a>-->
+                </li>
+    	        </ul>
+            </div>
+       
+        </div>
+        <!-- </ul>
         <div class="hackR"></div>
         <div class="hackL"></div>
-      </div>
+      </div>  -->
     </div>
     <!-- job -->
+    <!--
     <div class="BaseMark partDoctor jobWork">
       <div class="toolsPart">
         <div class="title">工作动态<span></span></div>
@@ -137,6 +181,7 @@
         <div class="clear"></div>
       </div>
     </div>
+    -->
     <!-- visit -->
     <div id="AreaDuty" class="BaseMark visitDate">
       <div class="title">出诊安排<em>Visits Time</em><span></span></div>

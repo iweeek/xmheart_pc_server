@@ -109,7 +109,6 @@ $(function(){
     });
   })
 
-
   $('.contentsDoctor li').hover(function(){
 	var $this = $(this);
 	$this.find('.doctorDialog').show();
@@ -119,6 +118,33 @@ $(function(){
     		setTimeout(function(){
     			$this.parents('.contents').siblings('.toolsBase').find('.Anext').trigger('click');
     		}, 800)
+    }
+  },function(){
+    $(this).find('.doctorDialog').hide();
+  });
+  
+  
+  //科室专家轮播
+  $('.officesBase').each(function(idx, e){
+      var swiper = new Swiper($(this).find('.deptDoctor'), {
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 0,
+        freeMode: true,
+        prevButton:$(this).find('.Aprev'),
+        nextButton:$(this).find('.Anext'),
+      });
+    })
+  
+    $('.deptDoctor li').hover(function(){
+    var $this = $(this);
+    $this.find('.doctorDialog').show();
+    var nextIndex = $this.siblings('.swiper-slide-next').index();
+    var currentIndex = $this.index();
+    if (nextIndex !== -1 && currentIndex === (nextIndex + 2)) {
+            setTimeout(function(){
+                $this.parents('.contents').siblings('.toolsBase').find('.Anext').trigger('click');
+            }, 800)
     }
   },function(){
     $(this).find('.doctorDialog').hide();
