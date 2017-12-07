@@ -157,4 +157,10 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
     }
+    
+    @Override
+    public List<XPWArticle> indexLastestColumn(String column) {
+        List<XPWArticle> list = articleMapper.selectLastestColumn(column);
+        return list;
+    }
 }

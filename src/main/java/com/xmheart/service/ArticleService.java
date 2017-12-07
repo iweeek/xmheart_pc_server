@@ -42,4 +42,6 @@ public interface ArticleService {
     Byte getMaxPinOrder();
 
     List<XPWArticle> searchArticleByTitle(String title);
+
+    List<XPWArticle> indexLastestColumn(String column);
 }

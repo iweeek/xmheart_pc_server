@@ -21,6 +21,7 @@ public class TaskController {
     public void doctors(@RequestParam String type, @RequestParam String deptCode,
             @RequestParam String DeptName, @RequestParam String workDateStart, 
             @RequestParam String workDateEnd) {
+        System.out.println("开始同步his_id......");
         Doctors d = HisUtil.doctors(type, deptCode, DeptName, workDateStart, workDateEnd);
         hisService.doctors(d);
     }

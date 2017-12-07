@@ -79,7 +79,7 @@
                             <#else>
                                 <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
                                     <#list columnMap as kc, vc>
-                                    <#if kc == key && !(key?index == 6 || key?index == 8) >
+                                    <#if kc == key && !(<!--key?index == 6 || -->key?index == 8) >
                                          <div class="navboxBase">
                                              <div class="navboxBg">
                                                  <div class="navbox BaseMark">
@@ -122,7 +122,7 @@
                                                     </#list>
                                                     </#if>   
                        
-                                                    <#if key?index == 4 || key?index == 5 || key?index == 7>
+                                                    <#if key?index == 4 || key?index == 5 || key?index == 6 || key?index == 7>
                                                     <div class="navSub2 nav_Menu02 noPic NewsSub">
                                                     <#list secondColNavMap as skey, sv>
                                                         <#if skey == vc[0].columnName && key?index != 5 >

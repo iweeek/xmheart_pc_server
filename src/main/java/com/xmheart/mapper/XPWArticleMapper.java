@@ -136,4 +136,7 @@ public interface XPWArticleMapper {
             "order by is_pinned desc, pin_order asc, publish_time desc"}) 
     @ResultMap("com.xmheart.mapper.XPWArticleMapper.BaseResultMap")
     List<XPWArticle> selectArticleByTitle(@Param("keywords") String keywords);
+    
+    @Select("SELECT * FROM xpw_article where is_published = 1 and column_name = #{columnName} ORDER BY publish_time desc")
+    List<XPWArticle> selectLastestColumn(@Param("columnName") String columnName);
 }
