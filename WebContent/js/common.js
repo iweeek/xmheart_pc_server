@@ -150,6 +150,22 @@ $(function(){
     $(this).find('.doctorDialog').hide();
   });
   
+  //出诊动态设置高度
+  var num = 0;
+  var max = 0;
+  var cur = 0;
+  for (var i = 0; i < 6; i++) {
+      var cur = $('#AreaDuty .visitList').find('.wide' + i).find('.col').length;
+      if (max < cur) {
+          max = cur;
+      }
+      console.log($('#AreaDuty .visitList').find('.wide' + i).find('.col').length);
+  }
+  console.log("max: " + max);
+  var he = 60 + (((max - 1) / 2 + 1) + 1) * 45;
+  console.log("((max - 1) / 2 + 1)" + ((max - 1) / 2 + 1));
+  console.log("he: " + he);
+  $('#AreaDuty .visitList').css('height', he +'px');
 //导师团队轮播
     var swiper = new Swiper('#teacherTeam', {
       slidesPerView: 4,

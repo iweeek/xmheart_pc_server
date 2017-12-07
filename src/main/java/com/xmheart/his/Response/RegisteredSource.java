@@ -42,11 +42,17 @@ public class RegisteredSource {
     private List<RegisteredSourcePreInfo> preInfo;
 
     public RegisteredSource() {}
-    public RegisteredSource(String transactionCode, String respCode, String respMessage) {
+
+    public RegisteredSource(String transactionCode, String respCode, String respMessage, Integer countNum,
+            List<RegisteredSourcePreInfo> preInfo) {
+        super();
         TransactionCode = transactionCode;
         RespCode = respCode;
         RespMessage = respMessage;
+        CountNum = countNum;
+        this.preInfo = preInfo;
     }
+
 
     @XmlElement(name = "TransactionCode")
     public String getTransactionCode() {
@@ -76,6 +82,7 @@ public class RegisteredSource {
     public void setPreInfo(List<RegisteredSourcePreInfo> preInfo) {
         this.preInfo = preInfo;
     }
+    @XmlElement(name = "CountNum")
     public Integer getCountNum() {
         return CountNum;
     }

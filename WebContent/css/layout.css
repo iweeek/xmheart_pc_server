@@ -393,6 +393,12 @@ div.BottomHidden{width:100%; height:38px;}
 	.xm-header-container {
 		min-width:1500px;
 	}
+	.list-container{
+	    min-width:1500px;
+	}
+	.PartIntro {
+	   height:400px;
+	}
 	.xm-navbar-nav .xm-navbar-item .xm-navbar-item-info {
 		width: 110px;
 		margin-left: 30px;

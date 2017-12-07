@@ -11,11 +11,11 @@
                     </div>
                     <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="office">${dept.name}</a>
                     <div class="dept-intro">
-                        <#if dept.brief?length lt 100>
+                        <#if dept.brief?length lt 60>
                                 &#8195;&#8195;${dept.brief}......
                                 <#else>
-                                &#8195;&#8195;${dept.brief[0..99]}......
-                                <!-- <a href="deptDoctor?id=${dept.id}&type=0&workTime=0" title="${dept.name}" class="btn more">查看详细</a>-->
+                                &#8195;&#8195;${dept.brief[0..59]}......
+                                <a href="/deptDetail?id=${dept.id}" title="${dept.name}" class="btn more">查看详细</a>
                         </#if>
                     </div>
             </div>
@@ -26,9 +26,9 @@
       </div>
       <div class="bannerRight">
         <div class="righttitle">
-         <!-- <h1><a href="deptDoctor?id=1&type=0&workTime=0" title="心血管内科" class="office">心血管内科</a></h1>
-          <h1><a href="deptDoctor?id=2&type=0&workTime=0" title="心血管外科" class="office">心血管外科</a></h1>
-          <h1><a href="deptDoctor?id=3&type=0&workTime=0" title="体检中心" class="office">体检中心</a></h1>
+         <!-- <h1><a href="deptDoctor?id=1&deptCode=&doctorCode=&status=0&workTime=0" title="心血管内科" class="office">心血管内科</a></h1>
+          <h1><a href="deptDoctor?id=2&&deptCode=&doctorCode=&status=0&workTime=0" title="心血管外科" class="office">心血管外科</a></h1>
+          <h1><a href="deptDoctor?id=3&&deptCode=&doctorCode=&status=0&workTime=0" title="体检中心" class="office">体检中心</a></h1>
           
           <div class="btns">
             <a href="Telephone.html">
@@ -44,9 +44,9 @@
           <div class="clear"></div>
         </div>
         <div class="rightbtn">
-          <a href="deptDoctor?id=1&type=0&workTime=0" title="心血管内科" class="office blue">心血管内科</a>
-          <a href="deptDoctor?id=2&type=0&workTime=0" title="心血管外科" class="office green">心血管外科</a>
-          <a href="deptDoctor?id=3&type=0&workTime=0" title="体检中心" class="office blue">体检中心</a>
+          <a href="deptDoctor?id=1&deptCode=&doctorCode=&status=0&workTime=0" title="心血管内科" class="office blue">心血管内科</a>
+          <a href="deptDoctor?id=2&deptCode=&doctorCode=&status=0&workTime=0" title="心血管外科" class="office green">心血管外科</a>
+          <a href="deptDoctor?id=3&deptCode=&doctorCode=&status=0&workTime=0" title="体检中心" class="office blue">体检中心</a>
           <a href="#AreaDuty" id="AOnDuty" class="green">出诊安排</a>
           <a class="blue" href="/doctorDept">返回科室导航</a>
         </div>
@@ -59,34 +59,6 @@
       </div>
       <div class="clear"></div>
     </div>
-    <!-- col -->
-    <!-- <div class="BaseMark PartIntro">
-   
-      <div class="introLeft">
-        <div class="lefttitle">科室栏目<span>Column sections</span></div>
-        <ul>
-          <li>
-            <a href="office-info.html">缺乏栏目</a>
-          </li>
-          <li id="LIExpertInfo2">
-            <a href="expert-info.html">缺乏栏目</a>
-          </li>
-          
-        </ul>
-        <ul class="margRt">
-          <li>
-            <a href="OfficeNewsList-11-2.html" title="健康教育">缺乏栏目</a>
-          </li>
-          <li>
-            <a href="OfficeNewsList-11-1.html" title="工作动态">缺乏栏目</a>
-          </li>
-          <li>
-            <a href="OfficeNewsList-11-4.html" title="医疗设备">缺乏栏目</a>
-          </li>
-        </ul>
-        <div class="clear"></div>
-      </div>
-    </div> -->
     <!-- doctor -->
     <div id="AreaDoctors" class="BaseMark doctorsBase partDoctor officesBase">
       <div class="toolsPart">
@@ -117,10 +89,10 @@
                     <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
                         &status=2&workTime=0" title="${doctor.name}" target="_blank" class="post a_post">${doctor.professionalTitle} &nbsp;${doctor.grade}</a>
                     <div class="doctor-intro">
-                        <#if doctor.brief?length lt 45>
+                        <#if doctor.brief?length lt 40>
                         &#8195;&#8195;${doctor.brief}......
                         <#else>
-                        &#8195;&#8195;${doctor.brief[0..45]}......
+                        &#8195;&#8195;${doctor.brief[0..40]}......
                         <a href="doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
                             &status=2&workTime=0" title="${dept.name}" class="show-more a_post">查看详细</a>
                         </#if>
@@ -188,14 +160,19 @@
       <div class="visitList">
         <div class="title">
           <#list currentWeek as nameOfWeek, day>
-              <div class="wide">
+              <div class="wide${nameOfWeek?index} wides">
               ${nameOfWeek}
               <em>${day}</em>
-              <#list isVisits as date, vi>
+              <span class="green">上午</span><span class="blue">下午</span>
+              <#list visits as date, doctorNames>
               <#if date == day>
-                  <#if vi == "0">
-                    <span class="green">出诊</span>
+                  <#list doctorNames as doc>
+                  <#if doc?index % 2 == 0> 
+                    <span class='col'>${doc}</span>
+                  <#else>
+                    <span class='col'>${doc}</span>
                   </#if>
+                  </#list>
               </#if>
               </#list>
               </div>
