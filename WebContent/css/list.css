@@ -829,8 +829,23 @@ a.blue{ background:#0690f7;}
 .party-work .list-nav-title{ background: #d40309 url(../img/list/party_ico.png) 13px center no-repeat; border: 2px solid #d40309;}
 .party-work .list-nav-list li.active a, .party-work .list-nav-list li a:hover{ background: #f3d600; color: #d40309; border-right: none;}
 
+/* 科研教学 */
+.research-teaching .list-nav-title{ background: #6EB9FF url(../img/list/research_teaching.png) 13px center no-repeat;}
+
+/* 招贤纳士 */
+.contact-us .list-nav-title{ background: 6EB9FF url(../img/list/contact_us.png) 13px center no-repeat;}
+
+/* 走进厦心 */
+.approach-xiaxin .list-nav-title{ background: 6EB9FF url(../img/list/approach_xiaxin.png) 13px center no-repeat;}
+
+/* 就医服务 */
+.hospitalize-service .list-nav-title{ background: 6EB9FF url(../img/list/hospitalize_service.png) 13px center no-repeat;}
+
+/* 新闻公告 */
+.news .list-nav-title{ background: 6EB9FF url(../img/list/news.png) 13px center no-repeat;}
 
 /* 护理天地 */
+.nursing-world .list-nav-title{ background: 6EB9FF url(../img/list/nursing_world.png) 13px center no-repeat;}
 .announce{ padding:30px 18px; border-bottom:1px #e7e6e6 solid;}
 .partRight .announce{ padding:30px 0px;}
 .announce ul li{ line-height:39px; background:url(/image/announce_ico.gif) left center no-repeat; padding-left:16px; font-size:14px;}

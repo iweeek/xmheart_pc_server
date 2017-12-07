@@ -10,8 +10,20 @@
 	<div class="list-main">
 		<#if parentColumnName == '党群工作'>
 			<div class="list-main-nav party-work">
-		<#else>
-			<div class="list-main-nav">
+		<#elseif parentColumnName == '护理天地'>
+			<div class="list-main-nav nursing-world">
+		<#elseif parentColumnName == '科研教学'>
+            <div class="list-main-nav research-teaching">
+        <#elseif parentColumnName == '招贤纳士'>
+            <div class="list-main-nav contact-us">
+        <#elseif parentColumnName == '走进厦心'>
+            <div class="list-main-nav approach-xiaxin">
+        <#elseif parentColumnName == '就医服务'>
+            <div class="list-main-nav hospitalize-service">
+        <#elseif parentColumnName == '新闻公告'>
+            <div class="list-main-nav news">
+        <#else>
+            <div class="list-main-nav">
 		</#if>
 			<h4 class="list-nav-title">${parentColumnName}</h4>
 			<ul class="list-nav-list">
@@ -33,8 +45,8 @@
 					<a href="${key.url}">
 						<div class="media-img"><img src="${key.imgUrl}" alt=""></div>
 						<div class="media-info">
-						    <#if key.title?length gt 20>
-                                <h4 class="media-info-title">${key.title[0..20]}......</h4>
+						    <#if key.title?length gt 26>
+                                <h4 class="media-info-title">${key.title[0..26]}......</h4>
                             <#else>
                                 <h4 class="media-info-title">${key.title}</h4>
                             </#if>
