@@ -18,7 +18,7 @@
                 <div class="title01">影像厦心</div>
                 <div class="clear"></div>
                 <div class="media-wrapper video-wrapper">
-                    <#list videoList as v>
+                    <#list articleList as v>
                     <div class="media-item">
                     <a href="${v.url}">
                         <div class="media-img"><img src="${v.imgUrl}" alt=""></div>
