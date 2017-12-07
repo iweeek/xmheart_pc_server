@@ -472,7 +472,7 @@
 .baseRight a { font-size: 12px; }
 a.green{ background:#0F76C3;}
 a.coffee{ background:#bda179;}
-a.blue{ background:#0690f7;}
+a.blue{ background:#0F76C3;}
 
 .partRight{ width:990px; float:left; color:#666; padding:0px 32px; padding-bottom:35px;}
 .partRight .title01{ border-bottom:none; color:#adadad; font-size:30px; height:30px; line-height:30px; margin-top:35px;}
@@ -541,7 +541,7 @@ a.blue{ background:#0690f7;}
 
 .PartBanner .bannerRight .rightbtn{ width:100%; height:300px; padding:13px; margin:10px auto; background:#fff; box-shadow:0px 0px 15px 3px rgba(128 ,128 ,128 ,0.25);}
 .PartBanner .bannerRight .rightbtn a{ width:100%; height:42px; border:none; border-radius:3px; display:block; text-align:center; color:#fff; line-height:42px; margin-bottom:9px;font-size:14px;}
-.PartBanner .bannerRight .rightbtn a:hover{ background:#ff7544;}
+.PartBanner .bannerRight .rightbtn a:hover{ background:#0690f7;}
 .PartBanner .bannerRight .righttel h2{ color:#bda179; text-align:center; font-size:27px; background:url(/image/part_ico06.gif) center bottom no-repeat; padding-top:6px; padding-bottom:20px; line-height:27px;}
 .PartBanner .bannerRight .righttel h3{ height:38px; background:#bda179; color:#fff; text-align:center; font-size:14px; line-height:38px;}
 .PartIntro{ height:313px; margin-top:18px;}
@@ -654,9 +654,9 @@ a.blue{ background:#0690f7;}
 .doctorLeft .DThumb{ width:112px; height:150px; margin-bottom:15px;}
 .doctorLeft h3{ font-size:16px; line-height:28px; color:#978571;}
 .doctorLeft h4{ font-size:12px; line-height:28px; color:#333;}
-.doctorLeft a{ width:100%; position:relative; height:42px; background:#43c5af; display:block; line-height:42px; color:#fff; border-radius:3px; text-indent:20px; margin-top:15px;}
+.doctorLeft a{ width:100%; position:relative; height:42px; background:#0F76C3; display:block; line-height:42px; color:#fff; border-radius:3px; text-indent:20px; margin-top:15px;}
 .doctorLeft a img{ position:absolute; top:10px; left:64px;}
-.doctorLeft a:hover{ background:#ff7544;}
+.doctorLeft a:hover{ background:#0690f7;}
 .QRcode{ margin-top:28px; text-align:center;}
 .QRcode img{ width:85px; height:85px;}
 .QRcode p{ line-height:40px; color:#333;}
@@ -670,12 +670,12 @@ a.blue{ background:#0690f7;}
 .doctorRight .title01 h3{font-size:14px; line-height:28px; color:#2c5771;}
 .doctorRight .title01 h1{font-size:28px; line-height:48px;}
 .doctorRight .title01 span{ float:right;}
-.doctorRight .title01 span a{ width:143px; height:42px; background:#bda179; text-align:center; line-height:42px; color:#fff; display:block; font-size:12px; border-radius:3px; position:absolute; top:95px; right:7px;}
-.doctorRight .title01 span a:hover{ background:#ff7544;}
+.doctorRight .title01 span a{ width:143px; height:42px; background:#0690f7; text-align:center; line-height:42px; color:#fff; display:block; font-size:12px; border-radius:3px; position:absolute; top:95px; right:7px;}
+.doctorRight .title01 span a:hover{ background:#0F76C3;}
 
 .doctorRight .visitDate{ width:872px; margin-top:60px; margin-bottom:30px;}
 .doctorRight .visitDate .title{ color:#2c5771; height:63px; padding:15px 0px; margin-top:18px; font-size:18px; line-height:33px;}
-.doctorRight .visitDate .title em{ color:#44c5af; font-size:14px; margin-left:6px;}
+.doctorRight .visitDate .title em{ color:#0F76C3; font-size:14px; margin-left:6px;}
 
 .doctorRight .visitDate .visitList .time{ height:53px; line-height:53px; color:#fff; padding:0;}
 .doctorRight .visitDate .visitList span{ width:109px; border-right:1px #dddddd solid; float:left; text-align:center;}
@@ -686,8 +686,8 @@ a.blue{ background:#0690f7;}
 .doctorRight .visitDate .visitList span img{ width:22px; height:22px; vertical-align:middle;}
 .doctorRight .visitDate .visitList .am{ height:45px; background:#fff; color:#2c5771; line-height:44px;}
 .doctorRight .visitDate .visitList .pm{ height:45px; background:#f3f3f3; color:#2c5771; line-height:44px;}
-.doctorRight .visitDate .visitList .green{ background:#6bcbca;}
-.doctorRight .visitDate .visitList .blue{ background:#8ed7d7;}
+.doctorRight .visitDate .visitList .green{ background:#0F76C3;}
+.doctorRight .visitDate .visitList .blue{ background:#0690f7;}
 
 
 /* 胸痛中心 */
