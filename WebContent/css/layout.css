@@ -111,6 +111,10 @@
 	float: left;
 	position: relative;
 }
+
+.header-icon .header-icon-wechat-wrapper a:hover {
+   box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
+}
 .header-icon-wechat-wrapper .header-icon-wechat {
 	display: block;
 	height: 32px;
@@ -131,6 +135,7 @@
 	height: 250px;
 	z-index: 2000;
 	display: none;
+	box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
 }
 .header-icon-wechat-wrapper .webo-code {
     position: absolute;
@@ -140,6 +145,7 @@
     height: 250px;
     z-index: 2000;
     display: none;
+    box-shadow:0px 5px 15px 1px rgba(128 ,128 ,128 ,0.25);
 }
 .header-icon .header-icon-weibo {
 	display: block;
