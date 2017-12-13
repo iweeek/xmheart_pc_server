@@ -155,17 +155,23 @@ $(function(){
   var max = 0;
   var cur = 0;
   for (var i = 0; i < 6; i++) {
-      var cur = $('#AreaDuty .visitList').find('.wide' + i).find('.col').length;
-      if (max < cur) {
-          max = cur;
+      var forenoon = $('#AreaDuty .visitList').find('.wide' + i).find('.forenoon').find('.col').length;
+      var afternoon = $('#AreaDuty .visitList').find('.wide' + i).find('.afternoon').find('.col').length;
+      if (max < forenoon) {
+          max = forenoon;
       }
-      console.log($('#AreaDuty .visitList').find('.wide' + i).find('.col').length);
+      if (max < afternoon) {
+          max = afternoon;
+      }
+      console.log(forenoon);
+      console.log(afternoon);
   }
   console.log("max: " + max);
-  var he = 60 + (((max - 1) / 2 + 1) + 1) * 45;
+  var he = 60 + (((max - 1) + 1) + 1) * 45;
   console.log("((max - 1) / 2 + 1)" + ((max - 1) / 2 + 1));
   console.log("he: " + he);
   $('#AreaDuty .visitList').css('height', he +'px');
+  
 //导师团队轮播
     var swiper = new Swiper('#teacherTeam', {
       slidesPerView: 4,
@@ -326,4 +332,6 @@ $(function(){
 			toggleDuration: true
 		});
   }
+  
+  PDFObject.embed("./attached/a.pdf", "#example1");
 })

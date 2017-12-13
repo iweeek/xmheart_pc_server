@@ -28,7 +28,7 @@
         <div class="righttitle">
          <!-- <h1><a href="deptDoctor?id=1&deptCode=&doctorCode=&status=0&workTime=0" title="心血管内科" class="office">心血管内科</a></h1>
           <h1><a href="deptDoctor?id=2&&deptCode=&doctorCode=&status=0&workTime=0" title="心血管外科" class="office">心血管外科</a></h1>
-          <h1><a href="deptDoctor?id=3&&deptCode=&doctorCode=&status=0&workTime=0" title="体检中心" class="office">体检中心</a></h1>
+          <h1><a href="deptDoctor?id=4&&deptCode=&doctorCode=&status=0&workTime=0" title="超声医学部" class="office">超声医学部</a></h1>
           
           <div class="btns">
             <a href="Telephone.html">
@@ -46,7 +46,7 @@
         <div class="rightbtn">
           <a href="deptDoctor?id=1&deptCode=&doctorCode=&status=0&workTime=0" title="心血管内科" class="office blue">心血管内科</a>
           <a href="deptDoctor?id=2&deptCode=&doctorCode=&status=0&workTime=0" title="心血管外科" class="office green">心血管外科</a>
-          <a href="deptDoctor?id=3&deptCode=&doctorCode=&status=0&workTime=0" title="体检中心" class="office blue">体检中心</a>
+          <a href="deptDoctor?id=4&deptCode=&doctorCode=&status=0&workTime=0" title="超声医学部" class="office blue">超声医学部</a>
           <a href="#AreaDuty" id="AOnDuty" class="green">出诊安排</a>
           <a class="blue" href="/doctorDept">返回科室导航</a>
         </div>
@@ -163,18 +163,35 @@
               <div class="wide${nameOfWeek?index} wides">
               ${nameOfWeek}
               <em>${day}</em>
-              <span class="green">上午</span><span class="blue">下午</span>
-              <#list visits as date, doctorNames>
-              <#if date == day>
-                  <#list doctorNames as doc>
-                  <#if doc?index % 2 == 0> 
-                    <span class='col'>${doc}</span>
-                  <#else>
-                    <span class='col'>${doc}</span>
+              
+              <span class="forenoon">
+                  <span class="green">上午</span>
+                   
+                  <#list visits as date, doctors>
+                  <#if date == day>
+                      <#list doctors as doc>
+                        <#if doc.workType == 1>
+                        <div class="col">${doc.name} </div>
+                        </#if>
+                      </#list>
                   </#if>
                   </#list>
-              </#if>
-              </#list>
+              </span>
+              <span class="afternoon">
+                  <span class="blue">下午</span>
+                   
+                  <#list visits as date, doctors>
+                  <#if date == day>
+                      <#list doctors as doc>
+                        <#if doc.workType == 2>
+                        <div class="col">${doc.name} </div>
+                        </#if>
+                      </#list>
+                  </#if>
+                  </#list>
+              </span>
+              <!-- <span class="green">上午</span><span class="blue">下午</span> -->
+              
               </div>
           </#list>
          <!-- <div class="wide">星期四 <em>2017/7/27</em><span class="green">上午</span><span class="blue">下午</span></div>

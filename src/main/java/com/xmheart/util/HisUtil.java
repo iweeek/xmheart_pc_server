@@ -14,7 +14,9 @@ import com.xmheart.his.Response.*;
 public class HisUtil {
 
     private static final Log log = LogFactory.getLog(HisUtil.class);
-
+    private static final String AUTHCODE = "cs20171011";
+//    private static final String AUTHCODE = "zs20171211";
+    
     public static String handleResp(String resp){
         return "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" + resp;
     }
@@ -22,7 +24,7 @@ public class HisUtil {
     public static TestDb testDb() {
         String requestXml = "<Req>" +
           "<oracode>00002</oracode>" +
-          "<oraauthcode>cs20171011</oraauthcode>" +
+          "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
           "<TransactionCode>JK1001</TransactionCode>" +
           "</Req>";
         String tradeCode = "JK1001";
@@ -36,7 +38,7 @@ public class HisUtil {
     public static Hospitals hospitalInfo(String hostID) {
         String requestXml = "<Req>" +
           "<oracode>00002</oracode>" +
-          "<oraauthcode>cs20171011</oraauthcode>" +
+          "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
           "<TransactionCode>JK1002</TransactionCode>" +
           "<HosID>" + hostID + "</HosID>" +
           "</Req>";
@@ -67,7 +69,7 @@ public class HisUtil {
             String workTime, String workDateStart, String workDateEnd) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK2001</TransactionCode>" +
                 "<DeptCode>" + deptCode +"</DeptCode>" +
                 "<DeptName>" + deptName + "</DeptName>" +
@@ -100,7 +102,7 @@ public class HisUtil {
     public static Departments departments(String type, String workTime, String workDateStart, String workDateEnd) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK2002</TransactionCode>" +
                 "<Type>" + type +"</Type>" +
                 "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
@@ -132,7 +134,7 @@ public class HisUtil {
     public static Doctors doctors(String type, String deptCode, String DeptName, String workDateStart, String workDateEnd) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK2003</TransactionCode>" +
                 "<Type>" + type + "</Type>" +
                 "<DeptCode>" + deptCode +  "</DeptCode>" +
@@ -167,7 +169,7 @@ public class HisUtil {
             String workTime, String workDateStart, String workDateEnd) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK2004</TransactionCode>" +
                 "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
                 "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
@@ -201,7 +203,7 @@ public class HisUtil {
             String docCode) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK2005</TransactionCode>" +
                 "<WorkDate>" + workDate + "</WorkDate>" +
                 "<WorkType>" + workType + "</WorkType>" +
@@ -242,7 +244,7 @@ public class HisUtil {
                                          String docCode, String stime, String userid, String customTime, String sickId) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode> JK2006</TransactionCode>" +
                 "<OrderID>"+orderId+"</OrderID>" +
                 "<IDCardNo>"+idCardNo+"</IDCardNo>" +
@@ -273,7 +275,7 @@ public class HisUtil {
                                              String docCode, String userid, String customTime, String sickId) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode> JK2007</TransactionCode>" +
                 "<OrderID>"+orderId+"</OrderID>" +
                 "<Reason>"+reason+"</Reason>" +
@@ -304,7 +306,7 @@ public class HisUtil {
             String docCode, String status, String sickId) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode> JK2008</TransactionCode>" +
                 "<IDCardNo>"+IDCardNo+"</IDCardNo>" +
                 "<CardNo>"+cardNo+"</CardNo>" +
@@ -342,7 +344,7 @@ public class HisUtil {
             String name, String cardNo, String mcardNo, String sickId) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK5001</TransactionCode>" +
                 "<IDCardNo>"+IDCardNo+"</IDCardNo>" +
                 "<CardNo>"+cardNo+"</CardNo>" +
@@ -378,7 +380,7 @@ public class HisUtil {
             String name, String address, String birthDay, String sex, String userID) {
         String requestXml = "<Req>" +
                 "<oracode>00002</oracode>" +
-                "<oraauthcode>cs20171011</oraauthcode>" +
+                "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK5003</TransactionCode>" +
                 "<IDCardNo>"+IDCardNo+"</IDCardNo>" +
                 "<Mobile>"+mobile+"</Mobile>" +

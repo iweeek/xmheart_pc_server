@@ -12,7 +12,7 @@
         <div class="officesBase BaseMark">
             <div class="toolsBase">
                 <div class="title">
-                    <em>${dept.name}</em> <span>Key Specialty</span>
+                    <em>${dept.name}</em> <span>${dept.nameEn}</span>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="ASwitch" id="OSearchSwitch">快速查找科室</a>
