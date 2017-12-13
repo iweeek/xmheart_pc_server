@@ -81,14 +81,14 @@ public class UpdateTask {
             columnService.updateNav(xpwNav);
         }
         
-        // 媒体看厦心
+        // 媒体看厦心 第一条不自动更新
         List<XPWNav> mediaNavs = columnService.getNavsByChildColumnIdOrderByPublishTime(20);
         List<XPWArticle> lastestMedias = articleService.indexLastestColumn("媒体看厦心");
         if (lastestMedias.size() > mediaNavs.size()) {
             lastestMedias = lastestMedias.subList(0, mediaNavs.size());
         }
         
-        for (int i = 0; i < lastestMedias.size(); i++) {
+        for (int i = 1; i < lastestMedias.size(); i++) {
             XPWNav xpwNav = mediaNavs.get(i);
             xpwNav.setArticleTitle(lastestMedias.get(i).getTitle());
             xpwNav.setUrl(lastestMedias.get(i).getUrl());
@@ -110,6 +110,22 @@ public class UpdateTask {
             xpwNav.setUrl(lastestHospitalNews.get(i).getUrl());
             xpwNav.setImgUrl(lastestHospitalNews.get(i).getImgUrl());
             xpwNav.setPublishTime(lastestHospitalNews.get(i).getPublishTime());
+            columnService.updateNav(xpwNav);
+        }
+        
+        // 科教概况 第一条不自动更新
+        List<XPWNav> scienceGeneralNavs = columnService.getNavsByChildColumnIdOrderByPublishTime(47);
+        List<XPWArticle> lastestScienceGeneral = articleService.indexLastestColumn("科教概况");
+        if (lastestScienceGeneral.size() > scienceGeneralNavs.size()) {
+            lastestScienceGeneral = lastestScienceGeneral.subList(0, scienceGeneralNavs.size());
+        }        
+        
+        for (int i = 1; i < lastestScienceGeneral.size(); i++) {
+            XPWNav xpwNav = scienceGeneralNavs.get(i);
+            xpwNav.setArticleTitle(lastestScienceGeneral.get(i).getTitle());
+            xpwNav.setUrl(lastestScienceGeneral.get(i).getUrl());
+            xpwNav.setImgUrl(lastestScienceGeneral.get(i).getImgUrl());
+            xpwNav.setPublishTime(lastestScienceGeneral.get(i).getPublishTime());
             columnService.updateNav(xpwNav);
         }
         
@@ -225,14 +241,14 @@ public class UpdateTask {
             columnService.updateNav(xpwNav);
         }
         
-        // 护理概况
+        // 护理概况 第一条不自动更新
         List<XPWNav> careNavs = columnService.getNavsByChildColumnIdOrderByPublishTime(43);
         List<XPWArticle> lastestCare = articleService.indexLastestColumn("护理概况");
         if (lastestCare.size() > careNavs.size()) {
             lastestCare = lastestCare.subList(0, careNavs.size());
         }
         
-        for (int i = 0; i < lastestCare.size(); i++) {
+        for (int i = 1; i < lastestCare.size(); i++) {
             XPWNav xpwNav = careNavs.get(i);
             xpwNav.setArticleTitle(lastestCare.get(i).getTitle());
             xpwNav.setUrl(lastestCare.get(i).getUrl());
@@ -289,6 +305,7 @@ public class UpdateTask {
             columnService.updateNav(xpwNav);
         }
 //        return ResponseEntity.ok(videoNavs);
+        System.out.println(">>>>结束执行定时任务......");
     }
     
     @RequestMapping(value = { "/updateTasks" }, method = RequestMethod.POST)
