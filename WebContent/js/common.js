@@ -336,16 +336,33 @@ $(function(){
 
   PDFObject.embed("./attached/a.pdf", "#example1");
   
-  //切换语言
-  $("#switchLanguage").click(function(){
-        $.ajax({
-            url: '/language',
-            type: 'GET',
-            success: function(result) {
-                location.reload()
-            }
-        });
-    });
+  //切换成英文
+//  $("#switchEnglish").click(function(){
+//        $.ajax({
+//            url: '/language_to_chinese',
+//            type: 'GET',
+//            success: function(result) {
+////                location.reload();
+//                window.location.reload()
+////                location.href = "/xtIndex";
+//            }
+//        });
+//    });
+  
+  //切换成语言
+//  $("#switchChinese").click(function(){
+//      window.location.href=location.href + "/language_to_chinese";
+//        $.ajax({
+//            url: '/language_to_chinese',
+//            type: 'GET',
+//            async: false,
+//            success: function(result) {
+////                location.reload();
+//                window.location.reload()
+////                location.href = "/xtIndex";
+//            }
+//        });
+//    });
   
 })
 

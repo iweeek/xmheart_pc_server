@@ -40,6 +40,14 @@ public class IndexServiceImpl implements IndexService {
     }
 
     @Override
+    public XPWIndex updateLanguage(int i) {
+        XPWIndex index = indexMapper.selectByPrimaryKey((long) 1);
+        index.setLanguage(i);
+        int ret = indexMapper.updateByPrimaryKeySelective(index);
+        return index;
+    }
+    
+    @Override
     public int update(XPWIndex index) {
         int ret = indexMapper.updateByPrimaryKeySelective(index);
         return ret;

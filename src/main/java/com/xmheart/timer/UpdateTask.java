@@ -43,7 +43,7 @@ public class UpdateTask {
    
 //    @RequestMapping(value = { "/test" }, method = RequestMethod.POST)
 //    public ResponseEntity<?> job()   {  
-    @Scheduled(cron = "0 */5 * * * *")
+    @Scheduled(cron = "0 0 */1 * * *")
     public void job()   {  
         System.out.println("开始执行定时任务......");
         

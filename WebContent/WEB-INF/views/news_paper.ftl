@@ -1,4 +1,5 @@
 <#include "./fragments/_header.ftl">
+
 	<!-- list container -->
 	<!--<div class="breadcrumb">
 		<div class="xm-container">
@@ -8,6 +9,8 @@
 	<div class="list-container">
 		<div class="list-main">
 			<div class="list-main-nav">
+			<div id="example1"></div>
+			
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
 			<#list leftNav as k>
@@ -98,6 +101,8 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+				
+				
 			</div>
 		</div>
 	</div>

@@ -22,4 +22,6 @@ public interface IndexService {
 
     XPWIndex updateLanguage();
 
+    XPWIndex updateLanguage(int i);
+
 }

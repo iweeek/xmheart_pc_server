@@ -103,6 +103,17 @@
 	height: 24px;
 	line-height: 24px;
 }
+.header-icon-lang {
+    font-size: 20px;
+    color: #2D8FD9;
+    display: block;
+    margin-top: 40px;
+    float: right;
+    width: 60px;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 10px;
+}
 .header-icon .header-icon-wechat-wrapper {
 	display: block;
 	height: 24px;
@@ -211,6 +222,20 @@
 	height: 60px;
 	line-height: 60px;
 }
+
+.xm-navbar-nav .xm-navbar-item a.english {
+    color: #fff;
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 150px;
+    margin-left: 0;
+    padding: 0 12px;
+    float: left;
+    height: 60px;
+    line-height: 60px;
+}
+
 .xm-navbar-nav .xm-navbar-item .xm-navbar-item-info:hover {
 	color: #fff;
 	background: #0690f7;
