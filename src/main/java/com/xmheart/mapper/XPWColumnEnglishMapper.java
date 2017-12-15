@@ -110,12 +110,12 @@ public interface XPWColumnEnglishMapper {
             "LEFT JOIN xpw_column_language AS l \n" + 
             "ON c.id = l.column_id \n" + 
             "where c.parent_column_id = 0 and c.position = false"})
-    @ResultMap("com.xmheart.mapper.XPWColumnMapper.BaseResultMap")
-    List<XPWColumn> selectEnglishColumns();
+    @ResultMap("com.xmheart.mapper.XPWColumnEnglishMapper.BaseResultMap")
+    List<XPWColumnEnglish> selectEnglishColumns();
     
     @Select({ "select", "c.id, l.column_name_en as column_name, c.url, c.parent_column_id, c.position, c.publish_time",
         "FROM xpw_column_english AS c LEFT JOIN xpw_column_language AS l", "ON c.id = l.column_id",
         "where c.parent_column_id = #{parentColumnId,jdbcType=BIGINT}" })
-    @ResultMap("com.xmheart.mapper.XPWColumnMapper.BaseResultMap")
-    List<XPWColumn> selectAllEnglishColumnsByParentColumnId(Long id);
+    @ResultMap("com.xmheart.mapper.XPWColumnEnglishMapper.BaseResultMap")
+    List<XPWColumnEnglish> selectAllEnglishColumnsByParentColumnId(Long id);
 }

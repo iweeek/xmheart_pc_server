@@ -43,6 +43,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWColumnEnglish;
 import com.xmheart.model.XPWDept;
 import com.xmheart.model.XPWDoctor;
 import com.xmheart.model.XPWElecNewspaper;
@@ -61,6 +62,7 @@ import com.xmheart.model.HisDoctor;
 import com.xmheart.model.HisDoctorComparator;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
+import com.xmheart.service.ColumnEnglishService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
 import com.xmheart.service.IndexService;
@@ -76,13 +78,16 @@ import io.swagger.annotations.ApiParam;
 
 @Controller
 public class NewsController {
-
+    
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 
 	@Autowired
 	private ColumnService columnService;
-
+	
+    @Autowired
+    private ColumnEnglishService columnEnglishService;
+	
 	@Autowired
 	private NewsService newsService;
 
@@ -183,29 +188,29 @@ public class NewsController {
 		}
 
 		// 获取当前是中文还是英文
-		XPWIndex index = indexService.indexRead();
-		model.addAttribute("language", index.getLanguage());
+//		XPWIndex index = indexService.indexRead();
+		
 		return model;
 	}
 	
 	private Model addEnglishTopNav(long columnId, Model model) {
 
-        List<XPWColumn> columnList = columnService.getTopFirstColumns();
+        List<XPWColumnEnglish> columnList = columnEnglishService.getTopFirstColumns();
         Map<String, String> firstColumns = new LinkedHashMap<String, String>();
-        Map<String, List<XPWColumn>> columnMap = new LinkedHashMap<String, List<XPWColumn>>();
+        Map<String, List<XPWColumnEnglish>> columnMap = new LinkedHashMap<String, List<XPWColumnEnglish>>();
         Map<Long, List<XPWNav>> navMap = new LinkedHashMap<Long, List<XPWNav>>();
         Map<String, List<XPWNav>> secondColNavMap = new LinkedHashMap<String, List<XPWNav>>();
         Map<String, List<XPWNav>> columnNavMap = new LinkedHashMap<String, List<XPWNav>>();
         
         
-        for (XPWColumn column : columnList) {
+        for (XPWColumnEnglish column : columnList) {
             firstColumns.put(column.getColumnName(), column.getUrl());
-            List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
+            List<XPWColumnEnglish> secColList = columnEnglishService.getChildColumnsById(column.getId());
             if (secColList.size() > 0) {
                 columnMap.put(column.getColumnName(), secColList);
             }
 
-            List<XPWNav> navList = columnService.getNavsByColumnId(column.getId());
+            List<XPWNav> navList = columnEnglishService.getNavsByColumnId(column.getId());
             for (XPWNav nav : navList) {
                 nav.setBrief(nav.getBrief().replaceAll("\\n", "<br/>"));
             }
@@ -216,7 +221,7 @@ public class NewsController {
 
             for (XPWNav nav : navList) {
                 if (secondColNavMap.containsKey(nav.getChildColumnName()) == false) {
-                    List<XPWNav> secondColNavList = columnService.getNavsByChildColumnId(nav.getChildColumnId());
+                    List<XPWNav> secondColNavList = columnEnglishService.getNavsByChildColumnId(nav.getChildColumnId());
                     secondColNavMap.put(nav.getChildColumnName(), secondColNavList);
                 }
             }
@@ -229,22 +234,22 @@ public class NewsController {
         model.addAttribute("columnNavMap", columnNavMap);
 
         // 这个地方只能体现两级栏目关系
-        XPWColumn parentColumn = columnService.getParentColumnById(columnId);
+        XPWColumnEnglish parentColumn = columnEnglishService.getParentColumnById(columnId);
         
-        List<XPWColumn> list = new ArrayList<XPWColumn>();
+        List<XPWColumnEnglish> list = new ArrayList<XPWColumnEnglish>();
         // 有父栏目，父栏目是一级栏目
         if (parentColumn != null) {
             iterGetParentColumn(parentColumn, list);
             model.addAttribute("parentColList", list);
             model.addAttribute("firstColumnName", list.get(0).getColumnName());
         } else {
-            XPWColumn column = columnService.getColumnById(columnId);
+            XPWColumnEnglish column = columnEnglishService.getColumnById(columnId);
             model.addAttribute("firstColumnName", column.getColumnName());
         }
 
         // 获取当前是中文还是英文
-        XPWIndex index = indexService.indexRead();
-        model.addAttribute("language", index.getLanguage());
+//      XPWIndex index = indexService.indexRead();
+        
         return model;
     }
 	
@@ -257,10 +262,20 @@ public class NewsController {
 	            return;
 	        }
 	    } 
-	    
 	    list.add(column);
-	    
 	}
+	
+    private void iterGetParentColumn(XPWColumnEnglish column, List<XPWColumnEnglish> list) {
+        if (list.size() == 0) {
+            if (column.getParentColumnId() != 0) {
+                iterGetParentColumn(columnEnglishService.getParentColumnById(column.getId()), list);
+            } else {
+                list.add(column);
+                return;
+            }
+        } 
+        list.add(column);
+    }
 
 	private Model addLeftNav(long columnId, Model model) {
 		List<XPWColumn> childColumns = columnService
@@ -603,7 +618,8 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = { "/newsDetail" }, method = RequestMethod.GET)
-	public String newsDetail(@RequestParam Long id, Model model) {
+	public String newsDetail(@RequestParam Long id, Model model, 
+	        @RequestParam(required = false, defaultValue = "false")  Boolean isEnglish) {
 		XPWArticle article = newsService.getNewsById(id);
 		model.addAttribute("article", article);
 		long cateId = article.getColumnId();
@@ -614,11 +630,19 @@ public class NewsController {
 
 		XPWArticle articleNext = newsService.getColNextNewsById(cateId, id);
 		model.addAttribute("articleNext", articleNext);
-
-		model = addTopNav(article.getColumnId(), model);
-
-		XPWIndex index = indexService.indexRead();
-		model = addLeftNav(article.getColumnId(), model);
+		
+		if (isEnglish) {
+		    model = addEnglishTopNav(article.getColumnId(), model);
+		} else {
+		    model = addTopNav(article.getColumnId(), model);
+		    model = addLeftNav(article.getColumnId(), model);
+		}
+		
+		if (isEnglish) {
+		    model.addAttribute("language", 1);
+		} else {
+		    model.addAttribute("language", 0);
+		}
 
 		return "news_detail";
 
@@ -745,20 +769,21 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model, @RequestParam(required = false, defaultValue = "false")  Boolean isEnglish) {
 		model = addTopNav(1, model);
 
 		XPWIndex index = indexService.indexRead();
 
 		model.addAttribute("index", index);
 
-		if (index.getLanguage() == 1) {
-		    xtIndex(model);
+		if (isEnglish) {
+		    xtIndex(model, true);
+		    model.addAttribute("language", 1);
 		    return "index_english";
 		} else {
+		    model.addAttribute("language", 0);
 		    return "index";
 		}
-		
 	}
 	
 	@RequestMapping(value = { "/registerTime" }, method = RequestMethod.POST)
@@ -844,28 +869,15 @@ public class NewsController {
     }
     
     @RequestMapping(value = { "/language" }, method = RequestMethod.GET)
-    public String language(Model model, @RequestParam Integer id) {
-        XPWIndex index = null;
-        System.out.println("id: " + id);
-        if (id == 0) {
-            index = indexService.updateLanguage(0);
-        } else {
-            index = indexService.updateLanguage(1);
-        }
-//        XPWIndex index = indexService.updateLanguage();
-        
-//        model = addTopNav(1, model);
-        
-//        model.addAttribute("index", index);
-        System.out.println("language:" + index.getLanguage());
-        if (index.getLanguage() == 1) {
-            xtIndex(model);
+    public String language(Model model, @RequestParam(required = false, defaultValue = "false") Boolean isEnglish) {
+        System.out.println(isEnglish);
+        if (isEnglish) {
+            xtIndex(model, true);
             return "index_english";
         } else {
-            index(model);
+            index(model, false);
             return "index";
         }
-        
     }
     
     @RequestMapping(value = { "/404" }, method = RequestMethod.POST)
@@ -936,44 +948,86 @@ public class NewsController {
 	
 
 	@RequestMapping(value = { "/xtIndex" }, method = RequestMethod.GET)
-	public String xtIndex(Model model) {
-		model = addTopNav(1, model);
-
-		List<XPWColumn> firstColList = columnService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
-		Map<String, String> xtfirstColumns = new LinkedHashMap<String, String>();
-		Map<String, List<XPWColumn>> secondColList = new LinkedHashMap<String, List<XPWColumn>>();
-		Map<String, List<XPWColumn>> thirdColList = new LinkedHashMap<String, List<XPWColumn>>();
-		Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
-
-		for (XPWColumn column : firstColList) {
-			List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());
-			xtfirstColumns.put(column.getColumnName(), column.getUrl());
-			if (secColList.size() > 0) {
-				secondColList.put(column.getColumnName(), secColList);
-			}
-
-			for (XPWColumn newColumn : secColList) {
-				List<XPWColumn> thiColLost = columnService.getColumnsByParentId(newColumn.getId());
-				if (thiColLost.size() > 0) {
-					thirdColList.put(newColumn.getColumnName(), thiColLost);
-				}
-
-				List<XPWNav> nav = columnService.getNavListBySecondColumnName(newColumn.getColumnName());
-				if (nav.size() != 0) {
-					navMap.put(newColumn.getColumnName(), nav);
-				}
-			}
+	public String xtIndex(Model model, @RequestParam(required = false, defaultValue = "false") Boolean isEnglish) {
+		if (isEnglish) {
+		    model = addEnglishTopNav(1, model);
+		    
+		    List<XPWColumnEnglish> firstColList = columnEnglishService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
+            Map<String, String> xtfirstColumns = new LinkedHashMap<String, String>();
+            Map<String, List<XPWColumnEnglish>> secondColList = new LinkedHashMap<String, List<XPWColumnEnglish>>();
+            Map<String, List<XPWColumnEnglish>> thirdColList = new LinkedHashMap<String, List<XPWColumnEnglish>>();
+            Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
+    
+            for (XPWColumnEnglish column : firstColList) {
+                List<XPWColumnEnglish> secColList = columnEnglishService.getColumnsByParentId(column.getId());
+                xtfirstColumns.put(column.getColumnName(), column.getUrl());
+                if (secColList.size() > 0) {
+                    secondColList.put(column.getColumnName(), secColList);
+                }
+    
+                for (XPWColumnEnglish newColumn : secColList) {
+                    List<XPWColumnEnglish> thiColLost = columnEnglishService.getColumnsByParentId(newColumn.getId());
+                    if (thiColLost.size() > 0) {
+                        thirdColList.put(newColumn.getColumnName(), thiColLost);
+                    }
+    
+                    List<XPWNav> nav = columnService.getNavListBySecondColumnName(newColumn.getColumnName());
+                    if (nav.size() != 0) {
+                        navMap.put(newColumn.getColumnName(), nav);
+                    }
+                }
+            }
+    
+            XPWXTIndex index = indexService.xtIndexRead();
+    
+            model.addAttribute("firstColList", firstColList);
+            model.addAttribute("secondColList", secondColList);
+            model.addAttribute("thirdColList", thirdColList);
+            model.addAttribute("navMap", navMap);
+            model.addAttribute("xtfirstColumns", xtfirstColumns);
+            model.addAttribute("index", index);
+    
+            model.addAttribute("language", 1);
+		} else {
+		    model = addTopNav(1, model);
+		    
+        		List<XPWColumn> firstColList = columnService.getColumnsByParentId(CHEST_PAIN_COLUMN_ID);
+        		Map<String, String> xtfirstColumns = new LinkedHashMap<String, String>();
+        		Map<String, List<XPWColumn>> secondColList = new LinkedHashMap<String, List<XPWColumn>>();
+        		Map<String, List<XPWColumn>> thirdColList = new LinkedHashMap<String, List<XPWColumn>>();
+        		Map<String, List<XPWNav>> navMap = new LinkedHashMap<String, List<XPWNav>>();
+        
+        		for (XPWColumn column : firstColList) {
+        			List<XPWColumn> secColList = columnService.getColumnsByParentId(column.getId());
+        			xtfirstColumns.put(column.getColumnName(), column.getUrl());
+        			if (secColList.size() > 0) {
+        				secondColList.put(column.getColumnName(), secColList);
+        			}
+        
+        			for (XPWColumn newColumn : secColList) {
+        				List<XPWColumn> thiColLost = columnService.getColumnsByParentId(newColumn.getId());
+        				if (thiColLost.size() > 0) {
+        					thirdColList.put(newColumn.getColumnName(), thiColLost);
+        				}
+        
+        				List<XPWNav> nav = columnService.getNavListBySecondColumnName(newColumn.getColumnName());
+        				if (nav.size() != 0) {
+        					navMap.put(newColumn.getColumnName(), nav);
+        				}
+        			}
+        		}
+        
+        		XPWXTIndex index = indexService.xtIndexRead();
+        
+        		model.addAttribute("firstColList", firstColList);
+        		model.addAttribute("secondColList", secondColList);
+        		model.addAttribute("thirdColList", thirdColList);
+        		model.addAttribute("navMap", navMap);
+        		model.addAttribute("xtfirstColumns", xtfirstColumns);
+        		model.addAttribute("index", index);
+        		
+        		model.addAttribute("language", 0);
 		}
-
-		XPWXTIndex index = indexService.xtIndexRead();
-
-		model.addAttribute("firstColList", firstColList);
-		model.addAttribute("secondColList", secondColList);
-		model.addAttribute("thirdColList", thirdColList);
-		model.addAttribute("navMap", navMap);
-		model.addAttribute("xtfirstColumns", xtfirstColumns);
-		model.addAttribute("index", index);
-
 		return "xt_index";
 	}
 

@@ -363,7 +363,21 @@ $(function(){
 //            }
 //        });
 //    });
-  
+  // 英文处理
+  console.log($("#switchChinese").text());
+  if ($("#switchChinese").text() == "中文") {
+      $("#_ideConac").css({
+          position: "absolute",
+          left: "250px",
+          bottom: "0px",
+          top: "-10px"
+      });
+      $(".list-pagination").css({
+          width: "100%",
+          height: "0px",
+          top: "0px"
+      });
+  }
 })
 
 

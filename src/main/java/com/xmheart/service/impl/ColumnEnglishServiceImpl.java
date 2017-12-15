@@ -19,13 +19,11 @@ import com.xmheart.model.XPWColumnExample;
 import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWNavExample;
+import com.xmheart.service.ColumnEnglishService;
 import com.xmheart.service.ColumnService;
 
 @Service
-public class ColumnServiceImpl implements ColumnService {
-
-	@Autowired
-	private XPWColumnMapper xpwColumnMapper;
+public class ColumnEnglishServiceImpl implements ColumnEnglishService {
 
     @Autowired
     private XPWColumnEnglishMapper xpwColumnEnglishMapper;
@@ -35,49 +33,31 @@ public class ColumnServiceImpl implements ColumnService {
 	
 	@Autowired
 	private XPWIndexMapper xpwIndexMapper;
-
-//	private int getLanguage() {
-//		XPWIndex index = xpwIndexMapper.selectByPrimaryKey((long) 1);
-//		return index.getLanguage();
-//	}
 	
 	@Override
-	public List<XPWColumn> getTopFirstColumns() {
-		XPWColumnExample example = new XPWColumnExample();
+	public List<XPWColumnEnglish> getTopFirstColumns() {
+		XPWColumnEnglishExample example = new XPWColumnEnglishExample();
 		example.createCriteria().andParentColumnIdEqualTo(0l).andPositionEqualTo(false);
-		List<XPWColumn> list = null;
-//		if (getLanguage() == 1) {
-//			list = xpwColumnEnglishMapper.selectEnglishColumns();
-//		} else {
-			list = xpwColumnMapper.selectByExample(example);
-			list = list.subList(0, 9); // 取前8个
-//		}
+		List<XPWColumnEnglish> list = null;
+		list = xpwColumnEnglishMapper.selectEnglishColumns();
 		return list;
 	}
 	
 	@Override
-	public List<XPWColumn> getChildColumnsById(long id) {
-		XPWColumnExample example = new XPWColumnExample();
-		example.createCriteria().andParentColumnIdEqualTo(id);
-		List<XPWColumn> list = null;
-//		if (getLanguage() == 1) {
-//			list = xpwColumnEnglishMapper.selectAllEnglishColumnsByParentColumnId(id);
-//		} else {
-			list = xpwColumnMapper.selectByExample(example);
-//		}
+	public List<XPWColumnEnglish> getChildColumnsById(long id) {
+//		XPWColumnExample example = new XPWColumnExample();
+//		example.createCriteria().andParentColumnIdEqualTo(id);
+		List<XPWColumnEnglish> list = null;
+		list = xpwColumnEnglishMapper.selectAllEnglishColumnsByParentColumnId(id);
 		return list;
 	}
 
 	@Override
 	public List<XPWNav> getNavsByColumnId(long id) {
-		XPWNavExample example = new XPWNavExample();
-		example.createCriteria().andColumnIdEqualTo(id);
+//		XPWNavExample example = new XPWNavExample();
+//		example.createCriteria().andColumnIdEqualTo(id);
 		List<XPWNav> list = null;
-//		if (getLanguage() == 1) {
-//			list = xpwNavMapper.selectEnglishByColumnId(id);
-//		} else {
-			list = xpwNavMapper.selectByExample(example);
-//		}
+		list = xpwNavMapper.selectEnglishByColumnId(id);
 		return list;
 	}
 	
@@ -144,16 +124,16 @@ public class ColumnServiceImpl implements ColumnService {
     }
 	
     @Override
-    public List<XPWColumn> getColumns() {
-        List<XPWColumn> list = xpwColumnMapper.selectByExample(null);
+    public List<XPWColumnEnglish> getColumns() {
+        List<XPWColumnEnglish> list = xpwColumnEnglishMapper.selectByExample(null);
         return list;
     }
 
     @Override
-    public List<XPWColumn> getColumnsByParentId(Long parentColumnId) {
-        List<XPWColumn> list = new ArrayList<>();
+    public List<XPWColumnEnglish> getColumnsByParentId(Long parentColumnId) {
+        List<XPWColumnEnglish> list = new ArrayList<>();
 //        if (getLanguage() == 1) {
-//            List<XPWColumnEnglish> l = xpwColumnEnglishMapper.selectEnglishByParentId(parentColumnId);
+        list = xpwColumnEnglishMapper.selectEnglishByParentId(parentColumnId);
 //            XPWColumn column = null;
 //            for (XPWColumnEnglish c : l) {
 //                column = new XPWColumn();
@@ -161,42 +141,36 @@ public class ColumnServiceImpl implements ColumnService {
 //                list.add(column);
 //            }
 //        } else {
-            XPWColumnExample example = new XPWColumnExample();
-            example.createCriteria().andParentColumnIdEqualTo(parentColumnId);
-            list = xpwColumnMapper.selectByExample(example);
+//            XPWColumnExample example = new XPWColumnExample();
+//            example.createCriteria().andParentColumnIdEqualTo(parentColumnId);
+//            list = xpwColumnMapper.selectByExample(example);
 //        }
         
         return list;
     }
 
     @Override
-    public XPWColumn getColumnById(Long id) {
-    		XPWColumn column = null;
-//    		if (getLanguage() == 1) {
-//    		    XPWColumnEnglish temp = xpwColumnEnglishMapper.selectEnglishByPrimaryKey(id);
-//    			column = clone(temp);
-//    		} else {
-    			column = xpwColumnMapper.selectByPrimaryKey(id);
-//    		}
+    public XPWColumnEnglish getColumnById(Long id) {
+        XPWColumnEnglish column = xpwColumnEnglishMapper.selectEnglishByPrimaryKey(id);
         return column;
     }
 
     @Override
-    public int updateColumn(XPWColumn column) {
-        int ret = xpwColumnMapper.updateByPrimaryKeySelective(column);
+    public int updateColumnEnglish(XPWColumnEnglish column) {
+        int ret = xpwColumnEnglishMapper.updateByPrimaryKeySelective(column);
         return ret;
     }
 
     @Override
-    public XPWColumn getParentColumnById(long id) {
-        long parentId = xpwColumnMapper.selectByPrimaryKey(id).getParentColumnId();
-        XPWColumn column = null;
+    public XPWColumnEnglish getParentColumnById(long id) {
+        long parentId = xpwColumnEnglishMapper.selectByPrimaryKey(id).getParentColumnId();
+        XPWColumnEnglish column = null;
         
 //        if (getLanguage() == 1) {
-//            XPWColumnEnglish temp = xpwColumnEnglishMapper.selectEnglishByPrimaryKey(parentId);
+            column = xpwColumnEnglishMapper.selectEnglishByPrimaryKey(parentId);
 //            column = clone(temp);
 //		} else {
-			column = xpwColumnMapper.selectByPrimaryKey(parentId);
+//			column = xpwColumnMapper.selectByPrimaryKey(parentId);
 //		}
         return column;
     }
@@ -217,10 +191,10 @@ public class ColumnServiceImpl implements ColumnService {
     }
     
     @Override
-    public List<XPWColumn> readSubColumn(Long id) {
-        XPWColumnExample example = new XPWColumnExample();
+    public List<XPWColumnEnglish> readSubColumn(Long id) {
+        XPWColumnEnglishExample example = new XPWColumnEnglishExample();
         example.createCriteria().andParentColumnIdEqualTo(id);
-        List<XPWColumn> list = xpwColumnMapper.selectByExample(example);
+        List<XPWColumnEnglish> list = xpwColumnEnglishMapper.selectByExample(example);
         return list;
     }
     
@@ -238,9 +212,9 @@ public class ColumnServiceImpl implements ColumnService {
 		example.createCriteria().andChildColumnIdEqualTo(id);
 		List<XPWNav> list = null;
 //		if (getLanguage() == 1) {
-//			list = xpwNavMapper.selectEnglishByChildColumnId(id);
+			list = xpwNavMapper.selectEnglishByChildColumnId(id);
 //		} else {
-			list = xpwNavMapper.selectByExample(example);
+//			list = xpwNavMapper.selectByExample(example);
 //		}
 		
 		return list;

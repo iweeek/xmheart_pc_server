@@ -42,10 +42,14 @@
                             <img src="/img/layout/webo_code.jpg" class="webo-code">
                     </div>
                 </div>
-                  <#if language == 0>
-                    <a class="header-icon-lang" id="switchChinese" href="/language?id=1">English</a>
-                    <#else> 
-                    <a class="header-icon-lang" id="switchChinese" href="/language?id=0">中文</a>
+                    <#if language??>
+                        <#if language == 0>
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=1">English</a>
+                        <#else> 
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=0">中文</a>
+                        </#if>
+                    <#else>
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=1">English</a>
                     </#if>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
                 <!-- <button id="switchLanguage">切换语言</button> -->
