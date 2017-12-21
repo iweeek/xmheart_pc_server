@@ -45,7 +45,7 @@ public class UpdateTask {
 //    public ResponseEntity<?> job()   {  
     @Scheduled(cron = "0 */5 * * * *")
     public void job()   {  
-        System.out.println("开始执行定时任务......");
+        System.out.println("前台开始执行定时任务......");
         
         // 电子院报
         List<XPWElecNewspaper> lastestNewspaper = newspaperService.indexLastest();
@@ -305,7 +305,7 @@ public class UpdateTask {
             columnService.updateNav(xpwNav);
         }
 //        return ResponseEntity.ok(videoNavs);
-        System.out.println(">>>>结束执行定时任务......");
+        System.out.println(">>>>server前台 结束执行定时任务......");
     }
     
     @RequestMapping(value = { "/updateTasks" }, method = RequestMethod.POST)

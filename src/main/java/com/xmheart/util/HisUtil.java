@@ -14,8 +14,8 @@ import com.xmheart.his.Response.*;
 public class HisUtil {
 
     private static final Log log = LogFactory.getLog(HisUtil.class);
-    private static final String AUTHCODE = "cs20171011";
-//    private static final String AUTHCODE = "zs20171211";
+//    private static final String AUTHCODE = "cs20171011";
+    private static final String AUTHCODE = "ZS20171211";
     
     public static String handleResp(String resp){
         return "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" + resp;
