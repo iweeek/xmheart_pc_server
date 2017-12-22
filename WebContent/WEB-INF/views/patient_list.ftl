@@ -15,7 +15,7 @@
                 </ul>
             </div>
             <div class="baseRight list-media">
-                <div class="title01">影像厦心</div>
+                <div class="title01">患者表扬</div>
                 <div class="clear"></div>
                 <div class="media-wrapper video-wrapper">
                     <#list articleList as v>

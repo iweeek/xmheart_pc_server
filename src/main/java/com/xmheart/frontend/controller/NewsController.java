@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.xmheart.util.HisDoctorComparator;
 import com.xmheart.util.HisUtil;
 import com.xmheart.util.XmlUtil;
 import com.xmheart.util.soap.Service1;
@@ -58,7 +59,6 @@ import com.xmheart.his.Response.Doctors;
 import com.xmheart.his.Response.RegisteredSource;
 import com.xmheart.his.Response.RegisteredSourcePreInfo;
 import com.xmheart.model.HisDoctor;
-import com.xmheart.model.HisDoctorComparator;
 import com.xmheart.model.XPWArticle;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;

@@ -1,7 +1,9 @@
-package com.xmheart.model;
+package com.xmheart.util;
 
 import java.text.Collator;
 import java.util.Comparator;
+
+import com.xmheart.model.HisDoctor;
 
 public class HisDoctorComparator implements Comparator<HisDoctor> {
 
@@ -9,7 +11,11 @@ public class HisDoctorComparator implements Comparator<HisDoctor> {
     
     @Override
     public int compare(HisDoctor o1, HisDoctor o2) {
-        return cmp.compare(o1.getName(), o2.getName());  
+        int num = cmp.compare(o1.getName(), o2.getName());
+        if (num == 0) {
+            num = new Integer(o1.getWorkType()).compareTo(new Integer(o2.getWorkType()));
+        }
+        return num;
     }
 
 }
