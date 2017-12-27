@@ -47,6 +47,7 @@
             </div>
 		</#if>
 		
+		<!-- 搜索页 -->
 		<#if isSearch?? && isSearch>
 		    <div class="list-pagination">
                 <ul class="paginations">

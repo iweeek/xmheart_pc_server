@@ -776,17 +776,17 @@ a.blue{ background:#0F76C3;}
 .chestCenterBg{width:1220px; height:450px; background: url(../img/layout/chestCenterBg.jpg) 0 0 no-repeat; background-size:100% 100%; display:block; margin:10px auto;}
 .chestContainer,.newsCenter ul{width:1220px; margin: 0 auto;}
 .chestCenter3Col{width:92%; height:150px; margin:-60px 4%; background:#1b5e90;}
-.chestCenter3Col.english{width:92%; height:150px; margin:-60px 4%; background:#c54d4d;}
-.chestCenter3Col li{width:33.33%; display:inline-block; height:150px; padding:5px 0 0; float:left; text-align:center; color:#fff;}
+.chestCenter3Col.english{width:92%; height:150px; margin:-60px 4%; background:#636363;}
+.chestCenter3Col li{width:33.33%; display:inline-block; height:150px; padding:25px 2% 0; float:left; text-align:center; color:#fff;}
 .chestCenter3Col li:hover{background:#145687;}
-.chestCenter3Col li.english:hover{background:#ac3636;}
+.chestCenter3Col li.english:hover{background:#E77841;}
 .chestCenter3Col_li2{background:#246a9e;}
-.chestCenter3Col_li2.english{background:#bc4040;}
+.chestCenter3Col_li2.english{background:#E9AC69;}
 .chestCenter3Col li .chestListTitle{display: block; height: 48px; line-height: 48px; white-space: nowrap; font-size:18px; font-weight:bold; margin-bottom:10px;}
 .chestCenter3Col li .chestListTitle.english{display: block; height: 48px; line-height: 48px; white-space: nowrap; font-size:20px; font-weight:bold; margin-top:20px;}
-.chestCenter3Col li .chestListTitle .chestIcon1,.chestCenter3Col li .chestListTitle .chestIcon2,.chestCenter3Col li .chestListTitle .chestIcon3{/*width:55px;*/ height:48px; display:block; vertical-align: top; background: url(../img/layout/chestIcon.png) center 0 no-repeat;}
-.chestCenter3Col li .chestListTitle .chestIcon2{background-position:center -100px;}
-.chestCenter3Col li .chestListTitle .chestIcon3{background-position:center -200px;}
+.chestCenter3Col li .chestListTitle .chestIcon1,.chestCenter3Col li .chestListTitle .chestIcon2,.chestCenter3Col li .chestListTitle .chestIcon3{width:55px; height:48px; display:inline-block; vertical-align: top; background: url(../img/layout/chestIcon.png) 0 0 no-repeat;}
+.chestCenter3Col li .chestListTitle .chestIcon2{background-position:0 -100px;}
+.chestCenter3Col li .chestListTitle .chestIcon3{background-position:0 -200px;}
 .chestCenter3Col li .chestListTitle em{display:inline-block;}
 .chestCenter3Col li .chestListTitle a{color:#fff;}
 .chestCenter3Col li .chestListLink a{margin:0 6px; font-size:14px; line-height:24px; color:#fff; white-space:nowrap;}
