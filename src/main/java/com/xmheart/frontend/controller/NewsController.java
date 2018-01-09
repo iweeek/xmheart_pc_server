@@ -142,7 +142,6 @@ public class NewsController {
 		Map<String, List<XPWNav>> secondColNavMap = new LinkedHashMap<String, List<XPWNav>>();
 		Map<String, List<XPWNav>> columnNavMap = new LinkedHashMap<String, List<XPWNav>>();
 		
-		
 		for (XPWColumn column : columnList) {
 			firstColumns.put(column.getColumnName(), column.getUrl());
 			List<XPWColumn> secColList = columnService.getChildColumnsById(column.getId());
@@ -849,6 +848,14 @@ public class NewsController {
     public void patientInfo(Model model, @RequestParam String IDCardNo, @RequestParam String mobile,
             @RequestParam String name, @RequestParam String cardNo,@RequestParam String mcardNo,
             @RequestParam String sickId) {
+        
+        System.out.println("request string: " + "\n" +
+                "IDCardNo: " + IDCardNo + "\n" + 
+                "mobile: " + mobile + "\n" + 
+                "name: " + name + "\n" + 
+                "cardNo: " + cardNo + "\n" + 
+                "mcardNo: " + mcardNo + "\n" +
+                "sickId: " + sickId + "\n" );
         HisUtil.patientInfo(IDCardNo, mobile, name, cardNo, mcardNo, sickId);
     }
     

@@ -10,7 +10,7 @@
 			        <a href="${xtvalue}" >
                     <span class="chestIcon1"></span>
                     </a>
-                        <em><a href="${xtvalue}" >${xtkey}</a></em>
+                        <a href="${xtvalue}" ><em>${xtkey}</em></a>
                 </div>
                 </#if>
             </#list>
@@ -22,7 +22,7 @@
                 <a href="${xtvalue}">
 			    <div class="chestListTitle english">
                     <span class="chestIcon2"></span>
-                        <em><a href="${xtvalue}" >${xtkey}</a></em>
+                        <a href="${xtvalue}" ><em>${xtkey}</em></a>
                 </div>
                 </a>
                 </#if>
