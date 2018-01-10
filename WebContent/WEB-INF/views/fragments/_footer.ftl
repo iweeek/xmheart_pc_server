@@ -138,6 +138,8 @@
     		<script type="text/javascript" src="./js/third_party/jplayer.playlist.min.js"></script>
 		<script src="/js/common.js"></script>
 		
+		<!-- <a href="http://webscan.360.cn/index/checkwebsite/url/www.xmheart.com"><img border="0" src="http://webscan.360.cn/status/pai/hash/04f8d3c042385e0cb52637df4f3d939c"/></a> -->
+		
 		<#--<#if firstColumnName != "首页">
         <div class="xm-float-right">
             <a>
