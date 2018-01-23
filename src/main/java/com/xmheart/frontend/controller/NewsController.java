@@ -746,40 +746,40 @@ public class NewsController {
                 "userID: " + userID + "\n" 
                 );
     }
-    @RequestMapping(value = { "/404" }, method = RequestMethod.POST)
-    public String notFound(Model model, @RequestParam String doctorCode,
+    @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
+    public String notFound(Model model/*, @RequestParam String doctorCode,
             @RequestParam String deptCode, @RequestParam String deptName, @RequestParam String doctorName
-            , @RequestParam String workDateStart, @RequestParam String workDateEnd) {
+            , @RequestParam String workDateStart, @RequestParam String workDateEnd*/) {
         model = addTopNav(1, model);
- 
-        String workTime = "0";
-        
-        String type = "0";
-        String DeptName = "";
-        String status = "2";
-        String workDate = "2017-12-01";// 排班时间 Date
-        String workType = "1";// 排班类别(1上午;2下午)
-        String docCode = "1";//
-        
-        String orderId = "1"; // 订单号
-        String idCardNo = "1"; //身份证
-        String cardNo = "1"; //就诊卡号
-        String mobile = "15167727527"; 
-        String name = "倪军"; 
-        String workdate = "20171201"; 
-        String stime = "08:00:00"; 
-        String userid = ""; //微信号
-        String customTime = "20171201"; //第三方系统时间
-        String sickId = "1"; //病人唯一号
-        
-        String seqNumber = ""; // HIS序号
-        String reason = ""; // 取消原因
-        String IDCardNo = "1"; 
-        String mcardNo = ""; // 医疗保险号
-        String address = ""; // 医疗保险号
-        String birthDay = ""; // 医疗保险号
-        String sex = ""; // 医疗保险号
-        String userID = ""; // 医疗保险号
+// 
+//        String workTime = "0";
+//        
+//        String type = "0";
+//        String DeptName = "";
+//        String status = "2";
+//        String workDate = "2017-12-01";// 排班时间 Date
+//        String workType = "1";// 排班类别(1上午;2下午)
+//        String docCode = "1";//
+//        
+//        String orderId = "1"; // 订单号
+//        String idCardNo = "1"; //身份证
+//        String cardNo = "1"; //就诊卡号
+//        String mobile = "15167727527"; 
+//        String name = "倪军"; 
+//        String workdate = "20171201"; 
+//        String stime = "08:00:00"; 
+//        String userid = ""; //微信号
+//        String customTime = "20171201"; //第三方系统时间
+//        String sickId = "1"; //病人唯一号
+//        
+//        String seqNumber = ""; // HIS序号
+//        String reason = ""; // 取消原因
+//        String IDCardNo = "1"; 
+//        String mcardNo = ""; // 医疗保险号
+//        String address = ""; // 医疗保险号
+//        String birthDay = ""; // 医疗保险号
+//        String sex = ""; // 医疗保险号
+//        String userID = ""; // 医疗保险号
         
 
 //		TestDb his = HisUtil.testDb();

@@ -1,4 +1,4 @@
-${his}
+
  <#include "./fragments/_header.ftl">
 <link href="/css/404.css" rel="stylesheet" type="text/css"  media="all" /> 
 <div class="content">
