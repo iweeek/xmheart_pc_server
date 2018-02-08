@@ -93,8 +93,8 @@ public interface XPWColumnEnglishMapper {
             "publish_time = #{publishTime,jdbcType=TIMESTAMP}", "where id = #{id,jdbcType=BIGINT}" })
     int updateByPrimaryKey(XPWColumnEnglish record);
 
-    @Select({ "select", "c.id, l.column_name_en as column_name, c.url, c.parent_column_id, c.position, c.publish_time",
-        "FROM xpw_column_english AS c LEFT JOIN xpw_column_language AS l", "ON c.id = l.column_id",
+    @Select({ "select", "c.id, l.column_name, c.url, c.parent_column_id, c.position, c.publish_time",
+        "FROM xpw_column_english AS c JOIN xpw_column_language AS l", "ON c.id = l.column_id",
         "where c.id = #{id,jdbcType=BIGINT}" })
     @ResultMap("com.xmheart.mapper.XPWColumnEnglishMapper.BaseResultMap")
     XPWColumnEnglish selectEnglishByPrimaryKey(Long id);

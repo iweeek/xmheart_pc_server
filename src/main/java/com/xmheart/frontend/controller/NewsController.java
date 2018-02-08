@@ -238,10 +238,12 @@ public class NewsController {
         List<XPWColumnEnglish> list = new ArrayList<XPWColumnEnglish>();
         // 有父栏目，父栏目是一级栏目
         if (parentColumn != null) {
+            System.out.println("递归循环了");
             iterGetParentColumn(parentColumn, list);
             model.addAttribute("parentColList", list);
             model.addAttribute("firstColumnName", list.get(0).getColumnName());
         } else {
+            System.out.println("else递归循环了");
             XPWColumnEnglish column = columnEnglishService.getColumnById(columnId);
             model.addAttribute("firstColumnName", column.getColumnName());
         }
@@ -630,6 +632,8 @@ public class NewsController {
 		XPWArticle articleNext = newsService.getColNextNewsById(cateId, id);
 		model.addAttribute("articleNext", articleNext);
 		
+		System.out.println("article.getColumnId():" + article.getColumnId());
+		System.out.println("isEnglish:" + isEnglish);
 		if (isEnglish) {
 		    model = addEnglishTopNav(article.getColumnId(), model);
 		} else {
@@ -886,7 +890,7 @@ public class NewsController {
         }
     }
     
-    @RequestMapping(value = { "/404" }, method = RequestMethod.POST)
+    @RequestMapping(value = { "/404" }, method = RequestMethod.GET)
     public String notFound(Model model/*, @RequestParam String doctorCode,
             @RequestParam String deptCode, @RequestParam String deptName, @RequestParam String doctorName
             , @RequestParam String workDateStart, @RequestParam String workDateEnd*/) {
