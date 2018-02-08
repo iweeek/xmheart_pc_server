@@ -43,7 +43,7 @@
                     
                 </div>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
-                <!--
+                <
                 <div class="header-search">
                 		<div class="search-type-wrapper">
                 			<div class="search-type" id="searchType">文章查找</div>
@@ -60,7 +60,7 @@
                     		<input type="submit" class="header-search-button">
                     </form>
                 </div>
-                -->
+                
             </div>
         </div>
         
