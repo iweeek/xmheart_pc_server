@@ -9,6 +9,8 @@
         .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+    <script src="./js/third_party/pdfobject.js"></script>
+    <script>PDFObject.embed("./attached/a.pdf", "#example1");</script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">  
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="renderer" content="webkit">
@@ -31,19 +33,28 @@
         <div class="xm-header">
             <div class="xm-header-container">
                 <div class="header-icon">
-                    <!-- <a class="header-icon-lang" id="switchLanguage" href="">切换语言</a> -->
                     <div class="header-icon-wechat-wrapper" id="wechatCode">
-                            <a href="#" class="header-icon-wechat"></a>
-                            <img src="/img/layout/wechat_code.jpg" class="wechat-code">
+                        <a href="#" class="header-icon-wechat"></a>
+                        <img src="/img/layout/wechat_code.jpg" class="wechat-code">
                     </div>
                     <div class="header-icon-wechat-wrapper" id="weboCode">
                             <a href="#" class="header-icon-weibo"></a>
                             <img src="/img/layout/webo_code.jpg" class="webo-code">
                     </div>
-                    
                 </div>
+                    <#if language??>
+                        <#if language == 0>
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=1">English</a>
+                        <#else> 
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=0">中文</a>
+                        </#if>
+                    <#else>
+                        <a class="header-icon-lang" id="switchChinese" href="/language?isEnglish=1">English</a>
+                    </#if>
                 <a href="#" class="header-logo"><img src="/img/layout/logo.png" alt=""></a>
-                <
+                
+                <!-- <button id="switchLanguage">切换语言</button> -->
+                <!--
                 <div class="header-search">
                 		<div class="search-type-wrapper">
                 			<div class="search-type" id="searchType">文章查找</div>
@@ -60,7 +71,7 @@
                     		<input type="submit" class="header-search-button">
                     </form>
                 </div>
-                
+                -->
             </div>
         </div>
         
@@ -77,7 +88,15 @@
                             <#if key == "首页">
                                 <a class="xm-navbar-item-info no-bg" href="${value}"><span>${key}</span><i></i></a>
                             <#else>
-                                <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+                                <#if language??>
+                                    <#if language == 0>
+                                    <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+                                    <#else> 
+                                    <a class="xm-navbar-item-info english" href="${value}"><span>${key}</span><i></i></a>
+                                    </#if>
+                                <#else> 
+                                    <a class="xm-navbar-item-info" href="${value}"><span>${key}</span><i></i></a>
+                                </#if>
                                     <#list columnMap as kc, vc>
                                     <#if kc == key && !(<!--key?index == 6 || -->key?index == 8) >
                                          <div class="navboxBase">
@@ -185,6 +204,7 @@
                                                         </#list>
                                                         </dl>
                                                         </#if>
+
                                             
                                                         <#if skey == vc[3].columnName>
                                                         <div class="BottomHidden"></div>
@@ -220,7 +240,15 @@
         <div class="breadcrumb">
             <div class="xm-container">
                 <span class="icon"></span>
-                您当前所在位置<a href="/index"> 首页 </a>
+                <#if language??>
+                    <#if language == 0>您当前所在位置<#else>Your current location</#if>
+                <#else>您当前所在位置</#if> 
+                
+                <a href="/index"> 
+                <#if language??>
+                    <#if language == 0>首页<#else>Home</#if>
+                <#else>首页</#if> 
+                </a>
                 <#list parentColList as column>
                     &gt <a href="${column.url}" title="${column.columnName}">${column.columnName}</a>
                     <#if column.columnName == "科研教学"> 
@@ -236,7 +264,21 @@
         <div class="breadcrumb">
             <div class="xm-container">
                 <span class="icon"></span>
-                您当前所在位置<a href="/index"> 首页 </a> 
+                <#if language??>
+                    <#if language == 0>您当前所在位置<#else>Your current location</#if>
+                <#else>您当前所在位置</#if> 
+                <a href="/index"> 
+                <#if language??>
+                    <#if language == 0>
+                       首页
+                    <#else> 
+                    <!-- 英文 -->
+                        Home
+                    </#if>
+                <#else> 
+                    首页
+                </#if>
+                </a> 
                 &gt <a href="${value}" title="${parentColumnName}">${parentColumnName}</a> 
             </div>
         </div>

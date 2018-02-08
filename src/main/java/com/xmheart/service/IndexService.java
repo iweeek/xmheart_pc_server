@@ -20,4 +20,8 @@ public interface IndexService {
 
     XPWXTIndex getXTIndex();
 
+    XPWIndex updateLanguage();
+
+    XPWIndex updateLanguage(int i);
+
 }

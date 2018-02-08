@@ -30,8 +30,7 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public int update(XPWUser user) {
-        return userMapper.updateByPrimaryKey(user);
-       
+    		return userMapper.updateByPrimaryKey(user);
     }
 
     @Override

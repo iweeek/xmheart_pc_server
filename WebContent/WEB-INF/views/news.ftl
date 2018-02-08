@@ -36,6 +36,7 @@
 			</#list>
 			</ul>
 		</div>
+		
 		<div class="baseRight list-media">
 			<div class="title01">${columnName}</div>
 			<div class="media-wrapper">

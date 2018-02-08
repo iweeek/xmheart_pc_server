@@ -3,22 +3,23 @@ package com.xmheart.service;
 import java.util.List;
 
 import com.xmheart.model.XPWColumn;
+import com.xmheart.model.XPWColumnEnglish;
 import com.xmheart.model.XPWNav;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Interface ColumnService.
  */
-public interface ColumnService {
+public interface ColumnEnglishService {
 
-	XPWColumn getParentColumnById(long id);
+    XPWColumnEnglish getParentColumnById(long id);
 
     /**
 	 * Gets the first columns.
 	 *
 	 * @return the first columns
 	 */
-	List<XPWColumn> getTopFirstColumns();
+	List<XPWColumnEnglish> getTopFirstColumns();
 
 	/**
 	 * Gets the child columns by id.
@@ -26,7 +27,7 @@ public interface ColumnService {
 	 * @param id the id
 	 * @return the child columns by id
 	 */
-	List<XPWColumn> getChildColumnsById(long id);
+	List<XPWColumnEnglish> getChildColumnsById(long id);
 
 	/**
 	 * Gets the navs by column id.
@@ -65,7 +66,7 @@ public interface ColumnService {
      *
      * @return the columns
      */
-    List<XPWColumn> getColumns();
+    List<XPWColumnEnglish> getColumns();
 
     /**
      * Gets the columns by parent id.
@@ -73,7 +74,7 @@ public interface ColumnService {
      * @param parentColumnId the parent column id
      * @return the columns by parent id
      */
-    List<XPWColumn> getColumnsByParentId(Long parentColumnId);
+    List<XPWColumnEnglish> getColumnsByParentId(Long parentColumnId);
 
     /**
      * Gets the column by id.
@@ -81,11 +82,9 @@ public interface ColumnService {
      * @param columnId the column id
      * @return the column by id
      */
-    XPWColumn getColumnById(Long columnId);
+    XPWColumnEnglish getColumnById(Long columnId);
 
-    int updateColumn(XPWColumn column);
-
-    List<XPWColumn> readSubColumn(Long id);
+    List<XPWColumnEnglish> readSubColumn(Long id);
     
 	List<XPWNav> getNavsByChildColumnName(String childColumnName);
 	
@@ -98,5 +97,7 @@ public interface ColumnService {
     List<XPWNav> getNavsByChildColumnIdOrderByPublishTime(long id);
 
     int updateNavByExample(XPWNav nav);
+
+    int updateColumnEnglish(XPWColumnEnglish column);
 
 }

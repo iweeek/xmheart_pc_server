@@ -302,7 +302,7 @@ $(function(){
       $('#ddlTimes2').html(html);
     })
   }
-//  前台视频播放
+  //  前台视频播放
   var videoUrl = $('#H2Title').data('src');
   var imgUrl = $('#H2Title').data('img');
   if (videoUrl) {
@@ -333,5 +333,52 @@ $(function(){
 		});
   }
   
+
   PDFObject.embed("./attached/a.pdf", "#example1");
+  
+  //切换成英文
+//  $("#switchEnglish").click(function(){
+//        $.ajax({
+//            url: '/language_to_chinese',
+//            type: 'GET',
+//            success: function(result) {
+////                location.reload();
+//                window.location.reload()
+////                location.href = "/xtIndex";
+//            }
+//        });
+//    });
+  
+  //切换成语言
+//  $("#switchChinese").click(function(){
+//      window.location.href=location.href + "/language_to_chinese";
+//        $.ajax({
+//            url: '/language_to_chinese',
+//            type: 'GET',
+//            async: false,
+//            success: function(result) {
+////                location.reload();
+//                window.location.reload()
+////                location.href = "/xtIndex";
+//            }
+//        });
+//    });
+  // 英文处理
+  console.log($("#switchChinese").text());
+  if ($("#switchChinese").text() == "中文") {
+      $("#_ideConac").css({
+          position: "absolute",
+          left: "250px",
+          bottom: "0px",
+          top: "-10px"
+      });
+      $(".list-pagination").css({
+          width: "100%",
+          height: "0px",
+          top: "0px"
+      });
+  }
 })
+
+
+
