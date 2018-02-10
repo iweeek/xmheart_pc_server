@@ -17,8 +17,8 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8001/SQWebServer.asmx?wsdl")
-//@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8002/SQWebServer.asmx?wsdl")
+//@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8001/SQWebServer.asmx?wsdl")
+@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8002/SQWebServer.asmx?wsdl")
 public class Service1
     extends Service
 {
@@ -31,8 +31,8 @@ public class Service1
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://192.168.102.170:8001/SQWebServer.asmx?wsdl");
-//            url = new URL("http://192.168.102.170:8002/SQWebServer.asmx?wsdl");
+//            url = new URL("http://192.168.102.170:8001/SQWebServer.asmx?wsdl");
+            url = new URL("http://192.168.102.170:8002/SQWebServer.asmx?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
