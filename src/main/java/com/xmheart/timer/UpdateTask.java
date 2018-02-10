@@ -88,7 +88,7 @@ public class UpdateTask {
             lastestMedias = lastestMedias.subList(0, mediaNavs.size());
         }
         
-        for (int i = 1; i < lastestMedias.size(); i++) {
+        for (int i = 0; i < lastestMedias.size() - 1; i++) {
             XPWNav xpwNav = mediaNavs.get(i);
             xpwNav.setArticleTitle(lastestMedias.get(i).getTitle());
             xpwNav.setUrl(lastestMedias.get(i).getUrl());
@@ -120,7 +120,7 @@ public class UpdateTask {
             lastestScienceGeneral = lastestScienceGeneral.subList(0, scienceGeneralNavs.size());
         }        
         
-        for (int i = 1; i < lastestScienceGeneral.size(); i++) {
+        for (int i = 0; i < lastestScienceGeneral.size() - 1; i++) {
             XPWNav xpwNav = scienceGeneralNavs.get(i);
             xpwNav.setArticleTitle(lastestScienceGeneral.get(i).getTitle());
             xpwNav.setUrl(lastestScienceGeneral.get(i).getUrl());
@@ -248,7 +248,7 @@ public class UpdateTask {
             lastestCare = lastestCare.subList(0, careNavs.size());
         }
         
-        for (int i = 1; i < lastestCare.size(); i++) {
+        for (int i = 0; i < lastestCare.size() - 1; i++) {
             XPWNav xpwNav = careNavs.get(i);
             xpwNav.setArticleTitle(lastestCare.get(i).getTitle());
             xpwNav.setUrl(lastestCare.get(i).getUrl());

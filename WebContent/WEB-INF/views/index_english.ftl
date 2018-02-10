@@ -1,6 +1,6 @@
 <#include "./fragments/_header.ftl"> 
 	<!-- list container -->
-	<div class="chestCenterBg"></div>
+	<div class="chestCenterBgEn"></div>
 	<div class="chestContainer">
 		<ul class="chestCenter3Col clearfix_n english">
 			<li class="english">

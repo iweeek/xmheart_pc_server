@@ -774,6 +774,8 @@ a.blue{ background:#0F76C3;}
 
 /* 胸痛中心 - 1104 */
 .chestCenterBg{width:1220px; height:450px; background: url(../img/layout/chestCenterBg.jpg) 0 0 no-repeat; background-size:100% 100%; display:block; margin:10px auto;}
+/* 英文 */
+.chestCenterBgEn{width:1220px; height:450px; background: url(../img/layout/chestCenterBgEn.jpg) 0 0 no-repeat; background-size:100% 100%; display:block; margin:10px auto;}
 .chestContainer,.newsCenter ul{width:1220px; margin: 0 auto;}
 .chestCenter3Col{width:92%; height:150px; margin:-60px 4%; background:#1b5e90;}
 .chestCenter3Col.english{width:92%; height:150px; margin:-60px 4%; background:#c54d4d;}
@@ -826,6 +828,8 @@ a.blue{ background:#0F76C3;}
 
 @media all and (min-width:1441px) and (max-width:1920px){
 	.chestCenterBg{width:1500px; height:553px;}
+	/* 英文 */
+	.chestCenterBgEn{width:1500px; height:553px;}
 	.chestContainer,.newsCenter ul{width:1500px;}
 	.chestCenterInfo_l{margin:0 60px 0 140px;}
 	.chestCenterInfo_r{width:640px; height:320px;}

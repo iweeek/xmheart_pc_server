@@ -9,8 +9,8 @@
 	<div class="list-container">
 		<div class="list-main">
 			<div class="list-main-nav">
-			<div id="example1"></div>
-			
+			<!-- <div id="example1"></div> -->
+			<!-- <a href="/pdf?id" -->
 			<h4 class="list-nav-title">新闻中心</h4>
 			<ul class="list-nav-list">
 			<#list leftNav as k>
