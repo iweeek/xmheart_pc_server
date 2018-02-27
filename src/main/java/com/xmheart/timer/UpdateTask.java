@@ -89,7 +89,7 @@ public class UpdateTask {
         }
         
         for (int i = 0; i < lastestMedias.size() - 1; i++) {
-            XPWNav xpwNav = mediaNavs.get(i);
+            XPWNav xpwNav = mediaNavs.get(i + 1);
             xpwNav.setArticleTitle(lastestMedias.get(i).getTitle());
             xpwNav.setUrl(lastestMedias.get(i).getUrl());
             xpwNav.setImgUrl(lastestMedias.get(i).getImgUrl());
@@ -121,7 +121,7 @@ public class UpdateTask {
         }        
         
         for (int i = 0; i < lastestScienceGeneral.size() - 1; i++) {
-            XPWNav xpwNav = scienceGeneralNavs.get(i);
+            XPWNav xpwNav = scienceGeneralNavs.get(i + 1);
             xpwNav.setArticleTitle(lastestScienceGeneral.get(i).getTitle());
             xpwNav.setUrl(lastestScienceGeneral.get(i).getUrl());
             xpwNav.setImgUrl(lastestScienceGeneral.get(i).getImgUrl());
@@ -249,7 +249,7 @@ public class UpdateTask {
         }
         
         for (int i = 0; i < lastestCare.size() - 1; i++) {
-            XPWNav xpwNav = careNavs.get(i);
+            XPWNav xpwNav = careNavs.get(i + 1);
             xpwNav.setArticleTitle(lastestCare.get(i).getTitle());
             xpwNav.setUrl(lastestCare.get(i).getUrl());
             xpwNav.setImgUrl(lastestCare.get(i).getImgUrl());
