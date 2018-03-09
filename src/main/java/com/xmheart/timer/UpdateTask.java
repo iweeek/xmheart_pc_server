@@ -90,10 +90,10 @@ public class UpdateTask {
         
         for (int i = 0; i < lastestMedias.size() - 1; i++) {
             XPWNav xpwNav = mediaNavs.get(i + 1);
-            xpwNav.setArticleTitle(lastestMedias.get(i).getTitle());
-            xpwNav.setUrl(lastestMedias.get(i).getUrl());
-            xpwNav.setImgUrl(lastestMedias.get(i).getImgUrl());
-            xpwNav.setPublishTime(lastestMedias.get(i).getPublishTime());
+            xpwNav.setArticleTitle(lastestMedias.get(i + 1).getTitle());
+            xpwNav.setUrl(lastestMedias.get(i + 1).getUrl());
+            xpwNav.setImgUrl(lastestMedias.get(i + 1).getImgUrl());
+            xpwNav.setPublishTime(lastestMedias.get(i + 1).getPublishTime());
             columnService.updateNav(xpwNav);
         }
         
@@ -122,10 +122,10 @@ public class UpdateTask {
         
         for (int i = 0; i < lastestScienceGeneral.size() - 1; i++) {
             XPWNav xpwNav = scienceGeneralNavs.get(i + 1);
-            xpwNav.setArticleTitle(lastestScienceGeneral.get(i).getTitle());
-            xpwNav.setUrl(lastestScienceGeneral.get(i).getUrl());
-            xpwNav.setImgUrl(lastestScienceGeneral.get(i).getImgUrl());
-            xpwNav.setPublishTime(lastestScienceGeneral.get(i).getPublishTime());
+            xpwNav.setArticleTitle(lastestScienceGeneral.get(i + 1).getTitle());
+            xpwNav.setUrl(lastestScienceGeneral.get(i + 1).getUrl());
+            xpwNav.setImgUrl(lastestScienceGeneral.get(i + 1).getImgUrl());
+            xpwNav.setPublishTime(lastestScienceGeneral.get(i + 1).getPublishTime());
             columnService.updateNav(xpwNav);
         }
         
@@ -250,10 +250,10 @@ public class UpdateTask {
         
         for (int i = 0; i < lastestCare.size() - 1; i++) {
             XPWNav xpwNav = careNavs.get(i + 1);
-            xpwNav.setArticleTitle(lastestCare.get(i).getTitle());
-            xpwNav.setUrl(lastestCare.get(i).getUrl());
-            xpwNav.setImgUrl(lastestCare.get(i).getImgUrl());
-            xpwNav.setPublishTime(lastestCare.get(i).getPublishTime());
+            xpwNav.setArticleTitle(lastestCare.get(i + 1).getTitle());
+            xpwNav.setUrl(lastestCare.get(i + 1).getUrl());
+            xpwNav.setImgUrl(lastestCare.get(i + 1).getImgUrl());
+            xpwNav.setPublishTime(lastestCare.get(i + 1).getPublishTime());
             columnService.updateNav(xpwNav);
         }
         

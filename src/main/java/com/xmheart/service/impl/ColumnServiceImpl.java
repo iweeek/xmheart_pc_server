@@ -85,6 +85,7 @@ public class ColumnServiceImpl implements ColumnService {
     public List<XPWNav> getNavsByChildColumnIdOrderByPublishTime(long id) {
         XPWNavExample example = new XPWNavExample();
         example.createCriteria().andChildColumnIdEqualTo(id);
+        example.setOrderByClause(" id asc ");
         List<XPWNav> list = xpwNavMapper.selectByExample(example);
         return list;
     }
