@@ -21,7 +21,7 @@
             </div>
       </div>
       <div class="bannerLeft">
-        <img src="${index.bannerImage1Url}" alt="${dept.name}">
+        <img src="${dept.imgUrl}" alt="${dept.name}">
         <span class="import1"></span>
       </div>
       <div class="bannerRight">
