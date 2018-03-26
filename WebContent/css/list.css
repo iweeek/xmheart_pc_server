@@ -523,7 +523,7 @@ a.blue{ background:#0F76C3;}
 
 /* .PartBanner .bannerLeft{ float:left; width:884px; height:100%; position:relative; overflow:hidden; background:#f1f1f1;} */
 .PartBanner .bannerLeft{ float:left; width:52%; height:100%; position:relative; overflow:hidden; background:#f1f1f1;}
-.PartBanner .bannerLeft img{ width:100%; height:auto;}
+.PartBanner .bannerLeft img{ width:100%; height:100%;}
 .PartBanner .bannerLeft span{width:99px; height:99px; position:absolute; left:0; top:0;}
 .PartBanner .bannerLeft .import1{ background:url(/image/ico_part01a.png) no-repeat;}
 .PartBanner .bannerLeft .import2{ background:url(/image/ico_part02a.png) no-repeat;}
