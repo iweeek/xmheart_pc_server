@@ -966,32 +966,3 @@ a.blue{ background:#0F76C3;}
 	.officesBase .contents .contentsDoctor { width: 1170px; }
 	.teacher-team { width: 1135px;}
 }
-
-/*report*/
-.title30{color:#333; font-size:30px; font-weight:normal; margin-top:10px;}
-.reportSearch{padding:15px 0;}
-.reportSearch label{line-height:40px; font-size:14px; color:#333;}
-.reportSearch .commonInput{height:40px; line-height:16px; padding:12px; border:1px solid #e2e2e2; width:220px; margin-right:20px;}
-.blueBtn{width:110px; height:40px; line-height:38px; text-align:center; background:#3275bc; color:#fff; border-radius:4px; border:0; letter-spacing:2px; font-size:14px;}
-.lightBlueBg{width:100%; background:#f1f8fe; padding:20px 2%;}
-.lightBlueBg dl{padding:0 50px 0 20px; float:left;}
-.lightBlueBg dl dt{color:#999; padding-top:8px;}
-.lightBlueBg dl dd{color:#3275bc; font-size:20px; padding-top:8px;}
-.lightBlueBg dl.reportInfo{padding:0 60px 0 0; border-right:1px solid #d9e1e9;}
-.lightBlueBg dl.reportInfo dt{color:#333; padding-top:0; font-size:24px;}
-.lightBlueBg dl.reportInfo dd{color:#333; padding-top:12px; font-size:14px;}
-.reportList{padding:15px 0;}
-.reportList li{width:33.3%; height:78px; float:left; margin-bottom:8px;}
-.reportList li a{display:block; width:100%;  height:78px; padding:15px 1.5%; background:#fff url(../img/layout/icon_document.png) no-repeat 20px center; border:1px solid #fff;}
-.reportList li p{padding-left:70px; color:#333; font-size:16px; padding-top: 4px;}
-.reportList li .reportDate{color:#999; font-size:14px; padding-top:10px;}
-.reportList li a:hover{background-color:#fffde4; border-color:#ebe48e;}
-.reportPager li{margin-right:10px; float:left;}
-.reportPager li a{height:32px; line-height:32px; padding:0 12px; background:#eee; display:block; font-size:14px; color:#666; border-radius:2px;}
-.reportPager li a:hover{background:#ddd;}
-.reportPager li a.current{background:#3275bc; color:#fff;}
-.reportContent{padding:10px 0;}
-.reportContent img{max-width:100%;}
-.reportContent p{padding:10px 0;}
-.reportContent .col_50{width:50%; float:left; padding-right:10px;}
-.reportContent .col_33{width:33.3%; float:left; padding-right:10px;}

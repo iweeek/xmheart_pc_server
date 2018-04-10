@@ -25,9 +25,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.xmheart.util.HisDoctorComparator;
 import com.xmheart.util.HisUtil;
+import com.xmheart.util.ReportUtil;
 import com.xmheart.util.XmlUtil;
 import com.xmheart.util.soap.Service1;
 import com.xmheart.util.soap.Service1Soap;
+import com.xmheart.zy.LisDetail;
+import com.xmheart.zy.LisList;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTime.Property;
@@ -789,6 +792,50 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 获取病人PACS报告详情
+	 */
+	@RequestMapping(value = { "/getPacsReportDetail" }, method = RequestMethod.POST)
+	public void getPacsReportDetail(Model model, @RequestParam String organizationCode, 
+			@RequestParam String lisBillNo, @RequestParam String operator) {
+	    LisDetail lisDetail = ReportUtil.getPacsDetail(organizationCode, lisBillNo, operator);
+	    System.out.println(lisDetail);
+	}
+	
+	/**
+	 * 获取病人PACS报告列表
+	 */
+	@RequestMapping(value = { "/getPacsReportList" }, method = RequestMethod.POST)
+	public void getPacsReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
+	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator,
+	         @RequestParam String patientname) {
+	    LisList lisList = ReportUtil.GetPacsReportList(organizationCode, 
+	    		visitingType, commonCode, patientID, operator, patientname);
+	    System.out.println(lisList);
+	}
+	
+	/**
+	 * 获取病人LIS报告详情
+	 */
+	@RequestMapping(value = { "/getLisDetail" }, method = RequestMethod.POST)
+	public void getLisDetail(Model model, @RequestParam String organizationCode, 
+			@RequestParam String lisBillNo, @RequestParam String operator) {
+	    LisDetail lisDetail = ReportUtil.getLisDetail(organizationCode, lisBillNo, operator);
+	    System.out.println(lisDetail);
+	}
+	
+	/**
+	 * 获取病人LIS报告列表
+	 */
+	@RequestMapping(value = { "/getLisReportList" }, method = RequestMethod.POST)
+	public void getLisReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
+	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator, 
+	         @RequestParam String patientname) {
+	    LisList lisList = ReportUtil.getLisList(organizationCode, 
+	    		visitingType, commonCode, patientID, operator, patientname);
+	    System.out.println(lisList);
+	}
+	
 	@RequestMapping(value = { "/registerTime" }, method = RequestMethod.POST)
 	public void registerTime(Model model, @RequestParam String doctorCode, @RequestParam String deptCode,
 	         @RequestParam String deptName, @RequestParam String doctorName, @RequestParam String workTime,
@@ -1168,7 +1215,7 @@ public class NewsController {
 		return "doctor_detail";
 	}
 	
-	 public static RegisteredSource registeredSource(String deptCode, String doctorCode, String status,
+	public static RegisteredSource registeredSource(String deptCode, String doctorCode, String status,
 	            String workTime, String workDateStart, String workDateEnd) {
 	        String requestXml = "<Req>" +
 	                "<oracode>00002</oracode>" +
@@ -1356,6 +1403,51 @@ public class NewsController {
 		model.addAttribute("dept", dept);
 		// model.addAttribute("dept", doctor.getDept());
 		return "dept_detail";
+	}
+	
+	@RequestMapping(value = { "/reportDetail" }, method = RequestMethod.GET)
+	public String reportDetail(@RequestParam Long id, Model model) {
+		model = addTopNav(1l, model);
+
+//		XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
+//		model.addAttribute("dept", dept);
+		// model.addAttribute("dept", doctor.getDept());
+		return "report_detail";
+	}
+	
+	
+//	/**
+//	 * 获取病人LIS报告列表
+//	 */
+//	@RequestMapping(value = { "/getLisReportList" }, method = RequestMethod.POST)
+//	public void getLisReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
+//	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator, 
+//	         @RequestParam String patientname) {
+//	    LisList lisList = ReportUtil.getLisList(organizationCode, 
+//	    		visitingType, commonCode, patientID, operator, patientname);
+//	    System.out.println(lisList);
+//	}
+//	
+//	/**
+//	 * 获取病人PACS报告列表
+//	 */
+//	@RequestMapping(value = { "/getPacsReportList" }, method = RequestMethod.POST)
+//	public void getPacsReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
+//	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator,
+//	         @RequestParam String patientname) {
+//	    LisList lisList = ReportUtil.GetPacsReportList(organizationCode, 
+//	    		visitingType, commonCode, patientID, operator, patientname);
+//	    System.out.println(lisList);
+//	}
+	
+	@RequestMapping(value = { "/reportList" }, method = RequestMethod.GET)
+	public String reportList(@RequestParam Long id, Model model) {
+		model = addTopNav(1l, model);
+
+//		XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
+//		model.addAttribute("dept", dept);
+		// model.addAttribute("dept", doctor.getDept());
+		return "report_list";
 	}
 	
 }

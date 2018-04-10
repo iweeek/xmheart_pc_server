@@ -25,6 +25,7 @@ public class XmlUtil {
             // 解析了XML文档
             Unmarshaller unmarshaller = context.createUnmarshaller();
             reader = new StringReader(xml);
+            System.out.println("xml: " + xml);
             xmlObject = unmarshaller.unmarshal(reader);
         } catch (JAXBException e) {
             e.printStackTrace();

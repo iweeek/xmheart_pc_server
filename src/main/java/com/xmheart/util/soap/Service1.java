@@ -1,4 +1,3 @@
-
 package com.xmheart.util.soap;
 
 import java.net.MalformedURLException;
@@ -18,7 +17,9 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 //@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8001/SQWebServer.asmx?wsdl")
-@WebServiceClient(name = "Service1", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://192.168.102.170:8002/SQWebServer.asmx?wsdl")
+@WebServiceClient(name = "Service1", 
+		targetNamespace = "http://tempuri.org/",
+		wsdlLocation = "http://192.168.102.170:8002/SQWebServer.asmx?wsdl")
 public class Service1
     extends Service
 {

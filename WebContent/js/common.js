@@ -163,8 +163,8 @@ $(function(){
       if (max < afternoon) {
           max = afternoon;
       }
-      console.log(forenoon);
-      console.log(afternoon);
+//      console.log(forenoon);
+//      console.log(afternoon);
   }
   console.log("max: " + max);
   var he = 60 + (((max - 1) + 1) + 1) * 45;
@@ -378,6 +378,24 @@ $(function(){
           top: "0px"
       });
   }
+  
+  // 报告查询
+  $('#reportSearch').click(function() {
+	  	console.log("reportName: " + $('#reportName').val());
+	  	console.log("reportNo: " + $('#reportNo').val());
+	  	console.log("hospitalNo: " + $('#hospitalNo').val());
+//		DoctorEdit.deptId = $('#typeSelectInput').val();
+//		$('.ui-loading').show();
+//		if (DoctorEdit._getUrlParam('pageNo')) {
+//			DoctorEdit.currentPage = DoctorEdit._getUrlParam('pageNo');
+//		}
+//		DoctorEdit.doctorData();
+//		console.log(DoctorEdit.totalPage);
+//		
+//		DoctorEdit.setUpPaginationa();
+  })
+  
+  
 })
 
 
