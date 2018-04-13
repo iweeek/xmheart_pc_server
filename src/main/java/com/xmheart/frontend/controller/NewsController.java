@@ -1,39 +1,30 @@
 package com.xmheart.frontend.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.text.Collator;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-
-import com.xmheart.util.HisDoctorComparator;
-import com.xmheart.util.HisUtil;
-import com.xmheart.util.ReportUtil;
-import com.xmheart.util.XmlUtil;
-import com.xmheart.util.soap.Service1;
-import com.xmheart.util.soap.Service1Soap;
-import com.xmheart.zy.LisDetail;
-import com.xmheart.zy.LisList;
+import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTime.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -46,6 +37,10 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xmheart.his.Response.RegisteredSource;
+import com.xmheart.his.Response.RegisteredSourcePreInfo;
+import com.xmheart.model.HisDoctor;
+import com.xmheart.model.XPWArticle;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWColumnEnglish;
 import com.xmheart.model.XPWDept;
@@ -55,15 +50,8 @@ import com.xmheart.model.XPWIndex;
 import com.xmheart.model.XPWNav;
 import com.xmheart.model.XPWOnlineVideo;
 import com.xmheart.model.XPWTeacher;
-import com.xmheart.model.XPWXTIndex;
 import com.xmheart.model.XPWVideo;
-import com.xmheart.his.Response.Department;
-import com.xmheart.his.Response.Departments;
-import com.xmheart.his.Response.Doctors;
-import com.xmheart.his.Response.RegisteredSource;
-import com.xmheart.his.Response.RegisteredSourcePreInfo;
-import com.xmheart.model.HisDoctor;
-import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWXTIndex;
 import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnEnglishService;
 import com.xmheart.service.ColumnService;
@@ -73,6 +61,15 @@ import com.xmheart.service.NewsService;
 import com.xmheart.service.OnlineVideoService;
 import com.xmheart.service.TeacherTeamService;
 import com.xmheart.service.VideoService;
+import com.xmheart.util.HisDoctorComparator;
+import com.xmheart.util.HisUtil;
+import com.xmheart.util.ReportUtil;
+import com.xmheart.util.XmlUtil;
+import com.xmheart.util.soap.Service1;
+import com.xmheart.util.soap.Service1Soap;
+import com.xmheart.zy.LisDetail;
+import com.xmheart.zy.LisList;
+import com.xmheart.zy.Report;
 
 import freemarker.template.Template;
 import io.swagger.annotations.ApiOperation;
@@ -796,8 +793,8 @@ public class NewsController {
 	 * 获取病人PACS报告详情
 	 */
 	@RequestMapping(value = { "/getPacsReportDetail" }, method = RequestMethod.POST)
-	public void getPacsReportDetail(Model model, @RequestParam String organizationCode, 
-			@RequestParam String lisBillNo, @RequestParam String operator) {
+	public void getPacsReportDetail(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String lisBillNo, @RequestParam(required = false) String operator) {
 	    LisDetail lisDetail = ReportUtil.getPacsDetail(organizationCode, lisBillNo, operator);
 	    System.out.println(lisDetail);
 	}
@@ -806,9 +803,12 @@ public class NewsController {
 	 * 获取病人PACS报告列表
 	 */
 	@RequestMapping(value = { "/getPacsReportList" }, method = RequestMethod.POST)
-	public void getPacsReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
-	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator,
-	         @RequestParam String patientname) {
+	public void getPacsReportList(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator,
+	         @RequestParam(required = false) String patientname) {
 	    LisList lisList = ReportUtil.GetPacsReportList(organizationCode, 
 	    		visitingType, commonCode, patientID, operator, patientname);
 	    System.out.println(lisList);
@@ -818,8 +818,8 @@ public class NewsController {
 	 * 获取病人LIS报告详情
 	 */
 	@RequestMapping(value = { "/getLisDetail" }, method = RequestMethod.POST)
-	public void getLisDetail(Model model, @RequestParam String organizationCode, 
-			@RequestParam String lisBillNo, @RequestParam String operator) {
+	public void getLisDetail(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String lisBillNo, @RequestParam(required = false) String operator) {
 	    LisDetail lisDetail = ReportUtil.getLisDetail(organizationCode, lisBillNo, operator);
 	    System.out.println(lisDetail);
 	}
@@ -828,12 +828,20 @@ public class NewsController {
 	 * 获取病人LIS报告列表
 	 */
 	@RequestMapping(value = { "/getLisReportList" }, method = RequestMethod.POST)
-	public void getLisReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
-	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator, 
-	         @RequestParam String patientname) {
+	public String getLisReportList(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator, 
+	         @RequestParam(required = false) String patientname) {
 	    LisList lisList = ReportUtil.getLisList(organizationCode, 
 	    		visitingType, commonCode, patientID, operator, patientname);
 	    System.out.println(lisList);
+	    
+		model = addTopNav(1l, model);
+		model.addAttribute("lisList", lisList);
+
+		return "report_list";
 	}
 	
 	@RequestMapping(value = { "/registerTime" }, method = RequestMethod.POST)
@@ -1406,48 +1414,187 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value = { "/reportDetail" }, method = RequestMethod.GET)
-	public String reportDetail(@RequestParam Long id, Model model) {
+	public String reportDetail(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String lisBillNo, 
+			@RequestParam(required = false) String operator,
+			@RequestParam(required = false) String reportTitle,
+			@RequestParam(required = false) String patientName,
+			@RequestParam(required = false) String type) {
 		model = addTopNav(1l, model);
 
-//		XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
-//		model.addAttribute("dept", dept);
-		// model.addAttribute("dept", doctor.getDept());
+		LisDetail lisDetail = null;
+		if (type.equals("lis")) {
+			lisDetail = ReportUtil.getLisDetail(organizationCode, lisBillNo, operator);
+		} else {
+			lisDetail = ReportUtil.getPacsDetail(organizationCode, lisBillNo, operator);
+		}
+		System.out.println(lisDetail);
+		model.addAttribute("lisDetail", lisDetail);
+		model.addAttribute("reportTitle", reportTitle);
+		model.addAttribute("patientName", patientName);
+		
 		return "report_detail";
 	}
 	
-	
-//	/**
-//	 * 获取病人LIS报告列表
-//	 */
-//	@RequestMapping(value = { "/getLisReportList" }, method = RequestMethod.POST)
-//	public void getLisReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
-//	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator, 
-//	         @RequestParam String patientname) {
-//	    LisList lisList = ReportUtil.getLisList(organizationCode, 
-//	    		visitingType, commonCode, patientID, operator, patientname);
-//	    System.out.println(lisList);
-//	}
-//	
-//	/**
-//	 * 获取病人PACS报告列表
-//	 */
-//	@RequestMapping(value = { "/getPacsReportList" }, method = RequestMethod.POST)
-//	public void getPacsReportList(Model model, @RequestParam String organizationCode, @RequestParam String visitingType,
-//	         @RequestParam String commonCode, @RequestParam String patientID, @RequestParam String operator,
-//	         @RequestParam String patientname) {
-//	    LisList lisList = ReportUtil.GetPacsReportList(organizationCode, 
-//	    		visitingType, commonCode, patientID, operator, patientname);
-//	    System.out.println(lisList);
-//	}
-	
 	@RequestMapping(value = { "/reportList" }, method = RequestMethod.GET)
-	public String reportList(@RequestParam Long id, Model model) {
+	public String reportList(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator, 
+	         @RequestParam(required = false) String patientname) {
+		
+		if (patientname != null) {
+			LisList lisList = ReportUtil.getLisList(organizationCode, 
+		    		visitingType, commonCode, patientID, operator, patientname);
+			System.out.println(lisList);
+			model.addAttribute("lisList", lisList);
+		}
+	    
 		model = addTopNav(1l, model);
 
-//		XPWDept dept = doctorAndDeptService.getDeptAndDoctorsById(id);
-//		model.addAttribute("dept", dept);
-		// model.addAttribute("dept", doctor.getDept());
 		return "report_list";
 	}
+	
+	@RequestMapping(value = { "/reportPacsList" }, method = RequestMethod.GET)
+	public String reportPacsList(Model model, @RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator, 
+	         @RequestParam(required = false) String patientname) {
+		
+		if (patientname != null) {
+			LisList lisList = ReportUtil.GetPacsReportList(organizationCode,
+					visitingType, commonCode, patientID, operator, patientname);
+			model.addAttribute("lisList", lisList);
+		    System.out.println(lisList);
+		}
+	    
+		model = addTopNav(1l, model);
+
+		return "report_pacs_list";
+	}
+	
+	/**
+	 * 搜索报告，局部刷新页面
+	 * @Title: searchReport 
+	 * @Description: TODO 
+	 * @return: ResponseEntity<?> 
+	 * @throws:
+	 */
+	@RequestMapping(value = "/searchReport", method = RequestMethod.GET)
+	public ResponseEntity<?> searchReport(@RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator, 
+	         @RequestParam(required = false) String patientname,
+            HttpServletRequest request, HttpServletResponse response) {
+
+		List<Report> reports = new ArrayList<Report>();
+		LisList lisList = ReportUtil.getLisList(organizationCode, 
+	    		visitingType, commonCode, patientID, operator, patientname);
+		if (lisList != null) {
+			if (lisList.getReports() != null && lisList.getReports().size() != 0) {
+				reports.addAll(lisList.getReports());
+			}
+		}
+		
+//		System.out.println("1. reports >>>>>> " + reports);
+		
+		LisList pacsList = ReportUtil.GetPacsReportList(organizationCode, 
+				visitingType, commonCode, patientID, operator, patientname);
+		if (pacsList != null) {
+			if (pacsList.getReports() != null && pacsList.getReports().size() != 0) {
+				reports.addAll(pacsList.getReports());
+			}
+		}	
+		
+//		System.out.println("2. reports >>>>>> " + reports);
+		
+		return ResponseEntity.status(HttpServletResponse.SC_OK).body(reports);
+	}
+	
+	/**
+	 * 搜索报告，局部刷新页面
+	 * @Title: searchReport 
+	 * @Description: TODO 
+	 * @return: ResponseEntity<?> 
+	 * @throws:
+	 */
+	@RequestMapping(value = "/searchPACSReport", method = RequestMethod.GET)
+	public ResponseEntity<?> searchPACSReport(@RequestParam(required = false) String organizationCode, 
+			@RequestParam(required = false) String visitingType,
+	         @RequestParam(required = false) String commonCode, 
+	         @RequestParam(required = false) String patientID, 
+	         @RequestParam(required = false) String operator, 
+	         @RequestParam(required = false) String patientname,
+            HttpServletRequest request, HttpServletResponse response) {
+		
+		LisList lisList = ReportUtil.GetPacsReportList(organizationCode, 
+				visitingType, commonCode, patientID, operator, patientname);
+	    
+		return ResponseEntity.status(HttpServletResponse.SC_OK).body(lisList.getReports());
+	}
+	
+	/**
+	 * 服务器内部请求图片
+	 * @Title: getReportImage 
+	 * @Description: TODO 
+	 * @return: void 
+	 * @throws:
+	 */
+	@RequestMapping(value = { "/getReportImage" }, method = RequestMethod.GET)
+	public void getReportImage(HttpServletResponse response, @RequestParam(required = false) String reportPdfurl) {
+		
+		URL url;
+        try {
+        	if (reportPdfurl != null) {
+        		url = new URL(reportPdfurl);
+        	} else {
+        		url = new URL("http://192.168.102.197:8080/LIS/20180301/10262201803011/10262201803011_1.jpg");
+        	}
+	        //打开链接  
+	        HttpURLConnection conn = (HttpURLConnection)url.openConnection();  
+	        //设置请求方式为"GET"  
+	        conn.setRequestMethod("GET");  
+	        //超时响应时间为5秒  
+	        conn.setConnectTimeout(5 * 1000);  
+	        //通过输入流获取图片数据  
+	        InputStream inStream = conn.getInputStream();  
+	        BufferedImage image = ImageIO.read(inStream); 
+            // 把校验码转为图像
+//            BufferedImage image = captchaService.genCaptcha(response);
+
+            response.setContentType("image/jpeg");
+            System.out.println(response);
+            // 输出图像
+            ServletOutputStream outStream = response.getOutputStream();
+            ImageIO.write(image, "jpeg", outStream);
+            response.flushBuffer();
+            outStream.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+
+	
+    public static byte[] readInputStream(InputStream inStream) throws Exception{  
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();  
+        //创建一个Buffer字符串  
+        byte[] buffer = new byte[1024];  
+        //每次读取的字符串长度，如果为-1，代表全部读取完毕  
+        int len = 0;  
+        //使用一个输入流从buffer里把数据读取出来  
+        while( (len=inStream.read(buffer)) != -1 ){  
+            //用输出流往buffer里写入数据，中间参数代表从哪个位置开始读，len代表读取的长度  
+            outStream.write(buffer, 0, len);  
+        }  
+        //关闭输入流  
+        inStream.close();  
+        //把outStream里的数据写入内存  
+        return outStream.toByteArray();  
+    }  
 	
 }

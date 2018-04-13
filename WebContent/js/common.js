@@ -379,22 +379,120 @@ $(function(){
       });
   }
   
-  // 报告查询
+  // LIS 报告查询
   $('#reportSearch').click(function() {
 	  	console.log("reportName: " + $('#reportName').val());
 	  	console.log("reportNo: " + $('#reportNo').val());
 	  	console.log("hospitalNo: " + $('#hospitalNo').val());
-//		DoctorEdit.deptId = $('#typeSelectInput').val();
-//		$('.ui-loading').show();
-//		if (DoctorEdit._getUrlParam('pageNo')) {
-//			DoctorEdit.currentPage = DoctorEdit._getUrlParam('pageNo');
-//		}
-//		DoctorEdit.doctorData();
-//		console.log(DoctorEdit.totalPage);
-//		
-//		DoctorEdit.setUpPaginationa();
+	  	
+        var params = {
+        	patientname: $('#reportName').val(),
+        	visitingType: "",
+            commonCode: $('#hospitalNo').val(),
+        }
+        
+        var reportBillNo;
+        var reportTime;
+        var reportTitle;
+        var labOperator;
+        
+        $.get('/searchReport', params)
+        .success(function(res) {
+        	console.log(res);
+        	var concat = "";
+        	for (var i = 0; i < res.length; i++) {
+        		reportBillNo = res[i].reportBillNo;
+                reportTime = res[i].reportTime;
+                reportTitle = res[i].reportTitle;
+                labOperator = res[i].labOperator;
+                patientName = $('#reportName').val();
+                
+                console.log("labOperator: " + labOperator);
+                if (labOperator != null) {
+	                concat += 
+	                "<li>" +
+						"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+							reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+							"&patientName=" + patientName +
+							"&type=lis" +
+							">" +
+						"<p>" + reportTitle + "</p>" +
+						"<p class='reportDate'>" + reportTime + "</p>" +
+						"</a>" +
+						"</li>";
+	                
+	                console.log("LIS" );
+                } else {
+	                concat += 
+	                    "<li>" +
+	    					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+	    						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+	    						"&patientName=" + patientName +
+	    						"&type=pacs" +
+	    						">" +
+	    					"<p>" + reportTitle + "</p>" +
+	    					"<p class='reportDate'>" + reportTime + "</p>" +
+	    					"</a>" +
+	    				"</li>";
+	                console.log("PACS" );
+                }
+        	}
+        	console.log("concat:" + concat);
+        	$('#content').html(concat);
+        })
   })
   
+  // PACS 报告查询
+  $('#reportSearchPacs').click(function() {
+	  	console.log("reportName: " + $('#reportName').val());
+	  	console.log("reportNo: " + $('#reportNo').val());
+	  	console.log("hospitalNo: " + $('#hospitalNo').val());
+	  	
+        var params = {
+        	patientname: $('#reportName').val(),
+        	visitingType: "1",
+            commonCode: $('#hospitalNo').val(),
+        }
+        
+        var reportBillNo;
+        var reportTime;
+        var reportTitle;
+        
+        $.get('/searchPACSReport', params)
+        .success(function(res) {
+        	console.log(res);
+        	var concat = "";
+        	for (var i = 0; i < res.length; i++) {
+        		reportBillNo = res[i].reportBillNo;
+                reportTime = res[i].reportTime;
+                reportTitle = res[i].reportTitle;
+                patientName = $('#reportName').val();
+                
+                
+                concat += 
+                "<li>" +
+					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+						"&patientName=" + patientName +
+						"&type=pacs" +
+						">" +
+					"<p>" + reportTitle + "</p>" +
+					"<p class='reportDate'>" + reportTime + "</p>" +
+					"</a>" +
+				"</li>";
+        	}
+        	console.log("concat:" + concat);
+        	$('#content').html(concat);
+        })
+  })
+  
+  $('#reportImage').attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage').attr('image'));
+  
+  console.log($('#reportImage').attr('image'));
+  
+  $("#reportImage").on("click", function () {
+	  $('#reportImage').attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage').attr('image'));  
+  });  
   
 })
 

@@ -1,19 +1,11 @@
 package com.xmheart.util;
 
-import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import com.xmheart.his.Response.Doctors;
-import com.xmheart.model.XPWDoctor;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.Writer;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 public class XmlUtil {
 
@@ -25,9 +17,8 @@ public class XmlUtil {
             // 解析了XML文档
             Unmarshaller unmarshaller = context.createUnmarshaller();
             reader = new StringReader(xml);
-            System.out.println("xml: " + xml);
             xmlObject = unmarshaller.unmarshal(reader);
-        } catch (JAXBException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (null != reader) {

@@ -31,6 +31,18 @@ public class LisDetail {
     @XmlElement(name = "reportPdfurl")
     private String reportPdfurl;
     
+    @XmlElement(name = "visitNo")
+    private String visitNo;
+    
+    @XmlElement(name = "patientAge")
+    private String patientAge;
+    
+    @XmlElement(name = "bedNo")
+    private String bedNo;
+    
+    @XmlElement(name = "applyOperator")
+    private String applyOperator;
+    
     
     public  LisDetail(){}
     
@@ -54,5 +66,39 @@ public class LisDetail {
 	public void setReportPdfurl(String reportPdfurl) {
 		this.reportPdfurl = reportPdfurl;
 	}
+
+	public String getVisitNo() {
+		return visitNo;
+	}
+
+	public void setVisitNo(String visitNo) {
+		this.visitNo = visitNo;
+	}
+
+	public String getPatientAge() {
+		return patientAge;
+	}
+
+	public void setPatientAge(String patientAge) {
+		this.patientAge = patientAge;
+	}
+
+	public String getBedNo() {
+		return bedNo;
+	}
+
+	public void setBedNo(String bedNo) {
+		this.bedNo = bedNo;
+	}
+
+	public String getApplyOperator() {
+		return applyOperator;
+	}
+
+	public void setApplyOperator(String applyOperator) {
+		this.applyOperator = applyOperator;
+	}
+
+	
 }
 

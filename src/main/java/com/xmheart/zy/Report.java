@@ -1,12 +1,8 @@
 package com.xmheart.zy;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -40,6 +36,9 @@ public class Report {
 	
 	@XmlAttribute
     private String auditOperator;
+	
+	@XmlAttribute
+	private String labOperator;
 	
     public  Report(){}
 
@@ -108,4 +107,20 @@ public class Report {
 	public void setAuditOperator(String auditOperator) {
 		this.auditOperator = auditOperator;
 	}
+
+	public String getLabOperator() {
+		return labOperator;
+	}
+
+	public void setLabOperator(String labOperator) {
+		this.labOperator = labOperator;
+	}
+
+	@Override
+	public String toString() {
+		return "Report [reportBillNo=" + reportBillNo + ", reportTitle=" + reportTitle + ", reportTime=" + reportTime
+				+ ", reportStatus=" + reportStatus + ", applyOperator=" + applyOperator + ", auditOperator="
+				+ auditOperator + ", labOperator=" + labOperator + "]";
+	}
+
 }

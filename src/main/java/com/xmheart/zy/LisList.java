@@ -45,5 +45,10 @@ public class LisList {
 		this.reports = reports;
 	}
 
+	@Override
+	public String toString() {
+		return "LisList [reports=" + reports + "]";
+	}
+
 }
 
