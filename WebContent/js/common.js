@@ -391,6 +391,8 @@ $(function(){
             commonCode: $('#hospitalNo').val(),
         }
         
+        $("#reportLisLoading").show();
+        
         var reportBillNo;
         var reportTime;
         var reportTitle;
@@ -439,6 +441,8 @@ $(function(){
         	}
         	console.log("concat:" + concat);
         	$('#content').html(concat);
+        	$("#reportLisLoading").hide();
+        	$("#reportLisBlank").hide();
         })
   })
   
@@ -467,7 +471,6 @@ $(function(){
                 reportTime = res[i].reportTime;
                 reportTitle = res[i].reportTitle;
                 patientName = $('#reportName').val();
-                
                 
                 concat += 
                 "<li>" +

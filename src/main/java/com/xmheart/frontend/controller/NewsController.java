@@ -1501,8 +1501,6 @@ public class NewsController {
 			}
 		}
 		
-//		System.out.println("1. reports >>>>>> " + reports);
-		
 		LisList pacsList = ReportUtil.GetPacsReportList(organizationCode, 
 				visitingType, commonCode, patientID, operator, patientname);
 		if (pacsList != null) {
@@ -1510,8 +1508,6 @@ public class NewsController {
 				reports.addAll(pacsList.getReports());
 			}
 		}	
-		
-//		System.out.println("2. reports >>>>>> " + reports);
 		
 		return ResponseEntity.status(HttpServletResponse.SC_OK).body(reports);
 	}

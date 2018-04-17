@@ -39,8 +39,13 @@
 						<dd>2018/03/08</dd>
 					</dl>-->
 				</div>
-				<p><img class="report_image" id="reportImage" image="${lisDetail.reportPdfurl}" alt="报告图片" /></p>
+				<!-- <p><img id="reportImage" image="${lisDetail.reportPdfurl}" alt="报告图片" /></p> -->
+				<div style="width: 100%;text-align: center;">
+					<img id="reportImage" class="report_image" image="${lisDetail.reportPdfurl}" alt="报告图片" /> 
+				</div>
 			</div>
+			
+			<!-- <div class="blankTip" id="reportPacsBlank">抱歉，暂时搜索不到你要查找的信息！</div> -->
 	   </div>
     </div>
 
