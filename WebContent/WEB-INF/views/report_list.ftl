@@ -9,15 +9,18 @@
 				<input id="reportName" class="commonInput" placeholder="请输入您的真实姓名" />
 				<label for="hospitalNo">门诊号或住院号</label>
 				<input id="hospitalNo" class="commonInput" placeholder="请输入门诊号或住院号" />
-				<label for="category">就诊类型</label>
+				<!-- <label for="category">就诊类型</label>
 				<select id="category" class="commonInput commonSelect" placeholder="请选择就诊类型">
 					<option>门急诊</option>
 					<option>住院</option>
 					<option>体检</option>
-				</select>
+				</select> -->
 				<label for="codeNo">验证码</label>
 				<input id="codeNo" class="commonInput codeNo" placeholder="请输入验证码" />
-				<div class="codeNoBg">SDFD55</div>
+                
+                <img class="captcha_img" id="captchaImg" alt="点击刷新验证码" >  
+                <span id="captchaChecked" style="display:none;color:green;font-weight:bold">√</span>
+                
 				<button class="blueBtn" id="reportSearch">查询报告</button>
 			</div>
 			

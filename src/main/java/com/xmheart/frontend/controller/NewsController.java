@@ -39,8 +39,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xmheart.his.Response.RegisteredSource;
 import com.xmheart.his.Response.RegisteredSourcePreInfo;
+import com.xmheart.mapper.XPWCaptchaMapper;
 import com.xmheart.model.HisDoctor;
 import com.xmheart.model.XPWArticle;
+import com.xmheart.model.XPWCaptcha;
 import com.xmheart.model.XPWColumn;
 import com.xmheart.model.XPWColumnEnglish;
 import com.xmheart.model.XPWDept;
@@ -53,6 +55,7 @@ import com.xmheart.model.XPWTeacher;
 import com.xmheart.model.XPWVideo;
 import com.xmheart.model.XPWXTIndex;
 import com.xmheart.service.ArticleService;
+import com.xmheart.service.CaptchaService;
 import com.xmheart.service.ColumnEnglishService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.DoctorAndDeptService;
@@ -105,6 +108,12 @@ public class NewsController {
 	
     @Autowired
     private TeacherTeamService teacherTeamService;
+    
+    @Autowired
+    private CaptchaService captchaService;
+    
+    @Autowired
+    XPWCaptchaMapper captchaMapper;
 	
 	@Autowired
 	private IndexService indexService;
@@ -1492,24 +1501,35 @@ public class NewsController {
 	         @RequestParam(required = false) String patientname,
             HttpServletRequest request, HttpServletResponse response) {
 
-		List<Report> reports = new ArrayList<Report>();
-		LisList lisList = ReportUtil.getLisList(organizationCode, 
-	    		visitingType, commonCode, patientID, operator, patientname);
-		if (lisList != null) {
-			if (lisList.getReports() != null && lisList.getReports().size() != 0) {
-				reports.addAll(lisList.getReports());
+        XPWCaptcha captcha = new XPWCaptcha();
+        Boolean isPassed = captchaService.verifyCaptchaIsPassed(request, captcha);
+        if (isPassed) {
+			List<Report> reports = new ArrayList<Report>();
+			LisList lisList = ReportUtil.getLisList(organizationCode, 
+		    		visitingType, commonCode, patientID, operator, patientname);
+			if (lisList != null) {
+				if (lisList.getReports() != null && lisList.getReports().size() != 0) {
+					reports.addAll(lisList.getReports());
+				}
 			}
-		}
-		
-		LisList pacsList = ReportUtil.GetPacsReportList(organizationCode, 
-				visitingType, commonCode, patientID, operator, patientname);
-		if (pacsList != null) {
-			if (pacsList.getReports() != null && pacsList.getReports().size() != 0) {
-				reports.addAll(pacsList.getReports());
+			
+			LisList pacsList = ReportUtil.GetPacsReportList(organizationCode, 
+					visitingType, commonCode, patientID, operator, patientname);
+			if (pacsList != null) {
+				if (pacsList.getReports() != null && pacsList.getReports().size() != 0) {
+					reports.addAll(pacsList.getReports());
+				}
 			}
-		}	
-		
-		return ResponseEntity.status(HttpServletResponse.SC_OK).body(reports);
+			
+            // 创建成功。删除本次的验证码
+            if (captcha != null) {
+                captchaMapper.deleteByPrimaryKey(captcha.getId());
+            }
+			
+			return ResponseEntity.status(HttpServletResponse.SC_OK).body(reports);
+        } else {
+            return ResponseEntity.status(HttpServletResponse.SC_OK).body(isPassed);
+        }
 	}
 	
 	/**

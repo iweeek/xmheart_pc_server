@@ -380,7 +380,7 @@ $(function(){
   }
   
   // LIS 报告查询
-  $('#reportSearch').click(function() {
+  /*$('#reportSearch').click(function() {
 	  	console.log("reportName: " + $('#reportName').val());
 	  	console.log("reportNo: " + $('#reportNo').val());
 	  	console.log("hospitalNo: " + $('#hospitalNo').val());
@@ -445,6 +445,7 @@ $(function(){
         	$("#reportLisBlank").hide();
         })
   })
+  */
   
   // PACS 报告查询
   $('#reportSearchPacs').click(function() {
@@ -496,6 +497,111 @@ $(function(){
   $("#reportImage").on("click", function () {
 	  $('#reportImage').attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage').attr('image'));  
   });  
+  
+  
+  // 验证码
+  var ctrl = {
+	  search: function() {
+		  	console.log("reportName: " + $('#reportName').val());
+		  	console.log("reportNo: " + $('#reportNo').val());
+		  	console.log("hospitalNo: " + $('#hospitalNo').val());
+		  	
+	        var params = {
+	        	patientname: $('#reportName').val(),
+	        	visitingType: "",
+	            commonCode: $('#hospitalNo').val(),
+	        }
+	        
+	        $("#reportLisLoading").show();
+	        
+	        var reportBillNo;
+	        var reportTime;
+	        var reportTitle;
+	        var labOperator;
+	        
+	        $.get('/searchReport', params)
+	        .success(function(res) {
+	        	console.log(res);
+	        	var concat = "";
+	        	for (var i = 0; i < res.length; i++) {
+	        		reportBillNo = res[i].reportBillNo;
+	                reportTime = res[i].reportTime;
+	                reportTitle = res[i].reportTitle;
+	                labOperator = res[i].labOperator;
+	                patientName = $('#reportName').val();
+	                
+	                console.log("labOperator: " + labOperator);
+	                if (labOperator != null) {
+		                concat += 
+		                "<li>" +
+							"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+								reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+								"&patientName=" + patientName +
+								"&type=lis" +
+								">" +
+							"<p>" + reportTitle + "</p>" +
+							"<p class='reportDate'>" + reportTime + "</p>" +
+							"</a>" +
+							"</li>";
+		                
+		                console.log("LIS" );
+	                } else {
+		                concat += 
+		                    "<li>" +
+		    					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+		    						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+		    						"&patientName=" + patientName +
+		    						"&type=pacs" +
+		    						">" +
+		    					"<p>" + reportTitle + "</p>" +
+		    					"<p class='reportDate'>" + reportTime + "</p>" +
+		    					"</a>" +
+		    				"</li>";
+		                console.log("PACS" );
+	                }
+	        	}
+	        	console.log("concat:" + concat);
+	        	$('#content').html(concat);
+	        	$("#reportLisLoading").hide();
+	        	$("#reportLisBlank").hide();
+	        })
+	  },
+	  checkCaptchaInput: function (){  
+            var captchaText =$(this).val(); 
+            if(captchaText.length <=3 ){ //验证码一般大于三位  
+                $("#captchaChecked").hide();  
+                return;  
+            }  
+            var params = {
+                captcha : captchaText
+            }
+            
+            $.post('/verifyCaptcha', params)
+            .success(function(res) {
+                if (res) {
+                    $(this).attr('disabled', 'disabled');
+                    $("#captchaChecked").show();
+                } else {
+                    $("#captchaChecked").hide();
+                }
+            })
+            if(event.keyCode==13){  
+                ctrl.login();
+            }  
+        }, 
+	  refreshCaptcha: function () {
+	      $('#captchaImg').attr('src', '/captcha?' + Math.random());  
+	  }
+  }
+  
+  $('#reportSearch').on('click', function () {
+      ctrl.search();
+  });
+  
+  ctrl.refreshCaptcha();  
+    
+  $("#codeNo").on("keyup", ctrl.checkCaptchaInput);  
+  $("#captchaImg").on("click", ctrl.refreshCaptcha);  
   
 })
 

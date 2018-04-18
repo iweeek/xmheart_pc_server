@@ -134,5 +134,9 @@
       <ignoreColumn column="created_at"/>
       <ignoreColumn column="updated_at"/>
     </table>
+    
+    <table schema="xmheart_pc_web" tableName="xpw_captcha" domainObjectName ="XPWCaptcha" >
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+    </table>
   </context>
 </generatorConfiguration>

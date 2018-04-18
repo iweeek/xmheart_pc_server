@@ -3,7 +3,7 @@
 	margin: 0 auto;
 	overflow: hidden;
 	min-width:1220px;
-	min-height:600px;
+	/* min-height:600px; */
 }
 .xm-header-container {
 	max-width: 1220px;
