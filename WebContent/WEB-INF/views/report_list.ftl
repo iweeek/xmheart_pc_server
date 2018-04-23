@@ -1,7 +1,7 @@
  <#include "./fragments/_header.ftl"> 
  
     <div class="xm-main">
-        <div class="xm-container">
+        <div class="xm-container report-container">
 			<h3 class="title30">检验报告、检查报告</h3>
 			
 			<div class="reportSearch">
@@ -19,13 +19,17 @@
 				<input id="codeNo" class="commonInput codeNo" placeholder="请输入验证码" />
                 
                 <img class="captcha_img" id="captchaImg" alt="点击刷新验证码" >  
-                <span id="captchaChecked" style="display:none;color:green;font-weight:bold">√</span>
+                <span id="captchaChecked" style="display:none;color:green;font-weight:bold;font-size: 20px;float: left;padding-top: 10px;">√</span>
+                <span id="captchaCheckedError" style="display:none;color:red;font-weight:bold;font-size: 20px;float: left;padding-top: 10px;">×</span>
                 
-				<button class="blueBtn" id="reportSearch">查询报告</button>
+				<button class="blueBtn" id="reportSearch" style="float: left;">查询报告</button>
+				
+				<img src="../../img/layout/icon_document.png" style="padding-left: 20px;"><span>&nbsp;&nbsp;&nbsp;检验报告</span>
+				<img src="../../img/layout/icon_document_pacs.jpg" style="padding-left:20px"><span>&nbsp;&nbsp;&nbsp;检查报告 </span>
 			</div>
 			
 			<!-- 空提示，blankTip 和下方的lightBlueBg不同时出现 -->
-			<div class="blankTip" id="reportLisBlank">抱歉，暂时搜索不到你要查找的信息！</div>
+			<div class="blankTip" id="reportLisBlank">很抱歉！无法查询到相关病人信息，可能尚未出报告或病人信息输入有误！</div>
 			
 			<ul class="reportList clearfix_n">
                 <div id="content"/>

@@ -5,6 +5,9 @@
 	min-width:1220px;
 	/* min-height:600px; */
 }
+.report-container {
+	min-height:600px;
+}
 .xm-header-container {
 	max-width: 1220px;
 	margin: 0 auto;

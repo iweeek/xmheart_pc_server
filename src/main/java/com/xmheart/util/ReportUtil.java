@@ -1,5 +1,8 @@
 package com.xmheart.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,6 +33,7 @@ public class ReportUtil {
     		String operator, String patientname) {
         
     		String serverName = "GetLisReportList";
+    		
             
         String msgHeader = "<root>\n" + 
         		"<serverName>" + serverName + "</serverName>\n" + 
@@ -157,7 +161,10 @@ public class ReportUtil {
         			"<reportTemplateCode>020101</reportTemplateCode>\n" + 
         			"<remark1/>\n" + 
         			"<remark2/>\n" + 
-        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180403/102872018040311/102872018040311_1.jpg</reportPdfurl>\n" + 
+//        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180403/102872018040311/102872018040311_1.jpg</reportPdfurl>\n" + 
+        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_2.jpghttp://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_3.jpg</reportPdfurl>\n" + 
+        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_1.jpg</reportPdfurl>\n" + 
+        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_2.jpg</reportPdfurl>\n" + 
         			"<labDetails>\n" + 
         			"<labDetail>\n" + 
         			"<masterItemCode/>\n" + 
@@ -230,7 +237,22 @@ public class ReportUtil {
 			}
         }
         
-        return (LisDetail) XmlUtil.xmlToObject(retMsg, LisDetail.class);
+        LisDetail lisDetail = (LisDetail) XmlUtil.xmlToObject(retMsg, LisDetail.class);
+        List<String> list = new ArrayList();
+        List<String> reportPdfurl = lisDetail.getReportPdfurl();
+//        String pdfurl = lisDetail.getReportPdfurl();
+        for (String s : reportPdfurl) {
+        		String[] https = s.split("http");
+            System.out.println(https.length);
+            for (int i = 1; i < https.length; i++) {
+                https[i] = "http" + https[i];
+                list.add(https[i]);
+                System.out.println(https[i]);
+            }
+        }
+        
+        lisDetail.setReportPdfurls(list);
+        return lisDetail;
     }
     
     public static LisList GetPacsReportList(String organizationCode, 
@@ -359,7 +381,8 @@ public class ReportUtil {
         			"<printTime/>\n" + 
         			"<printOperator/>\n" + 
         			"<remark/>\n" + 
-        			"<reportPdfurl>http://192.168.102.197:8080/UIS/20180322/20180322120047395_9628931.jpg</reportPdfurl>\n" + 
+//        			"<reportPdfurl>http://192.168.102.197:8080/UIS/20180322/20180322120047395_9628931.jpg</reportPdfurl>\n" + 
+        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_2.jpghttp://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_3.jpg</reportPdfurl>\n" + 
         			"<examClass/>\n" + 
         			"</root>";
         } else {
@@ -374,6 +397,21 @@ public class ReportUtil {
 			}
         }
         
-        return (LisDetail) XmlUtil.xmlToObject(retMsg, LisDetail.class);
+        LisDetail lisDetail = (LisDetail) XmlUtil.xmlToObject(retMsg, LisDetail.class);
+        List<String> list = new ArrayList();
+        List<String> reportPdfurl = lisDetail.getReportPdfurl();
+//        String pdfurl = lisDetail.getReportPdfurl();
+        for (String s : reportPdfurl) {
+        		String[] https = s.split("http");
+            System.out.println(https.length);
+            for (int i = 1; i < https.length; i++) {
+                https[i] = "http" + https[i];
+                list.add(https[i]);
+                System.out.println(https[i]);
+            }
+        }
+        
+        lisDetail.setReportPdfurls(list);
+        return lisDetail;
     }
 }

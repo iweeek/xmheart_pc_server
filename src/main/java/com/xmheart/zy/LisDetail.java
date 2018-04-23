@@ -28,8 +28,12 @@ public class LisDetail {
     @XmlElement(name = "image")
     private List<LisImage> images;
 
+//    @XmlElement(name = "reportPdfurl")
+//    private String reportPdfurl;
     @XmlElement(name = "reportPdfurl")
-    private String reportPdfurl;
+    private List<String> reportPdfurl;
+    
+    private List<String> reportPdfurls;
     
     @XmlElement(name = "visitNo")
     private String visitNo;
@@ -59,16 +63,26 @@ public class LisDetail {
 		this.images = images;
 	}
 
-	public String getReportPdfurl() {
-		return reportPdfurl;
-	}
-
-	public void setReportPdfurl(String reportPdfurl) {
-		this.reportPdfurl = reportPdfurl;
-	}
+//	public String getReportPdfurl() {
+//		return reportPdfurl;
+//	}
+//
+//	public void setReportPdfurl(String reportPdfurl) {
+//		this.reportPdfurl = reportPdfurl;
+//	}
+	
+	
 
 	public String getVisitNo() {
 		return visitNo;
+	}
+
+	public List<String> getReportPdfurl() {
+		return reportPdfurl;
+	}
+
+	public void setReportPdfurl(List<String> reportPdfurl) {
+		this.reportPdfurl = reportPdfurl;
 	}
 
 	public void setVisitNo(String visitNo) {
@@ -98,6 +112,16 @@ public class LisDetail {
 	public void setApplyOperator(String applyOperator) {
 		this.applyOperator = applyOperator;
 	}
+
+	public List<String> getReportPdfurls() {
+		return reportPdfurls;
+	}
+
+	public void setReportPdfurls(List<String> reportPdfurls) {
+		this.reportPdfurls = reportPdfurls;
+	}
+	
+	
 
 	
 }

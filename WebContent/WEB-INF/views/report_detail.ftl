@@ -1,6 +1,6 @@
  <#include "./fragments/_header.ftl"> 
     <div class="xm-main">
-       <div class="xm-container">
+       <div class="xm-container report-container">
 			<h3 class="title30">${reportTitle}</h3>
 			<div class="reportContent">
 				<!--
@@ -39,9 +39,10 @@
 						<dd>2018/03/08</dd>
 					</dl>-->
 				</div>
-				<!-- <p><img id="reportImage" image="${lisDetail.reportPdfurl}" alt="报告图片" /></p> -->
 				<div style="width: 100%;text-align: center;">
-					<img id="reportImage" class="report_image" image="${lisDetail.reportPdfurl}" alt="报告图片" /> 
+					<#list lisDetail.reportPdfurls as v>
+					<img id="reportImage${v_index + 1}" class="report_image" image="${v}" alt="报告图片" /> 
+					</#list>
 				</div>
 			</div>
 			

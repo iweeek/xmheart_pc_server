@@ -987,6 +987,7 @@ a.blue{ background:#0F76C3;}
 .reportList{padding:15px 0;}
 .reportList li{width:33.3%; height:78px; float:left; margin-bottom:8px;}
 .reportList li a{display:block; width:100%;  height:78px; padding:15px 1.5%; background:#fff url(../img/layout/icon_document.png) no-repeat 20px center; border:1px solid #fff;}
+.reportList li.pacs a{display:block; width:100%;  height:78px; padding:15px 1.5%; background:#fff url(../img/layout/icon_document_pacs.jpg) no-repeat 20px center; border:1px solid #fff;}
 .reportList li p{padding-left:70px; color:#333; font-size:16px; padding-top: 4px;}
 .reportList li .reportDate{color:#999; font-size:14px; padding-top:10px;}
 .reportList li a:hover{background-color:#fffde4; border-color:#ebe48e;}
@@ -1005,9 +1006,13 @@ a.blue{ background:#0F76C3;}
 	text-align:center;
 	font-size:16px;
 	color:#888;
+	display:none;
 }
 .loadingTip{display: none; width:120px; height:120px; border-radius:20px; margin:-60px 0 0 -60px; position:fixed; left:50%; top:50%; z-index:999; background:rgba(0,0,0,0.7) url(../img/layout/loading.gif) no-repeat center 6px;}
 .captcha_img{
 	vertical-align: middle;
     width: 150px;
-    padding-left: 10px;}
+    padding-left: 10px;
+    float: left;
+    padding-top: 5px;
+    }

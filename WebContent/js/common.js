@@ -448,55 +448,61 @@ $(function(){
   */
   
   // PACS 报告查询
-  $('#reportSearchPacs').click(function() {
-	  	console.log("reportName: " + $('#reportName').val());
-	  	console.log("reportNo: " + $('#reportNo').val());
-	  	console.log("hospitalNo: " + $('#hospitalNo').val());
-	  	
-        var params = {
-        	patientname: $('#reportName').val(),
-        	visitingType: "1",
-            commonCode: $('#hospitalNo').val(),
-        }
-        
-        var reportBillNo;
-        var reportTime;
-        var reportTitle;
-        
-        $.get('/searchPACSReport', params)
-        .success(function(res) {
-        	console.log(res);
-        	var concat = "";
-        	for (var i = 0; i < res.length; i++) {
-        		reportBillNo = res[i].reportBillNo;
-                reportTime = res[i].reportTime;
-                reportTitle = res[i].reportTitle;
-                patientName = $('#reportName').val();
-                
-                concat += 
-                "<li>" +
-					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
-						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
-						"&patientName=" + patientName +
-						"&type=pacs" +
-						">" +
-					"<p>" + reportTitle + "</p>" +
-					"<p class='reportDate'>" + reportTime + "</p>" +
-					"</a>" +
-				"</li>";
-        	}
-        	console.log("concat:" + concat);
-        	$('#content').html(concat);
-        })
-  })
+//  $('#reportSearchPacs').click(function() {
+//	  	console.log("reportName: " + $('#reportName').val());
+//	  	console.log("reportNo: " + $('#reportNo').val());
+//	  	console.log("hospitalNo: " + $('#hospitalNo').val());
+//	  	
+//        var params = {
+//        	patientname: $('#reportName').val(),
+//        	visitingType: "1",
+//            commonCode: $('#hospitalNo').val(),
+//        }
+//        
+//        var reportBillNo;
+//        var reportTime;
+//        var reportTitle;
+//        
+//        $.get('/searchPACSReport', params)
+//        .success(function(res) {
+//        	console.log(res);
+//        	var concat = "";
+//        	for (var i = 0; i < res.length; i++) {
+//        		reportBillNo = res[i].reportBillNo;
+//                reportTime = res[i].reportTime;
+//                reportTitle = res[i].reportTitle;
+//                patientName = $('#reportName').val();
+//                
+//                concat += 
+//                "<li>" +
+//					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
+//						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
+//						"&patientName=" + patientName +
+//						"&type=pacs" +
+//						">" +
+//					"<p>" + reportTitle + "</p>" +
+//					"<p class='reportDate'>" + reportTime + "</p>" +
+//					"</a>" +
+//				"</li>";
+//        	}
+//        	console.log("concat:" + concat);
+//        	$('#content').html(concat);
+//        })
+//  })
   
-  $('#reportImage').attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage').attr('image'));
+  for (var i = 1; i <= $(".report_image").length; i++) {
+	  $('#reportImage' + i).attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage' + i).attr('image'));
+	  
+	  console.log($('#reportImage' + i).attr('image'));
+	  
+	  $('#reportImage' + i).on("click", function () {
+		  $('#reportImage' + i).attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage' + i).attr('image'));  
+	  });  
+  }
   
-  console.log($('#reportImage').attr('image'));
   
-  $("#reportImage").on("click", function () {
-	  $('#reportImage').attr('src', '/getReportImage?reportPdfurl=' + $('#reportImage').attr('image'));  
-  });  
+  
+
   
   
   // 验证码
@@ -544,10 +550,10 @@ $(function(){
 							"</a>" +
 							"</li>";
 		                
-		                console.log("LIS" );
+		                console.log("LIS");
 	                } else {
 		                concat += 
-		                    "<li>" +
+		                    "<li class='pacs'>" +
 		    					"<a target='_blank' href=/reportDetail?lisBillNo=" + 
 		    						reportBillNo + "&reportTitle=" + reportTitle.replace(/\s/ig,'') + 
 		    						"&patientName=" + patientName +
@@ -557,19 +563,26 @@ $(function(){
 		    					"<p class='reportDate'>" + reportTime + "</p>" +
 		    					"</a>" +
 		    				"</li>";
-		                console.log("PACS" );
+		                console.log("PACS");
 	                }
 	        	}
 	        	console.log("concat:" + concat);
+	     
+	        	
 	        	$('#content').html(concat);
 	        	$("#reportLisLoading").hide();
-	        	$("#reportLisBlank").hide();
+	        if (concat == null || concat == "") {
+	        		$("#reportLisBlank").show();
+	        	} else {
+	           	$("#reportLisBlank").hide();
+	        }
 	        })
 	  },
 	  checkCaptchaInput: function (){  
             var captchaText =$(this).val(); 
             if(captchaText.length <=3 ){ //验证码一般大于三位  
-                $("#captchaChecked").hide();  
+                $("#captchaChecked").hide();
+                $("#captchaCheckedError").show(); 
                 return;  
             }  
             var params = {
@@ -581,8 +594,10 @@ $(function(){
                 if (res) {
                     $(this).attr('disabled', 'disabled');
                     $("#captchaChecked").show();
+                    $("#captchaCheckedError").hide(); 
                 } else {
                     $("#captchaChecked").hide();
+                    $("#captchaCheckedError").show(); 
                 }
             })
             if(event.keyCode==13){  
@@ -596,6 +611,10 @@ $(function(){
   
   $('#reportSearch').on('click', function () {
       ctrl.search();
+      ctrl.refreshCaptcha();  
+      $("#captchaChecked").hide();
+      $("#captchaCheckedError").hide(); 
+      $("#codeNo").val("");
   });
   
   ctrl.refreshCaptcha();  
