@@ -45,11 +45,13 @@
                          <div class="newsItem">
                             <div class="headLines">
                                 <h2>
-                                <a href="${doctor.url}" target="_blank">
+                                <a href="/doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                &status=2&workTime=0" title="${doctor.name}"" target="_blank">
                                 ${doctor.name}
                                 </a>
                                 </h2>
-                                <p><a href="${doctor.url}" target="_blank">
+                                <p>  <a href="/doctorDetail?id=${doctor.id}&deptCode=&doctorCode=${doctor.hisId}
+                                &status=2&workTime=0" title="${doctor.name}"" target="_blank">
                                 <#if doctor.brief?length lt 120>
                                 ${doctor.brief}
                                 <#else>

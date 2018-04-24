@@ -1138,8 +1138,8 @@ public class NewsController {
     }
 
 	@RequestMapping(value = { "/doctorDetail" }, method = RequestMethod.GET)
-	public String doctorDetail(@RequestParam Long id, Model model, @RequestParam String deptCode, 
-	        @RequestParam(required = false, defaultValue = "0") String status, @RequestParam String workTime) {
+	public String doctorDetail(@RequestParam Long id, Model model, @RequestParam(required = false) String deptCode, 
+	        @RequestParam(required = false, defaultValue = "0") String status, @RequestParam(required = false) String workTime) {
 		model = addTopNav(EXPERT_COLUMN_ID, model);
 
 		XPWDoctor doctor = doctorAndDeptService.getDoctorAndDeptById(id);
@@ -1282,9 +1282,9 @@ public class NewsController {
     }
 
 	@RequestMapping(value = { "/deptDoctor" }, method = RequestMethod.GET)
-	public String deptDoctor(@RequestParam Long id, Model model,
-	        @RequestParam String deptCode, @RequestParam String doctorCode,
-            @RequestParam String status, @RequestParam String workTime) {
+	public String deptDoctor(@RequestParam(required = false) Long id, Model model,
+	        @RequestParam(required = false) String deptCode, @RequestParam(required = false) String doctorCode,
+            @RequestParam(required = false) String status, @RequestParam(required = false) String workTime) {
 		model = addTopNav(3l, model);
 
 		XPWIndex index = indexService.indexRead();
