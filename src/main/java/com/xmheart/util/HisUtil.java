@@ -13,6 +13,8 @@ import com.xmheart.his.Response.*;
  */
 public class HisUtil {
 
+	private static boolean isDevelop = false;
+	
     private static final Log log = LogFactory.getLog(HisUtil.class);
 //    private static final String AUTHCODE = "cs20171011";
     private static final String AUTHCODE = "ZS20171211";
@@ -79,10 +81,21 @@ public class HisUtil {
                 "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
                 "<WorkTime>" + workTime + "</WorkTime>" +
                 "</Req>";
+        
+        System.out.println("requestXml: \n" + requestXml + "\n");
         String tradeCode = "JK2001";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
+//        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
         System.out.println("4.1 RegisterTime \n" + retMsg);
         return (RegisterTime) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), RegisterTime.class);
     }
@@ -109,10 +122,19 @@ public class HisUtil {
                 "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
                 "<WorkTime>" + workTime + "</WorkTime>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2002";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.2 \n" + retMsg);
         return (Departments) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Departments.class);
     }
@@ -142,10 +164,19 @@ public class HisUtil {
                 "<WorkDateStart>" + workDateStart + "</WorkDateStart>" +
                 "<WorkDateEnd>" + workDateEnd + "</WorkDateEnd>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2003";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.3 Doctors \n" + retMsg);
         return (Doctors) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Doctors.class);
     }
@@ -178,10 +209,19 @@ public class HisUtil {
                 "<WorkTime>" + workTime + "</WorkTime>" +
                 "<Status>" + status + "</Status>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2004";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.4 RegisteredSource \n" + retMsg);
         return (RegisteredSource)XmlUtil.xmlToObject(retMsg, RegisteredSource.class);
     }
@@ -210,10 +250,19 @@ public class HisUtil {
                 "<DeptCode>" + deptCode + "</DeptCode>" +
                 "<DocCode>" + docCode + "</DocCode>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2005";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.5 RegisteredSourceTime \n" + retMsg);
         return (RegisteredSourceTime)XmlUtil.xmlToObject(retMsg, RegisteredSourceTime.class);
     }
@@ -254,16 +303,25 @@ public class HisUtil {
                 "<WorkDate>"+workdate+"</WorkDate>" +
                 "<WorkType>"+workType+"</WorkType>" +
                 "<DeptCode>"+deptCode+"</DeptCode>" +
-                "<DocCode>"+docCode+"生代码</DocCode>" +
+                "<DocCode>"+docCode+"</DocCode>" +
                 "<STime>"+stime+"</STime>" +
                 "<UserId>"+userid+"</UserId>" +
                 "<CustomTime>"+customTime+"</CustomTime>" +
                 "<SickID>"+sickId+"</SickID>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2006";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.6 Registered \n" + retMsg);
         return (Registered)XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), Registered.class);
     }
@@ -290,10 +348,19 @@ public class HisUtil {
                 "<CustomTime>"+customTime+"</CustomTime>" +
                 "<SickID>"+sickId+"</SickID>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2007";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.7 UnRegistered \n" + retMsg);
         return (UnRegistered) XmlUtil.xmlToObject(HisUtil.handleResp(retMsg), UnRegistered.class);
     }
@@ -317,10 +384,19 @@ public class HisUtil {
                 "<Status>"+status+"</Status>" +
                 "<SickID>"+sickId+"</SickID>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK2008";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("4.8 RegisterInfo \n" + retMsg);
         return (RegisterInfo) XmlUtil.xmlToObject(retMsg, RegisterInfo.class);
     }
@@ -353,10 +429,19 @@ public class HisUtil {
                 "<McardNo>"+mcardNo+"</McardNo>" +
                 "<SickID>"+sickId+"</SickID>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK5001";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("5.1 PatientInfo \n" + retMsg);
         return (PatientInfo) XmlUtil.xmlToObject(retMsg, PatientInfo.class);
     }
@@ -390,10 +475,19 @@ public class HisUtil {
                 "<Sex>"+sex+"</Sex>" +
                 "<UserID>"+userID+"</UserID>" +
                 "</Req>";
+        System.out.println("requestXml: \n" + requestXml + "\n");
+        
         String tradeCode = "JK5003";
-        Service1 service = new Service1();
-        Service1Soap service1Soap =  service.getService1Soap();
-        String retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        
+        String retMsg = "";
+        if (isDevelop) {
+        		retMsg = "";
+        } else {
+        		Service1 service = new Service1();
+            Service1Soap service1Soap =  service.getService1Soap();
+        		retMsg = service1Soap.interfaceTradeJkzl(tradeCode, requestXml);
+        }
+        
         System.out.println("5.3 NoCardRegister \n" + retMsg);
         return (NoCardRegister) XmlUtil.xmlToObject(retMsg, NoCardRegister.class);
     }
