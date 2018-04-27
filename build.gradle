@@ -87,8 +87,6 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
     compile group: 'c3p0', name: 'c3p0', version: '0.9.0.4'
     
-    
-    
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
     //compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2'
     compile group: 'org.apache.logging.log4j', name: 'log4j-web', version: '2.8.2'
@@ -96,8 +94,10 @@ dependencies {
     compile group: 'org.apache.axis2', name: 'axis2', version: '1.6.2', ext: 'pom'
     compile group: 'org.apache.axis2', name: 'axis2-adb', version: '1.6.2'
     compile group: 'org.apache.axis2', name: 'axis2-transport-local', version: '1.6.2'
-
     compile group: 'org.apache.axis2', name: 'axis2-transport-http', version: '1.6.2'
+    
+    // https://mvnrepository.com/artifact/org.tuckey/urlrewritefilter
+	compile group: 'org.tuckey', name: 'urlrewritefilter', version: '4.0.4'
     
     //定义编译测试时必须有的依赖
     testCompile (
