@@ -467,7 +467,7 @@ public class HisUtil {
                 "<oracode>00002</oracode>" +
                 "<oraauthcode>" + AUTHCODE + "</oraauthcode>" +
                 "<TransactionCode>JK5003</TransactionCode>" +
-                "<IDCardNo>"+IDCardNo+"</IDCardNo>" +
+                "<IDCardID>"+IDCardNo+"</IDCardID>" +
                 "<Mobile>"+mobile+"</Mobile>" +
                 "<Name>"+name+"</Name>" +
                 "<Address>"+address+"</Address>" +

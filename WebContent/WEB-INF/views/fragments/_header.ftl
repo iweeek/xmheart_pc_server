@@ -12,7 +12,7 @@
     <script src="./js/third_party/pdfobject.js"></script>
     <script>PDFObject.embed("./attached/a.pdf", "#example1");</script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">  
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=8">
         <meta name="renderer" content="webkit">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="厦门大学附属心血管病医院（简称“厦心”）为福建省唯一的三级心血管病专科医院，拥有心内科国家临床重点专科，承担冠心病、心律失常、先天性心脏病、瓣膜病变等各类心脏病及心血管疑难复杂重症的救治。" />

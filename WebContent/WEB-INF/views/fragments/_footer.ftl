@@ -188,7 +188,19 @@
 				<script src="http://dcs.conac.cn/js/14/215/0000/41619365/CA142150000416193650001.js"></script>
 			</div>
 		</div>
-		<script src="/js/third_party/jquery.min.js"></script>
+		<script src="/js/third_party/jquery-1.9.1.min.js"></script>
+		<!--[if IE 8]>
+		<script type="text/javascript" src="/js/third_party/jquery-1.9.1.min.js"></script>
+		<![endif]-->
+		<!--[if IE 9]>
+		<script type="text/javascript" src="/js/third_party/jquery-1.9.1.min.js"></script>
+		<![endif]-->
+		<!--[if IE 10]>
+		<script type="text/javascript" src="/js/third_party/jquery-1.9.1.min.js"></script>
+		<![endif]-->
+		<!--[if IE 11]>
+		<script type="text/javascript" src="/js/third_party/jquery-1.9.1.min.js"></script>
+		<![endif]-->
 		<script src="/js/respond.min.js"></script>
 		<script src="/js/swiper-3.4.2.jquery.min.js"></script>
 		<script type="text/javascript" src="./js/third_party/jquery.jplayer.min.js"></script>

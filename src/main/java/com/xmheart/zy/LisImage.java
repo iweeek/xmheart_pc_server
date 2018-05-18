@@ -33,14 +33,18 @@ public class LisImage {
 	@XmlAttribute
     private String remark;
 	
+	@XmlAttribute
+	private String url;
+	
     public  LisImage(){}
 
-	public LisImage(String code, String sub, String typeCode, String remark) {
+	public LisImage(String code, String sub, String typeCode, String remark, String url) {
 		super();
 		this.code = code;
 		this.sub = sub;
 		this.typeCode = typeCode;
 		this.remark = remark;
+		this.url = url;
 	}
 
 	public String getCode() {
@@ -75,5 +79,12 @@ public class LisImage {
 		this.remark = remark;
 	}
 
-   
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 }

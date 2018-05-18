@@ -1465,25 +1465,25 @@ public class NewsController {
 		return "report_list";
 	}
 	
-	@RequestMapping(value = { "/reportPacsList" }, method = RequestMethod.GET)
-	public String reportPacsList(Model model, @RequestParam(required = false) String organizationCode, 
-			@RequestParam(required = false) String visitingType,
-	         @RequestParam(required = false) String commonCode, 
-	         @RequestParam(required = false) String patientID, 
-	         @RequestParam(required = false) String operator, 
-	         @RequestParam(required = false) String patientname) {
-		
-		if (patientname != null) {
-			LisList lisList = ReportUtil.GetPacsReportList(organizationCode,
-					visitingType, commonCode, patientID, operator, patientname);
-			model.addAttribute("lisList", lisList);
-		    System.out.println(lisList);
-		}
-	    
-		model = addTopNav(1l, model);
-
-		return "report_pacs_list";
-	}
+//	@RequestMapping(value = { "/reportPacsList" }, method = RequestMethod.GET)
+//	public String reportPacsList(Model model, @RequestParam(required = false) String organizationCode, 
+//			@RequestParam(required = false) String visitingType,
+//	         @RequestParam(required = false) String commonCode, 
+//	         @RequestParam(required = false) String patientID, 
+//	         @RequestParam(required = false) String operator, 
+//	         @RequestParam(required = false) String patientname) {
+//		
+//		if (patientname != null) {
+//			LisList lisList = ReportUtil.GetPacsReportList(organizationCode,
+//					visitingType, commonCode, patientID, operator, patientname);
+//			model.addAttribute("lisList", lisList);
+//		    System.out.println(lisList);
+//		}
+//	    
+//		model = addTopNav(1l, model);
+//
+//		return "report_pacs_list";
+//	}
 	
 	/**
 	 * 搜索报告，局部刷新页面

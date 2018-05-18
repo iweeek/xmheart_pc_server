@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.xmheart.zy.LisDetail;
+import com.xmheart.zy.LisImage;
 import com.xmheart.zy.LisList;
 import com.xmheart.zysoft.CallInterfaceFault_Exception;
 import com.xmheart.zysoft.WSInterface;
@@ -106,124 +107,67 @@ public class ReportUtil {
         
         String retMsg = "";
         if (isDevelop) {
-        	retMsg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>\n" + 
-        			"<DEPT_CODE/>\n" + 
-        			"<patientId>0000294098</patientId>\n" + 
-        			"<visitNo>642108001</visitNo>\n" + 
-        			"<emerFlag/>\n" + 
-        			"<visitType>2</visitType>\n" + 
-        			"<patientName/>\n" + 
-        			"<patientSex/>\n" + 
-        			"<patientBirthDay/>\n" + 
-        			"<patientAge>1955-10-27</patientAge>\n" + 
-        			"<bedNo>34</bedNo>\n" + 
-        			"<diagnoseCode/>\n" + 
-        			"<diagnoseName/>\n" + 
-        			"<medicalHistory/>\n" + 
-        			"<applyNos/>\n" + 
-        			"<barcodeNos>\n" + 
-        			"<barcodeNo/>\n" + 
-        			"</barcodeNos>\n" + 
-        			"<applyOperator>谢鹏/D514</applyOperator>\n" + 
-        			"<applyDeptCode/>\n" + 
-        			"<applyDeptName/>\n" + 
-        			"<visitDeptCode/>\n" + 
-        			"<visitDeptName>40900</visitDeptName>\n" + 
-        			"<applyTime>2018-04-02 11:05:16</applyTime>\n" + 
-        			"<reportNo>102872018040311</reportNo>\n" + 
-        			"<reportTitle>102872018040311</reportTitle>\n" + 
-        			"<subjectClass>020101</subjectClass>\n" + 
-        			"<labPurpose/>\n" + 
-        			"<labMethod/>\n" + 
-        			"<specimenCode>3</specimenCode>\n" + 
-        			"<specimenName>随机血浆</specimenName>\n" + 
-        			"<specimenCollectPart/>\n" + 
-        			"<specimenCollectPartDesc/>\n" + 
-        			"<specimenRiskFactor/>\n" + 
-        			"<specimenRiskFactorDesc/>\n" + 
-        			"<specimenQuality>合格</specimenQuality>\n" + 
-        			"<specimenQuality_desc/>\n" + 
-        			"<labInstruments/>\n" + 
-        			"<labInstrumentName>STAGO</labInstrumentName>\n" + 
-        			"<specimenCollectTime>2018-04-03 06:07:49</specimenCollectTime>\n" + 
-        			"<specimenCollectOperator>蔡丽红</specimenCollectOperator>\n" + 
-        			"<specimenAcceptTime>2018-04-03 06:25:41</specimenAcceptTime>\n" + 
-        			"<specimenAcceptOperator/>\n" + 
-        			"<labTime/>\n" + 
-        			"<labDept/>\n" + 
-        			"<labOperator>王莹莹</labOperator>\n" + 
-        			"<reportTime>王莹莹</reportTime>\n" + 
-        			"<reportOperator>陈燕双</reportOperator>\n" + 
-        			"<auditTime>2018-04-03 07:58:08</auditTime>\n" + 
-        			"<auditOperator>陈燕双</auditOperator>\n" + 
-        			"<printTime/>\n" + 
-        			"<printOperator/>\n" + 
-        			"<reportTemplateCode>020101</reportTemplateCode>\n" + 
-        			"<remark1/>\n" + 
-        			"<remark2/>\n" + 
-//        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180403/102872018040311/102872018040311_1.jpg</reportPdfurl>\n" + 
-        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_2.jpghttp://192.168.102.197:8080/LIS/20180417/10245201804171/10245201804171_3.jpg</reportPdfurl>\n" + 
-        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_1.jpg</reportPdfurl>\n" + 
-        			"<reportPdfurl>http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_2.jpg</reportPdfurl>\n" + 
-        			"<labDetails>\n" + 
-        			"<labDetail>\n" + 
-        			"<masterItemCode/>\n" + 
-        			"<masterItemName/>\n" + 
-        			"<itemCode>50568</itemCode>\n" + 
-        			"<itemChiName>凝血酶原时间</itemChiName>\n" + 
-        			"<itemLoincCode/>\n" + 
-        			"<itemLoincName/>\n" + 
-        			"<itemResult>16.6</itemResult>\n" + 
-        			"<itemResultUnit>s</itemResultUnit>\n" + 
-        			"<itemResultFlag>H</itemResultFlag>\n" + 
-        			"<referenceDesc>11-14.5</referenceDesc>\n" + 
-        			"<referenceHighLimit/>\n" + 
-        			"<referenceLowLimit/>\n" + 
-        			"<reagentMethod>仪器法</reagentMethod>\n" + 
-        			"<sortNo>1</sortNo>\n" + 
-        			"<remark>orion插入</remark>\n" + 
-        			"<verify>1</verify>\n" + 
-        			"<drugAllergys/>\n" + 
-        			"</labDetail>\n" + 
-        			"<labDetail>\n" + 
-        			"<masterItemCode/>\n" + 
-        			"<masterItemName/>\n" + 
-        			"<itemCode>50569</itemCode>\n" + 
-        			"<itemChiName>国际标准化比值</itemChiName>\n" + 
-        			"<itemLoincCode/>\n" + 
-        			"<itemLoincName/>\n" + 
-        			"<itemResult>1.36</itemResult>\n" + 
-        			"<itemResultUnit/>\n" + 
-        			"<itemResultFlag>H</itemResultFlag>\n" + 
-        			"<referenceDesc>0.8-1.2</referenceDesc>\n" + 
-        			"<referenceHighLimit/>\n" + 
-        			"<referenceLowLimit/>\n" + 
-        			"<reagentMethod>计算法</reagentMethod>\n" + 
-        			"<sortNo>2</sortNo>\n" + 
-        			"<remark>orion插入</remark>\n" + 
-        			"<verify>1</verify>\n" + 
-        			"<drugAllergys/>\n" + 
-        			"</labDetail>\n" + 
-        			"<labDetail>\n" + 
-        			"<masterItemCode/>\n" + 
-        			"<masterItemName/>\n" + 
-        			"<itemCode>50835</itemCode>\n" + 
-        			"<itemChiName>凝血酶原时间比值</itemChiName>\n" + 
-        			"<itemLoincCode/>\n" + 
-        			"<itemLoincName/>\n" + 
-        			"<itemResult>1.27</itemResult>\n" + 
-        			"<itemResultUnit/>\n" + 
-        			"<itemResultFlag>H</itemResultFlag>\n" + 
-        			"<referenceDesc>0.8-1.2</referenceDesc>\n" + 
-        			"<referenceHighLimit/>\n" + 
-        			"<referenceLowLimit/>\n" + 
-        			"<reagentMethod>计算法</reagentMethod>\n" + 
-        			"<sortNo>3</sortNo>\n" + 
-        			"<remark>orion插入</remark>\n" + 
-        			"<verify>1</verify>\n" + 
-        			"<drugAllergys/>\n" + 
-        			"</labDetail>\n" + 
-        			"</labDetails>\n" + 
+        	retMsg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + 
+        			"<root>\n" + 
+        			"	<DEPT_CODE/>\n" + 
+        			"	<patientId>0000296423</patientId>\n" + 
+        			"	<visitNo>642349001</visitNo>\n" + 
+        			"	<emerFlag/>\n" + 
+        			"	<visitType>2</visitType>\n" + 
+        			"	<patientName/>\n" + 
+        			"	<patientSex/>\n" + 
+        			"	<patientBirthDay/>\n" + 
+        			"	<patientAge>1952-2-3</patientAge>\n" + 
+        			"	<bedNo>4</bedNo>\n" + 
+        			"	<diagnoseCode/>\n" + 
+        			"	<diagnoseName/>\n" + 
+        			"	<medicalHistory/>\n" + 
+        			"	<applyNos/>\n" + 
+        			"	<barcodeNos>\n" + 
+        			"		<barcodeNo/>\n" + 
+        			"	</barcodeNos>\n" + 
+        			"	<applyOperator>王桂香/D124</applyOperator>\n" + 
+        			"	<applyDeptCode/>\n" + 
+        			"	<applyDeptName/>\n" + 
+        			"	<visitDeptCode/>\n" + 
+        			"	<visitDeptName>40200</visitDeptName>\n" + 
+        			"	<applyTime>2018-04-12 13:32:12</applyTime>\n" + 
+        			"	<reportNo>102492018041210</reportNo>\n" + 
+        			"	<reportTitle>102492018041210</reportTitle>\n" + 
+        			"	<subjectClass>020101</subjectClass>\n" + 
+        			"	<labPurpose/>\n" + 
+        			"	<labMethod/>\n" + 
+        			"	<specimenCode>4</specimenCode>\n" + 
+        			"	<specimenName>动脉血</specimenName>\n" + 
+        			"	<specimenCollectPart/>\n" + 
+        			"	<specimenCollectPartDesc/>\n" + 
+        			"	<specimenRiskFactor/>\n" + 
+        			"	<specimenRiskFactorDesc/>\n" + 
+        			"	<specimenQuality>合格</specimenQuality>\n" + 
+        			"	<specimenQuality_desc/>\n" + 
+        			"	<labInstruments/>\n" + 
+        			"	<labInstrumentName>西门子Rapidpoint500</labInstrumentName>\n" + 
+        			"	<specimenCollectTime>2018-04-12 13:39:37</specimenCollectTime>\n" + 
+        			"	<specimenCollectOperator>林清香</specimenCollectOperator>\n" + 
+        			"	<specimenAcceptTime>2018-04-12 13:57:40</specimenAcceptTime>\n" + 
+        			"	<specimenAcceptOperator/>\n" + 
+        			"	<labTime/>\n" + 
+        			"	<labDept/>\n" + 
+        			"	<labOperator>郭奕昌</labOperator>\n" + 
+        			"	<reportTime>郭奕昌</reportTime>\n" + 
+        			"	<reportOperator>孟琦</reportOperator>\n" + 
+        			"	<auditTime>2018-04-12 14:01:17</auditTime>\n" + 
+        			"	<auditOperator>孟琦</auditOperator>\n" + 
+        			"	<printTime/>\n" + 
+        			"	<printOperator/>\n" + 
+        			"	<reportTemplateCode>020101</reportTemplateCode>\n" + 
+        			"	<remark1/>\n" + 
+        			"	<remark2/>\n" + 
+        			"	<reportPdfurl/>\n" + 
+        			"	<images>\n" + 
+        			"          <image code=\"1\" sub=\"1\" url=\"http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_1.jpg\"/>\n" + 
+        			"          <image code=\"2\" sub=\"2\" url=\"http://192.168.102.197:8080/LIS/20180412/102492018041210/102492018041210_2.jpg\"/>" + 
+        			"	</images>\n" + 
         			"</root>";
         } else {
 	        WSInterface wsInterface = new WSInterface();
@@ -241,14 +185,18 @@ public class ReportUtil {
         List<String> list = new ArrayList();
         List<String> reportPdfurl = lisDetail.getReportPdfurl();
 //        String pdfurl = lisDetail.getReportPdfurl();
-        for (String s : reportPdfurl) {
-        		String[] https = s.split("http");
-            System.out.println(https.length);
-            for (int i = 1; i < https.length; i++) {
-                https[i] = "http" + https[i];
-                list.add(https[i]);
-                System.out.println(https[i]);
-            }
+//        for (String s : reportPdfurl) {
+//        		String[] https = s.split("http");
+//            System.out.println(https.length);
+//            for (int i = 1; i < https.length; i++) {
+//                https[i] = "http" + https[i];
+//                list.add(https[i]);
+//                System.out.println(https[i]);
+//            }
+//        }
+        
+        for (LisImage s : lisDetail.getImages()) {
+        		list.add(s.getUrl());
         }
         
         lisDetail.setReportPdfurls(list);
@@ -399,18 +347,21 @@ public class ReportUtil {
         
         LisDetail lisDetail = (LisDetail) XmlUtil.xmlToObject(retMsg, LisDetail.class);
         List<String> list = new ArrayList();
-        List<String> reportPdfurl = lisDetail.getReportPdfurl();
+//        List<String> reportPdfurl = lisDetail.getReportPdfurl();
 //        String pdfurl = lisDetail.getReportPdfurl();
-        for (String s : reportPdfurl) {
-        		String[] https = s.split("http");
-            System.out.println(https.length);
-            for (int i = 1; i < https.length; i++) {
-                https[i] = "http" + https[i];
-                list.add(https[i]);
-                System.out.println(https[i]);
-            }
+//        for (String s : reportPdfurl) {
+//        		String[] https = s.split("http");
+//            System.out.println(https.length);
+//            for (int i = 1; i < https.length; i++) {
+//                https[i] = "http" + https[i];
+//                list.add(https[i]);
+//                System.out.println(https[i]);
+//            }
+//        }
+        for (LisImage s : lisDetail.getImages()) {
+    		list.add(s.getUrl());
         }
-        
+    
         lisDetail.setReportPdfurls(list);
         return lisDetail;
     }
