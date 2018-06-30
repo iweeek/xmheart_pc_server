@@ -22,6 +22,7 @@ import com.xmheart.service.ArticleService;
 import com.xmheart.service.ColumnService;
 import com.xmheart.service.NewspaperService;
 import com.xmheart.service.VideoService;
+import com.xmheart.service.impl.TokenServiceImpl;
 
 @Controller
 public class UpdateTask {
@@ -44,7 +45,7 @@ public class UpdateTask {
 //    @RequestMapping(value = { "/test" }, method = RequestMethod.POST)
 //    public ResponseEntity<?> job()   {  
     @Scheduled(cron = "0 0 */1 * * *")
-    public void job()   {  
+    public void job()   {
         System.out.println("前台开始执行定时任务......");
         
         // 电子院报
